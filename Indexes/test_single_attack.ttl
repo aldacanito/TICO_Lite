@@ -1,0 +1,21 @@
+<http://www.gecad.isep.ipp.pt/ASIIO#89613483_attack>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extAttack> , <http://www.gecad.isep.ipp.pt/ASIIO#extZagreb> , <http://www.gecad.isep.ipp.pt/ASIIO#extTrainee> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                <http://www.gecad.isep.ipp.pt/ASIIO#extINCIDENT> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210423T0928400000_st> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210423T0928400000_et> .
+
+
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210423T0928400000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-04-23T09:28:40+00:00" .
+
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210423T0928400000_et>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-04-23T09:28:40+00:00" .
