@@ -83,6 +83,8 @@ public class Main
          // read file
         JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_real_incidents.json"));
     
+        //JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_incidents.json"));
+    
         Map<String, Object> toMap = joAlerts.toMap();
         ArrayList<HashMap> aList = (ArrayList<HashMap>) toMap.get("list");
         
@@ -105,6 +107,15 @@ public class Main
             if(instance.containsKey("status")) status   = instance.get("status").toString();
             if(instance.containsKey("timestamp")) timestamp  = instance.get("timestamp").toString();
             if(instance.containsKey("related_alerts"))  relatedAlerts   = (ArrayList<String>) instance.get("related_alerts");            
+            
+            //id = escape(id, true);
+            external_identifier = escape(external_identifier, true);
+            description = escape(description);
+            kind = escape(kind);
+            type = escape(type, true);
+            severity = escape(severity);
+            status = escape(status, true);
+            
             
             if(type.equalsIgnoreCase("incident") && !id.isBlank() && !timestamp.isBlank())
                 createRealIncident(id, external_identifier, description, kind, type, severity, status, timestamp, relatedAlerts);
@@ -248,8 +259,8 @@ public class Main
             moments.add(date);
 
             insert += 
-            "  asiio:"+ start_time_proc +"_et  a time:Instant .\n" +
-            "  asiio:"+ start_time_proc +"_et  rdfs:label \""+ date +"\" .\n" ;
+            //"  asiio:"+ start_time_proc +"_et  a time:Instant .\n" +
+            //"  asiio:"+ start_time_proc +"_et  rdfs:label \""+ date +"\" .\n" ;
             
             insert += 
             "  asiio:"+ start_time_proc +"_st  a time:Instant .\n" +
@@ -257,7 +268,7 @@ public class Main
         }
         
         insert+=
-            "  asiio:"+ id +"  time:hasEnd asiio:"+ start_time_proc + "_et .\n" +
+            //"  asiio:"+ id +"  time:hasEnd asiio:"+ start_time_proc + "_et .\n" +
             "  asiio:"+ id +"  time:hasBeginning asiio:"+ start_time_proc + "_st .\n";    
             
         return insert;
@@ -291,105 +302,82 @@ public class Main
         {
             
             // kind é sempre INTRUSION mas nao devia ser!!!!!
-            Date date = new SimpleDateFormat("yyyy-MM-dd\'T\'hh:mm:ss").parse(timestamp);  
+            Date eventDate = new SimpleDateFormat("yyyy-MM-dd\'T\'hh:mm:ss").parse(timestamp);  
             SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
             
-            //confirmar se é 5 ou 4 o mes
-            Date zagreb = new GregorianCalendar(2021, 03, 23).getTime();
-            Date atenas = new GregorianCalendar(2021, 03, 26).getTime();
-            Date milao1 = new GregorianCalendar(2021, 03, 27).getTime();
-            Date milao2 = new GregorianCalendar(2021, 03, 28).getTime();
+            String eventDateSTR = fmt.format(eventDate);
             
-            Date scenario1 = new GregorianCalendar(2021, 03, 15).getTime();
-            Date scenario2 = new GregorianCalendar(2021, 03, 13).getTime();
-            Date scenario12 = new GregorianCalendar(2021, 03, 8).getTime();
+            //os meses começam a contar do zero porque quem desenvolveu isto é maluco
+            String zagreb = fmt.format(new GregorianCalendar(2021, 03, 23).getTime());
+            String atenas = fmt.format(new GregorianCalendar(2021, 03, 26).getTime());
+            String milao1 = fmt.format(new GregorianCalendar(2021, 03, 27).getTime());
+            String milao2 = fmt.format(new GregorianCalendar(2021, 03, 28).getTime());
             
-            Date scenario5 = new GregorianCalendar(2021, 03, 17).getTime();
-            Date trainee1 = new GregorianCalendar(2021, 03, 23).getTime();
-            Date trainee2 = new GregorianCalendar(2021, 03, 25).getTime();
+            String scenario1_1 = fmt.format(new GregorianCalendar(2021, 03, 15).getTime());
+            String scenario1_2 = fmt.format(new GregorianCalendar(2021, 03, 8).getTime());
             
-            String attackType = "extAttack";
+            String scenario2_1  = fmt.format(new GregorianCalendar(2021, 03, 13).getTime());
+            String scenario2_2 = fmt.format(new GregorianCalendar(2021, 03, 8).getTime());
+            
+            String scenario5    = fmt.format(new GregorianCalendar(2021, 02, 17).getTime());
+           
+            String trainee2     = fmt.format(new GregorianCalendar(2021, 01, 25).getTime());
+            
+            if(!eventDateSTR.equals(zagreb) & !eventDateSTR.equals(atenas) & !eventDateSTR.equals(milao1) & !eventDateSTR.equals(milao2)
+                    & !eventDateSTR.equals(scenario1_1) & !eventDateSTR.equals(scenario1_2) & !eventDateSTR.equals(scenario2_1)
+                    & !eventDateSTR.equals(scenario2_2) & !eventDateSTR.equals(scenario5) & !eventDateSTR.equals(trainee2))
+                 
+                return;
+            
+            //String attackType = "extAttack";
+            
+            // acrescentar ataque à lista de eventos associados ao incidente caso necessario
+           
+            String createAttackType =
+                    "  asiio:"+ id +"  asiio:extConsistsOf asiio:" + id + "_attack .\n" +
+                    "  asiio:"+ id +"_attack  a asiio:extAttack .\n" +
+                    "  asiio:"+ id +"_attack  asiio:extHas asiio:"+ id +"_attackType .\n" +
+                    
+                    " asiio:"+ id +"_attackType a asiio:extAttackType .\n" ;
+            
+            // type é sempre incident então para já é redundante
+            /* type = type.replace("\\", "");
+            
+            if(!type.isBlank())
+                createAttackType += "  asiio:"+ id +"_attackType a asiio:ext"+type+" .\n" ; */
+            
             
             // vou fazer classificaçao multipla até prova em contrário
-            String date1 = fmt.format(date);
-            String date2 = fmt.format(scenario1);
-            if(date1.equals(date2))
-            {
-                insert += "  asiio:"+ id +"_attack  a asiio:extAtenas .\n";
-                insert += "  asiio:"+ id +"_attack  a asiio:extScenario1 .\n";
-                
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extAtenas .\n" ;
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extScenario1 .\n" ;
-            }
+           
+            if(eventDateSTR.equals(zagreb)) //evento zagreb
+                insert += createAttackType + "  asiio:"+ id +"_attackType  a asiio:extZagreb . asiio:extZagreb rdfs:subClassOf asiio:extAttackType .\n";
             
-            if(fmt.format(date).equals(fmt.format(scenario2)))
-            {    
-                insert += "  asiio:"+ id +"_attack  a asiio:extAtenas .\n";
-                insert += "  asiio:"+ id +"_attack  a asiio:extScenario2 .\n";
-                
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extScenario1 .\n" ;
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extAtenas .\n" ;
-            }
+            if(eventDateSTR.equals(atenas)) //eventos Atenas
+                insert += createAttackType + "  asiio:"+ id +"_attackType  a asiio:extAtenas . asiio:extAtenas rdfs:subClassOf asiio:extAttackType .\n";
             
-            if(fmt.format(date).equals(fmt.format(scenario12)))
-            {
-                insert += "  asiio:"+ id +"_attack  a asiio:extScenario1 .\n";
-                insert += "  asiio:"+ id +"_attack  a asiio:extScenario2 .\n";
-                insert += "  asiio:"+ id +"_attack  a asiio:extAtenas .\n";
-                
-                /*
-                insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extAtenas .\n" ;
-                insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extScenario1 .\n" ;
-                insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extScenario2 .\n" ;
-                */            
-            }
+            if(eventDateSTR.equals(milao1) | eventDateSTR.equals(milao2) ) //eventoa Milao
+                insert += createAttackType + "  asiio:"+ id +"_attackType  a asiio:extMilao . asiio:extMilao rdfs:subClassOf asiio:extAttackType .\n";
             
-            if(fmt.format(date).equals(fmt.format(scenario5)))
-            {
-                insert += "  asiio:"+ id +"_attack  a asiio:extScenario5 .\n";
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extScenario5 .\n" ;
-            }
+            if(eventDateSTR.equals(scenario1_1) | eventDateSTR.equals(scenario1_2)) //evento scenario 1
+                insert += createAttackType + "  asiio:"+ id +"_attackType  a asiio:extScenario1 . asiio:extScenario1 rdfs:subClassOf asiio:extAttackType .\n";
             
-            date2 = fmt.format(trainee1);
-            String date3 = fmt.format(trainee2);
-            if(date1.equals(date2) || date1.equals(date3))
-            {
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extTrainee .\n" ;
-                insert += "  asiio:"+ id +"_attack  a asiio:extTrainee .\n";
-            }
+            if(eventDateSTR.equals(scenario2_1) | eventDateSTR.equals(scenario2_2)) //evento scenario 2
+                insert += createAttackType + "  asiio:"+ id +"_attackType  a asiio:extScenario2 . asiio:extScenario2 rdfs:subClassOf asiio:extAttackType .\n";
             
+            if(eventDateSTR.equals(scenario5)) //evento scenario 5
+                insert += createAttackType + "  asiio:"+ id +"_attackType  a asiio:extScenario5 . asiio:extScenario5 rdfs:subClassOf asiio:extAttackType .\n";
             
-            date2 = fmt.format(zagreb);
-            if(date1.equals(date2))
-            {
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extZagreb .\n" ;
-                insert += "  asiio:"+ id +"_attack  a asiio:extZagreb .\n";
-            }   
-            if(fmt.format(date).equals(fmt.format(atenas)))
-            {
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extAtenas .\n" ;
-                insert += "  asiio:"+ id +"_attack  a asiio:extAtenas .\n";
-            }
+             if(eventDateSTR.equals(trainee2)) //evento trainee?
+                insert += createAttackType + "  asiio:"+ id +"_attackType  a asiio:extTrainee . asiio:extTrainee rdfs:subClassOf asiio:extAttackType .\n";
             
-            if(fmt.format(date).equals(fmt.format(milao1)) || fmt.format(date).equals(fmt.format(milao2)))
-            {
-                insert += "  asiio:"+ id +"_attack  a asiio:extMilao .\n";
-                //insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:extMilao .\n" ;
-            }
             
             insert+=getStartEndDateInserts(id+"_attack", timestamp);
             
-            // acrescentar ataque à lista de eventos associados ao incidente
-            String attack = id + "_attack";
-            insert += "  asiio:"+ id +"  asiio:extConsistsOf asiio:" + attack + " .\n";
-            
+            //TODO verificar se durante o dia conseguimos identificar classes extra de ataques...
             // TODO trocar o type por outro tipo de ataque ou subclasse de ataque
-            insert += "  asiio:"+ id +"_attack  a asiio:"+ attackType +" .\n";
+           // insert += "  asiio:"+ id +"_attack  a asiio:"+ attackType +" .\n";
             
-            type = type.replace("\\", "");
-            
-            if(!type.isBlank())
-                insert+= "  asiio:"+ id +"_attack  asiio:extAttackType asiio:ext"+type+" .\n" ;
+           
             
         }
         catch(Exception e)
@@ -427,6 +415,25 @@ public class Main
             logger.info("Reason " + e.getLocalizedMessage());
             logger.info("Generated Query " + insert);
         }
+    }
+    
+    
+    private static String escape(String str)
+    {
+        return escape(str, false);
+    }
+    
+    private static String escape(String str, boolean space)
+    {
+        str = str.replace("\\", "").replace("\"", "'");
+       
+        str = str.replace(".", "_").replace("(", "").replace(")", "")
+                .replace("{", "[").replace("}", "]").replace("\"", "");
+        
+        if(space)
+            str = str.replace(" ", "_");
+    
+        return str;
     }
     
     
