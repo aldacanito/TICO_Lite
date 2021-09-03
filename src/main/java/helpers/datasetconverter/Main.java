@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.datasetconverter;
+package helpers.datasetconverter;
 
 
+import Utils.Utilities;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,25 +19,14 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-import org.apache.jena.query.Query;
-import org.apache.jena.query.QueryFactory;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.riot.RDFDataMgr;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.update.UpdateAction;
-import org.apache.jena.update.UpdateExecutionFactory;
-import org.apache.jena.update.UpdateFactory;
-import org.apache.jena.update.UpdateProcessor;
-import org.apache.jena.update.UpdateRequest;
 
 /**
  *
@@ -53,6 +45,11 @@ public class Main
     static Logger logger = Logger.getLogger("errors");  
         
     public static void main(String[] args) throws IOException 
+    {
+        start();
+    }
+    
+    private static void start() throws IOException 
     {
         FileHandler fh = new FileHandler("log.log");  
 

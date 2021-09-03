@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.datasetconverter.evolActions;
+package IntanceDrivenComparison;
 
 /**
- *
+ * 
  * @author shizamura
  */
-public class AddObjectProperty {
+
+//TODO: implementar singleton aqui;
+//Classe que corre o algoritmo principal 
+public class ChangeDetector {
     
 }

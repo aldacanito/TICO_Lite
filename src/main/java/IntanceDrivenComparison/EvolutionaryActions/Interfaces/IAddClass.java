@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.datasetconverter.evolActions;
+package IntanceDrivenComparison.EvolutionaryActions.Interfaces;
 
 /**
  *
  * @author shizamura
  */
-public interface EvolutionaryAction {
+public interface IAddClass extends EvolutionaryAction {
     
 }

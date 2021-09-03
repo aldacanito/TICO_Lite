@@ -1,4 +1,4 @@
-package com.mycompany.datasetconverter;
+package Utils;
 
 import java.io.BufferedWriter;
 import java.io.File;

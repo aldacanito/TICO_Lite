@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.datasetconverter;
+package IntanceDrivenComparison;
 
-import com.mycompany.datasetconverter.evolActions.AddClass;
-import com.mycompany.datasetconverter.evolActions.AddObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddClass;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddObjectProperty;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
