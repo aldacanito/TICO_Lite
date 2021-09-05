@@ -19,9 +19,37 @@ import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.PathNotFoundException;
+import org.apache.log4j.Logger;
 
-public class Utilities {
+public class Utilities 
+{
 
+    /** LOG UTILITIES **/
+    
+    private final Logger logger = Logger.getLogger(this.getClass()); 
+    private boolean logger_Active = false;
+    
+    public Logger getLogger()
+    {
+//        if(!logger_Active)
+//        {
+//            startLogger();
+//            logger_Active = true;
+//        }
+    
+        return logger;
+    }
+    
+//    private void startLogger()
+//    {
+//        
+//    
+//    }
+//    
+    
+    /** FILE UTILITIES **/
+    
+    
     /**
      * Saves a String content into a file.
      * 
@@ -94,6 +122,10 @@ public class Utilities {
         return content;
     }
 
+    
+    
+    /** JSON UTILITIES **/
+   
     /**
      * Validates if a given string is a valid JSON object
      * 

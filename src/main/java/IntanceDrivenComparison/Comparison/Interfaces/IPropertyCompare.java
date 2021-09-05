@@ -3,16 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IntanceDrivenComparison;
+package IntanceDrivenComparison.Comparison.Interfaces;
+import org.apache.jena.rdf.model.Model;
 
-/**
- * 
- * @author shizamura
- */
 
-//TODO: implementar singleton aqui;
-//Classe que corre o algoritmo principal 
-public class ChangeDetector 
+public interface IPropertyCompare extends IEntityCompare
 {
     
 }

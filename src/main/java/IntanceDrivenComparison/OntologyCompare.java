@@ -26,9 +26,9 @@ import org.apache.jena.rdf.model.StmtIterator;
  *
  * @author shizamura
  */
-public class OntologyCompare {
+public class OntologyCompare 
+{
     
-    private static final String ASIIO_NS = "http://www.gecad.isep.ipp.pt/ASIIO#";
     private OntModel ontologyModel;
     private OntModel instanceModel;
     
