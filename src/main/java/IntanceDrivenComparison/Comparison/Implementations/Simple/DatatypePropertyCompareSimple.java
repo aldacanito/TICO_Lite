@@ -16,7 +16,7 @@ import org.apache.jena.rdf.model.Model;
 public class DatatypePropertyCompareSimple implements IPropertyCompare
 {
     @Override
-    public EvolutionaryAction compare(Model model, Object t0, Object t1) {
+    public EvolutionaryAction compare(Model model, Object t0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }    
 }

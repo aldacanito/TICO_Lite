@@ -14,6 +14,6 @@ import org.apache.jena.rdf.model.Model;
  */
 public interface IEntityCompare 
 {    
-    public EvolutionaryAction compare(Model model, Object t0, Object t1);
+    public EvolutionaryAction compare(Model model, Object t0);
     
 }

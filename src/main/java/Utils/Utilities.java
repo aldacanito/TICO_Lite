@@ -20,16 +20,23 @@ import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.Option;
 import com.jayway.jsonpath.PathNotFoundException;
 import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 
 public class Utilities 
 {
 
     /** LOG UTILITIES **/
     
-    private final Logger logger = Logger.getLogger(this.getClass()); 
+    private static final Logger logger = Logger.getLogger("InstanceDrivenComparison"); 
     private boolean logger_Active = false;
     
-    public Logger getLogger()
+    public static void log(Priority priority, String message)
+    {
+        System.out.println("LOG:" + priority + ". Message: " + message);
+        logger.log(priority, message);
+    }
+    
+    public static Logger getLogger()
     {
 //        if(!logger_Active)
 //        {
@@ -122,200 +129,200 @@ public class Utilities
         return content;
     }
 
-    
-    
-    /** JSON UTILITIES **/
-   
-    /**
-     * Validates if a given string is a valid JSON object
-     * 
-     * @param json the JSON string to be checked
-     * @return true if it is a valid JSON object; false otherwise
-     */
-    public static boolean isValidJSONObject(String json) {
-        boolean valid = true;
-        try {
-            new JSONObject(json);
-        } catch (JSONException e) {
-            valid = false;
-        }
-        return valid;
-    }
-
-    /**
-     * Validates if a given string is a valid JSON array
-     * 
-     * @param json the JSON string to be checked
-     * @return true if it is a valid JSON array; false otherwise
-     */
-    public static boolean isValidJSONArray(String json) {
-        boolean valid = true;
-        if (json == null) {
-            valid = false;
-        } else {
-            try {
-                new JSONArray(json);
-            } catch (JSONException e) {
-                valid = false;
-            }
-        }
-        return valid;
-    }
-
-    /**
-     * Validates a given JSON schema.
-     * 
-     * @param schema the JSON schema to be validated
-     * @return true if valid; false otherwise.
-     */
-    public static boolean isValidJSONSchemaStr(String schema) {
-        boolean valid = false;
-
-        try {
-            JSONObject rawSchema = new JSONObject(schema);
-            SchemaLoader.load(rawSchema);
-            valid = true;
-        } catch (Exception e) {
-            // ignored
-        }
-
-        return valid;
-    }
-
-    /**
-     * Validates a given JSON schema by file path.
-     * 
-     * @param pathSchema the path of the JSON schema to be validated
-     * @return true if valid; false otherwise.
-     */
-    public static boolean isValidJSONSchemaFile(String pathSchema) {
-        boolean valid = false;
-
-        try {
-            valid = isValidJSONSchemaStr(new String(Files.readAllBytes(Paths.get(pathSchema))));
-        } catch (IOException e) {
-            // ignored
-        }
-
-        return valid;
-    }
-
-    /**
-     * Validates a JSON string for a given JSON schema.
-     * 
-     * @param json   the JSON string to be validated
-     * @param schema the JSON schema to validate the JSON string
-     * @return true if valid; false otherwise.
-     */
-    public static boolean isValidJSONStrSchemaStr(String json, String schema) {
-        boolean valid = false;
-
-        try {
-            JSONObject rawSchema = new JSONObject(schema);
-            Schema sch = SchemaLoader.load(rawSchema);
-            if (isValidJSONObject(json)) {
-                sch.validate(new JSONObject(json));
-            } else {
-                sch.validate(new JSONArray(json));
-            }
-            valid = true;
-        } catch (Exception e) {
-            // ignored
-        }
-
-        return valid;
-    }
-
-    /**
-     * Validates a JSON file for a given JSON schema file.
-     * 
-     * @param pathJson   the file path for JSON to be validated
-     * @param pathSchema the file path for JSON schema to validate the JSON file
-     * @return true if valid; false otherwise.
-     */
-    public static boolean isValidJSONFileSchemaFile(String pathJson, String pathSchema) {
-        boolean valid = false;
-
-        try {
-            valid = isValidJSONStrSchemaStr(new String(Files.readAllBytes(Paths.get(pathJson))),
-                    readResourcesTextFileContent(pathSchema));
-        } catch (IOException e) {
-            // ignored
-        }
-
-        return valid;
-    }
-
-    /**
-     * Validates a JSON string for a given JSON schema file.
-     * 
-     * @param json       the JSON string to be validated
-     * @param pathSchema the file path for JSON schema to validate the JSON string
-     * @return true if valid; false otherwise.
-     */
-    public static boolean isValidJSONStrSchemaFile(String json, String pathSchema) {
-        return isValidJSONStrSchemaStr(json, readResourcesTextFileContent(pathSchema));
-    }
-
-    /**
-     * Validates a JSON file for a given JSON schema.
-     * 
-     * @param pathJson the file path for JSON to be validated
-     * @param schema   the JSON schema to validate the JSON string
-     * @return true if valid; false otherwise.
-     */
-    public static boolean isValidJSONFileSchemaStr(String pathJson, String schema) {
-        boolean valid = false;
-
-        try {
-            valid = isValidJSONStrSchemaStr(new String(Files.readAllBytes(Paths.get(pathJson))), schema);
-        } catch (IOException e) {
-            // ignored
-        }
-
-        return valid;
-    }
-
-    /**
-     * Gets a JSON path query result from a JSON string
-     * 
-     * @param json  the JSON string to be considered
-     * @param query the JSON path query
-     * @return the query result; null if any exception is thrown
-     */
-    public static String getJSONPath(String json, String query) {
-        Configuration conf = Configuration.defaultConfiguration();
-        conf.addOptions(Option.ALWAYS_RETURN_LIST);
-        conf.addOptions(Option.SUPPRESS_EXCEPTIONS);
-        conf.addOptions(Option.DEFAULT_PATH_LEAF_TO_NULL);
-
-        Object obj = null;
-
-        try {
-            obj = JsonPath.using(conf).parse(json).read(query);
-        } catch (PathNotFoundException e) {
-            obj = null;
-        }
-
-        return obj.toString();
-    }
-
-	/**
-	 * Auxiliary control class
-	 */
-	public static class MyCondVar {
-		private boolean value = false;
-
-		public synchronized void waitOn() throws InterruptedException {
-			while (!value) {
-				wait();
-			}
-		}
-
-		public synchronized void signal() {
-			value = true;
-			notifyAll();
-		}
-	}
+//    
+//    
+//    /** JSON UTILITIES **/
+//   
+//    /**
+//     * Validates if a given string is a valid JSON object
+//     * 
+//     * @param json the JSON string to be checked
+//     * @return true if it is a valid JSON object; false otherwise
+//     */
+//    public static boolean isValidJSONObject(String json) {
+//        boolean valid = true;
+//        try {
+//            new JSONObject(json);
+//        } catch (JSONException e) {
+//            valid = false;
+//        }
+//        return valid;
+//    }
+//
+//    /**
+//     * Validates if a given string is a valid JSON array
+//     * 
+//     * @param json the JSON string to be checked
+//     * @return true if it is a valid JSON array; false otherwise
+//     */
+//    public static boolean isValidJSONArray(String json) {
+//        boolean valid = true;
+//        if (json == null) {
+//            valid = false;
+//        } else {
+//            try {
+//                new JSONArray(json);
+//            } catch (JSONException e) {
+//                valid = false;
+//            }
+//        }
+//        return valid;
+//    }
+//
+//    /**
+//     * Validates a given JSON schema.
+//     * 
+//     * @param schema the JSON schema to be validated
+//     * @return true if valid; false otherwise.
+//     */
+//    public static boolean isValidJSONSchemaStr(String schema) {
+//        boolean valid = false;
+//
+//        try {
+//            JSONObject rawSchema = new JSONObject(schema);
+//            SchemaLoader.load(rawSchema);
+//            valid = true;
+//        } catch (Exception e) {
+//            // ignored
+//        }
+//
+//        return valid;
+//    }
+//
+//    /**
+//     * Validates a given JSON schema by file path.
+//     * 
+//     * @param pathSchema the path of the JSON schema to be validated
+//     * @return true if valid; false otherwise.
+//     */
+//    public static boolean isValidJSONSchemaFile(String pathSchema) {
+//        boolean valid = false;
+//
+//        try {
+//            valid = isValidJSONSchemaStr(new String(Files.readAllBytes(Paths.get(pathSchema))));
+//        } catch (IOException e) {
+//            // ignored
+//        }
+//
+//        return valid;
+//    }
+//
+//    /**
+//     * Validates a JSON string for a given JSON schema.
+//     * 
+//     * @param json   the JSON string to be validated
+//     * @param schema the JSON schema to validate the JSON string
+//     * @return true if valid; false otherwise.
+//     */
+//    public static boolean isValidJSONStrSchemaStr(String json, String schema) {
+//        boolean valid = false;
+//
+//        try {
+//            JSONObject rawSchema = new JSONObject(schema);
+//            Schema sch = SchemaLoader.load(rawSchema);
+//            if (isValidJSONObject(json)) {
+//                sch.validate(new JSONObject(json));
+//            } else {
+//                sch.validate(new JSONArray(json));
+//            }
+//            valid = true;
+//        } catch (Exception e) {
+//            // ignored
+//        }
+//
+//        return valid;
+//    }
+//
+//    /**
+//     * Validates a JSON file for a given JSON schema file.
+//     * 
+//     * @param pathJson   the file path for JSON to be validated
+//     * @param pathSchema the file path for JSON schema to validate the JSON file
+//     * @return true if valid; false otherwise.
+//     */
+//    public static boolean isValidJSONFileSchemaFile(String pathJson, String pathSchema) {
+//        boolean valid = false;
+//
+//        try {
+//            valid = isValidJSONStrSchemaStr(new String(Files.readAllBytes(Paths.get(pathJson))),
+//                    readResourcesTextFileContent(pathSchema));
+//        } catch (IOException e) {
+//            // ignored
+//        }
+//
+//        return valid;
+//    }
+//
+//    /**
+//     * Validates a JSON string for a given JSON schema file.
+//     * 
+//     * @param json       the JSON string to be validated
+//     * @param pathSchema the file path for JSON schema to validate the JSON string
+//     * @return true if valid; false otherwise.
+//     */
+//    public static boolean isValidJSONStrSchemaFile(String json, String pathSchema) {
+//        return isValidJSONStrSchemaStr(json, readResourcesTextFileContent(pathSchema));
+//    }
+//
+//    /**
+//     * Validates a JSON file for a given JSON schema.
+//     * 
+//     * @param pathJson the file path for JSON to be validated
+//     * @param schema   the JSON schema to validate the JSON string
+//     * @return true if valid; false otherwise.
+//     */
+//    public static boolean isValidJSONFileSchemaStr(String pathJson, String schema) {
+//        boolean valid = false;
+//
+//        try {
+//            valid = isValidJSONStrSchemaStr(new String(Files.readAllBytes(Paths.get(pathJson))), schema);
+//        } catch (IOException e) {
+//            // ignored
+//        }
+//
+//        return valid;
+//    }
+//
+//    /**
+//     * Gets a JSON path query result from a JSON string
+//     * 
+//     * @param json  the JSON string to be considered
+//     * @param query the JSON path query
+//     * @return the query result; null if any exception is thrown
+//     */
+//    public static String getJSONPath(String json, String query) {
+//        Configuration conf = Configuration.defaultConfiguration();
+//        conf.addOptions(Option.ALWAYS_RETURN_LIST);
+//        conf.addOptions(Option.SUPPRESS_EXCEPTIONS);
+//        conf.addOptions(Option.DEFAULT_PATH_LEAF_TO_NULL);
+//
+//        Object obj = null;
+//
+//        try {
+//            obj = JsonPath.using(conf).parse(json).read(query);
+//        } catch (PathNotFoundException e) {
+//            obj = null;
+//        }
+//
+//        return obj.toString();
+//    }
+//
+//	/**
+//	 * Auxiliary control class
+//	 */
+//	public static class MyCondVar {
+//		private boolean value = false;
+//
+//		public synchronized void waitOn() throws InterruptedException {
+//			while (!value) {
+//				wait();
+//			}
+//		}
+//
+//		public synchronized void signal() {
+//			value = true;
+//			notifyAll();
+//		}
+//	}
 
 }

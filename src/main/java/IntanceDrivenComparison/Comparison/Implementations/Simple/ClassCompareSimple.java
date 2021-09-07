@@ -17,7 +17,7 @@ public class ClassCompareSimple implements IClassCompare
 {
  
     @Override
-    public EvolutionaryAction compare(Model model, Object t0, Object t1) {
+    public EvolutionaryAction compare(Model model, Object t0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

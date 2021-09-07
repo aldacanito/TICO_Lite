@@ -5,12 +5,14 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Interfaces;
 
+import org.apache.jena.rdf.model.Model;
+
 /**
  *
  * @author shizamura
  */
 public interface EvolutionaryAction
 {
-    public void execute();
+    public void execute(Model originalModel, Model evolvedModel, Object t0);
 }
 
