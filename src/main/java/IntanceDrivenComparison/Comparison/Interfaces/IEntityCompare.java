@@ -6,14 +6,10 @@
 package IntanceDrivenComparison.Comparison.Interfaces;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
-import org.apache.jena.rdf.model.Model;
+import org.apache.jena.ontology.OntModel;
 
-/**
- *
- * @author shizamura
- */
 public interface IEntityCompare 
 {    
-    public EvolutionaryAction compare(Model model, Object t0);
+    public EvolutionaryAction compare(OntModel model, Object t0);
     
 }

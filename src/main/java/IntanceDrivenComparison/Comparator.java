@@ -11,7 +11,9 @@ import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import Utils.Utilities;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
+import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.Individual;
+import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
@@ -30,12 +32,14 @@ public class Comparator
     OntModel ontologyModel;
     OntModel instanceModel;
     OntModel evolvedModel;
+    EvolutionaryActionExecuter executer;
     
     public Comparator(OntModel ontologyModel, OntModel instanceModel) 
     {
         this.ontologyModel = ontologyModel;
         this.instanceModel = instanceModel;
         this.evolvedModel  = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+        this.executer      = new EvolutionaryActionExecuter();
     }
 
     
@@ -43,11 +47,11 @@ public class Comparator
     {
         if(ontologyModel.isEmpty() || instanceModel.isEmpty() || !instanceModel.listIndividuals().hasNext())
         {
-            Utilities.log(Priority.INFO, "Models have not been instantiated properly." );
+            Utilities.logInfo( "Models have not been instantiated properly." );
             return false;
         }
    
-        Utilities.log(Priority.INFO, "Models have been instantiated properly." );
+        Utilities.logInfo( "Models have been instantiated properly." );
         return true;
     }
     
@@ -65,7 +69,7 @@ public class Comparator
             Individual instance = listIndividuals.next();
             
             this.compareClasses(instance);
-           
+     
             StmtIterator listProperties = instance.listProperties();
             while(listProperties.hasNext())
             {
@@ -76,15 +80,21 @@ public class Comparator
             
         }
         
+        executer.execute(ontologyModel, evolvedModel);
+        
     }
 
     
     private void compareProperty(Triple t)
     {
-        IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator();
-        EvolutionaryAction compare = comparator.compare(this.ontologyModel, t);
-        compare.execute(ontologyModel, evolvedModel, t);
+        IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t.getPredicate(), this.ontologyModel);
         
+        if(comparator != null)
+        {
+            EvolutionaryAction compare = comparator.compare(this.ontologyModel, t);
+            this.executer.add(compare);
+        
+        }      
     }
     
     
@@ -104,8 +114,8 @@ public class Comparator
         
         IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(); 
         IAddClass createAddClassAction = (IAddClass) classComparator.compare(this.ontologyModel, ontClass);
-    
-        createAddClassAction.execute(this.ontologyModel, this.evolvedModel, ontClass);
+        this.executer.add(createAddClassAction);
+     
         
     }
 }

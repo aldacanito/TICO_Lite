@@ -5,17 +5,11 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Interfaces;
 
-import org.apache.jena.ontology.OntModel;
-
 /**
  *
  * @author shizamura
  */
-public interface EvolutionaryAction
-{
-    public OntModel getEvolvedModel();
-    public void setUp(OntModel originalModel, OntModel evolvedModel);
-    public void execute();
+public interface IAddProperty extends EvolutionaryAction
+{ 
     
 }
-

@@ -5,7 +5,7 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
-import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddProperty;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntModel;
@@ -14,14 +14,13 @@ import org.apache.jena.ontology.OntModel;
  *
  * @author shizamura
  */
-public class AddObjectProperty implements IAddObjectProperty
+public class AddProperty implements IAddProperty
 {
-    private Triple thePropertyTriple;
-    private OntModel ontologyModel;
-    private OntModel evolvedModel;
-    
-    
-    public AddObjectProperty(Triple thePropertyTriple)
+    protected Triple thePropertyTriple;
+    protected OntModel ontologyModel;
+    protected OntModel evolvedModel;
+      
+    public AddProperty(Triple thePropertyTriple)
     {
        this.thePropertyTriple = thePropertyTriple;
     }
@@ -42,10 +41,11 @@ public class AddObjectProperty implements IAddObjectProperty
             this.evolvedModel = ontologyModel;
     }
 
+
     @Override
     public void execute() 
     {
-        ObjectProperty createObjectProperty = evolvedModel.createObjectProperty(thePropertyTriple.getPredicate().getURI());
+    //    evolvedModel.createDatatypeProperty(thePropertyTriple.getPredicate().getURI());
     }
     
 }

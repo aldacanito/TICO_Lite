@@ -7,7 +7,12 @@ package IntanceDrivenComparison.Comparison.Implementations.Simple;
 
 import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
-import org.apache.jena.rdf.model.Model;
+import Utils.OntologyUtils;
+import Utils.Utilities;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.ontology.ObjectProperty;
+import org.apache.jena.ontology.OntModel;
+import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
  *
@@ -16,7 +21,22 @@ import org.apache.jena.rdf.model.Model;
 public class ObjectPropertyCompareSimple implements IPropertyCompare
 {
     @Override
-    public EvolutionaryAction compare(Model model, Object t0) {
+    public EvolutionaryAction compare(OntModel model, Object t0) 
+    {
+        Triple t = (Triple) t0;
+        
+        ExtendedIterator<ObjectProperty> listObjectProperties = model.listObjectProperties();
+        
+        boolean exists = OntologyUtils.isObjectProperty(t.getPredicate(), model);
+        
+        if(!exists)
+        {
+            Utilities.logInfo("ObjectProperty with URI "+ t.getPredicate().getURI() + " does not exist.");
+            ObjectProperty createObjectProperty = model.createObjectProperty(t.getPredicate().getURI());
+           
+            //definir domain e range depois
+        }
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

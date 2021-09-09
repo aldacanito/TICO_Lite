@@ -11,6 +11,4 @@ import org.apache.jena.rdf.model.Model;
 public interface IClassCompare extends IEntityCompare
 {
  
-    
-    //public EvolutionaryAction compare(Model model, String oldClass, String newClass);
 }

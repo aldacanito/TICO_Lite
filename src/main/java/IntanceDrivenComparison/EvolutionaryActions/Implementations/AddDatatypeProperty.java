@@ -5,10 +5,26 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
+import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddDatatypeProperty;
+import org.apache.jena.graph.Triple;
+import org.apache.jena.ontology.OntModel;
+
 /**
  *
  * @author shizamura
  */
-public class AddDatatypeProperty {
+public class AddDatatypeProperty extends AddProperty
+{
+
+    public AddDatatypeProperty(Triple t) 
+    {
+        super(t);
+    }
+    
+    @Override
+    public void execute() 
+    {
+        evolvedModel.createDatatypeProperty(thePropertyTriple.getPredicate().getURI());
+    }
     
 }

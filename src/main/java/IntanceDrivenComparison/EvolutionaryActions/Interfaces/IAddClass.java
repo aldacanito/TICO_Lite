@@ -9,6 +9,7 @@ package IntanceDrivenComparison.EvolutionaryActions.Interfaces;
  *
  * @author shizamura
  */
-public interface IAddClass extends EvolutionaryAction {
+public interface IAddClass extends EvolutionaryAction 
+{
     
 }

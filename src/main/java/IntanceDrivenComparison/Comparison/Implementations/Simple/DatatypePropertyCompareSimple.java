@@ -7,6 +7,7 @@ package IntanceDrivenComparison.Comparison.Implementations.Simple;
 
 import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
+import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Model;
 
 /**
@@ -16,7 +17,7 @@ import org.apache.jena.rdf.model.Model;
 public class DatatypePropertyCompareSimple implements IPropertyCompare
 {
     @Override
-    public EvolutionaryAction compare(Model model, Object t0) {
+    public EvolutionaryAction compare(OntModel model, Object t0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }    
 }

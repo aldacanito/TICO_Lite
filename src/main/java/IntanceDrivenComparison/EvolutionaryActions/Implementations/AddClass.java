@@ -6,6 +6,8 @@
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
+import org.apache.jena.ontology.OntClass;
+import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Model;
 
 /**
@@ -14,11 +16,43 @@ import org.apache.jena.rdf.model.Model;
  */
 public class AddClass implements IAddClass
 {
+    private OntClass ontClass;
+    private OntModel originalModel;
+    private OntModel evolvedModel;
+    
+    public AddClass(OntClass toAdd)
+    {
+        this.ontClass = toAdd;
+    }
+        
+    @Override
+    public void setUp(OntModel originalModel, OntModel evolvedModel) 
+    {
+        this.originalModel = originalModel;
+        this.evolvedModel  = evolvedModel;
+    }
 
     @Override
-    public void execute(Model originalModel, Model evolvedModel, Object t0) 
+    public void execute() 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        if(evolvedModel.isEmpty())
+            evolvedModel = originalModel;
+    
+        // BÁSICO, SÓ ADICIONA O NOVO URI
+        
+        //verificar
+        ontClass.inModel(evolvedModel);
+        evolvedModel.createClass(ontClass.getURI());
+        
     }
+
+    @Override
+    public OntModel getEvolvedModel() 
+    {
+        return this.evolvedModel;
+    }
+    
+   
     
 }

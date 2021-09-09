@@ -30,11 +30,24 @@ public class Utilities
     private static final Logger logger = Logger.getLogger("InstanceDrivenComparison"); 
     private boolean logger_Active = false;
     
-    public static void log(Priority priority, String message)
+    public static void logInfo(String message)
     {
-        System.out.println("LOG:" + priority + ". Message: " + message);
-        logger.log(priority, message);
+        System.out.println("LOG | INFO |  Message: " + message);
+        logger.log(Priority.INFO, message);
     }
+    
+    public static void logError(String message)
+    {
+        System.out.println("LOG | ERROR |  Message: " + message);
+        logger.log(Priority.ERROR, message);
+    }
+    
+    public static void logError(String message, String stacktrace)
+    {
+        System.out.println("LOG | ERROR |  Message: " + message + "\n STACKTRACE: " + stacktrace);
+        logger.log(Priority.ERROR, message);
+    }
+    
     
     public static Logger getLogger()
     {
