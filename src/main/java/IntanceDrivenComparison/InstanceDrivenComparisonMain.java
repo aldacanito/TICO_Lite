@@ -5,6 +5,7 @@
  */
 package IntanceDrivenComparison;
 
+import Utils.OntologyUtils;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.Model;
@@ -42,6 +43,8 @@ public class InstanceDrivenComparisonMain {
     
         Comparator comparator = new Comparator(ontologyModel, instanceModel);
         comparator.run();
+        
+        OntologyUtils.writeModeltoFile(comparator.evolvedModel, "Indexes/NewModel/newModel.ttl");
     }
     
     

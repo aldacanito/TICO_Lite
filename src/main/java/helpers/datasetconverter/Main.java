@@ -61,17 +61,16 @@ public class Main
         readIncidents();
 
        //escrever no ficheiro no fim
-      // model.write( System.out, "TTL" );
-
-      try
-      {
-       FileWriter out = new FileWriter( "Indexes/processed.ttl" );
-       
-       model.write( out, "TTL" );
-      }catch(Exception e)
-      {
-          System.out.println("E "+e.getMessage());
-      }
+     
+        try
+        {
+              FileWriter out = new FileWriter( "Indexes/processed.ttl" );
+              model.write( out, "TTL" );
+        }
+        catch(Exception e)
+        {
+            System.out.println("E "+e.getMessage());
+        }
     }
     
     

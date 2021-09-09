@@ -5,6 +5,8 @@
  */
 package Utils;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import org.apache.jena.graph.Node;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.ObjectProperty;
@@ -17,6 +19,41 @@ import org.apache.jena.util.iterator.ExtendedIterator;
  */
 public class OntologyUtils 
 {
+    
+    public static void writeModeltoFile(OntModel theModel, String filename)
+    {
+        FileWriter out=null;
+        try 
+        {
+            out = new FileWriter( filename );
+        } 
+        catch (IOException e) 
+        {
+            Utilities.logError("Error writing model to file. Reason: ", e.getMessage());
+            e.printStackTrace();
+        }
+        try 
+        {
+            theModel.write( out, "TTL" );
+            Utilities.logInfo("Model written to file. Filename: " + filename);
+        }
+        finally 
+        {
+           try 
+           {
+               out.close();
+           }
+           catch (IOException closeException) 
+           {
+               // ignore
+           }
+        }
+
+    
+    }
+    
+    
+    
     public static boolean isObjectProperty(Node predicate, OntModel ontModel)
     {
         boolean isObjectProperty = false;

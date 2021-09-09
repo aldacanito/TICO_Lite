@@ -8,18 +8,12 @@ import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 
-import org.everit.json.schema.Schema;
-import org.everit.json.schema.loader.SchemaLoader;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import com.jayway.jsonpath.Configuration;
-import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.Option;
-import com.jayway.jsonpath.PathNotFoundException;
-import org.apache.log4j.Logger;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import org.apache.log4j.Priority;
 
 public class Utilities 
@@ -33,39 +27,34 @@ public class Utilities
     public static void logInfo(String message)
     {
         System.out.println("LOG | INFO |  Message: " + message);
-        logger.log(Priority.INFO, message);
+        logger.info(message);
     }
     
     public static void logError(String message)
     {
         System.out.println("LOG | ERROR |  Message: " + message);
-        logger.log(Priority.ERROR, message);
+        logger.severe(message);
     }
     
     public static void logError(String message, String stacktrace)
     {
         System.out.println("LOG | ERROR |  Message: " + message + "\n STACKTRACE: " + stacktrace);
-        logger.log(Priority.ERROR, message);
+        logger.severe(message);
     }
     
-    
-    public static Logger getLogger()
+           
+
+    public static Logger getLogger() throws IOException
     {
-//        if(!logger_Active)
-//        {
-//            startLogger();
-//            logger_Active = true;
-//        }
+        FileHandler fh = new FileHandler("logs/ComparisonLog" + LocalDate.now().toString() + ".log");  
+
+        logger.addHandler(fh);
+        SimpleFormatter formatter = new SimpleFormatter();  
+        fh.setFormatter(formatter);  
     
         return logger;
     }
     
-//    private void startLogger()
-//    {
-//        
-//    
-//    }
-//    
     
     /** FILE UTILITIES **/
     
