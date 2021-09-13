@@ -5,15 +5,11 @@ package IntanceDrivenComparison;
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
 import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Factories.ComparatorFactory;
-import IntanceDrivenComparison.EvolutionaryActions.Factories.EvolutionaryActionFactory;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import Utils.Utilities;
-import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
-import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
@@ -21,7 +17,6 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.iterator.ExtendedIterator;
-import org.apache.log4j.Priority;
 
 /**
  *
@@ -93,7 +88,6 @@ public class Comparator
         {
             EvolutionaryAction compare = comparator.compare(this.ontologyModel, t);
             this.executer.add(compare);
-        
         }      
     }
     

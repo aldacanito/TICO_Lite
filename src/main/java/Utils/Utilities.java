@@ -12,6 +12,7 @@ import java.time.LocalDate;
 
 
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import org.apache.log4j.Priority;
@@ -44,13 +45,23 @@ public class Utilities
     
            
 
-    public static Logger getLogger() throws IOException
+    public static Logger getLogger() 
     {
-        FileHandler fh = new FileHandler("logs/ComparisonLog" + LocalDate.now().toString() + ".log");  
+        FileHandler fh;  
+        try 
+        {
+            fh = new FileHandler("logs/ComparisonLog" + LocalDate.now().toString() + ".log");
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();  
+            fh.setFormatter(formatter);  
+        } catch (IOException | SecurityException ex) 
+        {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
 
-        logger.addHandler(fh);
-        SimpleFormatter formatter = new SimpleFormatter();  
-        fh.setFormatter(formatter);  
     
         return logger;
     }

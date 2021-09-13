@@ -6,6 +6,7 @@
 package IntanceDrivenComparison.Comparison.Implementations.Simple;
 
 import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
+import IntanceDrivenComparison.EvolutionaryActions.Factories.EvolutionaryActionFactory;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import Utils.OntologyUtils;
 import Utils.Utilities;
@@ -32,11 +33,13 @@ public class ObjectPropertyCompareSimple implements IPropertyCompare
         if(!exists)
         {
             Utilities.logInfo("ObjectProperty with URI "+ t.getPredicate().getURI() + " does not exist.");
-            ObjectProperty createObjectProperty = model.createObjectProperty(t.getPredicate().getURI());
-           
+            
+            return EvolutionaryActionFactory.getInstance().createAddObjectPropertyAction(t);
+            
+            
             //definir domain e range depois
         }
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 }

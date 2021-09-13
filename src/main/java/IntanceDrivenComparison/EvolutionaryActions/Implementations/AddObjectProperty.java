@@ -14,34 +14,15 @@ import org.apache.jena.ontology.OntModel;
  *
  * @author shizamura
  */
-public class AddObjectProperty implements IAddObjectProperty
+public class AddObjectProperty extends AddProperty
 {
-    private Triple thePropertyTriple;
-    private OntModel ontologyModel;
-    private OntModel evolvedModel;
-    
     
     public AddObjectProperty(Triple thePropertyTriple)
     {
-       this.thePropertyTriple = thePropertyTriple;
+       super(thePropertyTriple);
     }
     
-    @Override
-    public OntModel getEvolvedModel() 
-    {
-        return this.evolvedModel;
-    }
-
-    @Override
-    public void setUp(OntModel originalModel, OntModel evolvedModel) 
-    {
-        this.ontologyModel = originalModel;
-        this.evolvedModel  = evolvedModel;
-        
-        if(this.evolvedModel == null || this.evolvedModel.isEmpty())
-            this.evolvedModel = ontologyModel;
-    }
-
+   
     @Override
     public void execute() 
     {

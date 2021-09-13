@@ -5,6 +5,7 @@
  */
 package IntanceDrivenComparison;
 
+import Utils.Configs;
 import Utils.OntologyUtils;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
@@ -27,6 +28,8 @@ public class InstanceDrivenComparisonMain {
     
     public static void start()
     {
+        Configs configs = new Configs();
+        
         Model baseO = ModelFactory.createDefaultModel();
         Model baseI = ModelFactory.createDefaultModel();
     

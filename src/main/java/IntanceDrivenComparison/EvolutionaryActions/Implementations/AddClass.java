@@ -8,7 +8,6 @@ package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.rdf.model.Model;
 
 /**
  *
@@ -35,7 +34,6 @@ public class AddClass implements IAddClass
     @Override
     public void execute() 
     {
-        
         if(evolvedModel.isEmpty())
             evolvedModel = originalModel;
     
@@ -44,7 +42,6 @@ public class AddClass implements IAddClass
         //verificar
         ontClass.inModel(evolvedModel);
         evolvedModel.createClass(ontClass.getURI());
-        
     }
 
     @Override

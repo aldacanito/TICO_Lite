@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package IntanceDrivenComparison.Comparison.Interfaces;
-import org.apache.jena.rdf.model.Model;
 
 
 public interface IPropertyCompare extends IEntityCompare

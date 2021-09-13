@@ -14,11 +14,7 @@ import Utils.OntologyUtils;
 import Utils.Utilities;
 
 import org.apache.jena.graph.Node;
-import org.apache.jena.ontology.DatatypeProperty;
-import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.util.iterator.ExtendedIterator;
-import org.apache.log4j.Priority;
 
 /**
  *

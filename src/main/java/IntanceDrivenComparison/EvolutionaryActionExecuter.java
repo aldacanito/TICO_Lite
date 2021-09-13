@@ -46,9 +46,7 @@ public class EvolutionaryActionExecuter
             action.execute();
             
             evolvingModel = action.getEvolvedModel();
-        
         }
-               
     }
     
 }

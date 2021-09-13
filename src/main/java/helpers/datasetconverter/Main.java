@@ -34,8 +34,6 @@ import org.apache.jena.update.UpdateAction;
  */
 public class Main 
 {
-
-
     public static Model model = ModelFactory.createDefaultModel();
     public static ArrayList<String> assets = new ArrayList<String>();    
     public static ArrayList<String> moments = new ArrayList<String>();    
