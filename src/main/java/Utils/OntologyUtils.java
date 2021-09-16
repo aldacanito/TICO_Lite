@@ -16,6 +16,7 @@ import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.OntResource;
 import org.apache.jena.rdf.model.Literal;
+import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
@@ -58,6 +59,15 @@ public class OntologyUtils
     
     }
     
+    public static void copyProperty(OntModel newModel, Property property) 
+    {
+        Utilities.logInfo("COPY PROPERTY METHOD [BASIC]. \tCopying: " + property.getURI());
+        Property newProperty = (Property) newModel.createProperty(property.getURI());
+        
+        //TODO: add more se fizer sentido no futuro
+    }
+    
+    
     /**
      * 
      * Clones Domain, Range and InverseOf from a given OntProperty
@@ -68,7 +78,7 @@ public class OntologyUtils
      */
      public static OntProperty copyProperty(OntModel newModel, OntProperty property) 
      {
-        Utilities.logInfo("COPY PROPERTY METHOD. \tCopying: " + property.getURI());
+        Utilities.logInfo("COPY ONTPROPERTY METHOD. \tCopying: " + property.getURI());
         
         OntProperty newProperty = (OntProperty) newModel.createOntProperty(property.getURI());
         
@@ -87,6 +97,13 @@ public class OntologyUtils
         return newProperty;
      }
     
+    public static String propertyStats(Node property)
+    {
+        String stats = "Stats for Property " + property.getURI()+ "\n";
+        stats += "Local name: " +  property.getLocalName();
+        return stats;
+    }
+     
      public static String propertyStats(OntProperty property)
      {
          String stats = "Stats for OntProperty " + property.getURI()+ "\n";
@@ -193,7 +210,16 @@ public class OntologyUtils
     {
         String subject      = t.getSubject().toString().split("#")[1];
         String predicate    = t.getPredicate().toString().split("#")[1];
-        String object       = t.getObject().toString().split("#")[1];
+        String object       = t.getObject().toString();
+        
+        try
+        {
+            object = object.split("#")[1];
+        }
+        catch(Exception e)
+        {
+            
+        }
         
         String s = "Triple:\n";
                 s+="\t S: #"    + subject ;
@@ -250,5 +276,6 @@ public class OntologyUtils
             
         return isDatatypeProperty;
     }
+
     
 }

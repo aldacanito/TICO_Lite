@@ -7,10 +7,12 @@ package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddObjectProperty;
 import Utils.OntologyUtils;
+import Utils.Utilities;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.rdf.model.Property;
 
 /**
  *
@@ -28,14 +30,41 @@ public class AddObjectProperty extends AddProperty
     @Override
     public void execute() 
     {
-        evolvedModel.createObjectProperty(thePropertyTriple.getPredicate().getURI());
-        OntologyUtils.copyProperty(evolvedModel, (OntProperty) thePropertyTriple.getPredicate());
+        
+        try
+        {
+            OntProperty property = (OntProperty) this.ontologyModel.getProperty(thePropertyTriple.getPredicate().getURI());
+            evolvedModel.createObjectProperty(thePropertyTriple.getPredicate().getURI());
+            OntologyUtils.copyProperty(evolvedModel, property);
+    
+        }
+        catch(ClassCastException e)
+        {  
+            Utilities.logError("Error casting Property to OntProperty. Attempting Property cast...");
+            
+            Property property =  this.ontologyModel.getProperty(thePropertyTriple.getPredicate().getURI());
+            evolvedModel.createObjectProperty(thePropertyTriple.getPredicate().getURI());
+            OntologyUtils.copyProperty(evolvedModel, property);
+            
+        }
+        
+        
     }
     
     public String toString()
     {
         String toPrint="ADD OBJECT PROPERTY EVOLUTIONARY ACTION: " ;
-        toPrint += OntologyUtils.propertyStats((OntProperty) thePropertyTriple.getPredicate());
+     
+        try
+        {
+            toPrint += OntologyUtils.propertyStats((OntProperty) thePropertyTriple.getPredicate());
+        }
+        catch(ClassCastException e)
+        {
+            Utilities.logError("Error Casting OntProperty. Attempting regular property...");
+            toPrint += OntologyUtils.propertyStats(thePropertyTriple.getPredicate());
+        }
+       
         return toPrint;
     }
     

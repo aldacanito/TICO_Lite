@@ -24,8 +24,10 @@ public class EvolutionaryActionExecuter
     {
         String toPrint = "List of Evolutionary Actions:\n";
         for(EvolutionaryAction action : actions)
-            toPrint+= action.toString() + "\n";
-            
+        {
+            if(action!=null)
+                toPrint+= action.toString() + "\n";
+        }   
         toPrint += "====\n";
         return toPrint;
     }
@@ -52,11 +54,13 @@ public class EvolutionaryActionExecuter
         for(EvolutionaryAction action : actions)
         {
             //depois vai ser preciso garantir qualquer coisa da ordem da execuçao
-            
-            action.setUp(originalModel, evolvingModel);
-            action.execute();
-            
-            evolvingModel = action.getEvolvedModel();
+            if(action!=null)
+            {
+                action.setUp(originalModel, evolvingModel);
+                action.execute();
+
+                evolvingModel = action.getEvolvedModel();
+            }
         }
     }
     

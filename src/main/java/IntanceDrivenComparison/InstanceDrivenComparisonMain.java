@@ -7,6 +7,7 @@ package IntanceDrivenComparison;
 
 import Utils.Configs;
 import Utils.OntologyUtils;
+import Utils.Utilities;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.Model;
@@ -46,7 +47,10 @@ public class InstanceDrivenComparisonMain {
         Comparator comparator = new Comparator(ontologyModel, instanceModel);
         comparator.run();
         
-        System.out.println("Stats time: " + comparator.printStats());
+        String stats = comparator.printStats();
+        System.out.println("Stats time: " + stats );
+        
+        Utilities.save("Indexes/NewModel/stats.txt", stats);
         
         OntologyUtils.writeModeltoFile(comparator.evolvedModel, "Indexes/NewModel/newModel.ttl");
     }
