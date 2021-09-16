@@ -6,8 +6,10 @@
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddDatatypeProperty;
+import Utils.OntologyUtils;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntProperty;
 
 /**
  *
@@ -25,6 +27,17 @@ public class AddDatatypeProperty extends AddProperty
     public void execute() 
     {
         evolvedModel.createDatatypeProperty(thePropertyTriple.getPredicate().getURI());
+        
+        // TODO VERIFICAR SE ISTO SE AGUENTA     
+        OntologyUtils.copyProperty(evolvedModel, (OntProperty) thePropertyTriple.getPredicate());
     }
+    
+    public String toString()
+    {
+        String toPrint="ADD DATATYPE PROPERTY EVOLUTIONARY ACTION: " ;
+        toPrint += OntologyUtils.propertyStats((OntProperty) thePropertyTriple.getPredicate());
+        return toPrint;
+    }
+    
     
 }

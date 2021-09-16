@@ -8,6 +8,7 @@ package IntanceDrivenComparison.EvolutionaryActions.Factories;
 import IntanceDrivenComparison.Comparison.Implementations.Simple.ClassCompareSimple;
 import IntanceDrivenComparison.Comparison.Implementations.Simple.DatatypePropertyCompareSimple;
 import IntanceDrivenComparison.Comparison.Implementations.Simple.ObjectPropertyCompareSimple;
+import IntanceDrivenComparison.Comparison.Implementations.Simple.PropertyCompareSimple;
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
 import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
 import Utils.OntologyUtils;
@@ -38,13 +39,14 @@ public class ComparatorFactory
     public IClassCompare getClassComparator()
     {
         IClassCompare compare = new ClassCompareSimple();
-        
         return compare;
     }
 
     
     public IPropertyCompare getPropertyComparator(Node predicate, OntModel ontModel) 
     {
+        Utilities.logInfo("getPropertyComparator URI: " + predicate.getURI());
+        
         boolean objectProperty = OntologyUtils.isObjectProperty(predicate, ontModel);
         boolean datatypeProperty = OntologyUtils.isDatatypeProperty(predicate, ontModel);
         
@@ -55,7 +57,7 @@ public class ComparatorFactory
             return new DatatypePropertyCompareSimple();
             
         Utilities.logInfo("URI does not match any ObjectProperty or DatatypeProperty definitions in the model.");
-        return null;
+        return new PropertyCompareSimple();
     }
     
 }

@@ -15,6 +15,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Priority;
 
 public class Utilities 
@@ -47,10 +48,12 @@ public class Utilities
 
     public static Logger getLogger() 
     {
+        BasicConfigurator.configure();
+        String fileName = "logs/ComparisonLog" + LocalDate.now().toString() + ".log";
         FileHandler fh;  
         try 
         {
-            fh = new FileHandler("logs/ComparisonLog" + LocalDate.now().toString() + ".log");
+            fh = new FileHandler(fileName);
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();  
             fh.setFormatter(formatter);  
@@ -59,10 +62,7 @@ public class Utilities
             Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        
-
-    
+       
         return logger;
     }
     

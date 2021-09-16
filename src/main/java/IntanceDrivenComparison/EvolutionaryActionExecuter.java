@@ -19,6 +19,17 @@ public class EvolutionaryActionExecuter
 {
     List<EvolutionaryAction> actions;
     OntModel evolvingModel; 
+    
+    public String toString()
+    {
+        String toPrint = "List of Evolutionary Actions:\n";
+        for(EvolutionaryAction action : actions)
+            toPrint+= action.toString() + "\n";
+            
+        toPrint += "====\n";
+        return toPrint;
+    }
+    
     public EvolutionaryActionExecuter()
     {
         actions = new ArrayList<EvolutionaryAction>();

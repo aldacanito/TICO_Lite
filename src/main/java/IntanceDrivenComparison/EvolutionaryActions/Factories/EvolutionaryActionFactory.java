@@ -9,6 +9,9 @@ import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddClass;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddDatatypeProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
+import Utils.Utilities;
 import org.apache.jena.ontology.OntClass;
 
 import org.apache.jena.graph.Triple;
@@ -46,4 +49,12 @@ public class EvolutionaryActionFactory
     {
         return new AddObjectProperty(t);
     }
+    
+    public AddProperty createAddPropertyAction(Triple t)
+    {
+        Utilities.logInfo("Creating Add Property Evolutionary Action...");
+        return new AddObjectProperty(t);
+    }
+
+    
 }

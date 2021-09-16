@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -32,6 +33,7 @@ import org.apache.jena.update.UpdateAction;
  *
  * @author Alda
  */
+
 public class Main 
 {
     public static Model model = ModelFactory.createDefaultModel();
@@ -39,6 +41,7 @@ public class Main
     public static ArrayList<String> moments = new ArrayList<String>();    
     public static ArrayList<String> events = new ArrayList<String>();    
     
+    public static List<String> s_relatedAlerts = new ArrayList<String>();
     
     static Logger logger = Logger.getLogger("errors");  
         
@@ -49,20 +52,22 @@ public class Main
     
     private static void start() throws IOException 
     {
+        s_relatedAlerts = new ArrayList<String>();
         FileHandler fh = new FileHandler("log.log");  
 
         logger.addHandler(fh);
         SimpleFormatter formatter = new SimpleFormatter();  
         fh.setFormatter(formatter);  
 
-        readAlerts();
-        readIncidents();
+        //readAlerts();
+        readIncidents(true);
+        readRelatedAlerts();
 
        //escrever no ficheiro no fim
      
         try
         {
-              FileWriter out = new FileWriter( "Indexes/processed.ttl" );
+              FileWriter out = new FileWriter( "Indexes/relatedAlertsSubset.ttl" );
               model.write( out, "TTL" );
         }
         catch(Exception e)
@@ -72,7 +77,53 @@ public class Main
     }
     
     
-    private static void readIncidents()
+    private static void readRelatedAlerts()
+    {
+        
+        // read file
+        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_alerts.json"));
+    
+        Map<String, Object> toMap = joAlerts.toMap();
+        ArrayList<HashMap> aList = (ArrayList<HashMap>) toMap.get("list");
+        
+        // vai iterar as instancias
+        Iterator i = aList.iterator();
+        while (i.hasNext()) 
+        {
+           HashMap aa = (HashMap) i.next();
+             
+           String alert_id = "", sensor ="", source_host_name ="", detect_time ="",
+                  type ="", alert_description ="", severity = "";
+           
+           if(aa.containsKey("alert_id"))
+                alert_id          = aa.get("alert_id").toString();
+           
+           if(!s_relatedAlerts.contains(alert_id))
+               continue;
+           
+           if(aa.containsKey("sensor"))
+                sensor            = aa.get("sensor").toString();
+           if(aa.containsKey("source_host_name"))
+                source_host_name  = aa.get("source_host_name").toString();
+           if(aa.containsKey("detect_time"))
+                detect_time       = aa.get("detect_time").toString();
+           if(aa.containsKey("Type"))
+                type              = aa.get("Type").toString();
+           if(aa.containsKey("alert_title") && aa.containsKey("alert_description") )
+                alert_description = aa.get("alert_title").toString() + " - " + aa.get("alert_description").toString();              
+           if(aa.containsKey("severity"))
+                severity          = aa.get("severity").toString();
+           
+           if(!alert_id.isBlank() && !sensor.isBlank() && !source_host_name.isBlank())
+               createEvent(alert_id, sensor, source_host_name, detect_time, type, alert_description, severity);
+                     
+        }
+
+    
+    }
+    
+    
+    private static void readIncidents(boolean attacksOnly)
     {
          // read file
         JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_real_incidents.json"));
@@ -102,6 +153,8 @@ public class Main
             if(instance.containsKey("timestamp")) timestamp  = instance.get("timestamp").toString();
             if(instance.containsKey("related_alerts"))  relatedAlerts   = (ArrayList<String>) instance.get("related_alerts");            
             
+            s_relatedAlerts.addAll(relatedAlerts);
+            
             //id = escape(id, true);
             external_identifier = escape(external_identifier, true);
             description = escape(description);
@@ -110,11 +163,10 @@ public class Main
             severity = escape(severity);
             status = escape(status, true);
             
-            
             if(type.equalsIgnoreCase("incident") && !id.isBlank() && !timestamp.isBlank())
-                createRealIncident(id, external_identifier, description, kind, type, severity, status, timestamp, relatedAlerts);
-            else if(!external_identifier.isBlank())
-                    createEventfromIncident(id, external_identifier, description, kind, type, severity, status, timestamp);
+                createRealIncident(attacksOnly, id, external_identifier, description, kind, type, severity, status, timestamp, relatedAlerts);
+            //else if(!external_identifier.isBlank())
+            //        createEventfromIncident(id, external_identifier, description, kind, type, severity, status, timestamp);
             
         }
     }
@@ -268,7 +320,7 @@ public class Main
         return insert;
     }
     
-    private static void createRealIncident(String id, String external_identifier, String description, String kind, String type, String severity, String status, String timestamp, ArrayList<String> relatedAlerts) 
+    private static void createRealIncident(boolean attacksOnly, String id, String external_identifier, String description, String kind, String type, String severity, String status, String timestamp, ArrayList<String> relatedAlerts) 
     {
         
         String insert =

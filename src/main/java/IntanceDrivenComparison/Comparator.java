@@ -7,6 +7,7 @@ import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Factories.ComparatorFactory;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
+import Utils.OntologyUtils;
 import Utils.Utilities;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.Individual;
@@ -59,17 +60,28 @@ public class Comparator
         // guidado pelas instancias
         ExtendedIterator<Individual> listIndividuals = instanceModel.listIndividuals();
         
+        
+        Utilities.logInfo("Listing all individuals... ");
+        
         while(listIndividuals.hasNext())
         {
             Individual instance = listIndividuals.next();
-            
+           
+            Utilities.logInfo("Current Individual: " + instance.getURI());
+     
             this.compareClasses(instance);
      
+            Utilities.logInfo("Iterating through the properties of Individual " + instance.getURI());
+        
             StmtIterator listProperties = instance.listProperties();
             while(listProperties.hasNext())
             {
                 Statement stmt  = listProperties.next();
                 Triple t        = stmt.asTriple();
+                
+                Utilities.logInfo(OntologyUtils.printTriple(t));
+              
+                
                 this.compareProperty(t);
             }
             
@@ -92,24 +104,30 @@ public class Comparator
     }
     
     
-    
     /*
     * Verifica se as classes da instânica existem. Se não, adiciona-as.
     */
     private void compareClasses(Individual instance) 
     {
-        // pode haver mais que uma, como encontrar?
-        // TODO
-         
-        OntClass ontClass = instance.getOntClass(true);
+        Utilities.logInfo("COMPARE CLASSES for instance " 
+                + instance.getURI()
+                + ".\n Iterating through its classes...");
+        // procura todas as classes a que a instancia possa pertencer
         
-        // comparaçao basica com o URI
-        ontClass.getURI();
-        
-        IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(); 
-        IAddClass createAddClassAction = (IAddClass) classComparator.compare(this.ontologyModel, ontClass);
-        this.executer.add(createAddClassAction);
-     
-        
+        ExtendedIterator<OntClass> listOntClasses = instance.listOntClasses(true);
+        for(OntClass cls : listOntClasses.toList())
+        {
+            IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(); 
+            IAddClass createAddClassAction = (IAddClass) classComparator.compare(this.ontologyModel, cls);
+            
+            if(createAddClassAction!=null)
+                this.executer.add(createAddClassAction);  
+            
+        }
+    }
+
+    public String printStats() 
+    {
+        return this.executer.toString();
     }
 }

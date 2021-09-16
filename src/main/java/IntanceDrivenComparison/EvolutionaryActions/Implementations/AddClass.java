@@ -6,8 +6,16 @@
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
+import Utils.OntologyUtils;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.ontology.OntResource;
+import org.apache.jena.rdf.model.Literal;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
  *
@@ -37,19 +45,27 @@ public class AddClass implements IAddClass
         if(evolvedModel.isEmpty())
             evolvedModel = originalModel;
     
-        // BÁSICO, SÓ ADICIONA O NOVO URI
-        
+        // BÁSICO, TENTA COPIAR PROPRIEDADES E DEFINICOES DA CLASSE
         //verificar
-        ontClass.inModel(evolvedModel);
-        evolvedModel.createClass(ontClass.getURI());
+        //Resource inModel = ontClass.inModel(evolvedModel);
+        
+        OntologyUtils.copyClass(ontClass, evolvedModel);
     }
 
+    public String toString()
+    {
+        String toPrint="ADDCLASS EVOLUTIONARY ACTION: Class URI: " + this.ontClass.getURI(); 
+        toPrint += OntologyUtils.classStats(ontClass);
+        return toPrint;
+    }
+    
+    
     @Override
     public OntModel getEvolvedModel() 
     {
         return this.evolvedModel;
     }
-    
+
    
     
 }

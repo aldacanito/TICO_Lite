@@ -33,19 +33,20 @@ public class InstanceDrivenComparisonMain {
         Model baseO = ModelFactory.createDefaultModel();
         Model baseI = ModelFactory.createDefaultModel();
     
-        String path = "Indexes/Processed/ASIIO.ttl" ;
+        String path = "Indexes/Processed/ASIIO_semAtaque.ttl" ;
         baseO = ModelFactory.createOntologyModel();
         baseO.read(path);
-        OntModel ontologyModel = ModelFactory.createOntologyModel( OntModelSpec.RDFS_MEM_RDFS_INF, baseO );
+        OntModel ontologyModel = ModelFactory.createOntologyModel( OntModelSpec.OWL_DL_MEM, baseO );
         
-        path = "Indexes/Processed/17072021.ttl" ;
+        path = "Indexes/Processed/small_dataset_withOnto.ttl" ;
         baseI = ModelFactory.createOntologyModel();
         baseI.read(path);    
-        OntModel instanceModel = ModelFactory.createOntologyModel( OntModelSpec.RDFS_MEM_RDFS_INF, baseI );
-    
-    
+        OntModel instanceModel = ModelFactory.createOntologyModel( OntModelSpec.OWL_DL_MEM, baseI );
+   
         Comparator comparator = new Comparator(ontologyModel, instanceModel);
         comparator.run();
+        
+        System.out.println("Stats time: " + comparator.printStats());
         
         OntologyUtils.writeModeltoFile(comparator.evolvedModel, "Indexes/NewModel/newModel.ttl");
     }

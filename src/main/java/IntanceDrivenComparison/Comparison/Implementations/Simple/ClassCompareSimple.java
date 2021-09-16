@@ -8,6 +8,8 @@ package IntanceDrivenComparison.Comparison.Implementations.Simple;
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Factories.EvolutionaryActionFactory;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
+import Utils.Utilities;
+import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Model;
@@ -23,29 +25,35 @@ public class ClassCompareSimple implements IClassCompare
     @Override
     public EvolutionaryAction compare(OntModel model, Object t0) 
     {
-        
         OntClass ontClass = (OntClass) t0;
         ExtendedIterator classes = model.listClasses();
         
-        boolean exists = false;
+        Utilities.logInfo("COMPARING ONTCLASS " + ontClass.getURI() + " to existing classes...");
+        
         while(classes.hasNext())
         {
             OntClass thisClass = (OntClass) classes.next();
              
-             //para ja so comparar se a classe existe ou nao
-            if(thisClass.getURI().equalsIgnoreCase(ontClass.getURI()))
+            String current_URI = thisClass.getURI();
+            String compare_URI = ontClass.getURI();
+                     
+            Utilities.logInfo("\tCOMPARING: " + current_URI + " to " + compare_URI);
+        
+            if(current_URI==null) continue;
+        
+            if(current_URI.equalsIgnoreCase(compare_URI))
             {
-                exists = true;
-                break;
+                Utilities.logInfo("\tClass already on model. Skipping...");
+            }
+            else
+            {
+                Utilities.logInfo("\tClass not on model. Creating AddClass Action!");
+                EvolutionaryAction action = EvolutionaryActionFactory.getInstance().createAddClassAction(ontClass);
+                return action;
             }
         }
         
-        if(exists)
-        {
-            EvolutionaryAction action = EvolutionaryActionFactory.getInstance().createAddClassAction(ontClass);
-            return action;
-        }
-       
+        Utilities.logInfo("Class not found. No Evolutionary Action created.");
         return null;
     }
 }
