@@ -9,6 +9,7 @@ import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import Utils.OntologyUtils;
 import Utils.Utilities;
+import java.util.List;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
@@ -58,9 +59,11 @@ public class Comparator
             return;
         
         // guidado pelas instancias
+        // só funciona para as instâncias que tenham CLASSES associadas
+        // reasoner desligado
         ExtendedIterator<Individual> listIndividuals = instanceModel.listIndividuals();
         
-        Utilities.logInfo("Listing all individuals... ");
+        Utilities.logInfo("\n\n==========================================\nListing all individuals...\n\n ");
         
         while(listIndividuals.hasNext())
         {
@@ -69,25 +72,37 @@ public class Comparator
             Utilities.logInfo("Current Individual: " + instance.getURI());
      
             this.compareClasses(instance);
-     
-            Utilities.logInfo("Iterating through the properties of Individual " + instance.getURI());
-        
-            StmtIterator listProperties = instance.listProperties();
-            while(listProperties.hasNext())
-            {
-                Statement stmt  = listProperties.next();
-                Triple t        = stmt.asTriple();
-                
-                Utilities.logInfo(OntologyUtils.printTriple(t));
-          
-                this.compareProperty(stmt);
-            }
+            this.compareProperties(instance);     
+
         }
+        
         executer.execute(ontologyModel, evolvedModel);
     }
+    
+    private void compareProperties(Individual instance)
+    {
+        List<Statement> listProperties = instance.listProperties().toList();
+               
+        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nIterating through the properties of Individual " 
+                + instance.getURI() + ". Currently with " + listProperties.size() + " properties.");
 
+        for(Statement stmt : listProperties)
+        {
+            Utilities.logInfo(OntologyUtils.printStatement(stmt));
+            this.compareProperty(stmt);
+        }
+        
+        Utilities.logInfo("\n\nFinished iterating through Individual " 
+                + instance.getURI() + "'s properties\n%%%%%%%%%%%%%%%%%\n\n");
+    }
+    
+   
     private void compareProperty(Statement t)
     {
+        boolean ignore = Utilities.isInIgnoreList(t.getPredicate().getURI());
+        
+        if(ignore) return;
+        
         IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t, this.ontologyModel);
         
         if(comparator != null)
@@ -96,19 +111,7 @@ public class Comparator
             this.executer.add(compare);
         }      
     }
-    
-    /*
-    private void compareProperty(Triple t)
-    {
-        IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t.getPredicate(), this.ontologyModel);
-        
-        if(comparator != null)
-        {
-            EvolutionaryAction compare = comparator.compare();
-            this.executer.add(compare);
-        }      
-    }
-    */
+
     
     /*
     * Verifica se as classes da instânica existem. Se não, adiciona-as.
@@ -123,6 +126,10 @@ public class Comparator
         ExtendedIterator<OntClass> listOntClasses = instance.listOntClasses(true);
         for(OntClass cls : listOntClasses.toList())
         {
+            boolean ignore = Utilities.isInIgnoreList(cls.getURI());
+            
+            if(ignore) continue;
+            
             IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(cls, this.ontologyModel); 
             
             if(classComparator!=null)

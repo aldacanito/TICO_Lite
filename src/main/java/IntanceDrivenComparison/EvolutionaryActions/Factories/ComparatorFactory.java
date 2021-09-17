@@ -50,6 +50,10 @@ public class ComparatorFactory
         return compare;
     }
 
+    
+    
+    //TODO vERIFICAR SE ESTE METODO TÁ A COMPARAR EM CONDIÇOES
+    //NESTE MOMENTO ACHO QUE ESTA A COMPARAR AS NOVAS PROPRIEDADES COM O MODELO NOVO
      public IPropertyCompare getPropertyComparator(Statement statement, OntModel ontModel) 
     {
         Utilities.logInfo("getPropertyComparator URI: " + statement.getPredicate().getURI());
@@ -59,13 +63,15 @@ public class ComparatorFactory
         if(ignore)
             return null;
         
-        boolean objectProperty = OntologyUtils.isObjectProperty(statement.getPredicate(), ontModel);
-        boolean datatypeProperty = OntologyUtils.isDatatypeProperty(statement.getPredicate(), ontModel);
         
-        if(objectProperty)
+        // VERIFICAR SE JA EXISTE
+        
+        // SE NAO EXISTIR, VERIFICAR SE É OP OU DTP E CRIAR O COMPARADOR DE ACORDO
+        
+        if(statement.getObject().isResource())
             return new ObjectPropertyCompareSimple(statement, ontModel);
         
-        if(datatypeProperty)
+        if(statement.getObject().isLiteral())
             return new DatatypePropertyCompareSimple(statement, ontModel);
             
         Utilities.logInfo("URI does not match any ObjectProperty or DatatypeProperty definitions in the model.");

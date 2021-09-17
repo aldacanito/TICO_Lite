@@ -12,5 +12,6 @@ import org.apache.jena.rdf.model.Statement;
 
 public interface IPropertyCompare extends IEntityCompare
 {
+    @Override
     public EvolutionaryAction compare();
 }

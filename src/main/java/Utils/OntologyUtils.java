@@ -18,6 +18,7 @@ import org.apache.jena.ontology.OntResource;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
@@ -84,15 +85,19 @@ public class OntologyUtils
         
         ExtendedIterator<? extends OntResource> listDomain = property.listDomain();
         for(OntResource r : listDomain.toList())
-            newProperty.addDomain(r);
+            if(!Utilities.isInIgnoreList(r.getURI()))
+                newProperty.addDomain(r);
         
         ExtendedIterator<? extends OntResource> listRange = property.listRange();
         for(OntResource r : listRange.toList())
-            newProperty.addRange(r);
+            if(!Utilities.isInIgnoreList(r.getURI()))
+                newProperty.addRange(r);
+        
         
         ExtendedIterator<? extends OntProperty> listInverseOf = property.listInverseOf();
         for(OntProperty p : listInverseOf.toList())
-            newProperty.addInverseOf(p);
+            if(!Utilities.isInIgnoreList(p.getURI()))
+                newProperty.addInverseOf(p);
         
         return newProperty;
      }
@@ -106,24 +111,27 @@ public class OntologyUtils
      
      public static String propertyStats(OntProperty property)
      {
-         String stats = "\nStats for OntProperty " + property.getURI()+ "\n";
+         String stats = "\n\tStats for OntProperty " + property.getURI()+ "\n";
      
-        stats += "\n\tDomains: ";
+        stats += "\n\t\tDomains: ";
         ExtendedIterator<? extends OntResource> listDomain = property.listDomain();
         for(OntResource r : listDomain.toList())
-            stats+= "\n\t\t-" + r.getLabel(null);
+            if(!Utilities.isInIgnoreList(r.getURI()))
+                stats+= "\n\t\t\t- " + r.getLabel(null);
         
-        stats += "\n\tRanges: ";
+        stats += "\n\t\tRanges: ";
         ExtendedIterator<? extends OntResource> listRange = property.listRange();
         for(OntResource r : listRange.toList())
-            stats+= "\n\t\t-" + r.getLabel(null);
+            if(!Utilities.isInIgnoreList(r.getURI()))
+                stats+= "\n\t\t\t- " + r.getLabel(null);
         
-        stats += "\n\tInverse of: ";
+        stats += "\n\t\tInverse of: ";
         ExtendedIterator<? extends OntProperty> listInverseOf = property.listInverseOf();
         for(OntProperty p : listInverseOf.toList())
-            stats+= "\n\t\t-" + p.getLabel(null);
+            if(!Utilities.isInIgnoreList(p.getURI()))
+                stats+= "\n\t\t\t- " + p.getLabel(null);
         
-        stats+="\n\t === \n";
+        stats+="\n\t\t === \n";
        
          return stats;
      }
@@ -132,7 +140,7 @@ public class OntologyUtils
      
      public static String classStats(OntClass ontClass)
      {
-        String stats = "\nStats for OntClass "+ontClass.getURI()+"\n";
+        String stats = "\n\tStats for OntClass "+ontClass.getURI()+"\n";
          
         stats += "\t Comments: " + ontClass.listComments(null).toList().size();
         stats += "\t Labels: " + ontClass.listLabels(null).toList().size();    
@@ -184,11 +192,13 @@ public class OntologyUtils
         
         ExtendedIterator<OntClass> listDisjointWith = class2Copy.listDisjointWith();
         for(OntClass cls : listDisjointWith.toList())
-            newClass.addDisjointWith(cls);
+            if(!Utilities.isInIgnoreList(cls.getURI()))
+                newClass.addDisjointWith(cls);
         
         ExtendedIterator<OntClass> listEquivalentClasses = class2Copy.listEquivalentClasses();
         for(OntClass cls : listEquivalentClasses.toList())
-            newClass.addEquivalentClass(cls);
+            if(!Utilities.isInIgnoreList(cls.getURI()))
+                newClass.addEquivalentClass(cls);
         
         ExtendedIterator<RDFNode> listLabels = class2Copy.listLabels(null);
         for(RDFNode label : listLabels.toList())
@@ -196,11 +206,13 @@ public class OntologyUtils
         
         ExtendedIterator<OntClass> listSubClasses = class2Copy.listSubClasses();
         for(OntClass cls : listSubClasses.toList())
-            newClass.addSubClass(cls);
+            if(!Utilities.isInIgnoreList(cls.getURI()))
+                newClass.addSubClass(cls);
         
         ExtendedIterator<OntClass> listSuperClasses = class2Copy.listSuperClasses();
         for(OntClass cls : listSuperClasses.toList())
-            newClass.addSuperClass(cls);
+            if(!Utilities.isInIgnoreList(cls.getURI()))
+                newClass.addSuperClass(cls);
         
         return newClass;
     }
@@ -212,6 +224,21 @@ public class OntologyUtils
         String predicate    = t.getPredicate().toString().split("#")[1];
         String object       = t.getObject().toString();
         
+        return printSPO(subject, predicate, object);
+    }
+    
+    
+    public static String printStatement(Statement t)
+    {
+        String subject      = t.getSubject().toString().split("#")[1];
+        String predicate    = t.getPredicate().toString().split("#")[1];
+        String object       = t.getObject().toString();
+        
+        return printSPO(subject, predicate, object);
+    }
+    
+    public static String printSPO(String subject, String predicate, String object)
+    {
         try
         {
             object = object.split("#")[1];
@@ -227,6 +254,7 @@ public class OntologyUtils
                 s+=" O: #"      + object;
             
         return s;
+    
     }
     
     

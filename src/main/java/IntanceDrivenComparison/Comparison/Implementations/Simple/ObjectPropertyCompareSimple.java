@@ -32,21 +32,18 @@ public class ObjectPropertyCompareSimple extends PropertyCompareSimple
     @Override
     public EvolutionaryAction compare() 
     {
-        Property predicate = statement.getPredicate();
+        ObjectProperty predicate = statement.getPredicate().as(ObjectProperty.class);
         try
-        {
-            OntProperty predicate_ = (OntProperty) predicate;       
-            boolean exists = OntologyUtils.isObjectProperty(predicate_, ontModel);
-        
-            if(!exists)
+        {      
+            if(!OntologyUtils.isObjectProperty(predicate, ontModel))
             {
                 Utilities.logInfo("ObjectProperty with URI "+ predicate.getURI() + " does not exist.");
-                return EvolutionaryActionFactory.getInstance().createAddObjectPropertyAction(predicate_);
+                return EvolutionaryActionFactory.getInstance().createAddObjectPropertyAction(predicate);
             }
         }
         catch(ClassCastException e)
         {
-            Utilities.logError("ObjectProperty with URI "+ predicate.getURI() + " cannot be cast to OntProperty.");
+            Utilities.logError("Property with URI "+ predicate.getURI() + " cannot be cast to ObjectProperty.");
         }
             
         return null;

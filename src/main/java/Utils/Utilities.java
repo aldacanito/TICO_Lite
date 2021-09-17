@@ -25,7 +25,11 @@ public class Utilities
     
     public static boolean isInIgnoreList(String i)
     {
+        
         boolean ret = false;
+        if(i == null || i.isBlank() || i.isBlank())
+            return ret;
+        
         for(String ignore : NS_to_ignore)
         {
             if(i.contains(ignore))
@@ -42,22 +46,28 @@ public class Utilities
    
     private static final Logger logger = Logger.getLogger("InstanceDrivenComparison"); 
     private boolean logger_Active = false;
+    protected static boolean verbose = false;
+    
+    
     
     public static void logInfo(String message)
     {
-        System.out.println("LOG | INFO |  Message: " + message);
+        if(verbose)
+            System.out.println("LOG | INFO |  Message: " + message);
         logger.info(message);
     }
     
     public static void logError(String message)
     {
-        System.out.println("LOG | ERROR |  Message: " + message);
+        if(verbose)
+            System.out.println("LOG | ERROR |  Message: " + message);
         logger.severe(message);
     }
     
     public static void logError(String message, String stacktrace)
     {
-        System.out.println("LOG | ERROR |  Message: " + message + "\n STACKTRACE: " + stacktrace);
+        if(verbose)
+            System.out.println("LOG | ERROR |  Message: " + message + "\n STACKTRACE: " + stacktrace);
         logger.severe(message);
     }
     

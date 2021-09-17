@@ -10,8 +10,11 @@ import Utils.OntologyUtils;
 import Utils.Utilities;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
+import org.apache.jena.rdf.model.InfModel;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.reasoner.Reasoner;
+import org.apache.jena.reasoner.ReasonerRegistry;
 
 /**
  *
@@ -35,17 +38,29 @@ public class InstanceDrivenComparisonMain
         Model baseO = ModelFactory.createDefaultModel();
         Model baseI = ModelFactory.createDefaultModel();
     
-        String path = "Indexes/Processed/ASIIO_semAtaque.ttl" ;
+        String path = "Indexes/TestOnto/shizaTest_base.ttl" ;
+        //String path = "Indexes/Processed/ASIIO_semAtaque.ttl" ;
         baseO = ModelFactory.createOntologyModel();
         baseO.read(path);
         OntModel ontologyModel = ModelFactory.createOntologyModel( OntModelSpec.OWL_DL_MEM, baseO );
         
-        path = "Indexes/Processed/small_dataset_withOnto.ttl" ;
+        path = "Indexes/TestOnto/shizaTest_newInstance.ttl" ;
+        //path = "Indexes/Processed/small_dataset_withOnto.ttl" ;
         baseI = ModelFactory.createOntologyModel();
         baseI.read(path);    
         OntModel instanceModel = ModelFactory.createOntologyModel( OntModelSpec.OWL_DL_MEM, baseI );
    
+//        Reasoner reasoner = ReasonerRegistry.getOWLReasoner();
+//        reasoner = reasoner.bindSchema(ontologyModel);
+//        InfModel infmodel = ModelFactory.createInfModel(reasoner, ontologyModel);
+        
         Comparator comparator = new Comparator(ontologyModel, instanceModel);
+        
+        
+        //Comparator comparator = new Comparator(ontologyModel, instanceModel);
+        
+        
+        //Comparator comparator = new Comparator(ontologyModel, instanceModel);
         comparator.run();
         
         String stats = comparator.printStats();

@@ -50,7 +50,21 @@ public class EvolutionaryActionExecuter
     
     public void add(EvolutionaryAction action)
     {
-        actions.add(action);
+        if(action==null)
+            return;
+        
+        boolean repeated = false;
+        for(EvolutionaryAction act : this.actions)
+        {
+            if(action.getURI().equalsIgnoreCase(act.getURI()))
+            {    
+                repeated = true;
+                break;
+            }
+        }
+            
+        if(!repeated)
+            actions.add(action);
     }
 
     public OntModel getEvolvedModel()

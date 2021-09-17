@@ -32,6 +32,8 @@ public class AddClass implements IAddClass
         this.ontClass = toAdd;
     }
         
+      
+    
     @Override
     public void setUp(OntModel originalModel, OntModel evolvedModel) 
     {
@@ -64,6 +66,12 @@ public class AddClass implements IAddClass
     public OntModel getEvolvedModel() 
     {
         return this.evolvedModel;
+    }
+
+    @Override
+    public String getURI() 
+    {
+        return this.ontClass.getURI();
     }
 
    

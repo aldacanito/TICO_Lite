@@ -64,6 +64,12 @@ public class AddProperty implements IAddProperty
         toPrint += OntologyUtils.propertyStats(theProperty);
         return toPrint;
     }
+
+    @Override
+    public String getURI() 
+    {
+        return this.theProperty.getURI();
+    }
   
     
 }

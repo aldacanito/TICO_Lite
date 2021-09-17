@@ -36,6 +36,8 @@ public class ClassCompareSimple implements IClassCompare
         ExtendedIterator classes = ontModel.listClasses();   
         Utilities.logInfo("COMPARING ONTCLASS " + ontClass.getURI() + " to existing classes...");
         
+        boolean found = false;
+        
         while(classes.hasNext())
         {
             OntClass thisClass = (OntClass) classes.next();
@@ -45,19 +47,25 @@ public class ClassCompareSimple implements IClassCompare
                      
             Utilities.logInfo("\tCOMPARING: " + current_URI + " to " + compare_URI);
         
+            // MAIS TARDE COMPARAR COM OUTRAS COISAS QUE NAO O URI
+
             if(current_URI==null) continue;
         
             if(current_URI.equalsIgnoreCase(compare_URI))
             {
+                found = true;
                 Utilities.logInfo("\tClass already on model. Skipping...");
-            }
-            else
-            {
-                Utilities.logInfo("\tClass not on model. Creating AddClass Action!");
-                EvolutionaryAction action = EvolutionaryActionFactory.getInstance().createAddClassAction(ontClass);
-                return action;
+                break;
             }
         }
+        
+        if(!found)    
+        {
+            Utilities.logInfo("\tClass not on model. Creating AddClass Action!");
+            EvolutionaryAction action = EvolutionaryActionFactory.getInstance().createAddClassAction(ontClass);
+            return action;
+        }
+
         
         Utilities.logInfo("Class not found. No Evolutionary Action created.");
         return null;

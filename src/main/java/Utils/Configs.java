@@ -46,6 +46,10 @@ public class Configs
             FileInputStream ip = new FileInputStream(this.config_file);
             prop.load(ip);
             
+            String verbose = (String) prop.getOrDefault("verbose", "true");
+            Utilities.verbose = Boolean.parseBoolean(verbose);
+            
+            
         } catch (Exception ex)
         {
             Utilities.getLogger().log(Level.SEVERE, null, ex);
@@ -79,7 +83,8 @@ public class Configs
             this.prop.setProperty("deleteOPImplementation",     "EvolutionaryActions.Implementations.Simple.DeleteObjectProperty.java");
             this.prop.setProperty("deletePImplementation",      "EvolutionaryActions.Implementations.Simple.DeleteDatatypeProperty.java");
             
-            this.prop.setProperty("namespace_ignore",      "http://www.w3.org/2002/07/owl;http://www.w3.org/2006/time;http://purl.org/dc/terms;http://www.w3.org/1999/02/22-rdf-syntax-ns;http://www.w3.org/2000/01/rdf-schema;");
+            this.prop.setProperty("namespace_ignore",           "http://www.w3.org/2002/07/owl;http://www.w3.org/2006/time;http://purl.org/dc/terms;http://www.w3.org/1999/02/22-rdf-syntax-ns;http://www.w3.org/2000/01/rdf-schema;");
+            this.prop.setProperty("verbose",                    "true");
             
             
             this.prop.store(outp, "default configuration, auto-generated");

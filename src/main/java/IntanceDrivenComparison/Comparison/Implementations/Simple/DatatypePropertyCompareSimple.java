@@ -9,6 +9,7 @@ import IntanceDrivenComparison.EvolutionaryActions.Factories.EvolutionaryActionF
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import Utils.OntologyUtils;
 import Utils.Utilities;
+import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.Property;
@@ -27,13 +28,10 @@ public class DatatypePropertyCompareSimple extends PropertyCompareSimple
     @Override
     public EvolutionaryAction compare() 
     {
-        Property predic = statement.getPredicate();
+        DatatypeProperty predicate = statement.getPredicate().as(DatatypeProperty.class);
         try
         {
-            OntProperty predicate = (OntProperty) predic;
-            boolean exists = OntologyUtils.isProperty(predicate, ontModel);
-
-            if(!exists)
+            if(!OntologyUtils.isProperty(predicate, ontModel))
             {
                 Utilities.logInfo("ObjectProperty with URI "+ predicate.getURI() + " does not exist.");
                 return EvolutionaryActionFactory.getInstance().createAddDTPropertyAction(predicate);
@@ -41,7 +39,7 @@ public class DatatypePropertyCompareSimple extends PropertyCompareSimple
         }
         catch(ClassCastException e)
         {
-            Utilities.logError("Could not convert "+ statement.getPredicate().getURI() + " to OntProperty.");
+            Utilities.logError("Could not convert "+ statement.getPredicate().getURI() + " to DatatypeProperty.");
         }
         return null;
     }

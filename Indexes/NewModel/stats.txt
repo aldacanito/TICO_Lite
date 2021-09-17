@@ -3,23 +3,37 @@
 
 ======================================
 Evolutionary Action Executer Stats
-	Total evolutionary actions executed: 5
+	Total evolutionary actions executed: 4
 List of Evolutionary Actions:
-	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.gecad.isep.ipp.pt/ASIIO#extZagreb
-Stats for OntClass http://www.gecad.isep.ipp.pt/ASIIO#extZagreb
-	 Comments: 0	 Labels: 0	 Declared Properties: 52	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 3
-	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.gecad.isep.ipp.pt/ASIIO#extIncident
-Stats for OntClass http://www.gecad.isep.ipp.pt/ASIIO#extIncident
-	 Comments: 0	 Labels: 1	 Declared Properties: 52	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 6
-	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.gecad.isep.ipp.pt/ASIIO#extAttack
-Stats for OntClass http://www.gecad.isep.ipp.pt/ASIIO#extAttack
-	 Comments: 0	 Labels: 1	 Declared Properties: 52	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 6
-	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.gecad.isep.ipp.pt/ASIIO#extAlert
-Stats for OntClass http://www.gecad.isep.ipp.pt/ASIIO#extAlert
-	 Comments: 0	 Labels: 1	 Declared Properties: 52	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 4
-	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.gecad.isep.ipp.pt/ASIIO#extEvent
-Stats for OntClass http://www.gecad.isep.ipp.pt/ASIIO#extEvent
-	 Comments: 0	 Labels: 0	 Declared Properties: 52	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 1	 SuperClasses: 0
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://shizaTest#New_Class1
+	Stats for OntClass http://shizaTest#New_Class1
+	 Comments: 0	 Labels: 0	 Declared Properties: 4	 Disjoint Classes: 0	 Equivalent Classes: 1	 SubClasses: 0	 SuperClasses: 0
+	ADD OBJECT PROPERTY EVOLUTIONARY ACTION: 
+	Stats for OntProperty http://shizaTest#NEW_OP1
+
+		Domains: 
+		Ranges: 
+		Inverse of: 
+		 === 
+
+	ADD OBJECT PROPERTY EVOLUTIONARY ACTION: 
+	Stats for OntProperty http://shizaTest#NEW_OP3
+
+		Domains: 
+			- null
+		Ranges: 
+			- null
+		Inverse of: 
+		 === 
+
+	ADD OBJECT PROPERTY EVOLUTIONARY ACTION: 
+	Stats for OntProperty http://shizaTest#NEW_OP2
+
+		Domains: 
+		Ranges: 
+		Inverse of: 
+		 === 
+
 ======================================
 
 
