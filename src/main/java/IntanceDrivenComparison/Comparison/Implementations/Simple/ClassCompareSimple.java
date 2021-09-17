@@ -13,6 +13,7 @@ import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
@@ -21,13 +22,18 @@ import org.apache.jena.util.iterator.ExtendedIterator;
  */
 public class ClassCompareSimple implements IClassCompare
 {
- 
-    @Override
-    public EvolutionaryAction compare(OntModel model, Object t0) 
+    protected OntClass ontClass;
+    protected OntModel ontModel;
+    public ClassCompareSimple(OntClass ontClass, OntModel ontModel)
     {
-        OntClass ontClass = (OntClass) t0;
-        ExtendedIterator classes = model.listClasses();
-        
+        this.ontClass = ontClass;
+        this.ontModel = ontModel;
+    }
+    
+    @Override
+    public EvolutionaryAction compare() 
+    {
+        ExtendedIterator classes = ontModel.listClasses();   
         Utilities.logInfo("COMPARING ONTCLASS " + ontClass.getURI() + " to existing classes...");
         
         while(classes.hasNext())

@@ -26,6 +26,11 @@ public class AddObjectProperty extends AddProperty
        super(thePropertyTriple);
     }
     
+    public AddObjectProperty(OntProperty thePropertyTriple)
+    {
+       super(thePropertyTriple);
+    }
+    
    
     @Override
     public void execute() 
@@ -33,17 +38,17 @@ public class AddObjectProperty extends AddProperty
         
         try
         {
-            OntProperty property = (OntProperty) this.ontologyModel.getProperty(thePropertyTriple.getPredicate().getURI());
-            evolvedModel.createObjectProperty(thePropertyTriple.getPredicate().getURI());
+            OntProperty property = (OntProperty) this.ontologyModel.getProperty(theProperty.getURI());
+            evolvedModel.createObjectProperty(theProperty.getURI());
             OntologyUtils.copyProperty(evolvedModel, property);
     
         }
         catch(ClassCastException e)
         {  
-            Utilities.logError("Error casting Property to OntProperty. Attempting Property cast...");
+            Utilities.logError("Error casting Property "+ theProperty.getURI() +" to OntProperty. Attempting Property cast...");
             
-            Property property =  this.ontologyModel.getProperty(thePropertyTriple.getPredicate().getURI());
-            evolvedModel.createObjectProperty(thePropertyTriple.getPredicate().getURI());
+            Property property =  this.ontologyModel.getProperty(theProperty.getURI());
+            evolvedModel.createObjectProperty(theProperty.getURI());
             OntologyUtils.copyProperty(evolvedModel, property);
             
         }
@@ -57,12 +62,12 @@ public class AddObjectProperty extends AddProperty
      
         try
         {
-            toPrint += OntologyUtils.propertyStats((OntProperty) thePropertyTriple.getPredicate());
+            toPrint += OntologyUtils.propertyStats(theProperty);
         }
         catch(ClassCastException e)
         {
-            Utilities.logError("Error Casting OntProperty. Attempting regular property...");
-            toPrint += OntologyUtils.propertyStats(thePropertyTriple.getPredicate());
+            Utilities.logError("Error Casting OntProperty for "+ theProperty.getURI() +". Attempting regular property...");
+            toPrint += OntologyUtils.propertyStats(theProperty);
         }
        
         return toPrint;

@@ -5,8 +5,12 @@
  */
 package IntanceDrivenComparison.Comparison.Interfaces;
 
+import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
+import org.apache.jena.ontology.OntModel;
+import org.apache.jena.rdf.model.Statement;
+
 
 public interface IPropertyCompare extends IEntityCompare
 {
-    
+    public EvolutionaryAction compare();
 }

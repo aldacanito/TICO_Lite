@@ -10,6 +10,6 @@ import org.apache.jena.ontology.OntModel;
 
 public interface IEntityCompare 
 {    
-    public EvolutionaryAction compare(OntModel model, Object t0);
+    public EvolutionaryAction compare();
     
 }

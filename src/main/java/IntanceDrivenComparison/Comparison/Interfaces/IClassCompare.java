@@ -5,9 +5,6 @@
  */
 package IntanceDrivenComparison.Comparison.Interfaces;
 
-import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
-import org.apache.jena.rdf.model.Model;
-
 public interface IClassCompare extends IEntityCompare
 {
  

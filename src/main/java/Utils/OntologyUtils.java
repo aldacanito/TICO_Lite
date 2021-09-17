@@ -99,14 +99,14 @@ public class OntologyUtils
     
     public static String propertyStats(Node property)
     {
-        String stats = "Stats for Property " + property.getURI()+ "\n";
+        String stats = "\nStats for Property " + property.getURI()+ "\n";
         stats += "Local name: " +  property.getLocalName();
         return stats;
     }
      
      public static String propertyStats(OntProperty property)
      {
-         String stats = "Stats for OntProperty " + property.getURI()+ "\n";
+         String stats = "\nStats for OntProperty " + property.getURI()+ "\n";
      
         stats += "\n\tDomains: ";
         ExtendedIterator<? extends OntResource> listDomain = property.listDomain();
@@ -132,7 +132,7 @@ public class OntologyUtils
      
      public static String classStats(OntClass ontClass)
      {
-        String stats = "Stats for OntClass "+ontClass.getURI()+"\n";
+        String stats = "\nStats for OntClass "+ontClass.getURI()+"\n";
          
         stats += "\t Comments: " + ontClass.listComments(null).toList().size();
         stats += "\t Labels: " + ontClass.listLabels(null).toList().size();    
@@ -245,7 +245,35 @@ public class OntologyUtils
         return isObjectProperty;
     }
     
+    public static boolean isProperty(OntProperty predicate, OntModel ontModel)
+    {
+        boolean isObjectProperty = false;
+        ExtendedIterator<OntProperty> listOntProperties = ontModel.listOntProperties();
     
+        while(listOntProperties.hasNext())
+        {
+            OntProperty ob = listOntProperties.next();
+            if(ob.getURI().equalsIgnoreCase(predicate.getURI()))
+                return true;
+        }
+            
+        return isObjectProperty;
+    }
+    
+    public static boolean isObjectProperty(Property predicate, OntModel ontModel)
+    {
+        boolean isObjectProperty = false;
+        ExtendedIterator<ObjectProperty> listObjectProperties = ontModel.listObjectProperties();
+    
+        while(listObjectProperties.hasNext())
+        {
+            ObjectProperty ob = listObjectProperties.next();
+            if(ob.getURI().equalsIgnoreCase(predicate.getURI()))
+                return true;
+        }
+            
+        return isObjectProperty;
+    }
     
     public static boolean isObjectProperty(Node predicate, OntModel ontModel)
     {
@@ -262,6 +290,20 @@ public class OntologyUtils
         return isObjectProperty;
     }
     
+    public static boolean isDatatypeProperty(Property predicate, OntModel ontModel)
+    {
+        boolean isDatatypeProperty = false;
+        ExtendedIterator<DatatypeProperty> listDatatypeProperties = ontModel.listDatatypeProperties();
+    
+        while(listDatatypeProperties.hasNext())
+        {
+            DatatypeProperty ob = listDatatypeProperties.next();
+            if(ob.getURI().equalsIgnoreCase(predicate.getURI()))
+                return true;
+        }
+            
+        return isDatatypeProperty;
+    }
     public static boolean isDatatypeProperty(Node predicate, OntModel ontModel)
     {
         boolean isDatatypeProperty = false;

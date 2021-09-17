@@ -13,20 +13,50 @@ import Utils.Utilities;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import org.apache.jena.rdf.model.Property;
 
 /**
  *
  * @author shizamura
  */
-public class ObjectPropertyCompareSimple implements IPropertyCompare
+public class ObjectPropertyCompareSimple extends PropertyCompareSimple
 {
+    public ObjectPropertyCompareSimple(Statement s, OntModel ontModel)
+    {
+        super(s, ontModel);
+    }
+    
+    @Override
+    public EvolutionaryAction compare() 
+    {
+        Property predicate = statement.getPredicate();
+        try
+        {
+            OntProperty predicate_ = (OntProperty) predicate;       
+            boolean exists = OntologyUtils.isObjectProperty(predicate_, ontModel);
+        
+            if(!exists)
+            {
+                Utilities.logInfo("ObjectProperty with URI "+ predicate.getURI() + " does not exist.");
+                return EvolutionaryActionFactory.getInstance().createAddObjectPropertyAction(predicate_);
+            }
+        }
+        catch(ClassCastException e)
+        {
+            Utilities.logError("ObjectProperty with URI "+ predicate.getURI() + " cannot be cast to OntProperty.");
+        }
+            
+        return null;
+    }
+        
+    /*
     @Override
     public EvolutionaryAction compare(OntModel model, Object t0) 
     {
         Triple t = (Triple) t0;
-        
-        ExtendedIterator<ObjectProperty> listObjectProperties = model.listObjectProperties();
         
         boolean exists = OntologyUtils.isObjectProperty(t.getPredicate(), model);
         
@@ -41,5 +71,5 @@ public class ObjectPropertyCompareSimple implements IPropertyCompare
         }
         
         return null;
-    }
+    }*/
 }

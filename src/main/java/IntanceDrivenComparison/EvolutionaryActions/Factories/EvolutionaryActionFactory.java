@@ -15,6 +15,7 @@ import Utils.Utilities;
 import org.apache.jena.ontology.OntClass;
 
 import org.apache.jena.graph.Triple;
+import org.apache.jena.ontology.OntProperty;
 
 /**
  *
@@ -53,7 +54,24 @@ public class EvolutionaryActionFactory
     public AddProperty createAddPropertyAction(Triple t)
     {
         Utilities.logInfo("Creating Add Property Evolutionary Action...");
+        return new AddProperty(t);
+    }
+
+
+    public AddDatatypeProperty createAddDTPropertyAction(OntProperty t)
+    {
+        return new AddDatatypeProperty(t);
+    }
+     
+    public AddObjectProperty createAddObjectPropertyAction(OntProperty t)
+    {
         return new AddObjectProperty(t);
+    }
+    
+    public AddProperty createAddPropertyAction(OntProperty t)
+    {
+        Utilities.logInfo("Creating Add Property Evolutionary Action...");
+        return new AddProperty(t);
     }
 
     

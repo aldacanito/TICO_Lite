@@ -34,7 +34,7 @@ public class Comparator
     {
         this.ontologyModel = ontologyModel;
         this.instanceModel = instanceModel;
-        this.evolvedModel  = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+        this.evolvedModel  = ontologyModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
         this.executer      = new EvolutionaryActionExecuter();
     }
 
@@ -60,7 +60,6 @@ public class Comparator
         // guidado pelas instancias
         ExtendedIterator<Individual> listIndividuals = instanceModel.listIndividuals();
         
-        
         Utilities.logInfo("Listing all individuals... ");
         
         while(listIndividuals.hasNext())
@@ -80,29 +79,36 @@ public class Comparator
                 Triple t        = stmt.asTriple();
                 
                 Utilities.logInfo(OntologyUtils.printTriple(t));
-              
-                
-                this.compareProperty(t);
+          
+                this.compareProperty(stmt);
             }
-            
         }
-        
         executer.execute(ontologyModel, evolvedModel);
-        
     }
 
+    private void compareProperty(Statement t)
+    {
+        IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t, this.ontologyModel);
+        
+        if(comparator != null)
+        {
+            EvolutionaryAction compare = comparator.compare();
+            this.executer.add(compare);
+        }      
+    }
     
+    /*
     private void compareProperty(Triple t)
     {
         IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t.getPredicate(), this.ontologyModel);
         
         if(comparator != null)
         {
-            EvolutionaryAction compare = comparator.compare(this.ontologyModel, t);
+            EvolutionaryAction compare = comparator.compare();
             this.executer.add(compare);
         }      
     }
-    
+    */
     
     /*
     * Verifica se as classes da instânica existem. Se não, adiciona-as.
@@ -117,12 +123,14 @@ public class Comparator
         ExtendedIterator<OntClass> listOntClasses = instance.listOntClasses(true);
         for(OntClass cls : listOntClasses.toList())
         {
-            IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(); 
-            IAddClass createAddClassAction = (IAddClass) classComparator.compare(this.ontologyModel, cls);
+            IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(cls, this.ontologyModel); 
             
-            if(createAddClassAction!=null)
-                this.executer.add(createAddClassAction);  
-            
+            if(classComparator!=null)
+            {
+                IAddClass createAddClassAction = (IAddClass) classComparator.compare();
+                if(createAddClassAction!=null)
+                    this.executer.add(createAddClassAction);  
+            }
         }
     }
 

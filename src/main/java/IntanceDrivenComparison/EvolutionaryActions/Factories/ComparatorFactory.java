@@ -13,9 +13,12 @@ import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
 import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
 import Utils.OntologyUtils;
 import Utils.Utilities;
-
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.graph.Node;
+import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.rdf.model.Property;
 
 /**
  *
@@ -36,13 +39,40 @@ public class ComparatorFactory
     }
     
     //TODO alterar para ser dinamico
-    public IClassCompare getClassComparator()
+    public IClassCompare getClassComparator(OntClass cls, OntModel mdl)
     {
-        IClassCompare compare = new ClassCompareSimple();
+        boolean ignore = Utilities.isInIgnoreList(cls.getURI());
+        
+        if(ignore)
+            return null;
+        
+        IClassCompare compare = new ClassCompareSimple(cls, mdl);
         return compare;
     }
 
-    
+     public IPropertyCompare getPropertyComparator(Statement statement, OntModel ontModel) 
+    {
+        Utilities.logInfo("getPropertyComparator URI: " + statement.getPredicate().getURI());
+        
+        boolean ignore = Utilities.isInIgnoreList(statement.getPredicate().getURI());
+        
+        if(ignore)
+            return null;
+        
+        boolean objectProperty = OntologyUtils.isObjectProperty(statement.getPredicate(), ontModel);
+        boolean datatypeProperty = OntologyUtils.isDatatypeProperty(statement.getPredicate(), ontModel);
+        
+        if(objectProperty)
+            return new ObjectPropertyCompareSimple(statement, ontModel);
+        
+        if(datatypeProperty)
+            return new DatatypePropertyCompareSimple(statement, ontModel);
+            
+        Utilities.logInfo("URI does not match any ObjectProperty or DatatypeProperty definitions in the model.");
+        return new PropertyCompareSimple(statement, ontModel);
+    }
+     
+    /*
     public IPropertyCompare getPropertyComparator(Node predicate, OntModel ontModel) 
     {
         Utilities.logInfo("getPropertyComparator URI: " + predicate.getURI());
@@ -58,6 +88,6 @@ public class ComparatorFactory
             
         Utilities.logInfo("URI does not match any ObjectProperty or DatatypeProperty definitions in the model.");
         return new PropertyCompareSimple();
-    }
+    }*/
     
 }

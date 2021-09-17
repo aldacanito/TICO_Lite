@@ -17,6 +17,10 @@ import org.apache.jena.ontology.OntProperty;
  */
 public class AddDatatypeProperty extends AddProperty
 {
+    public AddDatatypeProperty(OntProperty t) 
+    {
+        super(t);
+    }
 
     public AddDatatypeProperty(Triple t) 
     {
@@ -26,16 +30,16 @@ public class AddDatatypeProperty extends AddProperty
     @Override
     public void execute() 
     {
-        evolvedModel.createDatatypeProperty(thePropertyTriple.getPredicate().getURI());
+        evolvedModel.createDatatypeProperty(theProperty.getURI());
         
         // TODO VERIFICAR SE ISTO SE AGUENTA     
-        OntologyUtils.copyProperty(evolvedModel, (OntProperty) thePropertyTriple.getPredicate());
+        OntologyUtils.copyProperty(evolvedModel, theProperty);
     }
     
     public String toString()
     {
         String toPrint="ADD DATATYPE PROPERTY EVOLUTIONARY ACTION: " ;
-        toPrint += OntologyUtils.propertyStats((OntProperty) thePropertyTriple.getPredicate());
+        toPrint += OntologyUtils.propertyStats(theProperty);
         return toPrint;
     }
     

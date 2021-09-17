@@ -22,13 +22,24 @@ public class EvolutionaryActionExecuter
     
     public String toString()
     {
-        String toPrint = "List of Evolutionary Actions:\n";
+        String evolutionaryOutputs = "List of Evolutionary Actions:\n";
+        String toPrint = "\n\n\n======================================";
+        
+        toPrint += "\nEvolutionary Action Executer Stats\n";
+        
+        int count = 0;
         for(EvolutionaryAction action : actions)
         {
             if(action!=null)
-                toPrint+= action.toString() + "\n";
+            {
+                count++;
+                evolutionaryOutputs+= "\t" + action.toString() + "\n";
+            }
         }   
-        toPrint += "====\n";
+        
+        toPrint +="\tTotal evolutionary actions executed: " + count + "\n";
+        toPrint += evolutionaryOutputs;
+        toPrint += "======================================\n\n\n";
         return toPrint;
     }
     

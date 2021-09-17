@@ -21,10 +21,17 @@ public class AddProperty implements IAddProperty
     protected Triple thePropertyTriple;
     protected OntModel ontologyModel;
     protected OntModel evolvedModel;
-      
+    protected OntProperty theProperty;
+    
+    
     public AddProperty(Triple thePropertyTriple)
     {
        this.thePropertyTriple = thePropertyTriple;
+    }
+    
+    public AddProperty(OntProperty theProperty)
+    {
+       this.theProperty = theProperty;
     }
     
     @Override
@@ -47,14 +54,14 @@ public class AddProperty implements IAddProperty
     @Override
     public void execute() 
     {
-        evolvedModel.createOntProperty(thePropertyTriple.getPredicate().getURI());
-        OntologyUtils.copyProperty(evolvedModel, (OntProperty) thePropertyTriple.getPredicate());
+        evolvedModel.createOntProperty(theProperty.getURI());
+        OntologyUtils.copyProperty(evolvedModel, theProperty);
     }
     
     public String toString()
     {
         String toPrint="ADD PROPERTY EVOLUTIONARY ACTION: " ;
-        toPrint += OntologyUtils.propertyStats((OntProperty) thePropertyTriple.getPredicate());
+        toPrint += OntologyUtils.propertyStats(theProperty);
         return toPrint;
     }
   

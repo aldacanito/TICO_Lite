@@ -17,7 +17,8 @@ import org.apache.jena.rdf.model.ModelFactory;
  *
  * @author shizamura
  */
-public class InstanceDrivenComparisonMain {
+public class InstanceDrivenComparisonMain 
+{
 
     /**
      * @param args the command line arguments

@@ -5,21 +5,44 @@
  */
 package IntanceDrivenComparison.Comparison.Implementations.Simple;
 
-import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
+import IntanceDrivenComparison.EvolutionaryActions.Factories.EvolutionaryActionFactory;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
-import org.apache.jena.graph.Triple;
+import Utils.OntologyUtils;
+import Utils.Utilities;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.Statement;
 
 
 
-public class DatatypePropertyCompareSimple implements IPropertyCompare
+public class DatatypePropertyCompareSimple extends PropertyCompareSimple
 {
-    @Override
-    public EvolutionaryAction compare(OntModel model, Object t0) 
+    public DatatypePropertyCompareSimple(Statement s, OntModel ontModel)
     {
-        Triple t = (Triple) t0;
-        
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+        super(s, ontModel);
+    }
+    
+
+    @Override
+    public EvolutionaryAction compare() 
+    {
+        Property predic = statement.getPredicate();
+        try
+        {
+            OntProperty predicate = (OntProperty) predic;
+            boolean exists = OntologyUtils.isProperty(predicate, ontModel);
+
+            if(!exists)
+            {
+                Utilities.logInfo("ObjectProperty with URI "+ predicate.getURI() + " does not exist.");
+                return EvolutionaryActionFactory.getInstance().createAddDTPropertyAction(predicate);
+            }
+        }
+        catch(ClassCastException e)
+        {
+            Utilities.logError("Could not convert "+ statement.getPredicate().getURI() + " to OntProperty.");
+        }
+        return null;
+    }
 }

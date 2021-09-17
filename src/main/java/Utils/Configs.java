@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,12 +23,21 @@ public class Configs
     public static final String ASIIO_NS = "http://www.gecad.isep.ipp.pt/ASIIO#";
     private static final String config_file = "config.properties";
     private Properties prop;
+    public static String[] NS_to_ignore;
     
     public Configs()
     {
         this.prop = new Properties();
         this.readProperties();
+        NS_to_ignore = new String[0];
+        
+        String namespace_ignore = (String) this.prop.get("namespace_ignore");
+        
+        if(namespace_ignore!=null && !namespace_ignore.isEmpty())
+            NS_to_ignore = namespace_ignore.split(";");
+        
     }
+    
     
     public void readProperties()
     {
@@ -68,7 +79,11 @@ public class Configs
             this.prop.setProperty("deleteOPImplementation",     "EvolutionaryActions.Implementations.Simple.DeleteObjectProperty.java");
             this.prop.setProperty("deletePImplementation",      "EvolutionaryActions.Implementations.Simple.DeleteDatatypeProperty.java");
             
+            this.prop.setProperty("namespace_ignore",      "http://www.w3.org/2002/07/owl;http://www.w3.org/2006/time;http://purl.org/dc/terms;http://www.w3.org/1999/02/22-rdf-syntax-ns;http://www.w3.org/2000/01/rdf-schema;");
+            
+            
             this.prop.store(outp, "default configuration, auto-generated");
+            
             
         } 
         catch (IOException ex) 

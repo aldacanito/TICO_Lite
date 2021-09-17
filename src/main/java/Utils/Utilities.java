@@ -1,5 +1,6 @@
 package Utils;
 
+import static Utils.Configs.NS_to_ignore;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,8 +22,24 @@ import org.apache.log4j.Priority;
 public class Utilities 
 {
 
+    
+    public static boolean isInIgnoreList(String i)
+    {
+        boolean ret = false;
+        for(String ignore : NS_to_ignore)
+        {
+            if(i.contains(ignore))
+                return true;
+        }
+   
+        return ret;
+    }
+    
+    
+    
     /** LOG UTILITIES **/
     
+   
     private static final Logger logger = Logger.getLogger("InstanceDrivenComparison"); 
     private boolean logger_Active = false;
     
