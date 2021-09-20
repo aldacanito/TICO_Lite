@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://shizaTest#"
+     xml:base="http://shizaTest"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://shizaTest"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://shizaTest#NEW_OP1 -->
+
+    <owl:ObjectProperty rdf:about="http://shizaTest#NEW_OP1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://shizaTest#NEW_OP2 -->
+
+    <owl:ObjectProperty rdf:about="http://shizaTest#NEW_OP2"/>
+    
+
+
+    <!-- http://shizaTest#NEW_OP3 -->
+
+    <owl:ObjectProperty rdf:about="http://shizaTest#NEW_OP3">
+        <rdfs:subPropertyOf rdf:resource="http://shizaTest#NEW_OP2"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://shizaTest#Old_Class1"/>
+        <rdfs:range rdf:resource="http://shizaTest#Old_Class2"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://shizaTest#OLD_DT1 -->
+
+    <owl:DatatypeProperty rdf:about="http://shizaTest#OLD_DT1">
+        <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#real"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://shizaTest#OLD_DT2 -->
+
+    <owl:DatatypeProperty rdf:about="http://shizaTest#OLD_DT2">
+        <rdfs:domain rdf:resource="http://shizaTest#Old_Class2"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://shizaTest#OLD_DT3 -->
+
+    <owl:DatatypeProperty rdf:about="http://shizaTest#OLD_DT3">
+        <rdfs:subPropertyOf rdf:resource="http://shizaTest#OLD_DT2"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://shizaTest#New_Class1 -->
+
+    <owl:Class rdf:about="http://shizaTest#New_Class1">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://shizaTest#NEW_OP1"/>
+                <owl:someValuesFrom rdf:resource="http://shizaTest#Old_Class1"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://shizaTest#Old_Class1 -->
+
+    <owl:Class rdf:about="http://shizaTest#Old_Class1"/>
+    
+
+
+    <!-- http://shizaTest#Old_Class2 -->
+
+    <owl:Class rdf:about="http://shizaTest#Old_Class2"/>
+    
+
+
+    <!-- http://shizaTest#Old_Class3 -->
+
+    <owl:Class rdf:about="http://shizaTest#Old_Class3">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://shizaTest#NEW_OP3"/>
+                <owl:someValuesFrom rdf:resource="http://shizaTest#Old_Class2"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://shizaTest#Old_Class2"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://shizaTest#New_ID_1 -->
+
+    <owl:NamedIndividual rdf:about="http://shizaTest#New_ID_1">
+        <rdf:type rdf:resource="http://shizaTest#New_Class1"/>
+        <NEW_OP1 rdf:resource="http://shizaTest#New_ID_2"/>
+        <OLD_DT1 rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">cinco</OLD_DT1>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shizaTest#New_ID_2 -->
+
+    <owl:NamedIndividual rdf:about="http://shizaTest#New_ID_2">
+        <rdf:type rdf:resource="http://shizaTest#Old_Class1"/>
+        <NEW_OP2 rdf:resource="http://shizaTest#OLD_ID_CL2"/>
+        <NEW_OP3 rdf:resource="http://shizaTest#OLD_ID_CL2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://shizaTest#OLD_ID_CL2 -->
+
+    <owl:NamedIndividual rdf:about="http://shizaTest#OLD_ID_CL2">
+        <rdf:type rdf:resource="http://shizaTest#Old_Class2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://shizaTest#New_ID_1"/>
+            <rdf:Description rdf:about="http://shizaTest#OLD_ID_CL2"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

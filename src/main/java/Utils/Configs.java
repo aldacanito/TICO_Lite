@@ -22,7 +22,7 @@ public class Configs
 {
     public static final String ASIIO_NS = "http://www.gecad.isep.ipp.pt/ASIIO#";
     private static final String config_file = "config.properties";
-    private Properties prop;
+    public static Properties prop;
     public static String[] NS_to_ignore;
     
     public Configs()
@@ -85,6 +85,8 @@ public class Configs
             
             this.prop.setProperty("namespace_ignore",           "http://www.w3.org/2002/07/owl;http://www.w3.org/2006/time;http://purl.org/dc/terms;http://www.w3.org/1999/02/22-rdf-syntax-ns;http://www.w3.org/2000/01/rdf-schema;");
             this.prop.setProperty("verbose",                    "true");
+            
+            this.prop.setProperty("model_print",                    "TTL"); // alternatively RDF/XML
             
             
             this.prop.store(outp, "default configuration, auto-generated");

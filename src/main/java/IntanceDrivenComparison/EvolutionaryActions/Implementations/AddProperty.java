@@ -7,6 +7,7 @@ package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddProperty;
 import Utils.OntologyUtils;
+import Utils.Utilities;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntModel;
@@ -55,7 +56,11 @@ public class AddProperty implements IAddProperty
     public void execute() 
     {
         evolvedModel.createOntProperty(theProperty.getURI());
-        OntologyUtils.copyProperty(evolvedModel, theProperty);
+        
+        if(!Utilities.isInIgnoreList(theProperty.getURI()))
+            OntologyUtils.copyProperty(evolvedModel, theProperty);
+       
+        
     }
     
     public String toString()

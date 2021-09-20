@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://shizaTest#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://shizaTest"/>
+  <owl:Class rdf:about="http://shizaTest#757e5974-4dda-4b0c-aec7-48af9bed6ead"/>
+  <owl:Class rdf:about="http://shizaTest#New_Class1">
+    <owl:equivalentClass rdf:parseType="Resource">
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://shizaTest#Old_Class2"/>
+  <owl:Class rdf:about="http://shizaTest#Old_Class1"/>
+  <owl:Class rdf:about="http://shizaTest#Old_Class3">
+    <rdfs:subClassOf rdf:resource="http://shizaTest#Old_Class2"/>
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="http://shizaTest#Old_Class2"/>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="http://shizaTest#OLD_OP3"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://shizaTest#NEW_OP3"/>
+  <owl:ObjectProperty rdf:about="http://shizaTest#NEW_OP2"/>
+  <owl:ObjectProperty rdf:about="http://shizaTest#NEW_OP1"/>
+  <owl:ObjectProperty rdf:about="http://shizaTest#OLD_OP2"/>
+  <owl:DatatypeProperty rdf:about="http://shizaTest#OLD_DT1">
+    <rdfs:range rdf:resource="http://www.w3.org/2002/07/owl#real"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://shizaTest#OLD_DT2">
+    <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+    <rdfs:domain rdf:resource="http://shizaTest#Old_Class2"/>
+  </owl:DatatypeProperty>
+  <owl:TransitiveProperty rdf:about="http://shizaTest#OLD_OP1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:TransitiveProperty>
+  <owl:FunctionalProperty rdf:about="http://shizaTest#OLD_DT3">
+    <rdfs:subPropertyOf rdf:resource="http://shizaTest#OLD_DT2"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://shizaTest#OLD_OP3">
+    <rdfs:range rdf:resource="http://shizaTest#Old_Class2"/>
+    <rdfs:domain rdf:resource="http://shizaTest#Old_Class1"/>
+    <rdfs:subPropertyOf rdf:resource="http://shizaTest#OLD_OP2"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <Old_Class1 rdf:about="http://shizaTest#OLD_ID_CL1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </Old_Class1>
+  <Old_Class2 rdf:about="http://shizaTest#OLD_ID_CL2">
+    <OLD_OP3>
+      <Old_Class3 rdf:about="http://shizaTest#OLD_ID_CL3">
+        <OLD_DT3>1.0</OLD_DT3>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+      </Old_Class3>
+    </OLD_OP3>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </Old_Class2>
+</rdf:RDF>

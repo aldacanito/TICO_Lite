@@ -7,6 +7,7 @@ package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import Utils.OntologyUtils;
+import Utils.Utilities;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
@@ -50,8 +51,10 @@ public class AddClass implements IAddClass
         // BÁSICO, TENTA COPIAR PROPRIEDADES E DEFINICOES DA CLASSE
         //verificar
         //Resource inModel = ontClass.inModel(evolvedModel);
+
         
-        OntologyUtils.copyClass(ontClass, evolvedModel);
+        if(!Utilities.isInIgnoreList(ontClass.getURI()))
+            OntologyUtils.copyClass(ontClass, evolvedModel);
     }
 
     public String toString()

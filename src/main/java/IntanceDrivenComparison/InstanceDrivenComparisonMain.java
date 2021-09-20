@@ -35,32 +35,18 @@ public class InstanceDrivenComparisonMain
     {
         Configs configs = new Configs();
         
-        Model baseO = ModelFactory.createDefaultModel();
-        Model baseI = ModelFactory.createDefaultModel();
-    
-        String path = "Indexes/TestOnto/shizaTest_base.ttl" ;
-        //String path = "Indexes/Processed/ASIIO_semAtaque.ttl" ;
-        baseO = ModelFactory.createOntologyModel();
-        baseO.read(path);
-        OntModel ontologyModel = ModelFactory.createOntologyModel( OntModelSpec.OWL_DL_MEM, baseO );
+        String onto_path     = "Indexes/TestOnto/shizaTest_base.ttl" ;
+        String instance_path = "Indexes/TestOnto/shizaTest_newInstance.ttl" ;
         
-        path = "Indexes/TestOnto/shizaTest_newInstance.ttl" ;
-        //path = "Indexes/Processed/small_dataset_withOnto.ttl" ;
-        baseI = ModelFactory.createOntologyModel();
-        baseI.read(path);    
-        OntModel instanceModel = ModelFactory.createOntologyModel( OntModelSpec.OWL_DL_MEM, baseI );
+        
+        OntModel baseO = ModelFactory.createOntologyModel();
+        OntModel baseI = ModelFactory.createOntologyModel();
+          
+        baseO.read(onto_path);
+        baseI.read(instance_path);    
    
-//        Reasoner reasoner = ReasonerRegistry.getOWLReasoner();
-//        reasoner = reasoner.bindSchema(ontologyModel);
-//        InfModel infmodel = ModelFactory.createInfModel(reasoner, ontologyModel);
+        Comparator comparator = new Comparator(baseO, baseI);
         
-        Comparator comparator = new Comparator(ontologyModel, instanceModel);
-        
-        
-        //Comparator comparator = new Comparator(ontologyModel, instanceModel);
-        
-        
-        //Comparator comparator = new Comparator(ontologyModel, instanceModel);
         comparator.run();
         
         String stats = comparator.printStats();
@@ -69,6 +55,7 @@ public class InstanceDrivenComparisonMain
         Utilities.save("Indexes/NewModel/stats.txt", stats);
         
         OntologyUtils.writeModeltoFile(comparator.evolvedModel, "Indexes/NewModel/newModel.ttl");
+     //   OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/NewModel/newModel.ttl");
     }
     
     

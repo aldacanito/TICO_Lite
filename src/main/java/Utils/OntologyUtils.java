@@ -7,6 +7,8 @@ package Utils;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.DatatypeProperty;
@@ -42,7 +44,7 @@ public class OntologyUtils
         }
         try 
         {
-            theModel.write( out, "TTL" );
+            theModel.write( out, Configs.prop.getProperty("model_print") );
             Utilities.logInfo("Model written to file. Filename: " + filename);
         }
         finally 
@@ -83,20 +85,20 @@ public class OntologyUtils
         
         OntProperty newProperty = (OntProperty) newModel.createOntProperty(property.getURI());
         
-        ExtendedIterator<? extends OntResource> listDomain = property.listDomain();
-        for(OntResource r : listDomain.toList())
-            if(!Utilities.isInIgnoreList(r.getURI()))
+        List<? extends OntResource> listDomain = property.listDomain().toList();
+        for(OntResource r : listDomain)
+            //if(!Utilities.isInIgnoreList(r.getURI()))
                 newProperty.addDomain(r);
         
-        ExtendedIterator<? extends OntResource> listRange = property.listRange();
-        for(OntResource r : listRange.toList())
-            if(!Utilities.isInIgnoreList(r.getURI()))
+        List<? extends OntResource> listRange = property.listRange().toList();
+        for(OntResource r : listRange)
+            //if(!Utilities.isInIgnoreList(r.getURI()))
                 newProperty.addRange(r);
         
         
-        ExtendedIterator<? extends OntProperty> listInverseOf = property.listInverseOf();
-        for(OntProperty p : listInverseOf.toList())
-            if(!Utilities.isInIgnoreList(p.getURI()))
+        List<? extends OntProperty> listInverseOf = property.listInverseOf().toList();
+        for(OntProperty p : listInverseOf)
+         //   if(!Utilities.isInIgnoreList(p.getURI()))
                 newProperty.addInverseOf(p);
         
         return newProperty;
@@ -175,42 +177,69 @@ public class OntologyUtils
     {
         Utilities.logInfo("COPY CLASSS METHOD. \tCopying: " + class2Copy.getURI());
         
-        OntClass newClass = newModel.createClass(class2Copy.getURI());
+        String class2CopyURI = class2Copy.getURI();
+        
+        if(class2Copy.isAnon())
+                class2CopyURI = class2Copy.toString();
+        
+        
+        OntClass newClass = newModel.createClass(class2CopyURI);
     
         // get the class data
         
-        ExtendedIterator<RDFNode> listComments = class2Copy.listComments(null);
-        for(RDFNode comment : listComments.toList())
+        List<RDFNode> listComments = class2Copy.listComments(null).toList();
+        for(RDFNode comment : listComments)
             newClass.addComment((Literal) comment);
     
-        ExtendedIterator<OntProperty> listDeclaredProperties = class2Copy.listDeclaredProperties();
-        for(OntProperty property : listDeclaredProperties.toList())
-        {
-            OntProperty prt = copyProperty(newModel, property);   
-            prt.addDomain(class2Copy);
-        }
+        // sus
+//        List<Statement> listProperties = class2Copy.listProperties().toList();
+//        for(Statement property : listProperties)
+//        {
+//            OntProperty predicate  = (OntProperty) property.getPredicate();
+//            String object       = property.getObject().asNode().getURI();
+//            
+//            
+//            if(!Utilities.isInIgnoreList(object))
+//            {
+//                OntProperty prt = copyProperty(newModel, predicate);   
+//                prt.addDomain(class2Copy);
+//            }
+//        }
         
-        ExtendedIterator<OntClass> listDisjointWith = class2Copy.listDisjointWith();
-        for(OntClass cls : listDisjointWith.toList())
+
+        
+        List<OntClass> listDisjointWith = class2Copy.listDisjointWith().toList();
+        for(OntClass cls : listDisjointWith)
             if(!Utilities.isInIgnoreList(cls.getURI()))
                 newClass.addDisjointWith(cls);
         
-        ExtendedIterator<OntClass> listEquivalentClasses = class2Copy.listEquivalentClasses();
-        for(OntClass cls : listEquivalentClasses.toList())
-            if(!Utilities.isInIgnoreList(cls.getURI()))
+        List<OntClass> listEquivalentClasses = class2Copy.listEquivalentClasses().toList();
+        for(OntClass cls : listEquivalentClasses)
+        {   
+            String equivalentClassURI = cls.getURI();
+            if(cls.isAnon())
+                equivalentClassURI = cls.toString();
+            
+            if(!Utilities.isInIgnoreList(equivalentClassURI))
+            {
+                //copyClass(cls, newModel);
+                Map<String, String> nsPrefixMap = newModel.getNsPrefixMap();
+                String basePrefix = nsPrefixMap.get(""); //base
+                OntClass newClass2 = newModel.createClass(basePrefix + equivalentClassURI);
                 newClass.addEquivalentClass(cls);
-        
-        ExtendedIterator<RDFNode> listLabels = class2Copy.listLabels(null);
-        for(RDFNode label : listLabels.toList())
+            }
+        }
+        List<RDFNode> listLabels = class2Copy.listLabels(null).toList();
+        for(RDFNode label : listLabels)
             newClass.addLabel((Literal) label);
         
-        ExtendedIterator<OntClass> listSubClasses = class2Copy.listSubClasses();
-        for(OntClass cls : listSubClasses.toList())
+        List<OntClass> listSubClasses = class2Copy.listSubClasses().toList();
+        for(OntClass cls : listSubClasses)
             if(!Utilities.isInIgnoreList(cls.getURI()))
                 newClass.addSubClass(cls);
         
-        ExtendedIterator<OntClass> listSuperClasses = class2Copy.listSuperClasses();
-        for(OntClass cls : listSuperClasses.toList())
+        List<OntClass> listSuperClasses = class2Copy.listSuperClasses().toList();
+        for(OntClass cls : listSuperClasses)
             if(!Utilities.isInIgnoreList(cls.getURI()))
                 newClass.addSuperClass(cls);
         

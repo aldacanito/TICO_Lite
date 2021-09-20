@@ -24,6 +24,7 @@ public class ClassCompareSimple implements IClassCompare
 {
     protected OntClass ontClass;
     protected OntModel ontModel;
+    
     public ClassCompareSimple(OntClass ontClass, OntModel ontModel)
     {
         this.ontClass = ontClass;

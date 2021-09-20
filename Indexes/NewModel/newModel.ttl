@@ -5,113 +5,20 @@
 @prefix xml:  <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-rdf:rest  rdf:type          rdf:Property , rdfs:Resource ;
-        rdfs:domain         rdf:List ;
-        rdfs:range          rdf:List ;
-        rdfs:subPropertyOf  rdf:rest .
-
-rdf:List  rdf:type       rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource .
-
-:NEW_OP2  rdf:type          owl:ObjectProperty , rdf:Property , rdfs:Resource ;
-        rdfs:domain         :New_Class1 ;
-        rdfs:subPropertyOf  :NEW_OP2 .
-
-rdf:predicate  rdf:type     rdf:Property , rdfs:Resource ;
-        rdfs:domain         rdf:Statement ;
-        rdfs:subPropertyOf  rdf:predicate .
-
-rdf:Property  rdf:type   rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource , rdf:Property .
-
-rdfs:label  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:range  rdfs:Literal .
-
-:NEW_OP1  rdf:type          owl:ObjectProperty , rdf:Property , rdfs:Resource ;
-        rdfs:domain         :New_Class1 ;
-        rdfs:subPropertyOf  :NEW_OP1 .
-
-:Old_Class2  rdf:type    rdfs:Class , owl:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource , :Old_Class2 .
-
-rdf:Statement  rdf:type  rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource .
-
-rdfs:Class  rdf:type     rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource , rdfs:Class .
-
-rdf:type  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:range  rdfs:Class .
-
-rdfs:Resource  rdf:type  rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource .
-
-rdf:subject  rdf:type       rdf:Property , rdfs:Resource ;
-        rdfs:domain         rdf:Statement ;
-        rdfs:subPropertyOf  rdf:subject .
-
-:New_Class1  rdf:type        rdfs:Class , owl:Class , rdfs:Resource ;
-        rdfs:subClassOf      rdfs:Resource , :New_Class1 ;
-        owl:equivalentClass  []  .
-
-rdf:XMLLiteral  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
-
-rdfs:comment  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:range  rdfs:Literal .
-
-rdfs:range  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:domain  rdf:Property ;
-        rdfs:range   rdfs:Class .
-
-:Old_Class1  rdf:type    rdfs:Class , owl:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource , :Old_Class1 .
-
-rdfs:subPropertyOf  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:domain  rdf:Property ;
-        rdfs:range   rdf:Property .
-
-rdf:object  rdf:type        rdf:Property , rdfs:Resource ;
-        rdfs:domain         rdf:Statement ;
-        rdfs:subPropertyOf  rdf:object .
-
-:OLD_DT1  rdf:type          rdf:Property , owl:DatatypeProperty , rdfs:Resource ;
-        rdfs:domain         :New_Class1 ;
-        rdfs:range          owl:real ;
-        rdfs:subPropertyOf  :OLD_DT1 .
-
-rdf:nil  rdf:type  rdf:List , rdfs:Resource .
-
-rdfs:domain  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:domain  rdf:Property ;
-        rdfs:range   rdfs:Class .
-
-rdfs:Literal  rdf:type   rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource .
-
-rdf:first  rdf:type         rdf:Property , rdfs:Resource ;
-        rdfs:domain         rdf:List ;
-        rdfs:subPropertyOf  rdf:first .
-
-rdfs:subClassOf  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:domain  rdfs:Class ;
-        rdfs:range   rdfs:Class .
-
-owl:real  rdf:type       rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Resource , owl:real .
-
 :NEW_OP3  rdf:type  owl:ObjectProperty .
 
-:OLD_ID_CL2  rdf:type  owl:NamedIndividual , :Old_Class2 , :Old_Class1 , rdfs:Resource ;
-        :OLD_OP2  :OLD_ID_CL3 ;
+:OLD_ID_CL2  rdf:type  owl:NamedIndividual , :Old_Class2 ;
         :OLD_OP3  :OLD_ID_CL3 .
 
-:OLD_OP3  rdf:type          owl:ObjectProperty , owl:FunctionalProperty , rdf:Property , rdfs:Resource ;
+:NEW_OP2  rdf:type  owl:ObjectProperty .
+
+:OLD_OP3  rdf:type          owl:ObjectProperty , owl:FunctionalProperty ;
         rdfs:domain         :Old_Class1 ;
         rdfs:range          :Old_Class2 ;
-        rdfs:subPropertyOf  :OLD_OP2 , :OLD_OP3 .
+        rdfs:subPropertyOf  :OLD_OP2 .
 
-:Old_Class3  rdf:type        owl:Class , rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf      :Old_Class2 , :Old_Class3 , rdfs:Resource ;
+:Old_Class3  rdf:type        owl:Class ;
+        rdfs:subClassOf      :Old_Class2 ;
         owl:equivalentClass  [ rdf:type            owl:Restriction ;
                                owl:onProperty      :OLD_OP3 ;
                                owl:someValuesFrom  :Old_Class2
@@ -119,68 +26,33 @@ owl:real  rdf:type       rdfs:Class , rdfs:Resource ;
 
 <http://shizaTest>  rdf:type  owl:Ontology .
 
-:OLD_ID_CL1  rdf:type  owl:NamedIndividual , :Old_Class1 , rdfs:Resource .
+:OLD_ID_CL1  rdf:type  owl:NamedIndividual , :Old_Class1 .
 
-:OLD_DT3  rdf:type          rdf:Property , owl:FunctionalProperty , owl:DatatypeProperty , rdfs:Resource ;
-        rdfs:domain         :New_Class1 ;
-        rdfs:subPropertyOf  :OLD_DT2 , :OLD_DT3 .
-
-:OLD_OP2  rdf:type          owl:ObjectProperty , rdf:Property , rdfs:Resource ;
-        rdfs:subPropertyOf  :OLD_OP2 .
-
-:OLD_DT2  rdf:type          owl:DatatypeProperty , rdf:Property , rdfs:Resource ;
-        rdfs:domain         :Old_Class2 ;
-        rdfs:range          rdfs:Literal ;
+:OLD_DT3  rdf:type          owl:FunctionalProperty , owl:DatatypeProperty ;
         rdfs:subPropertyOf  :OLD_DT2 .
+
+:NEW_OP1  rdf:type  owl:ObjectProperty .
+
+:OLD_OP2  rdf:type  owl:ObjectProperty .
+
+:Old_Class2  rdf:type  owl:Class .
+
+:OLD_DT2  rdf:type   owl:DatatypeProperty ;
+        rdfs:domain  :Old_Class2 ;
+        rdfs:range   rdfs:Literal .
+
+:New_Class1  rdf:type        owl:Class ;
+        owl:equivalentClass  []  .
 
 :OLD_OP1  rdf:type  owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty .
 
-:OLD_ID_CL3  rdf:type  owl:NamedIndividual , :Old_Class3 , :Old_Class2 , :New_Class1 , rdfs:Resource ;
-        :OLD_DT2  "1.0" ;
+:7711d5ac0ce85a8a776030deb52189c2
+        rdf:type  owl:Class .
+
+:Old_Class1  rdf:type  owl:Class .
+
+:OLD_DT1  rdf:type  owl:DatatypeProperty ;
+        rdfs:range  owl:real .
+
+:OLD_ID_CL3  rdf:type  owl:NamedIndividual , :Old_Class3 ;
         :OLD_DT3  "1.0" .
-
-rdfs:Container  rdf:type  rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Container .
-
-rdfs:ContainerMembershipProperty
-        rdf:type         rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:ContainerMembershipProperty , rdf:Property .
-
-rdf:Bag  rdf:type        rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdf:Bag , rdfs:Container .
-
-rdf:Seq  rdf:type        rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdf:Seq , rdfs:Container .
-
-rdfs:Datatype  rdf:type  rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdfs:Datatype , rdfs:Class .
-
-rdf:Alt  rdf:type        rdfs:Class , rdfs:Resource ;
-        rdfs:subClassOf  rdf:Alt , rdfs:Container .
-
-rdfs:isDefinedBy  rdf:type  rdf:Property , rdfs:Resource ;
-        rdfs:subPropertyOf  rdfs:isDefinedBy , rdfs:seeAlso .
-
-rdfs:seeAlso  rdf:type      rdf:Property , rdfs:Resource ;
-        rdfs:subPropertyOf  rdfs:seeAlso .
-
-owl:FunctionalProperty
-        rdf:type  rdfs:Class , rdfs:Resource .
-
-owl:ObjectProperty  rdf:type  rdfs:Class , rdfs:Resource .
-
-owl:Ontology  rdf:type  rdfs:Class , rdfs:Resource .
-
-owl:Class  rdf:type  rdfs:Class , rdfs:Resource .
-
-owl:DatatypeProperty  rdf:type  rdfs:Class , rdfs:Resource .
-
-owl:NamedIndividual  rdf:type  rdfs:Class , rdfs:Resource .
-
-owl:Restriction  rdf:type  rdfs:Class , rdfs:Resource .
-
-owl:TransitiveProperty
-        rdf:type  rdfs:Class , rdfs:Resource .
-
-owl:SymmetricProperty
-        rdf:type  rdfs:Class , rdfs:Resource .

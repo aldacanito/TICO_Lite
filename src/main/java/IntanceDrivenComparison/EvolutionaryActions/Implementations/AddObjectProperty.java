@@ -40,7 +40,9 @@ public class AddObjectProperty extends AddProperty
         {
             OntProperty property = (OntProperty) this.ontologyModel.getProperty(theProperty.getURI());
             evolvedModel.createObjectProperty(theProperty.getURI());
-            OntologyUtils.copyProperty(evolvedModel, property);
+            
+            if(!Utilities.isInIgnoreList(theProperty.getURI()))    
+                OntologyUtils.copyProperty(evolvedModel, property);
     
         }
         catch(ClassCastException e)
