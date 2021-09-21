@@ -16,9 +16,12 @@ import Utils.Utilities;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.graph.Node;
+import org.apache.jena.ontology.DatatypeProperty;
+import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFNode;
 
 /**
  *
@@ -65,14 +68,31 @@ public class ComparatorFactory
         
         
         // VERIFICAR SE JA EXISTE
-        
         // SE NAO EXISTIR, VERIFICAR SE É OP OU DTP E CRIAR O COMPARADOR DE ACORDO
-        
-        if(statement.getObject().isResource())
+        RDFNode object = statement.getObject();
+       
+        try
+        {
+            ObjectProperty predicate = statement.getPredicate().as(ObjectProperty.class);
             return new ObjectPropertyCompareSimple(statement, ontModel);
-        
-        if(statement.getObject().isLiteral())
+        }
+        catch(Exception e)
+        {
+            Utilities.logError("Property with URI "
+                    + statement.getPredicate().getURI() + " cannot be cast to ObjectProperty.");
+        }
+         
+        try
+        {
+            DatatypeProperty predicate = statement.getPredicate().as(DatatypeProperty.class);
             return new DatatypePropertyCompareSimple(statement, ontModel);
+        }
+        catch(Exception e)
+        {
+            Utilities.logError("Property with URI " 
+                    + statement.getPredicate().getURI() + " cannot be cast to DatatypeProperty.");
+    
+        }
             
         Utilities.logInfo("URI does not match any ObjectProperty or DatatypeProperty definitions in the model.");
         return new PropertyCompareSimple(statement, ontModel);

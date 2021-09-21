@@ -35,8 +35,11 @@ public class InstanceDrivenComparisonMain
     {
         Configs configs = new Configs();
         
-        String onto_path     = "Indexes/TestOnto/shizaTest_base.ttl" ;
-        String instance_path = "Indexes/TestOnto/shizaTest_newInstance.ttl" ;
+//        String onto_path     = "Indexes/TestOnto/shizaTest_base.ttl" ;
+//        String instance_path = "Indexes/TestOnto/shizaTest_newInstance.ttl" ;
+        
+        String onto_path     = "Indexes/Processed/ASIIO_semAtaque.ttl" ;
+        String instance_path = "Indexes/Processed/small_dataset_withOnto.ttl" ;
         
         
         OntModel baseO = ModelFactory.createOntologyModel();

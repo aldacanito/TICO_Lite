@@ -28,9 +28,9 @@ public class DatatypePropertyCompareSimple extends PropertyCompareSimple
     @Override
     public EvolutionaryAction compare() 
     {
-        DatatypeProperty predicate = statement.getPredicate().as(DatatypeProperty.class);
         try
         {
+            DatatypeProperty predicate = statement.getPredicate().as(DatatypeProperty.class);
             if(!OntologyUtils.isProperty(predicate, ontModel))
             {
                 Utilities.logInfo("ObjectProperty with URI "+ predicate.getURI() + " does not exist.");
