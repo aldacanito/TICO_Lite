@@ -62,15 +62,7 @@ public class AddObjectProperty extends AddProperty
     {
         String toPrint="ADD OBJECT PROPERTY EVOLUTIONARY ACTION: " ;
      
-        try
-        {
-            toPrint += OntologyUtils.propertyStats(theProperty);
-        }
-        catch(ClassCastException e)
-        {
-            Utilities.logError("Error Casting OntProperty for "+ theProperty.getURI() +". Attempting regular property...");
-            toPrint += OntologyUtils.propertyStats(theProperty);
-        }
+        toPrint += OntologyUtils.propertyStats(theProperty);
        
         return toPrint;
     }
