@@ -11,15 +11,24 @@ import java.util.List;
 import java.util.Map;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
+import org.apache.jena.ontology.AllValuesFromRestriction;
+import org.apache.jena.ontology.ComplementClass;
 import org.apache.jena.ontology.DatatypeProperty;
+import org.apache.jena.ontology.EnumeratedClass;
+import org.apache.jena.ontology.IntersectionClass;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.OntResource;
+import org.apache.jena.ontology.Restriction;
+import org.apache.jena.ontology.SomeValuesFromRestriction;
+import org.apache.jena.ontology.UnionClass;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Property;
+import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
@@ -158,6 +167,16 @@ public class OntologyUtils
      }
      
      
+     public static String getBasePrefix(OntModel model)
+     {
+        Map<String, String> nsPrefixMap = model.getNsPrefixMap();
+        String basePrefix = nsPrefixMap.get(""); //base
+                //OntClass newClass2 = newModel.createClass(basePrefix + equivalentClassURI);
+         
+        return basePrefix;
+     
+     }
+     
    /**
     * 
     * Creates a copy of a given OntClass into a new OntModel.
@@ -216,18 +235,15 @@ public class OntologyUtils
         List<OntClass> listEquivalentClasses = class2Copy.listEquivalentClasses().toList();
         for(OntClass cls : listEquivalentClasses)
         {   
-            String equivalentClassURI = cls.getURI();
-            if(cls.isAnon())
-                equivalentClassURI = cls.toString();
+            OntClass n_cls = copyEquivalence(cls, newClass);
+           
+//            String equivalentClassURI = cls.getURI();
+//            if(cls.isAnon())
+//                equivalentClassURI = cls.toString();
+//            
+//            if(!Utilities.isInIgnoreList(equivalentClassURI))
+                newClass.addEquivalentClass(n_cls);
             
-            if(!Utilities.isInIgnoreList(equivalentClassURI))
-            {
-                //copyClass(cls, newModel);
-                Map<String, String> nsPrefixMap = newModel.getNsPrefixMap();
-                String basePrefix = nsPrefixMap.get(""); //base
-                OntClass newClass2 = newModel.createClass(basePrefix + equivalentClassURI);
-                newClass.addEquivalentClass(cls);
-            }
         }
         List<RDFNode> listLabels = class2Copy.listLabels(null).toList();
         for(RDFNode label : listLabels)
@@ -374,6 +390,88 @@ public class OntologyUtils
         }
             
         return isDatatypeProperty;
+    }
+
+    private static OntClass copyEquivalence(OntClass cls, OntClass newClass) 
+    {
+        if(cls.isEnumeratedClass())
+        {
+            // TODO TESTAR
+            EnumeratedClass asEnumeratedClass = cls.asEnumeratedClass();
+            newClass.addEquivalentClass(asEnumeratedClass.asResource());
+        }
+        else
+            Utilities.logInfo("Class "+cls+" not enumerated Class");
+        
+        
+        if(cls.isIntersectionClass())
+        {
+            IntersectionClass asIntersectionClass = cls.asIntersectionClass();
+            newClass.addEquivalentClass(asIntersectionClass.asResource());
+        }
+        else
+            Utilities.logInfo("Class "+cls+" not a Intersection Class");
+        
+        if(cls.isRestriction())
+        {
+            Restriction sup = cls.asRestriction();
+            //Resource asResource = asRestriction.asResource();
+            //newClass.addEquivalentClass(asResource);
+            
+            //newClass.addSubClass(sup);
+                
+            if (sup.isAllValuesFromRestriction()) 
+            {
+                OntProperty onProperty = sup.getOnProperty();
+                Resource allValuesFrom = sup.asAllValuesFromRestriction().getAllValuesFrom();
+                
+                //TEST?
+                AllValuesFromRestriction createAllValuesFromRestriction = 
+                        newClass.getOntModel().createAllValuesFromRestriction(null, onProperty, allValuesFrom);
+                newClass.addEquivalentClass(createAllValuesFromRestriction);
+            }
+            else if (sup.isSomeValuesFromRestriction())
+            {   
+                OntProperty onProperty = sup.getOnProperty();
+                Resource someValuesFrom = sup.asSomeValuesFromRestriction().getSomeValuesFrom();
+               
+                SomeValuesFromRestriction createSomeValuesFromRestriction = 
+                        newClass.getOntModel().createSomeValuesFromRestriction(null, onProperty, someValuesFrom);
+                
+                newClass.addEquivalentClass(createSomeValuesFromRestriction);
+            }
+        }
+        else
+            Utilities.logInfo("Class "+cls+" not a Restriction Class");
+        
+        if(cls.isUnionClass())
+        {
+            UnionClass asUnionClass = cls.asUnionClass();
+             newClass.addEquivalentClass(asUnionClass.asResource());
+        
+        }
+        else
+        {
+            Utilities.logInfo("Class "+cls+" not a Union Class");
+        }
+        
+        if(cls.isComplementClass())
+        {
+            ComplementClass asComplementClass = cls.asComplementClass();
+            OntClass operand = asComplementClass.getOperand();
+            newClass.addEquivalentClass(asComplementClass.asResource());
+        }
+        else
+        {
+            Utilities.logInfo("Class "+cls+" not a complement class");
+        }
+
+        
+            
+        
+        
+        
+        return newClass;
     }
 
     

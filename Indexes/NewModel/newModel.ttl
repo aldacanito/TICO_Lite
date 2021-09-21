@@ -42,12 +42,13 @@
         rdfs:range   rdfs:Literal .
 
 :New_Class1  rdf:type        owl:Class ;
-        owl:equivalentClass  []  .
+        owl:equivalentClass  :New_Class1 ;
+        owl:equivalentClass  [ rdf:type            owl:Restriction ;
+                               owl:onProperty      :NEW_OP1 ;
+                               owl:someValuesFrom  :Old_Class1
+                             ] .
 
 :OLD_OP1  rdf:type  owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty .
-
-:7711d5ac0ce85a8a776030deb52189c2
-        rdf:type  owl:Class .
 
 :Old_Class1  rdf:type  owl:Class .
 
