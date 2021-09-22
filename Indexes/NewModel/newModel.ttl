@@ -42,6 +42,11 @@
         rdfs:range   rdfs:Literal .
 
 :New_Class1  rdf:type        owl:Class ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  :Old_Class2 ;
+                               owl:onProperty     :NEW_OP1
+                             ] ;
+        owl:disjointWith     :Old_Class1 ;
         owl:equivalentClass  [ rdf:type            owl:Restriction ;
                                owl:onProperty      :NEW_OP1 ;
                                owl:someValuesFrom  :Old_Class1

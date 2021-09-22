@@ -35,14 +35,13 @@
 #################################################################
 
 ###  http://shizaTest#OLD_DT1
-:OLD_DT1 rdf:type owl:DatatypeProperty ;
-         rdfs:range owl:real .
+:OLD_DT1 rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty .
 
 
 ###  http://shizaTest#OLD_DT2
 :OLD_DT2 rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Old_Class2 ;
-         rdfs:range rdfs:Literal .
+         rdfs:domain :Old_Class2 .
 
 
 ###  http://shizaTest#OLD_DT3
@@ -60,7 +59,20 @@
             owl:equivalentClass [ rdf:type owl:Restriction ;
                                   owl:onProperty :NEW_OP1 ;
                                   owl:someValuesFrom :Old_Class1
-                                ] .
+                                ] ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :NEW_OP1 ;
+                              owl:allValuesFrom :Old_Class2
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :NEW_OP2 ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Old_Class3
+                            ] ;
+            owl:disjointWith :Old_Class1 ;
+            owl:disjointUnionOf ( :Old_Class2
+                                  :Old_Class3
+                                ) .
 
 
 ###  http://shizaTest#Old_Class1

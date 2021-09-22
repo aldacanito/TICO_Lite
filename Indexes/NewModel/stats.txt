@@ -7,10 +7,12 @@ Evolutionary Action Executer Stats
 List of Evolutionary Actions:
 	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://shizaTest#New_Class1
 	Stats for OntClass http://shizaTest#New_Class1
-	 Comments: 0	 Labels: 0	 Declared Properties: 4	 Disjoint Classes: 0	 Equivalent Classes: 1	 SubClasses: 0	 SuperClasses: 0
+	 Comments: 0	 Labels: 0	 Declared Properties: 4	 Disjoint Classes: 1	 Equivalent Classes: 1	 SubClasses: 0	 SuperClasses: 2
 	ADD OBJECT PROPERTY EVOLUTIONARY ACTION: 
 	Stats for OntProperty http://shizaTest#NEW_OP1
 
+		SuperProperties: 
+		SuperProperties: 
 		Domains: 
 		Ranges: 
 		Inverse of: 
@@ -19,16 +21,24 @@ List of Evolutionary Actions:
 	ADD OBJECT PROPERTY EVOLUTIONARY ACTION: 
 	Stats for OntProperty http://shizaTest#NEW_OP3
 
+		SuperProperties: 
+			- http://shizaTest#NEW_OP2
+		SuperProperties: 
+			- http://shizaTest#NEW_OP3
 		Domains: 
-			- null
+			- http://shizaTest#Old_Class1
 		Ranges: 
-			- null
+			- http://shizaTest#Old_Class2
 		Inverse of: 
 		 === 
 
 	ADD OBJECT PROPERTY EVOLUTIONARY ACTION: 
 	Stats for OntProperty http://shizaTest#NEW_OP2
 
+		SuperProperties: 
+		SuperProperties: 
+			- http://shizaTest#NEW_OP3
+			- http://shizaTest#NEW_OP2
 		Domains: 
 		Ranges: 
 		Inverse of: 

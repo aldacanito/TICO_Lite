@@ -32,7 +32,6 @@ public class ObjectPropertyCompareSimple extends PropertyCompareSimple
     @Override
     public EvolutionaryAction compare() 
     {
-       
         try
         { 
             ObjectProperty predicate = statement.getPredicate().as(ObjectProperty.class);

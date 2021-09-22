@@ -25,6 +25,7 @@ import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.OntResource;
+import org.apache.jena.ontology.QualifiedRestriction;
 import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.ontology.UnionClass;
@@ -89,30 +90,58 @@ public class OntologyUtils
      * Clones Domain, Range and InverseOf from a given OntProperty
      * 
      * @param newModel Model in which to add the property
-     * @param property OntProperty to clone
+     * @param old_property OntProperty to clone
      * @return 
      */
-     public static OntProperty copyProperty(OntModel newModel, OntProperty property) 
+     public static OntProperty copyProperty(OntModel newModel, OntProperty old_property) 
      {
-        Utilities.logInfo("COPY ONTPROPERTY METHOD. \tCopying: " + property.getURI());
+        Utilities.logInfo("COPY ONTPROPERTY METHOD. \tCopying: " + old_property.getURI());
         
-        OntProperty newProperty = (OntProperty) newModel.createOntProperty(property.getURI());
+        boolean isFunctional = old_property.isFunctionalProperty();
+        boolean inverseFunctionalProperty = old_property.isInverseFunctionalProperty();
+        boolean symmetricProperty = old_property.isSymmetricProperty();
+        boolean transitiveProperty = old_property.isTransitiveProperty();
         
-        List<? extends OntResource> listDomain = property.listDomain().toList();
+        OntProperty newProperty = (OntProperty) newModel.createOntProperty(old_property.getURI());
+        
+        if(isFunctional)
+            newProperty.convertToTransitiveProperty();
+        if(inverseFunctionalProperty)
+            newProperty.convertToInverseFunctionalProperty();
+        if(symmetricProperty)
+            newProperty.convertToSymmetricProperty();
+        if(transitiveProperty)
+            newProperty.convertToTransitiveProperty();
+        
+        List<? extends OntResource> listDomain = old_property.listDomain().toList();
         for(OntResource r : listDomain)
-            //if(!Utilities.isInIgnoreList(r.getURI()))
-                newProperty.addDomain(r);
+            newProperty.addDomain(r);
         
-        List<? extends OntResource> listRange = property.listRange().toList();
+        List<? extends OntResource> listRange = old_property.listRange().toList();
         for(OntResource r : listRange)
-            //if(!Utilities.isInIgnoreList(r.getURI()))
-                newProperty.addRange(r);
+            newProperty.addRange(r);
         
-        
-        List<? extends OntProperty> listInverseOf = property.listInverseOf().toList();
+        List<? extends OntProperty> listInverseOf = old_property.listInverseOf().toList();
         for(OntProperty p : listInverseOf)
-         //   if(!Utilities.isInIgnoreList(p.getURI()))
                 newProperty.addInverseOf(p);
+        
+        OntProperty superProperty = old_property.getSuperProperty();
+        if(superProperty!=null && newModel.getProperty(superProperty.getURI())!=null)
+        {
+            OntProperty copyProperty = copyProperty(newModel, superProperty);
+            newProperty.setSuperProperty(copyProperty);
+        }
+        
+        List<? extends OntProperty> listSubProperties = old_property.listSubProperties().toList();
+        for(OntProperty p : listSubProperties)
+        {
+            if(newModel.getProperty(p.getURI())!=null)
+            {
+                OntProperty copyProperty = copyProperty(newModel, p);
+                newProperty.addSubProperty(copyProperty);
+            }
+        }
+        
         
         return newProperty;
      }
@@ -128,23 +157,35 @@ public class OntologyUtils
      {
          String stats = "\n\tStats for OntProperty " + property.getURI()+ "\n";
      
+        stats += "\n\t\tSuperProperties: ";
+        ExtendedIterator<? extends OntResource> listSUP = property.listSuperProperties();
+        for(OntResource r : listSUP.toList())
+            if(!Utilities.isInIgnoreList(r.getURI()))
+                stats+= "\n\t\t\t- " + r.getURI();
+        
+        stats += "\n\t\tSuperProperties: ";
+        ExtendedIterator<? extends OntResource> listSUB = property.listSubProperties();
+        for(OntResource r : listSUB.toList())
+            if(!Utilities.isInIgnoreList(r.getURI()))
+                stats+= "\n\t\t\t- " + r.getURI();
+         
         stats += "\n\t\tDomains: ";
         ExtendedIterator<? extends OntResource> listDomain = property.listDomain();
         for(OntResource r : listDomain.toList())
             if(!Utilities.isInIgnoreList(r.getURI()))
-                stats+= "\n\t\t\t- " + r.getLabel(null);
+                stats+= "\n\t\t\t- " + r.getURI();
         
         stats += "\n\t\tRanges: ";
         ExtendedIterator<? extends OntResource> listRange = property.listRange();
         for(OntResource r : listRange.toList())
             if(!Utilities.isInIgnoreList(r.getURI()))
-                stats+= "\n\t\t\t- " + r.getLabel(null);
+                stats+= "\n\t\t\t- " + r.getURI();
         
         stats += "\n\t\tInverse of: ";
         ExtendedIterator<? extends OntProperty> listInverseOf = property.listInverseOf();
         for(OntProperty p : listInverseOf.toList())
             if(!Utilities.isInIgnoreList(p.getURI()))
-                stats+= "\n\t\t\t- " + p.getLabel(null);
+                stats+= "\n\t\t\t- " + p.getURI();
         
         stats+="\n\t\t === \n";
        
@@ -259,8 +300,7 @@ public class OntologyUtils
         
         return printSPO(subject, predicate, object);
     }
-    
-    
+   
     public static String printStatement(Statement t)
     {
         String subject      = t.getSubject().toString().split("#")[1];
@@ -289,7 +329,6 @@ public class OntologyUtils
         return s;
     
     }
-    
     
     public static boolean isProperty(Node predicate, OntModel ontModel)
     {
@@ -393,19 +432,19 @@ public class OntologyUtils
                 case "EquivalentClass":
                     newClass.addEquivalentClass(restriction); 
                     break;
-                case "SubClassOf":
+                case "SubClass":
                     newClass.addSubClass(restriction);
+                    //newClass.addEquivalentClass(restriction);
                     break;
-                case "SuperClassOf":
+                case "SuperClass":
                     newClass.addSuperClass(restriction);
+                    //newClass.addEquivalentClass(restriction);
                     break;
                 default:
                     
                     break;
             }
     }
-    
-    
     
     /**
      * 
@@ -428,38 +467,22 @@ public class OntologyUtils
             
             addRestriction(restrictionType, newClass, enumClass);
         }
-        else
-            Utilities.logInfo("Class "+cls+" not enumerated Class");
-        
         
         if(cls.isIntersectionClass())
         {
             RDFList operands = cls.asIntersectionClass().getOperands();   
-            IntersectionClass interClass = newClass.getOntModel().createIntersectionClass(null, operands);
-            
+            IntersectionClass interClass = newClass.getOntModel().createIntersectionClass(null, operands);    
             addRestriction(restrictionType, newClass, interClass);
-            
         }
-        else
-            Utilities.logInfo("Class "+cls+" not a Intersection Class");
         
         if(cls.isRestriction())
-        {
             copyRestrictionDetail(cls, newClass, restrictionType);
-        }
-        else
-            Utilities.logInfo("Class "+cls+" not a Restriction Class");
         
         if(cls.isUnionClass())
         {
             UnionClass asUnionClass = cls.asUnionClass();
             UnionClass newUnionClass = newClass.getOntModel().createUnionClass(null, asUnionClass.getOperands());
-            
             addRestriction(restrictionType, newClass, newUnionClass);
-        }
-        else
-        {
-            Utilities.logInfo("Class "+cls+" not a Union Class");
         }
         
         if(cls.isComplementClass())
@@ -467,37 +490,30 @@ public class OntologyUtils
             ComplementClass createComplementClass = newClass.getOntModel().createComplementClass(null, cls);         
             addRestriction(restrictionType, newClass, createComplementClass);
         }
-        else
-        {
-            Utilities.logInfo("Class "+cls+" not a complement class");
-        }
+        
 
     }
 
     public static void copyRestrictionDetail(OntClass cls, OntClass newClass, String restrictionType)
     {
-        Restriction sup             = cls.asRestriction();
-        Restriction new_restriction = null; // sus
-        OntProperty onProperty      = sup.getOnProperty();
-
+        Restriction old_restriction = cls.asRestriction();
+        Restriction new_restriction = null; 
+        OntProperty onProperty      = old_restriction.getOnProperty();
         
-        if (sup.isAllValuesFromRestriction()) 
+        if (old_restriction.isAllValuesFromRestriction()) 
         {
-            //OntProperty onProperty = sup.getOnProperty();
-            Resource allValuesFrom = sup.asAllValuesFromRestriction().getAllValuesFrom();
+            Resource allValuesFrom = old_restriction.asAllValuesFromRestriction().getAllValuesFrom();
 
             //TEST?
             AllValuesFromRestriction createAllValuesFromRestriction = 
                     newClass.getOntModel().createAllValuesFromRestriction(null, onProperty, allValuesFrom);
-            //newClass.addEquivalentClass(createAllValuesFromRestriction);
-
+               
             new_restriction = createAllValuesFromRestriction;
         }
 
-        if (sup.isSomeValuesFromRestriction())
-        {   
-            //OntProperty onProperty = sup.getOnProperty();
-            Resource someValuesFrom = sup.asSomeValuesFromRestriction().getSomeValuesFrom();
+        if (old_restriction.isSomeValuesFromRestriction())
+        {       
+            Resource someValuesFrom = old_restriction.asSomeValuesFromRestriction().getSomeValuesFrom();
 
             SomeValuesFromRestriction createSomeValuesFromRestriction = 
                     newClass.getOntModel().createSomeValuesFromRestriction(null, onProperty, someValuesFrom);
@@ -505,38 +521,48 @@ public class OntologyUtils
             new_restriction = createSomeValuesFromRestriction;
         }
 
-       
-        if (sup.isCardinalityRestriction())
-        {
-            
-            CardinalityRestriction cr = sup.asCardinalityRestriction();
+        if (old_restriction.isCardinalityRestriction() || old_restriction.isMaxCardinalityRestriction() || old_restriction.isMinCardinalityRestriction())
+        {            
+            CardinalityRestriction cr = old_restriction.asCardinalityRestriction();
             int cardinality           = cr.getCardinality(); 
-            if(cr.isMaxCardinalityRestriction())
-            {               
-                //MaxCardinalityRestriction max_cr = cr.asMaxCardinalityRestriction();
+         
+            if(cr.isMaxCardinalityRestriction())               
                 new_restriction = newClass.getOntModel().createMaxCardinalityRestriction(
                             null, onProperty, cardinality);
-            }
             else if (cr.isMinCardinalityRestriction())
                 new_restriction = newClass.getOntModel().createMinCardinalityRestriction
                         (null, onProperty, cardinality);
             else
                 new_restriction = newClass.getOntModel().createCardinalityRestriction(
                             null, onProperty, cardinality);
-
-            
         }
 
-        if(sup.isHasValueRestriction())
+        if(old_restriction.isHasValueRestriction())
         {   
-            HasValueRestriction hasValueRestriction = sup.asHasValueRestriction();
+            HasValueRestriction hasValueRestriction = old_restriction.asHasValueRestriction();
             RDFNode hasValue = hasValueRestriction.getHasValue();
             new_restriction = newClass.getOntModel().createHasValueRestriction(null, onProperty, hasValue);
         }
         
-        addRestriction(restrictionType, newClass, new_restriction);
-         
+        // I don't know if this ever works
+        try
+        {
+            CardinalityQRestriction cqr =  old_restriction.as(CardinalityQRestriction.class);
+            int cardinality = cqr.getCardinalityQ();
+            OntClass hasClassQ = cqr.getHasClassQ().asClass();
+            
+            new_restriction = newClass.getOntModel().createCardinalityQRestriction
+                    (null, onProperty, cardinality, hasClassQ);
+        }
+        catch(Exception e)
+        {
+            Utilities.logInfo("Could not cast restriction to CardinalityQRestriction");
+        }
         
+        if(new_restriction!=null)
+            addRestriction(restrictionType, newClass, new_restriction);
+//        else //this does not work - copia restrição vazia, que depois dá erro
+//            addRestriction(restrictionType, newClass, old_restriction);
         
     }
 }
