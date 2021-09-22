@@ -19,7 +19,10 @@ import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.EnumeratedClass;
 import org.apache.jena.ontology.HasValueRestriction;
 import org.apache.jena.ontology.IntersectionClass;
+import org.apache.jena.ontology.MaxCardinalityQRestriction;
 import org.apache.jena.ontology.MaxCardinalityRestriction;
+import org.apache.jena.ontology.MinCardinalityQRestriction;
+import org.apache.jena.ontology.MinCardinalityRestriction;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
@@ -28,6 +31,7 @@ import org.apache.jena.ontology.OntResource;
 import org.apache.jena.ontology.QualifiedRestriction;
 import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
+import org.apache.jena.ontology.TransitiveProperty;
 import org.apache.jena.ontology.UnionClass;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Property;
@@ -102,16 +106,17 @@ public class OntologyUtils
         boolean symmetricProperty = old_property.isSymmetricProperty();
         boolean transitiveProperty = old_property.isTransitiveProperty();
         
+        //check if property exists
         OntProperty newProperty = (OntProperty) newModel.createOntProperty(old_property.getURI());
         
         if(isFunctional)
-            newProperty.convertToTransitiveProperty();
+            newProperty = newProperty.convertToTransitiveProperty();
         if(inverseFunctionalProperty)
-            newProperty.convertToInverseFunctionalProperty();
+            newProperty = newProperty.convertToInverseFunctionalProperty();
         if(symmetricProperty)
-            newProperty.convertToSymmetricProperty();
+            newProperty = newProperty.convertToSymmetricProperty();
         if(transitiveProperty)
-            newProperty.convertToTransitiveProperty();
+            newProperty = newProperty.convertToTransitiveProperty();
         
         List<? extends OntResource> listDomain = old_property.listDomain().toList();
         for(OntResource r : listDomain)
@@ -128,8 +133,11 @@ public class OntologyUtils
         OntProperty superProperty = old_property.getSuperProperty();
         if(superProperty!=null && newModel.getProperty(superProperty.getURI())!=null)
         {
-            OntProperty copyProperty = copyProperty(newModel, superProperty);
-            newProperty.setSuperProperty(copyProperty);
+            OntProperty property = newModel.getOntProperty(superProperty.getURI());
+            if(property==null)
+                property = copyProperty(newModel, superProperty);
+            
+            newProperty.setSuperProperty(property);
         }
         
         List<? extends OntProperty> listSubProperties = old_property.listSubProperties().toList();
@@ -137,7 +145,9 @@ public class OntologyUtils
         {
             if(newModel.getProperty(p.getURI())!=null)
             {
-                OntProperty copyProperty = copyProperty(newModel, p);
+                OntProperty copyProperty = newModel.getOntProperty(p.getURI());
+                if(copyProperty==null)
+                    copyProperty = copyProperty(newModel, p);
                 newProperty.addSubProperty(copyProperty);
             }
         }
@@ -163,7 +173,7 @@ public class OntologyUtils
             if(!Utilities.isInIgnoreList(r.getURI()))
                 stats+= "\n\t\t\t- " + r.getURI();
         
-        stats += "\n\t\tSuperProperties: ";
+        stats += "\n\t\tSubProperties: ";
         ExtendedIterator<? extends OntResource> listSUB = property.listSubProperties();
         for(OntResource r : listSUB.toList())
             if(!Utilities.isInIgnoreList(r.getURI()))
@@ -503,8 +513,6 @@ public class OntologyUtils
         if (old_restriction.isAllValuesFromRestriction()) 
         {
             Resource allValuesFrom = old_restriction.asAllValuesFromRestriction().getAllValuesFrom();
-
-            //TEST?
             AllValuesFromRestriction createAllValuesFromRestriction = 
                     newClass.getOntModel().createAllValuesFromRestriction(null, onProperty, allValuesFrom);
                
@@ -514,27 +522,10 @@ public class OntologyUtils
         if (old_restriction.isSomeValuesFromRestriction())
         {       
             Resource someValuesFrom = old_restriction.asSomeValuesFromRestriction().getSomeValuesFrom();
-
             SomeValuesFromRestriction createSomeValuesFromRestriction = 
                     newClass.getOntModel().createSomeValuesFromRestriction(null, onProperty, someValuesFrom);
 
             new_restriction = createSomeValuesFromRestriction;
-        }
-
-        if (old_restriction.isCardinalityRestriction() || old_restriction.isMaxCardinalityRestriction() || old_restriction.isMinCardinalityRestriction())
-        {            
-            CardinalityRestriction cr = old_restriction.asCardinalityRestriction();
-            int cardinality           = cr.getCardinality(); 
-         
-            if(cr.isMaxCardinalityRestriction())               
-                new_restriction = newClass.getOntModel().createMaxCardinalityRestriction(
-                            null, onProperty, cardinality);
-            else if (cr.isMinCardinalityRestriction())
-                new_restriction = newClass.getOntModel().createMinCardinalityRestriction
-                        (null, onProperty, cardinality);
-            else
-                new_restriction = newClass.getOntModel().createCardinalityRestriction(
-                            null, onProperty, cardinality);
         }
 
         if(old_restriction.isHasValueRestriction())
@@ -547,6 +538,7 @@ public class OntologyUtils
         // I don't know if this ever works
         try
         {
+           
             CardinalityQRestriction cqr =  old_restriction.as(CardinalityQRestriction.class);
             int cardinality = cqr.getCardinalityQ();
             OntClass hasClassQ = cqr.getHasClassQ().asClass();
@@ -559,10 +551,81 @@ public class OntologyUtils
             Utilities.logInfo("Could not cast restriction to CardinalityQRestriction");
         }
         
+        int cardinality             = old_restriction.getCardinality(onProperty);
+        
+      
+        
+        
+        try
+        {
+            ///MaxCardinalityRestriction cr   = old_restriction.convertToMaxCardinalityRestriction(cardinality);
+
+            MaxCardinalityRestriction cr    = old_restriction.asMaxCardinalityRestriction();
+            cardinality                 = cr.getMaxCardinality();
+            boolean success = false;
+            
+            try
+            {
+                MaxCardinalityQRestriction cqr =  cr.as(MaxCardinalityQRestriction.class);
+                cardinality = cqr.getMaxCardinalityQ();
+                OntClass hasClassQ = cqr.getHasClassQ().asClass();
+
+                new_restriction = newClass.getOntModel().createMaxCardinalityQRestriction
+                        (null, onProperty, cardinality, hasClassQ);
+                
+                success = true;
+            }
+            catch(Exception e)
+            {}
+            
+            if(!success)
+                new_restriction = newClass.getOntModel().createMaxCardinalityRestriction
+                        (null, onProperty, cardinality);
+        }
+        catch(Exception e)
+        {
+            Utilities.logInfo("Could not cast restriction to CardinalityRestriction");
+        }
+        
+        
+        try
+        {
+            //MinCardinalityRestriction cr   = old_restriction.convertToMinCardinalityRestriction(cardinality);
+
+            MinCardinalityRestriction cr    = old_restriction.asMinCardinalityRestriction();
+            cardinality                 = cr.getMinCardinality();
+            boolean success = false;
+            
+            try
+            {
+                MinCardinalityQRestriction cqr =  cr.as(MinCardinalityQRestriction.class);
+                cardinality = cqr.getMinCardinalityQ();
+                OntClass hasClassQ = cqr.getHasClassQ().asClass();
+
+                new_restriction = newClass.getOntModel().createMinCardinalityQRestriction
+                        (null, onProperty, cardinality, hasClassQ);
+                
+                success = true;
+            }
+            catch(Exception e)
+            {}
+            
+            if(!success)
+                new_restriction = newClass.getOntModel().createMinCardinalityRestriction
+                    (null, onProperty, cardinality);
+        }
+        catch(Exception e)
+        {
+            Utilities.logInfo("Could not cast restriction to CardinalityRestriction");
+        }
+        
+        
+        
         if(new_restriction!=null)
             addRestriction(restrictionType, newClass, new_restriction);
 //        else //this does not work - copia restrição vazia, que depois dá erro
 //            addRestriction(restrictionType, newClass, old_restriction);
         
+
     }
 }

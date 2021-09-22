@@ -102,7 +102,6 @@ public class Comparator
         boolean ignore = Utilities.isInIgnoreList(t.getPredicate().getURI());
         
         if(ignore) return;
-        
         IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t, this.ontologyModel);
         
         if(comparator != null)

@@ -56,17 +56,17 @@
 
 ###  http://shizaTest#New_Class1
 :New_Class1 rdf:type owl:Class ;
-            owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :NEW_OP1 ;
-                                  owl:someValuesFrom :Old_Class1
-                                ] ;
             rdfs:subClassOf [ rdf:type owl:Restriction ;
                               owl:onProperty :NEW_OP1 ;
-                              owl:allValuesFrom :Old_Class2
+                              owl:someValuesFrom :Old_Class1
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :NEW_OP3 ;
+                              owl:allValuesFrom :Old_Class3
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :NEW_OP2 ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                               owl:onClass :Old_Class3
                             ] ;
             owl:disjointWith :Old_Class1 ;

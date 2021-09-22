@@ -5,12 +5,16 @@
 @prefix xml:  <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-:NEW_OP3  rdf:type  owl:ObjectProperty .
+:NEW_OP3  rdf:type          owl:TransitiveProperty , rdf:Property ;
+        rdfs:domain         :Old_Class1 ;
+        rdfs:range          :Old_Class2 ;
+        rdfs:subPropertyOf  :NEW_OP3 , :NEW_OP2 .
 
 :OLD_ID_CL2  rdf:type  owl:NamedIndividual , :Old_Class2 ;
         :OLD_OP3  :OLD_ID_CL3 .
 
-:NEW_OP2  rdf:type  owl:ObjectProperty .
+:NEW_OP2  rdf:type          rdf:Property ;
+        rdfs:subPropertyOf  :NEW_OP2 .
 
 :OLD_OP3  rdf:type          owl:ObjectProperty , owl:FunctionalProperty ;
         rdfs:domain         :Old_Class1 ;
@@ -31,7 +35,7 @@
 :OLD_DT3  rdf:type          owl:FunctionalProperty , owl:DatatypeProperty ;
         rdfs:subPropertyOf  :OLD_DT2 .
 
-:NEW_OP1  rdf:type  owl:ObjectProperty .
+:NEW_OP1  rdf:type  owl:TransitiveProperty , owl:SymmetricProperty , rdf:Property .
 
 :OLD_OP2  rdf:type  owl:ObjectProperty .
 
@@ -41,16 +45,16 @@
         rdfs:domain  :Old_Class2 ;
         rdfs:range   rdfs:Literal .
 
-:New_Class1  rdf:type        owl:Class ;
-        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
-                               owl:allValuesFrom  :Old_Class2 ;
-                               owl:onProperty     :NEW_OP1
-                             ] ;
-        owl:disjointWith     :Old_Class1 ;
-        owl:equivalentClass  [ rdf:type            owl:Restriction ;
-                               owl:onProperty      :NEW_OP1 ;
-                               owl:someValuesFrom  :Old_Class1
-                             ] .
+:New_Class1  rdf:type     owl:Class ;
+        rdfs:subClassOf   [ rdf:type            owl:Restriction ;
+                            owl:onProperty      :NEW_OP1 ;
+                            owl:someValuesFrom  :Old_Class1
+                          ] ;
+        rdfs:subClassOf   [ rdf:type           owl:Restriction ;
+                            owl:allValuesFrom  :Old_Class3 ;
+                            owl:onProperty     :NEW_OP3
+                          ] ;
+        owl:disjointWith  :Old_Class1 .
 
 :OLD_OP1  rdf:type  owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty .
 
