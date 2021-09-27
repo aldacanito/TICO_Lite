@@ -1,0 +1,956 @@
+@prefix : <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ext: <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@base <http://www.gecad.isep.ipp.pt/ASIIO> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO> rdf:type owl:Ontology ;
+                                      owl:versionIRI <http://www.gecad.isep.ipp.pt/ASIIO/1.6> ;
+                                      terms:created "14/Nov/2019" ;
+                                      terms:modified "28/July/2020"^^rdfs:Literal ;
+                                      rdfs:comment """Core ontology for cybersecurity to be extended with UCO and ATMONTO, started with 4 main concepts 
+Incidient
+Event
+Alert
+Alarm"""^^xsd:string ;
+                                      owl:versionInfo 1.6 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/created
+terms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+terms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+terms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extChanges
+:extChanges rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAffectesConfiguration
+:extAffectesConfiguration rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf :extTopObjectProperty ;
+                          terms:created "24/Feb/2020" ;
+                          terms:creator "Katia Aleid" ;
+                          rdfs:label "affectsConfiguration"@en ;
+                          owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAffests
+:extAffests rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :extTopObjectProperty ;
+            owl:inverseOf :extAffextedBy ;
+            terms:creator "Katia Aleid" ;
+            terms:modified "27/May/2020" ;
+            rdfs:label "afeta"@pt ,
+                       "affects"@en ;
+            owl:versionInfo "2" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAffextedBy
+:extAffextedBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :extTopObjectProperty ;
+               terms:creator "Katia Aleid" ;
+               terms:modified "27/May/2020" ;
+               rdfs:label "afetado por"@pt ,
+                          "affectedBy"@en ;
+               owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCauses
+:extCauses rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :extTopObjectProperty ;
+           terms:created "24/Feb/2020" ;
+           terms:creator "Katia Aleid" ;
+           rdfs:label "causa"@pt ,
+                      "causes"@en ;
+           owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extConsistsOf
+:extConsistsOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :extTopObjectProperty ;
+               rdf:type owl:AsymmetricProperty ;
+               terms:creator "Katia Aleid" ;
+               terms:modified "27/May/2020" ;
+               rdfs:comment "All incidents are events, but not all events are incidents so this property is asymmetric" ;
+               rdfs:label "consisteDe"@pt ,
+                          "consistsOf"@en ;
+               owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extExploits
+:extExploits rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :extTopObjectProperty ;
+             terms:creator "Katia Aleid" ;
+             terms:modified "27/May/2020" ;
+             rdfs:label "exploits"@en ,
+                        "façanha"@pt ;
+             owl:versionInfo "2" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extExposedBy
+:extExposedBy rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :extTopObjectProperty ;
+              terms:created "24/Feb/2020" ;
+              terms:creator "Katia Aleid" ;
+              rdfs:label "exposedBy"@en ;
+              owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHas
+:extHas rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :extTopObjectProperty ;
+        terms:creator "Katia Aleid" ;
+        terms:modified "27/May/2020" ;
+        rdfs:label "has"@en ,
+                   "tem"@pt ;
+        owl:versionInfo "2" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasAffectedAsset
+:extHasAffectedAsset rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :extTopObjectProperty ;
+                     terms:created "28/May/2020" ;
+                     terms:creator "Katia Aleid" ;
+                     rdfs:label "hasAffectedAssets"@en ;
+                     owl:versionInfo 1 .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasConfiguration
+:extHasConfiguration rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :extTopObjectProperty ;
+                     terms:created "24/Feb/2020" ;
+                     terms:creator "Katia Aleid" ;
+                     rdfs:label "hasConfiguration"@en ;
+                     owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasCriticality
+:extHasCriticality rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :extTopObjectProperty ;
+                   rdf:type owl:FunctionalProperty ;
+                   terms:creator "Katia Aleid" ;
+                   terms:modified "27/May/2020" ;
+                   rdfs:comment "each event has a level of criticality" ;
+                   rdfs:label "hasCriticality"@en ,
+                              "temCriticidade"@pt ;
+                   owl:versionInfo "2" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasDestinationAsset
+:extHasDestinationAsset rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :extTopObjectProperty ;
+                        terms:created "28/May/2020" ;
+                        terms:creator "Katia Aleid" ;
+                        rdfs:label "hasDestinationAsset"@en ;
+                        owl:versionInfo 1 .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasSeverity
+:extHasSeverity rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :extTopObjectProperty ;
+                rdf:type owl:FunctionalProperty ;
+                terms:creator "Katia Aleid" ;
+                terms:modified "27/May/2020" ;
+                rdfs:label "hasSeverity"@en ,
+                           "temGravidade"@pt ;
+                owl:versionInfo "2" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasSourceAsset
+:extHasSourceAsset rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :extTopObjectProperty ;
+                   terms:created "28/May/2020" ;
+                   terms:creator "Katia Aleid" ;
+                   rdfs:label "hasSourceAsset"@en ;
+                   owl:versionInfo 1 .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasSourceEvent
+:extHasSourceEvent rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :extTopObjectProperty ;
+                   terms:created "28/May/2020" ;
+                   terms:creator "Katia Aleid" ;
+                   rdfs:label "hasSourceEvent"@en ;
+                   owl:versionInfo 1 .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasStatus
+:extHasStatus rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :extTopObjectProperty ;
+              rdf:type owl:FunctionalProperty ;
+              terms:creator "Katia Aleid" ;
+              terms:modified "27/May/2020" ;
+              rdfs:label "hasStatus"@en ,
+                         "temStatus"@pt ;
+              owl:versionInfo "2" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasTargetEvent
+:extHasTargetEvent rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :extTopObjectProperty ;
+                   terms:created "28/May/2020" ;
+                   terms:creator "Katia Aleid" ;
+                   rdfs:label "hasTargetEvent"@en ;
+                   owl:versionInfo 1 .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHasVerison
+:extHasVerison rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :extTopObjectProperty ;
+               terms:created "24/Feb/2020" ;
+               terms:creator "Katia Aleid" ;
+               rdfs:label "hasVersion"@en ;
+               owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extIsTriggeredBy
+:extIsTriggeredBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :extTopObjectProperty ;
+                  owl:inverseOf :extTriggers ;
+                  rdf:type owl:FunctionalProperty ;
+                  terms:creator "Katia Aleid" ;
+                  terms:modified "27/May/2020" ;
+                  rdfs:label "acionadoPor"@pt ,
+                             "triggeredBy"@en ;
+                  owl:versionInfo "2" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extLaunches
+:extLaunches rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :extTopObjectProperty ;
+             terms:created "24/Feb/2020" ;
+             terms:creator "Katia Aleid" ;
+             rdfs:label "lança"@pt ,
+                        "launches"@en ;
+             owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extPrevents
+:extPrevents rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :extTopObjectProperty ;
+             terms:created "24/Feb/2020" ;
+             terms:creator "Katia Aleid" ;
+             rdfs:label "impede"@pt ,
+                        "prevents"@en ;
+             owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extTopObjectProperty
+:extTopObjectProperty rdf:type owl:ObjectProperty ;
+                      terms:created "27/May/2020" ;
+                      terms:creator "Katia Aleid" ;
+                      rdfs:label "objectProperty"@en ;
+                      owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extTriggers
+:extTriggers rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :extTopObjectProperty ;
+             terms:creator "Katia Aleid" ;
+             terms:modified "27/May/2020" ;
+             rdfs:label "aciona"@pt ,
+                        "triggers"@en ;
+             owl:versionInfo "2" .
+
+
+###  http://www.w3.org/2006/time#hasBeginning
+<http://www.w3.org/2006/time#hasBeginning> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/time#hasEnd
+<http://www.w3.org/2006/time#hasEnd> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAction
+:extAction rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf :extTopDataProperty ;
+           rdfs:range rdfs:Literal ;
+           terms:creator "Katia Aleid" ;
+           terms:modified "28/May/2020" ;
+           rdfs:label "action"@en ;
+           owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extActionsToFollow
+:extActionsToFollow rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :extTopDataProperty ;
+                    rdfs:domain :extAttack ;
+                    rdfs:range rdfs:Literal ;
+                    terms:creator "Katia Aleid" ;
+                    terms:modified "28/May/2020" ;
+                    rdfs:label "actionsToFollow"@en ;
+                    owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAdditionalData
+:extAdditionalData rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf :extTopDataProperty ;
+                   rdfs:domain :extAttack ;
+                   rdfs:range rdfs:Literal ;
+                   terms:creator "Katia Aleid" ;
+                   terms:modified "28/May/2020" ;
+                   rdfs:label "additionalData"@en ;
+                   owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAssetID
+:extAssetID rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :extTopDataProperty ;
+            rdfs:range xsd:long ;
+            terms:creator "Katia Aleid" ;
+            terms:modified "28/May/2020" ;
+            rdfs:label "assetID"@en ;
+            owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBusinessActivity
+:extBusinessActivity rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :extTopDataProperty ;
+                     rdfs:range rdfs:Literal ;
+                     terms:creator "Katia Aleid" ;
+                     terms:modified "28/May/2020" ;
+                     rdfs:label "businessActivity"@en ;
+                     owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCVEID
+:extCVEID rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :extTopDataProperty ;
+          rdfs:domain :extVulnerability ;
+          rdfs:range xsd:long ;
+          terms:creator "Katia Aleid" ;
+          terms:modified "08/June/2020" ;
+          rdfs:label "CVE ID"@en ;
+          owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCategory
+:extCategory rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf :extTopDataProperty ;
+             rdfs:domain :extVulnerability ;
+             rdfs:range rdfs:Literal ;
+             terms:creator "Katia Aleid" ;
+             terms:modified "28/May/2020" ;
+             rdfs:label "category"@en ;
+             owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCompletion
+:extCompletion rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :extTopDataProperty ;
+               rdfs:domain :extImpact ;
+               rdfs:range xsd:float ;
+               terms:creator "Katia Aleid" ;
+               terms:modified "28/May/2020" ;
+               rdfs:label "completion"@en ;
+               owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extDescription
+:extDescription rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :extTopDataProperty ;
+                rdfs:domain :extAsset ,
+                            :extEvent ,
+                            :extVulnerability ;
+                rdfs:range rdfs:Literal ;
+                terms:creator "Katia Aleid" ;
+                terms:modified "28/May/2020" ;
+                rdfs:label "description"@en ;
+                owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extID
+:extID rdf:type owl:DatatypeProperty ;
+       rdfs:subPropertyOf :extTopDataProperty ;
+       rdfs:domain :extAsset ,
+                   :extAttack ,
+                   :extEvent ,
+                   :extImpact ;
+       rdfs:range xsd:long ;
+       terms:creator "Katia Aleid" ;
+       terms:modified "28/May/2020" ;
+       rdfs:label "ID"@en ;
+       owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extMeans
+:extMeans rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :extTopDataProperty ;
+          rdfs:range rdfs:Literal ;
+          terms:creator "Katia Aleid" ;
+          terms:modified "28/May/2020" ;
+          rdfs:label "means"@en ;
+          owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extPerformanceValue
+:extPerformanceValue rdf:type owl:DatatypeProperty ;
+                     rdfs:subPropertyOf :extTopDataProperty ;
+                     rdfs:range xsd:float ;
+                     terms:creator "Katia Aleid" ;
+                     terms:modified "28/May/2020" ;
+                     rdfs:label "performanceValue"@en ;
+                     owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extProbability
+:extProbability rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :extTopDataProperty ;
+                rdfs:range xsd:float ;
+                terms:creator "Katia Aleid" ;
+                terms:modified "28/May/2020" ;
+                rdfs:label "probbility"@en ;
+                owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extProcess
+:extProcess rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :extTopDataProperty ;
+            rdfs:range rdfs:Literal ;
+            terms:creator "Katia Aleid" ;
+            terms:modified "28/May/2020" ;
+            rdfs:label "process"@en ;
+            owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extRecoveryTime
+:extRecoveryTime rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :extTopDataProperty ;
+                 rdfs:range xsd:dateTimeStamp ;
+                 terms:creator "Katia Aleid" ;
+                 terms:modified "28/May/2020" ;
+                 rdfs:label "recoveryTime"@en ;
+                 owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extRemediation
+:extRemediation rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf :extTopDataProperty ;
+                rdfs:domain :extVulnerability ;
+                rdfs:range rdfs:Literal ;
+                terms:creator "Katia Aleid" ;
+                terms:modified "28/May/2020" ;
+                rdfs:label "remediation"@en ;
+                owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extScore
+:extScore rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :extTopDataProperty ;
+          rdfs:domain :extVulnerability ;
+          rdfs:range xsd:int ;
+          terms:creator "Katia Aleid" ;
+          terms:modified "28/May/2020" ;
+          rdfs:label "score"@en ;
+          owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extService
+:extService rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf :extTopDataProperty ;
+            rdfs:range rdfs:Literal ;
+            terms:creator "Katia Aleid" ;
+            terms:modified "28/May/2020" ;
+            rdfs:label "service"@en ;
+            owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extThreshold
+:extThreshold rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf :extTopDataProperty ;
+              rdfs:range xsd:long ;
+              terms:creator "Katia Aleid" ;
+              terms:modified "28/May/2020" ;
+              rdfs:label "thershold"@en ;
+              owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extTopDataProperty
+:extTopDataProperty rdf:type owl:DatatypeProperty ;
+                    rdfs:range rdfs:Literal ;
+                    terms:created "28/May/2020" ;
+                    terms:creator "Katia Aleid" ;
+                    rdfs:label "dataProperty"@en ;
+                    owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extType
+:extType rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf :extTopDataProperty ;
+         rdfs:domain :extAttack ,
+                     :extEvent ;
+         rdfs:range rdfs:Literal ;
+         terms:creator "Katia Aleid" ;
+         terms:modified "28/May/2020" ;
+         rdfs:label "type"@en ;
+         owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extURL
+:extURL rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf :extTopDataProperty ;
+        rdfs:domain :extVulnerability ;
+        rdfs:range rdfs:Literal ;
+        terms:creator "Katia Aleid" ;
+        terms:modified "28/May/2020" ;
+        rdfs:label "URL"@en ;
+        owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extValue
+:extValue rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf :extTopDataProperty ;
+          rdfs:range xsd:float ;
+          terms:creator "Katia Aleid" ;
+          terms:modified "28/May/2020" ;
+          rdfs:label "value"@en ;
+          owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extVulnerabilityID
+:extVulnerabilityID rdf:type owl:DatatypeProperty ;
+                    rdfs:subPropertyOf :extTopDataProperty ;
+                    rdfs:range xsd:long ;
+                    terms:creator "Katia Aleid" ;
+                    terms:modified "28/May/2020" ;
+                    rdfs:label "vulnerabilityID"@en ;
+                    owl:versionInfo "1" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAPT
+:extAPT rdf:type owl:Class ;
+        rdfs:subClassOf :extAttackType ;
+        terms:created "28/July/2020" ;
+        terms:creator "Katia Aleid" ;
+        rdfs:label "APT"@pt ,
+                   "Advanced persistent threat"@en ;
+        owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAdvisory
+:extAdvisory rdf:type owl:Class ;
+             rdfs:subClassOf :extAlert ;
+             terms:created "24/Feb/2020" ;
+             terms:creator "Katia Aleid" ;
+             rdfs:label "Advisory"@en ,
+                        "Consultivo"@pt ;
+             owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAlarm
+:extAlarm rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :extAlert
+                                                     [ rdf:type owl:Class ;
+                                                       owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :extHasSeverity ;
+                                                                       owl:someValuesFrom :extExtremeSeverity
+                                                                     ]
+                                                                     [ rdf:type owl:Restriction ;
+                                                                       owl:onProperty :extHasSeverity ;
+                                                                       owl:someValuesFrom :extHighSeverity
+                                                                     ]
+                                                                   )
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          terms:created "14/Nov/2019" ;
+          terms:creator "Katia Aleid" ;
+          rdfs:label "Alarm"@en ,
+                     "Alarme"@pt ;
+          owl:versionInfo "1" ;
+          skos:definition "An alert with a Security Level that is either High or Extreme" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAlert
+:extAlert rdf:type owl:Class ;
+          rdfs:subClassOf :extThing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :extHasSeverity ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :extSeverityValuePartition
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :extHasStatus ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :extStatusValuePartition
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :extIsTriggeredBy ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :extEvent
+                          ] ;
+          terms:created "14/Nov/2019" ;
+          terms:creator "Katia Aleid" ;
+          rdfs:label "Alert"@en ,
+                     "Alerta"@pt ;
+          owl:versionInfo "1" ;
+          skos:definition "A notification that a specific attack has been directed at an organization’s information systems."@en .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAsset
+:extAsset rdf:type owl:Class ;
+          rdfs:subClassOf :extThing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :extAffextedBy ;
+                            owl:someValuesFrom :extEvent
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :extHasCriticality ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :extCriticalityValuePartition
+                          ] ;
+          terms:created "14/Nov/2019" ;
+          terms:creator "Katia Aleid" ;
+          terms:modified "28/May/2020" ;
+          rdfs:label "Asset"@en ,
+                     "Posse"@pt ;
+          owl:versionInfo 4 ;
+          skos:definition "Information or resource which have value to an organization or person."@en .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAttack
+:extAttack rdf:type owl:Class ;
+           rdfs:subClassOf :extEvent ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :extExploits ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :extVulnerability
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :extHasCriticality ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :extCriticalityValuePartition
+                           ] ;
+           terms:created "24/Feb/2020" ;
+           terms:creator "Katia Aleid" ;
+           rdfs:label "Ataque"@pt ,
+                      "Attack"@en ;
+           owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAttackType
+:extAttackType rdf:type owl:Class ;
+               rdfs:subClassOf :extThing ;
+               terms:created "28/July/2020" ;
+               terms:creator "Katia Aleid" ;
+               rdfs:label "Attack Type"@en ,
+                          "Tipo de ataque"@pt ;
+               owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCriticalityValuePartition
+:extCriticalityValuePartition rdf:type owl:Class ;
+                              owl:equivalentClass [ rdf:type owl:Class ;
+                                                    owl:unionOf ( :extEmergencyCriticality
+                                                                  :extEscalationCriticality
+                                                                  :extNormalCriticality
+                                                                )
+                                                  ] ;
+                              rdfs:subClassOf :extValuePartition ;
+                              terms:created "14/Nov/2019" ;
+                              terms:creator "Katia Aleid" ;
+                              rdfs:comment """Available criticality levels are:
+Normal
+Escalation
+Emergency""" ;
+                              rdfs:label "Criticality"@en ,
+                                         "Criticamente"@pt ;
+                              owl:versionInfo "1" ;
+                              skos:definition "Value partition that conrols the level of criticality of an event."@en .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extDisabledStaus
+:extDisabledStaus rdf:type owl:Class ;
+                  rdfs:subClassOf :extStatusValuePartition ;
+                  owl:disjointWith :extEnabledStatus ;
+                  terms:created "14/Nov/2019" ;
+                  terms:creator "Katia Aleid" ;
+                  rdfs:label "Desativado"@pt ,
+                             "Disabled"@en ;
+                  owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEmergencyCriticality
+:extEmergencyCriticality rdf:type owl:Class ;
+                         rdfs:subClassOf :extCriticalityValuePartition ;
+                         terms:created "14/Nov/2019" ;
+                         terms:creator "Katia Aleid" ;
+                         rdfs:label "Emergency"@en ,
+                                    "Emergência"@pt ;
+                         owl:versionInfo "1" ;
+                         skos:definition "Criticality value that the related event impacts to safety/breach of critical systems"@en .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEnabledStatus
+:extEnabledStatus rdf:type owl:Class ;
+                  rdfs:subClassOf :extStatusValuePartition ;
+                  terms:created "14/Nov/2019" ;
+                  terms:creator "Katia Aleid" ;
+                  rdfs:label "Ativado"@pt ,
+                             "Enabled"@en ;
+                  owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEscalationCriticality
+:extEscalationCriticality rdf:type owl:Class ;
+                          rdfs:subClassOf :extCriticalityValuePartition ;
+                          terms:created "14/Nov/2019" ;
+                          terms:creator "Katia Aleid" ;
+                          rdfs:label "Escalation"@en ,
+                                     "Escalação"@pt ;
+                          owl:versionInfo "1" ;
+                          skos:definition "Criticality value that the related event requires the application of corrective measures"@en .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEvent
+:extEvent rdf:type owl:Class ;
+          rdfs:subClassOf :extThing ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :extTriggers ;
+                            owl:someValuesFrom :extAlert
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :extAffests ;
+                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :extAsset
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :extHasCriticality ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass :extCriticalityValuePartition
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty <http://www.w3.org/2006/time#hasBeginning> ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass <http://www.w3.org/2006/time#Instant>
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty <http://www.w3.org/2006/time#hasEnd> ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass <http://www.w3.org/2006/time#Instant>
+                          ] ;
+          terms:created "14/Nov/2019" ;
+          terms:creator "Katia Aleid" ;
+          terms:modified "30/Nov/2019" ;
+          rdfs:label "Event"@en ,
+                     "Evento"@pt ;
+          owl:versionInfo "3" ;
+          skos:definition "A discrete change of state or status of an Asset or group of Assets. Specific Events may trigger Alerts."@en .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extExtremeSeverity
+:extExtremeSeverity rdf:type owl:Class ;
+                    rdfs:subClassOf :extSeverityValuePartition ;
+                    terms:created "14/Nov/2019" ;
+                    terms:creator "Katia Aleid" ;
+                    rdfs:label "Extreme"@en ,
+                               "Extremo"@pt ;
+                    owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHighSeverity
+:extHighSeverity rdf:type owl:Class ;
+                 rdfs:subClassOf :extSeverityValuePartition ;
+                 terms:created "14/Nov/2019" ;
+                 terms:creator "Katia Aleid" ;
+                 rdfs:label "Alto"@pt ,
+                            "High"@en ;
+                 owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extImpact
+:extImpact rdf:type owl:Class ;
+           rdfs:subClassOf :extThing ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :extHasAffectedAsset ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :extAsset
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :extHasSeverity ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :extSeverityValuePartition
+                           ] ;
+           terms:created "24/Feb/2020" ;
+           terms:creator "Katia Aleid" ;
+           rdfs:label "Impact"@en ,
+                      "Impacto"@pt ;
+           owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extInfo
+:extInfo rdf:type owl:Class ;
+         rdfs:subClassOf :extAlert ;
+         terms:created "24/Feb/2020" ;
+         terms:creator "Katia Aleid" ;
+         rdfs:label "Info"@en ,
+                    "Informação"@pt ;
+         owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extLowSeverity
+:extLowSeverity rdf:type owl:Class ;
+                rdfs:subClassOf :extSeverityValuePartition ;
+                terms:created "14/Nov/2019" ;
+                terms:creator "Katia Aleid" ;
+                rdfs:label "Baixo"@pt ,
+                           "Low"@en ;
+                owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extMediumSeverity
+:extMediumSeverity rdf:type owl:Class ;
+                   rdfs:subClassOf :extSeverityValuePartition ;
+                   terms:created "14/Nov/2019" ;
+                   terms:creator "Katia Aleid" ;
+                   rdfs:label "Medium"@en ,
+                              "Médio"@pt ;
+                   owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extNormalCriticality
+:extNormalCriticality rdf:type owl:Class ;
+                      rdfs:subClassOf :extCriticalityValuePartition ;
+                      terms:created "14/Nov/2019" ;
+                      terms:creator "Katia Aleid" ;
+                      rdfs:label "Normal"@en ,
+                                 "Normal"@pt ;
+                      owl:versionInfo "1" ;
+                      skos:definition "Criticality value that the related event does not impact critical components and does not require intervention"@en .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extSeverityValuePartition
+:extSeverityValuePartition rdf:type owl:Class ;
+                           owl:equivalentClass [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :extExtremeSeverity
+                                                               :extHighSeverity
+                                                               :extLowSeverity
+                                                               :extMediumSeverity
+                                                             )
+                                               ] ;
+                           rdfs:subClassOf :extValuePartition ;
+                           terms:created "14/Nov/2019" ;
+                           terms:creator "Katia Aleid" ;
+                           rdfs:comment """Available severity levels are:
+Low
+Medium
+High
+Extreme""" ;
+                           rdfs:label "Gravidade"@pt ,
+                                      "Severity"@en ;
+                           owl:versionInfo "1" ;
+                           skos:definition "Value partition that conrols the level of severity of an alert."@en .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extStatusValuePartition
+:extStatusValuePartition rdf:type owl:Class ;
+                         owl:equivalentClass [ rdf:type owl:Class ;
+                                               owl:unionOf ( :extDisabledStaus
+                                                             :extEnabledStatus
+                                                           )
+                                             ] ;
+                         rdfs:subClassOf :extValuePartition ;
+                         terms:created "14/Nov/2019" ;
+                         terms:creator "Katia Aleid" ;
+                         rdfs:label "Status"@en ,
+                                    "Status"@pt ;
+                         owl:versionInfo "1" ;
+                         skos:definition "Value partition that conrols the status of an alert." .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extThing
+:extThing rdf:type owl:Class ;
+          terms:created "14/Nov/2019" ;
+          terms:creator "Katia Aleid" ;
+          rdfs:label "Thing" ;
+          owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extValuePartition
+:extValuePartition rdf:type owl:Class ;
+                   rdfs:subClassOf :extThing ;
+                   terms:created "14/Nov/2019" ;
+                   terms:creator "Katia Aleid" ;
+                   rdfs:label "Value Partition"@en ;
+                   owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extVulnerability
+:extVulnerability rdf:type owl:Class ;
+                  rdfs:subClassOf :extThing ;
+                  terms:created "24/Feb/2020" ;
+                  terms:creator "Katia Aleid" ;
+                  rdfs:label "Vulnerabilidade"@pt ,
+                             "Vulnerability"@en ;
+                  owl:versionInfo "1" .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extWarning
+:extWarning rdf:type owl:Class ;
+            rdfs:subClassOf :extAlert ;
+            terms:created "24/Feb/2020" ;
+            terms:creator "Katia Aleid" ;
+            rdfs:label "Atenção"@pt ,
+                       "Warning"@en ;
+            owl:versionInfo "1" .
+
+
+###  http://www.w3.org/2006/time#Instant
+<http://www.w3.org/2006/time#Instant> rdf:type owl:Class .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :extEmergencyCriticality
+                :extEscalationCriticality
+                :extNormalCriticality
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :extExtremeSeverity
+                :extHighSeverity
+                :extLowSeverity
+                :extMediumSeverity
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -35,18 +35,41 @@ public class InstanceDrivenComparisonMain
     {
         Configs configs = new Configs();
         
-        String onto_path     = "Indexes/TestOnto/shizaTest_base.ttl" ;
-        String instance_path = "Indexes/TestOnto/shizaTest_newInstance.ttl" ;
+        String onto_path      = "Indexes/TestOnto/shizaTest_base.ttl" ;
+        String instance_path  = "Indexes/TestOnto/shizaTest_newInstance.ttl" ;
+        String printModelPath = "Indexes/NewModel/newModel.ttl";
+        String roundName      = "";
+        // round one
+        onto_path      = "Indexes/Processed/with_instances/base_asiio.ttl" ;
+        instance_path  = "Indexes/Processed/with_instances/24-02-2020_inst.ttl" ;
+        printModelPath = "Indexes/Processed/with_instances/round1.ttl";
+        roundName = "_round1";
+        
+//        // round two
+        onto_path      = "Indexes/Processed/with_instances/round1.ttl" ;
+        instance_path  = "Indexes/Processed/with_instances/28-07-2020_inst.ttl" ;
+        printModelPath = "Indexes/Processed/with_instances/round2.ttl";
+        roundName = "_round2";
+//        // round three
+        onto_path      = "Indexes/Processed/with_instances/round2.ttl" ;
+        instance_path  = "Indexes/Processed/with_instances/17-07-2021_inst.ttl" ;
+        printModelPath = "Indexes/Processed/with_instances/round3.ttl";
+        roundName = "_round3";
+        
         
 //        onto_path     = "Indexes/Processed/ASIIO_semAtaque.ttl" ;
 //        instance_path = "Indexes/Processed/small_dataset_withOnto.ttl" ;
 //        instance_path = "Indexes/Processed/ASIIO.ttl" ;
         
-        OntModel baseO = ModelFactory.createOntologyModel();
-        OntModel baseI = ModelFactory.createOntologyModel();
+//        OntModel baseO = ModelFactory.createOntologyModel();
+//        OntModel baseI = ModelFactory.createOntologyModel();
           
-        baseO.read(onto_path);
-        baseI.read(instance_path);    
+        
+        OntModel baseO = OntologyUtils.readModel(onto_path);
+        OntModel baseI = OntologyUtils.readModel(instance_path);
+        
+        //baseO.read(onto_path);
+        //baseI.read(instance_path);    
    
         Comparator comparator = new Comparator(baseO, baseI);
         
@@ -55,9 +78,9 @@ public class InstanceDrivenComparisonMain
         String stats = comparator.printStats();
         System.out.println("Stats time: " + stats );
         
-        Utilities.save("Indexes/NewModel/stats.txt", stats);
+        Utilities.save("Indexes/NewModel/stats"+roundName+".txt", stats);
         
-        OntologyUtils.writeModeltoFile(comparator.evolvedModel, "Indexes/NewModel/newModel.ttl");
+        OntologyUtils.writeModeltoFile(comparator.evolvedModel, printModelPath);
      //   OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/NewModel/newModel.ttl");
     }
     

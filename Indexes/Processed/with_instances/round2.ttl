@@ -1,0 +1,837 @@
+@prefix :      <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix dc:    <http://purl.org/dc/elements/1.1/> .
+@prefix ext:   <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2006/time#Instant>
+        rdf:type  owl:Class .
+
+:extThing  rdf:type      owl:Class ;
+        rdfs:label       "Thing" ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extAsset  rdf:type      owl:Class ;
+        rdfs:label       "Posse"@pt , "Asset"@en ;
+        rdfs:subClassOf  :extThing ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extCriticalityValuePartition ;
+                           owl:onProperty            :extHasCriticality ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extAffextedBy ;
+                           owl:someValuesFrom  :extEvent
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        terms:modified   "28/May/2020" ;
+        owl:versionInfo  4 ;
+        skos:definition  "Information or resource which have value to an organization or person."@en .
+
+<http://www.w3.org/2006/time#hasEnd>
+        rdf:type  owl:ObjectProperty .
+
+:extTriggers  rdf:type      owl:ObjectProperty ;
+        rdfs:label          "aciona"@pt , "triggers"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+:extHas  rdf:type           owl:ObjectProperty ;
+        rdfs:label          "has"@en , "tem"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+:extEnabledStatus  rdf:type  owl:Class ;
+        rdfs:label       "Ativado"@pt , "Enabled"@en ;
+        rdfs:subClassOf  :extStatusValuePartition ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extCountermeasures  rdf:type  owl:Class ;
+        rdfs:label       "Countermeasure"@en ;
+        rdfs:subClassOf  :extThing .
+
+:extHasTargetEvent  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasTargetEvent"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "28/May/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+:extThreatPropagationPath
+        rdf:type         owl:Class ;
+        rdfs:label       "Caminho de Propagação de Ameaças"@pt , "Threat Propagation Path"@en ;
+        rdfs:subClassOf  :extThing , rdfs:Resource .
+
+:extEvent  rdf:type      owl:Class ;
+        rdfs:label       "Event"@en , "Evento"@pt ;
+        rdfs:subClassOf  :extThing ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  :extAsset ;
+                           owl:onProperty               :extAffests
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extTriggers ;
+                           owl:someValuesFrom  :extAlert
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.w3.org/2006/time#Instant> ;
+                           owl:onProperty            <http://www.w3.org/2006/time#hasBeginning> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extCriticalityValuePartition ;
+                           owl:onProperty            :extHasCriticality ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.w3.org/2006/time#Instant> ;
+                           owl:onProperty            <http://www.w3.org/2006/time#hasEnd> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        terms:modified   "30/Nov/2019" ;
+        owl:versionInfo  "3" ;
+        skos:definition  "A discrete change of state or status of an Asset or group of Assets. Specific Events may trigger Alerts."@en .
+
+:extPerformanceValue  rdf:type  owl:DatatypeProperty ;
+        rdfs:label          "performanceValue"@en ;
+        rdfs:range          xsd:float ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extTopObjectProperty
+        rdf:type         owl:ObjectProperty ;
+        rdfs:label       "objectProperty"@en ;
+        terms:created    "27/May/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extBusinessImpactAssessment
+        rdf:type         owl:Class ;
+        rdfs:label       "Avaliação de Impacto nos Negócios"@pt , "Business Impact Assessment"@en ;
+        rdfs:subClassOf  :extThing , :extImpact , rdfs:Resource ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extHas ;
+                           owl:someValuesFrom  :extMitigationStrategy
+                         ] .
+
+:extEscalationCriticality
+        rdf:type         owl:Class ;
+        rdfs:label       "Escalation"@en , "Escalação"@pt ;
+        rdfs:subClassOf  :extCriticalityValuePartition ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        skos:definition  "Criticality value that the related event requires the application of corrective measures"@en .
+
+:extAssetID  rdf:type       owl:DatatypeProperty ;
+        rdfs:label          "assetID"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extType  rdf:type          owl:DatatypeProperty ;
+        rdfs:domain         :extAttack , :extEvent ;
+        rdfs:label          "type"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+owl:topObjectProperty
+        rdf:type            rdf:Property ;
+        rdfs:subPropertyOf  owl:topObjectProperty .
+
+:extPersonnelData  rdf:type  owl:Class ;
+        rdfs:label       "Personnel Data"@en ;
+        rdfs:subClassOf  :extDataOrDocuments , :extAsset , :extThing ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extHas ;
+                           owl:someValuesFrom  :extVulnerability
+                         ] .
+
+:extChanges  rdf:type       owl:AnnotationProperty , rdf:Property ;
+        rdfs:subPropertyOf  owl:topObjectProperty , :extChanges .
+
+:extScore  rdf:type         owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability ;
+        rdfs:label          "score"@en ;
+        rdfs:range          xsd:int ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extAffextedBy  rdf:type    owl:ObjectProperty ;
+        rdfs:label          "afetado por"@pt , "affectedBy"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extPrevents  rdf:type      owl:ObjectProperty ;
+        rdfs:label          "impede"@pt , "prevents"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extAffectesConfiguration
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "affectsConfiguration"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+terms:created  rdf:type  owl:AnnotationProperty .
+
+:extIncident  rdf:type   owl:Class ;
+        rdfs:label       "Incident"@en , "Incidente"@pt ;
+        rdfs:subClassOf  :extThing , rdfs:Resource ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extConsistsOf ;
+                           owl:someValuesFrom  :extImpact
+                         ] .
+
+:extValue  rdf:type         owl:DatatypeProperty ;
+        rdfs:label          "value"@en ;
+        rdfs:range          xsd:float ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extVulnerability  rdf:type  owl:Class ;
+        rdfs:label       "Vulnerabilidade"@pt , "Vulnerability"@en ;
+        rdfs:subClassOf  :extThing ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extHasSourceAsset  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasSourceAsset"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "28/May/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+:extThreshold  rdf:type     owl:DatatypeProperty ;
+        rdfs:label          "thershold"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extValuePartition  rdf:type  owl:Class ;
+        rdfs:label       "Value Partition"@en ;
+        rdfs:subClassOf  :extThing ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extDisabledStaus  rdf:type  owl:Class ;
+        rdfs:label        "Desativado"@pt , "Disabled"@en ;
+        rdfs:subClassOf   :extStatusValuePartition ;
+        terms:created     "14/Nov/2019" ;
+        terms:creator     "Katia Aleid" ;
+        owl:disjointWith  :extEnabledStatus ;
+        owl:versionInfo   "1" .
+
+:extLaunches  rdf:type      owl:ObjectProperty ;
+        rdfs:label          "lança"@pt , "launches"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extTopDataProperty  rdf:type  owl:DatatypeProperty ;
+        rdfs:label       "dataProperty"@en ;
+        rdfs:range       rdfs:Literal ;
+        terms:created    "28/May/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extImpact  rdf:type     owl:Class ;
+        rdfs:label       "Impact"@en , "Impacto"@pt ;
+        rdfs:subClassOf  :extThing ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  :extAsset ;
+                           owl:onProperty               :extHasAffectedAsset
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extSeverityValuePartition ;
+                           owl:onProperty            :extHasSeverity ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extAction  rdf:type        owl:DatatypeProperty ;
+        rdfs:label          "action"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extConfiguration  rdf:type  owl:Class ;
+        rdfs:label       "Configuration"@en , "Configuração"@pt ;
+        rdfs:subClassOf  :extThing , rdfs:Resource .
+
+:extHasSourceEvent  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasSourceEvent"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "28/May/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+[ rdf:type     owl:AllDisjointClasses ;
+  owl:members  ( :extExtremeSeverity :extHighSeverity :extLowSeverity :extMediumSeverity )
+] .
+
+:extRemediation  rdf:type   owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability ;
+        rdfs:label          "remediation"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extMeans  rdf:type         owl:DatatypeProperty ;
+        rdfs:label          "means"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extConsequences  rdf:type  owl:Class ;
+        rdfs:label       "Consequences"@en ;
+        rdfs:subClassOf  :extThing .
+
+:extURL  rdf:type           owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability ;
+        rdfs:label          "URL"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extSeverityValuePartition
+        rdf:type             owl:Class ;
+        rdfs:comment         "Available severity levels are:\nLow\nMedium\nHigh\nExtreme" ;
+        rdfs:label           "Severity"@en , "Gravidade"@pt ;
+        rdfs:subClassOf      :extValuePartition ;
+        terms:created        "14/Nov/2019" ;
+        terms:creator        "Katia Aleid" ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  ( :extExtremeSeverity :extHighSeverity :extLowSeverity :extMediumSeverity )
+                             ] ;
+        owl:versionInfo      "1" ;
+        skos:definition      "Value partition that conrols the level of severity of an alert."@en .
+
+:extAPT  rdf:type        owl:Class ;
+        rdfs:label       "APT"@pt , "Advanced persistent threat"@en ;
+        rdfs:subClassOf  :extAttackType ;
+        terms:created    "28/July/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extStatusValuePartition
+        rdf:type             owl:Class ;
+        rdfs:label           "Status"@en , "Status"@pt ;
+        rdfs:subClassOf      :extValuePartition ;
+        terms:created        "14/Nov/2019" ;
+        terms:creator        "Katia Aleid" ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  ( :extDisabledStaus :extEnabledStatus )
+                             ] ;
+        owl:versionInfo      "1" ;
+        skos:definition      "Value partition that conrols the status of an alert." .
+
+:extBusinessActivity  rdf:type  owl:DatatypeProperty ;
+        rdfs:label          "businessActivity"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extPersonalData  rdf:type  owl:Class ;
+        rdfs:label       "Personal Data"@en ;
+        rdfs:subClassOf  :extDataOrDocuments , :extAsset , :extThing ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extHas ;
+                           owl:someValuesFrom  :extVulnerability
+                         ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO>
+        rdf:type         owl:Ontology ;
+        rdfs:comment     "Core ontology for cybersecurity to be extended with UCO and ATMONTO, started with 4 main concepts \nIncidient\nEvent\nAlert\nAlarm" ;
+        terms:created    "14/Nov/2019" ;
+        terms:modified   "28/July/2020"^^rdfs:Literal ;
+        owl:versionIRI   <http://www.gecad.isep.ipp.pt/ASIIO/1.6> ;
+        owl:versionInfo  1.6 .
+
+:extAttackType  rdf:type  owl:Class ;
+        rdfs:label       "Attack Type"@en , "Tipo de ataque"@pt ;
+        rdfs:subClassOf  :extThing ;
+        terms:created    "28/July/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extAdditionalData  rdf:type  owl:DatatypeProperty ;
+        rdfs:domain         :extAttack ;
+        rdfs:label          "additionalData"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extHasSeverity  rdf:type   owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:label          "hasSeverity"@en , "temGravidade"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+:extHighSeverity  rdf:type  owl:Class ;
+        rdfs:label       "Alto"@pt , "High"@en ;
+        rdfs:subClassOf  :extSeverityValuePartition ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extNormalCriticality
+        rdf:type         owl:Class ;
+        rdfs:label       "Normal"@en , "Normal"@pt ;
+        rdfs:subClassOf  :extCriticalityValuePartition ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        skos:definition  "Criticality value that the related event does not impact critical components and does not require intervention"@en .
+
+:extActionsToFollow  rdf:type  owl:DatatypeProperty ;
+        rdfs:domain         :extAttack ;
+        rdfs:label          "actionsToFollow"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extProbability  rdf:type   owl:DatatypeProperty ;
+        rdfs:label          "probbility"@en ;
+        rdfs:range          xsd:float ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extResilienceAssessment
+        rdf:type         owl:Class ;
+        rdfs:label       "Avaliação da resiliência"@pt , "Resilience Assessment"@en ;
+        rdfs:subClassOf  :extThing , :extImpact , rdfs:Resource ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extHas ;
+                           owl:someValuesFrom  :extMitigationStrategy
+                         ] .
+
+:extInfo  rdf:type       owl:Class ;
+        rdfs:label       "Info"@en , "Informação"@pt ;
+        rdfs:subClassOf  :extAlert ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extService  rdf:type       owl:DatatypeProperty ;
+        rdfs:label          "service"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extEmergencyCriticality
+        rdf:type         owl:Class ;
+        rdfs:label       "Emergency"@en , "Emergência"@pt ;
+        rdfs:subClassOf  :extCriticalityValuePartition ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        skos:definition  "Criticality value that the related event impacts to safety/breach of critical systems"@en .
+
+:extHasCriticality  rdf:type  owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:comment        "each event has a level of criticality" ;
+        rdfs:label          "hasCriticality"@en , "temCriticidade"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+:extHasAffectedAsset  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasAffectedAssets"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "28/May/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+:extAffests  rdf:type       owl:ObjectProperty ;
+        rdfs:label          "afeta"@pt , "affects"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty , owl:topObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:inverseOf       :extAffextedBy ;
+        owl:versionInfo     "2" .
+
+:extAttacker  rdf:type   owl:Class ;
+        rdfs:label       "Atacante"@pt , "Attacker"@en ;
+        rdfs:subClassOf  :extThing .
+
+:extHasDestinationAsset
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "hasDestinationAsset"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "28/May/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+:extAttack  rdf:type     owl:Class ;
+        rdfs:label       "Ataque"@pt , "Attack"@en ;
+        rdfs:subClassOf  :extEvent ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  :extVulnerability ;
+                           owl:onProperty               :extExploits
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extCriticalityValuePartition ;
+                           owl:onProperty            :extHasCriticality ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extWorm  rdf:type       owl:Class ;
+        rdfs:label       "Worm"@en ;
+        rdfs:subClassOf  :extThing , :extAttackType .
+
+<https://data.nasa.gov/ontologies/atmonto/equipment#EngineeredSystem>
+        rdf:type  owl:Class .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+terms:modified  rdf:type  owl:AnnotationProperty .
+
+:extBusinessProcessCompromisedEvent
+        rdf:type         owl:Class ;
+        rdfs:label       "Business Process Compromised Event"@en , "Evento comprometido do processo de negócios"@pt ;
+        rdfs:subClassOf  rdfs:Resource , :extThing , :extEvent ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extTriggers ;
+                           owl:someValuesFrom  :extAlert
+                         ] .
+
+:extCVEID  rdf:type         owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability ;
+        rdfs:label          "CVE ID"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "08/June/2020" ;
+        owl:versionInfo     "1" .
+
+:extCriticalityValuePartition
+        rdf:type             owl:Class ;
+        rdfs:comment         "Available criticality levels are:\nNormal\nEscalation\nEmergency" ;
+        rdfs:label           "Criticamente"@pt , "Criticality"@en ;
+        rdfs:subClassOf      :extValuePartition ;
+        terms:created        "14/Nov/2019" ;
+        terms:creator        "Katia Aleid" ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  ( :extEmergencyCriticality :extEscalationCriticality :extNormalCriticality )
+                             ] ;
+        owl:versionInfo      "1" ;
+        skos:definition      "Value partition that conrols the level of criticality of an event."@en .
+
+terms:creator  rdf:type  owl:AnnotationProperty .
+
+:extCategory  rdf:type      owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability ;
+        rdfs:label          "category"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extHasStatus  rdf:type     owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:label          "hasStatus"@en , "temStatus"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+:extAlert  rdf:type      owl:Class ;
+        rdfs:label       "Alerta"@pt , "Alert"@en ;
+        rdfs:subClassOf  :extThing ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extSeverityValuePartition ;
+                           owl:onProperty            :extHasSeverity ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extEvent ;
+                           owl:onProperty            :extIsTriggeredBy ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extStatusValuePartition ;
+                           owl:onProperty            :extHasStatus ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        skos:definition  "A notification that a specific attack has been directed at an organization�??s information systems."@en .
+
+:extExposedBy  rdf:type     owl:ObjectProperty ;
+        rdfs:label          "exposedBy"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extCauses  rdf:type        owl:ObjectProperty ;
+        rdfs:label          "causa"@pt , "causes"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extVulnerabilityExposure
+        rdf:type         owl:Class ;
+        rdfs:label       "Exposição a vulnerabilidades"@pt , "Vulnerability Exposure"@en ;
+        rdfs:subClassOf  rdfs:Resource , :extThing , :extEvent ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extTriggers ;
+                           owl:someValuesFrom  :extAlert
+                         ] .
+
+:extExploits  rdf:type      owl:ObjectProperty ;
+        rdfs:label          "exploits"@en , "façanha"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty , owl:topObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+skos:definition  rdf:type  owl:AnnotationProperty .
+
+:extProcess  rdf:type       owl:DatatypeProperty ;
+        rdfs:label          "process"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extLowSeverity  rdf:type  owl:Class ;
+        rdfs:label       "Baixo"@pt , "Low"@en ;
+        rdfs:subClassOf  :extSeverityValuePartition ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extBruteForce  rdf:type  owl:Class ;
+        rdfs:label       "Brute Force"@en ;
+        rdfs:subClassOf  :extThing , :extAttackType .
+
+:extAdvisory  rdf:type   owl:Class ;
+        rdfs:label       "Advisory"@en , "Consultivo"@pt ;
+        rdfs:subClassOf  :extAlert ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extCompletion  rdf:type    owl:DatatypeProperty ;
+        rdfs:domain         :extImpact ;
+        rdfs:label          "completion"@en ;
+        rdfs:range          xsd:float ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extHasVerison  rdf:type    owl:ObjectProperty ;
+        rdfs:label          "hasVersion"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extVulnerabilityID  rdf:type  owl:DatatypeProperty ;
+        rdfs:label          "vulnerabilityID"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extConsistsOf  rdf:type    owl:ObjectProperty , owl:AsymmetricProperty ;
+        rdfs:comment        "All incidents are events, but not all events are incidents so this property is asymmetric" ;
+        rdfs:label          "consisteDe"@pt , "consistsOf"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extHasConfiguration  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasConfiguration"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extExtremeSeverity  rdf:type  owl:Class ;
+        rdfs:label       "Extreme"@en , "Extremo"@pt ;
+        rdfs:subClassOf  :extSeverityValuePartition ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extPerformance  rdf:type  owl:Class ;
+        rdfs:label       "Atuação"@pt , "Performance"@en ;
+        rdfs:subClassOf  :extThing , rdfs:Resource .
+
+:extIsTriggeredBy  rdf:type  owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:label          "acionadoPor"@pt , "triggeredBy"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:inverseOf       :extTriggers ;
+        owl:versionInfo     "2" .
+
+:extWarning  rdf:type    owl:Class ;
+        rdfs:label       "Atenção"@pt , "Warning"@en ;
+        rdfs:subClassOf  :extAlert ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+[ rdf:type     owl:AllDisjointClasses ;
+  owl:members  ( :extEmergencyCriticality :extEscalationCriticality :extNormalCriticality )
+] .
+
+:extRecoveryTime  rdf:type  owl:DatatypeProperty ;
+        rdfs:label          "recoveryTime"@en ;
+        rdfs:range          xsd:dateTimeStamp ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extAlarm  rdf:type          owl:Class ;
+        rdfs:label           "Alarm"@en , "Alarme"@pt ;
+        terms:created        "14/Nov/2019" ;
+        terms:creator        "Katia Aleid" ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( :extAlert
+                                                     [ rdf:type     owl:Class ;
+                                                       owl:unionOf  ( [ rdf:type            owl:Restriction ;
+                                                                        owl:onProperty      :extHasSeverity ;
+                                                                        owl:someValuesFrom  :extExtremeSeverity
+                                                                      ]
+                                                                      [ rdf:type            owl:Restriction ;
+                                                                        owl:onProperty      :extHasSeverity ;
+                                                                        owl:someValuesFrom  :extHighSeverity
+                                                                      ]
+                                                                    )
+                                                     ]
+                                                   )
+                             ] ;
+        owl:versionInfo      "1" ;
+        skos:definition      "An alert with a Security Level that is either High or Extreme" .
+
+:extDescription  rdf:type   owl:DatatypeProperty ;
+        rdfs:domain         :extEvent , :extAsset , :extVulnerability ;
+        rdfs:label          "description"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extMitigationStrategy
+        rdf:type         owl:Class ;
+        rdfs:label       "Estratégia de mitigação"@pt , "Mitigation Strategy"@en ;
+        rdfs:subClassOf  :extThing , rdfs:Resource .
+
+:extVirus  rdf:type      owl:Class ;
+        rdfs:label       "Virus"@en ;
+        rdfs:subClassOf  :extThing , :extAttackType .
+
+:extMediumSeverity  rdf:type  owl:Class ;
+        rdfs:label       "Medium"@en , "Médio"@pt ;
+        rdfs:subClassOf  :extSeverityValuePartition ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extID  rdf:type            owl:DatatypeProperty ;
+        rdfs:domain         :extEvent , :extAttack , :extAsset , :extImpact ;
+        rdfs:label          "ID"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extSensors  rdf:type    owl:Class ;
+        rdfs:label       "Sensors"@en ;
+        rdfs:subClassOf  :extHardware , :extAsset , :extThing , :extPhysicalAsset ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extHas ;
+                           owl:someValuesFrom  :extVulnerability
+                         ] .
+
+:extCorrelation  rdf:type  owl:Class ;
+        rdfs:label       "Correlation"@en , "Correlação"@pt ;
+        rdfs:subClassOf  :extThing , rdfs:Resource .
+
+:extAssessment  rdf:type  owl:Class ;
+        rdfs:label       "Assessment"@en ;
+        rdfs:subClassOf  :extThing ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extHas ;
+                           owl:someValuesFrom  :extImpact
+                         ] .

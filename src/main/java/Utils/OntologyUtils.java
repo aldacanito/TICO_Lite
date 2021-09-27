@@ -5,15 +5,19 @@
  */
 package Utils;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.AllValuesFromRestriction;
 import org.apache.jena.ontology.CardinalityQRestriction;
-import org.apache.jena.ontology.CardinalityRestriction;
 import org.apache.jena.ontology.ComplementClass;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.EnumeratedClass;
@@ -28,17 +32,20 @@ import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.OntResource;
-import org.apache.jena.ontology.QualifiedRestriction;
 import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
-import org.apache.jena.ontology.TransitiveProperty;
 import org.apache.jena.ontology.UnionClass;
 import org.apache.jena.rdf.model.Literal;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.riot.RDFWriter;
+
+
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
@@ -47,6 +54,22 @@ import org.apache.jena.util.iterator.ExtendedIterator;
  */
 public class OntologyUtils 
 {
+    public static OntModel readModel(String filename) 
+    {
+    
+        OntModel m = ModelFactory.createOntologyModel();  
+        try 
+        {
+           m.read(new FileReader(filename, StandardCharsets.ISO_8859_1 ), "", "TTL");
+        
+        } catch (Exception e) 
+        { 
+           e.printStackTrace();
+        }
+        
+        return m;
+    }
+    
     
     public static void writeModeltoFile(OntModel theModel, String filename)
     {
@@ -553,9 +576,7 @@ public class OntologyUtils
         
         int cardinality             = old_restriction.getCardinality(onProperty);
         
-      
-        
-        
+
         try
         {
             ///MaxCardinalityRestriction cr   = old_restriction.convertToMaxCardinalityRestriction(cardinality);

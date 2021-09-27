@@ -1,0 +1,52 @@
+
+
+
+======================================
+Evolutionary Action Executer Stats
+	Total evolutionary actions executed: 14
+List of Evolutionary Actions:
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extPerformance
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extPerformance
+	 Comments: 0	 Labels: 2	 Declared Properties: 34	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 3
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extResilienceAssessment
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extResilienceAssessment
+	 Comments: 0	 Labels: 2	 Declared Properties: 33	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 7
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extConfiguration
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extConfiguration
+	 Comments: 0	 Labels: 2	 Declared Properties: 32	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 2
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBusinessImpactAssessment
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBusinessImpactAssessment
+	 Comments: 0	 Labels: 2	 Declared Properties: 33	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 8
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extIncident
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extIncident
+	 Comments: 0	 Labels: 2	 Declared Properties: 32	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 6
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extMitigationStrategy
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extMitigationStrategy
+	 Comments: 0	 Labels: 2	 Declared Properties: 34	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 3
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBusinessProcessCompromisedEvent
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBusinessProcessCompromisedEvent
+	 Comments: 0	 Labels: 2	 Declared Properties: 35	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 8
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extVulnerabilityExposure
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extVulnerabilityExposure
+	 Comments: 0	 Labels: 2	 Declared Properties: 33	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 8
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCorrelation
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCorrelation
+	 Comments: 0	 Labels: 2	 Declared Properties: 34	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 3
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extThreatPropagationPath
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extThreatPropagationPath
+	 Comments: 0	 Labels: 2	 Declared Properties: 32	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 4
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAttacker
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extAttacker
+	 Comments: 0	 Labels: 2	 Declared Properties: 32	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 2
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extVirus
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extVirus
+	 Comments: 0	 Labels: 1	 Declared Properties: 32	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 2
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extWorm
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extWorm
+	 Comments: 0	 Labels: 1	 Declared Properties: 32	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 2
+	ADDCLASS EVOLUTIONARY ACTION: Class URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBruteForce
+	Stats for OntClass http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBruteForce
+	 Comments: 0	 Labels: 1	 Declared Properties: 32	 Disjoint Classes: 0	 Equivalent Classes: 0	 SubClasses: 0	 SuperClasses: 2
+======================================
+
+

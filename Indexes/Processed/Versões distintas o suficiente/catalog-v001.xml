@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1632490825484" name="duplicate:http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension" uri="03-12-2019_ASIIO.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1632490825484" name="duplicate:http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension" uri="24-02-2020_ASIIO.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1632490825484" name="duplicate:http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension" uri="28-07-2020_ASIIO.owl"/>
+    </group>
+</catalog>
