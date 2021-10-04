@@ -2,6 +2,8 @@
 
 package IntanceDrivenComparison;
 
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.EvolutionaryActionComposite;
+import IntanceDrivenComparison.Metrics.ClassPropertyMetrics;
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
 import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Factories.ComparatorFactory;
@@ -9,6 +11,7 @@ import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import Utils.OntologyUtils;
 import Utils.Utilities;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.Individual;
@@ -29,14 +32,17 @@ public class Comparator
     OntModel ontologyModel;
     OntModel instanceModel;
     OntModel evolvedModel;
-    EvolutionaryActionExecuter executer;
+    EvolutionaryActionComposite executer;
+    List<ClassPropertyMetrics> clsPropMetrics ;
     
     public Comparator(OntModel ontologyModel, OntModel instanceModel) 
     {
         this.ontologyModel = ontologyModel;
         this.instanceModel = instanceModel;
         this.evolvedModel  = ontologyModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
-        this.executer      = new EvolutionaryActionExecuter();
+        this.executer      = new EvolutionaryActionComposite();
+    
+        clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
     }
 
     
@@ -73,11 +79,26 @@ public class Comparator
      
             this.compareClasses(instance);
             this.compareProperties(instance);     
-
+            this.compareShapes(instance);
         }
         
         executer.execute(ontologyModel, evolvedModel);
     }
+    
+    private void compareShapes(Individual instance)
+    {
+        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nAnalysing the shape of Individual " 
+                + instance.getURI() + ".");
+
+        IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(instance, ontologyModel);
+       
+        if(classComparator != null)
+        {
+            EvolutionaryAction compare = classComparator.compare();
+            this.executer.add(compare);
+        }    
+    }
+    
     
     private void compareProperties(Individual instance)
     {

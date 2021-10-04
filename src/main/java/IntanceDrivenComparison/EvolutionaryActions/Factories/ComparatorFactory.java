@@ -5,6 +5,7 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Factories;
 
+import IntanceDrivenComparison.Comparison.Implementations.Shape.ClassCompareShape;
 import IntanceDrivenComparison.Comparison.Implementations.Simple.ClassCompareSimple;
 import IntanceDrivenComparison.Comparison.Implementations.Simple.DatatypePropertyCompareSimple;
 import IntanceDrivenComparison.Comparison.Implementations.Simple.ObjectPropertyCompareSimple;
@@ -17,6 +18,7 @@ import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.graph.Node;
 import org.apache.jena.ontology.DatatypeProperty;
+import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
@@ -53,7 +55,16 @@ public class ComparatorFactory
         return compare;
     }
 
-    
+    public IClassCompare getClassComparator(Individual ind, OntModel mdl)
+    {
+//        boolean ignore = Utilities.isInIgnoreList(cls.getURI());
+//        
+//        if(ignore)
+//            return null;
+        
+        IClassCompare compare = new ClassCompareShape(ind, mdl);
+        return compare;
+    }
     
     //TODO vERIFICAR SE ESTE METODO TÁ A COMPARAR EM CONDIÇOES
     //NESTE MOMENTO ACHO QUE ESTA A COMPARAR AS NOVAS PROPRIEDADES COM O MODELO NOVO

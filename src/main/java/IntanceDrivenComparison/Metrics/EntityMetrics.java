@@ -1,6 +1,6 @@
 
 
-package IntanceDrivenComparison;
+package IntanceDrivenComparison.Metrics;
 
 /**
  *
@@ -8,13 +8,12 @@ package IntanceDrivenComparison;
  */
 public class EntityMetrics 
 {
-    private String classURI, type;
-    private int mentions = 0;
+    private String URI;
+    private int mentions = 1;
     
-    public EntityMetrics(String entityURI, String type)
+    public EntityMetrics(String entityURI)
     {
-        this.classURI = entityURI;
-        this.type     = type;
+        this.URI = entityURI;
     }
     
     
@@ -22,15 +21,8 @@ public class EntityMetrics
     /**
      * @return the classURI
      */
-    public String getClassURI() {
-        return classURI;
-    }
-
-    /**
-     * @param classURI the classURI to set
-     */
-    public void setClassURI(String classURI) {
-        this.classURI = classURI;
+    public String getURI() {
+        return URI;
     }
 
     
@@ -53,13 +45,6 @@ public class EntityMetrics
         this.mentions = mentions;
     }
 
-    /**
-     * @return the type
-     */
-    public String getType() {
-        return type;
-    }
-    
     
     
     

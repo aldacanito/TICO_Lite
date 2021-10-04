@@ -3,29 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IntanceDrivenComparison;
+package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.rdf.model.Model;
 
 /**
  *
  * @author shizamura
  */
-public class EvolutionaryActionExecuter 
+public class EvolutionaryActionComposite implements EvolutionaryAction
 {
+    private OntModel originalModel;
+    private OntModel evolvedModel;
+    private String ontClassURI;
     List<EvolutionaryAction> actions;
     OntModel evolvingModel; 
     
+    @Override
     public String toString()
     {
         String evolutionaryOutputs = "List of Evolutionary Actions:\n";
         String toPrint = "\n\n\n======================================";
         
-        toPrint += "\nEvolutionary Action Executer Stats\n";
+        toPrint += "\nEvolutionary Action Composite Stats\n";
         
         int count = 0;
         for(EvolutionaryAction action : actions)
@@ -43,9 +46,9 @@ public class EvolutionaryActionExecuter
         return toPrint;
     }
     
-    public EvolutionaryActionExecuter()
+    public EvolutionaryActionComposite()
     {
-        actions = new ArrayList<EvolutionaryAction>();
+        actions = new ArrayList<>();
     }
     
     public void add(EvolutionaryAction action)
@@ -64,13 +67,22 @@ public class EvolutionaryActionExecuter
         }
             
         if(!repeated)
+        {
+            if(this.getURI().isEmpty())
+                this.ontClassURI = action.getURI();
+            else
+                this.ontClassURI += " | " + action.getURI();
+            
             actions.add(action);
+        }
     }
 
+    @Override
     public OntModel getEvolvedModel()
     {
         return evolvingModel;
     }
+    
     
     public void execute(OntModel originalModel, OntModel evolvedModel) 
     {
@@ -87,6 +99,25 @@ public class EvolutionaryActionExecuter
                 evolvingModel = action.getEvolvedModel();
             }
         }
+    }
+
+    @Override
+    public String getURI() 
+    {
+        return this.ontClassURI;
+    }
+
+    @Override
+    public void setUp(OntModel originalModel, OntModel evolvedModel) 
+    {
+        this.originalModel = originalModel;
+        this.evolvedModel  = evolvedModel;
+    }
+
+    @Override
+    public void execute() 
+    {
+        this.execute(originalModel, evolvedModel);
     }
     
 }
