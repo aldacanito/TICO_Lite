@@ -87,6 +87,9 @@ public class Comparator
     
     private void compareShapes(Individual instance)
     {
+        boolean ignore = Utilities.isInIgnoreList(instance.getURI());
+        if(ignore) return;
+        
         Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nAnalysing the shape of Individual " 
                 + instance.getURI() + ".");
 

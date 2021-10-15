@@ -17,8 +17,17 @@ public class ClassPropertyMetrics extends EntityMetrics
     HashMap<String, Integer> classProperty;
     List<String> functionalCandidates;
     
+    public ClassPropertyMetrics(String EntityURI)
+    {
+        super(EntityURI);      
+        classProperty        = new HashMap<>();
+        functionalCandidates = new ArrayList<>();
+        classMentions        = 0;
+    }
+    
     public ClassPropertyMetrics(OntClass cls)
     {
+        super(cls.getURI());
         ontClass             = cls;        
         classProperty        = new HashMap<>();
         functionalCandidates = new ArrayList<>();
@@ -59,5 +68,26 @@ public class ClassPropertyMetrics extends EntityMetrics
             return 0;
     }
     
+    
+    public HashMap<String, Integer> getClassProperties()
+    {
+        return this.classProperty;
+    }
+    
+    
+    public List<String> getFunctionalCandidates()
+    {
+        return this.functionalCandidates;
+    }
+    
+    public int getClassMentions()
+    {
+        return this.classMentions;
+    }
+    
+    public OntClass getOntClass()
+    {
+        return this.ontClass;
+    }
     
 }

@@ -67,6 +67,10 @@ public class ClassCompareShape implements IClassCompare
             for(Statement stmt : properties)
             {
                 String predicateURI = stmt.getPredicate().getURI();
+                 
+                boolean ignore = Utilities.isInIgnoreList(instance.getURI());
+                if(ignore) continue;
+                
                 cpm.addProperty(predicateURI);
                 
                 int count = repeated.getOrDefault(predicateURI, 0);

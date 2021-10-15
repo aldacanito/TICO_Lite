@@ -46,16 +46,16 @@ public class InstanceDrivenComparisonMain
         roundName = "_round1";
         
 //        // round two
-        onto_path      = "Indexes/Processed/with_instances/round1.ttl" ;
-        instance_path  = "Indexes/Processed/with_instances/28-07-2020_inst.ttl" ;
-        printModelPath = "Indexes/Processed/with_instances/round2.ttl";
-        roundName = "_round2";
-//        // round three
-        onto_path      = "Indexes/Processed/with_instances/round2.ttl" ;
-        instance_path  = "Indexes/Processed/with_instances/17-07-2021_inst.ttl" ;
-        printModelPath = "Indexes/Processed/with_instances/round3.ttl";
-        roundName = "_round3";
-        
+//        onto_path      = "Indexes/Processed/with_instances/round1.ttl" ;
+//        instance_path  = "Indexes/Processed/with_instances/28-07-2020_inst.ttl" ;
+//        printModelPath = "Indexes/Processed/with_instances/round2.ttl";
+//        roundName = "_round2";
+////        // round three
+//        onto_path      = "Indexes/Processed/with_instances/round2.ttl" ;
+//        instance_path  = "Indexes/Processed/with_instances/17-07-2021_inst.ttl" ;
+//        printModelPath = "Indexes/Processed/with_instances/round3.ttl";
+//        roundName = "_round3";
+//        
         
 //        onto_path     = "Indexes/Processed/ASIIO_semAtaque.ttl" ;
 //        instance_path = "Indexes/Processed/small_dataset_withOnto.ttl" ;

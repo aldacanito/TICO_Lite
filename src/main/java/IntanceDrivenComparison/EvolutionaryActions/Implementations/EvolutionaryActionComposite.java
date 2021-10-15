@@ -68,7 +68,7 @@ public class EvolutionaryActionComposite implements EvolutionaryAction
             
         if(!repeated)
         {
-            if(this.getURI().isEmpty())
+            if(this.getURI()==null || this.getURI().isEmpty())
                 this.ontClassURI = action.getURI();
             else
                 this.ontClassURI += " | " + action.getURI();

@@ -23,6 +23,7 @@ public class AddProperty implements IAddProperty
     protected OntModel ontologyModel;
     protected OntModel evolvedModel;
     protected OntProperty theProperty;
+    protected boolean functional;
     
     
     public AddProperty(Triple thePropertyTriple)
@@ -32,7 +33,21 @@ public class AddProperty implements IAddProperty
     
     public AddProperty(OntProperty theProperty)
     {
+       this.functional = false;
        this.theProperty = theProperty;
+    }
+    
+    
+    public AddProperty(OntProperty theProperty, boolean functional)
+    {
+       this.functional = functional;
+       this.theProperty = theProperty;
+    }
+    
+    
+    public void setFunctional(boolean functional)
+    {
+        this.functional = functional;
     }
     
     @Override
