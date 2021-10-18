@@ -14,13 +14,13 @@ public class ClassPropertyMetrics extends EntityMetrics
     int classMentions = 0;
 
     //USE URI
-    HashMap<String, Integer> classProperty;
+    HashMap<String, Integer> classProperties;
     List<String> functionalCandidates;
     
     public ClassPropertyMetrics(String EntityURI)
     {
         super(EntityURI);      
-        classProperty        = new HashMap<>();
+        classProperties        = new HashMap<>();
         functionalCandidates = new ArrayList<>();
         classMentions        = 0;
     }
@@ -29,7 +29,7 @@ public class ClassPropertyMetrics extends EntityMetrics
     {
         super(cls.getURI());
         ontClass             = cls;        
-        classProperty        = new HashMap<>();
+        classProperties        = new HashMap<>();
         functionalCandidates = new ArrayList<>();
         classMentions        = 0;
     }
@@ -45,10 +45,10 @@ public class ClassPropertyMetrics extends EntityMetrics
     public void addProperty(String newPropertyURI)
     {
         int count = 1;
-        if(classProperty.containsKey(newPropertyURI))
-            count = (int) classProperty.get(newPropertyURI) + 1;
+        if(classProperties.containsKey(newPropertyURI))
+            count = (int) classProperties.get(newPropertyURI) + 1;
         
-        classProperty.put(newPropertyURI, count);
+        classProperties.put(newPropertyURI, count);
         
         
     }
@@ -60,7 +60,7 @@ public class ClassPropertyMetrics extends EntityMetrics
     
     public float getPropertyRatio(String propertyURI)
     {
-        int propertyMentions = classProperty.get(propertyURI);
+        int propertyMentions = classProperties.get(propertyURI);
                 
         if(propertyMentions!=0 && classMentions!=0)
             return (float) propertyMentions / (float) classMentions;
@@ -71,7 +71,7 @@ public class ClassPropertyMetrics extends EntityMetrics
     
     public HashMap<String, Integer> getClassProperties()
     {
-        return this.classProperty;
+        return this.classProperties;
     }
     
     

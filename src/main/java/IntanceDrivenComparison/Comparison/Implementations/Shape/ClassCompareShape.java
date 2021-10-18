@@ -118,7 +118,9 @@ public class ClassCompareShape implements IClassCompare
                 isFunctional = true;
         
             int mentions = (int) classProperties.get(propertyURI);
+              
             
+            // preciso ter thresholds, uma classe ou restriçao só é criada se for mencionada x vezes
             
         }
         
