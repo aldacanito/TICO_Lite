@@ -22,13 +22,13 @@ import org.apache.jena.util.iterator.ExtendedIterator;
  *
  * @author shizamura
  */
-public class AddClass implements IAddClass
+public class CopyClass implements IAddClass
 {
     private OntClass ontClass;
     private OntModel originalModel;
     private OntModel evolvedModel;
     
-    public AddClass(OntClass toAdd)
+    public CopyClass(OntClass toAdd)
     {
         this.ontClass = toAdd;
     }

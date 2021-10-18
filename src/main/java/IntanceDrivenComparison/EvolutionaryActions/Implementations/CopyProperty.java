@@ -17,7 +17,7 @@ import org.apache.jena.ontology.OntProperty;
  *
  * @author shizamura
  */
-public class AddProperty implements IAddProperty
+public class CopyProperty implements IAddProperty
 {
     protected Triple thePropertyTriple;
     protected OntModel ontologyModel;
@@ -26,19 +26,19 @@ public class AddProperty implements IAddProperty
     protected boolean functional;
     
     
-    public AddProperty(Triple thePropertyTriple)
+    public CopyProperty(Triple thePropertyTriple)
     {
        this.thePropertyTriple = thePropertyTriple;
     }
     
-    public AddProperty(OntProperty theProperty)
+    public CopyProperty(OntProperty theProperty)
     {
        this.functional = false;
        this.theProperty = theProperty;
     }
     
     
-    public AddProperty(OntProperty theProperty, boolean functional)
+    public CopyProperty(OntProperty theProperty, boolean functional)
     {
        this.functional = functional;
        this.theProperty = theProperty;

@@ -16,14 +16,14 @@ import org.apache.jena.ontology.OntProperty;
  *
  * @author shizamura
  */
-public class AddDatatypeProperty extends AddProperty
+public class CopyDatatypeProperty extends CopyProperty
 {
-    public AddDatatypeProperty(OntProperty t) 
+    public CopyDatatypeProperty(OntProperty t) 
     {
         super(t);
     }
 
-    public AddDatatypeProperty(Triple t) 
+    public CopyDatatypeProperty(Triple t) 
     {
         super(t);
     }

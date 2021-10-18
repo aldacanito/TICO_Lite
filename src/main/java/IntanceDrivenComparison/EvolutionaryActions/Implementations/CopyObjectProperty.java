@@ -18,17 +18,25 @@ import org.apache.jena.rdf.model.Property;
  *
  * @author shizamura
  */
-public class AddObjectProperty extends AddProperty
+public class CopyObjectProperty extends CopyProperty
 {
+    boolean isFunctional = false;
     
-    public AddObjectProperty(Triple thePropertyTriple)
+    public CopyObjectProperty(Triple thePropertyTriple)
     {
        super(thePropertyTriple);
     }
     
-    public AddObjectProperty(OntProperty thePropertyTriple)
+    public CopyObjectProperty(OntProperty thePropertyTriple)
     {
        super(thePropertyTriple);
+    }
+    
+    
+    public CopyObjectProperty(OntProperty thePropertyTriple, boolean isFunctional)
+    {
+       super(thePropertyTriple);
+       this.isFunctional = isFunctional;
     }
     
    

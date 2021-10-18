@@ -5,11 +5,11 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Factories;
 
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddClass;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.CopyClass;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddDatatypeProperty;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddObjectProperty;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.CopyDatatypeProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.CopyObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.CopyProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import Utils.Utilities;
 import org.apache.jena.ontology.OntClass;
@@ -38,40 +38,40 @@ public class EvolutionaryActionFactory
     // TODO IMPLEMENTAR MAIS ESCOLHAS
     public IAddClass createAddClassAction(OntClass theClassToAdd)
     {
-        return new AddClass(theClassToAdd);
+        return new CopyClass(theClassToAdd);
     }
     
-    public AddDatatypeProperty createAddDTPropertyAction(Triple t)
+    public CopyDatatypeProperty createAddDTPropertyAction(Triple t)
     {
-        return new AddDatatypeProperty(t);
+        return new CopyDatatypeProperty(t);
     }
      
-    public AddObjectProperty createAddObjectPropertyAction(Triple t)
+    public CopyObjectProperty createAddObjectPropertyAction(Triple t)
     {
-        return new AddObjectProperty(t);
+        return new CopyObjectProperty(t);
     }
     
-    public AddProperty createAddPropertyAction(Triple t)
+    public CopyProperty createAddPropertyAction(Triple t)
     {
         Utilities.logInfo("Creating Add Property Evolutionary Action...");
-        return new AddProperty(t);
+        return new CopyProperty(t);
     }
 
 
-    public AddDatatypeProperty createAddDTPropertyAction(OntProperty t)
+    public CopyDatatypeProperty createAddDTPropertyAction(OntProperty t)
     {
-        return new AddDatatypeProperty(t);
+        return new CopyDatatypeProperty(t);
     }
      
-    public AddObjectProperty createAddObjectPropertyAction(OntProperty t)
+    public CopyObjectProperty createAddObjectPropertyAction(OntProperty t)
     {
-        return new AddObjectProperty(t);
+        return new CopyObjectProperty(t);
     }
     
-    public AddProperty createAddPropertyAction(OntProperty t)
+    public CopyProperty createAddPropertyAction(OntProperty t)
     {
         Utilities.logInfo("Creating Add Property Evolutionary Action...");
-        return new AddProperty(t);
+        return new CopyProperty(t);
     }
 
     

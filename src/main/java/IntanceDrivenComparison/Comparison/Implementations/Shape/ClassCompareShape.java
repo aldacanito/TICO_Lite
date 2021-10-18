@@ -104,8 +104,26 @@ public class ClassCompareShape implements IClassCompare
 
     private void populateComposite(ClassPropertyMetrics cpm) 
     {
-         // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
-       
+        // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
+        OntClass ontClass = cpm.getOntClass();
+        int classMentions = cpm.getClassMentions();
+        List<String> functionalCandidates = cpm.getFunctionalCandidates();
+        
+        HashMap<String, Integer> classProperties = cpm.getClassProperties();
+        
+        for(String propertyURI : classProperties.keySet())
+        {
+            boolean isFunctional = false;
+            if(functionalCandidates.contains(propertyURI))
+                isFunctional = true;
+        
+            int mentions = (int) classProperties.get(propertyURI);
+            
+            
+        }
+        
+        
+        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
