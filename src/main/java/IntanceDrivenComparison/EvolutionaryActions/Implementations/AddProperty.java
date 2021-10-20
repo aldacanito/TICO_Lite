@@ -5,23 +5,28 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
+import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.jena.ontology.OntModel;
 
 /**
  *
  * @author Alda
  */
-public class AddProperty 
+public class AddProperty implements IAddProperty
 {
-    private String URI;
-    private String subPropertyOf;
-    private String superPropertyOf;
-    private List<String> domains;
-    private List<String> ranges;
-    private List<String> disjointWith;
+    protected OntModel originalModel;
+    protected OntModel evolvedModel;
     
-    boolean functional = false;
+    protected String URI;
+    protected List<String> subPropertyOf;
+    protected List<String> superPropertyOf;
+    protected List<String> domains;
+    protected List<String> ranges;
+    protected List<String> disjointWith;
+    
+    protected boolean functional = false;
     
     //equivalent to?
     
@@ -90,31 +95,42 @@ public class AddProperty
     /**
      * @return the subPropertyOf
      */
-    public String getSubPropertyOf() {
+    public List<String> getSubPropertyOf() {
         return subPropertyOf;
     }
 
     /**
      * @param subPropertyOf the subPropertyOf to set
      */
-    public void setSubPropertyOf(String subPropertyOf) {
+    public void setSubPropertyOf(List<String> subPropertyOf) {
         this.subPropertyOf = subPropertyOf;
+    }
+    
+    public void addSubPropertyOf(String propertyURI)
+    {
+        this.subPropertyOf.add(propertyURI);
     }
 
     /**
      * @return the superPropertyOf
      */
-    public String getSuperPropertyOf() {
+    public List<String> getSuperPropertyOf() {
         return superPropertyOf;
     }
 
     /**
      * @param superPropertyOf the superPropertyOf to set
      */
-    public void setSuperPropertyOf(String superPropertyOf) {
+    public void setSuperPropertyOf(List<String> superPropertyOf) {
         this.superPropertyOf = superPropertyOf;
     }
 
+    public void addSuperPropertyOf(String superProperty)
+    {
+        this.superPropertyOf.add(superProperty);
+    }
+    
+    
     /**
      * @return the domains
      */
@@ -134,5 +150,24 @@ public class AddProperty
      */
     public List<String> getDisjointWith() {
         return disjointWith;
+    }
+
+    @Override
+    public OntModel getEvolvedModel() 
+    {
+        return this.evolvedModel;
+    }
+
+    @Override
+    public void setUp(OntModel originalModel, OntModel evolvedModel) 
+    {
+        this.originalModel = originalModel;
+        this.evolvedModel = evolvedModel;
+    }
+
+    @Override
+    public void execute() 
+    {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
