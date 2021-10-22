@@ -6,6 +6,7 @@
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
+import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddProperty;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.ontology.OntModel;
@@ -26,7 +27,14 @@ public class AddProperty implements EvolutionaryAction
     OntModel originalModel;
     OntModel evolvedModel;
     
-    boolean functional = false;
+    protected String URI;
+    protected List<String> subPropertyOf;
+    protected List<String> superPropertyOf;
+    protected List<String> domains;
+    protected List<String> ranges;
+    protected List<String> disjointWith;
+    
+    protected boolean functional = false;
     
     //equivalent to?
     
@@ -95,31 +103,42 @@ public class AddProperty implements EvolutionaryAction
     /**
      * @return the subPropertyOf
      */
-    public String getSubPropertyOf() {
+    public List<String> getSubPropertyOf() {
         return subPropertyOf;
     }
 
     /**
      * @param subPropertyOf the subPropertyOf to set
      */
-    public void setSubPropertyOf(String subPropertyOf) {
+    public void setSubPropertyOf(List<String> subPropertyOf) {
         this.subPropertyOf = subPropertyOf;
+    }
+    
+    public void addSubPropertyOf(String propertyURI)
+    {
+        this.subPropertyOf.add(propertyURI);
     }
 
     /**
      * @return the superPropertyOf
      */
-    public String getSuperPropertyOf() {
+    public List<String> getSuperPropertyOf() {
         return superPropertyOf;
     }
 
     /**
      * @param superPropertyOf the superPropertyOf to set
      */
-    public void setSuperPropertyOf(String superPropertyOf) {
+    public void setSuperPropertyOf(List<String> superPropertyOf) {
         this.superPropertyOf = superPropertyOf;
     }
 
+    public void addSuperPropertyOf(String superProperty)
+    {
+        this.superPropertyOf.add(superProperty);
+    }
+    
+    
     /**
      * @return the domains
      */

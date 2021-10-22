@@ -112,6 +112,7 @@ public class OntologyUtils
     }
     
     
+    
     /**
      * 
      * Clones Domain, Range and InverseOf from a given OntProperty
@@ -580,7 +581,7 @@ public class OntologyUtils
      *  SubClassOf
      * @return 
      */
-    private static void copyRestriction(OntClass cls, OntClass newClass, String restrictionType) 
+    public static void copyRestriction(OntClass cls, OntClass newClass, String restrictionType) 
     {
         
         if(cls.isEnumeratedClass())

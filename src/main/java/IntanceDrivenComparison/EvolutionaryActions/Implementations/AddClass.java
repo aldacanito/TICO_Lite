@@ -7,9 +7,10 @@ package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import java.util.List;
+import org.apache.jena.util.iterator.ExtendedIterator;
+import java.util.HashMap;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
  *
@@ -21,6 +22,33 @@ public class AddClass implements IAddClass
     private OntModel evolvedModel;
     
     private String URI;
+    private OntClass newClass;
+    private OntClass oldClass;
+    
+    
+    
+    private HashMap<OntClass, String> restrictions;
+    
+    private String URI;
+    //private String [] superClasses;
+    //private String [] subClasses;
+    //private String [] disjoinWith;
+    
+    public AddClass(OntClass oldClass)
+    {
+        this.oldClass = oldClass;
+    }
+    
+    public AddClass(String URI)
+    {  
+        this.URI = URI;
+    }
+    
+    public void addRestriction(String restrictionType, OntClass restriction)
+    {
+        restrictions.put(restriction, restrictionType);
+    }
+    
     
     @Override
     public String getURI() 
@@ -42,19 +70,33 @@ public class AddClass implements IAddClass
 
     @Override
     public void execute() 
-    {
-        OntClass newClass = Utils.OntologyUtils.getClassFromModel(evolvedModel, this.URI);
+    {        
+        if(this.originalModel==null)
+            Utils.Utilities.logError("Original Model is not instantiated", "ADDCLASS : EXECUTE");
         
-        if(newClass==null)
-        {
-            newClass = evolvedModel.createClass(URI);
+        if(this.oldClass==null)
+            this.oldClass = this.originalModel.getOntClass(URI);
+        
+        if(this.oldClass==null) // preciso instanciar nova classe
+        {    
+            this.newClass = this.evolvedModel.createClass(URI);
         }
-        else
+        else // copia o que já existe
         {
-            //class existe. fazer o que?
+            this.newClass = Utils.OntologyUtils.copyClass(oldClass, evolvedModel);
         }
-    
-    
+        
+        //adicionar restrições
+        // fazer esta parte sem ser copia!!!
+
+        for(OntClass restriction : restrictions.keySet())
+        {
+            String restrictionType = restrictions.get(restriction);   
+            Utils.OntologyUtils.copyRestriction(restriction, newClass, restrictionType);
+        }
+        
     }
+    
+    
     
 }
