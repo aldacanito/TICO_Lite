@@ -5,21 +5,26 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
+import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.jena.ontology.OntModel;
 
 /**
  *
  * @author Alda
  */
-public class AddProperty 
+public class AddProperty implements EvolutionaryAction
 {
-    private String URI;
-    private String subPropertyOf;
-    private String superPropertyOf;
-    private List<String> domains;
-    private List<String> ranges;
-    private List<String> disjointWith;
+    String URI;
+    String subPropertyOf;
+    String superPropertyOf;
+    List<String> domains;
+    List<String> ranges;
+    List<String> disjointWith;
+    
+    OntModel originalModel;
+    OntModel evolvedModel;
     
     boolean functional = false;
     
@@ -134,5 +139,26 @@ public class AddProperty
      */
     public List<String> getDisjointWith() {
         return disjointWith;
+    }
+
+    @Override
+    public OntModel getEvolvedModel() {
+        return this.evolvedModel;
+    }
+
+    @Override
+    public void setUp(OntModel originalModel, OntModel evolvedModel) 
+    {
+     
+        this.evolvedModel = evolvedModel;
+        this.originalModel = originalModel;
+        
+        if(evolvedModel == null)
+            this.evolvedModel = this.originalModel;
+    }
+
+    @Override
+    public void execute() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

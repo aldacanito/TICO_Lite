@@ -5,19 +5,36 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
+import org.apache.jena.ontology.DatatypeProperty;
+
 /**
  *
  * @author Alda
  */
-public class AddDataTypeProperty extends AddProperty
+public class AddDatatypeProperty extends AddProperty
 {
     
-    public AddDataTypeProperty(String URI) {
+    public AddDatatypeProperty(String URI) {
         super(URI);
     }
     
-    public AddDataTypeProperty(String URI, boolean functional) {
+    public AddDatatypeProperty(String URI, boolean functional) {
         super(URI, functional);
+    }
+    
+    public void execute()
+    {
+        Utils.Utilities.logInfo("Executing Evolutionary Action Add Datatype Property for Property with URI " + this.getURI());
+   
+        DatatypeProperty dtp = Utils.OntologyUtils.getDatatypePropertyFromModel(this.evolvedModel, URI);
+        
+        if(dtp!=null) // property Exists. modify?
+        {}
+        else
+        {}
+
+        
+       
     }
     
 

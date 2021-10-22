@@ -14,13 +14,14 @@ public class ClassPropertyMetrics extends EntityMetrics
     int classMentions = 0;
 
     //USE URI
-    HashMap<String, Integer> classProperties;
+    HashMap<String, Integer> classObjProperties;
+    HashMap<String, Integer> classDtProperties;
     List<String> functionalCandidates;
     
     public ClassPropertyMetrics(String EntityURI)
     {
         super(EntityURI);      
-        classProperties        = new HashMap<>();
+        classObjProperties   = new HashMap<>();
         functionalCandidates = new ArrayList<>();
         classMentions        = 0;
     }
@@ -29,7 +30,7 @@ public class ClassPropertyMetrics extends EntityMetrics
     {
         super(cls.getURI());
         ontClass             = cls;        
-        classProperties        = new HashMap<>();
+        classObjProperties        = new HashMap<>();
         functionalCandidates = new ArrayList<>();
         classMentions        = 0;
     }
@@ -42,15 +43,23 @@ public class ClassPropertyMetrics extends EntityMetrics
             functionalCandidates.add(newPropertyURI);
     }
     
-    public void addProperty(String newPropertyURI)
+    public void addObjProperty(String newPropertyURI)
     {
         int count = 1;
-        if(classProperties.containsKey(newPropertyURI))
-            count = (int) classProperties.get(newPropertyURI) + 1;
+        if(classObjProperties.containsKey(newPropertyURI))
+            count = (int) classObjProperties.get(newPropertyURI) + 1;
         
-        classProperties.put(newPropertyURI, count);
+        classObjProperties.put(newPropertyURI, count);
+    }
+    
+    
+    public void addDtProperty(String newPropertyURI)
+    {
+        int count = 1;
+        if(classDtProperties.containsKey(newPropertyURI))
+            count = (int) classDtProperties.get(newPropertyURI) + 1;
         
-        
+        classDtProperties.put(newPropertyURI, count);
     }
     
     public void addClassMention()
@@ -60,7 +69,7 @@ public class ClassPropertyMetrics extends EntityMetrics
     
     public float getPropertyRatio(String propertyURI)
     {
-        int propertyMentions = classProperties.get(propertyURI);
+        int propertyMentions = classObjProperties.get(propertyURI);
                 
         if(propertyMentions!=0 && classMentions!=0)
             return (float) propertyMentions / (float) classMentions;
@@ -68,10 +77,15 @@ public class ClassPropertyMetrics extends EntityMetrics
             return 0;
     }
     
-    
-    public HashMap<String, Integer> getClassProperties()
+     public HashMap<String, Integer> getClassDtProperties()
     {
-        return this.classProperties;
+        return this.classDtProperties;
+    }
+    
+     
+    public HashMap<String, Integer> getClassObjProperties()
+    {
+        return this.classObjProperties;
     }
     
     

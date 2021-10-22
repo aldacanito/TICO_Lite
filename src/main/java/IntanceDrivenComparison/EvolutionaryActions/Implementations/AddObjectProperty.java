@@ -5,6 +5,8 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Implementations;
 
+import org.apache.jena.ontology.ObjectProperty;
+
 /**
  *
  * @author Alda
@@ -113,6 +115,18 @@ public class AddObjectProperty extends AddProperty
         this.irreflexive = irreflexive;
     }
     
+    public void execute()
+    {
+        Utils.Utilities.logInfo("Executing Evolutionary Action Add Object Property for Property with URI " + this.getURI());
+        
+        ObjectProperty theProperty = Utils.OntologyUtils.getObjectPropertyFromModel(this.evolvedModel, URI);
+        
+        if(theProperty!=null) // property Exists. modify?
+        {}
+        else
+        {}
+        
+    }
     
     
 }

@@ -7,6 +7,9 @@ package IntanceDrivenComparison.Comparison.Implementations.Shape;
 
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Factories.EvolutionaryActionFactory;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddDatatypeProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.EvolutionaryActionComposite;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import IntanceDrivenComparison.Metrics.ClassPropertyMetrics;
@@ -18,6 +21,7 @@ import java.util.List;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
@@ -71,8 +75,13 @@ public class ClassCompareShape implements IClassCompare
                 boolean ignore = Utilities.isInIgnoreList(instance.getURI());
                 if(ignore) continue;
                 
-                cpm.addProperty(predicateURI);
+                RDFNode object = stmt.getObject();
                 
+                if(object.isLiteral())
+                    cpm.addDtProperty(predicateURI);
+                if(object.isResource())
+                    cpm.addObjProperty(predicateURI);
+                    
                 int count = repeated.getOrDefault(predicateURI, 0);
                 count++;
                 
@@ -94,7 +103,7 @@ public class ClassCompareShape implements IClassCompare
         
         // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
         if(cpm!=null)
-            this.populateComposite(cpm);
+            this.populateComposite(cpm, composite);
         
         //composite.execute();
         
@@ -102,31 +111,61 @@ public class ClassCompareShape implements IClassCompare
         return composite;
     }
 
-    private void populateComposite(ClassPropertyMetrics cpm) 
+    private void populateComposite(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
     {
         // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
         OntClass ontClass = cpm.getOntClass();
         int classMentions = cpm.getClassMentions();
         List<String> functionalCandidates = cpm.getFunctionalCandidates();
         
-        HashMap<String, Integer> classProperties = cpm.getClassProperties();
+        HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
         
         for(String propertyURI : classProperties.keySet())
         {
             boolean isFunctional = false;
+            int mentions         = (int) classProperties.get(propertyURI);
+            
             if(functionalCandidates.contains(propertyURI))
                 isFunctional = true;
         
-            int mentions = (int) classProperties.get(propertyURI);
-              
+            AddObjectProperty add_objProperty = new AddObjectProperty(propertyURI, isFunctional);
+           
+            composite.add(add_objProperty);
             
-            // preciso ter thresholds, uma classe ou restriçao só é criada se for mencionada x vezes
             
+            if(mentions > 10) // TESTE, TROCAR DEPOIS
+            {
+                //criar restriçao classe equivalente
+            }
+        }
+        
+        //como ver se a restrição são VARIAS propriedades em conjunto?
+        
+        HashMap<String, Integer> classDtProperties = cpm.getClassDtProperties();
+        
+        for(String propertyURI : classDtProperties.keySet())
+        {
+            boolean isFunctional = false;
+            int mentions         = (int) classDtProperties.get(propertyURI);
+            
+            if(functionalCandidates.contains(propertyURI))
+                isFunctional = true;
+        
+            AddDatatypeProperty add_dtProperty = new AddDatatypeProperty(propertyURI, isFunctional);
+           
+            composite.add(add_dtProperty);
+             
+            if(mentions > 10) // TESTE, TROCAR DEPOIS
+            {
+                //criar restriçao classe equivalente
+            }
         }
         
         
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // preciso ter thresholds, uma classe ou restriçao só é criada se for mencionada x vezes
+        
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

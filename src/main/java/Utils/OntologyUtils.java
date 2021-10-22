@@ -244,6 +244,98 @@ public class OntologyUtils
         return stats;
      }
      
+     /**
+      * Finds a class in an OntModel. Returns null if there is no class with the URI.
+      * @param model The Model in which to look for the OntClass
+      * @param URI URI of the Class
+      * @return OntClass with the same URI as provided, null if it doesn't exist in the OntModel.
+      */
+     public static OntClass getClassFromModel(OntModel model, String URI)
+     {
+        List<OntClass> listClasses = model.listClasses().toList();
+        for(OntClass cls : listClasses)
+            if(cls.getURI().equalsIgnoreCase(URI))
+                return cls;
+       
+        return null;
+     }
+     
+     /**
+      * Finds a class in an OntModel. Returns null if there is no such OntClass.
+      * @param model The model in which to look for the class
+      * @param toFind OntClass to look after. Comparison is done through the getURI() method.
+      * @return OntClass if a class with the same URI exists, null otherwise.
+      */
+     public static OntClass getClassFromModel(OntModel model, OntClass toFind)
+     {
+        List<OntClass> listClasses = model.listClasses().toList();
+        for(OntClass cls : listClasses)
+            if(cls.getURI().equalsIgnoreCase(toFind.getURI()))
+                return cls;
+       
+        return null;
+     }
+     
+     
+     
+     /**
+      * Looks for a Object Property in a given Model. Comparison is done by comparing the URIs from the properties.
+      * @param model The Model to search in
+      * @param property The ObjectProperty to look for 
+      * @return The ObjectProperty if it exists, null otherwise.
+      */
+     public static ObjectProperty getObjectPropertyFromModel(OntModel model, ObjectProperty property)
+     {
+        return getObjectPropertyFromModel(model, property.getURI());
+     }
+     
+     /**
+      * Looks for a Object Property in a given Model. Comparison is done by comparing the URIs from the properties.
+      * @param model The Model to search in
+      * @param propertyURI The URI to look for 
+      * @return The ObjectProperty if it exists, null otherwise.
+      */
+     public static ObjectProperty getObjectPropertyFromModel(OntModel model, String propertyURI)
+     {
+        List<ObjectProperty> listProperties = model.listObjectProperties().toList();
+        for(ObjectProperty dtp : listProperties)
+            if(propertyURI.equalsIgnoreCase(dtp.getURI()))
+                return dtp;
+        
+        return null;
+     }
+     
+     
+     
+     /**
+      * Looks for a Datatype Property in a given Model. Comparison is done by comparing the URIs from the properties.
+      * @param model The Model to search in
+      * @param property The DatatypeProperty to look for 
+      * @return The DatatypeProperty if it exists, null otherwise.
+      */
+     public static DatatypeProperty getDatatypePropertyFromModel(OntModel model, DatatypeProperty property)
+     {
+        return getDatatypePropertyFromModel(model, property.getURI());
+     }
+     
+     /**
+      * Looks for a Datatype Property in a given Model. Comparison is done by comparing the URIs from the properties.
+      * @param model The Model to search in
+      * @param propertyURI The URI to look for 
+      * @return The DatatypeProperty if it exists, null otherwise.
+      */
+     public static DatatypeProperty getDatatypePropertyFromModel(OntModel model, String propertyURI)
+     {
+        List<DatatypeProperty> listProperties = model.listDatatypeProperties().toList();
+        for(DatatypeProperty dtp : listProperties)
+            if(propertyURI.equalsIgnoreCase(dtp.getURI()))
+                return dtp;
+        
+        return null;
+     }
+     
+     
+     
      
      public static String getBasePrefix(OntModel model)
      {
