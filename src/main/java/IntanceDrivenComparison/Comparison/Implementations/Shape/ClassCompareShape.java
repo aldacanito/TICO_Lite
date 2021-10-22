@@ -6,16 +6,13 @@
 package IntanceDrivenComparison.Comparison.Implementations.Shape;
 
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
-import IntanceDrivenComparison.EvolutionaryActions.Factories.EvolutionaryActionFactory;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddDatatypeProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddObjectProperty;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.EvolutionaryActionComposite;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import IntanceDrivenComparison.Metrics.ClassPropertyMetrics;
 import IntanceDrivenComparison.Metrics.EntityMetricsStore;
 import Utils.Utilities;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.apache.jena.ontology.Individual;
@@ -23,7 +20,6 @@ import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
  *

@@ -18,22 +18,15 @@ import org.apache.jena.ontology.OntModel;
 public class AddProperty implements EvolutionaryAction
 {
     String URI;
-    String subPropertyOf;
-    String superPropertyOf;
+    List<String> subPropertyOf;
+    List<String> superPropertyOf;
     List<String> domains;
     List<String> ranges;
     List<String> disjointWith;
     
     OntModel originalModel;
     OntModel evolvedModel;
-    
-    protected String URI;
-    protected List<String> subPropertyOf;
-    protected List<String> superPropertyOf;
-    protected List<String> domains;
-    protected List<String> ranges;
-    protected List<String> disjointWith;
-    
+   
     protected boolean functional = false;
     
     //equivalent to?

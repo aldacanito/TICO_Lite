@@ -20,12 +20,14 @@ public class AddDatatypeProperty extends AddProperty
         super(URI);
     }
     
-    
-    public AddDataTypeProperty(String URI, boolean functional) 
+    public AddDatatypeProperty(String URI, boolean functional) 
     {
         super(URI, functional);
     }
+   
     
+
+    @Override
     public void execute()
     {
         Utils.Utilities.logInfo("Executing Evolutionary Action Add Datatype Property for Property with URI " + this.getURI());
@@ -36,15 +38,7 @@ public class AddDatatypeProperty extends AddProperty
         {}
         else
         {}
-
         
-       
-    }
-    
-
-    @Override
-    public void execute()
-    {
         OntProperty oldProperty = this.originalModel.getDatatypeProperty(URI);
         OntProperty newProperty = this.evolvedModel.getDatatypeProperty(URI);
            

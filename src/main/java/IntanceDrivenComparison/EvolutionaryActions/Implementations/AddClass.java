@@ -29,7 +29,6 @@ public class AddClass implements IAddClass
     
     private HashMap<OntClass, String> restrictions;
     
-    private String URI;
     //private String [] superClasses;
     //private String [] subClasses;
     //private String [] disjoinWith;
