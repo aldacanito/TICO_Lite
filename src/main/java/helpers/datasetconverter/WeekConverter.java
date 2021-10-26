@@ -12,7 +12,9 @@ import static helpers.datasetconverter.Main.logger;
 import static helpers.datasetconverter.Main.model;
 import static helpers.datasetconverter.Main.moments;
 import static helpers.datasetconverter.Main.s_relatedAlerts;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,6 +46,35 @@ public class WeekConverter {
     
     static Logger logger = Logger.getLogger("errors");  
     
+    static Date [] antes = { 
+            new GregorianCalendar(2020, 00, 1).getTime(), 
+            new GregorianCalendar(2021, 03, 8).getTime()};
+    
+    static Date [] scen_1_2 = { 
+            new GregorianCalendar(2021, 03, 8).getTime(), 
+            new GregorianCalendar(2021, 03, 15).getTime()
+        };
+    
+    static Date [] scen_5 = { 
+            new GregorianCalendar(2021, 02, 16).getTime(), 
+            new GregorianCalendar(2021, 02, 17).getTime()
+        };
+    
+    static Date [] zagreb = { 
+            new GregorianCalendar(2021, 03, 22).getTime(), 
+            new GregorianCalendar(2021, 03, 23).getTime()
+        };
+    
+    static Date [] milao = { 
+            new GregorianCalendar(2021, 03, 27).getTime(), 
+            new GregorianCalendar(2021, 03, 28).getTime()
+        };
+    
+    static Date [] atenas = { 
+            new GregorianCalendar(2021, 03, 25).getTime(), 
+            new GregorianCalendar(2021, 03, 26).getTime()
+        };
+    
     public static void main(String[] args) throws IOException 
     {
         s_relatedAlerts = new ArrayList<String>();
@@ -55,30 +86,22 @@ public class WeekConverter {
         
        
         // tudo antes do primeiro cenário
-        createDataset(  new GregorianCalendar(2020, 00, 1).getTime(), 
-                        new GregorianCalendar(2021, 03, 8).getTime());
-        
+        createDataset( antes[0], antes[1] );
        
         // entre scenarios 1 e 2
-        createDataset(  new GregorianCalendar(2021, 03, 8).getTime(), 
-                        new GregorianCalendar(2021, 03, 15).getTime());
+        createDataset(  scen_1_2[0], scen_1_2[1]);
         
         // scenario 5
-        createDataset(  new GregorianCalendar(2021, 02, 16).getTime(), 
-                        new GregorianCalendar(2021, 02, 17).getTime());
+        createDataset( scen_5[0], scen_5[1] );
         
         // simulacao zagreb
-        createDataset(  new GregorianCalendar(2021, 03, 22).getTime(), 
-                        new GregorianCalendar(2021, 03, 23).getTime());
-        
+        createDataset(  zagreb[0], zagreb[1] );
         
         // simulacao atenas
-        createDataset(  new GregorianCalendar(2021, 03, 25).getTime(), 
-                        new GregorianCalendar(2021, 03, 26).getTime());
+        createDataset( atenas[0], atenas[1]);
         
         // simulacao milao
-        createDataset(  new GregorianCalendar(2021, 03, 27).getTime(), 
-                        new GregorianCalendar(2021, 03, 28).getTime());
+        createDataset( milao[0], milao[1]);
         
         
     }
@@ -88,17 +111,33 @@ public class WeekConverter {
         //Date eventDate = new SimpleDateFormat("yyyy-MM-dd\'T\'hh:mm:ss").parse(timestamp);  
         SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
             
-       
+        model = ModelFactory.createDefaultModel();
+        assets = new ArrayList<String>();    
+        moments = new ArrayList<String>();    
+        events = new ArrayList<String>();    
+
+        s_relatedAlerts = new ArrayList<String>();
+    
             
         //os meses começam a contar do zero porque quem desenvolveu isto é maluco
         String s_start = fmt.format(start.getTime());
         String s_end = fmt.format(end.getTime());
             
-        String filename = "subset_" + s_start + "_" + s_end + ".ttl";
+        String filename = "subset_" + s_start + "_" + s_end + "";
     
         readIncidents(true, start, end);
         readRelatedAlerts(start, end);
     
+        try
+        {
+              FileWriter out = new FileWriter( "Indexes/" + filename + ".json");
+              model.write( out, "RDF/JSON" );
+        }
+        catch(Exception e)
+        {
+            System.out.println("E "+e.getMessage());
+        }
+        
     }
     
     
@@ -139,6 +178,20 @@ public class WeekConverter {
            if(aa.containsKey("severity"))
                 severity          = aa.get("severity").toString();
            
+           if(!detect_time.isBlank())
+           {
+                try
+                {
+                    Date eventDate = new SimpleDateFormat("yyyy-MM-dd\'T\'hh:mm:ss").parse(detect_time);  
+                    if(eventDate.before(start) || eventDate.after(end))
+                        return;
+               }
+               catch(Exception e)
+               {
+                   System.out.println("Could not parse datetime " + detect_time +". Reason: " + e.getMessage());
+                   return;
+               }
+           }
            if(!alert_id.isBlank() && !sensor.isBlank() && !source_host_name.isBlank())
                createEvent(alert_id, sensor, source_host_name, detect_time, type, alert_description, severity, start, end);
                      
@@ -249,6 +302,24 @@ public class WeekConverter {
                                     String start_time, String type, String description, String severity,
                                     Date start, Date end)
     {
+        
+        Date theTime = null;
+        
+        try
+        {
+            if(!start_time.isBlank())
+            {
+                theTime = new SimpleDateFormat("yyyy-MM-dd\'T\'hh:mm:ss").parse(start_time);
+            
+                if(theTime.after(end) || theTime.before(start))
+                    return;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error converting timestamp: " + e.getMessage());
+        }
+        
         
         // até eu arranjar uma maneira em condiçoes de fazer escape a esta gente toda é à força bruta mesmo
         String assetID = sensor.replace(" ", "_").replace(".", "_").replace("(", "").replace(")", "")
@@ -369,17 +440,36 @@ public class WeekConverter {
         insert += "  asiio:"+ id +"  asiio:extDescription \"" + description + "\" .\n";
                     
         insert+=getStartEndDateInserts(id, timestamp);
+
+        Date eventDate = null;
+        try
+        {
+            eventDate = new SimpleDateFormat("yyyy-MM-dd\'T\'hh:mm:ss").parse(timestamp);  
+
+            if(eventDate.before(start) || eventDate.after(end))
+                return;
+        
+        } catch(Exception e) 
+        {
+            System.out.println("Could not parse date.");
+        }    
+
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
+        String eventDateSTR  = "";
+        if(eventDate!=null)
+        {
+            eventDateSTR  = fmt.format(eventDate);
+            String extras = adicionarExtras(eventDate, id);
+
+            insert += extras;
+        }   
         
         //ver o tipo de ataque conforme a data 
         try
         {
             
             // kind é sempre INTRUSION mas nao devia ser!!!!!
-            Date eventDate = new SimpleDateFormat("yyyy-MM-dd\'T\'hh:mm:ss").parse(timestamp);  
-            SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
-            
-            String eventDateSTR = fmt.format(eventDate);
-            
+
             //os meses começam a contar do zero porque quem desenvolveu isto é maluco
             String zagreb = fmt.format(new GregorianCalendar(2021, 03, 23).getTime());
             String atenas = fmt.format(new GregorianCalendar(2021, 03, 26).getTime());
@@ -396,11 +486,16 @@ public class WeekConverter {
            
             String trainee2     = fmt.format(new GregorianCalendar(2021, 01, 25).getTime());
             
+            /*
             if(!eventDateSTR.equals(zagreb) & !eventDateSTR.equals(atenas) & !eventDateSTR.equals(milao1) & !eventDateSTR.equals(milao2)
                     & !eventDateSTR.equals(scenario1_1) & !eventDateSTR.equals(scenario1_2) & !eventDateSTR.equals(scenario2_1)
                     & !eventDateSTR.equals(scenario2_2) & !eventDateSTR.equals(scenario5) & !eventDateSTR.equals(trainee2))
                  
                 return;
+            */
+            
+          
+            
             
             //String attackType = "extAttack";
             
@@ -563,6 +658,72 @@ public class WeekConverter {
             logger.info("Generated Query " + insert);
         }
     
+    }
+
+    private static String adicionarExtras(Date eventDate, String eventId) 
+    {
+        String ret = "";
+
+         // versao inicial, sem nada
+        if(eventDate.after(antes[0]) && eventDate.before(antes[1]))
+        {
+            ret+=  "  asiio:"+ eventId +"  asiio:week '0' .\n";  
+            ret+= " asiio:"+eventId +" asiio:weekZero \"yes\" .\n";
+        }
+          
+        if(eventDate.after(scen_5[0]) && eventDate.before(scen_5[1]))
+        {
+            ret+=  "  asiio:"+ eventId +"  asiio:generatedIn \"Cenario 5\" .\n";
+            ret+=  "  asiio:"+ eventId +"  asiio:week '1' .\n";  
+            
+            ret+= " asiio:"+eventId +" asiio:weekZero \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekOne \"yes\" .\n";
+        }
+          
+        if(eventDate.after(scen_1_2[0]) && eventDate.before(scen_1_2[1]))
+        {
+            ret+=  "  asiio:"+ eventId +"  asiio:generatedIn \"Cenarios 1 ou 2\" .\n";
+            ret+=  "  asiio:"+ eventId +"  asiio:week '2' .\n";
+            
+            ret+= " asiio:"+eventId +" asiio:weekZero \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekOne \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekTwo \"yes\" .\n";
+            
+        }
+        
+        if(eventDate.after(zagreb[0]) && eventDate.before(zagreb[1]))
+        {
+            ret+=  "  asiio:"+ eventId +"  asiio:generatedIn \"Zagreb\" .\n";
+            ret+=  "  asiio:"+ eventId +"  asiio:week '3' .\n";  
+            
+            ret+= " asiio:"+eventId +" asiio:weekZero \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekOne \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekTwo \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekThree \"yes\" .\n";
+        }
+
+        if(eventDate.after(atenas[0]) && eventDate.before(atenas[1]))
+        {
+            ret+=  "  asiio:"+ eventId +"  asiio:generatedIn \"Atenas\" .\n";
+            ret+=  "  asiio:"+ eventId +"  asiio:week '4' .\n"; 
+            
+            ret+= " asiio:"+eventId +" asiio:weekZero \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekOne \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekTwo \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekThree \"no\" .\n";
+            ret+= " asiio:"+eventId +" asiio:weekFour \"yes\" .\n";
+        }
+
+        if(eventDate.after(milao[0]) && eventDate.before(milao[1]))
+        {
+            ret+=  "  asiio:"+ eventId +"  asiio:generatedIn \"Milao\" .\n";
+            ret+=  "  asiio:"+ eventId +"  asiio:week '5' .\n";  
+        }
+      
+
+    
+    
+        return ret;
     }
     
     

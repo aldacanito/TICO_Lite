@@ -1,0 +1,496 @@
+{ 
+  "http://www.gecad.isep.ipp.pt/ASIIO#89610542" : { 
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekOne" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extDescription" : [ { 
+      "type" : "literal" ,
+      "value" : ""
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extIncident"
+    }
+     ] ,
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekTwo" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekZero" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#week" : [ { 
+      "type" : "literal" ,
+      "value" : "3"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#generatedIn" : [ { 
+      "type" : "literal" ,
+      "value" : "Zagreb"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekThree" : [ { 
+      "type" : "literal" ,
+      "value" : "yes"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89612224_attack" : { 
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89612204" : { 
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekOne" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extDescription" : [ { 
+      "type" : "literal" ,
+      "value" : ""
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extIncident"
+    }
+     ] ,
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekZero" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekTwo" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#generatedIn" : [ { 
+      "type" : "literal" ,
+      "value" : "Zagreb"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#INFO"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#week" : [ { 
+      "type" : "literal" ,
+      "value" : "3"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekThree" : [ { 
+      "type" : "literal" ,
+      "value" : "yes"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89610535_attack" : { 
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89612195_attack" : { 
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89612204_attack" : { 
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2006/time#Instant"
+    }
+     ] ,
+    "http://www.w3.org/2000/01/rdf-schema#label" : [ { 
+      "type" : "literal" ,
+      "value" : "2021-04-22T09:35:11+00:00"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89610535" : { 
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekOne" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extDescription" : [ { 
+      "type" : "literal" ,
+      "value" : ""
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extIncident"
+    }
+     ] ,
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekTwo" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekZero" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#generatedIn" : [ { 
+      "type" : "literal" ,
+      "value" : "Zagreb"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#week" : [ { 
+      "type" : "literal" ,
+      "value" : "3"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekThree" : [ { 
+      "type" : "literal" ,
+      "value" : "yes"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89610542_attack" : { 
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2006/time#Instant"
+    }
+     ] ,
+    "http://www.w3.org/2000/01/rdf-schema#label" : [ { 
+      "type" : "literal" ,
+      "value" : "2021-04-22T10:09:49+00:00"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89612195" : { 
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekOne" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extDescription" : [ { 
+      "type" : "literal" ,
+      "value" : ""
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extIncident"
+    }
+     ] ,
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekZero" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekTwo" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#generatedIn" : [ { 
+      "type" : "literal" ,
+      "value" : "Zagreb"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#HIGH"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#week" : [ { 
+      "type" : "literal" ,
+      "value" : "3"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekThree" : [ { 
+      "type" : "literal" ,
+      "value" : "yes"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2006/time#Instant"
+    }
+     ] ,
+    "http://www.w3.org/2000/01/rdf-schema#label" : [ { 
+      "type" : "literal" ,
+      "value" : "2021-04-22T09:04:03+00:00"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2006/time#Instant"
+    }
+     ] ,
+    "http://www.w3.org/2000/01/rdf-schema#label" : [ { 
+      "type" : "literal" ,
+      "value" : "2021-04-22T10:15:49+00:00"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#89612224" : { 
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekOne" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extDescription" : [ { 
+      "type" : "literal" ,
+      "value" : ""
+    }
+     ] ,
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extIncident"
+    }
+     ] ,
+    "http://www.w3.org/2006/time#hasBeginning" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekZero" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekTwo" : [ { 
+      "type" : "literal" ,
+      "value" : "no"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#week" : [ { 
+      "type" : "literal" ,
+      "value" : "3"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#generatedIn" : [ { 
+      "type" : "literal" ,
+      "value" : "Zagreb"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf"
+    }
+    , { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795"
+    }
+     ] ,
+    "http://www.gecad.isep.ipp.pt/ASIIO#weekThree" : [ { 
+      "type" : "literal" ,
+      "value" : "yes"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.w3.org/2006/time#Instant"
+    }
+     ] ,
+    "http://www.w3.org/2000/01/rdf-schema#label" : [ { 
+      "type" : "literal" ,
+      "value" : "2021-04-22T13:50:30+00:00"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+   ,
+  "http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e" : { 
+    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" : [ { 
+      "type" : "uri" ,
+      "value" : "http://www.gecad.isep.ipp.pt/ASIIO#extEvent"
+    }
+     ]
+  }
+}
