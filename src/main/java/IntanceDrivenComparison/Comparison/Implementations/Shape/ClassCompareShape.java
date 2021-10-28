@@ -6,8 +6,9 @@
 package IntanceDrivenComparison.Comparison.Implementations.Shape;
 
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddDatatypeProperty;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.AddObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddCardinalityRestriction;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.EvolutionaryActionComposite;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import IntanceDrivenComparison.Metrics.ClassPropertyMetrics;
@@ -15,9 +16,12 @@ import IntanceDrivenComparison.Metrics.EntityMetricsStore;
 import Utils.Utilities;
 import java.util.HashMap;
 import java.util.List;
+import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.Individual;
+import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
 
@@ -107,61 +111,104 @@ public class ClassCompareShape implements IClassCompare
         return composite;
     }
 
-    private void populateComposite(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
+    
+    private void populateObjProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
-        // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
         OntClass ontClass = cpm.getOntClass();
-        int classMentions = cpm.getClassMentions();
-        List<String> functionalCandidates = cpm.getFunctionalCandidates();
-        
+    
+        List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
         
         for(String propertyURI : classProperties.keySet())
         {
+            ObjectProperty onProperty = Utils.OntologyUtils.getObjectPropertyFromModel(ontModel, propertyURI);
+            
             boolean isFunctional = false;
+            boolean isQualifiedR = false;
+            boolean isEquivalent = false;
+            boolean isSuperClass = true;
+            
             int mentions         = (int) classProperties.get(propertyURI);
             
-            if(functionalCandidates.contains(propertyURI))
+            if(functionalCandidates.contains(propertyURI) && mentions > Utils.Configs.functional_threshold)
                 isFunctional = true;
         
             AddObjectProperty add_objProperty = new AddObjectProperty(propertyURI, isFunctional);
-           
             composite.add(add_objProperty);
             
+            //adicionar na mesma a questao da restricao de equivalencia ao composite, depois ver se é para executar ou não
             
-            if(mentions > 10) // TESTE, TROCAR DEPOIS
-            {
-                //criar restriçao classe equivalente
-            }
+            if(mentions <= Utils.Configs.subclass_threshold)
+                isSuperClass = false;
+            
+            if(mentions > Utils.Configs.equivalent_threshold)
+                isEquivalent = true;
+            
+            AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
+            
+            // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
+            if(mentions > Utils.Configs.subclass_threshold)
+                if(isFunctional)
+                    rec.setCardinalityType("Exactly", 1, isQualifiedR);
+                else
+                    rec.setCardinalityType("Min", 0, isQualifiedR);
+           
         }
         
-        //como ver se a restrição são VARIAS propriedades em conjunto?
+    }
+    
+    
+    private void populateDtProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
+    {
+         OntClass ontClass = cpm.getOntClass();
+    
+        List<String> functionalCandidates        = cpm.getFunctionalCandidates();
+        HashMap<String, Integer> classProperties = cpm.getClassDtProperties();
         
-        HashMap<String, Integer> classDtProperties = cpm.getClassDtProperties();
-        
-        for(String propertyURI : classDtProperties.keySet())
+        for(String propertyURI : classProperties.keySet())
         {
-            boolean isFunctional = false;
-            int mentions         = (int) classDtProperties.get(propertyURI);
+            DatatypeProperty onProperty = Utils.OntologyUtils.getDatatypePropertyFromModel(ontModel, propertyURI);
             
-            if(functionalCandidates.contains(propertyURI))
+            boolean isFunctional = false;
+            boolean isQualifiedR = false;
+            boolean isEquivalent = false;
+            boolean isSuperClass = true;
+            
+            int mentions         = (int) classProperties.get(propertyURI);
+            
+            if(functionalCandidates.contains(propertyURI) && mentions > Utils.Configs.functional_threshold)
                 isFunctional = true;
         
             AddDatatypeProperty add_dtProperty = new AddDatatypeProperty(propertyURI, isFunctional);
-           
             composite.add(add_dtProperty);
-             
-            if(mentions > 10) // TESTE, TROCAR DEPOIS
-            {
-                //criar restriçao classe equivalente
-            }
+            
+            //adicionar na mesma a questao da restricao de equivalencia ao composite, depois ver se é para executar ou não
+            
+            if(mentions <= Utils.Configs.subclass_threshold)
+                isSuperClass = false;
+            
+            if(mentions > Utils.Configs.equivalent_threshold)
+                isEquivalent = true;
+            
+            AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
+            
+            // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
+            if(mentions > Utils.Configs.subclass_threshold)
+                if(isFunctional)
+                    rec.setCardinalityType("Exactly", 1, isQualifiedR);
+                else
+                    rec.setCardinalityType("Min", 0, isQualifiedR);
+           
         }
         
-        
-        
-        // preciso ter thresholds, uma classe ou restriçao só é criada se for mencionada x vezes
-        
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    private void populateComposite(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
+    {
+        // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
+        this.populateObjProperties(cpm, composite);
+        this.populateDtProperties(cpm, composite);
+        
+    }
+    
     
 }

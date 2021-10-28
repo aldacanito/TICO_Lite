@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IntanceDrivenComparison.EvolutionaryActions.Implementations;
+package IntanceDrivenComparison.EvolutionaryActions.Implementations.Deletion;
 
 /**
  *
  * @author shizamura
  */
-public class DeleteClass {
+public class DeleteDatatypeProperty {
     
 }

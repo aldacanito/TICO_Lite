@@ -25,6 +25,11 @@ public class Configs
     public static Properties prop;
     public static String[] NS_to_ignore;
     
+    public static int functional_threshold;
+    public static int subclass_threshold;
+    public static int equivalent_threshold;
+    
+    
     public Configs()
     {
         this.prop = new Properties();
@@ -49,8 +54,11 @@ public class Configs
             String verbose = (String) prop.getOrDefault("verbose", "true");
             Utilities.verbose = Boolean.parseBoolean(verbose);
             
-            
-        } catch (Exception ex)
+            this.functional_threshold = Integer.parseInt( (String) prop.getOrDefault("functional_threshold", "10"));
+            this.subclass_threshold   = Integer.parseInt( (String) prop.getOrDefault("subclass_threshold",   "10"));
+            this.equivalent_threshold = Integer.parseInt( (String) prop.getOrDefault("equivalent_threshold", "50"));
+        } 
+        catch (Exception ex)
         {
             Utilities.getLogger().log(Level.SEVERE, null, ex);
             createSamplePropertiesFile(); // se nao existe cria um novo
@@ -86,7 +94,12 @@ public class Configs
             this.prop.setProperty("namespace_ignore",           "http://www.w3.org/2002/07/owl;http://www.w3.org/2006/time;http://purl.org/dc/terms;http://www.w3.org/1999/02/22-rdf-syntax-ns;http://www.w3.org/2000/01/rdf-schema;");
             this.prop.setProperty("verbose",                    "true");
             
-            this.prop.setProperty("model_print",                    "TTL"); // alternatively RDF/XML
+            this.prop.setProperty("model_print",                "TTL"); // alternatively RDF/XML
+            
+            
+            this.prop.setProperty("functional_threshold",       "10"); // alternatively RDF/XML
+            this.prop.setProperty("subclass_threshold",         "10"); // alternatively RDF/XML
+            this.prop.setProperty("equivalent_threshold",       "50"); // alternatively RDF/XML
             
             
             this.prop.store(outp, "default configuration, auto-generated");

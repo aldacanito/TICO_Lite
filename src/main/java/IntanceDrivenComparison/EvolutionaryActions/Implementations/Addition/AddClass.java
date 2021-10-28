@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IntanceDrivenComparison.EvolutionaryActions.Implementations;
+package IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import java.util.List;
@@ -25,13 +25,11 @@ public class AddClass implements IAddClass
     private OntClass newClass;
     private OntClass oldClass;
     
-    
-    
     private HashMap<OntClass, String> restrictions;
     
     //private String [] superClasses;
     //private String [] subClasses;
-    //private String [] disjoinWith;
+    private List<OntClass> disjoinWith;
     
     public AddClass(OntClass oldClass)
     {
@@ -91,11 +89,19 @@ public class AddClass implements IAddClass
         for(OntClass restriction : restrictions.keySet())
         {
             String restrictionType = restrictions.get(restriction);   
-            Utils.OntologyUtils.copyRestriction(restriction, newClass, restrictionType);
+            //Utils.OntologyUtils.copyRestriction(restriction, newClass, restrictionType);
         }
+        
+        this.addDisjoints();
         
     }
     
-    
+    public void addDisjoints()
+    {
+        for(OntClass disjoint : this.disjoinWith)
+        {
+            this.newClass.addDisjointWith(disjoint);
+        }
+    }
     
 }

@@ -5,11 +5,11 @@
  */
 package IntanceDrivenComparison.EvolutionaryActions.Factories;
 
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.CopyClass;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Copy.CopyClass;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.CopyDatatypeProperty;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.CopyObjectProperty;
-import IntanceDrivenComparison.EvolutionaryActions.Implementations.CopyProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Copy.CopyDatatypeProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Copy.CopyObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Copy.CopyProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import Utils.Utilities;
 import org.apache.jena.ontology.OntClass;

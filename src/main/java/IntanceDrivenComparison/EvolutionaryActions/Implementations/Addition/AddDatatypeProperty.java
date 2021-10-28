@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IntanceDrivenComparison.EvolutionaryActions.Implementations;
+package IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition;
 
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.OntProperty;

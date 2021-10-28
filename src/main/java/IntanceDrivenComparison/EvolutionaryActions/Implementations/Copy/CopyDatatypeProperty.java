@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package IntanceDrivenComparison.EvolutionaryActions.Implementations;
+package IntanceDrivenComparison.EvolutionaryActions.Implementations.Copy;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddDatatypeProperty;
 import Utils.OntologyUtils;
