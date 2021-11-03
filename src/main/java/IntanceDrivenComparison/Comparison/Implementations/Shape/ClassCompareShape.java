@@ -8,21 +8,27 @@ package IntanceDrivenComparison.Comparison.Implementations.Shape;
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddAllValuesFromRestriction;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddCardinalityRestriction;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddSomeValuesFromRestriction;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.EvolutionaryActionComposite;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import IntanceDrivenComparison.Metrics.ClassPropertyMetrics;
 import IntanceDrivenComparison.Metrics.EntityMetricsStore;
+import IntanceDrivenComparison.Metrics.PropertyMetrics;
 import Utils.Utilities;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
+import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 
 /**
@@ -77,11 +83,17 @@ public class ClassCompareShape implements IClassCompare
                 
                 RDFNode object = stmt.getObject();
                 
-                if(object.isLiteral())
-                    cpm.addDtProperty(predicateURI);
-                if(object.isResource())
-                    cpm.addObjProperty(predicateURI);
-                    
+               
+                if(object.isLiteral()) // DT PROP
+                {
+                    Literal asLiteral = object.asLiteral();                  
+                    cpm.addDtProperty(predicateURI, asLiteral.getDatatypeURI());
+                }
+                if(object.isResource()) // OBJ PROP
+                {
+                    Resource asResource = object.asResource();
+                    cpm.addObjProperty(predicateURI, asResource.getURI());
+                }   
                 int count = repeated.getOrDefault(predicateURI, 0);
                 count++;
                 
@@ -118,6 +130,7 @@ public class ClassCompareShape implements IClassCompare
     
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
+        //List<PropertyMetrics> propertyMetrics    = cpm.getPropertyMetrics();
         
         for(String propertyURI : classProperties.keySet())
         {
@@ -153,6 +166,59 @@ public class ClassCompareShape implements IClassCompare
                 else
                     rec.setCardinalityType("Min", 0, isQualifiedR);
            
+            
+            // TODO ACRESCENTAR OUTROS TIPOS DE RESTRIÇAO AQUI
+            //UTILIZAR O PROPERTYMETRICS
+            PropertyMetrics pmetrics = cpm.getMetricsOfProperty(propertyURI);
+            if(pmetrics!=null)
+            {
+                Map<String, Integer> ranges = pmetrics.getRanges();
+                //all ranges must be the same
+                // se houver mais que 1 range na lista ja nao vale
+                int numRanges = ranges.keySet().size();
+                
+                
+                if(numRanges == 1)
+                {
+                    //all values from
+                    // OntClass cls, OntProperty onProperty, boolean isEquivalent,
+                    //boolean isSubclass, OntClass rangeClass
+                    
+                    String rangeURI     = ranges.keySet().iterator().next();
+                    OntClass rangeClass = ontModel.getOntClass(rangeURI);
+                    
+                    AddAllValuesFromRestriction aavfR = 
+                            new AddAllValuesFromRestriction(
+                                    ontClass,
+                                    onProperty,
+                                    isEquivalent,
+                                    isSuperClass,
+                                    rangeClass
+                            );
+                    composite.add(aavfR);
+                }
+                else if(numRanges >= Utils.Configs.someValuesFrom_threshold)
+                {
+                    // some values from
+                                      
+                    String rangeURI     = ranges.keySet().iterator().next();
+                    OntClass rangeClass = ontModel.getOntClass(rangeURI);
+                    
+                    AddSomeValuesFromRestriction asvfR = 
+                            new AddSomeValuesFromRestriction(
+                                    ontClass,
+                                    onProperty,
+                                    isEquivalent,
+                                    isSuperClass,
+                                    rangeClass
+                            );
+                    composite.add(asvfR);
+                }
+            
+            }
+            
+            
+            
         }
         
     }

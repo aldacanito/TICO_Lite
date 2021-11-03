@@ -43,7 +43,8 @@ public class Main
     
     public static List<String> s_relatedAlerts = new ArrayList<String>();
     
-    static Logger logger = Logger.getLogger("errors");  
+    static Logger logger = Logger.getLogger("errors"); 
+    public static boolean addList = false;
         
     public static void main(String[] args) throws IOException 
     {
@@ -81,7 +82,7 @@ public class Main
     {
         
         // read file
-        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_alerts.json"));
+        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_alerts.json", addList));
     
         Map<String, Object> toMap = joAlerts.toMap();
         ArrayList<HashMap> aList = (ArrayList<HashMap>) toMap.get("list");
@@ -126,7 +127,7 @@ public class Main
     private static void readIncidents(boolean attacksOnly)
     {
          // read file
-        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_real_incidents.json"));
+        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_real_incidents.json", addList));
     
         //JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_incidents.json"));
     
@@ -174,7 +175,7 @@ public class Main
     private static void readAlerts()
     {
         // read file
-        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_alerts.json"));
+        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_alerts.json", addList));
     
         Map<String, Object> toMap = joAlerts.toMap();
         ArrayList<HashMap> aList = (ArrayList<HashMap>) toMap.get("list");

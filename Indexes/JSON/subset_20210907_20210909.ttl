@@ -1,0 +1,293 @@
+<http://www.gecad.isep.ipp.pt/ASIIO#89884688>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#61388c9fda9e9118f97d0e4d> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#HIGH> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1024140000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210907T1116570000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-07T11:16:57+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89883759_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1058230000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884646>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#613636bbda9e9118f97a8542> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1421300000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884688_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1024140000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6138bce7da9e9118f97d42b3-64966>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#613769c6da9e9118f97bd291-50548>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210908T1339410000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-08T13:39:41+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884630_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1116570000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89883759>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#613744f0da9e9118f97baa80> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#HIGH> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1058230000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884638>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64966> , <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64965> , <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64963> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1128360000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64963>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210907T1421300000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-07T14:21:30+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884646_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1421300000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210908T1358590000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-08T13:58:59+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6138bce7da9e9118f97d42b3-64965>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210908T1328250000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-08T13:28:25+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210907T1058230000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-07T10:58:23+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6138c11fda9e9118f97d474b-50609>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884721_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1358590000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#61376a06da9e9118f97bd2e2-50548>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884706_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1328250000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884716>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#6138bce7da9e9118f97d42b3-64965> , <http://www.gecad.isep.ipp.pt/ASIIO#6138bce7da9e9118f97d42b3-64964> , <http://www.gecad.isep.ipp.pt/ASIIO#6138bce7da9e9118f97d42b3-64966> , <http://www.gecad.isep.ipp.pt/ASIIO#6138bc6eda9e9118f97d422f-64963> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1339410000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#613744f0da9e9118f97baa80>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6138b99dda9e9118f97d3f1e>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6138bc6eda9e9118f97d422f-64963>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884644>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#613769c6da9e9118f97bd291-50548> , <http://www.gecad.isep.ipp.pt/ASIIO#61376a06da9e9118f97bd2e2-50548> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#HIGH> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1354010000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6138bce7da9e9118f97d42b3-64964>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#613636bbda9e9118f97a8542>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884644_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1354010000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#61388c9fda9e9118f97d0e4d>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884630>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#61374928da9e9118f97baf1f> , <http://www.gecad.isep.ipp.pt/ASIIO#613749a5da9e9118f97bafaa> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#HIGH> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1116570000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6138c3b3da9e9118f97d4a18>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64966>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210907T1354010000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-07T13:54:01+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884727>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#6138c3b3da9e9118f97d4a18> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1412050000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884721>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#6138c11fda9e9118f97d474b-50609> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#HIGH> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1358590000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210908T1024140000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-08T10:24:14+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210907T1128360000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-07T11:28:36+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884706>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#6138b8e4da9e9118f97d3e52> , <http://www.gecad.isep.ipp.pt/ASIIO#6138b99dda9e9118f97d3f1e> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#HIGH> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Milao" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "5" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1328250000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210908T1412050000_st>
+        a       <http://www.w3.org/2006/time#Instant> ;
+        <http://www.w3.org/2000/01/rdf-schema#label>
+                "2021-09-08T14:12:05+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64965>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884716_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1339410000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#613749a5da9e9118f97bafaa>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#61374928da9e9118f97baf1f>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884727_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1412050000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6138b8e4da9e9118f97d3e52>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884638_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1128360000_st> .

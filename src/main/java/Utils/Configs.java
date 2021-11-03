@@ -28,6 +28,7 @@ public class Configs
     public static int functional_threshold;
     public static int subclass_threshold;
     public static int equivalent_threshold;
+    public static int someValuesFrom_threshold;
     
     
     public Configs()
@@ -57,6 +58,8 @@ public class Configs
             this.functional_threshold = Integer.parseInt( (String) prop.getOrDefault("functional_threshold", "10"));
             this.subclass_threshold   = Integer.parseInt( (String) prop.getOrDefault("subclass_threshold",   "10"));
             this.equivalent_threshold = Integer.parseInt( (String) prop.getOrDefault("equivalent_threshold", "50"));
+            this.someValuesFrom_threshold = Integer.parseInt( (String) prop.getOrDefault("someValyesFrom_threshold", "15"));
+      
         } 
         catch (Exception ex)
         {

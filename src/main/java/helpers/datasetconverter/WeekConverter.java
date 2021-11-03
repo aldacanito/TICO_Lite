@@ -37,12 +37,19 @@ import org.json.JSONObject;
  */
 public class WeekConverter {
 
-    public static Model model = ModelFactory.createDefaultModel();
-    public static ArrayList<String> assets = new ArrayList<String>();    
+    public static Model model               = ModelFactory.createDefaultModel();
+    public static ArrayList<String> assets  = new ArrayList<String>();    
     public static ArrayList<String> moments = new ArrayList<String>();    
-    public static ArrayList<String> events = new ArrayList<String>();    
+    public static ArrayList<String> events  = new ArrayList<String>();    
     
     public static List<String> s_relatedAlerts = new ArrayList<String>();
+    
+    public static String directory_base = "Indexes/JSON/";
+    public static String directory_new  = directory_base + "Recentes/";
+    public static String directory_old  = directory_base + "Antigos/";
+    
+    public static boolean addList = true;
+    
     
     static Logger logger = Logger.getLogger("errors");  
     
@@ -66,8 +73,8 @@ public class WeekConverter {
         };
     
     static Date [] milao = { 
-            new GregorianCalendar(2021, 03, 27).getTime(), 
-            new GregorianCalendar(2021, 03, 28).getTime()
+            new GregorianCalendar(2021, 8, 7).getTime(), 
+            new GregorianCalendar(2021, 8, 9).getTime()
         };
     
     static Date [] atenas = { 
@@ -75,8 +82,13 @@ public class WeekConverter {
             new GregorianCalendar(2021, 03, 26).getTime()
         };
     
+
+    
     public static void main(String[] args) throws IOException 
     {
+        directory_old  = directory_new;
+
+            
         s_relatedAlerts = new ArrayList<String>();
         FileHandler fh = new FileHandler("log.log");  
 
@@ -108,20 +120,19 @@ public class WeekConverter {
     
     private static void createDataset(Date start, Date end)
     {
-        //Date eventDate = new SimpleDateFormat("yyyy-MM-dd\'T\'hh:mm:ss").parse(timestamp);  
+      
         SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd");
             
-        model = ModelFactory.createDefaultModel();
-        assets = new ArrayList<String>();    
+        model   = ModelFactory.createDefaultModel();
+        assets  = new ArrayList<String>();    
         moments = new ArrayList<String>();    
-        events = new ArrayList<String>();    
+        events  = new ArrayList<String>();    
 
         s_relatedAlerts = new ArrayList<String>();
     
-            
         //os meses começam a contar do zero porque quem desenvolveu isto é maluco
         String s_start = fmt.format(start.getTime());
-        String s_end = fmt.format(end.getTime());
+        String s_end   = fmt.format(end.getTime());
             
         String filename = "subset_" + s_start + "_" + s_end + "";
     
@@ -130,8 +141,8 @@ public class WeekConverter {
     
         try
         {
-              FileWriter out = new FileWriter( "Indexes/" + filename + ".json");
-              model.write( out, "RDF/JSON" );
+              FileWriter out = new FileWriter( directory_base + filename + ".ttl");
+              model.write( out, "TTL" );
         }
         catch(Exception e)
         {
@@ -143,12 +154,13 @@ public class WeekConverter {
     
     private static void readRelatedAlerts(Date start, Date end)
     {
-        
+       
+        String path = directory_old + "acs_mirror_alerts.json";
         // read file
-        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_alerts.json"));
+        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent(path, addList));
     
         Map<String, Object> toMap = joAlerts.toMap();
-        ArrayList<HashMap> aList = (ArrayList<HashMap>) toMap.get("list");
+        ArrayList<HashMap> aList  = (ArrayList<HashMap>) toMap.get("list");
         
         // vai iterar as instancias
         Iterator i = aList.iterator();
@@ -202,10 +214,9 @@ public class WeekConverter {
     private static void readIncidents(boolean attacksOnly, Date start, Date end)
     {
          // read file
-        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_real_incidents.json"));
-    
-        //JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_incidents.json"));
-    
+        String path = directory_old + "acs_mirror_real_incidents.json";
+        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent(path, addList));
+
         Map<String, Object> toMap = joAlerts.toMap();
         ArrayList<HashMap> aList = (ArrayList<HashMap>) toMap.get("list");
         
@@ -250,7 +261,8 @@ public class WeekConverter {
     private static void readAlerts(Date start, Date end)
     {
         // read file
-        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent("Indexes/acs_mirror_alerts.json"));
+        String path = directory_old + "acs_mirror_alerts.json";
+        JSONObject joAlerts = new JSONObject(Utilities.readTextFileContent(path, addList));
     
         Map<String, Object> toMap = joAlerts.toMap();
         ArrayList<HashMap> aList = (ArrayList<HashMap>) toMap.get("list");

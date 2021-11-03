@@ -155,12 +155,33 @@ public class Utilities
      * @param filePath the text file path
      * @return the text file content
      */
-    public static String readTextFileContent(String filePath) {
-        String content = null;
+//    public static String readTextFileContent(String filePath) {
+//        String content = null;
+//
+//        if (Files.exists(Path.of(filePath))) {
+//            try {
+//                content = new String(Files.readAllBytes(Paths.get(filePath)));
+//            } catch (IOException e) {
+//                content = null;
+//            }
+//        }
+//
+//        return content;
+//    }
+    
+    public static String readTextFileContent(String filePath, boolean addList) {
+        String content = "";
 
         if (Files.exists(Path.of(filePath))) {
             try {
-                content = new String(Files.readAllBytes(Paths.get(filePath)));
+                if(addList)
+                    content += "{ \"list\" : ";
+                    
+                content += new String(Files.readAllBytes(Paths.get(filePath)));
+    
+                if(addList)
+                    content += "}";
+            
             } catch (IOException e) {
                 content = null;
             }

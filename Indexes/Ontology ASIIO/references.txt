@@ -1,0 +1,10 @@
+Please make sure the following ontologies are correctly imported:
+- UCO:   https://raw.githubusercontent.com/Ebiquity/Unified-Cybersecurity-Ontology/master/uco2.ttl
+
+- Ticket Ontology: http://purl.org/tio/ns.owl
+
+- OWL-Time: http://www.w3.org/2006/time
+
+- NASA ATMONTO: https://data.nasa.gov/ontologies/atmontoCore
+
+- ICARUS: https://raw.githubusercontent.com/katia-aleid/icarus-xml/master/icarus.owl

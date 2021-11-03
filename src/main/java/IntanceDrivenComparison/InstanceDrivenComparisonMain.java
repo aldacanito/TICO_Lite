@@ -9,12 +9,6 @@ import Utils.Configs;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
-import org.apache.jena.rdf.model.InfModel;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.reasoner.Reasoner;
-import org.apache.jena.reasoner.ReasonerRegistry;
 
 /**
  *
@@ -28,49 +22,64 @@ public class InstanceDrivenComparisonMain
      */
     public static void main(String[] args) 
     {
-        start();
+        Configs configs = new Configs();
+        startRounds();
     }
     
-    public static void start()
+    public static void startRounds()
     {
-        Configs configs = new Configs();
-        
-        String onto_path      = "Indexes/TestOnto/shizaTest_base.ttl" ;
-        String instance_path  = "Indexes/TestOnto/shizaTest_newInstance.ttl" ;
-        String printModelPath = "Indexes/NewModel/newModel.ttl";
-        String roundName      = "";
+        String dir = "Indexes/Processed/with_instances/";
         // round one
-        onto_path      = "Indexes/Processed/with_instances/base_asiio.ttl" ;
-        instance_path  = "Indexes/Processed/with_instances/24-02-2020_inst.ttl" ;
-        printModelPath = "Indexes/Processed/with_instances/round1.ttl";
-        roundName = "_round1";
+        String onto_path      = dir + "base_asiio.ttl" ;
+        String instance_path  = dir + "24-02-2020_inst.ttl" ;
+        String print_path = dir + "round1.ttl";
+        
+        runComparator(onto_path, instance_path, print_path, 1);
         
 //        // round two
-//        onto_path      = "Indexes/Processed/with_instances/round1.ttl" ;
-//        instance_path  = "Indexes/Processed/with_instances/28-07-2020_inst.ttl" ;
-//        printModelPath = "Indexes/Processed/with_instances/round2.ttl";
-//        roundName = "_round2";
+        onto_path      = print_path;
+        instance_path  = dir+ "28-07-2020_inst.ttl" ;
+        print_path     =  dir + "round2.ttl";
+        
+        runComparator(onto_path, instance_path, print_path, 2);
+
 ////        // round three
-//        onto_path      = "Indexes/Processed/with_instances/round2.ttl" ;
-//        instance_path  = "Indexes/Processed/with_instances/17-07-2021_inst.ttl" ;
-//        printModelPath = "Indexes/Processed/with_instances/round3.ttl";
-//        roundName = "_round3";
-//        
+        onto_path      = print_path;
+        instance_path  = dir + "17-07-2021_inst.ttl" ;
+        print_path     = dir + "round3.ttl";
+
+        runComparator(onto_path, instance_path, print_path, 3);
+   
+    }
+    
+    public static void compareAtaque_semAtaque()
+    {
+        String dir = "Indexes/Processed/";
+        String onto_path     = dir + "ASIIO_semAtaque.ttl" ;
+        String instance_path = dir + "small_dataset_withOnto.ttl" ;
+        String print_path    = dir + "result.ttl";
         
-//        onto_path     = "Indexes/Processed/ASIIO_semAtaque.ttl" ;
-//        instance_path = "Indexes/Processed/small_dataset_withOnto.ttl" ;
-//        instance_path = "Indexes/Processed/ASIIO.ttl" ;
+        runComparator(onto_path, instance_path, print_path, 0);
+    }
+    
+    
+    public static void startTest()
+    {
+        String dir            = "Indexes/TestOnto/";
+        String onto_path      = dir + "shizaTest_base.ttl" ;
+        String instance_path  = dir + "shizaTest_newInstance.ttl" ;
+        String print_path = dir + "evolvedModel.ttl";
         
-//        OntModel baseO = ModelFactory.createOntologyModel();
-//        OntModel baseI = ModelFactory.createOntologyModel();
-          
+        runComparator(onto_path, instance_path, print_path, 0);
+    }
+    
         
+    public static void runComparator(String onto_path, String instance_path,
+                                     String print_path, int round)
+    {
         OntModel baseO = OntologyUtils.readModel(onto_path);
         OntModel baseI = OntologyUtils.readModel(instance_path);
-        
-        //baseO.read(onto_path);
-        //baseI.read(instance_path);    
-   
+
         Comparator comparator = new Comparator(baseO, baseI);
         
         comparator.run();
@@ -78,11 +87,32 @@ public class InstanceDrivenComparisonMain
         String stats = comparator.printStats();
         System.out.println("Stats time: " + stats );
         
-        Utilities.save("Indexes/NewModel/stats"+roundName+".txt", stats);
+        Utilities.save("Indexes/TestOnto/stats_round"+round+".txt", stats);
         
-        OntologyUtils.writeModeltoFile(comparator.evolvedModel, printModelPath);
-     //   OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/NewModel/newModel.ttl");
+        OntologyUtils.writeModeltoFile(comparator.evolvedModel, print_path);
     }
     
+    
+    public static void startUseWeeks()
+    {
+        String dir            = "Indexes/Datasets_Ataques/";
+        String onto_path      = dir+ "assercoes_min.owl" ;
+        String instance_path  = dir+ "subset_20210408_20210415.ttl" ;
+        String print_path     = dir+ "evolvedModel.ttl";
+        int round             = 1;
+        
+        runComparator(onto_path, instance_path, print_path, round);
+     
+        // ROUND TWO
+        onto_path      = print_path ;
+        instance_path  = dir+ "subset_20210422_20210423.ttl" ;
+        print_path     = dir+ "evolvedModel.ttl";
+        round = 2;
+        
+        runComparator(onto_path, instance_path, print_path, round);
+        
+        // completar com mais semanas
+        
+    }
     
 }
