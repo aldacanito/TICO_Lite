@@ -1,0 +1,52 @@
+@prefix :     <http://shizaTest#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+:NEW_OP1  rdf:type  rdf:Property .
+
+:Old_Class2  rdf:type  owl:Class .
+
+:OLD_DT1  rdf:type  owl:DatatypeProperty ;
+        rdfs:range  owl:real .
+
+:OLD_ID_CL1  rdf:type  owl:NamedIndividual , :Old_Class1 .
+
+<http://shizaTest>  rdf:type  owl:Ontology .
+
+:OLD_OP3  rdf:type          owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:domain         :Old_Class1 ;
+        rdfs:range          :Old_Class2 ;
+        rdfs:subPropertyOf  :OLD_OP2 .
+
+:OLD_OP1  rdf:type  owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty .
+
+:NEW_OP2  rdf:type  rdf:Property .
+
+:Old_Class3  rdf:type        owl:Class ;
+        rdfs:subClassOf      :Old_Class2 ;
+        owl:equivalentClass  [ rdf:type            owl:Restriction ;
+                               owl:onProperty      :OLD_OP3 ;
+                               owl:someValuesFrom  :Old_Class2
+                             ] .
+
+:OLD_DT2  rdf:type   owl:DatatypeProperty ;
+        rdfs:domain  :Old_Class2 ;
+        rdfs:range   rdfs:Literal .
+
+:OLD_ID_CL2  rdf:type  owl:NamedIndividual , :Old_Class2 ;
+        :OLD_OP3  :OLD_ID_CL3 .
+
+:Old_Class1  rdf:type  owl:Class .
+
+:OLD_OP2  rdf:type  owl:ObjectProperty .
+
+:NEW_OP3  rdf:type  rdf:Property .
+
+:OLD_DT3  rdf:type          owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:subPropertyOf  :OLD_DT2 .
+
+:OLD_ID_CL3  rdf:type  owl:NamedIndividual , :Old_Class3 ;
+        :OLD_DT3  "1.0" .

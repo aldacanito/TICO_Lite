@@ -59,6 +59,10 @@ public class ClassCompareShape implements IClassCompare
         List<Statement> properties  = instance.listProperties().toList();
         List<OntClass> ontClassList = instance.listOntClasses(true).toList();
         ClassPropertyMetrics cpm = null;
+                
+        EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
+        
+        if(ontClassList==null) return composite;            
         
         for(OntClass cls : ontClassList)
         {
@@ -110,7 +114,7 @@ public class ClassCompareShape implements IClassCompare
             
         }
 
-        EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
+
         composite.setUp(ontModel, ontModel); // start
         
         // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
@@ -131,6 +135,8 @@ public class ClassCompareShape implements IClassCompare
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
         //List<PropertyMetrics> propertyMetrics    = cpm.getPropertyMetrics();
+        
+        if(classProperties==null) return;
         
         for(String propertyURI : classProperties.keySet())
         {
@@ -230,6 +236,8 @@ public class ClassCompareShape implements IClassCompare
     
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassDtProperties();
+        
+        if(classProperties==null) return;
         
         for(String propertyURI : classProperties.keySet())
         {

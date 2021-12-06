@@ -77,8 +77,8 @@ public class Comparator
            
             Utilities.logInfo("Current Individual: " + instance.getURI());
      
-            this.compareClasses(instance);
-            this.compareProperties(instance);     
+            //this.compareClasses(instance);
+            //this.compareProperties(instance);     
             this.compareShapes(instance);
         }
         

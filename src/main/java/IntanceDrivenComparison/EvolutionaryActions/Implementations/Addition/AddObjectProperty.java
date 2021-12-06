@@ -99,39 +99,43 @@ public class AddObjectProperty extends AddProperty
         for(OntProperty p : this.inverseOf)
                 newProperty.addInverseOf(p);
         
-        for(String sPO : this.superPropertyOf)
+        if(this.superPropertyOf != null)
         {
-            if(sPO == null || sPO.isEmpty())
-                continue;
-            if(this.evolvedModel.getProperty(sPO)!=null)
-            {   
-                OntProperty oldSuperProperty = originalModel.getOntProperty(sPO);
-                
-                OntProperty property = evolvedModel.getOntProperty(sPO);
-                if(property==null && oldSuperProperty!=null) // se a propriedade nao existe é preciso criar
-                    property = copyProperty(evolvedModel, oldSuperProperty);
+            for(String sPO : this.superPropertyOf)
+            {
+                if(sPO == null || sPO.isEmpty())
+                    continue;
+                if(this.evolvedModel.getProperty(sPO)!=null)
+                {   
+                    OntProperty oldSuperProperty = originalModel.getOntProperty(sPO);
 
-                newProperty.addSuperProperty(property);
+                    OntProperty property = evolvedModel.getOntProperty(sPO);
+                    if(property==null && oldSuperProperty!=null) // se a propriedade nao existe é preciso criar
+                        property = copyProperty(evolvedModel, oldSuperProperty);
+
+                    newProperty.addSuperProperty(property);
+                }
             }
         }
         
-        
-        for(String sBO : this.subPropertyOf)
+        if(this.subPropertyOf!=null)
         {
-            if(sBO == null || sBO.isEmpty())
-                continue;
-            if(this.evolvedModel.getProperty(sBO)!=null)
-            {   
-                OntProperty oldSubProperty = originalModel.getOntProperty(sBO);
-                
-                OntProperty property = evolvedModel.getOntProperty(sBO);
-                if(property==null && oldSubProperty!=null) // se a propriedade nao existe é preciso criar
-                    property = copyProperty(evolvedModel, oldSubProperty);
+            for(String sBO : this.subPropertyOf)
+            {
+                if(sBO == null || sBO.isEmpty())
+                    continue;
+                if(this.evolvedModel.getProperty(sBO)!=null)
+                {   
+                    OntProperty oldSubProperty = originalModel.getOntProperty(sBO);
 
-                newProperty.addSubProperty(property);
+                    OntProperty property = evolvedModel.getOntProperty(sBO);
+                    if(property==null && oldSubProperty!=null) // se a propriedade nao existe é preciso criar
+                        property = copyProperty(evolvedModel, oldSubProperty);
+
+                    newProperty.addSubProperty(property);
+                }
             }
         }
-    
     }
     
     

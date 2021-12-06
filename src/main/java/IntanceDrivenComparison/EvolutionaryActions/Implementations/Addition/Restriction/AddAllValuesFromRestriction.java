@@ -40,7 +40,8 @@ public class AddAllValuesFromRestriction extends AddRestriction
         Restriction restriction = null;
         
         // TODO: TESTAR
-        restriction = this.getEvolvedModel().createAllValuesFromRestriction(null, onProperty, this.rangeClass);
+        if(onProperty!=null)
+            restriction = this.getEvolvedModel().createAllValuesFromRestriction(null, onProperty, this.rangeClass);
         
         if(this.isEquivalent)
             this.ontClass.addEquivalentClass(restriction);

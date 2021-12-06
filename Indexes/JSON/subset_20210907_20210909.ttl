@@ -13,19 +13,25 @@
         <http://www.w3.org/2006/time#hasBeginning>
                 <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1024140000_st> .
 
+<http://www.gecad.isep.ipp.pt/ASIIO#89883759_attackType>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extMilao> , <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
 <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1116570000_st>
         a       <http://www.w3.org/2006/time#Instant> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
                 "2021-09-07T11:16:57+00:00" .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#89883759_attack>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extAttack> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHas>
+                <http://www.gecad.isep.ipp.pt/ASIIO#89883759_attackType> ;
         <http://www.w3.org/2006/time#hasBeginning>
                 <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1058230000_st> .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#89884646>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
-                <http://www.gecad.isep.ipp.pt/ASIIO#613636bbda9e9118f97a8542> ;
+                <http://www.gecad.isep.ipp.pt/ASIIO#613636bbda9e9118f97a8542> , <http://www.gecad.isep.ipp.pt/ASIIO#89884646_attack> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
                 "" ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
@@ -44,22 +50,25 @@
 <http://www.gecad.isep.ipp.pt/ASIIO#6138bce7da9e9118f97d42b3-64966>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
-<http://www.gecad.isep.ipp.pt/ASIIO#613769c6da9e9118f97bd291-50548>
-        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
-
 <http://www.gecad.isep.ipp.pt/ASIIO#20210908T1339410000_st>
         a       <http://www.w3.org/2006/time#Instant> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
                 "2021-09-08T13:39:41+00:00" .
 
+<http://www.gecad.isep.ipp.pt/ASIIO#613769c6da9e9118f97bd291-50548>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
 <http://www.gecad.isep.ipp.pt/ASIIO#89884630_attack>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extAttack> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHas>
+                <http://www.gecad.isep.ipp.pt/ASIIO#89884630_attackType> ;
         <http://www.w3.org/2006/time#hasBeginning>
                 <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1116570000_st> .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#89883759>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
-                <http://www.gecad.isep.ipp.pt/ASIIO#613744f0da9e9118f97baa80> ;
+                <http://www.gecad.isep.ipp.pt/ASIIO#613744f0da9e9118f97baa80> , <http://www.gecad.isep.ipp.pt/ASIIO#89883759_attack> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
                 "" ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
@@ -74,7 +83,7 @@
 <http://www.gecad.isep.ipp.pt/ASIIO#89884638>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
-                <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64966> , <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64965> , <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64963> ;
+                <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64966> , <http://www.gecad.isep.ipp.pt/ASIIO#89884638_attack> , <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64963> , <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64965> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
                 "" ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
@@ -89,12 +98,22 @@
 <http://www.gecad.isep.ipp.pt/ASIIO#61374c76da9e9118f97bb2ba-64963>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
+<http://www.gecad.isep.ipp.pt/ASIIO#89884646_attackType>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extMilao> , <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extMilao>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
 <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1421300000_st>
         a       <http://www.w3.org/2006/time#Instant> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
                 "2021-09-07T14:21:30+00:00" .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#89884646_attack>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extAttack> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHas>
+                <http://www.gecad.isep.ipp.pt/ASIIO#89884646_attackType> ;
         <http://www.w3.org/2006/time#hasBeginning>
                 <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1421300000_st> .
 
@@ -157,7 +176,7 @@
 <http://www.gecad.isep.ipp.pt/ASIIO#89884644>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
-                <http://www.gecad.isep.ipp.pt/ASIIO#613769c6da9e9118f97bd291-50548> , <http://www.gecad.isep.ipp.pt/ASIIO#61376a06da9e9118f97bd2e2-50548> ;
+                <http://www.gecad.isep.ipp.pt/ASIIO#613769c6da9e9118f97bd291-50548> , <http://www.gecad.isep.ipp.pt/ASIIO#61376a06da9e9118f97bd2e2-50548> , <http://www.gecad.isep.ipp.pt/ASIIO#89884644_attack> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
                 "" ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
@@ -175,17 +194,26 @@
 <http://www.gecad.isep.ipp.pt/ASIIO#613636bbda9e9118f97a8542>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
+<http://www.gecad.isep.ipp.pt/ASIIO#89884638_attackType>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extMilao> , <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
 <http://www.gecad.isep.ipp.pt/ASIIO#89884644_attack>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extAttack> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHas>
+                <http://www.gecad.isep.ipp.pt/ASIIO#89884644_attackType> ;
         <http://www.w3.org/2006/time#hasBeginning>
                 <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1354010000_st> .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#61388c9fda9e9118f97d0e4d>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
+<http://www.gecad.isep.ipp.pt/ASIIO#89884644_attackType>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extMilao> , <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
 <http://www.gecad.isep.ipp.pt/ASIIO#89884630>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
-                <http://www.gecad.isep.ipp.pt/ASIIO#61374928da9e9118f97baf1f> , <http://www.gecad.isep.ipp.pt/ASIIO#613749a5da9e9118f97bafaa> ;
+                <http://www.gecad.isep.ipp.pt/ASIIO#61374928da9e9118f97baf1f> , <http://www.gecad.isep.ipp.pt/ASIIO#613749a5da9e9118f97bafaa> , <http://www.gecad.isep.ipp.pt/ASIIO#89884630_attack> ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
                 "" ;
         <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
@@ -207,6 +235,9 @@
         a       <http://www.w3.org/2006/time#Instant> ;
         <http://www.w3.org/2000/01/rdf-schema#label>
                 "2021-09-07T13:54:01+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89884630_attackType>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extMilao> , <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#89884727>
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
@@ -289,5 +320,8 @@
         a       <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#89884638_attack>
+        a       <http://www.gecad.isep.ipp.pt/ASIIO#extAttack> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHas>
+                <http://www.gecad.isep.ipp.pt/ASIIO#89884638_attackType> ;
         <http://www.w3.org/2006/time#hasBeginning>
                 <http://www.gecad.isep.ipp.pt/ASIIO#20210907T1128360000_st> .

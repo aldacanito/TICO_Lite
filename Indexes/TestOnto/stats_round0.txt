@@ -1,0 +1,52 @@
+
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 3
+List of Evolutionary Actions:
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 1
+List of Evolutionary Actions:
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@7b3cde6f
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 4
+List of Evolutionary Actions:
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@431e86b1
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddAllValuesFromRestriction@35c4e864
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@32a2a6be
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@682af059
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 4
+List of Evolutionary Actions:
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@5f36c8e3
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddAllValuesFromRestriction@4da39ca9
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@6a9344f5
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@5584d9c6
+======================================
+
+
+
+======================================
+
+

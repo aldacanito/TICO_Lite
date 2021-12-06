@@ -485,8 +485,8 @@ public class WeekConverter {
             //os meses começam a contar do zero porque quem desenvolveu isto é maluco
             String zagreb = fmt.format(new GregorianCalendar(2021, 03, 23).getTime());
             String atenas = fmt.format(new GregorianCalendar(2021, 03, 26).getTime());
-            String milao1 = fmt.format(new GregorianCalendar(2021, 03, 27).getTime());
-            String milao2 = fmt.format(new GregorianCalendar(2021, 03, 28).getTime());
+            String milao1 = fmt.format(milao[0].getTime());
+            String milao2 = fmt.format(milao[1].getTime());
             
             String scenario1_1 = fmt.format(new GregorianCalendar(2021, 03, 15).getTime());
             String scenario1_2 = fmt.format(new GregorianCalendar(2021, 03, 8).getTime());

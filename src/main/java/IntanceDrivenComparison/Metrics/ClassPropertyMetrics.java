@@ -33,7 +33,8 @@ public class ClassPropertyMetrics extends EntityMetrics
     {
         super(cls.getURI());
         ontClass             = cls;        
-        classObjProperties        = new HashMap<>();
+        classObjProperties   = new HashMap<>();
+        classDtProperties    = new HashMap<>();
         functionalCandidates = new ArrayList<>();
         classMentions        = 0;
         propertyMetrics      = new ArrayList<>();
@@ -91,6 +92,10 @@ public class ClassPropertyMetrics extends EntityMetrics
     public void addDtProperty(String newPropertyURI, String rangeType)
     {
         int count = 1;
+        
+        
+        
+        
         if(classDtProperties.containsKey(newPropertyURI))
             count = (int) classDtProperties.get(newPropertyURI) + 1;
         
