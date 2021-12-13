@@ -21,18 +21,24 @@
         rdfs:subPropertyOf  :OLD_OP2 .
 
 :Old_Class3  rdf:type        owl:Restriction , owl:Class ;
-        rdfs:subClassOf      :Old_Class3 , :Old_Class2 ;
+        rdfs:subClassOf      :Old_Class2 ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-13_19-10-47> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
         owl:equivalentClass  [ rdf:type            owl:Restriction ;
                                owl:onProperty      :OLD_OP3 ;
                                owl:someValuesFrom  :Old_Class2
                              ] ;
-        owl:hasValue         <2021-12-13_17-33-14> ;
         owl:onProperty       <http://www.w3.org/2006/time#hasBeginning> ;
-        owl:someValuesFrom   <2021-12-13_17-33-14> .
+        owl:someValuesFrom   <2021-12-13_19-10-47> .
 
 <http://shizaTest>  rdf:type  owl:Ontology .
 
 :OLD_ID_CL1  rdf:type  owl:NamedIndividual , :Old_Class1 .
+
+<2021-12-13_19-10-47>
+        rdf:type  <http://www.w3.org/2006/time#instant> .
 
 :OLD_DT3  rdf:type          owl:FunctionalProperty , owl:DatatypeProperty ;
         rdfs:subPropertyOf  :OLD_DT2 .
@@ -41,19 +47,17 @@
 
 :OLD_OP2  rdf:type  owl:ObjectProperty .
 
-<2021-12-13_17-33-14>
-        rdf:type    <http://www.w3.org/2006/time#instant> ;
-        rdfs:label  "2021/12/13 17:33:14" .
-
 :Old_Class2  rdf:type       owl:Restriction , owl:Class ;
-        rdfs:subClassOf     :Old_Class2 ;
-        owl:hasValue        <2021-12-13_17-33-14> ;
+        rdfs:subClassOf     [ rdf:type        owl:Restriction ;
+                              owl:hasValue    <2021-12-13_19-10-47> ;
+                              owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                            ] ;
+        rdfs:subClassOf     [ rdf:type        owl:Restriction ;
+                              owl:hasValue    <2021-12-13_19-10-47> ;
+                              owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                            ] ;
         owl:onProperty      <http://www.w3.org/2006/time#hasBeginning> ;
-        owl:someValuesFrom  <2021-12-13_17-33-14> .
-
-:OLD_DT2  rdf:type   owl:DatatypeProperty ;
-        rdfs:domain  :Old_Class2 ;
-        rdfs:range   rdfs:Literal .
+        owl:someValuesFrom  <2021-12-13_19-10-47> .
 
 :New_Class1  rdf:type     owl:Class ;
         rdfs:subClassOf   [ rdf:type            owl:Restriction ;
@@ -66,13 +70,19 @@
                           ] ;
         owl:disjointWith  :Old_Class1 .
 
+:OLD_DT2  rdf:type   owl:DatatypeProperty ;
+        rdfs:domain  :Old_Class2 ;
+        rdfs:range   rdfs:Literal .
+
 :OLD_OP1  rdf:type  owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty .
 
 :Old_Class1  rdf:type       owl:Restriction , owl:Class ;
-        rdfs:subClassOf     :Old_Class1 ;
-        owl:hasValue        <2021-12-13_17-33-14> ;
+        rdfs:subClassOf     [ rdf:type        owl:Restriction ;
+                              owl:hasValue    <2021-12-13_19-10-47> ;
+                              owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                            ] ;
         owl:onProperty      <http://www.w3.org/2006/time#hasBeginning> ;
-        owl:someValuesFrom  <2021-12-13_17-33-14> .
+        owl:someValuesFrom  <2021-12-13_19-10-47> .
 
 :OLD_DT1  rdf:type  owl:DatatypeProperty ;
         rdfs:range  owl:real .

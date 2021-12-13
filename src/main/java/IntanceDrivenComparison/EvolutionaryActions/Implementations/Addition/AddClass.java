@@ -104,12 +104,12 @@ public class AddClass implements IAddClass
             
             Individual date1 = this.evolvedModel.createIndividual(dtf2.format(now), instantClass);
             
-            date1.addLabel(dtf.format(now), null);
+            //date1.addLabel(dtf.format(now), null);
             
             System.out.println("PRITNING AGORA O BOENCO");
-            SomeValuesFromRestriction dateRestriction = this.evolvedModel.createSomeValuesFromRestriction(URI, ontProperty, date1);
-           
-            HasValueRestriction createHasValueRestriction = this.evolvedModel.createHasValueRestriction(URI, ontProperty, date1);
+          
+            
+            HasValueRestriction createHasValueRestriction = this.evolvedModel.createHasValueRestriction(null, ontProperty, date1);
             
             
             this.newClass.addSuperClass(createHasValueRestriction);
