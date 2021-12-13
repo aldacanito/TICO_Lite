@@ -6,6 +6,7 @@
 package IntanceDrivenComparison.Comparison.Implementations.Shape;
 
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
+import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddClass;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty;
 import IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddAllValuesFromRestriction;
@@ -62,12 +63,17 @@ public class ClassCompareShape implements IClassCompare
                 
         EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
         
-        if(ontClassList==null) return composite;            
+        if(ontClassList==null) return composite;   
+        
+        composite.setUp(ontModel, ontModel); // start
         
         for(OntClass cls : ontClassList)
         {
             String classURI = cls.getURI();
-        
+            
+            if(Utilities.isInIgnoreList(classURI))
+                continue;
+            
             cpm = EntityMetricsStore.getStore()
                     .getMetricsByClassURI(classURI);
             
@@ -87,7 +93,6 @@ public class ClassCompareShape implements IClassCompare
                 
                 RDFNode object = stmt.getObject();
                 
-               
                 if(object.isLiteral()) // DT PROP
                 {
                     Literal asLiteral = object.asLiteral();                  
@@ -112,18 +117,18 @@ public class ClassCompareShape implements IClassCompare
                     cpm.updateFunctionalCandidate(predicateURI);
             }
             
+            
+            // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
+            //if(cpm!=null)
+                this.populateComposite(cpm, composite);
         }
 
 
-        composite.setUp(ontModel, ontModel); // start
         
-        // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
-        if(cpm!=null)
-            this.populateComposite(cpm, composite);
         
         //composite.execute();
         
-        Utilities.logInfo("No Evolutionary Action created.");
+        //Utilities.logInfo("No Evolutionary Action created.");
         return composite;
     }
 
@@ -135,6 +140,7 @@ public class ClassCompareShape implements IClassCompare
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
         //List<PropertyMetrics> propertyMetrics    = cpm.getPropertyMetrics();
+        
         
         if(classProperties==null) return;
         
@@ -232,7 +238,7 @@ public class ClassCompareShape implements IClassCompare
     
     private void populateDtProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
-         OntClass ontClass = cpm.getOntClass();
+        OntClass ontClass = cpm.getOntClass();
     
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassDtProperties();
@@ -278,7 +284,14 @@ public class ClassCompareShape implements IClassCompare
     }
     private void populateComposite(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
     {
+        
         // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
+
+        OntClass ontClass = cpm.getOntClass();
+        AddClass addCls = new AddClass(ontClass);
+        
+
+        composite.add(addCls);
         this.populateObjProperties(cpm, composite);
         this.populateDtProperties(cpm, composite);
         

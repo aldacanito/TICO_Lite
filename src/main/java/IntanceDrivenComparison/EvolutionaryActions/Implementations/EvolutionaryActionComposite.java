@@ -59,6 +59,8 @@ public class EvolutionaryActionComposite implements EvolutionaryAction
         boolean repeated = false;
         for(EvolutionaryAction act : this.actions)
         {
+            if(act.getURI()==null) continue;
+            
             if(action.getURI().equalsIgnoreCase(act.getURI()))
             {    
                 repeated = true;

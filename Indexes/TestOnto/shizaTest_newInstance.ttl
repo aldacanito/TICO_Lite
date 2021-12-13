@@ -54,6 +54,10 @@
 #    Classes
 #################################################################
 
+###  http://shizaTest#NEW_CLASS_2
+:NEW_CLASS_2 rdf:type owl:Class .
+
+
 ###  http://shizaTest#New_Class1
 :New_Class1 rdf:type owl:Class ;
             rdfs:subClassOf [ rdf:type owl:Restriction ;
@@ -112,7 +116,19 @@
 
 ###  http://shizaTest#OLD_ID_CL2
 :OLD_ID_CL2 rdf:type owl:NamedIndividual ,
-                     :Old_Class2 .
+                     :Old_Class2 ;
+            :OLD_DT1 "1"^^xsd:int .
+
+
+###  http://shizaTest#new_individual_class2
+:new_individual_class2 rdf:type owl:NamedIndividual ,
+                                :NEW_CLASS_2 ;
+                       :OLD_DT3 "1"^^xsd:int .
+
+
+###  http://shizaTest#old_class2_ind
+:old_class2_ind rdf:type owl:NamedIndividual ,
+                         :Old_Class3 .
 
 
 #################################################################

@@ -19,15 +19,6 @@
         rdf:type         owl:Class ;
         rdfs:label       "Attack"@en ;
         rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> ;
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
-                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  <http://www.gecad.isep.ipp.pt/ASIIO#extVulnerability> ;
-                           owl:onProperty               <http://www.gecad.isep.ipp.pt/ASIIO#extExploits>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
-                           owl:someValuesFrom  rdfs:Literal
-                         ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
                            owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
@@ -36,9 +27,18 @@
                            owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
                            owl:someValuesFrom  rdfs:Literal
                          ] ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  <http://www.gecad.isep.ipp.pt/ASIIO#extVulnerability> ;
+                           owl:onProperty               <http://www.gecad.isep.ipp.pt/ASIIO#extExploits>
+                         ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
                            owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                           owl:someValuesFrom  rdfs:Literal
                          ] ;
         <http://purl.org/dc/terms/created>
                 "24/Feb/2020" ;
@@ -159,6 +159,8 @@
         owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
         owl:versionInfo     1 .
 
+[ rdf:type  owl:Ontology ] .
+
 <http://www.gecad.isep.ipp.pt/ASIIO#extAffests>
         rdf:type            owl:ObjectProperty ;
         rdfs:label          "affects"@en ;
@@ -209,9 +211,6 @@
                 "Katia Aleid" ;
         owl:versionInfo     "1" .
 
-<http://www.gecad.isep.ipp.pt/ASIIO#extVulnerability>
-        rdf:type  owl:Class .
-
 <http://www.gecad.isep.ipp.pt/ASIIO#extHas>
         rdf:type            owl:ObjectProperty ;
         rdfs:label          "has"@en ;
@@ -221,6 +220,9 @@
         <http://purl.org/dc/terms/modified>
                 "27/May/2020" ;
         owl:versionInfo     "2" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extVulnerability>
+        rdf:type  owl:Class .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy>
         rdf:type            owl:ObjectProperty ;
@@ -259,8 +261,6 @@
 
 <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
         rdf:type  owl:DatatypeProperty .
-
-[ rdf:type  owl:Ontology ] .
 
 <http://www.gecad.isep.ipp.pt/ASIIO#extIsTriggeredBy>
         rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
@@ -385,8 +385,8 @@
         rdfs:label       "Asset"@en ;
         rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
-                           owl:someValuesFrom  rdfs:Literal
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                           owl:someValuesFrom  xsd:long
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
@@ -397,8 +397,8 @@
                            owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
-                           owl:someValuesFrom  xsd:long
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                           owl:someValuesFrom  rdfs:Literal
                          ] ;
         <http://purl.org/dc/terms/created>
                 "14/Nov/2019" ;
@@ -483,13 +483,13 @@
         rdfs:label       "Alert"@en ;
         rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
         rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> ;
-                           owl:onProperty            <http://www.gecad.isep.ipp.pt/ASIIO#extIsTriggeredBy> ;
+                           owl:onClass               <http://www.gecad.isep.ipp.pt/ASIIO#extStatusValuePartition> ;
+                           owl:onProperty            <http://www.gecad.isep.ipp.pt/ASIIO#extHasStatus> ;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ] ;
         rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               <http://www.gecad.isep.ipp.pt/ASIIO#extStatusValuePartition> ;
-                           owl:onProperty            <http://www.gecad.isep.ipp.pt/ASIIO#extHasStatus> ;
+                           owl:onClass               <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> ;
+                           owl:onProperty            <http://www.gecad.isep.ipp.pt/ASIIO#extIsTriggeredBy> ;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ] ;
         rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
@@ -594,6 +594,11 @@
         rdf:type         owl:Class ;
         rdfs:label       "Incident"@en ;
         rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.w3.org/2006/time#Instant> ;
+                           owl:onProperty            <http://www.w3.org/2006/time#hasBeginning> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
                            owl:someValuesFrom  xsd:long
@@ -610,11 +615,6 @@
         rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
                            owl:onClass               <http://www.w3.org/2006/time#Instant> ;
                            owl:onProperty            <http://www.w3.org/2006/time#hasEnd> ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               <http://www.w3.org/2006/time#Instant> ;
-                           owl:onProperty            <http://www.w3.org/2006/time#hasBeginning> ;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ] ;
         <http://purl.org/dc/terms/created>
