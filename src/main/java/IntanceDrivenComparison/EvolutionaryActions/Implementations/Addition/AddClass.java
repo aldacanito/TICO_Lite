@@ -120,6 +120,10 @@ public class AddClass implements IAddClass
             
             //SubClassOf time:hasBegining VALUE DataInicio
             //SubClassOf time:hasEnd VALUE DataInicio
+            
+            
+            //primeiro é preciso ver se vai ser precisa uma definiçao nova da classe
+            //tenho de saber quais as restriçoes!!!!!!!!!!! que estao no keyset
             this.newClass = Utils.OntologyUtils.copyClass(oldClass, evolvedModel);
         }
         
