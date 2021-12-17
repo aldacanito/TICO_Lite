@@ -15,7 +15,6 @@ import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.ontology.SomeValuesFromRestriction;
 
 /**
  *
