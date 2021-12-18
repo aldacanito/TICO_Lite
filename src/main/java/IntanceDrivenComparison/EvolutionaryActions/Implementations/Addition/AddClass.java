@@ -107,10 +107,8 @@ public class AddClass implements IAddClass
             
             System.out.println("PRITNING AGORA O BOENCO");
           
-            
             HasValueRestriction createHasValueRestriction = this.evolvedModel.createHasValueRestriction(null, ontProperty, date1);
-            
-            
+           
             this.newClass.addSuperClass(createHasValueRestriction);
         }
         else // copia o que já existe
@@ -134,7 +132,7 @@ public class AddClass implements IAddClass
             for(OntClass restriction : restrictions.keySet())
             {
                 String restrictionType = restrictions.get(restriction);   
-                //Utils.OntologyUtils.copyRestriction(restriction, newClass, restrictionType);
+                Utils.OntologyUtils.copyRestriction(restriction, newClass, restrictionType);
             }
         }
         

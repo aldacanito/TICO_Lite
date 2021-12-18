@@ -66,14 +66,10 @@ public class ClassDiff implements IClassDiff
             List<OntClass> op1EQ = op1.listEquivalentClasses().toList();
             List<OntClass> op2EQ = op2.listEquivalentClasses().toList();
             
-            isNew = compareEquivalentClases(op1EQ, op2EQ);
-       
-            
-            
+            isNew = compareEquivalentClases(op1EQ, op2EQ);        
         }
         else
         {
-            
             Utilities.logError("CLASS DIFF : Resources were not OntClass. No comparison occurred.");
             return false;
         }
@@ -226,9 +222,17 @@ public class ClassDiff implements IClassDiff
             if(!rr1.equals(rr2)) return false; // test 
         }
         
+        
         String uri1 = svf1.getOnProperty().getURI();
         String uri2 = svf2.getOnProperty().getURI();
-                
+        
+        // ignore if temporal restriction
+        if(uri1.equalsIgnoreCase("http://www.w3.org/2006/time#hasBeginning")
+                || uri2.equalsIgnoreCase("http://www.w3.org/2006/time#hasBeginning")
+                || uri1.equalsIgnoreCase("http://www.w3.org/2006/time#hasEnding")
+                || uri2.equalsIgnoreCase("http://www.w3.org/2006/time#hasEnding"))
+            return true;
+            
         return uri1.equalsIgnoreCase(uri2);
     }
 
