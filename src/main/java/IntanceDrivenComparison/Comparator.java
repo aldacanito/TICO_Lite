@@ -219,7 +219,8 @@ public class Comparator
             ResourceUtils.renameResource(oldCls, newURI);
             OntologyUtils.copyClass(ontologyModel.getOntClass(newURI), evolvedModel);
             
-            newCls.addSameAs(evolvedModel.getOntClass(newURI));
+            //newCls.addSameAs(evolvedModel.getOntClass(newURI));
+            newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
         
         }
      }
