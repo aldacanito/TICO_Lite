@@ -5,9 +5,7 @@
  */
 package IntanceDrivenComparison.Comparison.Interfaces;
 
-import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
-import java.util.List;
-import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.ontology.OntClass;
 
 /**
  *
@@ -18,6 +16,6 @@ public interface IClassDiff
     // como é que descrevo as diferenças?? Neste momento pode ser só
     // restriçao existe ou nao existe, adiciona
     // depois mais tarde procurar saber se é preciso ou nao ver se a mesma restriçao evolui
-    public boolean isNewVersion(Resource one, Resource two);
+    public boolean isNewVersion(OntClass one, OntClass two);
 
 }

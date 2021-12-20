@@ -53,28 +53,18 @@ public class ClassDiff implements IClassDiff
 {
 
     @Override
-    public boolean isNewVersion(Resource one, Resource two) 
+    public boolean isNewVersion(OntClass one, OntClass two) 
     {
-        boolean isNew = false;
-        
-        if(one instanceof OntClass && two instanceof OntClass)
-        {
-            OntClass op1 = (OntClass) one;
-            OntClass op2 = (OntClass) two;
-            
-            //check if op2 has the same subclasses and equivalent classes as op2
-            List<OntClass> op1EQ = op1.listEquivalentClasses().toList();
-            List<OntClass> op2EQ = op2.listEquivalentClasses().toList();
-            
-            isNew = compareEquivalentClases(op1EQ, op2EQ);        
-        }
-        else
-        {
-            Utilities.logError("CLASS DIFF : Resources were not OntClass. No comparison occurred.");
-            return false;
-        }
-        
-        return true;
+       
+        OntClass op1 = (OntClass) one;
+        OntClass op2 = (OntClass) two;
+
+        //check if op2 has the same subclasses and equivalent classes as op2
+     
+        boolean equiv_nequals = compareEquivalentClasses(op1, op2);        
+        boolean super_nequals = compareSuperClasses(op1, op2);        
+       
+        return equiv_nequals && super_nequals;
     }
 
     private boolean compareRestrictionTypes(Restriction r1, Restriction r2) 
@@ -236,11 +226,16 @@ public class ClassDiff implements IClassDiff
         return uri1.equalsIgnoreCase(uri2);
     }
 
-    private boolean compareEquivalentClases(List<OntClass> op1EQ, List<OntClass> op2EQ) 
+    private boolean compareEquivalentClasses(OntClass op1, OntClass op2) 
     {
+        List<OntClass> op1EQ = op1.listEquivalentClasses().toList();
+        List<OntClass> op2EQ = op2.listEquivalentClasses().toList();
+
+        if(op1EQ.isEmpty() && op2EQ.isEmpty())
+            return true;
+        
         if(op1EQ.size()!=op2EQ.size())
             return false;
-        
         
         // nao pode ser pelo URI porque restricoes podem ser anonimas
         List<ClassDiffs> diffs = new ArrayList<>();
@@ -268,6 +263,42 @@ public class ClassDiff implements IClassDiff
         return !no_match;
     }
 
-    
+     private boolean compareSuperClasses(OntClass op1, OntClass op2) 
+    {
+        List<OntClass> op1EQ = op1.listSuperClasses().toList();
+        List<OntClass> op2EQ = op2.listSuperClasses().toList();
+        
+        if(op1EQ.isEmpty() && op2EQ.isEmpty())
+            return true;
+        
+        if(op1EQ.size()!=op2EQ.size())
+            return false;
+        
+        // nao pode ser pelo URI porque restricoes podem ser anonimas
+        List<ClassDiffs> diffs = new ArrayList<>();
+        
+        boolean no_match = false;
+            
+        for(OntClass cls1 : op1EQ)
+        {
+            for(OntClass cls2 : op2EQ)
+            {
+                // comparar para ja pelo menos as restricoes
+                if(cls1.isRestriction() && cls2.isRestriction())
+                {
+                    Restriction r1 = cls1.asRestriction();
+                    Restriction r2 = cls2.asRestriction();
+                    
+                    if(compareRestrictionTypes(r1, r2))
+                       break; //encontrou o match, nao precisa procurar mais
+                    else
+                        no_match = true;
+                }            
+            }           
+        }
+
+        return !no_match;
+    }
+
     
 }

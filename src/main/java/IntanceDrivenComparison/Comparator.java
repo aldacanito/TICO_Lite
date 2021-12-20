@@ -201,7 +201,10 @@ public class Comparator
             
             // classe é totalmente nova, já tem o hasBeginning do construtor
             // ou não há diferença entre as duas classes
-            if(oldCls == null || ! new ClassDiff().isNewVersion(oldCls, newCls)) continue;
+            if(     oldCls == null 
+                    || ! new ClassDiff().isNewVersion(oldCls, newCls)
+                    || Utilities.isInIgnoreList(oldCls.getURI()))
+                continue;
             
             replaceHasBeginning(newCls, now);
             addHasEnding(oldCls, now);
