@@ -195,6 +195,8 @@ public class Comparator
         for(OntClass newCls : e_ontClasses)
         {
             String uri      = newCls.getURI();
+            System.out.println("NEW CLASS URI: " + uri);
+            if(uri == null) continue;
             OntClass oldCls = ontologyModel.getOntClass(uri);
             
             // classe é totalmente nova, já tem o hasBeginning do construtor
