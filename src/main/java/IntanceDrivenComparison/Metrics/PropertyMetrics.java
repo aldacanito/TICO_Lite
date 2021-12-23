@@ -7,6 +7,7 @@ package IntanceDrivenComparison.Metrics;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -26,6 +27,39 @@ public class PropertyMetrics
         this.ranges  = new HashMap<>();
         this.domains = new HashMap<>();
     }
+    
+    
+    @Override
+    public String toString()
+    {
+        String print = "Property Metrics for " + this.URI;
+        print += "\n\t Count: " + this.count;
+        
+        if(!ranges.isEmpty())
+        {
+            print += "\n\t Ranges:";
+            Set<String> keys = ranges.keySet();
+            for(String key : keys)
+            {
+                Integer value = ranges.get(key);
+                print += key + ": " + value;
+            }    
+        }
+        
+        if(!domains.isEmpty())
+        {
+            print += "\n\t Domains:";
+            Set<String> keys = domains.keySet();
+            for(String key : keys)
+            {
+                Integer value = domains.get(key);
+                print += key + ": " + value;
+            }    
+        }
+        
+        return print;
+    }
+    
     
     public void addRange(String rangeURI)
     {

@@ -6,9 +6,7 @@
 package IntanceDrivenComparison.Comparison.Implementations.Simple;
 
 import IntanceDrivenComparison.Comparison.Interfaces.IClassDiff;
-import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import Utils.Utilities;
-import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.ontology.AllValuesFromRestriction;
 import org.apache.jena.ontology.CardinalityRestriction;
@@ -49,6 +47,11 @@ class ClassDiffs
     }
 }
 
+/*
+    TODO
+    falta garantir que só compara com a versão IMEDIATAMENTE ANTERIOR
+
+*/
 public class ClassDiff implements IClassDiff
 {
 
@@ -59,12 +62,14 @@ public class ClassDiff implements IClassDiff
         OntClass op1 = (OntClass) one;
         OntClass op2 = (OntClass) two;
 
+        
+        
         //check if op2 has the same subclasses and equivalent classes as op2
      
-        boolean equiv_nequals = compareEquivalentClasses(op1, op2);        
-        boolean super_nequals = compareSuperClasses(op1, op2);        
+        boolean equiv_equals = compareEquivalentClasses(op1, op2);        
+        boolean super_equals = compareSuperClasses(op1, op2);        
        
-        return equiv_nequals && super_nequals;
+        return !(equiv_equals && super_equals);
     }
 
     private boolean compareRestrictionTypes(Restriction r1, Restriction r2) 
@@ -143,9 +148,10 @@ public class ClassDiff implements IClassDiff
         String uri1 = cr1.getOnProperty().getURI();
         String uri2 = cr2.getOnProperty().getURI();
                 
-        if(!uri1.equalsIgnoreCase(uri2))
+        if(!uri1.equalsIgnoreCase(uri2))  
             return false;
         
+      
         RDFNode hv1 = cr1.getHasValue();
         RDFNode hv2 = cr1.getHasValue();
         
@@ -212,17 +218,9 @@ public class ClassDiff implements IClassDiff
             if(!rr1.equals(rr2)) return false; // test 
         }
         
-        
         String uri1 = svf1.getOnProperty().getURI();
         String uri2 = svf2.getOnProperty().getURI();
         
-        // ignore if temporal restriction
-        if(uri1.equalsIgnoreCase("http://www.w3.org/2006/time#hasBeginning")
-                || uri2.equalsIgnoreCase("http://www.w3.org/2006/time#hasBeginning")
-                || uri1.equalsIgnoreCase("http://www.w3.org/2006/time#hasEnding")
-                || uri2.equalsIgnoreCase("http://www.w3.org/2006/time#hasEnding"))
-            return true;
-            
         return uri1.equalsIgnoreCase(uri2);
     }
 
@@ -238,31 +236,16 @@ public class ClassDiff implements IClassDiff
             return false;
         
         // nao pode ser pelo URI porque restricoes podem ser anonimas
-        List<ClassDiffs> diffs = new ArrayList<>();
-        
-        boolean no_match = false;
-            
-        for(OntClass cls1 : op1EQ)
-        {
-            for(OntClass cls2 : op2EQ)
-            {
-                // comparar para ja pelo menos as restricoes
-                if(cls1.isRestriction() && cls2.isRestriction())
-                {
-                    Restriction r1 = cls1.asRestriction();
-                    Restriction r2 = cls2.asRestriction();
-                    
-                    if(compareRestrictionTypes(r1, r2))
-                       break; //encontrou o match, nao precisa procurar mais
-                    else
-                        no_match = true;
-                }            
-            }           
-        }
 
-        return !no_match;
+       return compareLists(op1EQ, op2EQ);
     }
 
+    /**
+        Verifica se as super Classes são IGUAIS.
+        * Se ambas forem vazias são iguais;
+        * Se tiverem números diferentes são diferentes.
+     * 
+    **/
      private boolean compareSuperClasses(OntClass op1, OntClass op2) 
     {
         List<OntClass> op1EQ = op1.listSuperClasses().toList();
@@ -273,10 +256,12 @@ public class ClassDiff implements IClassDiff
         
         if(op1EQ.size()!=op2EQ.size())
             return false;
-        
-        // nao pode ser pelo URI porque restricoes podem ser anonimas
-        List<ClassDiffs> diffs = new ArrayList<>();
-        
+               
+        return compareLists(op1EQ, op2EQ);
+    }
+
+    private boolean compareLists(List<OntClass> op1EQ, List<OntClass> op2EQ) 
+    {
         boolean no_match = false;
             
         for(OntClass cls1 : op1EQ)
@@ -289,16 +274,25 @@ public class ClassDiff implements IClassDiff
                     Restriction r1 = cls1.asRestriction();
                     Restriction r2 = cls2.asRestriction();
                     
-                    if(compareRestrictionTypes(r1, r2))
-                       break; //encontrou o match, nao precisa procurar mais
-                    else
-                        no_match = true;
-                }            
+                    String p_uri1 = r1.getOnProperty().getURI();
+                    String p_uri2 = r2.getOnProperty().getURI();
+                    
+                    if(!Utilities.isInIgnoreList(p_uri1) && !Utilities.isInIgnoreList(p_uri2)
+                       && !p_uri1.equalsIgnoreCase(p_uri2))
+                    {
+                        if(compareRestrictionTypes(r1, r2))
+                           break; //encontrou o match, nao precisa procurar mais
+                        else
+                            no_match = true;
+                    }            
+                }
             }           
         }
 
         return !no_match;
     }
+     
+    
 
     
 }

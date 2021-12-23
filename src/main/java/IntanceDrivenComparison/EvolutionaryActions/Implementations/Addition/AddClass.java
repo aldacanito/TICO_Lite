@@ -6,10 +6,12 @@
 package IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
+import Utils.OntologyUtils;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.HashMap;
+import java.util.Set;
 import org.apache.jena.ontology.HasValueRestriction;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
@@ -31,8 +33,6 @@ public class AddClass implements IAddClass
     
     private HashMap<OntClass, String> restrictions;
     
-    //private String [] superClasses;
-    //private String [] subClasses;
     private List<OntClass> disjoinWith;
     
     public AddClass(OntClass oldClass)
@@ -51,6 +51,32 @@ public class AddClass implements IAddClass
         restrictions.put(restriction, restrictionType);
     }
     
+    @Override
+    public String toString()
+    {
+        String s = "> ADD CLASS : EVOLUTIONARY ACTION";
+    
+        if(this.URI!=null)
+            s += "\n\t\t\t URI: " + this.getURI();
+    
+        if(this.restrictions!=null)
+        {
+            s+= "\n\t\t\t Restriction Count:" + this.restrictions.size();
+            s+= "\n\t\t\t Restriction List:" ;
+            
+            Set<OntClass> keySet = this.restrictions.keySet();
+            
+            for(OntClass cls : keySet)
+            {
+                String rt = this.restrictions.get(cls);
+                String rs = OntologyUtils.printRestriction(cls);
+                
+                s+= "\n\t\t\t\t Restriction Type: " + rt 
+                        + "\n\t\t\t\t Details: " + rs;
+            }
+        }
+        return s;
+    }
     
     @Override
     public String getURI() 
@@ -87,29 +113,30 @@ public class AddClass implements IAddClass
         {    
             this.newClass = this.evolvedModel.createClass(URI);
             
-            OntProperty ontProperty = this.evolvedModel.getOntProperty("http://www.w3.org/2006/time#hasBeginning");
+            /*
+            OntProperty ontProperty = this.evolvedModel.getOntProperty("http://www.w3.org/2006/time#hasdfdfdffg");
             
             if(ontProperty == null)
-                ontProperty = this.evolvedModel.createObjectProperty("http://www.w3.org/2006/time#hasBeginning", false);
-            
+                ontProperty = this.evolvedModel.createObjectProperty("http://www.w3.org/2006/time#hasdfdfdffg", false);
             
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
             DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");  
             LocalDateTime now = LocalDateTime.now();  
    
-            OntClass instantClass = this.evolvedModel.getOntClass("http://www.w3.org/2006/time#instant");
+            OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
             if(instantClass == null)
-                instantClass = this.evolvedModel.createClass("http://www.w3.org/2006/time#instant");
+                instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
             
             Individual date1 = this.evolvedModel.createIndividual(dtf2.format(now), instantClass);
             
-            //date1.addLabel(dtf.format(now), null);
+            date1.addLabel(dtf.format(now), null);
             
             System.out.println("PRITNING AGORA O BOENCO");
           
             HasValueRestriction createHasValueRestriction = this.evolvedModel.createHasValueRestriction(null, ontProperty, date1);
            
             this.newClass.addSuperClass(createHasValueRestriction);
+            */
         }
         else // copia o que já existe
         {

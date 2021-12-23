@@ -12,17 +12,13 @@ import IntanceDrivenComparison.Comparison.Implementations.Simple.ObjectPropertyC
 import IntanceDrivenComparison.Comparison.Implementations.Simple.PropertyCompareSimple;
 import IntanceDrivenComparison.Comparison.Interfaces.IClassCompare;
 import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
-import Utils.OntologyUtils;
 import Utils.Utilities;
-import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.graph.Node;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 
 /**

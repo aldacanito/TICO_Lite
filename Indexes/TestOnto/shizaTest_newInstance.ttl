@@ -22,14 +22,6 @@
 :NEW_OP2 rdf:type owl:ObjectProperty .
 
 
-###  http://shizaTest#NEW_OP3
-:NEW_OP3 rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :NEW_OP2 ;
-         rdf:type owl:FunctionalProperty ;
-         rdfs:domain :Old_Class1 ;
-         rdfs:range :Old_Class2 .
-
-
 #################################################################
 #    Data properties
 #################################################################
@@ -60,23 +52,10 @@
 
 ###  http://shizaTest#New_Class1
 :New_Class1 rdf:type owl:Class ;
-            rdfs:subClassOf [ rdf:type owl:Restriction ;
-                              owl:onProperty :NEW_OP1 ;
-                              owl:someValuesFrom :Old_Class1
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :NEW_OP3 ;
-                              owl:allValuesFrom :Old_Class3
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :NEW_OP2 ;
-                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onClass :Old_Class3
-                            ] ;
-            owl:disjointWith :Old_Class1 ;
-            owl:disjointUnionOf ( :Old_Class2
-                                  :Old_Class3
-                                ) .
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :NEW_OP1 ;
+                                  owl:someValuesFrom :Old_Class3
+                                ] .
 
 
 ###  http://shizaTest#Old_Class1
@@ -84,21 +63,39 @@
 
 
 ###  http://shizaTest#Old_Class2
-:Old_Class2 rdf:type owl:Class .
+:Old_Class2 rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :OLD_DT1 ;
+                              owl:someValuesFrom xsd:int
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :OLD_DT2 ;
+                              owl:someValuesFrom xsd:float
+                            ] ;
+            owl:disjointWith :Old_Class3 .
 
 
 ###  http://shizaTest#Old_Class3
 :Old_Class3 rdf:type owl:Class ;
-            owl:equivalentClass [ rdf:type owl:Restriction ;
-                                  owl:onProperty :NEW_OP3 ;
-                                  owl:someValuesFrom :Old_Class2
-                                ] ;
-            rdfs:subClassOf :Old_Class2 .
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :OLD_DT2 ;
+                              owl:someValuesFrom xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :OLD_DT1 ;
+                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:string
+                            ] .
 
 
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://kt.ijs.si/panovp/OntoDM#OLD_CLASS3_1
+<http://kt.ijs.si/panovp/OntoDM#OLD_CLASS3_1> rdf:type owl:NamedIndividual ,
+                                                       :Old_Class3 .
+
 
 ###  http://shizaTest#New_ID_1
 :New_ID_1 rdf:type owl:NamedIndividual ,
@@ -109,9 +106,10 @@
 
 ###  http://shizaTest#New_ID_2
 :New_ID_2 rdf:type owl:NamedIndividual ,
-                   :Old_Class1 ;
-          :NEW_OP2 :OLD_ID_CL2 ;
-          :NEW_OP3 :OLD_ID_CL2 .
+                   :Old_Class1 ,
+                   :Old_Class3 ;
+          :NEW_OP1 <http://kt.ijs.si/panovp/OntoDM#OLD_CLASS3_1> ;
+          :NEW_OP2 :OLD_ID_CL2 .
 
 
 ###  http://shizaTest#OLD_ID_CL2

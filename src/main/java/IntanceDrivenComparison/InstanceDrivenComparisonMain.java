@@ -37,7 +37,7 @@ public class InstanceDrivenComparisonMain
         String instance_path  = dir + "24-02-2020_inst.ttl" ;
         String print_path = dir + "round1.ttl";
         
-        runComparator(onto_path, instance_path, print_path, 1);
+       runComparator(onto_path, instance_path, print_path, 1);
         
 //        // round two
         onto_path      = print_path;
@@ -99,7 +99,7 @@ public class InstanceDrivenComparisonMain
     public static void startUseWeeks()
     {
         String dir            = "Indexes/Datasets_Ataques/";
-        String onto_path      = dir+ "assercoes_min.owl" ;
+        String onto_path      = dir+ "assercoes_min.ttl" ;
         String instance_path  = dir+ "subset_20210408_20210415.ttl" ;
         String print_path     = dir+ "evolvedModel.ttl";
         int round             = 1;

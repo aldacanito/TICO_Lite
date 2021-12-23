@@ -4,6 +4,7 @@ package IntanceDrivenComparison.Metrics;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import org.apache.jena.ontology.OntClass;
 
 
@@ -38,6 +39,47 @@ public class ClassPropertyMetrics extends EntityMetrics
         functionalCandidates = new ArrayList<>();
         classMentions        = 0;
         propertyMetrics      = new ArrayList<>();
+    }
+    
+    @Override
+    public String toString()
+    {
+        String print = "CLASS METRICS FOR CLASS "  + this.getURI();
+        print += "\n\t Mentions: " + this.classMentions;
+        
+        Set<String> objP = classObjProperties.keySet();
+        
+        if(!objP.isEmpty())
+            print += "\n\t Object Properties:";
+        
+        for(String key : objP)
+        {
+            int value = classObjProperties.get(key);
+            print += "\n\t\t " + key +  ": " + value;
+        }
+        
+        Set<String> dtP = classDtProperties.keySet();
+        if(!objP.isEmpty()) print += "\n\t Datatype Properties:";
+        
+        for(String key : dtP)
+        {
+            int value = classDtProperties.get(key);
+            print += "\n\t\t " + key +  ": " + value;
+        }
+        
+       
+        if(!this.functionalCandidates.isEmpty())
+        {
+            print += "\n\t Functional Candidates:";
+            for(String s : this.functionalCandidates)
+                print += "\n\t\t " + s;
+        }
+        
+        for(PropertyMetrics pm : this.propertyMetrics)
+            print += pm.toString();
+        
+    
+        return print;
     }
     
     

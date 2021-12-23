@@ -16,16 +16,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.HasValueRestriction;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
@@ -39,9 +36,9 @@ public class Comparator
     OntModel instanceModel;
     OntModel evolvedModel;
     EvolutionaryActionComposite executer;
-    List<ClassPropertyMetrics> clsPropMetrics ;
-    DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-    DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");  
+   // List<ClassPropertyMetrics> clsPropMetrics ;
+    DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
+    DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
         
     public Comparator(OntModel ontologyModel, OntModel instanceModel) 
     {
@@ -50,7 +47,7 @@ public class Comparator
         this.evolvedModel  = ontologyModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
         this.executer      = new EvolutionaryActionComposite();
     
-        clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
+   //     clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
     }
 
     
@@ -69,8 +66,10 @@ public class Comparator
     public void run() 
     {
         // end app if no models are valid
-        if(!validateModels())
+        
+        /**if(!validateModels())
             return;
+        **/
         
         // guidado pelas instancias
         // só funciona para as instâncias que tenham CLASSES associadas
@@ -83,8 +82,12 @@ public class Comparator
         {
             Individual instance = listIndividuals.next();
            
+            
             Utilities.logInfo("Current Individual: " + instance.getURI());
      
+            if(Utilities.isInIgnoreList(instance.getURI()))
+                continue;
+            
             //this.compareClasses(instance);
             //this.compareProperties(instance);     
             this.compareShapes(instance);
@@ -195,50 +198,72 @@ public class Comparator
         for(OntClass newCls : e_ontClasses)
         {
             String uri      = newCls.getURI();
-            System.out.println("NEW CLASS URI: " + uri);
             if(uri == null) continue;
+            
+            System.out.println("NEW CLASS URI: " + uri);
+            
             OntClass oldCls = ontologyModel.getOntClass(uri);
             
-            // classe é totalmente nova, já tem o hasBeginning do construtor
-            // ou não há diferença entre as duas classes
-            if(     oldCls == null 
-                    || ! new ClassDiff().isNewVersion(oldCls, newCls)
-                    || Utilities.isInIgnoreList(oldCls.getURI()))
+            if(oldCls==null || Utilities.isInIgnoreList(oldCls.getURI()))
                 continue;
             
-            replaceHasBeginning(newCls, now);
-            addHasEnding(oldCls, now);
+            boolean newVersion = new ClassDiff().isNewVersion(oldCls, newCls);
             
-            String oldURI = oldCls.getURI();
-            
-            if(oldURI.contains("__"))
+            System.out.println("\n\t == Comparing:\n\t\t" + oldCls.getURI() 
+                    + "\n\t\t and " + uri + "\n\t\tResult: " + newVersion + "\n\t==");
+           
+            newVersion = true;
+            if(newVersion)
             {
-                String[] split = oldURI.split("__"); // ignorar data que ja tivesse
-                oldURI = split[0];
+                String oldURI = oldCls.getURI();
+
+                if(oldURI.contains("__"))
+                {
+                    String[] split = oldURI.split("__"); // ignorar data que ja tivesse
+                    oldURI = split[0];
+                }
+
+                String newURI = oldURI + "__" + dtf2.format(now);
+
+                ResourceUtils.renameResource(oldCls, newURI);
+                
+                OntologyUtils.copyClass(ontologyModel.getOntClass(newURI), evolvedModel);
+                OntologyUtils.copyClass(oldCls, evolvedModel);
+
+                addHasEnding(ontologyModel.getOntClass(newURI), now);
+                replaceHasBeginning(newCls, now);
+
+                addLabel(newCls, dtf2.format(now));
+                addBefore(ontologyModel.getOntClass(newURI), newCls);
+                newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
             }
-            
-            String newURI = oldURI + "__" + dtf2.format(now);
-            
-            ResourceUtils.renameResource(oldCls, newURI);
-            OntologyUtils.copyClass(ontologyModel.getOntClass(newURI), evolvedModel);
-            
-            //newCls.addSameAs(evolvedModel.getOntClass(newURI));
-            newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
-        
         }
      }
+    
+    private void addLabel(OntClass cls, String date)
+    {
+        String label = "";
+        String cls_original_label = cls.getLabel(null);
+        
+        if(cls_original_label == null)
+            cls_original_label = cls.getURI().split("#")[1];
+        
+        label = "new " + cls_original_label + " st: "+ date;        
+                
+        cls.addLabel(label,null);
+    }
     
     private void addHasEnding(OntClass cls, LocalDateTime enddate)
     {
         
-        OntProperty ontProperty = this.evolvedModel.getOntProperty("http://www.w3.org/2006/time#hasEnding");
+        OntProperty ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.HAS_ENDING_P);
 
         if(ontProperty == null)
-            ontProperty = this.evolvedModel.createObjectProperty("http://www.w3.org/2006/time#hasEnding", false);
+            ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.HAS_ENDING_P, false);
             
-        OntClass instantClass = this.evolvedModel.getOntClass("http://www.w3.org/2006/time#instant");
+        OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
         if(instantClass == null)
-            instantClass = this.evolvedModel.createClass("http://www.w3.org/2006/time#instant");
+            instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
         Individual date1 = this.evolvedModel.createIndividual(dtf2.format(enddate), instantClass);
     
         HasValueRestriction createHasValueRestriction = cls.getOntModel().createHasValueRestriction(null, ontProperty, date1);
@@ -250,6 +275,12 @@ public class Comparator
     {
         List<OntClass> superClasses = cls.listSuperClasses(true).toList();
         
+        if(superClasses.isEmpty()) // nao tem has begining tem de passar a ter
+        {
+            OntologyUtils.addHasBeginning(cls);
+        }
+        else
+            
         for(OntClass superClass : superClasses)
         {
             if(superClass.isRestriction())
@@ -258,11 +289,13 @@ public class Comparator
                 {
                     HasValueRestriction hvr = superClass.asRestriction().asHasValueRestriction();
                     
-                    if(hvr.getOnProperty().getURI().equalsIgnoreCase("http://www.w3.org/2006/time#hasBeginning"))
+                    if(hvr.getOnProperty().getURI().equalsIgnoreCase(OntologyUtils.HAS_BEGINNING_P))
                     {
-                        OntClass instantClass = this.evolvedModel.getOntClass("http://www.w3.org/2006/time#instant");
+                        
+                        OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
                         if(instantClass == null)
-                            instantClass = this.evolvedModel.createClass("http://www.w3.org/2006/time#instant");
+                            instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
+                        
                         Individual date1 = this.evolvedModel.createIndividual(dtf2.format(startdate), instantClass);
             
                         hvr.setHasValue(date1);   
@@ -271,5 +304,16 @@ public class Comparator
             }
         }
 
+    }
+
+    private void addBefore(OntClass ontClass, OntClass newCls) 
+    { 
+        OntProperty ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
+
+        if(ontProperty == null)
+            ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
+        
+        SomeValuesFromRestriction svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, newCls);
+        ontClass.addSuperClass(svfr);
     }
 }

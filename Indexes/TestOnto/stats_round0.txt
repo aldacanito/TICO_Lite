@@ -12,9 +12,10 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 3
 List of Evolutionary Actions:
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddClass@611c3eae
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@13e00016
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@7b3cbe6e
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@4c56644f
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@589dfa6f
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest#Old_Class2
 ======================================
 
 
@@ -26,10 +27,10 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 4
 List of Evolutionary Actions:
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddClass@727986ad
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@1600a8a2
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@6b25ef1c
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@56b1e527
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@5280688
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddAllValuesFromRestriction@643f6179
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@61ab6521
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@328e4ec2
 ======================================
 
 
@@ -41,23 +42,9 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddClass@68c34db2
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@7b95bdb0
-======================================
-
-
-
-	
-
-
-======================================
-Evolutionary Action Composite Stats
-	Total evolutionary actions executed: 4
-List of Evolutionary Actions:
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddClass@3f0ce0d1
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@664db2ca
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@1491cd6c
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@423f8a73
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@7757025d
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest#Old_Class3
 ======================================
 
 
@@ -69,11 +56,29 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 5
 List of Evolutionary Actions:
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddClass@1aedf08d
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@113dcaf8
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@b5d9f1e
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@350ff014
-	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddClass@401317a0
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@68fc9167
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddAllValuesFromRestriction@52c46334
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@12fccff0
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@5d767218
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.Restriction.AddAllValuesFromRestriction@510da778
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 5
+List of Evolutionary Actions:
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddObjectProperty@20a1b3ae
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@54567b05
+	IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition.AddDatatypeProperty@3a5e2525
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest#NEW_CLASS_2
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest#Old_Class2
 ======================================
 
 

@@ -5,13 +5,12 @@
  */
 package Utils;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import org.apache.jena.graph.Node;
@@ -22,6 +21,7 @@ import org.apache.jena.ontology.ComplementClass;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.EnumeratedClass;
 import org.apache.jena.ontology.HasValueRestriction;
+import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.IntersectionClass;
 import org.apache.jena.ontology.MaxCardinalityQRestriction;
 import org.apache.jena.ontology.MaxCardinalityRestriction;
@@ -36,14 +36,12 @@ import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.ontology.UnionClass;
 import org.apache.jena.rdf.model.Literal;
-import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.riot.RDFWriter;
 
 
 import org.apache.jena.util.iterator.ExtendedIterator;
@@ -54,6 +52,14 @@ import org.apache.jena.util.iterator.ExtendedIterator;
  */
 public class OntologyUtils 
 {
+    public static final String INSTANT_CLS      = "http://www.w3.org/2006/Instant";
+    public static final String HAS_ENDING_P     = "http://www.w3.org/2006/time#hasEnding";
+    public static final String HAS_BEGINNING_P  = "http://www.w3.org/2006/time#hasBeginning";
+    public static final String BEFORE_P         = "http://www.w3.org/2006/time#before";
+    public static final String AFTER_P          = "http://www.w3.org/2006/time#after";
+    
+    
+    
     public static OntModel readModel(String filename) 
     {
     
@@ -408,6 +414,11 @@ public class OntologyUtils
         List<OntClass> listSuperClasses = class2Copy.listSuperClasses().toList();
         for(OntClass cls : listSuperClasses)
         {
+            String uri = cls.getURI();
+            
+            if(uri!=null && Utilities.isInIgnoreList(uri))
+                continue;
+            
             if(hasRestriction(cls))
                 copyRestriction(cls, newClass, "SuperClass");
             else
@@ -530,6 +541,34 @@ public class OntologyUtils
             
         return isDatatypeProperty;
     }
+    
+    
+    public static void addHasBeginning(OntClass cls)
+    {
+        OntProperty ontProperty = cls.getOntModel().getOntProperty(OntologyUtils.HAS_BEGINNING_P);
+
+        if(ontProperty == null)
+            ontProperty = cls.getOntModel().createObjectProperty(OntologyUtils.HAS_BEGINNING_P, false);
+
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
+        LocalDateTime now = LocalDateTime.now();  
+
+        OntClass instantClass = cls.getOntModel().getOntClass(OntologyUtils.INSTANT_CLS);
+        if(instantClass == null)
+            instantClass = cls.getOntModel().createClass(OntologyUtils.INSTANT_CLS);
+
+        Individual date1 = cls.getOntModel().createIndividual(dtf2.format(now), instantClass);
+
+        //date1.addLabel(dtf.format(now), null);
+
+        System.out.println("PRITNING AGORA O BOENCO");
+
+        HasValueRestriction createHasValueRestriction = cls.getOntModel().createHasValueRestriction(null, ontProperty, date1);
+
+        cls.addSuperClass(createHasValueRestriction);    
+    
+    }
+    
     public static boolean isDatatypeProperty(Node predicate, OntModel ontModel)
     {
         boolean isDatatypeProperty = false;
@@ -741,5 +780,52 @@ public class OntologyUtils
 //            addRestriction(restrictionType, newClass, old_restriction);
         
 
+    }
+
+    public static String printRestriction(OntClass cls) 
+    {
+        String ret = "";
+        
+        if(!cls.isRestriction()) return "";
+
+        Restriction r = cls.asRestriction();
+        
+        if(r.isAllValuesFromRestriction())
+        {
+            ret += "All Values From | On Property: " + r.asAllValuesFromRestriction().getOnProperty() 
+                    + " | Value: " + r.asAllValuesFromRestriction().getAllValuesFrom().toString();
+        }
+        
+        if(r.isCardinalityRestriction())
+        {
+            ret += "Cardinality Restriction | On Property: " + r.asCardinalityRestriction().getOnProperty() 
+                    + " | Cardinality: " + r.asCardinalityRestriction().getCardinality();
+        }
+        
+        if(r.isMinCardinalityRestriction())
+        {
+            ret += "Min Cardinality Restriction | On Property: " + r.asMinCardinalityRestriction().getOnProperty() 
+                    + " | Min Cardinality: " + r.asMinCardinalityRestriction().getMinCardinality();
+        }
+        if(r.isMaxCardinalityRestriction())
+        {
+            ret += "Max Cardinality Restriction | On Property: " + r.asMaxCardinalityRestriction().getOnProperty() 
+                    + " | Max Cardinality: " + r.asMaxCardinalityRestriction().getMaxCardinality();
+        }
+        
+        if(r.isHasValueRestriction())
+        {
+            ret += "Has Value Restriction | On Property: " + r.asHasValueRestriction().getOnProperty() 
+                    + " | Value: " + r.asHasValueRestriction().getHasValue().toString();
+        }
+        
+        if(r.isSomeValuesFromRestriction())
+        {
+            ret += "Some Values From Restriction | On Property: " + r.asSomeValuesFromRestriction().getOnProperty() 
+                    + " | Value: " + r.asSomeValuesFromRestriction().getSomeValuesFrom().toString();
+        }
+        
+      
+        return ret;
     }
 }

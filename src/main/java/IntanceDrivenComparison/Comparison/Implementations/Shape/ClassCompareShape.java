@@ -27,7 +27,6 @@ import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.Literal;
-import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
@@ -47,7 +46,6 @@ public class ClassCompareShape implements IClassCompare
     {
         this.instance = ind;
         this.ontModel = ontModel;
-    
     }
     
     
@@ -123,8 +121,6 @@ public class ClassCompareShape implements IClassCompare
                 this.populateComposite(cpm, composite);
         }
 
-
-        
         
         //composite.execute();
         
@@ -189,7 +185,6 @@ public class ClassCompareShape implements IClassCompare
                 // se houver mais que 1 range na lista ja nao vale
                 int numRanges = ranges.keySet().size();
                 
-                
                 if(numRanges == 1)
                 {
                     //all values from
@@ -214,6 +209,9 @@ public class ClassCompareShape implements IClassCompare
                     // some values from
                                       
                     String rangeURI     = ranges.keySet().iterator().next();
+                    
+                    if(rangeURI==null) continue;
+                    
                     OntClass rangeClass = ontModel.getOntClass(rangeURI);
                     
                     AddSomeValuesFromRestriction asvfR = 
@@ -284,16 +282,15 @@ public class ClassCompareShape implements IClassCompare
     }
     private void populateComposite(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
     {
+        this.populateObjProperties(cpm, composite);
+        this.populateDtProperties(cpm, composite);
         
         // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
 
         OntClass ontClass = cpm.getOntClass();
         AddClass addCls = new AddClass(ontClass);
         
-
         composite.add(addCls);
-        this.populateObjProperties(cpm, composite);
-        this.populateDtProperties(cpm, composite);
         
     }
     

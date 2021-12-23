@@ -53,7 +53,7 @@ public class EvolutionaryActionComposite implements EvolutionaryAction
     
     public void add(EvolutionaryAction action)
     {
-        if(action==null)
+        if(action==null || action.getURI()==null)
             return;
         
         boolean repeated = false;

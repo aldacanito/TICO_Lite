@@ -5,18 +5,13 @@
  */
 package IntanceDrivenComparison.Comparison.Implementations.Simple;
 
-import IntanceDrivenComparison.Comparison.Interfaces.IPropertyCompare;
 import IntanceDrivenComparison.EvolutionaryActions.Factories.EvolutionaryActionFactory;
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.EvolutionaryAction;
 import Utils.OntologyUtils;
 import Utils.Utilities;
-import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.util.iterator.ExtendedIterator;
-import org.apache.jena.rdf.model.Property;
 
 /**
  *
