@@ -198,7 +198,8 @@ public class Comparator
         for(OntClass newCls : e_ontClasses)
         {
             String uri      = newCls.getURI();
-            if(uri == null) continue;
+            if(uri == null || Utilities.isInClassIgnoreList(uri) ) 
+                continue;
             
             System.out.println("NEW CLASS URI: " + uri);
             
@@ -236,6 +237,9 @@ public class Comparator
                 addLabel(newCls, dtf2.format(now));
                 addBefore(ontologyModel.getOntClass(newURI), newCls);
                 newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
+                
+                Utilities.addToClassIgnoreList(newURI);
+                
             }
         }
      }
@@ -315,5 +319,14 @@ public class Comparator
         
         SomeValuesFromRestriction svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, newCls);
         ontClass.addSuperClass(svfr);
+        
+        ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.AFTER_P);
+
+        if(ontProperty == null)
+            ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.AFTER_P, false);
+        
+        svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, ontClass);
+        newCls.addSuperClass(svfr);
+        
     }
 }

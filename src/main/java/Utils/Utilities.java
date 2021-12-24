@@ -1,6 +1,7 @@
 package Utils;
 
 import static Utils.Configs.NS_to_ignore;
+import static Utils.Configs.class_to_ignore;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,11 +18,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Priority;
 
 public class Utilities 
 {
 
+    
+    public static void addToClassIgnoreList(String i)
+    {
+        if(i == null || i.isBlank() || i.isBlank())
+            return;
+    
+        class_to_ignore.add(i);
+        
+    }
+    
+    public static boolean isInClassIgnoreList(String i)
+    {
+        if(i == null || i.isBlank() || i.isBlank())
+            return false;
+        
+        return class_to_ignore.contains(i);
+    }
+    
     
     public static boolean isInIgnoreList(String i)
     {

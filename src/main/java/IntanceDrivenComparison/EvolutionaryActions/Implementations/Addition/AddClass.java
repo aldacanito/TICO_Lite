@@ -7,16 +7,11 @@ package IntanceDrivenComparison.EvolutionaryActions.Implementations.Addition;
 
 import IntanceDrivenComparison.EvolutionaryActions.Interfaces.IAddClass;
 import Utils.OntologyUtils;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Set;
-import org.apache.jena.ontology.HasValueRestriction;
-import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntProperty;
 
 /**
  *
@@ -38,7 +33,7 @@ public class AddClass implements IAddClass
     public AddClass(OntClass oldClass)
     {
         this.oldClass = oldClass;
-        this.URI = oldClass.getURI();
+        this.URI      = oldClass.getURI();
     }
     
     public AddClass(String URI)
@@ -148,7 +143,7 @@ public class AddClass implements IAddClass
             
             //primeiro é preciso ver se vai ser precisa uma definiçao nova da classe
             //tenho de saber quais as restriçoes!!!!!!!!!!! que estao no keyset
-            this.newClass = Utils.OntologyUtils.copyClass(oldClass, evolvedModel);
+            //this.newClass = Utils.OntologyUtils.copyClass(oldClass, evolvedModel);
         }
         
         //adicionar restrições

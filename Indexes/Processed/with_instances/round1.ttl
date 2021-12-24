@@ -9,38 +9,76 @@
 @prefix xml:   <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/2006/time#Instant>
-        rdf:type  owl:Class .
+skos:definition  rdf:type  owl:AnnotationProperty .
 
-<2021-12-23_16-34-05.824>
+<2021-12-24_12-38-24.672>
         rdf:type  <http://www.w3.org/2006/Instant> .
 
-:extThing  rdf:type      owl:Class ;
-        rdfs:label       "Thing" ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
+<2021-12-24_12-38-24.376>
+        rdf:type  <http://www.w3.org/2006/Instant> .
 
-<http://www.w3.org/2006/time#hasEnding>
-        rdf:type  owl:ObjectProperty .
+terms:created  rdf:type  owl:AnnotationProperty .
 
-:extAsset  rdf:type          owl:Class ;
-        rdfs:label           "new extAsset st: 2021-12-23_16-34-04.682" ;
+<2021-12-24_12-38-23.991>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extCauses  rdf:type        owl:ObjectProperty ;
+        rdfs:label          "causes"@en , "causa"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extID  rdf:type            owl:DatatypeProperty ;
+        rdfs:domain         :extImpact__2021-12-24_12-38-23.839 , :extEvent__2021-12-24_12-38-23.839 , :extAsset__2021-12-24_12-38-23.839 , :extAttack__2021-12-24_12-38-23.839 ;
+        rdfs:label          "ID"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extEnabledStatus  rdf:type  owl:Class ;
+        rdfs:label           "new extEnabledStatus st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extEnabledStatus__2021-12-24_12-38-23.839
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-04.815> ;
+                               owl:hasValue    <2021-12-24_12-38-24.217> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :extAsset__2021-12-23_16-34-04.682 .
+        owl:equivalentClass  :extEnabledStatus__2021-12-24_12-38-23.839 .
 
-<http://www.w3.org/2006/time#hasEnd>
-        rdf:type  owl:ObjectProperty .
+:extEmergencyCriticality
+        rdf:type             owl:Class ;
+        rdfs:label           "new extEmergencyCriticality st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extEmergencyCriticality__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.991> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extEmergencyCriticality__2021-12-24_12-38-23.839 .
 
-:extTriggers  rdf:type      owl:ObjectProperty ;
-        rdfs:label          "triggers"@en , "aciona"@pt ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "27/May/2020" ;
-        owl:versionInfo     "2" .
+<2021-12-24_12-38-24.509>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extChanges  rdf:type  owl:AnnotationProperty .
+
+:extInfo  rdf:type           owl:Class ;
+        rdfs:label           "new extInfo st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extInfo__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.458> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extInfo__2021-12-24_12-38-23.839 .
 
 :extHas  rdf:type           owl:ObjectProperty ;
         rdfs:label          "tem"@pt , "has"@en ;
@@ -49,161 +87,102 @@
         terms:modified      "27/May/2020" ;
         owl:versionInfo     "2" .
 
-:extEnabledStatus  rdf:type  owl:Class ;
-        rdfs:label       "Enabled"@en , "Ativado"@pt ;
-        rdfs:subClassOf  :extStatusValuePartition ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
+<2021-12-24_12-38-24.425>
+        rdf:type  <http://www.w3.org/2006/Instant> .
 
-:extCountermeasures  rdf:type  owl:Class ;
-        rdfs:label       "Countermeasure"@en ;
-        rdfs:subClassOf  :extThing .
-
-:extHasTargetEvent  rdf:type  owl:ObjectProperty ;
-        rdfs:label          "hasTargetEvent"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "28/May/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     1 .
-
-:extEvent  rdf:type          owl:Class ;
-        rdfs:label           "new extEvent st: 2021-12-23_16-34-04.682" ;
+:extAPT  rdf:type            owl:Class ;
+        rdfs:label           "new extAPT st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extAPT__2021-12-24_12-38-23.839
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-06.222> ;
+                               owl:hasValue    <2021-12-24_12-38-25.344> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :extEvent__2021-12-23_16-34-04.682 .
+        owl:equivalentClass  :extAPT__2021-12-24_12-38-23.839 .
 
-:extPerformanceValue  rdf:type  owl:DatatypeProperty ;
-        rdfs:label          "performanceValue"@en ;
-        rdfs:range          xsd:float ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
+:extDisabledStaus__2021-12-24_12-38-23.839
+        rdf:type          owl:Class ;
+        rdfs:label        "Disabled"@en , "Desativado"@pt ;
+        rdfs:subClassOf   :extStatusValuePartition__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 , :extValuePartition__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf   [ rdf:type        owl:Restriction ;
+                            owl:hasValue    <2021-12-24_12-38-23.839> ;
+                            owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                          ] ;
+        rdfs:subClassOf   [ rdf:type            owl:Restriction ;
+                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                            owl:someValuesFrom  :extDisabledStaus
+                          ] ;
+        rdfs:subClassOf   [ rdf:type            owl:Restriction ;
+                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                            owl:someValuesFrom  :extValuePartition
+                          ] ;
+        rdfs:subClassOf   [ rdf:type        owl:Restriction ;
+                            owl:hasValue    <2021-12-24_12-38-23.839> ;
+                            owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                          ] ;
+        rdfs:subClassOf   [ rdf:type        owl:Restriction ;
+                            owl:hasValue    <2021-12-24_12-38-23.839> ;
+                            owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                          ] ;
+        rdfs:subClassOf   [ rdf:type            owl:Restriction ;
+                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                            owl:someValuesFrom  :extStatusValuePartition
+                          ] ;
+        rdfs:subClassOf   [ rdf:type        owl:Restriction ;
+                            owl:hasValue    <2021-12-24_12-38-23.839> ;
+                            owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                          ] ;
+        rdfs:subClassOf   [ rdf:type            owl:Restriction ;
+                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                            owl:someValuesFrom  :extValuePartition
+                          ] ;
+        terms:created     "14/Nov/2019" ;
+        terms:creator     "Katia Aleid" ;
+        owl:disjointWith  :extEnabledStatus__2021-12-24_12-38-23.839 ;
+        owl:versionInfo   "1" .
 
-:extTopObjectProperty
-        rdf:type         owl:ObjectProperty ;
-        rdfs:label       "objectProperty"@en ;
-        terms:created    "27/May/2020" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
-
-:extEscalationCriticality
-        rdf:type         owl:Class ;
-        rdfs:label       "Escalação"@pt , "Escalation"@en ;
-        rdfs:subClassOf  :extCriticalityValuePartition ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" ;
-        skos:definition  "Criticality value that the related event requires the application of corrective measures"@en .
-
-:extAssetID  rdf:type       owl:DatatypeProperty ;
-        rdfs:label          "assetID"@en ;
-        rdfs:range          xsd:long ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
-
-:extType  rdf:type          owl:DatatypeProperty ;
-        rdfs:domain         :extEvent__2021-12-23_16-34-04.682 , :extAttack__2021-12-23_16-34-04.682 ;
-        rdfs:label          "type"@en ;
+:extCategory  rdf:type      owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability__2021-12-24_12-38-23.839 ;
+        rdfs:label          "category"@en ;
         rdfs:range          rdfs:Literal ;
         rdfs:subPropertyOf  :extTopDataProperty ;
         terms:creator       "Katia Aleid" ;
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-[ rdf:type     owl:AllDisjointClasses ;
-  owl:members  ( :extExtremeSeverity :extHighSeverity :extLowSeverity :extMediumSeverity )
-] .
-
-:extImpact__2021-12-23_16-34-04.682
-        rdf:type         owl:Class ;
-        rdfs:label       "Impacto"@pt , "Impact"@en ;
-        rdfs:subClassOf  :extThing ;
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
-                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  :extAsset__2021-12-23_16-34-04.682 ;
-                           owl:onProperty               :extHasAffectedAsset
-                         ] ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               :extSeverityValuePartition ;
-                           owl:onProperty            :extHasSeverity ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extImpact
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        terms:created    "24/Feb/2020" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
-
-<http://www.w3.org/2006/time#before>
-        rdf:type  owl:ObjectProperty .
-
-owl:topObjectProperty
+<http://www.w3.org/2006/time#hasTime>
         rdf:type  rdf:Property .
 
-:extChanges  rdf:type  owl:AnnotationProperty .
-
-:extScore  rdf:type         owl:DatatypeProperty ;
-        rdfs:domain         :extVulnerability ;
-        rdfs:label          "score"@en ;
-        rdfs:range          xsd:int ;
+:extActionsToFollow  rdf:type  owl:DatatypeProperty ;
+        rdfs:domain         :extAttack__2021-12-24_12-38-23.839 ;
+        rdfs:label          "actionsToFollow"@en ;
+        rdfs:range          rdfs:Literal ;
         rdfs:subPropertyOf  :extTopDataProperty ;
         terms:creator       "Katia Aleid" ;
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-<2021-12-23_16-34-05.977>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-:extAffextedBy  rdf:type    owl:ObjectProperty ;
-        rdfs:label          "affectedBy"@en , "afetado por"@pt ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "27/May/2020" ;
-        owl:versionInfo     "1" .
-
-:extPrevents  rdf:type      owl:ObjectProperty ;
-        rdfs:label          "prevents"@en , "impede"@pt ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "24/Feb/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     "1" .
-
-:extAffectesConfiguration
+:extHasDestinationAsset
         rdf:type            owl:ObjectProperty ;
-        rdfs:label          "affectsConfiguration"@en ;
+        rdfs:label          "hasDestinationAsset"@en ;
         rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "24/Feb/2020" ;
+        terms:created       "28/May/2020" ;
         terms:creator       "Katia Aleid" ;
-        owl:versionInfo     "1" .
+        owl:versionInfo     1 .
 
-terms:created  rdf:type  owl:AnnotationProperty .
-
-:extValue  rdf:type         owl:DatatypeProperty ;
-        rdfs:label          "value"@en ;
-        rdfs:range          xsd:float ;
+:extRemediation  rdf:type   owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability__2021-12-24_12-38-23.839 ;
+        rdfs:label          "remediation"@en ;
+        rdfs:range          rdfs:Literal ;
         rdfs:subPropertyOf  :extTopDataProperty ;
         terms:creator       "Katia Aleid" ;
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-:extVulnerability  rdf:type  owl:Class ;
-        rdfs:label       "Vulnerability"@en , "Vulnerabilidade"@pt ;
-        rdfs:subClassOf  :extThing ;
-        terms:created    "24/Feb/2020" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
+<2021-12-24_12-38-24.142>
+        rdf:type  <http://www.w3.org/2006/Instant> .
 
 :extHasSourceAsset  rdf:type  owl:ObjectProperty ;
         rdfs:label          "hasSourceAsset"@en ;
@@ -220,96 +199,55 @@ terms:created  rdf:type  owl:AnnotationProperty .
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-:extValuePartition  rdf:type  owl:Class ;
-        rdfs:label       "Value Partition"@en ;
-        rdfs:subClassOf  :extThing ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
+[ rdf:type     owl:AllDisjointClasses ;
+  owl:members  ( :extExtremeSeverity__2021-12-24_12-38-23.839 :extHighSeverity__2021-12-24_12-38-23.839 :extLowSeverity__2021-12-24_12-38-23.839 :extMediumSeverity__2021-12-24_12-38-23.839 )
+] .
 
-<2021-12-23_16-34-06.222>
+<2021-12-24_12-38-24.027>
         rdf:type  <http://www.w3.org/2006/Instant> .
 
-:extDisabledStaus  rdf:type  owl:Class ;
-        rdfs:label        "Disabled"@en , "Desativado"@pt ;
-        rdfs:subClassOf   :extStatusValuePartition ;
-        terms:created     "14/Nov/2019" ;
-        terms:creator     "Katia Aleid" ;
-        owl:disjointWith  :extEnabledStatus ;
-        owl:versionInfo   "1" .
+:extHasStatus  rdf:type     owl:FunctionalProperty , owl:ObjectProperty ;
+        rdfs:label          "temStatus"@pt , "hasStatus"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
 
-:extLaunches  rdf:type      owl:ObjectProperty ;
-        rdfs:label          "launches"@en , "lança"@pt ;
+:extWarning  rdf:type        owl:Class ;
+        rdfs:label           "new extWarning st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extWarning__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.742> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extWarning__2021-12-24_12-38-23.839 .
+
+:extExposedBy  rdf:type     owl:ObjectProperty ;
+        rdfs:label          "exposedBy"@en ;
         rdfs:subPropertyOf  :extTopObjectProperty ;
         terms:created       "24/Feb/2020" ;
         terms:creator       "Katia Aleid" ;
         owl:versionInfo     "1" .
 
-<2021-12-23_16-34-06.343>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-:extTopDataProperty  rdf:type  owl:DatatypeProperty ;
-        rdfs:label       "dataProperty"@en ;
-        rdfs:range       rdfs:Literal ;
-        terms:created    "28/May/2020" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
-
-:extImpact  rdf:type         owl:Class ;
-        rdfs:label           "new extImpact st: 2021-12-23_16-34-04.682" ;
+:extAlarm  rdf:type          owl:Class ;
+        rdfs:label           "new extAlarm st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extAlarm__2021-12-24_12-38-23.839
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-05.977> ;
+                               owl:hasValue    <2021-12-24_12-38-24.162> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :extImpact__2021-12-23_16-34-04.682 .
+        owl:equivalentClass  :extAlarm__2021-12-24_12-38-23.839 .
 
-:extAction  rdf:type        owl:DatatypeProperty ;
-        rdfs:label          "action"@en ;
-        rdfs:range          rdfs:Literal ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
+<2021-12-24_12-38-24.981>
+        rdf:type  <http://www.w3.org/2006/Instant> .
 
-:extHasSourceEvent  rdf:type  owl:ObjectProperty ;
-        rdfs:label          "hasSourceEvent"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "28/May/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     1 .
-
-:extWarning__2021-12-23_16-34-04.682
-        rdf:type         owl:Class ;
-        rdfs:label       "Atenção"@pt , "Warning"@en ;
-        rdfs:subClassOf  :extAlert__2021-12-23_16-34-04.682 , :extThing ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extWarning
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extAlert
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        terms:created    "24/Feb/2020" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
-
-:extRemediation  rdf:type   owl:DatatypeProperty ;
-        rdfs:domain         :extVulnerability ;
-        rdfs:label          "remediation"@en ;
-        rdfs:range          rdfs:Literal ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
+terms:creator  rdf:type  owl:AnnotationProperty .
 
 :extMeans  rdf:type         owl:DatatypeProperty ;
         rdfs:label          "means"@en ;
@@ -319,104 +257,124 @@ terms:created  rdf:type  owl:AnnotationProperty .
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-<2021-12-23_16-34-04.682>
-        rdf:type  <http://www.w3.org/2006/Instant> .
+owl:topObjectProperty
+        rdf:type  rdf:Property .
 
-:extConsequences  rdf:type  owl:Class ;
-        rdfs:label       "Consequences"@en ;
-        rdfs:subClassOf  :extThing .
-
-:extURL  rdf:type           owl:DatatypeProperty ;
-        rdfs:domain         :extVulnerability ;
-        rdfs:label          "URL"@en ;
+:extType  rdf:type          owl:DatatypeProperty ;
+        rdfs:domain         :extEvent__2021-12-24_12-38-23.839 , :extAttack__2021-12-24_12-38-23.839 ;
+        rdfs:label          "type"@en ;
         rdfs:range          rdfs:Literal ;
         rdfs:subPropertyOf  :extTopDataProperty ;
         terms:creator       "Katia Aleid" ;
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-:extSeverityValuePartition
-        rdf:type             owl:Class ;
-        rdfs:comment         "Available severity levels are:\nLow\nMedium\nHigh\nExtreme" ;
-        rdfs:label           "Severity"@en , "Gravidade"@pt ;
-        rdfs:subClassOf      :extValuePartition ;
-        terms:created        "14/Nov/2019" ;
-        terms:creator        "Katia Aleid" ;
-        owl:equivalentClass  [ rdf:type     owl:Class ;
-                               owl:unionOf  ( :extExtremeSeverity :extHighSeverity :extLowSeverity :extMediumSeverity )
+:extAttackType  rdf:type     owl:Class ;
+        rdfs:label           "new extAttackType st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extAttackType__2021-12-24_12-38-23.839
                              ] ;
-        owl:versionInfo      "1" ;
-        skos:definition      "Value partition that conrols the level of severity of an alert."@en .
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-25.079> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extAttackType__2021-12-24_12-38-23.839 .
 
-:extAPT  rdf:type        owl:Class ;
-        rdfs:label       "Advanced persistent threat"@en , "APT"@pt ;
-        rdfs:subClassOf  :extAttackType ;
-        terms:created    "28/July/2020" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
+<2021-12-24_12-38-23.902>
+        rdf:type  <http://www.w3.org/2006/Instant> .
 
-:extAsset__2021-12-23_16-34-04.682
+:extHasConfiguration  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasConfiguration"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extConsistsOf  rdf:type    owl:AsymmetricProperty , owl:ObjectProperty ;
+        rdfs:comment        "All incidents are events, but not all events are incidents so this property is asymmetric" ;
+        rdfs:label          "consistsOf"@en , "consisteDe"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "1" .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+<2021-12-24_12-38-24.094>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extMediumSeverity__2021-12-24_12-38-23.839
         rdf:type         owl:Class ;
-        rdfs:label       "Asset"@en , "Posse"@pt ;
-        rdfs:subClassOf  :extThing ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extAffextedBy ;
-                           owl:someValuesFrom  :extEvent__2021-12-23_16-34-04.682
-                         ] ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               :extCriticalityValuePartition ;
-                           owl:onProperty            :extHasCriticality ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extAffextedBy ;
-                           owl:someValuesFrom  :extEvent__2021-12-23_16-34-04.682
-                         ] ;
+        rdfs:label       "Médio"@pt , "Medium"@en ;
+        rdfs:subClassOf  :extValuePartition__2021-12-24_12-38-23.839 , :extSeverityValuePartition__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extAsset
+                           owl:someValuesFrom  :extMediumSeverity
                          ] ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] ;
         terms:created    "14/Nov/2019" ;
         terms:creator    "Katia Aleid" ;
-        terms:modified   "28/May/2020" ;
-        owl:versionInfo  4 ;
-        skos:definition  "Information or resource which have value to an organization or person."@en .
+        owl:versionInfo  "1" .
 
-[ rdf:type     owl:AllDisjointClasses ;
-  owl:members  ( :extEmergencyCriticality :extEscalationCriticality :extNormalCriticality )
-] .
-
-:extStatusValuePartition
-        rdf:type             owl:Class ;
-        rdfs:label           "Status"@pt , "Status"@en ;
-        rdfs:subClassOf      :extValuePartition ;
-        terms:created        "14/Nov/2019" ;
-        terms:creator        "Katia Aleid" ;
-        owl:equivalentClass  [ rdf:type     owl:Class ;
-                               owl:unionOf  ( :extDisabledStaus :extEnabledStatus )
-                             ] ;
-        owl:versionInfo      "1" ;
-        skos:definition      "Value partition that conrols the status of an alert." .
-
-:extBusinessActivity  rdf:type  owl:DatatypeProperty ;
-        rdfs:label          "businessActivity"@en ;
+:extDescription  rdf:type   owl:DatatypeProperty ;
+        rdfs:domain         :extEvent__2021-12-24_12-38-23.839 , :extVulnerability__2021-12-24_12-38-23.839 , :extAsset__2021-12-24_12-38-23.839 ;
+        rdfs:label          "description"@en ;
         rdfs:range          rdfs:Literal ;
         rdfs:subPropertyOf  :extTopDataProperty ;
         terms:creator       "Katia Aleid" ;
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-:extPersonalData  rdf:type   owl:Class ;
-        rdfs:label           "new extPersonalData st: 2021-12-23_16-34-04.682" ;
+:extEscalationCriticality__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Escalação"@pt , "Escalation"@en ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 , :extValuePartition__2021-12-24_12-38-23.839 , :extCriticalityValuePartition__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extEscalationCriticality
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extValuePartition
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        skos:definition  "Criticality value that the related event requires the application of corrective measures"@en .
+
+:extStatusValuePartition
+        rdf:type             owl:Class ;
+        rdfs:label           "new extStatusValuePartition st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extStatusValuePartition__2021-12-24_12-38-23.839
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-05.318> ;
+                               owl:hasValue    <2021-12-24_12-38-24.279> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :extPersonalData__2021-12-23_16-34-04.682 .
+        owl:equivalentClass  :extStatusValuePartition__2021-12-24_12-38-23.839 .
+
+:extAction  rdf:type        owl:DatatypeProperty ;
+        rdfs:label          "action"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
 
 <http://www.gecad.isep.ipp.pt/ASIIO>
         rdf:type         owl:Ontology ;
@@ -426,53 +384,713 @@ terms:created  rdf:type  owl:AnnotationProperty .
         owl:versionIRI   <http://www.gecad.isep.ipp.pt/ASIIO/1.6> ;
         owl:versionInfo  1.6 .
 
-:extAttackType  rdf:type  owl:Class ;
-        rdfs:label       "Tipo de ataque"@pt , "Attack Type"@en ;
-        rdfs:subClassOf  :extThing ;
-        terms:created    "28/July/2020" ;
+:extValue  rdf:type         owl:DatatypeProperty ;
+        rdfs:label          "value"@en ;
+        rdfs:range          xsd:float ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extHasAffectedAsset  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasAffectedAssets"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "28/May/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+:extValuePartition  rdf:type  owl:Class ;
+        rdfs:label           "new extValuePartition st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extValuePartition__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.094> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extValuePartition__2021-12-24_12-38-23.839 .
+
+:extExtremeSeverity__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Extremo"@pt , "Extreme"@en ;
+        rdfs:subClassOf  :extValuePartition__2021-12-24_12-38-23.839 , :extSeverityValuePartition__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extSeverityValuePartition
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extValuePartition
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extValuePartition
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extExtremeSeverity
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        terms:created    "14/Nov/2019" ;
         terms:creator    "Katia Aleid" ;
         owl:versionInfo  "1" .
 
-:extAlert__2021-12-23_16-34-04.682
+:extAlarm__2021-12-24_12-38-23.839
+        rdf:type             owl:Class ;
+        rdfs:label           "Alarme"@pt , "Alarm"@en ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :extAlarm
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.839> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                             ] ;
+        terms:created        "14/Nov/2019" ;
+        terms:creator        "Katia Aleid" ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  _:b0
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  _:b0
+                             ] ;
+        owl:versionInfo      "1" ;
+        skos:definition      "An alert with a Security Level that is either High or Extreme" .
+
+:extPerformanceValue  rdf:type  owl:DatatypeProperty ;
+        rdfs:label          "performanceValue"@en ;
+        rdfs:range          xsd:float ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extStatusValuePartition__2021-12-24_12-38-23.839
+        rdf:type             owl:Class ;
+        rdfs:label           "Status"@en , "Status"@pt ;
+        rdfs:subClassOf      :extThing__2021-12-24_12-38-23.839 , :extValuePartition__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.839> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.839> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :extValuePartition
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :extStatusValuePartition
+                             ] ;
+        terms:created        "14/Nov/2019" ;
+        terms:creator        "Katia Aleid" ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  _:b1
+                             ] ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  _:b1
+                             ] ;
+        owl:versionInfo      "1" ;
+        skos:definition      "Value partition that conrols the status of an alert." .
+
+:extScore  rdf:type         owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability__2021-12-24_12-38-23.839 ;
+        rdfs:label          "score"@en ;
+        rdfs:range          xsd:int ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+<http://www.w3.org/2006/time#hasEnd>
+        rdf:type  owl:ObjectProperty .
+
+:extHighSeverity__2021-12-24_12-38-23.839
         rdf:type         owl:Class ;
-        rdfs:label       "Alerta"@pt , "Alert"@en ;
-        rdfs:subClassOf  :extThing ;
+        rdfs:label       "High"@en , "Alto"@pt ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 , :extValuePartition__2021-12-24_12-38-23.839 , :extSeverityValuePartition__2021-12-24_12-38-23.839 ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extHighSeverity
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extValuePartition
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extAssetID  rdf:type       owl:DatatypeProperty ;
+        rdfs:label          "assetID"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extThing__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Thing" ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
+
+:extNormalCriticality
+        rdf:type             owl:Class ;
+        rdfs:label           "new extNormalCriticality st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extNormalCriticality__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.578> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extNormalCriticality__2021-12-24_12-38-23.839 .
+
+:extSeverityValuePartition
+        rdf:type             owl:Class ;
+        rdfs:label           "new extSeverityValuePartition st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extSeverityValuePartition__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.981> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extSeverityValuePartition__2021-12-24_12-38-23.839 .
+
+:extImpact__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Impacto"@pt , "Impact"@en ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extImpact
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extSeverityValuePartition__2021-12-24_12-38-23.839 ;
+                           owl:onProperty            :extHasSeverity ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  :extAsset__2021-12-24_12-38-23.839 ;
+                           owl:onProperty               :extHasAffectedAsset
+                         ] ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+<2021-12-24_12-38-23.957>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extAffectesConfiguration
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "affectsConfiguration"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+<2021-12-24_12-38-24.162>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extURL  rdf:type           owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability__2021-12-24_12-38-23.839 ;
+        rdfs:label          "URL"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extAttack  rdf:type         owl:Class ;
+        rdfs:label           "new extAttack st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extAttack__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.809> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extAttack__2021-12-24_12-38-23.839 .
+
+<http://www.w3.org/2006/time#Instant>
+        rdf:type  owl:Class .
+
+:extAffests  rdf:type       owl:ObjectProperty ;
+        rdfs:label          "affects"@en , "afeta"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:inverseOf       :extAffextedBy ;
+        owl:versionInfo     "2" .
+
+:extEvent  rdf:type          owl:Class ;
+        rdfs:label           "new extEvent st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extEvent__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-25.037> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extEvent__2021-12-24_12-38-23.839 .
+
+rdf:type  rdf:type  owl:TransitiveProperty .
+
+:extVulnerability  rdf:type  owl:Class ;
+        rdfs:label           "new extVulnerability st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extVulnerability__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.376> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extVulnerability__2021-12-24_12-38-23.839 .
+
+<2021-12-24_12-38-25.344>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extDisabledStaus  rdf:type  owl:Class ;
+        rdfs:label           "new extDisabledStaus st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extDisabledStaus__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.349> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extDisabledStaus__2021-12-24_12-38-23.839 .
+
+:extWarning__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Atenção"@pt , "Warning"@en ;
+        rdfs:subClassOf  :extAlert__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
                            owl:someValuesFrom  :extAlert
                          ] ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               :extStatusValuePartition ;
-                           owl:onProperty            :extHasStatus ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               :extSeverityValuePartition ;
-                           owl:onProperty            :extHasSeverity ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               :extEvent__2021-12-23_16-34-04.682 ;
-                           owl:onProperty            :extIsTriggeredBy ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extWarning
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+<2021-12-24_12-38-24.578>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  owl:ObjectProperty .
+
+:extLowSeverity__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Baixo"@pt , "Low"@en ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 , :extSeverityValuePartition__2021-12-24_12-38-23.839 , :extValuePartition__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extLowSeverity
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extValuePartition__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Value Partition"@en ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extValuePartition
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extCriticalityValuePartition__2021-12-24_12-38-23.839
+        rdf:type             owl:Class ;
+        rdfs:comment         "Available criticality levels are:\nNormal\nEscalation\nEmergency" ;
+        rdfs:label           "Criticality"@en , "Criticamente"@pt ;
+        rdfs:subClassOf      :extThing__2021-12-24_12-38-23.839 , :extValuePartition__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :extValuePartition
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.839> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.839> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :extCriticalityValuePartition
+                             ] ;
+        terms:created        "14/Nov/2019" ;
+        terms:creator        "Katia Aleid" ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  _:b2
+                             ] ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  _:b2
+                             ] ;
+        owl:versionInfo      "1" ;
+        skos:definition      "Value partition that conrols the level of criticality of an event."@en .
+
+:extHasVerison  rdf:type    owl:ObjectProperty ;
+        rdfs:label          "hasVersion"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+:extEnabledStatus__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Enabled"@en , "Ativado"@pt ;
+        rdfs:subClassOf  :extValuePartition__2021-12-24_12-38-23.839 , :extStatusValuePartition__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extEnabledStatus
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extValuePartition
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extThing  rdf:type          owl:Class ;
+        rdfs:label           "new extThing st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extThing__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.672> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extThing__2021-12-24_12-38-23.839 .
+
+<2021-12-24_12-38-24.349>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extInfo__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Informação"@pt , "Info"@en ;
+        rdfs:subClassOf  :extAlert__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extInfo
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        terms:created    "24/Feb/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extIsTriggeredBy  rdf:type  owl:FunctionalProperty , owl:ObjectProperty ;
+        rdfs:label          "triggeredBy"@en , "acionadoPor"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:inverseOf       :extTriggers ;
+        owl:versionInfo     "2" .
+
+<2021-12-24_12-38-24.742>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extRecoveryTime  rdf:type  owl:DatatypeProperty ;
+        rdfs:label          "recoveryTime"@en ;
+        rdfs:range          xsd:dateTimeStamp ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extEmergencyCriticality__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Emergência"@pt , "Emergency"@en ;
+        rdfs:subClassOf  :extCriticalityValuePartition__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 , :extValuePartition__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extEmergencyCriticality
                          ] ;
         terms:created    "14/Nov/2019" ;
         terms:creator    "Katia Aleid" ;
         owl:versionInfo  "1" ;
-        skos:definition  "A notification that a specific attack has been directed at an organization�??s information systems."@en .
+        skos:definition  "Criticality value that the related event impacts to safety/breach of critical systems"@en .
+
+:extCriticalityValuePartition
+        rdf:type             owl:Class ;
+        rdfs:label           "new extCriticalityValuePartition st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extCriticalityValuePartition__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.425> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extCriticalityValuePartition__2021-12-24_12-38-23.839 .
+
+:extAffextedBy  rdf:type    owl:ObjectProperty ;
+        rdfs:label          "affectedBy"@en , "afetado por"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extExploits  rdf:type      owl:ObjectProperty ;
+        rdfs:label          "façanha"@pt , "exploits"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
 
 :extAdditionalData  rdf:type  owl:DatatypeProperty ;
-        rdfs:domain         :extAttack__2021-12-23_16-34-04.682 ;
+        rdfs:domain         :extAttack__2021-12-24_12-38-23.839 ;
         rdfs:label          "additionalData"@en ;
         rdfs:range          rdfs:Literal ;
         rdfs:subPropertyOf  :extTopDataProperty ;
         terms:creator       "Katia Aleid" ;
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
+
+:extExtremeSeverity  rdf:type  owl:Class ;
+        rdfs:label           "new extExtremeSeverity st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extExtremeSeverity__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-25.195> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extExtremeSeverity__2021-12-24_12-38-23.839 .
+
+<2021-12-24_12-38-24.458>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+<2021-12-24_12-38-24.905>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extCVEID  rdf:type         owl:DatatypeProperty ;
+        rdfs:domain         :extVulnerability__2021-12-24_12-38-23.839 ;
+        rdfs:label          "CVE ID"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "08/June/2020" ;
+        owl:versionInfo     "1" .
+
+:extNormalCriticality__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Normal"@en , "Normal"@pt ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 , :extValuePartition__2021-12-24_12-38-23.839 , :extCriticalityValuePartition__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extNormalCriticality
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extValuePartition
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extCriticalityValuePartition
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extValuePartition
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        skos:definition  "Criticality value that the related event does not impact critical components and does not require intervention"@en .
+
+<2021-12-24_12-38-24.217>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extSeverityValuePartition__2021-12-24_12-38-23.839
+        rdf:type             owl:Class ;
+        rdfs:comment         "Available severity levels are:\nLow\nMedium\nHigh\nExtreme" ;
+        rdfs:label           "Severity"@en , "Gravidade"@pt ;
+        rdfs:subClassOf      :extValuePartition__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :extSeverityValuePartition
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.839> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.839> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :extThing
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :extValuePartition
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.839> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                             ] ;
+        terms:created        "14/Nov/2019" ;
+        terms:creator        "Katia Aleid" ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  _:b3
+                             ] ;
+        owl:equivalentClass  [ rdf:type     owl:Class ;
+                               owl:unionOf  _:b3
+                             ] ;
+        owl:versionInfo      "1" ;
+        skos:definition      "Value partition that conrols the level of severity of an alert."@en .
 
 :extHasSeverity  rdf:type   owl:FunctionalProperty , owl:ObjectProperty ;
         rdfs:label          "temGravidade"@pt , "hasSeverity"@en ;
@@ -481,25 +1099,55 @@ terms:created  rdf:type  owl:AnnotationProperty .
         terms:modified      "27/May/2020" ;
         owl:versionInfo     "2" .
 
-:extHighSeverity  rdf:type  owl:Class ;
-        rdfs:label       "High"@en , "Alto"@pt ;
-        rdfs:subClassOf  :extSeverityValuePartition ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
+<2021-12-24_12-38-25.037>
+        rdf:type  <http://www.w3.org/2006/Instant> .
 
-:extNormalCriticality
-        rdf:type         owl:Class ;
-        rdfs:label       "Normal"@pt , "Normal"@en ;
-        rdfs:subClassOf  :extCriticalityValuePartition ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" ;
-        skos:definition  "Criticality value that the related event does not impact critical components and does not require intervention"@en .
+:extLaunches  rdf:type      owl:ObjectProperty ;
+        rdfs:label          "launches"@en , "lança"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
 
-:extActionsToFollow  rdf:type  owl:DatatypeProperty ;
-        rdfs:domain         :extAttack__2021-12-23_16-34-04.682 ;
-        rdfs:label          "actionsToFollow"@en ;
+:extPrevents  rdf:type      owl:ObjectProperty ;
+        rdfs:label          "prevents"@en , "impede"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "24/Feb/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+<2021-12-24_12-38-25.079>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extHasSourceEvent  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasSourceEvent"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "28/May/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+:extVulnerabilityID  rdf:type  owl:DatatypeProperty ;
+        rdfs:label          "vulnerabilityID"@en ;
+        rdfs:range          xsd:long ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extMediumSeverity  rdf:type  owl:Class ;
+        rdfs:label           "new extMediumSeverity st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extMediumSeverity__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.027> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extMediumSeverity__2021-12-24_12-38-23.839 .
+
+:extProcess  rdf:type       owl:DatatypeProperty ;
+        rdfs:label          "process"@en ;
         rdfs:range          rdfs:Literal ;
         rdfs:subPropertyOf  :extTopDataProperty ;
         terms:creator       "Katia Aleid" ;
@@ -514,30 +1162,12 @@ terms:created  rdf:type  owl:AnnotationProperty .
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-:extInfo  rdf:type           owl:Class ;
-        rdfs:label           "new extInfo st: 2021-12-23_16-34-04.682" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-05.387> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
-                             ] ;
-        owl:equivalentClass  :extInfo__2021-12-23_16-34-04.682 .
-
-:extService  rdf:type       owl:DatatypeProperty ;
-        rdfs:label          "service"@en ;
-        rdfs:range          rdfs:Literal ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
+:extTriggers  rdf:type      owl:ObjectProperty ;
+        rdfs:label          "triggers"@en , "aciona"@pt ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
         terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
-
-:extEmergencyCriticality
-        rdf:type         owl:Class ;
-        rdfs:label       "Emergência"@pt , "Emergency"@en ;
-        rdfs:subClassOf  :extCriticalityValuePartition ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" ;
-        skos:definition  "Criticality value that the related event impacts to safety/breach of critical systems"@en .
+        terms:modified      "27/May/2020" ;
+        owl:versionInfo     "2" .
 
 :extHasCriticality  rdf:type  owl:FunctionalProperty , owl:ObjectProperty ;
         rdfs:comment        "each event has a level of criticality" ;
@@ -547,128 +1177,151 @@ terms:created  rdf:type  owl:AnnotationProperty .
         terms:modified      "27/May/2020" ;
         owl:versionInfo     "2" .
 
-:extSensors__2021-12-23_16-34-04.682
+:extAsset__2021-12-24_12-38-23.839
         rdf:type         owl:Class ;
-        rdfs:label       "Sensors"@en ;
-        rdfs:subClassOf  :extThing , :extPhysicalAsset , :extAsset__2021-12-23_16-34-04.682 , :extHardware ;
+        rdfs:label       "Posse"@pt , "Asset"@en ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      :extAffextedBy ;
-                           owl:someValuesFrom  :extEvent__2021-12-23_16-34-04.682
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extSensors
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extHas ;
-                           owl:someValuesFrom  :extVulnerability
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extHas ;
-                           owl:someValuesFrom  :extVulnerability
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extAffextedBy ;
-                           owl:someValuesFrom  :extEvent__2021-12-23_16-34-04.682
+                           owl:someValuesFrom  :extEvent__2021-12-24_12-38-23.839
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
                            owl:someValuesFrom  :extAsset
-                         ] .
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extCriticalityValuePartition__2021-12-24_12-38-23.839 ;
+                           owl:onProperty            :extHasCriticality ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extAffextedBy ;
+                           owl:someValuesFrom  :extEvent__2021-12-24_12-38-23.839
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        terms:modified   "28/May/2020" ;
+        owl:versionInfo  4 ;
+        skos:definition  "Information or resource which have value to an organization or person."@en .
 
-:extHasAffectedAsset  rdf:type  owl:ObjectProperty ;
-        rdfs:label          "hasAffectedAssets"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "28/May/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     1 .
+<2021-12-24_12-38-24.809>
+        rdf:type  <http://www.w3.org/2006/Instant> .
 
-:extAffests  rdf:type       owl:ObjectProperty ;
-        rdfs:label          "affects"@en , "afeta"@pt ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "27/May/2020" ;
-        owl:inverseOf       :extAffextedBy ;
-        owl:versionInfo     "2" .
-
-:extHasDestinationAsset
-        rdf:type            owl:ObjectProperty ;
-        rdfs:label          "hasDestinationAsset"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "28/May/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     1 .
-
-<http://www.w3.org/2006/time#hasTime>
-        rdf:type  rdf:Property .
-
-:extAttack  rdf:type         owl:Class ;
-        rdfs:label           "new extAttack st: 2021-12-23_16-34-04.682" ;
+:extAlert  rdf:type          owl:Class ;
+        rdfs:label           "new extAlert st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extAlert__2021-12-24_12-38-23.839
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-05.824> ;
+                               owl:hasValue    <2021-12-24_12-38-24.509> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :extAttack__2021-12-23_16-34-04.682 .
+        owl:equivalentClass  :extAlert__2021-12-24_12-38-23.839 .
 
-rdf:type  rdf:type  owl:TransitiveProperty .
-
-:extAdvisory__2021-12-23_16-34-04.682
+:extAttackType__2021-12-24_12-38-23.839
         rdf:type         owl:Class ;
-        rdfs:label       "Consultivo"@pt , "Advisory"@en ;
-        rdfs:subClassOf  :extThing , :extAlert__2021-12-23_16-34-04.682 ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extAlert
+        rdfs:label       "Attack Type"@en , "Tipo de ataque"@pt ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extAdvisory
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extAttackType
+                         ] ;
+        terms:created    "28/July/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extAPT__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Advanced persistent threat"@en , "APT"@pt ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 , :extAttackType__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extAttackType
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extAPT
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        terms:created    "28/July/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extVulnerability__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Vulnerabilidade"@pt , "Vulnerability"@en ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extVulnerability
                          ] ;
         terms:created    "24/Feb/2020" ;
         terms:creator    "Katia Aleid" ;
         owl:versionInfo  "1" .
 
-:extEvent__2021-12-23_16-34-04.682
+:extAdvisory  rdf:type       owl:Class ;
+        rdfs:label           "new extAdvisory st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extAdvisory__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-25.262> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extAdvisory__2021-12-24_12-38-23.839 .
+
+:extEvent__2021-12-24_12-38-23.839
         rdf:type         owl:Class ;
         rdfs:label       "Evento"@pt , "Event"@en ;
-        rdfs:subClassOf  :extThing ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extTriggers ;
-                           owl:someValuesFrom  :extAlert__2021-12-23_16-34-04.682
-                         ] ;
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
-                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  :extAsset__2021-12-23_16-34-04.682 ;
-                           owl:onProperty               :extAffests
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extTriggers ;
-                           owl:someValuesFrom  :extAlert__2021-12-23_16-34-04.682
-                         ] ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               <http://www.w3.org/2006/time#Instant> ;
-                           owl:onProperty            <http://www.w3.org/2006/time#hasEnd> ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extEvent
                          ] ;
         rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
                            owl:onClass               <http://www.w3.org/2006/time#Instant> ;
@@ -676,13 +1329,39 @@ rdf:type  rdf:type  owl:TransitiveProperty .
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ] ;
         rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               :extCriticalityValuePartition ;
+                           owl:onClass               :extCriticalityValuePartition__2021-12-24_12-38-23.839 ;
                            owl:onProperty            :extHasCriticality ;
                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
                          ] ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  :extAsset__2021-12-24_12-38-23.839 ;
+                           owl:onProperty               :extAffests
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extTriggers ;
+                           owl:someValuesFrom  :extAlert__2021-12-24_12-38-23.839
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extEvent
+                           owl:someValuesFrom  :extThing
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.w3.org/2006/time#Instant> ;
+                           owl:onProperty            <http://www.w3.org/2006/time#hasEnd> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extTriggers ;
+                           owl:someValuesFrom  :extAlert__2021-12-24_12-38-23.839
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] ;
         terms:created    "14/Nov/2019" ;
         terms:creator    "Katia Aleid" ;
@@ -690,162 +1369,227 @@ rdf:type  rdf:type  owl:TransitiveProperty .
         owl:versionInfo  "3" ;
         skos:definition  "A discrete change of state or status of an Asset or group of Assets. Specific Events may trigger Alerts."@en .
 
-<http://www.w3.org/2006/Instant>
-        rdf:type  owl:Class .
-
-<https://data.nasa.gov/ontologies/atmonto/equipment#EngineeredSystem>
-        rdf:type  owl:Class .
-
-<http://www.w3.org/2006/time#hasBeginning>
-        rdf:type  owl:ObjectProperty .
-
-terms:modified  rdf:type  owl:AnnotationProperty .
-
-<2021-12-23_16-34-05.318>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-:extCVEID  rdf:type         owl:DatatypeProperty ;
-        rdfs:domain         :extVulnerability ;
-        rdfs:label          "CVE ID"@en ;
-        rdfs:range          xsd:long ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "08/June/2020" ;
-        owl:versionInfo     "1" .
-
-:extCriticalityValuePartition
-        rdf:type             owl:Class ;
-        rdfs:comment         "Available criticality levels are:\nNormal\nEscalation\nEmergency" ;
-        rdfs:label           "Criticamente"@pt , "Criticality"@en ;
-        rdfs:subClassOf      :extValuePartition ;
-        terms:created        "14/Nov/2019" ;
-        terms:creator        "Katia Aleid" ;
-        owl:equivalentClass  [ rdf:type     owl:Class ;
-                               owl:unionOf  ( :extEmergencyCriticality :extEscalationCriticality :extNormalCriticality )
-                             ] ;
-        owl:versionInfo      "1" ;
-        skos:definition      "Value partition that conrols the level of criticality of an event."@en .
-
-terms:creator  rdf:type  owl:AnnotationProperty .
-
-:extCategory  rdf:type      owl:DatatypeProperty ;
-        rdfs:domain         :extVulnerability ;
-        rdfs:label          "category"@en ;
+:extBusinessActivity  rdf:type  owl:DatatypeProperty ;
+        rdfs:label          "businessActivity"@en ;
         rdfs:range          rdfs:Literal ;
         rdfs:subPropertyOf  :extTopDataProperty ;
         terms:creator       "Katia Aleid" ;
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-:extHasStatus  rdf:type     owl:FunctionalProperty , owl:ObjectProperty ;
-        rdfs:label          "temStatus"@pt , "hasStatus"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "27/May/2020" ;
-        owl:versionInfo     "2" .
-
-:extAlert  rdf:type          owl:Class ;
-        rdfs:label           "new extAlert st: 2021-12-23_16-34-04.682" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-05.479> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
-                             ] ;
-        owl:equivalentClass  :extAlert__2021-12-23_16-34-04.682 .
-
-:extExposedBy  rdf:type     owl:ObjectProperty ;
-        rdfs:label          "exposedBy"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "24/Feb/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     "1" .
-
-:extCauses  rdf:type        owl:ObjectProperty ;
-        rdfs:label          "causes"@en , "causa"@pt ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "24/Feb/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     "1" .
-
-:extExploits  rdf:type      owl:ObjectProperty ;
-        rdfs:label          "façanha"@pt , "exploits"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "27/May/2020" ;
-        owl:versionInfo     "2" .
-
-skos:definition  rdf:type  owl:AnnotationProperty .
-
-:extProcess  rdf:type       owl:DatatypeProperty ;
-        rdfs:label          "process"@en ;
-        rdfs:range          rdfs:Literal ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
-
-:extAttack__2021-12-23_16-34-04.682
+:extAttack__2021-12-24_12-38-23.839
         rdf:type         owl:Class ;
-        rdfs:label       "Attack"@en , "Ataque"@pt ;
-        rdfs:subClassOf  :extEvent__2021-12-23_16-34-04.682 , :extThing ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               :extCriticalityValuePartition ;
-                           owl:onProperty            :extHasCriticality ;
-                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
-                         ] ;
+        rdfs:label       "Ataque"@pt , "Attack"@en ;
+        rdfs:subClassOf  :extEvent__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extTriggers ;
-                           owl:someValuesFrom  :extAlert__2021-12-23_16-34-04.682
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
-                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass                  :extVulnerability ;
-                           owl:onProperty               :extExploits
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
                            owl:someValuesFrom  :extAttack
                          ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extCriticalityValuePartition__2021-12-24_12-38-23.839 ;
+                           owl:onProperty            :extHasCriticality ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      :extTriggers ;
+                           owl:someValuesFrom  :extAlert__2021-12-24_12-38-23.839
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  :extVulnerability__2021-12-24_12-38-23.839 ;
+                           owl:onProperty               :extExploits
+                         ] ;
         terms:created    "24/Feb/2020" ;
         terms:creator    "Katia Aleid" ;
         owl:versionInfo  "1" .
 
-:extInfo__2021-12-23_16-34-04.682
+<2021-12-24_12-38-24.852>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extHighSeverity  rdf:type   owl:Class ;
+        rdfs:label           "new extHighSeverity st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extHighSeverity__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.905> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extHighSeverity__2021-12-24_12-38-23.839 .
+
+:extTopObjectProperty
+        rdf:type         owl:ObjectProperty ;
+        rdfs:label       "objectProperty"@en ;
+        terms:created    "27/May/2020" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+:extService  rdf:type       owl:DatatypeProperty ;
+        rdfs:label          "service"@en ;
+        rdfs:range          rdfs:Literal ;
+        rdfs:subPropertyOf  :extTopDataProperty ;
+        terms:creator       "Katia Aleid" ;
+        terms:modified      "28/May/2020" ;
+        owl:versionInfo     "1" .
+
+:extLowSeverity  rdf:type    owl:Class ;
+        rdfs:label           "new extLowSeverity st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extLowSeverity__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.902> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extLowSeverity__2021-12-24_12-38-23.839 .
+
+:extAdvisory__2021-12-24_12-38-23.839
         rdf:type         owl:Class ;
-        rdfs:label       "Info"@en , "Informação"@pt ;
-        rdfs:subClassOf  :extThing , :extAlert__2021-12-23_16-34-04.682 ;
+        rdfs:label       "Consultivo"@pt , "Advisory"@en ;
+        rdfs:subClassOf  :extAlert__2021-12-24_12-38-23.839 , :extThing__2021-12-24_12-38-23.839 ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extInfo
+                           owl:someValuesFrom  :extAdvisory
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extAlert
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extThing
                          ] ;
         terms:created    "24/Feb/2020" ;
         terms:creator    "Katia Aleid" ;
         owl:versionInfo  "1" .
 
-:extLowSeverity  rdf:type  owl:Class ;
-        rdfs:label       "Low"@en , "Baixo"@pt ;
-        rdfs:subClassOf  :extSeverityValuePartition ;
-        terms:created    "14/Nov/2019" ;
+<2021-12-24_12-38-25.195>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extTopDataProperty  rdf:type  owl:DatatypeProperty ;
+        rdfs:label       "dataProperty"@en ;
+        rdfs:range       rdfs:Literal ;
+        terms:created    "28/May/2020" ;
         terms:creator    "Katia Aleid" ;
         owl:versionInfo  "1" .
 
-:extAdvisory  rdf:type       owl:Class ;
-        rdfs:label           "new extAdvisory st: 2021-12-23_16-34-04.682" ;
+:extImpact  rdf:type         owl:Class ;
+        rdfs:label           "new extImpact st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extImpact__2021-12-24_12-38-23.839
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-06.343> ;
+                               owl:hasValue    <2021-12-24_12-38-24.852> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :extAdvisory__2021-12-23_16-34-04.682 .
+        owl:equivalentClass  :extImpact__2021-12-24_12-38-23.839 .
+
+<http://www.w3.org/2006/Instant>
+        rdf:type  owl:Class .
+
+<2021-12-24_12-38-25.262>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extEscalationCriticality
+        rdf:type             owl:Class ;
+        rdfs:label           "new extEscalationCriticality st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extEscalationCriticality__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-24.142> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extEscalationCriticality__2021-12-24_12-38-23.839 .
+
+<2021-12-24_12-38-23.839>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
+:extAsset  rdf:type          owl:Class ;
+        rdfs:label           "new extAsset st: 2021-12-24_12-38-23.839" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :extAsset__2021-12-24_12-38-23.839
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-38-23.957> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :extAsset__2021-12-24_12-38-23.839 .
+
+:extHasTargetEvent  rdf:type  owl:ObjectProperty ;
+        rdfs:label          "hasTargetEvent"@en ;
+        rdfs:subPropertyOf  :extTopObjectProperty ;
+        terms:created       "28/May/2020" ;
+        terms:creator       "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+:extAlert__2021-12-24_12-38-23.839
+        rdf:type         owl:Class ;
+        rdfs:label       "Alert"@en , "Alerta"@pt ;
+        rdfs:subClassOf  :extThing__2021-12-24_12-38-23.839 ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extStatusValuePartition__2021-12-24_12-38-23.839 ;
+                           owl:onProperty            :extHasStatus ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  :extAlert
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extSeverityValuePartition__2021-12-24_12-38-23.839 ;
+                           owl:onProperty            :extHasSeverity ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               :extEvent__2021-12-24_12-38-23.839 ;
+                           owl:onProperty            :extIsTriggeredBy ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-38-23.839> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] ;
+        terms:created    "14/Nov/2019" ;
+        terms:creator    "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        skos:definition  "A notification that a specific attack has been directed at an organization�??s information systems."@en .
+
+[ rdf:type     owl:AllDisjointClasses ;
+  owl:members  ( :extEmergencyCriticality__2021-12-24_12-38-23.839 :extEscalationCriticality__2021-12-24_12-38-23.839 :extNormalCriticality__2021-12-24_12-38-23.839 )
+] .
 
 :extCompletion  rdf:type    owl:DatatypeProperty ;
-        rdfs:domain         :extImpact__2021-12-23_16-34-04.682 ;
+        rdfs:domain         :extImpact__2021-12-24_12-38-23.839 ;
         rdfs:label          "completion"@en ;
         rdfs:range          xsd:float ;
         rdfs:subPropertyOf  :extTopDataProperty ;
@@ -853,170 +1597,30 @@ skos:definition  rdf:type  owl:AnnotationProperty .
         terms:modified      "28/May/2020" ;
         owl:versionInfo     "1" .
 
-<2021-12-23_16-34-05.576>
+terms:modified  rdf:type  owl:AnnotationProperty .
+
+<2021-12-24_12-38-24.279>
         rdf:type  <http://www.w3.org/2006/Instant> .
 
-:extPersonalData__2021-12-23_16-34-04.682
-        rdf:type         owl:Class ;
-        rdfs:label       "Personal Data"@en ;
-        rdfs:subClassOf  :extAsset__2021-12-23_16-34-04.682 , :extThing , :extDataOrDocuments ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extHas ;
-                           owl:someValuesFrom  :extVulnerability
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_16-34-04.682> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extAsset
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :extPersonalData
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extAffextedBy ;
-                           owl:someValuesFrom  :extEvent__2021-12-23_16-34-04.682
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extHas ;
-                           owl:someValuesFrom  :extVulnerability
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      :extAffextedBy ;
-                           owl:someValuesFrom  :extEvent__2021-12-23_16-34-04.682
-                         ] .
+_:b0  rdf:first :extAlert__2021-12-24_12-38-23.839 ;
+rdf:rest  ( [ rdf:type     owl:Class ;
+              owl:unionOf  ( [ rdf:type            owl:Restriction ;
+                               owl:onProperty      :extHasSeverity ;
+                               owl:someValuesFrom  :extExtremeSeverity__2021-12-24_12-38-23.839
+                             ]
+                             [ rdf:type            owl:Restriction ;
+                               owl:onProperty      :extHasSeverity ;
+                               owl:someValuesFrom  :extHighSeverity__2021-12-24_12-38-23.839
+                             ]
+                           )
+            ]
+          ) .
 
-:extHasVerison  rdf:type    owl:ObjectProperty ;
-        rdfs:label          "hasVersion"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "24/Feb/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     "1" .
+_:b3  rdf:first :extExtremeSeverity__2021-12-24_12-38-23.839 ;
+rdf:rest  ( :extHighSeverity__2021-12-24_12-38-23.839 :extLowSeverity__2021-12-24_12-38-23.839 :extMediumSeverity__2021-12-24_12-38-23.839 ) .
 
-:extVulnerabilityID  rdf:type  owl:DatatypeProperty ;
-        rdfs:label          "vulnerabilityID"@en ;
-        rdfs:range          xsd:long ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
+_:b2  rdf:first :extEmergencyCriticality__2021-12-24_12-38-23.839 ;
+rdf:rest  ( :extEscalationCriticality__2021-12-24_12-38-23.839 :extNormalCriticality__2021-12-24_12-38-23.839 ) .
 
-:extConsistsOf  rdf:type    owl:AsymmetricProperty , owl:ObjectProperty ;
-        rdfs:comment        "All incidents are events, but not all events are incidents so this property is asymmetric" ;
-        rdfs:label          "consistsOf"@en , "consisteDe"@pt ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "27/May/2020" ;
-        owl:versionInfo     "1" .
-
-<2021-12-23_16-34-05.158>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-:extHasConfiguration  rdf:type  owl:ObjectProperty ;
-        rdfs:label          "hasConfiguration"@en ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:created       "24/Feb/2020" ;
-        terms:creator       "Katia Aleid" ;
-        owl:versionInfo     "1" .
-
-:extExtremeSeverity  rdf:type  owl:Class ;
-        rdfs:label       "Extremo"@pt , "Extreme"@en ;
-        rdfs:subClassOf  :extSeverityValuePartition ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
-
-:extIsTriggeredBy  rdf:type  owl:FunctionalProperty , owl:ObjectProperty ;
-        rdfs:label          "triggeredBy"@en , "acionadoPor"@pt ;
-        rdfs:subPropertyOf  :extTopObjectProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "27/May/2020" ;
-        owl:inverseOf       :extTriggers ;
-        owl:versionInfo     "2" .
-
-:extWarning  rdf:type        owl:Class ;
-        rdfs:label           "new extWarning st: 2021-12-23_16-34-04.682" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-05.576> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
-                             ] ;
-        owl:equivalentClass  :extWarning__2021-12-23_16-34-04.682 .
-
-<2021-12-23_16-34-05.479>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-:extRecoveryTime  rdf:type  owl:DatatypeProperty ;
-        rdfs:label          "recoveryTime"@en ;
-        rdfs:range          xsd:dateTimeStamp ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
-
-<2021-12-23_16-34-04.815>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-<2021-12-23_16-34-05.387>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-:extAlarm  rdf:type          owl:Class ;
-        rdfs:label           "Alarme"@pt , "Alarm"@en ;
-        terms:created        "14/Nov/2019" ;
-        terms:creator        "Katia Aleid" ;
-        owl:equivalentClass  [ rdf:type            owl:Class ;
-                               owl:intersectionOf  ( :extAlert__2021-12-23_16-34-04.682
-                                                     [ rdf:type     owl:Class ;
-                                                       owl:unionOf  ( [ rdf:type            owl:Restriction ;
-                                                                        owl:onProperty      :extHasSeverity ;
-                                                                        owl:someValuesFrom  :extExtremeSeverity
-                                                                      ]
-                                                                      [ rdf:type            owl:Restriction ;
-                                                                        owl:onProperty      :extHasSeverity ;
-                                                                        owl:someValuesFrom  :extHighSeverity
-                                                                      ]
-                                                                    )
-                                                     ]
-                                                   )
-                             ] ;
-        owl:versionInfo      "1" ;
-        skos:definition      "An alert with a Security Level that is either High or Extreme" .
-
-:extDescription  rdf:type   owl:DatatypeProperty ;
-        rdfs:domain         :extEvent__2021-12-23_16-34-04.682 , :extAsset__2021-12-23_16-34-04.682 , :extVulnerability ;
-        rdfs:label          "description"@en ;
-        rdfs:range          rdfs:Literal ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
-
-:extMediumSeverity  rdf:type  owl:Class ;
-        rdfs:label       "Médio"@pt , "Medium"@en ;
-        rdfs:subClassOf  :extSeverityValuePartition ;
-        terms:created    "14/Nov/2019" ;
-        terms:creator    "Katia Aleid" ;
-        owl:versionInfo  "1" .
-
-:extID  rdf:type            owl:DatatypeProperty ;
-        rdfs:domain         :extImpact__2021-12-23_16-34-04.682 , :extAttack__2021-12-23_16-34-04.682 , :extEvent__2021-12-23_16-34-04.682 , :extAsset__2021-12-23_16-34-04.682 ;
-        rdfs:label          "ID"@en ;
-        rdfs:range          xsd:long ;
-        rdfs:subPropertyOf  :extTopDataProperty ;
-        terms:creator       "Katia Aleid" ;
-        terms:modified      "28/May/2020" ;
-        owl:versionInfo     "1" .
-
-:extSensors  rdf:type        owl:Class ;
-        rdfs:label           "new extSensors st: 2021-12-23_16-34-04.682" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_16-34-05.158> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
-                             ] ;
-        owl:equivalentClass  :extSensors__2021-12-23_16-34-04.682 .
+_:b1  rdf:first :extDisabledStaus__2021-12-24_12-38-23.839 ;
+rdf:rest  ( :extEnabledStatus__2021-12-24_12-38-23.839 ) .

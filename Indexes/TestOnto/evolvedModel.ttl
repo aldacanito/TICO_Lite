@@ -5,107 +5,103 @@
 @prefix xml:  <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
+<2021-12-24_12-36-47.766>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
 <http://kt.ijs.si/panovp/OntoDM#OLD_ID_CL1_2>
         rdf:type  owl:NamedIndividual ;
         :OLD_OP1  :OLD_ID_CL3 .
 
-:OLD_ID_CL3  rdf:type  :Old_Class3__2021-12-23_17-03-17.796 , owl:NamedIndividual ;
+:OLD_ID_CL3  rdf:type  :Old_Class3__2021-12-24_12-36-47.766 , owl:NamedIndividual ;
         :OLD_DT3  "1.0" .
-
-<http://www.w3.org/2006/time#hasEnding>
-        rdf:type  owl:ObjectProperty .
 
 :OLD_OP2  rdf:type  owl:ObjectProperty .
 
-<http://kt.ijs.si/panovp/OntoDM#Old_Class4>
-        rdf:type             owl:Class ;
-        rdfs:label           "new Old_Class4 st: 2021-12-23_17-03-17.796" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_17-03-17.888> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
-                             ] ;
-        owl:equivalentClass  <http://kt.ijs.si/panovp/OntoDM#Old_Class4__2021-12-23_17-03-17.796> .
-
-<http://www.w3.org/2006/time#hasBeginning>
-        rdf:type  owl:ObjectProperty .
-
-:OLD_ID_CL2  rdf:type  :Old_Class2__2021-12-23_17-03-17.796 , owl:NamedIndividual ;
-        :OLD_OP3  :OLD_ID_CL3 .
-
-<2021-12-23_17-03-17.796>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-<2021-12-23_17-03-17.821>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-<http://shizaTest>  rdf:type  owl:Ontology .
-
-<2021-12-23_17-03-17.862>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-:OLD_OP1  rdf:type  owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty .
-
-<2021-12-23_17-03-17.888>
-        rdf:type  <http://www.w3.org/2006/Instant> .
-
-:NEW_OP2  rdf:type  rdf:Property .
-
-:OLD_ID_CL1  rdf:type  :Old_Class1__2021-12-23_17-03-17.796 , owl:NamedIndividual .
-
-:Old_Class3__2021-12-23_17-03-17.796
+:Old_Class3__2021-12-24_12-36-47.766
         rdf:type         owl:Class ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
                            owl:someValuesFrom  :Old_Class3
                          ] ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_17-03-17.796> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
+                           owl:hasValue    <2021-12-24_12-36-47.766> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] .
 
-:Old_Class3  rdf:type        owl:Class ;
-        rdfs:label           "new Old_Class3 st: 2021-12-23_17-03-17.796" ;
+<http://kt.ijs.si/panovp/OntoDM#Old_Class4>
+        rdf:type             owl:Class ;
+        rdfs:label           "new Old_Class4 st: 2021-12-24_12-36-47.766" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <http://kt.ijs.si/panovp/OntoDM#Old_Class4__2021-12-24_12-36-47.766>
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_17-03-17.846> ;
+                               owl:hasValue    <2021-12-24_12-36-47.879> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :Old_Class3__2021-12-23_17-03-17.796 .
+        owl:equivalentClass  <http://kt.ijs.si/panovp/OntoDM#Old_Class4__2021-12-24_12-36-47.766> .
 
-:Old_Class2__2021-12-23_17-03-17.796
+:Old_Class2__2021-12-24_12-36-47.766
         rdf:type         owl:Class ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
                            owl:someValuesFrom  :Old_Class2
                          ] ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_17-03-17.796> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
+                           owl:hasValue    <2021-12-24_12-36-47.766> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] .
 
-:NEW_CLASS_2__2021-12-23_17-03-17.796
-        rdf:type         owl:Class ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  :NEW_CLASS_2
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_17-03-17.796> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] .
-
-:Old_Class1__2021-12-23_17-03-17.796
+:Old_Class1__2021-12-24_12-36-47.766
         rdf:type         owl:Class ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#before> ;
                            owl:someValuesFrom  :Old_Class1
                          ] ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_17-03-17.796> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
+                           owl:hasValue    <2021-12-24_12-36-47.766> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
                          ] .
 
-<2021-12-23_17-03-17.846>
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+:OLD_ID_CL2  rdf:type  :Old_Class2__2021-12-24_12-36-47.766 , owl:NamedIndividual ;
+        :OLD_OP3  :OLD_ID_CL3 .
+
+<2021-12-24_12-36-47.810>
         rdf:type  <http://www.w3.org/2006/Instant> .
+
+<http://shizaTest>  rdf:type  owl:Ontology .
+
+:OLD_OP1  rdf:type  owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty .
+
+<http://kt.ijs.si/panovp/OntoDM#Old_Class4__2021-12-24_12-36-47.766>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                           owl:someValuesFrom  <http://kt.ijs.si/panovp/OntoDM#Old_Class4>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <2021-12-24_12-36-47.766> ;
+                           owl:onProperty  <http://www.w3.org/2006/time#hasEnd>
+                         ] .
+
+:NEW_OP2  rdf:type  rdf:Property .
+
+:OLD_ID_CL1  rdf:type  :Old_Class1__2021-12-24_12-36-47.766 , owl:NamedIndividual .
+
+:Old_Class3  rdf:type        owl:Class ;
+        rdfs:label           "new Old_Class3 st: 2021-12-24_12-36-47.766" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :Old_Class3__2021-12-24_12-36-47.766
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <2021-12-24_12-36-47.810> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
+                             ] ;
+        owl:equivalentClass  :Old_Class3__2021-12-24_12-36-47.766 .
 
 :NEW_OP1  rdf:type  rdf:Property .
 
@@ -116,54 +112,55 @@
         rdf:type  owl:Class .
 
 :Old_Class2  rdf:type        owl:Class ;
-        rdfs:label           "new Old_Class2 st: 2021-12-23_17-03-17.796" ;
+        rdfs:label           "new Old_Class2 st: 2021-12-24_12-36-47.766" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :Old_Class2__2021-12-24_12-36-47.766
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_17-03-17.862> ;
+                               owl:hasValue    <2021-12-24_12-36-47.840> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :Old_Class2__2021-12-23_17-03-17.796 .
+        owl:equivalentClass  :Old_Class2__2021-12-24_12-36-47.766 .
 
-<http://kt.ijs.si/panovp/OntoDM#Old_Class4__2021-12-23_17-03-17.796>
-        rdf:type         owl:Class ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                           owl:someValuesFrom  <http://kt.ijs.si/panovp/OntoDM#Old_Class4>
-                         ] ;
-        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
-                           owl:hasValue    <2021-12-23_17-03-17.796> ;
-                           owl:onProperty  <http://www.w3.org/2006/time#hasEnding>
-                         ] .
+<http://www.w3.org/2006/time#hasEnd>
+        rdf:type  owl:ObjectProperty .
 
 :OLD_DT2  rdf:type   owl:DatatypeProperty ;
-        rdfs:domain  :Old_Class2__2021-12-23_17-03-17.796 ;
+        rdfs:domain  :Old_Class2__2021-12-24_12-36-47.766 ;
         rdfs:range   rdfs:Literal .
 
 :Old_Class1  rdf:type        owl:Class ;
-        rdfs:label           "new Old_Class1 st: 2021-12-23_17-03-17.796" ;
+        rdfs:label           "new Old_Class1 st: 2021-12-24_12-36-47.766" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :Old_Class1__2021-12-24_12-36-47.766
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_17-03-17.877> ;
+                               owl:hasValue    <2021-12-24_12-36-47.866> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
                              ] ;
-        owl:equivalentClass  :Old_Class1__2021-12-23_17-03-17.796 .
+        owl:equivalentClass  :Old_Class1__2021-12-24_12-36-47.766 .
 
 :OLD_DT1  rdf:type  owl:DatatypeProperty ;
         rdfs:range  owl:real .
 
+<2021-12-24_12-36-47.840>
+        rdf:type  <http://www.w3.org/2006/Instant> .
+
 <http://www.w3.org/2006/time#before>
         rdf:type  owl:ObjectProperty .
 
-<2021-12-23_17-03-17.877>
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
+
+<2021-12-24_12-36-47.866>
         rdf:type  <http://www.w3.org/2006/Instant> .
 
 :OLD_OP3  rdf:type          owl:FunctionalProperty , owl:ObjectProperty ;
-        rdfs:domain         :Old_Class1__2021-12-23_17-03-17.796 ;
-        rdfs:range          :Old_Class2__2021-12-23_17-03-17.796 ;
+        rdfs:domain         :Old_Class1__2021-12-24_12-36-47.766 ;
+        rdfs:range          :Old_Class2__2021-12-24_12-36-47.766 ;
         rdfs:subPropertyOf  :OLD_OP2 .
 
-:NEW_CLASS_2  rdf:type       owl:Class ;
-        rdfs:label           "new NEW_CLASS_2 st: 2021-12-23_17-03-17.796" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <2021-12-23_17-03-17.821> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasBeginning>
-                             ] ;
-        owl:equivalentClass  :NEW_CLASS_2__2021-12-23_17-03-17.796 .
+<2021-12-24_12-36-47.879>
+        rdf:type  <http://www.w3.org/2006/Instant> .

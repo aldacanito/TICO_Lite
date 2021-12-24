@@ -53,7 +53,7 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 public class OntologyUtils 
 {
     public static final String INSTANT_CLS      = "http://www.w3.org/2006/Instant";
-    public static final String HAS_ENDING_P     = "http://www.w3.org/2006/time#hasEnding";
+    public static final String HAS_ENDING_P     = "http://www.w3.org/2006/time#hasEnd";
     public static final String HAS_BEGINNING_P  = "http://www.w3.org/2006/time#hasBeginning";
     public static final String BEFORE_P         = "http://www.w3.org/2006/time#before";
     public static final String AFTER_P          = "http://www.w3.org/2006/time#after";

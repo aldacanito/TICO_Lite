@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.w3.org/2006/time#2016" uri="http://www.w3.org/2006/time"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1639410260121" name="duplicate:http://shizaTest" uri="shizaTest_base.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1639410260121" name="duplicate:http://shizaTest" uri="shizaTest_newInstance.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1639410260121" name="duplicate:http://shizaTest" uri="shizaTest_NovasClasses.owl"/>
-        <uri id="Automatically generated entry, Timestamp=1639410260121" name="http://www.gecad.isep.ipp.pt/ASIIO" uri="dfssssdfsdfsdf.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1640287941343" name="duplicate:http://shizaTest" uri="shizaTest_base.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1640287941343" name="duplicate:http://shizaTest" uri="shizaTest_newInstance.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1640287941343" name="duplicate:http://shizaTest" uri="shizaTest_NovasClasses.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1640287941343" name="http://www.gecad.isep.ipp.pt/ASIIO" uri="dfssssdfsdfsdf.owl"/>
     </group>
 </catalog>

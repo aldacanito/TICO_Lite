@@ -24,6 +24,7 @@ public class Configs
     private static final String config_file = "config.properties";
     public static Properties prop;
     public static String[] NS_to_ignore;
+    public static List<String> class_to_ignore;
     
     public static int functional_threshold;
     public static int subclass_threshold;
@@ -36,6 +37,7 @@ public class Configs
         this.prop = new Properties();
         this.readProperties();
         NS_to_ignore = new String[0];
+        class_to_ignore = new ArrayList();
         
         String namespace_ignore = (String) this.prop.get("namespace_ignore");
         
