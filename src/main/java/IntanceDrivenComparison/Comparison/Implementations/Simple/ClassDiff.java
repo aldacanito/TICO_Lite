@@ -62,14 +62,25 @@ public class ClassDiff implements IClassDiff
         OntClass op1 = (OntClass) one;
         OntClass op2 = (OntClass) two;
 
-        
-        
         //check if op2 has the same subclasses and equivalent classes as op2
-     
-        boolean equiv_equals = compareEquivalentClasses(op1, op2);        
-        boolean super_equals = compareSuperClasses(op1, op2);        
-       
-        return !(equiv_equals && super_equals);
+         
+        List<OntClass> list1 = op1.listSuperClasses().toList();
+        List<OntClass> list2 = op2.listSuperClasses().toList();
+        
+        if(list1.isEmpty() && list2.isEmpty()) return false;
+        if(list1.size()    != list2.size())    return true;
+        
+        boolean diffSuperClasses = !compareSuperClasses(op1, op2);
+        if(diffSuperClasses) return true;
+        
+        list1 = op1.listEquivalentClasses().toList();
+        list2 = op2.listEquivalentClasses().toList();
+        
+        if(list1.isEmpty() && list2.isEmpty()) return false;
+        if(list1.size()    != list2.size())    return true;
+        
+        boolean diffEquivalentClasses = !compareEquivalentClasses(op1, op2);
+        return diffEquivalentClasses;
     }
 
     private boolean compareRestrictionTypes(Restriction r1, Restriction r2) 
@@ -228,12 +239,6 @@ public class ClassDiff implements IClassDiff
     {
         List<OntClass> op1EQ = op1.listEquivalentClasses().toList();
         List<OntClass> op2EQ = op2.listEquivalentClasses().toList();
-
-        if(op1EQ.isEmpty() && op2EQ.isEmpty())
-            return true;
-        
-        if(op1EQ.size()!=op2EQ.size())
-            return false;
         
         // nao pode ser pelo URI porque restricoes podem ser anonimas
 
@@ -248,16 +253,10 @@ public class ClassDiff implements IClassDiff
     **/
      private boolean compareSuperClasses(OntClass op1, OntClass op2) 
     {
-        List<OntClass> op1EQ = op1.listSuperClasses().toList();
-        List<OntClass> op2EQ = op2.listSuperClasses().toList();
-        
-        if(op1EQ.isEmpty() && op2EQ.isEmpty())
-            return true;
-        
-        if(op1EQ.size()!=op2EQ.size())
-            return false;
+        List<OntClass> list1 = op1.listSuperClasses().toList();
+        List<OntClass> list2 = op2.listSuperClasses().toList();
                
-        return compareLists(op1EQ, op2EQ);
+        return compareLists(list1, list2);
     }
 
     private boolean compareLists(List<OntClass> op1EQ, List<OntClass> op2EQ) 
@@ -285,6 +284,14 @@ public class ClassDiff implements IClassDiff
                         else
                             no_match = true;
                     }            
+                }
+                else if(!cls1.isRestriction() && !cls2.isRestriction())
+                {
+                    // se nao é restriçao é superclasse normal?
+                    if(cls1.getURI()!=null && cls2.getURI()!=null)
+                    
+                    if(cls1.getURI().equalsIgnoreCase(cls2.getURI()))
+                        break;
                 }
             }           
         }

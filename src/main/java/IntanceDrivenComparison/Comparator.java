@@ -213,7 +213,7 @@ public class Comparator
             System.out.println("\n\t == Comparing:\n\t\t" + oldCls.getURI() 
                     + "\n\t\t and " + uri + "\n\t\tResult: " + newVersion + "\n\t==");
            
-            newVersion = true;
+            //newVersion = true;
             if(newVersion)
             {
                 String oldURI = oldCls.getURI();
@@ -231,12 +231,12 @@ public class Comparator
                 OntologyUtils.copyClass(ontologyModel.getOntClass(newURI), evolvedModel);
                 OntologyUtils.copyClass(oldCls, evolvedModel);
 
-                addHasEnding(ontologyModel.getOntClass(newURI), now);
-                replaceHasBeginning(newCls, now);
+                addBefore(ontologyModel.getOntClass(newURI), now);
+                replaceAfter(newCls, now);
 
                 addLabel(newCls, dtf2.format(now));
                 addBefore(ontologyModel.getOntClass(newURI), newCls);
-                newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
+                //newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
                 
                 Utilities.addToClassIgnoreList(newURI);
                 
@@ -274,6 +274,62 @@ public class Comparator
            
         cls.addSuperClass(createHasValueRestriction);
     }
+    
+    
+    private void addBefore(OntClass cls, LocalDateTime enddate)
+    {
+        
+        OntProperty ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
+
+        if(ontProperty == null)
+            ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
+            
+        OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
+        if(instantClass == null)
+            instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
+        Individual date1 = this.evolvedModel.createIndividual(dtf2.format(enddate), instantClass);
+    
+        HasValueRestriction createHasValueRestriction = cls.getOntModel().createHasValueRestriction(null, ontProperty, date1);
+           
+        cls.addSuperClass(createHasValueRestriction);
+    }
+    
+    private void replaceAfter(OntClass cls, LocalDateTime startdate)
+    {
+        List<OntClass> superClasses = cls.listSuperClasses(true).toList();
+        
+        if(superClasses.isEmpty()) // nao tem has begining tem de passar a ter
+        {
+            //OntologyUtils.addHasBeginning(cls);
+            OntologyUtils.addAfter(cls);
+        }
+        else
+            
+        for(OntClass superClass : superClasses)
+        {
+            if(superClass.isRestriction())
+            {
+                if(superClass.asRestriction().isHasValueRestriction())
+                {
+                    HasValueRestriction hvr = superClass.asRestriction().asHasValueRestriction();
+                    
+                    if(hvr.getOnProperty().getURI().equalsIgnoreCase(OntologyUtils.AFTER_P))
+                    {
+                        
+                        OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
+                        if(instantClass == null)
+                            instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
+                        
+                        Individual date1 = this.evolvedModel.createIndividual(dtf2.format(startdate), instantClass);
+            
+                        hvr.setHasValue(date1);   
+                    }
+                }
+            }
+        }
+
+    }
+    
     
     private void replaceHasBeginning(OntClass cls, LocalDateTime startdate)
     {

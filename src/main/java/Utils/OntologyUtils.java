@@ -52,7 +52,7 @@ import org.apache.jena.util.iterator.ExtendedIterator;
  */
 public class OntologyUtils 
 {
-    public static final String INSTANT_CLS      = "http://www.w3.org/2006/Instant";
+    public static final String INSTANT_CLS      = "http://www.w3.org/2006/time#Instant";
     public static final String HAS_ENDING_P     = "http://www.w3.org/2006/time#hasEnd";
     public static final String HAS_BEGINNING_P  = "http://www.w3.org/2006/time#hasBeginning";
     public static final String BEFORE_P         = "http://www.w3.org/2006/time#before";
@@ -549,6 +549,32 @@ public class OntologyUtils
 
         if(ontProperty == null)
             ontProperty = cls.getOntModel().createObjectProperty(OntologyUtils.HAS_BEGINNING_P, false);
+
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
+        LocalDateTime now = LocalDateTime.now();  
+
+        OntClass instantClass = cls.getOntModel().getOntClass(OntologyUtils.INSTANT_CLS);
+        if(instantClass == null)
+            instantClass = cls.getOntModel().createClass(OntologyUtils.INSTANT_CLS);
+
+        Individual date1 = cls.getOntModel().createIndividual(dtf2.format(now), instantClass);
+
+        //date1.addLabel(dtf.format(now), null);
+
+        System.out.println("PRITNING AGORA O BOENCO");
+
+        HasValueRestriction createHasValueRestriction = cls.getOntModel().createHasValueRestriction(null, ontProperty, date1);
+
+        cls.addSuperClass(createHasValueRestriction);    
+    
+    }
+    
+     public static void addAfter(OntClass cls)
+    {
+        OntProperty ontProperty = cls.getOntModel().getOntProperty(OntologyUtils.AFTER_P);
+
+        if(ontProperty == null)
+            ontProperty = cls.getOntModel().createObjectProperty(OntologyUtils.AFTER_P, false);
 
         DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
         LocalDateTime now = LocalDateTime.now();  

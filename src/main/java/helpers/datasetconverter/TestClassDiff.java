@@ -35,6 +35,8 @@ public class TestClassDiff {
         
         OntClass cls1 = model.createClass("Class1");
         OntClass cls2 = model.createClass("Class2");
+        OntClass cls3 = model.createClass("Class3");
+        OntClass cls4 = model.createClass("Class4");
         
         addHasBeginning(cls1, "yadda1");
         addHasBeginning(cls2, "yadda2");
@@ -51,10 +53,30 @@ public class TestClassDiff {
         newVersion = new ClassDiff ().isNewVersion(cls1, cls2);
         System.out.println("DEVE SER FALSO. É " + newVersion );
         
+        cls1.addSuperClass(cls3);
+        newVersion = new ClassDiff ().isNewVersion(cls1, cls2);
+        System.out.println("DEVE SER VERDADEIRO. É " + newVersion );
+        
+        cls2.addSuperClass(cls3);
+        newVersion = new ClassDiff ().isNewVersion(cls1, cls2);
+        System.out.println("DEVE SER FALSO. É " + newVersion );
+        
+        cls1.addEquivalentClass(cls4);
+        newVersion = new ClassDiff ().isNewVersion(cls1, cls2);
+        System.out.println("DEVE SER VERDADEIRO. É " + newVersion );
+        
+        cls2.addEquivalentClass(cls4);
+        newVersion = new ClassDiff ().isNewVersion(cls1, cls2);
+        System.out.println("DEVE SER FALSO. É " + newVersion );
+        
+        
         addRestriction(cls2, "property2");
         addRestriction(cls1, "property3");
         newVersion = new ClassDiff ().isNewVersion(cls1, cls2);
         System.out.println("DEVE SER VERDADEIRO. É " + newVersion );
+        
+        
+        
         
     }
     
