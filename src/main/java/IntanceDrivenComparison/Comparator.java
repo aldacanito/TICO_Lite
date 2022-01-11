@@ -216,26 +216,46 @@ public class Comparator
             //newVersion = true;
             if(newVersion)
             {
+                // format : TS__CLASSNAME__VERSIONNUMBER
                 String oldURI = oldCls.getURI();
 
-                if(oldURI.contains("__"))
+                String olds     []= oldURI.split("#");
+                String prefix     = olds[0];
+                String className  = olds[1];
+                int versionNumber = 0;
+                
+                // ja existe
+                if(className.contains("TS__"))
                 {
-                    String[] split = oldURI.split("__"); // ignorar data que ja tivesse
-                    oldURI = split[0];
+                    String[] split = className.split("__"); // ignorar data que ja tivesse
+                    try
+                    {
+                        className = split[1];
+                        versionNumber = Integer.parseInt(split[2]);
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Error split/converting string " + oldURI );
+                    }
                 }
 
-                String newURI = oldURI + "__" + dtf2.format(now);
-
-                ResourceUtils.renameResource(oldCls, newURI);
+                String prevURI = prefix + "#TS__" + className + "__" + versionNumber;
+                addLabel(oldCls, "TS__" + className + "__" + versionNumber);
+                versionNumber ++;
+                String newURI = prefix + "#TS__" + className + "__" + versionNumber;
+                addLabel(newCls, "TS__" + className + "__" + versionNumber);
                 
-                OntologyUtils.copyClass(ontologyModel.getOntClass(newURI), evolvedModel);
+                ResourceUtils.renameResource(oldCls, prevURI);
+                ResourceUtils.renameResource(newCls, newURI);
+                
+                OntologyUtils.copyClass(ontologyModel.getOntClass(prevURI), evolvedModel);
                 OntologyUtils.copyClass(oldCls, evolvedModel);
 
-                addBefore(ontologyModel.getOntClass(newURI), now);
+                addBefore(ontologyModel.getOntClass(prevURI), now);
                 replaceAfter(newCls, now);
 
-                addLabel(newCls, dtf2.format(now));
-                addBefore(ontologyModel.getOntClass(newURI), newCls);
+                addLabel(newCls, "TS__" + className + "__" + versionNumber);
+                addBefore(ontologyModel.getOntClass(prevURI), newCls);
                 //newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
                 
                 Utilities.addToClassIgnoreList(newURI);
@@ -244,17 +264,17 @@ public class Comparator
         }
      }
     
-    private void addLabel(OntClass cls, String date)
+    private void addLabel(OntClass cls, String label)
     {
-        String label = "";
-        String cls_original_label = cls.getLabel(null);
-        
-        if(cls_original_label == null)
-            cls_original_label = cls.getURI().split("#")[1];
-        
-        label = "new " + cls_original_label + " st: "+ date;        
+//        String label = "";
+//        String cls_original_label = cls.getLabel(null);
+//        
+//        if(cls_original_label == null)
+//            cls_original_label = cls.getURI().split("#")[1];
+//        
+//        label = "new " + cls_original_label + " st: "+ date;        
                 
-        cls.addLabel(label,null);
+        cls.addLabel(label, null);
     }
     
     private void addHasEnding(OntClass cls, LocalDateTime enddate)
