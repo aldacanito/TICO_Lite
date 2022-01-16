@@ -57,6 +57,9 @@ public class OntologyUtils
     public static final String HAS_BEGINNING_P  = "http://www.w3.org/2006/time#hasBeginning";
     public static final String BEFORE_P         = "http://www.w3.org/2006/time#before";
     public static final String AFTER_P          = "http://www.w3.org/2006/time#after";
+    public static final String INTERVAL_CLS     = "http://www.w3.org/2006/time#Interval";
+    public static final String HAS_SLICE_P      = "http://www.w3.org/2006/time#hasTimeSlice";
+    public static final String DURING_P         = "http://www.w3.org/2006/time#during";
     
     
     

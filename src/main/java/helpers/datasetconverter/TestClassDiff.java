@@ -5,7 +5,7 @@
  */
 package helpers.datasetconverter;
 
-import IntanceDrivenComparison.Comparison.Implementations.Simple.ClassDiff;
+import IDC.Comparison.Impl.Simple.ClassDiff;
 import Utils.Configs;
 import Utils.OntologyUtils;
 import java.time.LocalDateTime;
