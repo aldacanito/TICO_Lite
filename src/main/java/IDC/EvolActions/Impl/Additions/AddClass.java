@@ -94,6 +94,9 @@ public class AddClass implements IAddClass
     @Override
     public void execute() 
     {        
+        
+        // TODO GARANTIR QUE NAO EXECUTA DUAS VEZES
+        
         if(this.originalModel==null)
             Utils.Utilities.logError("Original Model is not instantiated", "ADDCLASS : EXECUTE");
         

@@ -12,8 +12,7 @@
 
 <http://www.gecad.isep.ipp.pt/ASIIO> rdf:type owl:Ontology ;
                                       owl:versionIRI <http://www.gecad.isep.ipp.pt/ASIIO/1.6> ;
-                                      owl:imports <http://purl.org/cyber/uco> ,
-                                                  <http://www.w3.org/2006/time#2016> ;
+                                      owl:imports <http://www.w3.org/2006/time#2016> ;
                                       terms:created "14/Nov/2019" ;
                                       terms:modified "28/July/2020"^^rdfs:Literal ;
                                       rdfs:comment """Core ontology for cybersecurity to be extended with UCO and ATMONTO, started with 4 main concepts 
@@ -2299,7 +2298,8 @@ Extreme""" ;
 
 ###  http://kt.ijs.si/panovp/OntoDM#Vuln1
 <http://kt.ijs.si/panovp/OntoDM#Vuln1> rdf:type owl:NamedIndividual ,
-                                                :extVulnerability .
+                                                :extVulnerability ;
+                                       :extHasDestinationAsset :asset10 .
 
 
 ###  http://kt.ijs.si/panovp/OntoDM#attacker1

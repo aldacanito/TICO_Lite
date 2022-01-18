@@ -39,7 +39,7 @@ public class TimeSliceCreator implements IAddTimeSlices
         this.URI       = toExpand.getURI();
         
         String parts []= this.URI.split("#");
-        this.sliceName = parts[0] + "TS__" + parts[1] + "__0";
+        this.sliceName = parts[0] + "#TS__" + parts[1] + "__0";
        
         this.start = LocalDateTime.now();
         this.end   = null;

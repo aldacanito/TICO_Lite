@@ -57,10 +57,15 @@ public class Configs
             String verbose = (String) prop.getOrDefault("verbose", "true");
             Utilities.verbose = Boolean.parseBoolean(verbose);
             
+//            this.functional_threshold = Integer.parseInt( (String) prop.getOrDefault("functional_threshold", "10"));
+//            this.subclass_threshold   = Integer.parseInt( (String) prop.getOrDefault("subclass_threshold",   "10"));
+//            this.equivalent_threshold = Integer.parseInt( (String) prop.getOrDefault("equivalent_threshold", "50"));
+//            this.someValuesFrom_threshold = Integer.parseInt( (String) prop.getOrDefault("someValyesFrom_threshold", "15"));
+            
             this.functional_threshold = Integer.parseInt( (String) prop.getOrDefault("functional_threshold", "10"));
             this.subclass_threshold   = Integer.parseInt( (String) prop.getOrDefault("subclass_threshold",   "10"));
-            this.equivalent_threshold = Integer.parseInt( (String) prop.getOrDefault("equivalent_threshold", "50"));
-            this.someValuesFrom_threshold = Integer.parseInt( (String) prop.getOrDefault("someValyesFrom_threshold", "15"));
+            this.equivalent_threshold = Integer.parseInt( (String) prop.getOrDefault("equivalent_threshold", "10"));
+            this.someValuesFrom_threshold = Integer.parseInt( (String) prop.getOrDefault("someValyesFrom_threshold", "010"));
       
         } 
         catch (Exception ex)
@@ -102,9 +107,9 @@ public class Configs
             this.prop.setProperty("model_print",                "TTL"); // alternatively RDF/XML
             
             
-            this.prop.setProperty("functional_threshold",       "10"); // alternatively RDF/XML
-            this.prop.setProperty("subclass_threshold",         "10"); // alternatively RDF/XML
-            this.prop.setProperty("equivalent_threshold",       "50"); // alternatively RDF/XML
+            this.prop.setProperty("functional_threshold",       "10"); 
+            this.prop.setProperty("subclass_threshold",         "10"); 
+            this.prop.setProperty("equivalent_threshold",       "50"); 
             
             
             this.prop.store(outp, "default configuration, auto-generated");

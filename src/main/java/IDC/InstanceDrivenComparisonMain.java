@@ -24,8 +24,8 @@ public class InstanceDrivenComparisonMain
     {
         Configs configs = new Configs();
         startRounds();
-        //compareAtaque_semAtaque();
-   //     startTest();
+//        compareAtaque_semAtaque();
+//        startTest();
         //startUseWeeks();
     }
     
