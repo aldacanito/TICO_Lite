@@ -14,6 +14,7 @@ import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.ontology.SomeValuesFromRestriction;
 
 /**
  *
@@ -106,7 +107,7 @@ public class TimeSliceCreator implements IAddTimeSlices
         OntProperty hasSliceP = this.evolvedModel.getOntProperty(OntologyUtils.HAS_SLICE_P);
         if(hasSliceP == null) hasSliceP = this.evolvedModel.createObjectProperty(OntologyUtils.HAS_SLICE_P, false);
         
-        HasValueRestriction sliceRestriction = evolvedModel.createHasValueRestriction(null, hasSliceP, ontSlice);
+        SomeValuesFromRestriction sliceRestriction = evolvedModel.createSomeValuesFromRestriction(null, hasSliceP, ontSlice);
         toExpand.addSuperClass(sliceRestriction);
         
         theSlice = ontSlice;

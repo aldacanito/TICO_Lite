@@ -53,7 +53,7 @@ public class ClassCompareShape implements IClassCompare
     public EvolutionaryAction compare() 
     {
  //       ExtendedIterator classes = ontModel.listClasses();   
-        Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
+//        Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
         
         List<Statement> properties  = instance.listProperties().toList();
         List<OntClass> ontClassList = instance.listOntClasses(true).toList();
