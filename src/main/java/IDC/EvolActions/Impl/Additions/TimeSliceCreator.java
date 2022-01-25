@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package IDC.EvolActions.Impl.Additions;
 
 import IDC.EvolActions.Interfaces.IAddTimeSlices;
@@ -106,8 +101,7 @@ public class TimeSliceCreator implements IAddTimeSlices
         OntProperty hasSliceP = this.evolvedModel.getOntProperty(OntologyUtils.HAS_SLICE_P);
         if(hasSliceP == null) hasSliceP = this.evolvedModel.createObjectProperty(OntologyUtils.HAS_SLICE_P, false);
         
-        HasValueRestriction sliceRestriction = evolvedModel.createHasValueRestriction(null, hasSliceP, ontSlice);
-        toExpand.addSuperClass(sliceRestriction);
+        toExpand.addSuperClass(evolvedModel.createSomeValuesFromRestriction(null, hasSliceP, ontSlice));
         
         theSlice = ontSlice;
         

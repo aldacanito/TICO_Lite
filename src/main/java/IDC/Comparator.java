@@ -1,10 +1,7 @@
-
-
 package IDC;
 
 import IDC.Comparison.Impl.Simple.ClassDiff;
 import IDC.EvolActions.Impl.EvolutionaryActionComposite;
-import IDC.Metrics.ClassPropertyMetrics;
 import IDC.Comparison.Interfaces.IClassCompare;
 import IDC.Comparison.Interfaces.IPropertyCompare;
 import IDC.EvolActions.Factories.ComparatorFactory;
@@ -25,7 +22,6 @@ import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
@@ -47,7 +43,7 @@ public class Comparator
     {
         this.ontologyModel = ontologyModel;
         this.instanceModel = instanceModel;
-        this.evolvedModel  = ontologyModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+        this.evolvedModel  = instanceModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
         this.executer      = new EvolutionaryActionComposite();
     
    //     clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
@@ -262,13 +258,15 @@ public class Comparator
                 String newURI = prefix + "#TS__" + className + "__" + versionNumber;
                 //addLabel(lastNewSlice,    "TS__" + className + "__" + versionNumber);
                 
-                //ResourceUtils.renameResource(oldCls, prevURI);
+                //ResourceUtils.renameResource(lastOldSlice, prevURI);
                 ResourceUtils.renameResource(lastNewSlice, newURI);
                 
                 //OntologyUtils.copyClass(ontologyModel.getOntClass(prevURI), evolvedModel);
                 
                 //a versao anterior foi modificada. copiar o que havia em histórico no modelo anterior
+                
                 OntologyUtils.copyClass(lastOldSlice, evolvedModel);
+                
                 
                 lastOldSlice = evolvedModel.getOntClass(prevURI); // as alteraçoes doravante sao no novo modelo
                 lastNewSlice = evolvedModel.getOntClass(newURI); // as alteraçoes doravante sao no novo modelo
@@ -281,7 +279,7 @@ public class Comparator
                 //addBefore(ontologyModel.getOntClass(prevURI), newCls);
                 //newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
                 
-                //Utilities.addToClassIgnoreList(newURI); // nao precisa porque verifica sempre só o ultimo
+                //Utilities.addToClassIgnoreList(prevURI); // nao precisa porque verifica sempre só o ultimo
                 
             }
         }
@@ -443,14 +441,14 @@ public class Comparator
             if(superClass.isRestriction())
             {
                 Restriction superClsR = superClass.asRestriction();
-                if(superClsR.isHasValueRestriction())
+                if(superClsR.isSomeValuesFromRestriction())
                 {
-                    Restriction sCls = superClsR.asHasValueRestriction();
+                    SomeValuesFromRestriction sCls = superClsR.asSomeValuesFromRestriction();
                     if(sCls.getOnProperty().getURI().equals(sliceP.getURI()))
                     {
-                        RDFNode hasValue = sCls.asHasValueRestriction().getHasValue();
-                        if(hasValue.canAs(OntClass.class))
-                            timeSlices.add(hasValue.as(OntClass.class));
+                        RDFNode valuesFrom = sCls.getSomeValuesFrom();
+                        if(valuesFrom.canAs(OntClass.class))
+                            timeSlices.add(valuesFrom.as(OntClass.class));
                     }
                 }
                 

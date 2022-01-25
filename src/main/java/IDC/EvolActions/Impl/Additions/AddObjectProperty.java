@@ -8,9 +8,7 @@ package IDC.EvolActions.Impl.Additions;
 import static Utils.OntologyUtils.copyProperty;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.ontology.OntResource;
 import org.apache.jena.rdf.model.Resource;
 
 /**
