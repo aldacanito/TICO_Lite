@@ -83,6 +83,8 @@ public class InstanceDrivenComparisonMain
         String stats = comparator.printStats();
         System.out.println("Stats time: " + stats );
         
+       
+        
         Utilities.save("Indexes/TestOnto/stats_round"+round+".txt", stats);
         
         OntologyUtils.writeModeltoFile(comparator.evolvedModel, print_path);

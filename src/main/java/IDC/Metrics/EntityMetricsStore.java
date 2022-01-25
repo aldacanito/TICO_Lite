@@ -44,7 +44,7 @@ public class EntityMetricsStore
                 return cpm;
         }
     
-        Utilities.logInfo("Class Metrics for URI " + classURI + " are not in the Store.");
+        //Utilities.logInfo("Class Metrics for URI " + classURI + " are not in the Store.");
         return ret;
     }
     

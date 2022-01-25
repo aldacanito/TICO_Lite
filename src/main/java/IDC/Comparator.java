@@ -75,14 +75,14 @@ public class Comparator
         // reasoner desligado
         ExtendedIterator<Individual> listIndividuals = instanceModel.listIndividuals();
         
-        Utilities.logInfo("\n\n==========================================\nListing all individuals...\n\n ");
+//        Utilities.logInfo("\n\n==========================================\nListing all individuals...\n\n ");
         
         while(listIndividuals.hasNext())
         {
             Individual instance = listIndividuals.next();
            
             
-            Utilities.logInfo("Current Individual: " + instance.getURI());
+//            Utilities.logInfo("Current Individual: " + instance.getURI());
      
             if(Utilities.isInIgnoreList(instance.getURI()))
                 continue;
@@ -104,8 +104,8 @@ public class Comparator
         boolean ignore = Utilities.isInIgnoreList(instance.getURI());
         if(ignore) return;
         
-        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nAnalysing the shape of Individual " 
-                + instance.getURI() + ".");
+//        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nAnalysing the shape of Individual " 
+//                + instance.getURI() + ".");
 
         IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(instance, ontologyModel);
        
@@ -121,8 +121,8 @@ public class Comparator
     {
         List<Statement> listProperties = instance.listProperties().toList();
                
-        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nIterating through the properties of Individual " 
-                + instance.getURI() + ". Currently with " + listProperties.size() + " properties.");
+//        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nIterating through the properties of Individual " 
+//                + instance.getURI() + ". Currently with " + listProperties.size() + " properties.");
 
         for(Statement stmt : listProperties)
         {
@@ -130,8 +130,8 @@ public class Comparator
             this.compareProperty(stmt);
         }
         
-        Utilities.logInfo("\n\nFinished iterating through Individual " 
-                + instance.getURI() + "'s properties\n%%%%%%%%%%%%%%%%%\n\n");
+//        Utilities.logInfo("\n\nFinished iterating through Individual " 
+//                + instance.getURI() + "'s properties\n%%%%%%%%%%%%%%%%%\n\n");
     }
     
    
@@ -155,9 +155,9 @@ public class Comparator
     */
     private void compareClasses(Individual instance) 
     {
-        Utilities.logInfo("COMPARE CLASSES for instance " 
-                + instance.getURI()
-                + ".\n Iterating through its classes...");
+//        Utilities.logInfo("COMPARE CLASSES for instance " 
+//                + instance.getURI()
+//                + ".\n Iterating through its classes...");
         // procura todas as classes a que a instancia possa pertencer
         
         ExtendedIterator<OntClass> listOntClasses = instance.listOntClasses(true);
@@ -190,7 +190,7 @@ public class Comparator
         // ver qual o ultimo slice (ordenar?)
         // acrescentar slice novo se for o caso
         
-        List                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
+        List <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
         LocalDateTime now      = LocalDateTime.now();  
         
         for(OntClass newCls : e_ontClasses)
@@ -199,7 +199,7 @@ public class Comparator
             if(uri == null || Utilities.isInClassIgnoreList(uri) ) 
                 continue;
             
-            System.out.println("NEW CLASS URI: " + uri);
+           // System.out.println("NEW CLASS URI: " + uri);
             
             OntClass oldCls = ontologyModel.getOntClass(uri);
             
@@ -466,7 +466,9 @@ public class Comparator
         OntProperty       beforeP = cls.getOntModel().getObjectProperty(OntologyUtils.BEFORE_P);
         if(beforeP==null) beforeP = cls.getOntModel().createOntProperty(OntologyUtils.BEFORE_P);
         
-        OntClass lastSlice = null;
+        if(timeSlices.isEmpty()) return null;
+        
+        OntClass lastSlice = timeSlices.get(0);
         // todas têm before menos a última
         
         for(OntClass timeSlice : timeSlices)
