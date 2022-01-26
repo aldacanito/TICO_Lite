@@ -33,8 +33,8 @@ public class InstanceDrivenComparisonMain
        runComparator(onto_path, instance_path, print_path, 1);
         
 //        // round two
-        onto_path      = print_path;
-        instance_path  = dir+ "28-07-2020_inst.ttl" ;
+        onto_path      =  print_path;
+        instance_path  =  dir+ "28-07-2020_inst.ttl" ;
         print_path     =  dir + "round2.ttl";
         
         runComparator(onto_path, instance_path, print_path, 2);

@@ -59,8 +59,9 @@ public class OntologyUtils
     public static final String AFTER_P          = "http://www.w3.org/2006/time#after";
     public static final String INTERVAL_CLS     = "http://www.w3.org/2006/time#Interval";
     public static final String HAS_SLICE_P      = "http://www.w3.org/2006/time#hasTimeSlice";
-    public static final String DURING_P         = "http://www.w3.org/2006/time#during";
-    
+    public static final String DURING_P         = "http://www.w3.org/2006/time#hasDuration";
+    public static final String IS_SLICE_OF_P    = "http://www.w3.org/2006/time#isTimeSliceOf";
+    public static final String ONT_TIME_URL     = "http://www.w3.org/2006/time";
     
     
     public static OntModel readModel(String filename) 
@@ -386,35 +387,55 @@ public class OntologyUtils
         
         // get the class data
         
-        List<RDFNode> listComments = class2Copy.listComments(null).toList();
-        for(RDFNode comment : listComments)
-            newClass.addComment((Literal) comment);
+        copyClassDetails(class2Copy, newClass);
+        return newClass;
+    }
     
-        List<OntClass> listDisjointWith = class2Copy.listDisjointWith().toList();
+    
+    public static OntClass copyClassDetails(OntClass class2Copy, String newClassURI)
+    {   
+        OntClass newClass = class2Copy.getOntModel().createClass(newClassURI);
+        return copyClassDetails(class2Copy, newClass);
+    }
+    
+    
+    /**
+     * Copies all properties of a Class to another one.
+     * @param source The source OntClass
+     * @param target The target OntClass
+     * @return 
+     */
+    public static OntClass copyClassDetails(OntClass source, OntClass target)
+    {
+        List<RDFNode> listComments = source.listComments(null).toList();
+        for(RDFNode comment : listComments)
+            target.addComment((Literal) comment);
+    
+        List<OntClass> listDisjointWith = source.listDisjointWith().toList();
         for(OntClass cls : listDisjointWith)
             if(!Utilities.isInIgnoreList(cls.getURI()))
-                newClass.addDisjointWith(cls);
+                target.addDisjointWith(cls);
         
-        List<OntClass> listEquivalentClasses = class2Copy.listEquivalentClasses().toList();
+        List<OntClass> listEquivalentClasses = source.listEquivalentClasses().toList();
         for(OntClass cls : listEquivalentClasses)
         {   
-            copyRestriction(cls, newClass, "EquivalentClass");
+            copyRestriction(cls, target, "EquivalentClass");
         }
         
-        List<RDFNode> listLabels = class2Copy.listLabels(null).toList();
+        List<RDFNode> listLabels = source.listLabels(null).toList();
         for(RDFNode label : listLabels)
-            newClass.addLabel((Literal) label);
+            target.addLabel((Literal) label);
         
-        List<OntClass> listSubClasses = class2Copy.listSubClasses().toList();
+        List<OntClass> listSubClasses = source.listSubClasses().toList();
         for(OntClass cls : listSubClasses)
         {
             if(hasRestriction(cls))
-                copyRestriction(cls, newClass, "SubClass");
+                copyRestriction(cls, target, "SubClass");
             else
-                newClass.addSubClass(cls);
+                target.addSubClass(cls);
         }
         
-        List<OntClass> listSuperClasses = class2Copy.listSuperClasses().toList();
+        List<OntClass> listSuperClasses = source.listSuperClasses().toList();
         for(OntClass cls : listSuperClasses)
         {
             String uri = cls.getURI();
@@ -423,12 +444,12 @@ public class OntologyUtils
                 continue;
             
             if(hasRestriction(cls))
-                copyRestriction(cls, newClass, "SuperClass");
+                copyRestriction(cls, target, "SuperClass");
             else
-                newClass.addSuperClass(cls);
+                target.addSuperClass(cls);
         }
         
-        return newClass;
+        return target;
     }
     
     
@@ -694,6 +715,10 @@ public class OntologyUtils
         Restriction new_restriction = null; 
         OntProperty onProperty      = old_restriction.getOnProperty();
         
+        if(onProperty.getURI().contains(OntologyUtils.ONT_TIME_URL))
+            return;
+        
+        
         if (old_restriction.isAllValuesFromRestriction()) 
         {
             Resource allValuesFrom = old_restriction.asAllValuesFromRestriction().getAllValuesFrom();
@@ -704,7 +729,8 @@ public class OntologyUtils
         }
 
         if (old_restriction.isSomeValuesFromRestriction())
-        {       
+        {
+            
             Resource someValuesFrom = old_restriction.asSomeValuesFromRestriction().getSomeValuesFrom();
             SomeValuesFromRestriction createSomeValuesFromRestriction = 
                     newClass.getOntModel().createSomeValuesFromRestriction(null, onProperty, someValuesFrom);

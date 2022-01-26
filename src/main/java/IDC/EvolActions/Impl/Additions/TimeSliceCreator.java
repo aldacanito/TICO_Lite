@@ -58,6 +58,8 @@ public class TimeSliceCreator implements IAddTimeSlices
         
         OntClass ontSlice = evolvedModel.createClass(sliceName);
         
+        //OntologyUtils.copyClassDetails(toExpand, ontSlice);
+        
         //criar intervalo
     
         String intervalName = "Interval_st_" + dtf2.format(start);
@@ -103,6 +105,15 @@ public class TimeSliceCreator implements IAddTimeSlices
         if(hasSliceP == null) hasSliceP = this.evolvedModel.createObjectProperty(OntologyUtils.HAS_SLICE_P, false);
         
         toExpand.addSuperClass(evolvedModel.createSomeValuesFromRestriction(null, hasSliceP, ontSlice));
+        
+        
+        OntProperty isSliceOfP = this.evolvedModel.getOntProperty(OntologyUtils.IS_SLICE_OF_P);
+        if(isSliceOfP == null) isSliceOfP = this.evolvedModel.createObjectProperty(OntologyUtils.IS_SLICE_OF_P, false);
+        
+        
+        ontSlice.addSuperClass(evolvedModel.createSomeValuesFromRestriction(null, isSliceOfP, toExpand));
+        
+        
         
         theSlice = ontSlice;
         

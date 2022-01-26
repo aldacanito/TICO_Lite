@@ -17,9 +17,11 @@ import org.apache.jena.ontology.HasValueRestriction;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.ResourceUtils;
@@ -43,8 +45,15 @@ public class Comparator
     {
         this.ontologyModel = ontologyModel;
         this.instanceModel = instanceModel;
-        this.evolvedModel  = instanceModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+    
+        this.evolvedModel  = ontologyModel;
+//    this.evolvedModel  = instanceModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
         this.executer      = new EvolutionaryActionComposite();
+        
+        OntModel timeModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+        timeModel.read(OntologyUtils.ONT_TIME_URL);
+        
+        this.evolvedModel.add(timeModel);
     
    //     clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
     }
@@ -81,7 +90,6 @@ public class Comparator
         {
             Individual instance = listIndividuals.next();
            
-            
 //            Utilities.logInfo("Current Individual: " + instance.getURI());
      
             if(Utilities.isInIgnoreList(instance.getURI()))
@@ -96,6 +104,7 @@ public class Comparator
         
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions(ontologyModel, evolvedModel);
+        //copyInstances(ontologyModel, evolvedModel);
     }
     
    
@@ -193,6 +202,7 @@ public class Comparator
         List <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
         LocalDateTime now      = LocalDateTime.now();  
         
+              
         for(OntClass newCls : e_ontClasses)
         {
             String uri      = newCls.getURI();
@@ -221,10 +231,13 @@ public class Comparator
            
             boolean newVersion = new ClassDiff().isNewVersion(lastOldSlice, lastNewSlice);
             
-            System.out.println("\n\t == Comparing:\n\t\t" + lastOldSlice.getURI() 
-                    + "\n\t\t and " + uri + "\n\t\tResult: " + newVersion + "\n\t==");
+            System.out.println("\n\t "
+                    + "== Source: " + uri 
+                    + "\n\t == Comparing:" 
+                    + "\n\t\t" + lastOldSlice.getURI() 
+                    + "\n\t\t and " + lastNewSlice.getURI() + "\n\t\tResult: " + newVersion + "\n\t==");
            
-            newVersion = true;
+            //newVersion = true;
             if(newVersion)
             {
                 // format : TS__CLASSNAME__VERSIONNUMBER
@@ -251,17 +264,10 @@ public class Comparator
                 }
 
                 String prevURI = prefix + "#TS__" + className + "__" + versionNumber;
-                //addLabel(lastOldSlice,     "TS__" + className + "__" + versionNumber);
-                
                 versionNumber ++;
                 
                 String newURI = prefix + "#TS__" + className + "__" + versionNumber;
-                //addLabel(lastNewSlice,    "TS__" + className + "__" + versionNumber);
-                
-                //ResourceUtils.renameResource(lastOldSlice, prevURI);
                 ResourceUtils.renameResource(lastNewSlice, newURI);
-                
-                //OntologyUtils.copyClass(ontologyModel.getOntClass(prevURI), evolvedModel);
                 
                 //a versao anterior foi modificada. copiar o que havia em histórico no modelo anterior
                 
@@ -274,12 +280,8 @@ public class Comparator
                 addBefore(lastOldSlice, lastNewSlice);
                 
                 
-                //replaceAfter(newCls, now);
 
-                //addBefore(ontologyModel.getOntClass(prevURI), newCls);
-                //newCls.addEquivalentClass(evolvedModel.getOntClass(newURI));
                 
-                //Utilities.addToClassIgnoreList(prevURI); // nao precisa porque verifica sempre só o ultimo
                 
             }
         }
@@ -287,14 +289,8 @@ public class Comparator
     
     private void addLabel(OntClass cls, String label)
     {
-//        String label = "";
-//        String cls_original_label = cls.getLabel(null);
-//        
-//        if(cls_original_label == null)
-//            cls_original_label = cls.getURI().split("#")[1];
-//        
-//        label = "new " + cls_original_label + " st: "+ date;        
-                
+
+        
         cls.addLabel(label, null);
     }
     
@@ -434,7 +430,7 @@ public class Comparator
         OntProperty sliceP      = theOgClass.getOntModel().getObjectProperty(OntologyUtils.HAS_SLICE_P);
         if(sliceP==null) sliceP = theOgClass.getOntModel().createOntProperty(OntologyUtils.HAS_SLICE_P);
         
-        ExtendedIterator<OntClass> superClasses = theOgClass.listSuperClasses();
+        ExtendedIterator<OntClass> superClasses = theOgClass.listSuperClasses(true);
         
         for(OntClass superClass : superClasses.toList())
         {
@@ -473,7 +469,7 @@ public class Comparator
         
         for(OntClass timeSlice : timeSlices)
         {
-            List<OntClass> superClasses = timeSlice.listSuperClasses().toList();
+            List<OntClass> superClasses = timeSlice.listSuperClasses(true).toList();
             List<OntClass> plc = new ArrayList<>();
             
             for(OntClass superClass : superClasses)
@@ -496,7 +492,10 @@ public class Comparator
                 lastSlice = timeSlice;
         }
              
-        return lastSlice;
+        if(isTimeSlice(lastSlice))
+            return lastSlice;
+        else
+            return null;
         
     }
 
@@ -507,5 +506,24 @@ public class Comparator
         if(uri == null) return false;
         
         return uri.contains("TS__");        
+    }
+
+    private void copyInstances(OntModel ontologyModel, OntModel evolvedModel) 
+    {
+        List<Individual> individuals = ontologyModel.listIndividuals().toList();
+    
+        for(Individual i : individuals)
+        {
+            
+            evolvedModel.createIndividual(i);
+            
+//            
+//            Statement stmtT = i.asResource().getStmtTerm();
+//            
+//            if( stmtT != null && stmtT.getSubject() != null && stmtT.getPredicate()!=null
+//                    && stmtT.getObject() != null)
+//                evolvedModel.add(i.asResource().getStmtTerm());
+        }
+        
     }
 }
