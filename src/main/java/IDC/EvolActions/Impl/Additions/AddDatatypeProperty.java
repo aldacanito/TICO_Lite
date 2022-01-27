@@ -57,7 +57,7 @@ public class AddDatatypeProperty extends AddProperty
         }
         
         if(this.functional)
-            newProperty = newProperty.convertToTransitiveProperty();
+            newProperty = newProperty.convertToFunctionalProperty();
     
         for(String domain : this.domains)
         {

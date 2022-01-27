@@ -12,9 +12,8 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@1d69db3c
-	> ADD CLASS : EVOLUTIONARY ACTION
-			 URI: http://shizaTest#Old_Class1
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@27cfba29
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@a220464
 ======================================
 
 
@@ -26,11 +25,11 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 5
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@670485d6
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@7b3bf2f8
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@76a44fec
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@317e184f
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@72170183
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@31b312f
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@35a1c03a
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@374589fa
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@5fc7ac1b
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@58f6c85
 ======================================
 
 
@@ -42,13 +41,11 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 5
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@569f910b
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@2106f1b
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@436db376
-	> ADD CLASS : EVOLUTIONARY ACTION
-			 URI: http://shizaTest#Old_Class3
-	> ADD CLASS : EVOLUTIONARY ACTION
-			 URI: http://shizaTest#Old_Class2
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@3e14dc1e
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@2505887f
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@47405fb0
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@39d5e899
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@21b92791
 ======================================
 
 

@@ -62,10 +62,10 @@ public class Configs
 //            this.equivalent_threshold = Integer.parseInt( (String) prop.getOrDefault("equivalent_threshold", "50"));
 //            this.someValuesFrom_threshold = Integer.parseInt( (String) prop.getOrDefault("someValyesFrom_threshold", "15"));
             
-            this.functional_threshold = Integer.parseInt( (String) prop.getOrDefault("functional_threshold", "10"));
-            this.subclass_threshold   = Integer.parseInt( (String) prop.getOrDefault("subclass_threshold",   "10"));
-            this.equivalent_threshold = Integer.parseInt( (String) prop.getOrDefault("equivalent_threshold", "10"));
-            this.someValuesFrom_threshold = Integer.parseInt( (String) prop.getOrDefault("someValyesFrom_threshold", "010"));
+            this.functional_threshold = Integer.parseInt( (String) prop.getOrDefault("functional_threshold", "0"));
+            this.subclass_threshold   = Integer.parseInt( (String) prop.getOrDefault("subclass_threshold",   "0"));
+            this.equivalent_threshold = Integer.parseInt( (String) prop.getOrDefault("equivalent_threshold", "02"));
+            this.someValuesFrom_threshold = Integer.parseInt( (String) prop.getOrDefault("someValuesFrom_threshold", "0"));
       
         } 
         catch (Exception ex)

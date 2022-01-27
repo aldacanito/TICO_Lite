@@ -16,9 +16,9 @@ public class InstanceDrivenComparisonMain
     public static void main(String[] args) 
     {
         Configs configs = new Configs();
-        startRounds();
+//        startRounds();
 //        compareAtaque_semAtaque();
-//        startTest();
+        startTest();
         //startUseWeeks();
     }
     
@@ -66,11 +66,11 @@ public class InstanceDrivenComparisonMain
         String instance_path  = dir + "shizaTest_newInstance.ttl" ;
         String print_path = dir + "evolvedModel.ttl";
         
-       // runComparator(onto_path, instance_path, print_path, 0); 
+        //runComparator(onto_path, instance_path, print_path, 0); 
         
          onto_path      = dir + "evolvedModel.ttl" ;
          instance_path  = dir + "evolvedModel2.ttl" ;
-         print_path = dir + "evolvedModel3.ttl";
+         print_path     = dir + "evolvedModel3.ttl";
          
          runComparator(onto_path, instance_path, print_path, 0); 
        

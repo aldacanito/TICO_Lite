@@ -8,6 +8,7 @@ import IDC.EvolActions.Factories.ComparatorFactory;
 import IDC.EvolActions.Impl.Additions.TimeSliceCreator;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.EvolActions.Interfaces.IAddClass;
+import IDC.Metrics.ClassPropertyMetrics;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import java.time.LocalDateTime;
@@ -16,17 +17,16 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.ontology.HasValueRestriction;
 import org.apache.jena.ontology.Individual;
+import org.apache.jena.ontology.IntersectionClass;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Ontology;
 import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
-import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
@@ -39,7 +39,7 @@ public class Comparator
     OntModel instanceModel;
     OntModel evolvedModel;
     EvolutionaryActionComposite executer;
-   // List<ClassPropertyMetrics> clsPropMetrics ;
+    List<ClassPropertyMetrics> clsPropMetrics ;
     DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
         
@@ -52,16 +52,11 @@ public class Comparator
 //    this.evolvedModel  = instanceModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
         this.executer      = new EvolutionaryActionComposite();
         
-        OntModel timeModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
-        timeModel.read(OntologyUtils.ONT_TIME_URL);
         
         Ontology evolvedOnt = this.evolvedModel.createOntology("");
         evolvedOnt.addImport(this.evolvedModel.createResource(OntologyUtils.ONT_TIME_URL));
-        
-        
-//        this.evolvedModel.add(timeModel);
-    
-   //     clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
+     
+        clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
     }
 
     
@@ -294,14 +289,39 @@ public class Comparator
                 lastNewSlice = slicer.getSlice(); // as alteraçoes doravante sao no novo modelo
 
                 addBefore(lastOldSlice, lastNewSlice);
-                
-                
-
-                
+                updateTemporalEQRestriction(lastOldSlice, slicer.getSliceBeginning());
+              
                 
             }
         }
      }
+    
+    private void updateTemporalEQRestriction(OntClass cls, Individual ind_end)
+    {
+        if(cls == null || ind_end == null) return;
+        
+        OntProperty beforeP = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
+        if(beforeP == null) beforeP = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
+        
+        
+        List<OntClass> eqclasses = cls.listEquivalentClasses().toList();
+    
+        for(OntClass eq : eqclasses)
+        {
+            if(eq.isIntersectionClass())
+            {
+                IntersectionClass intersection = eq.asIntersectionClass();
+            
+                RDFList operands = intersection.getOperands();
+                
+                HasValueRestriction beforeRestriction = evolvedModel.createHasValueRestriction(null, beforeP, ind_end);
+                operands.add(beforeRestriction);
+                               
+            }
+        }
+    
+    }
+    
     
     private void addLabel(OntClass cls, String label)
     {

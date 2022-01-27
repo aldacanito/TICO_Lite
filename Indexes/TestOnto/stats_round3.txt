@@ -12,7 +12,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@4df3e91a
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@33bf614
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extPerformance
 ======================================
@@ -26,25 +26,25 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 19
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@343a9f0f
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@22d6c16e
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@1956631c
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@4bbff215
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@2b1dce8a
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@3fd4b736
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@15b06d53
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@21ab0aaa
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@6487e98b
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@7ef09f2a
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@683caf52
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@113b16a5
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@4a2b6eb8
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@3058b118
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@3d13de7e
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@74547947
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@659b87db
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@103e3a01
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@33fde656
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2809264e
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@5f84ed21
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@1f87e84d
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@435026ff
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@228a538d
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@5a9f5f18
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@7afa0186
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@38dfb7f8
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@48b99d55
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@68fe6cc5
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@42a2a66d
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@707a9b6
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@3d0cf36
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@18d303cd
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@4f955f74
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@75e51529
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@7049dddc
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@70046573
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@150ffaf8
 ======================================
 
 
@@ -56,7 +56,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@64b42f2f
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@489ee92d
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBusinessProcessCompromisedEvent
 ======================================
@@ -70,7 +70,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5d28d93d
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@76876adf
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extThreatPropagationPath
 ======================================
@@ -84,7 +84,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@3ca70eab
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@25fbb681
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extMitigationStrategy
 ======================================
@@ -98,7 +98,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@6034903f
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@4f4950fc
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extResilienceAssessment
 ======================================
@@ -112,7 +112,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@253c0641
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@70a10fb9
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extWarning
 ======================================
@@ -126,16 +126,16 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 10
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@3ec6c2ea
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@3a1051cf
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@7e619bda
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@3b2a9459
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@3373d044
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@bd571cc
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@79189427
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@16ff5f01
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@3b234c6a
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@1b5811d3
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@3d3d42e0
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@458ab478
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@4041d285
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@38e5d1f3
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@6f18ae4d
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@7fa1fea2
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@31bace29
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2746eba4
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@d8653c7
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@7d22e83b
 ======================================
 
 
@@ -147,8 +147,8 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 3
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@26dc1733
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@4ab753be
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@1a0eba30
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@a85691e
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEmergencyCriticality
 ======================================
@@ -162,8 +162,8 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 3
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@6b56169e
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@30db44ae
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@35a20be2
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@5f2b4e5d
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extNormalCriticality
 ======================================
@@ -177,7 +177,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@76f8a809
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@309ba0b2
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extPersonalData
 ======================================
@@ -191,7 +191,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@6a22fcb
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@11f7f226
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: https://data.nasa.gov/ontologies/atmonto/equipment#EngineeredSystem
 ======================================
@@ -205,7 +205,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5d9b2b67
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@34af06e1
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extNormalCriticality
 ======================================
@@ -219,8 +219,8 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 3
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@378ffa4e
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@484a456
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@31f3ff8f
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@5c805733
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEscalationCriticality
 ======================================
@@ -234,7 +234,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@134f1f7a
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@72c8e847
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extLowSeverity
 ======================================
@@ -248,7 +248,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@178bde67
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@3e1c60f1
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extExtremeSeverity
 ======================================
@@ -262,7 +262,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5f9e1b52
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@10bdff3a
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extSensors
 ======================================
@@ -276,10 +276,10 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 4
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@7e99b2e3
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@15c6c685
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5c774abc
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@731c8eeb
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@4e5a0bd1
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@7b65488d
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2623b4f8
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@5998db29
 ======================================
 
 
@@ -291,7 +291,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@40a124c1
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@47824748
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extVirus
 ======================================
@@ -305,11 +305,11 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 5
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@63f020be
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@534a4d6
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@12c8094d
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5b86a0f9
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@39919ee7
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@16f25e15
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@2d4dbc47
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@32137b54
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@677ed259
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@63782a55
 ======================================
 
 
@@ -321,7 +321,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@19a39f17
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@23170df9
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extImpact
 ======================================
@@ -335,7 +335,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@4b737f0f
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@af70b14
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCountermeasures
 ======================================
@@ -349,7 +349,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@251c9ff0
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@1b8aec09
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEnabledStatus
 ======================================
@@ -363,7 +363,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@10cf4b12
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@390247af
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBusinessImpactAssessment
 ======================================
@@ -377,7 +377,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@1591353b
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2261edb3
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extHighSeverity
 ======================================
@@ -391,7 +391,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@45cabb81
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@10fcfd40
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extSeverityValuePartition
 ======================================
@@ -405,7 +405,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@4685fd7
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@5c5aa1f2
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extWorm
 ======================================
@@ -419,15 +419,15 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 9
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@6e950393
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@7231cb97
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@62b760e3
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@24e70d85
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@62281b11
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@1eb909b0
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@4750d2fc
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5bc764b6
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@79151c4c
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@77cebae9
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@5a6fcdd6
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2d0e3d26
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@24524c44
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2649b3d5
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2ecdbb7
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@5ed731c1
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@68d17633
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@3eda7e7
 ======================================
 
 
@@ -439,7 +439,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@2fb77e57
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@67b8f54e
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extDisabledStaus
 ======================================
@@ -453,10 +453,10 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 4
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@6e319e6f
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@e33b5cb
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5f953f3d
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@4bc4b75e
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@869941
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@6385178c
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@d395684
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2d8bc0e8
 ======================================
 
 
@@ -468,9 +468,9 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 4
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@29649aaf
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@3a6aefa5
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@4cf04302
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@19f30889
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@5281554c
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@15cbb4ee
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extCorrelation
 ======================================
@@ -484,11 +484,11 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 5
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@22e07385
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@2f5c2494
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@42a6f11d
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@c805218
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@2ddd7456
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@66b4ba3f
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@67025120
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@3ff153b9
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@77d5fc6d
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@34f3d5ea
 ======================================
 
 
@@ -500,7 +500,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@636b8dfd
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@418d0905
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extMediumSeverity
 ======================================
@@ -514,10 +514,10 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 4
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@16b0a694
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@18ae26c8
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5e179e4f
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@61ace415
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@7454e616
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@2cba4a65
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@64c869d
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2f206270
 ======================================
 
 
@@ -529,12 +529,12 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 6
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@72bb6ab2
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@1b4a8a4b
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@79cd9a8b
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@7f4745eb
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@56804e4b
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@19579e02
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@7c9745d4
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@200c141
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@601ad7f2
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@4c850a63
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@afa4fc2
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@ef48d15
 ======================================
 
 
@@ -546,7 +546,7 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@cdb4661
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@38e76e7e
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extBruteForce
 ======================================

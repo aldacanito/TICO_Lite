@@ -17,6 +17,7 @@ import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.Metrics.ClassPropertyMetrics;
 import IDC.Metrics.EntityMetricsStore;
 import IDC.Metrics.PropertyMetrics;
+import Utils.OntologyUtils;
 import Utils.Utilities;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,7 @@ import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.ObjectProperty;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
@@ -137,12 +139,16 @@ public class ClassCompareShape implements IClassCompare
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
         //List<PropertyMetrics> propertyMetrics    = cpm.getPropertyMetrics();
         
-        
         if(classProperties==null) return;
         
         for(String propertyURI : classProperties.keySet())
         {
-            ObjectProperty onProperty = Utils.OntologyUtils.getObjectPropertyFromModel(ontModel, propertyURI);
+            if(Utils.Utilities.isInIgnoreList(propertyURI))
+                continue;
+            
+            OntProperty onProperty = ontModel.getOntProperty(propertyURI);
+            if(onProperty==null) // just in case
+                ontModel.createObjectProperty(propertyURI, false);
             
             boolean isFunctional = false;
             boolean isQualifiedR = false;
