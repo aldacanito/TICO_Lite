@@ -104,7 +104,7 @@ public class AddClass implements IAddClass
             this.oldClass = this.originalModel.getOntClass(URI);
         
         boolean create = false;
-        if(this.evolvedModel.getOntClass(URI) != null) // class does not exist in the evolved model
+        if(this.evolvedModel.getOntClass(URI) == null) // class does not exist in the evolved model
             create = true;
         
         OntClass theSlice = null;
@@ -123,14 +123,15 @@ public class AddClass implements IAddClass
             theSlice = timeSlicer.getSlice();
             
             // copia restriçoes da classe original para o slice
-            if(this.restrictions!=null && theSlice!=null)
-            {
-                for(OntClass restriction : restrictions.keySet())
-                {
-                    String restrictionType = restrictions.get(restriction);   
-                    Utils.OntologyUtils.copyRestriction(restriction, theSlice, restrictionType);
-                }
-            }
+            Utils.OntologyUtils.copyClassDetails(oldClass, theSlice);
+//            if(this.restrictions!=null && theSlice!=null)
+//            {
+//                for(OntClass restriction : restrictions.keySet())
+//                {
+//                    String restrictionType = restrictions.get(restriction);   
+//                    Utils.OntologyUtils.copyRestriction(restriction, theSlice, restrictionType);
+//                }
+//            }
         }
         else // copia o que já existe
         {

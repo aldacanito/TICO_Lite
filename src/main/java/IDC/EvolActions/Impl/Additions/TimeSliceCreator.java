@@ -41,6 +41,18 @@ public class TimeSliceCreator implements IAddTimeSlices
         this.end   = null;
     }
     
+    public TimeSliceCreator(OntClass toExpand, int version)
+    {
+        this.toExpand  = toExpand;
+        this.URI       = toExpand.getURI();
+        
+        String parts []= this.URI.split("#");
+        this.sliceName = parts[0] + "#TS__" + parts[1] + "__" + version;
+       
+        this.start = LocalDateTime.now();
+        this.end   = null;
+    }
+    
     
     public TimeSliceCreator(OntClass toExpand, LocalDateTime start, LocalDateTime end, String sliceName)
     {   

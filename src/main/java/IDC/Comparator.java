@@ -5,6 +5,7 @@ import IDC.EvolActions.Impl.EvolutionaryActionComposite;
 import IDC.Comparison.Interfaces.IClassCompare;
 import IDC.Comparison.Interfaces.IPropertyCompare;
 import IDC.EvolActions.Factories.ComparatorFactory;
+import IDC.EvolActions.Impl.Additions.TimeSliceCreator;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.EvolActions.Interfaces.IAddClass;
 import Utils.OntologyUtils;
@@ -19,6 +20,7 @@ import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.ontology.Ontology;
 import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.rdf.model.ModelFactory;
@@ -53,7 +55,11 @@ public class Comparator
         OntModel timeModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
         timeModel.read(OntologyUtils.ONT_TIME_URL);
         
-        this.evolvedModel.add(timeModel);
+        Ontology evolvedOnt = this.evolvedModel.createOntology("");
+        evolvedOnt.addImport(this.evolvedModel.createResource(OntologyUtils.ONT_TIME_URL));
+        
+        
+//        this.evolvedModel.add(timeModel);
     
    //     clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
     }
@@ -104,7 +110,11 @@ public class Comparator
         
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions(ontologyModel, evolvedModel);
-        //copyInstances(ontologyModel, evolvedModel);
+       
+        
+        // eu nao preciso de copiar as instancias, estou só preocupada com a 
+        // evolucao da TBOX
+        // copyInstances(ontologyModel, evolvedModel);
     }
     
    
@@ -226,6 +236,8 @@ public class Comparator
             // ver se o ultimo timeframe é diferente
             OntClass lastOldSlice = getLastTimeSlice(oldCls);
             OntClass lastNewSlice = getLastTimeSlice(newCls);
+            
+            lastNewSlice = newCls;
            
             if(lastOldSlice==null || lastNewSlice==null) continue; //porque é que este caso ocorreria?
            
@@ -267,15 +279,19 @@ public class Comparator
                 versionNumber ++;
                 
                 String newURI = prefix + "#TS__" + className + "__" + versionNumber;
-                ResourceUtils.renameResource(lastNewSlice, newURI);
+                
+                TimeSliceCreator slicer = new TimeSliceCreator(lastNewSlice, versionNumber);
+                slicer.setUp(ontologyModel, evolvedModel);
+                slicer.execute();
+                
+                //ResourceUtils.renameResource(lastNewSlice, newURI);
                 
                 //a versao anterior foi modificada. copiar o que havia em histórico no modelo anterior
                 
                 OntologyUtils.copyClass(lastOldSlice, evolvedModel);
                 
-                
                 lastOldSlice = evolvedModel.getOntClass(prevURI); // as alteraçoes doravante sao no novo modelo
-                lastNewSlice = evolvedModel.getOntClass(newURI); // as alteraçoes doravante sao no novo modelo
+                lastNewSlice = slicer.getSlice(); // as alteraçoes doravante sao no novo modelo
 
                 addBefore(lastOldSlice, lastNewSlice);
                 
@@ -514,8 +530,10 @@ public class Comparator
     
         for(Individual i : individuals)
         {
-            
-            evolvedModel.createIndividual(i);
+            if(i.getURI()!=null && !i.getURI().contains(OntologyUtils.ONT_TIME_URL))
+            {
+                evolvedModel.createIndividual(i);
+            }
             
 //            
 //            Statement stmtT = i.asResource().getStmtTerm();
