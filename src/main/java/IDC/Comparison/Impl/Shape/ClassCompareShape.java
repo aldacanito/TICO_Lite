@@ -19,9 +19,11 @@ import IDC.Metrics.EntityMetricsStore;
 import IDC.Metrics.PropertyMetrics;
 import Utils.OntologyUtils;
 import Utils.Utilities;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.jena.graph.Node;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.ObjectProperty;
@@ -32,6 +34,7 @@ import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.StmtIterator;
 
 /**
  *
@@ -49,6 +52,9 @@ public class ClassCompareShape implements IClassCompare
         this.instance = ind;
         this.ontModel = ontModel;
     }
+    
+    
+
     
     
     @Override
@@ -117,10 +123,25 @@ public class ClassCompareShape implements IClassCompare
                     cpm.updateFunctionalCandidate(predicateURI);
             }
             
-            
             // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
             //if(cpm!=null)
-                this.populateComposite(cpm, composite);
+                
+            EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
+        }
+        
+        for(OntClass cls : ontClassList)
+        {
+            String classURI = cls.getURI();
+             
+            if(Utilities.isInIgnoreList(classURI))
+                continue;
+            
+            cpm = EntityMetricsStore.getStore()
+                    .getMetricsByClassURI(classURI);  
+            
+            if(cpm==null) continue;
+            
+            this.populateComposite(cpm, composite);
         }
 
         

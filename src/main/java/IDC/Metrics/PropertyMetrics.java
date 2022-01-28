@@ -32,7 +32,7 @@ public class PropertyMetrics
     @Override
     public String toString()
     {
-        String print = "Property Metrics for " + this.URI;
+        String print = "\nProperty Metrics for " + this.URI;
         print += "\n\t Count: " + this.count;
         
         if(!ranges.isEmpty())

@@ -16,7 +16,7 @@ public class InstanceDrivenComparisonMain
     public static void main(String[] args) 
     {
         Configs configs = new Configs();
-//        startRounds();
+        //startRounds();
 //        compareAtaque_semAtaque();
         startTest();
         //startUseWeeks();
@@ -74,7 +74,6 @@ public class InstanceDrivenComparisonMain
          
          runComparator(onto_path, instance_path, print_path, 0); 
        
-        
         
     }
     
