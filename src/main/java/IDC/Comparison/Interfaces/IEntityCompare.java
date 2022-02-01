@@ -11,5 +11,6 @@ import org.apache.jena.ontology.OntModel;
 public interface IEntityCompare 
 {    
     public EvolutionaryAction compare();
+
     
 }

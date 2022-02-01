@@ -45,7 +45,7 @@ public class ClassCompareShape implements IClassCompare
 //    protected OntClass ontClass;
     protected OntModel   ontModel;
     protected Individual instance;
-    
+    protected OntModel evolvedModel;
     
     public ClassCompareShape(Individual ind, OntModel ontModel)
     {
@@ -53,9 +53,12 @@ public class ClassCompareShape implements IClassCompare
         this.ontModel = ontModel;
     }
     
-    
+    public void setup(OntModel o, OntModel e)
+    {
+        this.evolvedModel = e;
+        this.ontModel = o;
+    }
 
-    
     
     @Override
     public EvolutionaryAction compare() 
@@ -71,7 +74,7 @@ public class ClassCompareShape implements IClassCompare
         
         if(ontClassList==null) return composite;   
         
-        composite.setUp(ontModel, ontModel); // start
+        composite.setUp(ontModel, evolvedModel); // start
         
         for(OntClass cls : ontClassList)
         {
@@ -155,7 +158,12 @@ public class ClassCompareShape implements IClassCompare
     private void populateObjProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
         OntClass ontClass = cpm.getOntClass();
+        
+        OntClass slice = OntologyUtils.getLastTimeSlice(ontClass);
     
+        if(slice!=null)
+            ontClass = slice;
+        
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
         //List<PropertyMetrics> propertyMetrics    = cpm.getPropertyMetrics();
@@ -192,16 +200,21 @@ public class ClassCompareShape implements IClassCompare
             if(mentions > Utils.Configs.equivalent_threshold)
                 isEquivalent = true;
             
-            AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
             
-            // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
-            if(mentions > Utils.Configs.subclass_threshold)
-                if(isFunctional)
-                    rec.setCardinalityType("Exactly", 1, isQualifiedR);
-                else
-                    rec.setCardinalityType("Min", 0, isQualifiedR);
-           
-            
+            if(isEquivalent || isSuperClass)
+            {
+                AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
+
+                // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
+                if(mentions > Utils.Configs.subclass_threshold)
+                    if(isFunctional)
+                        rec.setCardinalityType("Exactly", 1, isQualifiedR);
+                    else
+                        rec.setCardinalityType("Min", 0, isQualifiedR);
+
+                composite.add(rec);
+            }
+
             // TODO ACRESCENTAR OUTROS TIPOS DE RESTRIÇAO AQUI
             //UTILIZAR O PROPERTYMETRICS
             PropertyMetrics pmetrics = cpm.getMetricsOfProperty(propertyURI);

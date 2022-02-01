@@ -87,19 +87,27 @@
 
 :NEW_OP2  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
 
-<20220128152525790>  rdf:type  <http://www.w3.org/2006/time#Instant> .
-
-<Interval_st_20220128152525790>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasEnd>
-                <20220128152525790> .
-
 :OLD_ID_CL1  rdf:type  owl:NamedIndividual , :Old_Class1 .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :NEW_OP1
+] .
 
 :Old_Class3  rdf:type  owl:Class .
 
 <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220128141528332>
         rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<Interval_st_20220201162633082>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <20220201162633082> .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :OLD_OP1
+] .
 
 :NEW_OP1  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
 
@@ -119,6 +127,8 @@
         rdfs:domain  :Old_Class2 ;
         rdfs:range   rdfs:Literal .
 
+<20220201162633082>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
 <http://www.w3.org/2006/time#Interval>
         rdf:type  owl:Class .
 
@@ -137,13 +147,13 @@
                                owl:someValuesFrom  :NEW_CLASS_2
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20220128152525790> ;
+                               owl:hasValue    <Interval_st_20220201162633082> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :NEW_CLASS_2 :NEW_CLASS_2
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220128152525790> ;
+                                                       owl:hasValue    <20220201162633082> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                    )
@@ -185,6 +195,22 @@
 <>      rdf:type     owl:Ontology ;
         owl:imports  <http://www.w3.org/2006/time> .
 
+_:b0  rdf:first :NEW_CLASS_2 ;
+rdf:rest  ( :NEW_CLASS_2
+            [ rdf:type        owl:Restriction ;
+              owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220128141528388> ;
+              owl:onProperty  <http://www.w3.org/2006/time#after>
+            ]
+            [ rdf:type        owl:Restriction ;
+              owl:hasValue    <20220201162633082> ;
+              owl:onProperty  <http://www.w3.org/2006/time#before>
+            ]
+            [ rdf:type        owl:Restriction ;
+              owl:hasValue    <20220201162633082> ;
+              owl:onProperty  <http://www.w3.org/2006/time#before>
+            ]
+          ) .
+
 _:b1  rdf:first :NEW_CLASS_2 ;
 rdf:rest  ( :NEW_CLASS_2
             [ rdf:type        owl:Restriction ;
@@ -197,22 +223,6 @@ rdf:rest  ( :NEW_CLASS_2
             ]
             [ rdf:type        owl:Restriction ;
               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220128141528388> ;
-              owl:onProperty  <http://www.w3.org/2006/time#before>
-            ]
-          ) .
-
-_:b0  rdf:first :NEW_CLASS_2 ;
-rdf:rest  ( :NEW_CLASS_2
-            [ rdf:type        owl:Restriction ;
-              owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220128141528388> ;
-              owl:onProperty  <http://www.w3.org/2006/time#after>
-            ]
-            [ rdf:type        owl:Restriction ;
-              owl:hasValue    <20220128152525790> ;
-              owl:onProperty  <http://www.w3.org/2006/time#before>
-            ]
-            [ rdf:type        owl:Restriction ;
-              owl:hasValue    <20220128152525790> ;
               owl:onProperty  <http://www.w3.org/2006/time#before>
             ]
           ) .

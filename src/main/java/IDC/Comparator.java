@@ -1,5 +1,6 @@
 package IDC;
 
+import IDC.Comparison.Impl.Shape.ClassCompareShape;
 import IDC.Comparison.Impl.Simple.ClassDiff;
 import IDC.EvolActions.Impl.EvolutionaryActionComposite;
 import IDC.Comparison.Interfaces.IClassCompare;
@@ -101,6 +102,8 @@ public class Comparator
             this.compareShapes(instance);
         }
         
+        
+        
         executer.execute(ontologyModel, evolvedModel);
         
         // verificar se é preciso acrescentar validaçoes temporais em classes
@@ -121,13 +124,16 @@ public class Comparator
 //        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nAnalysing the shape of Individual " 
 //                + instance.getURI() + ".");
 
-        IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(instance, ontologyModel);
+       // IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(instance, ontologyModel);
        
-        if(classComparator != null)
-        {
-            EvolutionaryAction compare = classComparator.compare();
+        ClassCompareShape shapeC  = new ClassCompareShape(instance, ontologyModel);
+        shapeC.setup(ontologyModel, evolvedModel);
+        
+//        if(shapeC != null)
+//        {
+            EvolutionaryAction compare = shapeC.compare();
             this.executer.add(compare);
-        }    
+//        }    
     }
     
     
@@ -222,15 +228,15 @@ public class Comparator
                 continue;
             
             //ignoremos as timeslices em si para nao andar a TS de TS
-            if(isTimeSlice(oldCls) || isTimeSlice(newCls)) continue;
+            if(OntologyUtils.isTimeSlice(oldCls) || OntologyUtils.isTimeSlice(newCls)) continue;
             
             
             // TODO
             // ver se a última versão da classe (newModel) é diferente do timeframe 
              
             // ver se o ultimo timeframe é diferente
-            OntClass lastOldSlice = getLastTimeSlice(oldCls);
-            OntClass lastNewSlice = getLastTimeSlice(newCls);
+            OntClass lastOldSlice = OntologyUtils.getLastTimeSlice(oldCls);
+            OntClass lastNewSlice = OntologyUtils.getLastTimeSlice(newCls);
             
             lastNewSlice = newCls;
            
@@ -459,90 +465,7 @@ public class Comparator
         
     }
 
-    private List<OntClass> getTimeSlices(OntClass theOgClass) 
-    {
-        List<OntClass> timeSlices = new ArrayList<>();
-        
-        OntProperty sliceP      = theOgClass.getOntModel().getObjectProperty(OntologyUtils.HAS_SLICE_P);
-        if(sliceP==null) sliceP = theOgClass.getOntModel().createOntProperty(OntologyUtils.HAS_SLICE_P);
-        
-        ExtendedIterator<OntClass> superClasses = theOgClass.listSuperClasses(true);
-        
-        for(OntClass superClass : superClasses.toList())
-        {
-            if(superClass.isRestriction())
-            {
-                Restriction superClsR = superClass.asRestriction();
-                if(superClsR.isSomeValuesFromRestriction())
-                {
-                    SomeValuesFromRestriction sCls = superClsR.asSomeValuesFromRestriction();
-                    if(sCls.getOnProperty().getURI().equals(sliceP.getURI()))
-                    {
-                        RDFNode valuesFrom = sCls.getSomeValuesFrom();
-                        if(valuesFrom.canAs(OntClass.class))
-                            timeSlices.add(valuesFrom.as(OntClass.class));
-                    }
-                }
-                
-            }
-        }
-                   
-        return timeSlices;
-        
-    }
 
-    private OntClass getLastTimeSlice(OntClass cls) 
-    {
-        List<OntClass> timeSlices = getTimeSlices(cls);
-        
-        OntProperty       beforeP = cls.getOntModel().getObjectProperty(OntologyUtils.BEFORE_P);
-        if(beforeP==null) beforeP = cls.getOntModel().createOntProperty(OntologyUtils.BEFORE_P);
-        
-        if(timeSlices.isEmpty()) return null;
-        
-        OntClass lastSlice = timeSlices.get(0);
-        // todas têm before menos a última
-        
-        for(OntClass timeSlice : timeSlices)
-        {
-            List<OntClass> superClasses = timeSlice.listSuperClasses(true).toList();
-            List<OntClass> plc = new ArrayList<>();
-            
-            for(OntClass superClass : superClasses)
-            {
-                if(superClass.isRestriction())
-                {
-                    Restriction superClsR = superClass.asRestriction();
-                    if(superClsR.isHasValueRestriction())
-                    {
-                        Restriction sCls = superClsR.asHasValueRestriction();
-                        if(sCls.getOnProperty().getURI().equals(beforeP.getURI()))
-                            plc.add(sCls);
-                    }
-                }
-            }   
-            
-            //List<Statement> sliceList = beforeS.toList();
-        
-            if(plc.isEmpty())
-                lastSlice = timeSlice;
-        }
-             
-        if(isTimeSlice(lastSlice))
-            return lastSlice;
-        else
-            return null;
-        
-    }
-
-    private boolean isTimeSlice(OntClass cls)
-    {
-        String uri = cls.getURI();
-        
-        if(uri == null) return false;
-        
-        return uri.contains("TS__");        
-    }
 
     private void copyInstances(OntModel ontologyModel, OntModel evolvedModel) 
     {

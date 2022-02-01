@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.apache.jena.graph.Node;
@@ -112,6 +113,95 @@ public class OntologyUtils
 
     
     }
+    
+    
+    
+    public static List<OntClass> getTimeSlices(OntClass theOgClass) 
+    {
+        List<OntClass> timeSlices = new ArrayList<>();
+        
+        OntProperty sliceP      = theOgClass.getOntModel().getObjectProperty(OntologyUtils.HAS_SLICE_P);
+        if(sliceP==null) sliceP = theOgClass.getOntModel().createOntProperty(OntologyUtils.HAS_SLICE_P);
+        
+        ExtendedIterator<OntClass> superClasses = theOgClass.listSuperClasses(true);
+        
+        for(OntClass superClass : superClasses.toList())
+        {
+            if(superClass.isRestriction())
+            {
+                Restriction superClsR = superClass.asRestriction();
+                if(superClsR.isSomeValuesFromRestriction())
+                {
+                    SomeValuesFromRestriction sCls = superClsR.asSomeValuesFromRestriction();
+                    if(sCls.getOnProperty().getURI().equals(sliceP.getURI()))
+                    {
+                        RDFNode valuesFrom = sCls.getSomeValuesFrom();
+                        if(valuesFrom.canAs(OntClass.class))
+                            timeSlices.add(valuesFrom.as(OntClass.class));
+                    }
+                }
+                
+            }
+        }
+                   
+        return timeSlices;
+        
+    }
+
+    public static OntClass getLastTimeSlice(OntClass cls) 
+    {
+        List<OntClass> timeSlices = getTimeSlices(cls);
+        
+        OntProperty       beforeP = cls.getOntModel().getObjectProperty(OntologyUtils.BEFORE_P);
+        if(beforeP==null) beforeP = cls.getOntModel().createOntProperty(OntologyUtils.BEFORE_P);
+        
+        if(timeSlices.isEmpty()) return null;
+        
+        OntClass lastSlice = timeSlices.get(0);
+        // todas têm before menos a última
+        
+        for(OntClass timeSlice : timeSlices)
+        {
+            List<OntClass> superClasses = timeSlice.listSuperClasses(true).toList();
+            List<OntClass> plc = new ArrayList<>();
+            
+            for(OntClass superClass : superClasses)
+            {
+                if(superClass.isRestriction())
+                {
+                    Restriction superClsR = superClass.asRestriction();
+                    if(superClsR.isHasValueRestriction())
+                    {
+                        Restriction sCls = superClsR.asHasValueRestriction();
+                        if(sCls.getOnProperty().getURI().equals(beforeP.getURI()))
+                            plc.add(sCls);
+                    }
+                }
+            }   
+            
+            //List<Statement> sliceList = beforeS.toList();
+        
+            if(plc.isEmpty())
+                lastSlice = timeSlice;
+        }
+             
+        if(isTimeSlice(lastSlice))
+            return lastSlice;
+        else
+            return null;
+        
+    }
+
+    public static boolean isTimeSlice(OntClass cls)
+    {
+        String uri = cls.getURI();
+        
+        if(uri == null) return false;
+        
+        return uri.contains("TS__");        
+    }
+    
+    
     
     public static void copyProperty(OntModel newModel, Property property) 
     {

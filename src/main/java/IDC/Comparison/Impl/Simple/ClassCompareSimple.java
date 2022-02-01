@@ -31,6 +31,9 @@ public class ClassCompareSimple implements IClassCompare
         this.ontModel = ontModel;
     }
     
+
+    
+    
     @Override
     public EvolutionaryAction compare() 
     {
