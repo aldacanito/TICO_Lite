@@ -19,6 +19,13 @@ public class AddCardinalityRestriction extends AddRestriction
     public AddCardinalityRestriction(OntClass cls, OntProperty onProperty, boolean isEquivalent, boolean isSubclass) 
     {
         super(cls, onProperty, isEquivalent, isSubclass);
+        
+        if(cls.getURI()!=null && onProperty.getURI()!=null)
+            System.out.println("Creating CardinalityRestriction for:"
+                + "\n\t Class: " + cls.getURI() +
+                "\t On Property: " + onProperty.getURI() +
+                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
+        
         qualified = false;
     }
     
@@ -34,6 +41,9 @@ public class AddCardinalityRestriction extends AddRestriction
         this.cardinality     = cardinality;
         this.cardinalityType = type;
         this.qualified       = qualified;
+        
+        System.out.println("Cardinality of "+ this.ontClass.getURI()+" of property "+ this.onProperty+" will set to:\n"
+                + "\t - Cardinality:" + cardinality + "\t Type: "+ type + "\tQualified? " + qualified);
     }
     
     /**

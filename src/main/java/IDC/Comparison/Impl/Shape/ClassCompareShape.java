@@ -60,21 +60,78 @@ public class ClassCompareShape implements IClassCompare
     }
 
     
+    public static EvolutionaryActionComposite run(OntModel ontModel)
+    {
+        EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
+        composite.setUp(ontModel, ontModel); // start
+        
+        return ClassCompareShape.run(ontModel, composite);
+    
+    }
+    
+    public static EvolutionaryActionComposite run(OntModel ontModel, EvolutionaryActionComposite composite)
+    {
+        ClassPropertyMetrics cpm = null;
+        
+        List<OntClass> ontClassList = ontModel.listClasses().toList();
+        
+       
+   
+        for(OntClass cls : ontClassList)
+        {
+            
+            if(cls.getURI()==null || Utils.Utilities.isInClassIgnoreList(cls.getURI()))
+                continue;
+            
+            cpm = EntityMetricsStore.getStore()
+                    .getMetricsByClassURI(cls.getURI());
+            
+            if(cpm==null)
+            {
+                System.out.println("CPM was null for URI " + cls.getURI() );
+                continue;
+            }
+            
+            System.out.println("populating composite with CPM for URI: " + cls.getURI());
+            ClassCompareShape.populateComposite(ontModel, cpm, composite);
+        
+        }
+        
+        
+        return composite;
+    }
+    
+    
     @Override
     public EvolutionaryAction compare() 
     {
- //       ExtendedIterator classes = ontModel.listClasses();   
-//        Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
+        Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
         
         List<Statement> properties  = instance.listProperties().toList();
         List<OntClass> ontClassList = instance.listOntClasses(true).toList();
-        ClassPropertyMetrics cpm = null;
                 
         EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
         
-        if(ontClassList==null) return composite;   
+        if(ontClassList==null) 
+            return composite;   
         
         composite.setUp(ontModel, evolvedModel); // start
+        
+        //composite.execute();
+        
+        //Utilities.logInfo("No Evolutionary Action created.");
+        //return fill(composite, instance, ontClassList, properties, this.evolvedModel);
+        
+        return fill(composite, instance, ontClassList, properties, this.evolvedModel);
+    }
+
+    private static EvolutionaryActionComposite fill(EvolutionaryActionComposite composite,
+                                                    Individual instance,
+                                                    List<OntClass> ontClassList,
+                                                    List<Statement> properties,
+                                                    OntModel ontModel)
+    {
+        ClassPropertyMetrics cpm = null;
         
         for(OntClass cls : ontClassList)
         {
@@ -91,8 +148,10 @@ public class ClassCompareShape implements IClassCompare
         
             cpm.addClassMention();
             
+            
             HashMap<String, Integer> repeated = new HashMap<>();
             
+            if(properties!=null)
             for(Statement stmt : properties)
             {
                 String predicateURI = stmt.getPredicate().getURI();
@@ -132,32 +191,17 @@ public class ClassCompareShape implements IClassCompare
             EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
         }
         
-        for(OntClass cls : ontClassList)
-        {
-            String classURI = cls.getURI();
-             
-            if(Utilities.isInIgnoreList(classURI))
-                continue;
-            
-            cpm = EntityMetricsStore.getStore()
-                    .getMetricsByClassURI(classURI);  
-            
-            if(cpm==null) continue;
-            
-            this.populateComposite(cpm, composite);
-        }
+       
 
-        
-        //composite.execute();
-        
-        //Utilities.logInfo("No Evolutionary Action created.");
         return composite;
-    }
-
     
-    private void populateObjProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
+    }
+    
+    
+    public static void populateObjProperties(OntModel ontModel, ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
         OntClass ontClass = cpm.getOntClass();
+        ontClass = ontModel.getOntClass(ontClass.toString()); // trocar pela versao da nova
         
         OntClass slice = OntologyUtils.getLastTimeSlice(ontClass);
     
@@ -232,17 +276,43 @@ public class ClassCompareShape implements IClassCompare
                     //boolean isSubclass, OntClass rangeClass
                     
                     String rangeURI     = ranges.keySet().iterator().next();
+                    
                     OntClass rangeClass = ontModel.getOntClass(rangeURI);
                     
-                    AddAllValuesFromRestriction aavfR = 
-                            new AddAllValuesFromRestriction(
-                                    ontClass,
-                                    onProperty,
-                                    isEquivalent,
-                                    isSuperClass,
-                                    rangeClass
-                            );
-                    composite.add(aavfR);
+                    if(rangeClass==null) // range é individual
+                    {
+                        Individual individual = ontModel.getIndividual(rangeURI);
+                        
+                        if(individual!=null)
+                        {
+                           List<OntClass> rangesL = individual.listOntClasses(true).toList();
+                           
+                           for(OntClass r : rangesL)
+                           {
+                                AddAllValuesFromRestriction aavfR = 
+                                 new AddAllValuesFromRestriction(
+                                         ontClass,
+                                         onProperty,
+                                         isEquivalent,
+                                         isSuperClass,
+                                         r
+                                 );
+                                composite.add(aavfR);
+                           }
+                        }
+                    }
+                    else
+                    {
+                        AddAllValuesFromRestriction aavfR = 
+                                 new AddAllValuesFromRestriction(
+                                         ontClass,
+                                         onProperty,
+                                         isEquivalent,
+                                         isSuperClass,
+                                         rangeClass
+                                 );
+                        composite.add(aavfR);
+                    }
                 }
                 else if(numRanges >= Utils.Configs.someValuesFrom_threshold)
                 {
@@ -254,7 +324,31 @@ public class ClassCompareShape implements IClassCompare
                     
                     OntClass rangeClass = ontModel.getOntClass(rangeURI);
                     
-                    AddSomeValuesFromRestriction asvfR = 
+                    if(rangeClass==null) // range é individual
+                    {
+                        Individual individual = ontModel.getIndividual(rangeURI);
+                        
+                        if(individual!=null)
+                        {
+                           List<OntClass> rangesL = individual.listOntClasses(true).toList();
+                           
+                           for(OntClass r : rangesL)
+                           {
+                                AddSomeValuesFromRestriction aavfR = 
+                                 new AddSomeValuesFromRestriction(
+                                         ontClass,
+                                         onProperty,
+                                         isEquivalent,
+                                         isSuperClass,
+                                         r
+                                 );
+                                composite.add(aavfR);
+                           }
+                        }
+                    }
+                    else
+                    {
+                        AddSomeValuesFromRestriction asvfR = 
                             new AddSomeValuesFromRestriction(
                                     ontClass,
                                     onProperty,
@@ -263,18 +357,14 @@ public class ClassCompareShape implements IClassCompare
                                     rangeClass
                             );
                     composite.add(asvfR);
+                    }                 
                 }
-            
             }
-            
-            
-            
         }
-        
     }
     
     
-    private void populateDtProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
+    public static void populateDtProperties(OntModel ontModel, ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
         OntClass ontClass = cpm.getOntClass();
     
@@ -320,10 +410,11 @@ public class ClassCompareShape implements IClassCompare
         }
         
     }
-    private void populateComposite(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
+    
+    public static void populateComposite(OntModel ontModel, ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
     {
-        this.populateObjProperties(cpm, composite);
-        this.populateDtProperties(cpm, composite);
+        ClassCompareShape.populateObjProperties(ontModel, cpm, composite);
+        ClassCompareShape.populateDtProperties(ontModel, cpm, composite);
         
         // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
 

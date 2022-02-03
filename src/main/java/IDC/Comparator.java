@@ -10,6 +10,7 @@ import IDC.EvolActions.Impl.Additions.TimeSliceCreator;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.EvolActions.Interfaces.IAddClass;
 import IDC.Metrics.ClassPropertyMetrics;
+import IDC.Metrics.EntityMetricsStore;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import java.time.LocalDateTime;
@@ -102,9 +103,11 @@ public class Comparator
             this.compareShapes(instance);
         }
         
-        
-        
+       addClassRestrictions();
         executer.execute(ontologyModel, evolvedModel);
+        
+        
+        
         
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions(ontologyModel, evolvedModel);
@@ -120,20 +123,13 @@ public class Comparator
     {
         boolean ignore = Utilities.isInIgnoreList(instance.getURI());
         if(ignore) return;
-        
-//        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nAnalysing the shape of Individual " 
-//                + instance.getURI() + ".");
-
-       // IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(instance, ontologyModel);
        
         ClassCompareShape shapeC  = new ClassCompareShape(instance, ontologyModel);
         shapeC.setup(ontologyModel, evolvedModel);
         
-//        if(shapeC != null)
-//        {
-            EvolutionaryAction compare = shapeC.compare();
-            this.executer.add(compare);
-//        }    
+        EvolutionaryAction compare = shapeC.compare();
+        this.executer.add(compare);
+    
     }
     
     
@@ -486,5 +482,31 @@ public class Comparator
 //                evolvedModel.add(i.asResource().getStmtTerm());
         }
         
+    }
+
+    private void addClassRestrictions() 
+    {       
+        List <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
+
+        for(OntClass cls : e_ontClasses)
+        {
+            String classURI = cls.getURI();
+             
+            if(Utilities.isInIgnoreList(classURI))
+                continue;
+            
+            ClassPropertyMetrics cpm = EntityMetricsStore.getStore()
+                    .getMetricsByClassURI(classURI);  
+            
+            if(cpm==null) continue;
+            
+            ClassCompareShape.populateComposite(evolvedModel, cpm, executer);
+        }
+        
+        ClassCompareShape.run(evolvedModel, executer);        
+        executer.execute(ontologyModel, evolvedModel);
+        
+        
+    
     }
 }

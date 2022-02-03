@@ -20,12 +20,25 @@ public class AddAllValuesFromRestriction extends AddRestriction
     public AddAllValuesFromRestriction(OntClass cls, OntProperty onProperty, boolean isEquivalent, boolean isSubclass) 
     {
         super(cls, onProperty, isEquivalent, isSubclass);
+        
+        if(cls.getURI()!=null && onProperty.getURI()!=null)
+            System.out.println("Creating AllValuesFromRestriction for:"
+                + "\n\t Class: " + cls.getURI() +
+                "\t On Property: " + onProperty.getURI() +
+                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
     }
     
     public AddAllValuesFromRestriction(OntClass cls, OntProperty onProperty, boolean isEquivalent, boolean isSubclass, OntClass rangeClass) 
     {
         super(cls, onProperty, isEquivalent, isSubclass);
         this.rangeClass = rangeClass;
+        
+        if(cls.getURI()!=null && onProperty.getURI()!=null && rangeClass != null && rangeClass.getURI()!=null)
+            System.out.println("Creating AllValuesFromRestriction for:"
+                + "\n\t Class: " + cls.getURI() +
+                "\t On Property: " + onProperty.getURI() +
+                "\t Has Range: " + rangeClass.getURI() +
+                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
     }
     
     
@@ -42,6 +55,8 @@ public class AddAllValuesFromRestriction extends AddRestriction
         // TODO: TESTAR
         if(onProperty!=null && this.rangeClass!=null)
         {
+            System.out.println("Adding CardinalityRestriction to " + this.ontClass.getURI() + " on Property " + onProperty.getURI());    
+            
             restriction = this.getEvolvedModel().createAllValuesFromRestriction(null, onProperty, this.rangeClass);
         
             if(this.isEquivalent)
