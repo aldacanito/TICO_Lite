@@ -86,15 +86,11 @@ public class Comparator
         // só funciona para as instâncias que tenham CLASSES associadas
         // reasoner desligado
         ExtendedIterator<Individual> listIndividuals = instanceModel.listIndividuals();
-        
-//        Utilities.logInfo("\n\n==========================================\nListing all individuals...\n\n ");
-        
+
         while(listIndividuals.hasNext())
         {
             Individual instance = listIndividuals.next();
-           
-//            Utilities.logInfo("Current Individual: " + instance.getURI());
-     
+
             if(Utilities.isInIgnoreList(instance.getURI()))
                 continue;
             
@@ -103,19 +99,13 @@ public class Comparator
             this.compareShapes(instance);
         }
         
-       addClassRestrictions();
+
         executer.execute(ontologyModel, evolvedModel);
-        
-        
-        
-        
+
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions(ontologyModel, evolvedModel);
        
-        
-        // eu nao preciso de copiar as instancias, estou só preocupada com a 
-        // evolucao da TBOX
-        // copyInstances(ontologyModel, evolvedModel);
+
     }
     
    
@@ -216,7 +206,7 @@ public class Comparator
             if(uri == null || Utilities.isInClassIgnoreList(uri) ) 
                 continue;
             
-           // System.out.println("NEW CLASS URI: " + uri);
+            System.out.println("NEW CLASS URI: " + uri);
             
             OntClass oldCls = ontologyModel.getOntClass(uri);
             

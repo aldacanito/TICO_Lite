@@ -75,8 +75,6 @@ public class ClassCompareShape implements IClassCompare
         
         List<OntClass> ontClassList = ontModel.listClasses().toList();
         
-       
-   
         for(OntClass cls : ontClassList)
         {
             
@@ -116,13 +114,64 @@ public class ClassCompareShape implements IClassCompare
             return composite;   
         
         composite.setUp(ontModel, evolvedModel); // start
+//       composite.setUp(ontModel, ontModel);
+       
+        ClassPropertyMetrics cpm = null;
         
-        //composite.execute();
+        for(OntClass cls : ontClassList)
+        {
+            String classURI = cls.getURI();
+            
+            if(Utilities.isInIgnoreList(classURI))
+                continue;
+            
+            cpm = EntityMetricsStore.getStore()
+                    .getMetricsByClassURI(classURI);
+            
+            if(cpm==null)
+                cpm = new ClassPropertyMetrics(cls);
         
-        //Utilities.logInfo("No Evolutionary Action created.");
-        //return fill(composite, instance, ontClassList, properties, this.evolvedModel);
+            cpm.addClassMention();
+            
+            HashMap<String, Integer> repeated = new HashMap<>();
+            
+            if(properties!=null)
+            for(Statement stmt : properties)
+            {
+                String predicateURI = stmt.getPredicate().getURI();
+                 
+                boolean ignore = Utilities.isInIgnoreList(instance.getURI());
+                if(ignore) continue;
+                
+                RDFNode object = stmt.getObject();
+                
+                if(object.isLiteral()) // DT PROP
+                {
+                    Literal asLiteral = object.asLiteral();                  
+                    cpm.addDtProperty(predicateURI, asLiteral.getDatatypeURI());
+                }
+                if(object.isResource()) // OBJ PROP
+                {
+                    Resource asResource = object.asResource();
+                    cpm.addObjProperty(predicateURI, asResource.getURI());
+                }   
+                int count = repeated.getOrDefault(predicateURI, 0);
+                count++;
+                
+                repeated.put(predicateURI, count);
+                
+            }
+            
+            for(String predicateURI : repeated.keySet())
+                if(repeated.getOrDefault(predicateURI, 0) != 0)
+                    cpm.updateFunctionalCandidate(predicateURI);
+            
+            EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
+            ClassCompareShape.populateComposite(ontModel, cpm, composite);
+        }
         
-        return fill(composite, instance, ontClassList, properties, this.evolvedModel);
+        return composite;
+       // return fill(composite, instance, ontClassList, properties, this.evolvedModel);
     }
 
     private static EvolutionaryActionComposite fill(EvolutionaryActionComposite composite,
@@ -147,7 +196,6 @@ public class ClassCompareShape implements IClassCompare
                 cpm = new ClassPropertyMetrics(cls);
         
             cpm.addClassMention();
-            
             
             HashMap<String, Integer> repeated = new HashMap<>();
             
@@ -189,10 +237,9 @@ public class ClassCompareShape implements IClassCompare
             //if(cpm!=null)
                 
             EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
+            ClassCompareShape.populateComposite(ontModel, cpm, composite);
         }
         
-       
-
         return composite;
     
     }
@@ -203,10 +250,10 @@ public class ClassCompareShape implements IClassCompare
         OntClass ontClass = cpm.getOntClass();
         ontClass = ontModel.getOntClass(ontClass.toString()); // trocar pela versao da nova
         
-        OntClass slice = OntologyUtils.getLastTimeSlice(ontClass);
-    
-        if(slice!=null)
-            ontClass = slice;
+//        OntClass slice = OntologyUtils.getLastTimeSlice(ontClass);
+//    
+//        if(slice!=null)
+//            ontClass = slice;
         
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();

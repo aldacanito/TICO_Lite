@@ -3,16 +3,37 @@
 
 ======================================
 Evolutionary Action Composite Stats
-	Total evolutionary actions executed: 7
+	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5299ad22
-	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@503bc3e1
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@44b9dc57
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@7a14dcfa
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@657b8e27
-	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@6b516da2
-	> ADD CLASS : EVOLUTIONARY ACTION
-			 URI: http://shizaTest#NEW_CLASS_2
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 3
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@72c0623
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@5a588eb4
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@72d22895
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 4
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@7a69ec64
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@3175ad52
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@12fa6a54
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@4f391cef
+======================================
+
+
+
 ======================================
 
 

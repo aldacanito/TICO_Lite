@@ -61,11 +61,18 @@ public class ClassDiff implements IClassDiff
        
         OntClass op1 = (OntClass) one;
         OntClass op2 = (OntClass) two;
-
+        
+        System.out.println("Comparing:\n"
+                + "\t Class1 :" + op1 + " with Class2: " + op2);
+        
         //check if op2 has the same subclasses and equivalent classes as op2
          
         List<OntClass> list1 = op1.listSuperClasses().toList();
         List<OntClass> list2 = op2.listSuperClasses().toList();
+        
+        System.out.println("SuperClasses:\n"
+                + "\t Class 1: " + list1
+                + "\t Class 2: " + list2);
         
         if(list1.isEmpty() && list2.isEmpty()) return false;
         if(list1.size()    != list2.size())    return true;
@@ -262,12 +269,16 @@ public class ClassDiff implements IClassDiff
     private boolean compareLists(List<OntClass> op1EQ, List<OntClass> op2EQ) 
     {
         boolean no_match = false;
+        
+        System.out.println("Comparing super/eq classes.");
             
         for(OntClass cls1 : op1EQ)
         {
             for(OntClass cls2 : op2EQ)
             {
                 // comparar para ja pelo menos as restricoes
+                System.out.println("Comparing: " + cls1 + " and " + cls2);
+                
                 if(cls1.isRestriction() && cls2.isRestriction())
                 {
                     Restriction r1 = cls1.asRestriction();
