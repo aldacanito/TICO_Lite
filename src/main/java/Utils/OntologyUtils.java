@@ -155,7 +155,7 @@ public class OntologyUtils
         OntProperty       beforeP = cls.getOntModel().getObjectProperty(OntologyUtils.BEFORE_P);
         if(beforeP==null) beforeP = cls.getOntModel().createOntProperty(OntologyUtils.BEFORE_P);
         
-        if(timeSlices.isEmpty()) return cls;
+        if(timeSlices.isEmpty()) return cls; 
         
         OntClass lastSlice = timeSlices.get(0);
         // todas têm before menos a última

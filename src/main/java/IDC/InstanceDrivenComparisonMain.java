@@ -82,9 +82,10 @@ public class InstanceDrivenComparisonMain
                                      String print_path, int round)
     {
         OntModel baseO = OntologyUtils.readModel(onto_path);
+        OntModel baseE = OntologyUtils.readModel(onto_path);
         OntModel baseI = OntologyUtils.readModel(instance_path);
 
-        Comparator comparator = new Comparator(baseO, baseI);
+        Comparator comparator = new Comparator(baseO, baseE, baseI);
         
         comparator.run();
         

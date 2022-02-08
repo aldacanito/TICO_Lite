@@ -26,9 +26,11 @@ import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Ontology;
 import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
@@ -40,19 +42,22 @@ public class Comparator
     OntModel ontologyModel;
     OntModel instanceModel;
     OntModel evolvedModel;
-    EvolutionaryActionComposite executer;
+    EvolutionaryActionComposite executer, ontologyModelUpdater;
     List<ClassPropertyMetrics> clsPropMetrics ;
     DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
         
-    public Comparator(OntModel ontologyModel, OntModel instanceModel) 
+    public Comparator(OntModel ontologyModel, OntModel evolvedModel, OntModel instanceModel) 
     {
         this.ontologyModel = ontologyModel;
         this.instanceModel = instanceModel;
     
-        this.evolvedModel  = ontologyModel;
-//    this.evolvedModel  = instanceModel; //ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM);
+        //this.evolvedModel  = (OntModel) ModelFactory.createOntologyModel().add(ontologyModel); 
+        this.evolvedModel  = evolvedModel; 
+//        this.evolvedModel = ontologyModel;
+       
         this.executer      = new EvolutionaryActionComposite();
+        this.ontologyModelUpdater      = new EvolutionaryActionComposite();
         
         
         Ontology evolvedOnt = this.evolvedModel.createOntology("");
@@ -99,8 +104,15 @@ public class Comparator
             this.compareShapes(instance);
         }
         
+        executer.execute(ontologyModel, ontologyModel);
+        
 
-        executer.execute(ontologyModel, evolvedModel);
+        
+        Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/ontologyModel1.ttl");
+                
+                
+       
+//        executer.execute(ontologyModel, evolvedModel);
 
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions(ontologyModel, evolvedModel);
@@ -116,6 +128,7 @@ public class Comparator
        
         ClassCompareShape shapeC  = new ClassCompareShape(instance, ontologyModel);
         shapeC.setup(ontologyModel, evolvedModel);
+//        shapeC.setup(ontologyModel, ontologyModel);
         
         EvolutionaryAction compare = shapeC.compare();
         this.executer.add(compare);
@@ -216,9 +229,6 @@ public class Comparator
             //ignoremos as timeslices em si para nao andar a TS de TS
             if(OntologyUtils.isTimeSlice(oldCls) || OntologyUtils.isTimeSlice(newCls)) continue;
             
-            
-            // TODO
-            // ver se a última versão da classe (newModel) é diferente do timeframe 
              
             // ver se o ultimo timeframe é diferente
             OntClass lastOldSlice = OntologyUtils.getLastTimeSlice(oldCls);
@@ -261,21 +271,29 @@ public class Comparator
                         System.out.println("Error split/converting string " + oldURI + ". Error: " + e.getLocalizedMessage());
                     }
                 }
-
-                String prevURI = prefix + "#TS__" + className + "__" + versionNumber;
+                
+                String prevURI = lastOldSlice.getURI();
+                
+                if(versionNumber!=0)
+                    prevURI = prefix + "#TS__" + className + "__" + versionNumber;
+                
                 versionNumber ++;
                 
                 String newURI = prefix + "#TS__" + className + "__" + versionNumber;
                 
                 TimeSliceCreator slicer = new TimeSliceCreator(lastNewSlice, versionNumber);
-                slicer.setUp(ontologyModel, evolvedModel);
+//                slicer.setUp(ontologyModel, evolvedModel);
+                slicer.setUp(evolvedModel, evolvedModel);
                 slicer.execute();
-                
-                //ResourceUtils.renameResource(lastNewSlice, newURI);
+
                 
                 //a versao anterior foi modificada. copiar o que havia em histórico no modelo anterior
                 
                 OntologyUtils.copyClass(lastOldSlice, evolvedModel);
+                
+                lastOldSlice = evolvedModel.getOntClass(lastOldSlice.getURI());
+                
+                ResourceUtils.renameResource(lastOldSlice, prevURI);
                 
                 lastOldSlice = evolvedModel.getOntClass(prevURI); // as alteraçoes doravante sao no novo modelo
                 lastNewSlice = slicer.getSlice(); // as alteraçoes doravante sao no novo modelo
@@ -294,20 +312,26 @@ public class Comparator
         
         OntProperty beforeP = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
         if(beforeP == null) beforeP = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
-        
-        
+
         List<OntClass> eqclasses = cls.listEquivalentClasses().toList();
     
         for(OntClass eq : eqclasses)
         {
             if(eq.isIntersectionClass())
             {
-                IntersectionClass intersection = eq.asIntersectionClass();
-            
-                RDFList operands = intersection.getOperands();
-                
-                HasValueRestriction beforeRestriction = evolvedModel.createHasValueRestriction(null, beforeP, ind_end);
-                operands.add(beforeRestriction);
+                try
+                {
+                    IntersectionClass intersection = eq.asIntersectionClass();
+
+                    RDFList operands = intersection.getOperands();
+
+                    HasValueRestriction beforeRestriction = evolvedModel.createHasValueRestriction(null, beforeP, ind_end);
+                    operands.add(beforeRestriction);
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Not Intersection. Reason: " + e.getMessage());
+                }
                                
             }
         }
@@ -433,21 +457,25 @@ public class Comparator
 
     private void addBefore(OntClass ontClass, OntClass newCls) 
     { 
-        OntProperty ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
+        
+        if(ontClass.getURI().contains("TS__"))
+        {
+            OntProperty ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
 
-        if(ontProperty == null)
-            ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
-        
-        SomeValuesFromRestriction svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, newCls);
-        ontClass.addSuperClass(svfr);
-        
-        ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.AFTER_P);
+            if(ontProperty == null)
+                ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
 
-        if(ontProperty == null)
-            ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.AFTER_P, false);
-        
-        svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, ontClass);
-        newCls.addSuperClass(svfr);
+            SomeValuesFromRestriction svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, newCls);
+            ontClass.addSuperClass(svfr);
+
+            ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.AFTER_P);
+
+            if(ontProperty == null)
+                ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.AFTER_P, false);
+
+            svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, ontClass);
+            newCls.addSuperClass(svfr);
+        }
         
     }
 
