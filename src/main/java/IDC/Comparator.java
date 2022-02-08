@@ -282,22 +282,25 @@ public class Comparator
                 String newURI = prefix + "#TS__" + className + "__" + versionNumber;
                 
                 TimeSliceCreator slicer = new TimeSliceCreator(lastNewSlice, versionNumber);
-//                slicer.setUp(ontologyModel, evolvedModel);
-                slicer.setUp(evolvedModel, evolvedModel);
+                slicer.setUp(ontologyModel, evolvedModel);
+//                slicer.setUp(evolvedModel, evolvedModel);
                 slicer.execute();
 
-                
+                lastNewSlice = slicer.getSlice(); // as alteraçoes doravante sao no novo modelo
+
                 //a versao anterior foi modificada. copiar o que havia em histórico no modelo anterior
                 
-                OntologyUtils.copyClass(lastOldSlice, evolvedModel);
+               // OntologyUtils.copyClass(lastOldSlice, evolvedModel);
+                
                 
                 lastOldSlice = evolvedModel.getOntClass(lastOldSlice.getURI());
                 
                 ResourceUtils.renameResource(lastOldSlice, prevURI);
                 
                 lastOldSlice = evolvedModel.getOntClass(prevURI); // as alteraçoes doravante sao no novo modelo
-                lastNewSlice = slicer.getSlice(); // as alteraçoes doravante sao no novo modelo
-
+                
+                OntologyUtils.copyClassDetails(oldCls, lastNewSlice);
+                
                 addBefore(lastOldSlice, lastNewSlice);
                 updateTemporalEQRestriction(lastOldSlice, slicer.getSliceBeginning());
               

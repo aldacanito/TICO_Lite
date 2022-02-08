@@ -12,13 +12,6 @@
         rdf:type  owl:NamedIndividual ;
         :OLD_OP1  :OLD_ID_CL3 .
 
-<20220208135551195>  rdf:type  <http://www.w3.org/2006/time#Instant> .
-
-<Interval_st_20220208135551324>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasEnd>
-                <20220208135551324> .
-
 :TS__NEW_CLASS_2__1  rdf:type  owl:Class ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#before> ;
@@ -46,7 +39,7 @@
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220208135551324> ;
+                                                       owl:hasValue    <20220208143953881> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#before>
                                                      ]
                                                    )
@@ -93,11 +86,19 @@
 :OLD_ID_CL2  rdf:type  owl:NamedIndividual , :Old_Class2 ;
         :OLD_OP3  :OLD_ID_CL3 .
 
-<20220208135551324>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+<Interval_st_20220208143953881>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <20220208143953881> .
 
 <http://shizaTest>  rdf:type  owl:Ontology .
 
 :OLD_OP1  rdf:type  owl:ObjectProperty , owl:SymmetricProperty , owl:TransitiveProperty .
+
+<Interval_st_20220208143953738>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <20220208143953738> .
 
 :NEW_OP2  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
 
@@ -107,18 +108,22 @@
 :OLD_ID_CL1  rdf:type  owl:NamedIndividual , :Old_Class1 .
 
 :TS__Old_Class2__1  rdf:type  owl:Class ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   :OLD_OP1
+                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  :Old_Class2
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20220208135551195> ;
+                               owl:hasValue    <Interval_st_20220208143953738> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :Old_Class2 :Old_Class2
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220208135551195> ;
+                                                       owl:hasValue    <20220208143953738> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                    )
@@ -131,12 +136,20 @@
         <http://www.w3.org/2006/time#hasEnd>
                 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220128141528388> .
 
+<20220208143953881>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
 :NEW_OP1  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
 
 :OLD_DT3  rdf:type          owl:DatatypeProperty , owl:FunctionalProperty ;
         rdfs:subPropertyOf  :OLD_DT2 .
 
+<20220208143953738>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
 :Old_Class2  rdf:type    owl:Class ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   :OLD_OP1
+                         ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
                            owl:someValuesFrom  :TS__Old_Class2__1
@@ -152,36 +165,35 @@
         rdfs:domain  :Old_Class2 ;
         rdfs:range   rdfs:Literal .
 
-<Interval_st_20220208135551195>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasEnd>
-                <20220208135551195> .
-
 <http://www.w3.org/2006/time#Interval>
         rdf:type  owl:Class .
 
+:Old_Class1  rdf:type  owl:Class .
+
 <http://www.w3.org/2006/time#isTimeSliceOf>
         rdf:type  owl:ObjectProperty .
-
-:Old_Class1  rdf:type  owl:Class .
 
 :TS__NEW_CLASS_2__2  rdf:type  owl:Class ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#after> ;
                                owl:someValuesFrom  :TS__NEW_CLASS_2__1
                              ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   :NEW_OP1
+                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  :NEW_CLASS_2
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20220208135551324> ;
+                               owl:hasValue    <Interval_st_20220208143953881> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :NEW_CLASS_2 :NEW_CLASS_2
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220208135551324> ;
+                                                       owl:hasValue    <20220208143953881> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                    )

@@ -79,14 +79,8 @@ public class TimeSliceCreator implements IAddTimeSlices
         OntProperty afterP = this.evolvedModel.getOntProperty(OntologyUtils.AFTER_P);
         if(afterP == null) afterP = this.evolvedModel.createObjectProperty(OntologyUtils.AFTER_P, false);
         
-        
         OntClass ontSlice = evolvedModel.createClass(sliceName);
         
-        //OntologyUtils.copyClassDetails(toExpand, ontSlice);
-        
-        
-        RDFList listr = evolvedModel.createList(toExpand);//evolvedModel.createList();
-        listr.add(toExpand);
         
         //criar intervalo
         
@@ -113,6 +107,9 @@ public class TimeSliceCreator implements IAddTimeSlices
         ind_start = this.evolvedModel.createIndividual(dtf2.format(start), instantClass);
         interval.addProperty(hasBeginningP, ind_start);
         
+         
+        RDFList listr = evolvedModel.createList(toExpand);//evolvedModel.createList();
+        listr.add(toExpand);
         
         if(end != null)
         {
@@ -144,17 +141,28 @@ public class TimeSliceCreator implements IAddTimeSlices
         
         ontSlice.addSuperClass(evolvedModel.createSomeValuesFromRestriction(null, isSliceOfP, toExpand));
         
-      
         // after ind_start, before ind_end
         HasValueRestriction afterRestriction  = evolvedModel.createHasValueRestriction(null, afterP, ind_start);  
         listr.add(afterRestriction);
         
-        IntersectionClass intersectionEQ = evolvedModel.createIntersectionClass(null, listr);
         
-        ontSlice.addEquivalentClass(intersectionEQ);
+        if(!listr.isEmpty())
+        {
+            IntersectionClass intersectionEQ = evolvedModel.createIntersectionClass(null, listr);
+            ontSlice.addEquivalentClass(intersectionEQ);
+        }
+        
+        addLabel(ontSlice);
         
         theSlice = ontSlice;
         
+    }
+    
+    private void addLabel(OntClass cls)
+    {
+        String parts []= this.sliceName.split("#");
+        if(parts.length == 2)
+            cls.addLabel(parts[1].replace("TS__", "TimeSlice ").replace("__", " "), null);
     }
     
     public OntClass getSlice()

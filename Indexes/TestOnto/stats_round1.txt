@@ -12,8 +12,8 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@5982f97
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@36569050
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@5647fbd3
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@273d86c0
 ======================================
 
 
@@ -25,8 +25,8 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@70a2085
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@2db54fd2
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@7be8172
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@50f135e6
 ======================================
 
 
@@ -77,11 +77,11 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 5
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@133a9f89
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@7a7bd470
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@2c23cdb2
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@2b6fcc3b
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@6ceed808
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@3dea0bf5
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@6fad6ff5
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@1cebc663
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@45ec8e1d
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@28b480f6
 ======================================
 
 
@@ -119,10 +119,10 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 4
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@481259b1
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@7aee435c
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@2fb5462e
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@3581e548
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2c6290d2
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@6e7893e3
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@4f457457
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@437afe79
 ======================================
 
 
@@ -160,8 +160,8 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 2
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@6f84fd98
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@67f8a797
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@7ba602c4
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@516b71d8
 ======================================
 
 
@@ -238,11 +238,11 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 5
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@62790970
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@58681bd2
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@1048457a
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@32ae9cfb
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@18b62157
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@35e8406e
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@2175e99c
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@6a0e6f54
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@6061367c
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@177df12e
 ======================================
 
 

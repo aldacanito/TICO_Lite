@@ -141,8 +141,8 @@ public class ClassPropertyMetrics extends EntityMetrics
     {
         int count = 1;
         
-        
-        
+        if(Utilities.isInIgnoreList(newPropertyURI))
+            return;
         
         if(classDtProperties.containsKey(newPropertyURI))
             count = (int) classDtProperties.get(newPropertyURI) + 1;

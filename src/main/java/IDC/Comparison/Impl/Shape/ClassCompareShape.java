@@ -248,7 +248,7 @@ public class ClassCompareShape implements IClassCompare
     public static void populateObjProperties(OntModel ontModel, ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
         OntClass ontClass = cpm.getOntClass();
-        ontClass = ontModel.getOntClass(ontClass.toString()); // trocar pela versao da nova
+        //ontClass = ontModel.getOntClass(ontClass.toString()); // trocar pela versao da nova
         
 //        OntClass slice = OntologyUtils.getLastTimeSlice(ontClass);
 //    
@@ -422,7 +422,14 @@ public class ClassCompareShape implements IClassCompare
         
         for(String propertyURI : classProperties.keySet())
         {
-            DatatypeProperty onProperty = Utils.OntologyUtils.getDatatypePropertyFromModel(ontModel, propertyURI);
+           // DatatypeProperty onProperty = Utils.OntologyUtils.getDatatypePropertyFromModel(ontModel, propertyURI);
+            
+            if(Utilities.isInIgnoreList(propertyURI))
+                continue;
+            
+            DatatypeProperty onProperty = ontModel.getDatatypeProperty(propertyURI);
+            if(onProperty==null) // just in case
+                ontModel.createDatatypeProperty(propertyURI, false);
             
             boolean isFunctional = false;
             boolean isQualifiedR = false;

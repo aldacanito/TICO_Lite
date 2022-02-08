@@ -18,6 +18,7 @@ import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.AllValuesFromRestriction;
 import org.apache.jena.ontology.CardinalityQRestriction;
+import org.apache.jena.ontology.CardinalityRestriction;
 import org.apache.jena.ontology.ComplementClass;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.EnumeratedClass;
@@ -512,9 +513,9 @@ public class OntologyUtils
             copyRestriction(cls, target, "EquivalentClass");
         }
         
-        List<RDFNode> listLabels = source.listLabels(null).toList();
-        for(RDFNode label : listLabels)
-            target.addLabel((Literal) label);
+//        List<RDFNode> listLabels = source.listLabels(null).toList();
+//        for(RDFNode label : listLabels)
+//            target.addLabel((Literal) label);
         
         List<OntClass> listSubClasses = source.listSubClasses().toList();
         for(OntClass cls : listSubClasses)
@@ -775,9 +776,16 @@ public class OntologyUtils
         
         if(cls.isIntersectionClass())
         {
-            RDFList operands = cls.asIntersectionClass().getOperands();   
-            IntersectionClass interClass = newClass.getOntModel().createIntersectionClass(null, operands);    
-            addRestriction(restrictionType, newClass, interClass);
+            try
+            {
+                RDFList operands = cls.asIntersectionClass().getOperands();   
+                IntersectionClass interClass = newClass.getOntModel().createIntersectionClass(null, operands);    
+                addRestriction(restrictionType, newClass, interClass);
+            }
+            catch(Exception e)
+            {
+                System.out.println("Failed to convert node to Intersection class. Not copying.");
+            }
         }
         
         if(cls.isRestriction())
@@ -836,7 +844,7 @@ public class OntologyUtils
         }
         
         // I don't know if this ever works
-        try
+        if(old_restriction.canAs(CardinalityQRestriction.class))
         {
            
             CardinalityQRestriction cqr =  old_restriction.as(CardinalityQRestriction.class);
@@ -846,23 +854,26 @@ public class OntologyUtils
             new_restriction = newClass.getOntModel().createCardinalityQRestriction
                     (null, onProperty, cardinality, hasClassQ);
         }
-        catch(Exception e)
+        
+        
+        int cardinality;
+        
+        if(old_restriction.canAs(CardinalityRestriction.class))
         {
-            Utilities.logInfo("Could not cast restriction to CardinalityQRestriction");
+            CardinalityRestriction cr = old_restriction.asCardinalityRestriction();
+            cardinality                 = cr.getCardinality();
+            
+             new_restriction = newClass.getOntModel().createCardinalityRestriction
+                        (null, onProperty, cardinality);
+        
         }
         
-        int cardinality             = old_restriction.getCardinality(onProperty);
-        
-
-        try
+        if(old_restriction.canAs(MaxCardinalityRestriction.class))
         {
-            ///MaxCardinalityRestriction cr   = old_restriction.convertToMaxCardinalityRestriction(cardinality);
+            MaxCardinalityRestriction cr = old_restriction.asMaxCardinalityRestriction();
+            cardinality                  = cr.getMaxCardinality();
 
-            MaxCardinalityRestriction cr    = old_restriction.asMaxCardinalityRestriction();
-            cardinality                 = cr.getMaxCardinality();
-            boolean success = false;
-            
-            try
+            if(cr.canAs(MaxCardinalityQRestriction.class))
             {
                 MaxCardinalityQRestriction cqr =  cr.as(MaxCardinalityQRestriction.class);
                 cardinality = cqr.getMaxCardinalityQ();
@@ -870,31 +881,19 @@ public class OntologyUtils
 
                 new_restriction = newClass.getOntModel().createMaxCardinalityQRestriction
                         (null, onProperty, cardinality, hasClassQ);
-                
-                success = true;
+
             }
-            catch(Exception e)
-            {}
-            
-            if(!success)
+            else
                 new_restriction = newClass.getOntModel().createMaxCardinalityRestriction
                         (null, onProperty, cardinality);
         }
-        catch(Exception e)
-        {
-            Utilities.logInfo("Could not cast restriction to CardinalityRestriction");
-        }
-        
-        
-        try
-        {
-            //MinCardinalityRestriction cr   = old_restriction.convertToMinCardinalityRestriction(cardinality);
 
-            MinCardinalityRestriction cr    = old_restriction.asMinCardinalityRestriction();
-            cardinality                 = cr.getMinCardinality();
-            boolean success = false;
-            
-            try
+        if(old_restriction.canAs(MinCardinalityRestriction.class))
+        {
+            MinCardinalityRestriction cr = old_restriction.asMinCardinalityRestriction();
+            cardinality                  = cr.getMinCardinality();
+
+            if(cr.canAs(MinCardinalityQRestriction.class))
             {
                 MinCardinalityQRestriction cqr =  cr.as(MinCardinalityQRestriction.class);
                 cardinality = cqr.getMinCardinalityQ();
@@ -902,22 +901,12 @@ public class OntologyUtils
 
                 new_restriction = newClass.getOntModel().createMinCardinalityQRestriction
                         (null, onProperty, cardinality, hasClassQ);
-                
-                success = true;
             }
-            catch(Exception e)
-            {}
-            
-            if(!success)
+            else
                 new_restriction = newClass.getOntModel().createMinCardinalityRestriction
                     (null, onProperty, cardinality);
         }
-        catch(Exception e)
-        {
-            Utilities.logInfo("Could not cast restriction to CardinalityRestriction");
-        }
-        
-        
+
         
         if(new_restriction!=null)
             addRestriction(restrictionType, newClass, new_restriction);
