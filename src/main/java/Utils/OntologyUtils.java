@@ -1002,4 +1002,26 @@ public class OntologyUtils
         }
         
     }
+
+    public static Individual getIndividual(String URI, OntModel ontModel) 
+    {
+        String parts []= URI.split("#");
+        
+        List<Individual> toList = ontModel.listIndividuals().toList();
+    
+        System.out.println("==Looking for individual: " + URI);
+        for(Individual ind : toList)
+        {
+            System.out.println("\tParsing ... " + ind.getURI());
+            
+            if(parts.length == 2 && ind.getURI().contains(parts[1]))
+                return ind;
+            
+            if(ind.getURI().equalsIgnoreCase(URI))
+                return ind;
+        
+        }
+    
+       return null;
+    }
 }

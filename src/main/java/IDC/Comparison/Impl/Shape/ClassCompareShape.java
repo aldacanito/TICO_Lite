@@ -328,7 +328,10 @@ public class ClassCompareShape implements IClassCompare
                     
                     if(rangeClass==null) // range é individual
                     {
-                        Individual individual = ontModel.getIndividual(rangeURI);
+//                        Individual individual = ontModel.getIndividual(rangeURI);
+                        
+                        Individual individual = OntologyUtils.getIndividual(rangeURI, ontModel);
+                       
                         
                         if(individual!=null)
                         {

@@ -92,8 +92,8 @@
 #    Individuals
 #################################################################
 
-###  http://kt.ijs.si/panovp/OntoDM#OLD_CLASS3_1
-<http://kt.ijs.si/panovp/OntoDM#OLD_CLASS3_1> rdf:type owl:NamedIndividual ,
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/OLD_CLASS3_1
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/OLD_CLASS3_1> rdf:type owl:NamedIndividual ,
                                                        :Old_Class3 .
 
 
@@ -108,7 +108,7 @@
 :New_ID_2 rdf:type owl:NamedIndividual ,
                    :Old_Class1 ,
                    :Old_Class3 ;
-          :NEW_OP1 <http://kt.ijs.si/panovp/OntoDM#OLD_CLASS3_1> ;
+          :NEW_OP1 <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/OLD_CLASS3_1> ;
           :NEW_OP2 :OLD_ID_CL2 .
 
 

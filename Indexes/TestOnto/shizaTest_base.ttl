@@ -67,8 +67,8 @@
 <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class3> rdf:type owl:Class .
 
 
-###  http://kt.ijs.si/panovp/OntoDM#Old_Class4
-<http://kt.ijs.si/panovp/OntoDM#Old_Class4> rdf:type owl:Class .
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class4
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class4> rdf:type owl:Class .
 
 
 #################################################################
@@ -92,8 +92,8 @@
                                                                                           <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT3> "1.0" .
 
 
-###  http://kt.ijs.si/panovp/OntoDM#OLD_ID_CL1_2
-<http://kt.ijs.si/panovp/OntoDM#OLD_ID_CL1_2> rdf:type owl:NamedIndividual ;
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL1_2
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL1_2> rdf:type owl:NamedIndividual ;
                                               <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP1> <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL3> .
 
 
