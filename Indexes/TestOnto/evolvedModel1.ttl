@@ -8,11 +8,6 @@
 <http://www.w3.org/2006/time#hasTimeSlice>
         rdf:type  owl:ObjectProperty .
 
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "1"^^xsd:int ;
-  owl:onProperty   :NEW_OP1
-] .
-
 <http://kt.ijs.si/panovp/OntoDM#OLD_ID_CL1_2>
         rdf:type  owl:NamedIndividual ;
         <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP1>
@@ -20,38 +15,35 @@
 
 :TS__NEW_CLASS_2__1  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice NEW_CLASS_2 1" ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
-                               owl:someValuesFrom  :TS__NEW_CLASS_2__0
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731627> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  :NEW_CLASS_2
                              ] ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20220210191344127> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :TS__NEW_CLASS_2__0
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :NEW_CLASS_2 :NEW_CLASS_2
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220210191344127> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731627> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                    )
                              ] .
 
-<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335772>
-        rdf:type  <http://www.w3.org/2006/time#Instant> .
-
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/>
         rdf:type     owl:Ontology ;
         owl:imports  <http://www.w3.org/2006/time> .
 
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "1"^^xsd:int ;
-  owl:onProperty   :NEW_OP2
-] .
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731672>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731672> .
 
 <http://www.w3.org/2006/time#Instant>
         rdf:type  owl:Class .
@@ -59,19 +51,9 @@
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/>
         rdf:type  owl:Ontology .
 
-<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210191335828>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335828> .
-
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT1>
         rdf:type    owl:DatatypeProperty ;
         rdfs:range  owl:real .
-
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "1"^^xsd:int ;
-  owl:onProperty   :NEW_OP2
-] .
 
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP3>
         rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
@@ -85,51 +67,51 @@
 <http://kt.ijs.si/panovp/OntoDM#Old_Class4>
         rdf:type  owl:Class .
 
-[ rdf:type            owl:Class ;
-  owl:intersectionOf  [] 
-] .
-
-<20220210191343980>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731569>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
 
 :TS__NEW_CLASS_2__0  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice NEW_CLASS_2 0" ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                               owl:someValuesFrom  :TS__NEW_CLASS_2__1
-                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210191335828> ;
+                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731495> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  :NEW_CLASS_2
                              ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :TS__NEW_CLASS_2__1
+                             ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :NEW_CLASS_2 :NEW_CLASS_2
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335828> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731495> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220210191344127> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731627> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#before>
                                                      ]
                                                    )
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  [] 
                              ] .
 
-<Interval_st_20220210191343980>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <20220210191343980> .
-
-<http://www.w3.org/2006/time#hasBeginning>
-        rdf:type  owl:ObjectProperty .
-
-<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335828>
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731448>
         rdf:type  <http://www.w3.org/2006/time#Instant> .
 
-:OLD_OP1  rdf:type  owl:TransitiveProperty , rdf:Property .
+:OLD_OP1  rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
+
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731627>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731569>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731569> .
 
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL3>
         rdf:type  owl:NamedIndividual , <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class3> ;
@@ -138,22 +120,22 @@
 
 :TS__Old_Class3__1  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice Old_Class3 1" ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
-                               owl:someValuesFrom  :TS__Old_Class3__0
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731672> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  :Old_Class3
                              ] ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20220210191344221> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :TS__Old_Class3__0
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :Old_Class3 :Old_Class3
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220210191344221> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731672> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                    )
@@ -162,43 +144,66 @@
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP2>
         rdf:type  owl:ObjectProperty .
 
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731401>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
 :NEW_OP2  rdf:type  rdf:Property , owl:TransitiveProperty .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :NEW_OP2
+] .
+
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731448>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731448> .
 
 :TS__Old_Class2__1  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice Old_Class2 1" ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
-                               owl:someValuesFrom  :TS__Old_Class2__0
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731569> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  :Old_Class2
                              ] ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20220210191343980> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  :TS__Old_Class2__0
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :Old_Class2 :Old_Class2
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220210191343980> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731569> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                    )
                              ] .
 
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731627>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731627> .
+
 :Old_Class3  rdf:type    owl:Class ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
-                           owl:someValuesFrom  :TS__Old_Class3__1
+                           owl:someValuesFrom  :TS__Old_Class3__0
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
-                           owl:someValuesFrom  :TS__Old_Class3__0
+                           owl:someValuesFrom  :TS__Old_Class3__1
                          ] .
 
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class3>
         rdf:type  owl:Class .
+
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731401>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731401> .
 
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL2>
         rdf:type  owl:NamedIndividual , <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class2> ;
@@ -207,6 +212,15 @@
 
 :TS__Old_Class3__0  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice Old_Class3 0" ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731448> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      []  ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      :OLD_DT2 ;
+                               owl:someValuesFrom  xsd:string
+                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      :OLD_DT2 ;
                                owl:someValuesFrom  xsd:string
@@ -215,26 +229,22 @@
                                owl:onProperty      <http://www.w3.org/2006/time#before> ;
                                owl:someValuesFrom  :TS__Old_Class3__1
                              ] ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210191335772> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
-                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  :Old_Class3
                              ] ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      :OLD_DT2 ;
-                               owl:someValuesFrom  xsd:string
+        rdfs:subClassOf      []  ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  [] 
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :Old_Class3 :Old_Class3
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335772> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731448> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220210191344221> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731672> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#before>
                                                      ]
                                                    )
@@ -245,8 +255,10 @@
 
 :NEW_OP1  rdf:type  rdf:Property , owl:TransitiveProperty .
 
-:OLD_DT3  rdf:type          owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
-        rdfs:subPropertyOf  :OLD_DT3 .
+:OLD_DT3  rdf:type  owl:DatatypeProperty , rdf:Property , owl:TransitiveProperty , owl:FunctionalProperty .
+
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731495>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
 
 :TS__Old_Class2__0  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice Old_Class2 0" ;
@@ -255,8 +267,8 @@
                                owl:someValuesFrom  xsd:float
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      :OLD_DT1 ;
-                               owl:someValuesFrom  xsd:int
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  :TS__Old_Class2__1
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      :OLD_DT1 ;
@@ -271,25 +283,28 @@
                                owl:someValuesFrom  xsd:float
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
-                               owl:someValuesFrom  :TS__Old_Class2__1
+                               owl:onProperty      :OLD_DT1 ;
+                               owl:someValuesFrom  xsd:int
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210191335686> ;
+                               owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731401> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         owl:disjointWith     :Old_Class3 ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( :Old_Class2 :Old_Class2
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335686> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731401> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20220210191343980> ;
+                                                       owl:hasValue    <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731569> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#before>
                                                      ]
                                                    )
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  [] 
                              ] .
 
 [ rdf:type         owl:Restriction ;
@@ -300,26 +315,43 @@
 :Old_Class2  rdf:type    owl:Class ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
-                           owl:someValuesFrom  :TS__Old_Class2__1
+                           owl:someValuesFrom  :TS__Old_Class2__0
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
-                           owl:someValuesFrom  :TS__Old_Class2__0
+                           owl:someValuesFrom  :TS__Old_Class2__1
                          ] .
 
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class2>
         rdf:type  owl:Class .
 
-<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL1>
-        rdf:type  owl:NamedIndividual , <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class1> .
+<http://www.w3.org/2006/time#hasEnd>
+        rdf:type  owl:ObjectProperty .
 
 [ rdf:type         owl:Restriction ;
   owl:cardinality  "1"^^xsd:int ;
   owl:onProperty   :NEW_OP2
 ] .
 
-:OLD_DT2  rdf:type          owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
-        rdfs:subPropertyOf  :OLD_DT2 .
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL1>
+        rdf:type  owl:NamedIndividual , <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class1> .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :NEW_OP1
+] .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :NEW_OP2
+] .
+
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210161731495>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731495> .
+
+:OLD_DT2  rdf:type  owl:DatatypeProperty , rdf:Property , owl:TransitiveProperty , owl:FunctionalProperty .
 
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT3>
         rdf:type            owl:DatatypeProperty , owl:FunctionalProperty ;
@@ -328,75 +360,39 @@
 <http://www.w3.org/2006/time#Interval>
         rdf:type  owl:Class .
 
-<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210191335686>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335686> .
-
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class1>
         rdf:type  owl:Class .
 
 <http://www.w3.org/2006/time#isTimeSliceOf>
         rdf:type  owl:ObjectProperty .
 
-<20220210191344127>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+:OLD_DT1  rdf:type  owl:DatatypeProperty , rdf:Property , owl:TransitiveProperty , owl:FunctionalProperty .
 
-<Interval_st_20220210191344127>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <20220210191344127> .
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
 
-<20220210191344221>  rdf:type  <http://www.w3.org/2006/time#Instant> .
-
-<Interval_st_20220210191344221>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <20220210191344221> .
-
-:OLD_DT1  rdf:type          owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
-        rdfs:subPropertyOf  :OLD_DT1 .
-
-[ rdf:type            owl:Class ;
-  owl:intersectionOf  [] 
-] .
+<http://www.w3.org/2006/time#before>
+        rdf:type  owl:ObjectProperty .
 
 <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT2>
         rdf:type     owl:DatatypeProperty ;
         rdfs:domain  <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class2> ;
         rdfs:range   rdfs:Literal .
 
-<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/Interval_st_20220210191335772>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335772> .
-
-<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210191335686>
-        rdf:type  <http://www.w3.org/2006/time#Instant> .
-
-<http://www.w3.org/2006/time#before>
-        rdf:type  owl:ObjectProperty .
-
-[ rdf:type            owl:Class ;
-  owl:intersectionOf  [] 
-] .
-
-<http://www.w3.org/2006/time#after>
-        rdf:type  owl:ObjectProperty .
-
 [ rdf:type         owl:Restriction ;
   owl:cardinality  "1"^^xsd:int ;
   owl:onProperty   :NEW_OP1
 ] .
 
+<file:///C:/Users/shizamura/Documents/GitHub/DatasetConverter/20220210161731672>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
 :NEW_CLASS_2  rdf:type   owl:Class ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
-                           owl:someValuesFrom  :TS__NEW_CLASS_2__1
+                           owl:someValuesFrom  :TS__NEW_CLASS_2__0
                          ] ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
                            owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
-                           owl:someValuesFrom  :TS__NEW_CLASS_2__0
+                           owl:someValuesFrom  :TS__NEW_CLASS_2__1
                          ] .
-
-<>      rdf:type     owl:Ontology ;
-        owl:imports  <http://www.w3.org/2006/time> .

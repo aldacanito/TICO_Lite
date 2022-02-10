@@ -4,97 +4,97 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://shizaTest> .
+@base <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/> .
 
-<http://shizaTest> rdf:type owl:Ontology .
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://shizaTest#OLD_OP1
-:OLD_OP1 rdf:type owl:ObjectProperty ,
-                  owl:SymmetricProperty ,
-                  owl:TransitiveProperty .
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP1
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP1> rdf:type owl:ObjectProperty ,
+                                                                                                owl:SymmetricProperty ,
+                                                                                                owl:TransitiveProperty .
 
 
-###  http://shizaTest#OLD_OP2
-:OLD_OP2 rdf:type owl:ObjectProperty .
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP2
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP2> rdf:type owl:ObjectProperty .
 
 
-###  http://shizaTest#OLD_OP3
-:OLD_OP3 rdf:type owl:ObjectProperty ;
-         rdfs:subPropertyOf :OLD_OP2 ;
-         rdf:type owl:FunctionalProperty ;
-         rdfs:domain :Old_Class1 ;
-         rdfs:range :Old_Class2 .
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP3
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP3> rdf:type owl:ObjectProperty ;
+                                                                                       rdfs:subPropertyOf <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP2> ;
+                                                                                       rdf:type owl:FunctionalProperty ;
+                                                                                       rdfs:domain <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class1> ;
+                                                                                       rdfs:range <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class2> .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://shizaTest#OLD_DT1
-:OLD_DT1 rdf:type owl:DatatypeProperty ;
-         rdfs:range owl:real .
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT1
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT1> rdf:type owl:DatatypeProperty ;
+                                                                                       rdfs:range owl:real .
 
 
-###  http://shizaTest#OLD_DT2
-:OLD_DT2 rdf:type owl:DatatypeProperty ;
-         rdfs:domain :Old_Class2 ;
-         rdfs:range rdfs:Literal .
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT2
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT2> rdf:type owl:DatatypeProperty ;
+                                                                                       rdfs:domain <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class2> ;
+                                                                                       rdfs:range rdfs:Literal .
 
 
-###  http://shizaTest#OLD_DT3
-:OLD_DT3 rdf:type owl:DatatypeProperty ;
-         rdfs:subPropertyOf :OLD_DT2 ;
-         rdf:type owl:FunctionalProperty .
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT3
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT3> rdf:type owl:DatatypeProperty ;
+                                                                                       rdfs:subPropertyOf <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT2> ;
+                                                                                       rdf:type owl:FunctionalProperty .
 
 
 #################################################################
 #    Classes
 #################################################################
 
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class1
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class1> rdf:type owl:Class .
+
+
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class2
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class2> rdf:type owl:Class .
+
+
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class3
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class3> rdf:type owl:Class .
+
+
 ###  http://kt.ijs.si/panovp/OntoDM#Old_Class4
 <http://kt.ijs.si/panovp/OntoDM#Old_Class4> rdf:type owl:Class .
-
-
-###  http://shizaTest#Old_Class1
-:Old_Class1 rdf:type owl:Class .
-
-
-###  http://shizaTest#Old_Class2
-:Old_Class2 rdf:type owl:Class .
-
-
-###  http://shizaTest#Old_Class3
-:Old_Class3 rdf:type owl:Class .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL1
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL1> rdf:type owl:NamedIndividual ,
+                                                                                                   <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class1> .
+
+
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL2
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL2> rdf:type owl:NamedIndividual ,
+                                                                                                   <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class2> ;
+                                                                                          <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP3> <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL3> .
+
+
+###  file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL3
+<file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL3> rdf:type owl:NamedIndividual ,
+                                                                                                   <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#Old_Class3> ;
+                                                                                          <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_DT3> "1.0" .
+
+
 ###  http://kt.ijs.si/panovp/OntoDM#OLD_ID_CL1_2
 <http://kt.ijs.si/panovp/OntoDM#OLD_ID_CL1_2> rdf:type owl:NamedIndividual ;
-                                              :OLD_OP1 :OLD_ID_CL3 .
-
-
-###  http://shizaTest#OLD_ID_CL1
-:OLD_ID_CL1 rdf:type owl:NamedIndividual ,
-                     :Old_Class1 .
-
-
-###  http://shizaTest#OLD_ID_CL2
-:OLD_ID_CL2 rdf:type owl:NamedIndividual ,
-                     :Old_Class2 ;
-            :OLD_OP3 :OLD_ID_CL3 .
-
-
-###  http://shizaTest#OLD_ID_CL3
-:OLD_ID_CL3 rdf:type owl:NamedIndividual ,
-                     :Old_Class3 ;
-            :OLD_DT3 "1.0" .
+                                              <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_OP1> <file:/C:/Users/shizamura/Documents/GitHub/DatasetConverter/Indexes/TestOnto/#OLD_ID_CL3> .
 
 
 ###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

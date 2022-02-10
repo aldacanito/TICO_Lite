@@ -513,9 +513,9 @@ public class OntologyUtils
             copyRestriction(cls, target, "EquivalentClass");
         }
         
-//        List<RDFNode> listLabels = source.listLabels(null).toList();
-//        for(RDFNode label : listLabels)
-//            target.addLabel((Literal) label);
+        List<RDFNode> listLabels = source.listLabels(null).toList();
+        for(RDFNode label : listLabels)
+            target.addLabel((Literal) label);
         
         List<OntClass> listSubClasses = source.listSubClasses().toList();
         for(OntClass cls : listSubClasses)
@@ -910,9 +910,7 @@ public class OntologyUtils
         
         if(new_restriction!=null)
             addRestriction(restrictionType, newClass, new_restriction);
-//        else //this does not work - copia restrição vazia, que depois dá erro
-//            addRestriction(restrictionType, newClass, old_restriction);
-        
+
 
     }
 
@@ -961,5 +959,47 @@ public class OntologyUtils
         
       
         return ret;
+    }
+
+    public static void copyIndividual(Individual ind, OntModel model) 
+    {
+        //copy class
+        //copy DTP
+        //copy OP
+        
+        Individual newInd = model.createIndividual(ind.getOntClass(true));
+        
+        List <OntClass> listOntClasses = ind.listOntClasses(true).toList();
+        
+        for(OntClass c : listOntClasses)
+            newInd.addOntClass(c);
+       
+        List<Statement> properties = ind.listProperties().toList();
+    
+        for(Statement prop : properties)
+        {
+            Triple t = prop.asTriple();
+            Node predicate = t.getPredicate();
+            Node object = t.getObject();
+            
+            OntProperty predicateP = model.getOntProperty(predicate.getURI());
+            if(predicateP==null)
+                predicateP = model.createOntProperty(predicate.getURI());
+            
+            
+            if(object.isLiteral())
+            {
+                Object literalValue = object.getLiteralValue();
+                
+               
+                
+                
+            
+            }
+            
+            
+            
+        }
+        
     }
 }

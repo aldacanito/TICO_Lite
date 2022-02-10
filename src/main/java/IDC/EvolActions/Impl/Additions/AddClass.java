@@ -117,7 +117,6 @@ public class AddClass implements IAddClass
             // cria os time slices
             
             TimeSliceCreator timeSlicer = new TimeSliceCreator(this.newClass);
-            timeSlicer.setUp(originalModel, evolvedModel);
             timeSlicer.execute();
             
             theSlice = timeSlicer.getSlice();

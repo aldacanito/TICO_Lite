@@ -42,23 +42,27 @@ public class Comparator
     OntModel ontologyModel;
     OntModel instanceModel;
     OntModel evolvedModel;
+    
+    public static OntModel temporal_instancesModel;
+    
     EvolutionaryActionComposite executer, ontologyModelUpdater;
     List<ClassPropertyMetrics> clsPropMetrics ;
+    
+
     DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
         
     public Comparator(OntModel ontologyModel, OntModel evolvedModel, OntModel instanceModel) 
     {
+        Comparator.temporal_instancesModel = evolvedModel;
+        
         this.ontologyModel = ontologyModel;
         this.instanceModel = instanceModel;
     
-        //this.evolvedModel  = (OntModel) ModelFactory.createOntologyModel().add(ontologyModel); 
         this.evolvedModel  = evolvedModel; 
-//        this.evolvedModel = ontologyModel;
        
         this.executer      = new EvolutionaryActionComposite();
         this.ontologyModelUpdater      = new EvolutionaryActionComposite();
-        
         
         Ontology evolvedOnt = this.evolvedModel.createOntology("");
         evolvedOnt.addImport(this.evolvedModel.createResource(OntologyUtils.ONT_TIME_URL));
@@ -66,27 +70,10 @@ public class Comparator
         clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
     }
 
-    
-    private boolean validateModels()
-    {
-        if(ontologyModel.isEmpty() || instanceModel.isEmpty() || !instanceModel.listIndividuals().hasNext())
-        {
-            Utilities.logInfo( "Models have not been instantiated properly." );
-            return false;
-        }
    
-        Utilities.logInfo( "Models have been instantiated properly." );
-        return true;
-    }
-    
     public void run() 
     {
-        // end app if no models are valid
-        
-        /**if(!validateModels())
-            return;
-        **/
-        
+
         // guidado pelas instancias
         // só funciona para as instâncias que tenham CLASSES associadas
         // reasoner desligado
@@ -98,27 +85,45 @@ public class Comparator
 
             if(Utilities.isInIgnoreList(instance.getURI()))
                 continue;
-            
-            //this.compareClasses(instance);
-            //this.compareProperties(instance);     
+              
             this.compareShapes(instance);
         }
         
-        executer.execute(ontologyModel, ontologyModel);
+//        executer.execute(ontologyModel, ontologyModel);
         
-
+        //evolvedModel.add(Comparator.temporal_instancesModel);
+        
+//        copyTimeEntities(Comparator.temporal_instancesModel, evolvedModel);
         
         Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/ontologyModel1.ttl");
-                
-                
-       
-//        executer.execute(ontologyModel, evolvedModel);
+        Utils.OntologyUtils.writeModeltoFile(evolvedModel, "Indexes/TestOnto/middleModel1.ttl");
+
+        executer.execute(ontologyModel, evolvedModel);
 
         // verificar se é preciso acrescentar validaçoes temporais em classes
-        updateTemporalRestrictions(ontologyModel, evolvedModel);
+        updateTemporalRestrictions();
        
 
+        
     }
+   
+    private void copyTimeEntities(OntModel source, OntModel target)
+    {
+        OntClass instantClass = source.getOntClass(OntologyUtils.INSTANT_CLS);
+        List<Individual> instants = source.listIndividuals(instantClass).toList();
+    
+        for(Individual instant : instants)
+            OntologyUtils.copyIndividual(instant, evolvedModel);
+        
+        OntClass intervalClass = source.getOntClass(OntologyUtils.INTERVAL_CLS);
+        List<Individual> intervals = source.listIndividuals(intervalClass).toList();
+    
+        for(Individual interval : intervals)
+            OntologyUtils.copyIndividual(interval, evolvedModel);
+    
+    
+    }
+    
     
    
     private void compareShapes(Individual instance)
@@ -128,7 +133,6 @@ public class Comparator
        
         ClassCompareShape shapeC  = new ClassCompareShape(instance, ontologyModel);
         shapeC.setup(ontologyModel, evolvedModel);
-//        shapeC.setup(ontologyModel, ontologyModel);
         
         EvolutionaryAction compare = shapeC.compare();
         this.executer.add(compare);
@@ -140,17 +144,11 @@ public class Comparator
     {
         List<Statement> listProperties = instance.listProperties().toList();
                
-//        Utilities.logInfo("\n\n%%%%%%%%%%%%%%%%%\nIterating through the properties of Individual " 
-//                + instance.getURI() + ". Currently with " + listProperties.size() + " properties.");
-
         for(Statement stmt : listProperties)
         {
             Utilities.logInfo(OntologyUtils.printStatement(stmt));
             this.compareProperty(stmt);
         }
-        
-//        Utilities.logInfo("\n\nFinished iterating through Individual " 
-//                + instance.getURI() + "'s properties\n%%%%%%%%%%%%%%%%%\n\n");
     }
     
    
@@ -174,11 +172,6 @@ public class Comparator
     */
     private void compareClasses(Individual instance) 
     {
-//        Utilities.logInfo("COMPARE CLASSES for instance " 
-//                + instance.getURI()
-//                + ".\n Iterating through its classes...");
-        // procura todas as classes a que a instancia possa pertencer
-        
         ExtendedIterator<OntClass> listOntClasses = instance.listOntClasses(true);
         for(OntClass cls : listOntClasses.toList())
         {
@@ -202,17 +195,12 @@ public class Comparator
         return this.executer.toString();
     }
 
-    private void updateTemporalRestrictions(OntModel ontologyModel, OntModel evolvedModel) 
+    private void updateTemporalRestrictions() 
     {
-        
-        // ver se a classe tem slices
-        // ver qual o ultimo slice (ordenar?)
-        // acrescentar slice novo se for o caso
-        
+//        List <OntClass> e_ontClasses = ontologyModel.listClasses().toList();
         List <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
         LocalDateTime now      = LocalDateTime.now();  
         
-              
         for(OntClass newCls : e_ontClasses)
         {
             String uri      = newCls.getURI();
@@ -232,11 +220,9 @@ public class Comparator
              
             // ver se o ultimo timeframe é diferente
             OntClass lastOldSlice = OntologyUtils.getLastTimeSlice(oldCls);
-            OntClass lastNewSlice = OntologyUtils.getLastTimeSlice(newCls);
-            
-            lastNewSlice = newCls;
+            OntClass lastNewSlice = newCls;
            
-            if(lastOldSlice==null || lastNewSlice==null) continue; //porque é que este caso ocorreria?
+            if(lastOldSlice==null) continue; //porque é que este caso ocorreria?
            
             boolean newVersion = new ClassDiff().isNewVersion(lastOldSlice, lastNewSlice);
             
@@ -278,25 +264,20 @@ public class Comparator
                     prevURI = prefix + "#TS__" + className + "__" + versionNumber;
                 
                 versionNumber ++;
-                
-                String newURI = prefix + "#TS__" + className + "__" + versionNumber;
-                
-                TimeSliceCreator slicer = new TimeSliceCreator(lastNewSlice, versionNumber);
-                slicer.setUp(ontologyModel, evolvedModel);
-//                slicer.setUp(evolvedModel, evolvedModel);
+                                
+                TimeSliceCreator slicer = new TimeSliceCreator(evolvedModel, lastNewSlice, versionNumber);
                 slicer.execute();
 
                 lastNewSlice = slicer.getSlice(); // as alteraçoes doravante sao no novo modelo
 
-                //a versao anterior foi modificada. copiar o que havia em histórico no modelo anterior
+                if(evolvedModel.getOntClass(prevURI)==null)
+                    lastOldSlice = evolvedModel.createClass(prevURI);
+                else
+                    lastOldSlice = evolvedModel.getOntClass(prevURI);
                 
-               // OntologyUtils.copyClass(lastOldSlice, evolvedModel);
-                
-                
-                lastOldSlice = evolvedModel.getOntClass(lastOldSlice.getURI());
-                
-                ResourceUtils.renameResource(lastOldSlice, prevURI);
-                
+                //copiar para o modelo novo
+                OntologyUtils.copyClassDetails(ontologyModel.getOntClass(prevURI), lastOldSlice);
+
                 lastOldSlice = evolvedModel.getOntClass(prevURI); // as alteraçoes doravante sao no novo modelo
                 
                 OntologyUtils.copyClassDetails(oldCls, lastNewSlice);
@@ -327,13 +308,14 @@ public class Comparator
                     IntersectionClass intersection = eq.asIntersectionClass();
 
                     RDFList operands = intersection.getOperands();
-
+                    
                     HasValueRestriction beforeRestriction = evolvedModel.createHasValueRestriction(null, beforeP, ind_end);
                     operands.add(beforeRestriction);
                 }
                 catch(Exception e)
                 {
                     System.out.println("Not Intersection. Reason: " + e.getMessage());
+                    cls.removeEquivalentClass(eq);
                 }
                                
             }

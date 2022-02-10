@@ -20,11 +20,11 @@ public class AddCardinalityRestriction extends AddRestriction
     {
         super(cls, onProperty, isEquivalent, isSubclass);
         
-        if(cls.getURI()!=null && onProperty.getURI()!=null)
-            System.out.println("Creating CardinalityRestriction for:"
-                + "\n\t Class: " + cls.getURI() +
-                "\t On Property: " + onProperty.getURI() +
-                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
+//        if(cls.getURI()!=null && onProperty.getURI()!=null)
+//            System.out.println("Creating CardinalityRestriction for:"
+//                + "\n\t Class: " + cls.getURI() +
+//                "\t On Property: " + onProperty.getURI() +
+//                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
         
         qualified = false;
     }

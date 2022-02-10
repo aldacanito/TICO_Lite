@@ -9,7 +9,7 @@ package IDC.EvolActions.Interfaces;
  *
  * @author shizamura
  */
-public interface IAddTimeSlices extends EvolutionaryAction
+public interface IAddTimeSlices 
 {
     
 }

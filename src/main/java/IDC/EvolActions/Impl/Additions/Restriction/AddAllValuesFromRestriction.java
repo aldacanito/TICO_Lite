@@ -21,11 +21,11 @@ public class AddAllValuesFromRestriction extends AddRestriction
     {
         super(cls, onProperty, isEquivalent, isSubclass);
         
-        if(cls.getURI()!=null && onProperty.getURI()!=null)
-            System.out.println("Creating AllValuesFromRestriction for:"
-                + "\n\t Class: " + cls.getURI() +
-                "\t On Property: " + onProperty.getURI() +
-                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
+//        if(cls.getURI()!=null && onProperty.getURI()!=null)
+//            System.out.println("Creating AllValuesFromRestriction for:"
+//                + "\n\t Class: " + cls.getURI() +
+//                "\t On Property: " + onProperty.getURI() +
+//                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
     }
     
     public AddAllValuesFromRestriction(OntClass cls, OntProperty onProperty, boolean isEquivalent, boolean isSubclass, OntClass rangeClass) 
@@ -33,12 +33,12 @@ public class AddAllValuesFromRestriction extends AddRestriction
         super(cls, onProperty, isEquivalent, isSubclass);
         this.rangeClass = rangeClass;
         
-        if(cls.getURI()!=null && onProperty.getURI()!=null && rangeClass != null && rangeClass.getURI()!=null)
-            System.out.println("Creating AllValuesFromRestriction for:"
-                + "\n\t Class: " + cls.getURI() +
-                "\t On Property: " + onProperty.getURI() +
-                "\t Has Range: " + rangeClass.getURI() +
-                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
+//        if(cls.getURI()!=null && onProperty.getURI()!=null && rangeClass != null && rangeClass.getURI()!=null)
+//            System.out.println("Creating AllValuesFromRestriction for:"
+//                + "\n\t Class: " + cls.getURI() +
+//                "\t On Property: " + onProperty.getURI() +
+//                "\t Has Range: " + rangeClass.getURI() +
+//                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
     }
     
     

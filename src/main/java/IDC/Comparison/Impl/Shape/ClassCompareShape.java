@@ -113,8 +113,8 @@ public class ClassCompareShape implements IClassCompare
         if(ontClassList==null) 
             return composite;   
         
-        composite.setUp(ontModel, evolvedModel); // start
-//       composite.setUp(ontModel, ontModel);
+//        composite.setUp(ontModel, evolvedModel); // start
+       composite.setUp(ontModel, ontModel);
        
         ClassPropertyMetrics cpm = null;
         
@@ -268,7 +268,7 @@ public class ClassCompareShape implements IClassCompare
             
             OntProperty onProperty = ontModel.getOntProperty(propertyURI);
             if(onProperty==null) // just in case
-                ontModel.createObjectProperty(propertyURI, false);
+                onProperty = ontModel.createObjectProperty(propertyURI, false);
             
             boolean isFunctional = false;
             boolean isQualifiedR = false;
@@ -429,7 +429,7 @@ public class ClassCompareShape implements IClassCompare
             
             DatatypeProperty onProperty = ontModel.getDatatypeProperty(propertyURI);
             if(onProperty==null) // just in case
-                ontModel.createDatatypeProperty(propertyURI, false);
+                onProperty = ontModel.createDatatypeProperty(propertyURI, false);
             
             boolean isFunctional = false;
             boolean isQualifiedR = false;
@@ -469,9 +469,7 @@ public class ClassCompareShape implements IClassCompare
     {
         ClassCompareShape.populateObjProperties(ontModel, cpm, composite);
         ClassCompareShape.populateDtProperties(ontModel, cpm, composite);
-        
-        // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
-
+       
         OntClass ontClass = cpm.getOntClass();
         AddClass addCls = new AddClass(ontClass);
         
