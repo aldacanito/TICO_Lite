@@ -61,7 +61,8 @@ public class EvolutionaryActionComposite implements EvolutionaryAction
         {
             if(act.getURI()==null) continue;
             
-            if(action.getURI().equalsIgnoreCase(act.getURI()))
+            if( action.getClass() == act.getClass() 
+                    && action.getURI().equalsIgnoreCase(act.getURI()))
             {    
                 repeated = true;
                 break;

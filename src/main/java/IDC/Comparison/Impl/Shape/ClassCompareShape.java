@@ -247,7 +247,8 @@ public class ClassCompareShape implements IClassCompare
     
     public static void populateObjProperties(OntModel ontModel, ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
-        OntClass ontClass = cpm.getOntClass();
+        OntClass ontClass    = cpm.getOntClass();
+        OntModel originModel = ontClass.getOntModel();
         //ontClass = ontModel.getOntClass(ontClass.toString()); // trocar pela versao da nova
         
 //        OntClass slice = OntologyUtils.getLastTimeSlice(ontClass);
@@ -324,14 +325,16 @@ public class ClassCompareShape implements IClassCompare
                     
                     String rangeURI     = ranges.keySet().iterator().next();
                     
-                    OntClass rangeClass = ontModel.getOntClass(rangeURI);
+//                    OntClass rangeClass = ontModel.getOntClass(rangeURI);
+                    
+                    OntClass rangeClass = originModel.getOntClass(rangeURI);
                     
                     if(rangeClass==null) // range é individual
                     {
 //                        Individual individual = ontModel.getIndividual(rangeURI);
                         
                         Individual individual = OntologyUtils.getIndividual(rangeURI, ontModel);
-                       
+                        individual = OntologyUtils.getIndividual(rangeURI, originModel);
                         
                         if(individual!=null)
                         {
@@ -339,6 +342,9 @@ public class ClassCompareShape implements IClassCompare
                            
                            for(OntClass r : rangesL)
                            {
+                                if(r.getURI()!=null && Utilities.isInClassIgnoreList(r.getURI()))
+                                    continue;
+                               
                                 AddAllValuesFromRestriction aavfR = 
                                  new AddAllValuesFromRestriction(
                                          ontClass,
@@ -372,11 +378,14 @@ public class ClassCompareShape implements IClassCompare
                     
                     if(rangeURI==null) continue;
                     
-                    OntClass rangeClass = ontModel.getOntClass(rangeURI);
-                    
+//                    OntClass rangeClass = ontModel.getOntClass(rangeURI);
+                    OntClass rangeClass = originModel.getOntClass(rangeURI);
+
                     if(rangeClass==null) // range é individual
                     {
                         Individual individual = ontModel.getIndividual(rangeURI);
+                        individual = originModel.getIndividual(rangeURI);
+
                         
                         if(individual!=null)
                         {
@@ -384,6 +393,9 @@ public class ClassCompareShape implements IClassCompare
                            
                            for(OntClass r : rangesL)
                            {
+                               if(r.getURI()!=null && Utilities.isInClassIgnoreList(r.getURI()))
+                                    continue;
+                               
                                 AddSomeValuesFromRestriction aavfR = 
                                  new AddSomeValuesFromRestriction(
                                          ontClass,

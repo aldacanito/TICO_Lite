@@ -55,7 +55,7 @@ public class AddAllValuesFromRestriction extends AddRestriction
         // TODO: TESTAR
         if(onProperty!=null && this.rangeClass!=null)
         {
-            System.out.println("Adding CardinalityRestriction to " + this.ontClass.getURI() + " on Property " + onProperty.getURI());    
+            System.out.println("Adding AllValuesFromRestriction to " + this.ontClass.getURI() + " on Property " + onProperty.getURI());    
             
             restriction = this.getEvolvedModel().createAllValuesFromRestriction(null, onProperty, this.rangeClass);
         

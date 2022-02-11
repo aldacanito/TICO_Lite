@@ -96,8 +96,8 @@ public class Comparator
 //        copyTimeEntities(Comparator.temporal_instancesModel, evolvedModel);
         
         Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/ontologyModel1.ttl");
-        Utils.OntologyUtils.writeModeltoFile(evolvedModel, "Indexes/TestOnto/middleModel1.ttl");
 
+        
         executer.execute(ontologyModel, evolvedModel);
 
         // verificar se é preciso acrescentar validaçoes temporais em classes
