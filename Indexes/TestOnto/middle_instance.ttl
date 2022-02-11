@@ -1,0 +1,60 @@
+@prefix :     <http://shizaTest/ONTO_TEST#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+:CLASS3  rdf:type        owl:Class ;
+        rdfs:subClassOf  []  ;
+        rdfs:subClassOf  []  .
+
+:CLASS1_1  rdf:type  :CLASS1 , owl:NamedIndividual ;
+        :DT1      "1.0"^^xsd:float ;
+        :OP1      :CLASS1_1 ;
+        :OP2      :CLASS1_2 .
+
+:CLASS1  rdf:type        owl:Class ;
+        rdfs:subClassOf  []  ;
+        rdfs:subClassOf  []  ;
+        rdfs:subClassOf  []  ;
+        rdfs:subClassOf  []  ;
+        rdfs:subClassOf  []  .
+
+:OP1    rdf:type  owl:ObjectProperty .
+
+:CLASS3_1  rdf:type  :CLASS3 , owl:NamedIndividual ;
+        :OP2      :CLASS1_1 .
+
+:DT2    rdf:type  owl:DatatypeProperty .
+
+:CLASS4  rdf:type        owl:Class ;
+        rdfs:subClassOf  []  ;
+        rdfs:subClassOf  []  .
+
+:CLASS1_2  rdf:type  :CLASS1 , owl:NamedIndividual ;
+        :DT2      "2.0"^^xsd:float ;
+        :OP2      :CLASS2_1 .
+
+:CLASS2  rdf:type        owl:Class ;
+        rdfs:subClassOf  []  ;
+        rdfs:subClassOf  []  .
+
+:OP2    rdf:type  owl:ObjectProperty .
+
+:CLASS3_2  rdf:type  :CLASS3 , owl:NamedIndividual ;
+        :DT1      "3.0"^^xsd:float ;
+        :DT2      "3.0"^^xsd:float .
+
+:CLASS2_1  rdf:type  :CLASS2 , owl:NamedIndividual ;
+        :OP2      :CLASS1_2 .
+
+<http://shizaTest/ONTO_TEST>
+        rdf:type  owl:Ontology .
+
+:CLASS4_1  rdf:type  :CLASS4 , owl:NamedIndividual ;
+        :OP1      :CLASS2_1 .
+
+:CLASS1_3  rdf:type  :CLASS1 , owl:NamedIndividual .
+
+:DT1    rdf:type  owl:DatatypeProperty .

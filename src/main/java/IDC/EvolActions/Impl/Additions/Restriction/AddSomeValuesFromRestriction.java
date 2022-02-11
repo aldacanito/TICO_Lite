@@ -32,8 +32,7 @@ public class AddSomeValuesFromRestriction extends AddRestriction
     public void execute()
     {
         Restriction restriction = null;
-        
-        // TODO: TESTAR
+                
         restriction = this.getEvolvedModel().createSomeValuesFromRestriction(null, onProperty, this.rangeClass);
         
         if(this.isEquivalent)

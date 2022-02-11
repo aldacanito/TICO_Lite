@@ -42,8 +42,8 @@ public class AddCardinalityRestriction extends AddRestriction
         this.cardinalityType = type;
         this.qualified       = qualified;
         
-        System.out.println("Cardinality of "+ this.ontClass.getURI()+" of property "+ this.onProperty+" will set to:\n"
-                + "\t - Cardinality:" + cardinality + "\t Type: "+ type + "\tQualified? " + qualified);
+//        System.out.println("Cardinality of "+ this.ontClass.getURI()+" of property "+ this.onProperty+" will set to:\n"
+//                + "\t - Cardinality:" + cardinality + "\t Type: "+ type + "\tQualified? " + qualified);
     }
     
     /**

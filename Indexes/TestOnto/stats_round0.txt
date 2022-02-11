@@ -3,8 +3,39 @@
 
 ======================================
 Evolutionary Action Composite Stats
-	Total evolutionary actions executed: 2
+	Total evolutionary actions executed: 7
 List of Evolutionary Actions:
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 4
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@f42336c
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@6b3b4f37
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@3b25709e
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest/ONTO_TEST#CLASS4
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 3
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@5a78b52b
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@4bab78ce
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest/ONTO_TEST#CLASS3
+======================================
+
+
+
 	
 
 
@@ -12,13 +43,26 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 6
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@1836c406
-	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@7738301f
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@3ec0c53
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@5402c2c5
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@7a3a2ab7
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@42ffbab6
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@7672960e
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@69bca406
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@79c1ccf7
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@4654e373
 	> ADD CLASS : EVOLUTIONARY ACTION
-			 URI: http://shizaTest#NEW_CLASS_2
+			 URI: http://shizaTest/ONTO_TEST#CLASS3
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 1
+List of Evolutionary Actions:
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest/ONTO_TEST#CLASS1
 ======================================
 
 
@@ -30,13 +74,49 @@ List of Evolutionary Actions:
 Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 6
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@4cb45527
-	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@2fd94676
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@6d8fada2
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@464b4d36
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@28b835b5
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2474df51
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@2864d34d
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@5fb514c2
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@3e9b3b3c
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@3c97f5e9
 	> ADD CLASS : EVOLUTIONARY ACTION
-			 URI: http://shizaTest#Old_Class2
+			 URI: http://shizaTest/ONTO_TEST#CLASS1
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 4
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@32e7b78d
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@4583b617
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@22a63740
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest/ONTO_TEST#CLASS2
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 8
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@211da640
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@2ec92631
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@76220ef1
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@65ad2b42
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@294ebe11
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@4e51eda7
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@2862271a
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://shizaTest/ONTO_TEST#CLASS1
 ======================================
 
 

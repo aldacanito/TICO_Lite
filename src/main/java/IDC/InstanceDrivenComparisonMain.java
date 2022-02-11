@@ -61,18 +61,31 @@ public class InstanceDrivenComparisonMain
     
     public static void startTest()
     {
-        String dir            = "Indexes/TestOnto/";
-        String onto_path      = dir + "shizaTest_base.ttl" ;
-        String instance_path  = dir + "shizaTest_newInstance.ttl" ;
-        String print_path = dir + "evolvedModel.ttl";
+//        String dir            = "Indexes/TestOnto/";
+//        String onto_path      = dir + "shizaTest_base.ttl" ;
+//        String instance_path  = dir + "shizaTest_newInstance.ttl" ;
+//        String print_path = dir + "evolvedModel.ttl";
+//        
+//        runComparator(onto_path, instance_path, print_path, 0); 
+//        
+//         onto_path      = dir + "evolvedModel.ttl" ;
+//         instance_path  = dir + "evolvedModel2.ttl" ;
+//         print_path     = dir + "evolvedModel3.ttl";
+//         
+//         runComparator(onto_path, instance_path, print_path, 0); 
+         
+         String dir            = "Indexes/TestOnto/";
+        String onto_path      = dir + "ONTOTEST1.ttl" ;
+        String instance_path  = dir + "ONTOTEST_INSTANCIAS.ttl" ;
+        String print_path = dir + "ONTOTEST_EVOLVED.ttl";
         
         runComparator(onto_path, instance_path, print_path, 0); 
         
-         onto_path      = dir + "evolvedModel.ttl" ;
+         onto_path      = dir + "ONTOTEST_EVOLVED.ttl" ;
          instance_path  = dir + "evolvedModel2.ttl" ;
          print_path     = dir + "evolvedModel3.ttl";
          
-         runComparator(onto_path, instance_path, print_path, 0); 
+//         runComparator(onto_path, instance_path, print_path, 0); 
        
         
     }

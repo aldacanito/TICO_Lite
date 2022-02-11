@@ -961,47 +961,8 @@ public class OntologyUtils
         return ret;
     }
 
-    public static void copyIndividual(Individual ind, OntModel model) 
-    {
-        //copy class
-        //copy DTP
-        //copy OP
-        
-        Individual newInd = model.createIndividual(ind.getOntClass(true));
-        
-        List <OntClass> listOntClasses = ind.listOntClasses(true).toList();
-        
-        for(OntClass c : listOntClasses)
-            newInd.addOntClass(c);
-       
-        List<Statement> properties = ind.listProperties().toList();
+   
     
-        for(Statement prop : properties)
-        {
-            Triple t = prop.asTriple();
-            Node predicate = t.getPredicate();
-            Node object = t.getObject();
-            
-            OntProperty predicateP = model.getOntProperty(predicate.getURI());
-            if(predicateP==null)
-                predicateP = model.createOntProperty(predicate.getURI());
-            
-            
-            if(object.isLiteral())
-            {
-                Object literalValue = object.getLiteralValue();
-                
-               
-                
-                
-            
-            }
-            
-            
-            
-        }
-        
-    }
 
     public static Individual getIndividual(String URI, OntModel ontModel) 
     {
@@ -1009,10 +970,10 @@ public class OntologyUtils
         
         List<Individual> toList = ontModel.listIndividuals().toList();
     
-        System.out.println("==Looking for individual: " + URI);
+      //  System.out.println("==Looking for individual: " + URI);
         for(Individual ind : toList)
         {
-            System.out.println("\tParsing ... " + ind.getURI());
+        //    System.out.println("\tParsing ... " + ind.getURI());
             
             if(parts.length == 2 && ind.getURI().contains(parts[1]))
                 return ind;

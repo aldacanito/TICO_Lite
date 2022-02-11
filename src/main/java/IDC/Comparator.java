@@ -24,13 +24,9 @@ import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Ontology;
-import org.apache.jena.ontology.Restriction;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
-import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFList;
-import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.util.ResourceUtils;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
@@ -79,6 +75,7 @@ public class Comparator
         // reasoner desligado
         ExtendedIterator<Individual> listIndividuals = instanceModel.listIndividuals();
 
+        
         while(listIndividuals.hasNext())
         {
             Individual instance = listIndividuals.next();
@@ -89,16 +86,16 @@ public class Comparator
             this.compareShapes(instance);
         }
         
-//        executer.execute(ontologyModel, ontologyModel);
-        
-        //evolvedModel.add(Comparator.temporal_instancesModel);
-        
-//        copyTimeEntities(Comparator.temporal_instancesModel, evolvedModel);
-        
-        Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/ontologyModel1.ttl");
 
-        
+        // primeira coisa a fazer é copiar todas as instâncias pro modelo evolved
+        // depois gerir as instancias DESSE modelo sempre
+
+
         executer.execute(ontologyModel, evolvedModel);
+        
+        Utils.OntologyUtils.writeModeltoFile(instanceModel, "Indexes/TestOnto/middle_instance.ttl");
+        Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/middle_original.ttl");
+        Utils.OntologyUtils.writeModeltoFile(evolvedModel,  "Indexes/TestOnto/middle_evolved.ttl");
 
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions();
@@ -107,93 +104,7 @@ public class Comparator
         
     }
    
-    private void copyTimeEntities(OntModel source, OntModel target)
-    {
-        OntClass instantClass = source.getOntClass(OntologyUtils.INSTANT_CLS);
-        List<Individual> instants = source.listIndividuals(instantClass).toList();
-    
-        for(Individual instant : instants)
-            OntologyUtils.copyIndividual(instant, evolvedModel);
-        
-        OntClass intervalClass = source.getOntClass(OntologyUtils.INTERVAL_CLS);
-        List<Individual> intervals = source.listIndividuals(intervalClass).toList();
-    
-        for(Individual interval : intervals)
-            OntologyUtils.copyIndividual(interval, evolvedModel);
-    
-    
-    }
-    
-    
-   
-    private void compareShapes(Individual instance)
-    {
-        boolean ignore = Utilities.isInIgnoreList(instance.getURI());
-        if(ignore) return;
-       
-        ClassCompareShape shapeC  = new ClassCompareShape(instance, ontologyModel);
-        shapeC.setup(ontologyModel, evolvedModel);
-        
-        EvolutionaryAction compare = shapeC.compare();
-        this.executer.add(compare);
-    
-    }
-    
-    
-    private void compareProperties(Individual instance)
-    {
-        List<Statement> listProperties = instance.listProperties().toList();
-               
-        for(Statement stmt : listProperties)
-        {
-            Utilities.logInfo(OntologyUtils.printStatement(stmt));
-            this.compareProperty(stmt);
-        }
-    }
-    
-   
-    private void compareProperty(Statement t)
-    {
-        boolean ignore = Utilities.isInIgnoreList(t.getPredicate().getURI());
-        
-        if(ignore) return;
-        IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t, this.ontologyModel);
-        
-        if(comparator != null)
-        {
-            EvolutionaryAction compare = comparator.compare();
-            this.executer.add(compare);
-        }      
-    }
 
-    
-    /*
-    * Verifica se as classes da instânica existem. Se não, adiciona-as.
-    */
-    private void compareClasses(Individual instance) 
-    {
-        ExtendedIterator<OntClass> listOntClasses = instance.listOntClasses(true);
-        for(OntClass cls : listOntClasses.toList())
-        {
-            boolean ignore = Utilities.isInIgnoreList(cls.getURI());
-            
-            if(ignore) continue;
-            
-            IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(cls, this.ontologyModel); 
-            
-            if(classComparator!=null)
-            {
-                IAddClass createAddClassAction = (IAddClass) classComparator.compare();
-                if(createAddClassAction!=null)
-                    this.executer.add(createAddClassAction);  
-            }
-        }
-    }
-
-    public String printStats() 
-    {
-        return this.executer.toString();
-    }
 
     private void updateTemporalRestrictions() 
     {
@@ -201,14 +112,22 @@ public class Comparator
         List <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
         LocalDateTime now      = LocalDateTime.now();  
         
+        System.out.println("New Classes:");
         for(OntClass newCls : e_ontClasses)
         {
             String uri      = newCls.getURI();
-            if(uri == null || Utilities.isInClassIgnoreList(uri) ) 
+            if(uri == null || Utilities.isInIgnoreList(uri) ) 
                 continue;
-            
-            System.out.println("NEW CLASS URI: " + uri);
-            
+        
+            System.out.println("\t> URI: " + uri);
+        }
+        
+        for(OntClass newCls : e_ontClasses)
+        {
+            String uri      = newCls.getURI();
+            if(uri == null || Utilities.isInIgnoreList(uri) ) 
+                continue;
+                        
             OntClass oldCls = ontologyModel.getOntClass(uri);
             
             if(oldCls==null || Utilities.isInIgnoreList(oldCls.getURI()))
@@ -466,26 +385,7 @@ public class Comparator
 
 
 
-    private void copyInstances(OntModel ontologyModel, OntModel evolvedModel) 
-    {
-        List<Individual> individuals = ontologyModel.listIndividuals().toList();
-    
-        for(Individual i : individuals)
-        {
-            if(i.getURI()!=null && !i.getURI().contains(OntologyUtils.ONT_TIME_URL))
-            {
-                evolvedModel.createIndividual(i);
-            }
-            
-//            
-//            Statement stmtT = i.asResource().getStmtTerm();
-//            
-//            if( stmtT != null && stmtT.getSubject() != null && stmtT.getPredicate()!=null
-//                    && stmtT.getObject() != null)
-//                evolvedModel.add(i.asResource().getStmtTerm());
-        }
-        
-    }
+
 
     private void addClassRestrictions() 
     {       
@@ -512,4 +412,77 @@ public class Comparator
         
     
     }
+    
+      
+    private void compareProperty(Statement t)
+    {
+        boolean ignore = Utilities.isInIgnoreList(t.getPredicate().getURI());
+        
+        if(ignore) return;
+        IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t, this.ontologyModel);
+        
+        if(comparator != null)
+        {
+            EvolutionaryAction compare = comparator.compare();
+            this.executer.add(compare);
+        }      
+    }
+
+    
+    /*
+    * Verifica se as classes da instânica existem. Se não, adiciona-as.
+    */
+    private void compareClasses(Individual instance) 
+    {
+        ExtendedIterator<OntClass> listOntClasses = instance.listOntClasses(true);
+        for(OntClass cls : listOntClasses.toList())
+        {
+            boolean ignore = Utilities.isInIgnoreList(cls.getURI());
+            
+            if(ignore) continue;
+            
+            IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(cls, this.ontologyModel); 
+            
+            if(classComparator!=null)
+            {
+                IAddClass createAddClassAction = (IAddClass) classComparator.compare();
+                if(createAddClassAction!=null)
+                    this.executer.add(createAddClassAction);  
+            }
+        }
+    }
+
+    
+       private void compareShapes(Individual instance)
+    {
+        boolean ignore = Utilities.isInIgnoreList(instance.getURI());
+        if(ignore) return;
+       
+        ClassCompareShape shapeC  = new ClassCompareShape(instance, ontologyModel);
+        shapeC.setup(ontologyModel, evolvedModel);
+        
+        EvolutionaryAction compare = shapeC.compare();
+        this.executer.add(compare);
+    
+    }
+    
+    
+    private void compareProperties(Individual instance)
+    {
+        List<Statement> listProperties = instance.listProperties().toList();
+               
+        for(Statement stmt : listProperties)
+        {
+            Utilities.logInfo(OntologyUtils.printStatement(stmt));
+            this.compareProperty(stmt);
+        }
+    }
+    
+        
+ 
+    public String printStats() 
+    {
+        return this.executer.toString();
+    }
+    
 }

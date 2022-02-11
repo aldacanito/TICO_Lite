@@ -52,7 +52,6 @@ public class AddAllValuesFromRestriction extends AddRestriction
     {
         Restriction restriction = null;
         
-        // TODO: TESTAR
         if(onProperty!=null && this.rangeClass!=null)
         {
             System.out.println("Adding AllValuesFromRestriction to " + this.ontClass.getURI() + " on Property " + onProperty.getURI());    

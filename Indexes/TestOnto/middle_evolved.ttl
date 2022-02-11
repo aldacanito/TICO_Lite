@@ -1,0 +1,210 @@
+@prefix :     <http://shizaTest/ONTO_TEST#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<>      rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+rdfs:domain  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdfs:Class .
+
+owl:DatatypeProperty  rdf:type  rdfs:Class , rdfs:Resource .
+
+:CLASS3_1  rdf:type  :CLASS3 , owl:NamedIndividual ;
+        :OP2      :CLASS1_1 .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  :CLASS1 ;
+  owl:onProperty     :OP1
+] .
+
+:OP2    rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
+
+owl:ObjectProperty  rdf:type  rdfs:Class , rdfs:Resource .
+
+:CLASS2_1  rdf:type  :CLASS2 , owl:NamedIndividual ;
+        :OP2      :CLASS1_2 .
+
+rdfs:comment  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:range  rdfs:Literal .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :OP2
+] .
+
+owl:Ontology  rdf:type  rdfs:Class , rdfs:Resource .
+
+:CLASS1_1  rdf:type  :CLASS1 , owl:NamedIndividual ;
+        :DT1      "1.0"^^xsd:float ;
+        :OP1      :CLASS1_1 ;
+        :OP2      :CLASS1_2 .
+
+rdf:first  rdf:type         rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:List ;
+        rdfs:subPropertyOf  rdf:first .
+
+[ rdf:type            owl:Restriction ;
+  owl:onProperty      :OP2 ;
+  owl:someValuesFrom  :CLASS1
+] .
+
+rdf:object  rdf:type        rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:object .
+
+rdfs:subPropertyOf  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdf:Property .
+
+rdf:Alt  rdf:type        rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Container , rdf:Alt .
+
+owl:Class  rdf:type  rdfs:Class , rdfs:Resource .
+
+rdf:List  rdf:type       rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdf:List , rdfs:Resource .
+
+rdf:Statement  rdf:type  rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdf:Statement , rdfs:Resource .
+
+rdf:Seq  rdf:type        rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Container , rdf:Seq .
+
+:OP1    rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
+
+owl:NamedIndividual  rdf:type  rdfs:Class , rdfs:Resource .
+
+rdfs:ContainerMembershipProperty
+        rdf:type         rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdf:Property , rdfs:ContainerMembershipProperty .
+
+rdf:Property  rdf:type   rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdf:Property , rdfs:Resource .
+
+rdf:XMLLiteral  rdf:type  rdfs:Class , rdfs:Resource , rdfs:Datatype .
+
+rdf:nil  rdf:type  rdfs:Resource , rdf:List .
+
+rdfs:range  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:domain  rdf:Property ;
+        rdfs:range   rdfs:Class .
+
+rdfs:isDefinedBy  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:seeAlso , rdfs:isDefinedBy .
+
+rdfs:Container  rdf:type  rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Container .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :OP1
+] .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :OP1
+] .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :OP2
+] .
+
+rdf:Bag  rdf:type        rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Container , rdf:Bag .
+
+:CLASS4  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+rdfs:label  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:range  rdfs:Literal .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   :OP1
+] .
+
+rdf:predicate  rdf:type     rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:predicate .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  :CLASS1 ;
+  owl:onProperty     :OP2
+] .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  :CLASS1 ;
+  owl:onProperty     :OP2
+] .
+
+:CLASS3  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+rdfs:subClassOf  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:domain  rdfs:Class ;
+        rdfs:range   rdfs:Class .
+
+rdfs:Resource  rdf:type  rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Resource .
+
+:DT2    rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+rdf:rest  rdf:type          rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:List ;
+        rdfs:range          rdf:List ;
+        rdfs:subPropertyOf  rdf:rest .
+
+rdf:type  rdf:type  rdf:Property , rdfs:Resource ;
+        rdfs:range  rdfs:Class .
+
+rdfs:Class  rdf:type     rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Class , rdfs:Resource .
+
+:CLASS1_3  rdf:type  :CLASS1 , owl:NamedIndividual .
+
+rdfs:Datatype  rdf:type  rdfs:Class , rdfs:Resource ;
+        rdfs:subClassOf  rdfs:Resource , rdfs:Class , rdfs:Datatype .
+
+:CLASS2  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:DT1    rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+:CLASS3_2  rdf:type  owl:NamedIndividual , :CLASS3 ;
+        :DT1      "3.0"^^xsd:float ;
+        :DT2      "3.0"^^xsd:float .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  :CLASS1 ;
+  owl:onProperty     :OP1
+] .
+
+rdf:subject  rdf:type       rdfs:Resource , rdf:Property ;
+        rdfs:domain         rdf:Statement ;
+        rdfs:subPropertyOf  rdf:subject .
+
+rdfs:seeAlso  rdf:type      rdf:Property , rdfs:Resource ;
+        rdfs:subPropertyOf  rdfs:seeAlso .
+
+rdfs:Literal  rdf:type   rdfs:Resource , rdfs:Class ;
+        rdfs:subClassOf  rdfs:Literal , rdfs:Resource .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  :CLASS2 ;
+  owl:onProperty     :OP1
+] .
+
+:CLASS1_2  rdf:type  :CLASS1 , owl:NamedIndividual ;
+        :DT2      "2.0"^^xsd:float ;
+        :OP2      :CLASS2_1 .
+
+<http://shizaTest/ONTO_TEST>
+        rdf:type  owl:Ontology .
+
+:CLASS1  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:CLASS4_1  rdf:type  owl:NamedIndividual , :CLASS4 ;
+        :OP1      :CLASS2_1 .
