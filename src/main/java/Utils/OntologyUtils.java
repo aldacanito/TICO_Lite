@@ -5,6 +5,7 @@
  */
 package Utils;
 
+import IDC.EvolActions.Impl.Additions.AddClass;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.apache.jena.datatypes.RDFDatatype;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.AllValuesFromRestriction;
@@ -766,7 +768,6 @@ public class OntologyUtils
         
         if(cls.isEnumeratedClass())
         {
-            // TODO TESTAR
             EnumeratedClass asEnumeratedClass = cls.asEnumeratedClass();
             RDFList oneOf = asEnumeratedClass.getOneOf();
             EnumeratedClass enumClass = newClass.getOntModel().createEnumeratedClass(null, oneOf);
@@ -793,9 +794,17 @@ public class OntologyUtils
         
         if(cls.isUnionClass())
         {
-            UnionClass asUnionClass = cls.asUnionClass();
-            UnionClass newUnionClass = newClass.getOntModel().createUnionClass(null, asUnionClass.getOperands());
-            addRestriction(restrictionType, newClass, newUnionClass);
+            try
+            {
+                UnionClass asUnionClass = cls.asUnionClass();
+                UnionClass newUnionClass = newClass.getOntModel().createUnionClass(null, asUnionClass.getOperands());
+                addRestriction(restrictionType, newClass, newUnionClass);
+            }
+            catch(Exception e)
+            {
+                System.out.println("Failed to convert node to Union class. Not copying.");
+                
+            }
         }
         
         if(cls.isComplementClass())
@@ -984,5 +993,62 @@ public class OntologyUtils
         }
     
        return null;
+    }
+
+    public static void copyIndividual(Individual instance, OntModel model)
+    {
+        Individual new_ind = model.createIndividual(instance.getOntClass(true));
+        
+        List<Statement> propertyStmtList = instance.listProperties().toList();            
+            
+        //copy all classes
+        
+        List<OntClass> ontClasses = instance.listOntClasses(true).toList();
+        
+        for(OntClass cls : ontClasses)
+        {
+            if(cls.getURI()!=null && model.getOntClass(cls.getURI())==null)
+            {
+                model.createClass(cls.getURI());
+                new_ind.addOntClass(cls);
+            }
+        }
+        
+        // copy all properties
+        for(Statement stmt : propertyStmtList)
+        {
+            Property predicate = stmt.getPredicate();
+            RDFNode object     = stmt.getObject();
+            
+            Property newProperty = model.getProperty(predicate.getURI());
+            if(newProperty==null)
+                model.createProperty(predicate.getLocalName());
+            
+            if(object.isURIResource()) // objectProperty
+            {
+                Resource asResource = object.asResource();
+                OntResource ontResource = model.getOntResource(asResource.getURI());
+                
+                RDFNode newObj;
+                
+                if(ontResource==null) // nao existe no modelo novo
+                    newObj = model.createIndividual(asResource.getURI(), null);
+                else
+                    newObj = ontResource;
+                
+                new_ind.addProperty(newProperty, newObj);
+                
+            }
+            else if(object.isLiteral())
+            {
+                RDFDatatype datatype = object.asLiteral().getDatatype();
+                String value         =  object.asLiteral().getString();
+            
+                new_ind.addProperty(newProperty, value, datatype);
+                
+            }
+           
+            
+        }
     }
 }

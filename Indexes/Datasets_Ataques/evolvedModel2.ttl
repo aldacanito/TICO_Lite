@@ -1,0 +1,2115 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#TS__extAttack__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extAttack 1" , "Attack"@en ;
+        rdfs:subClassOf      <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttack>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAttack__2>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174852786> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://www.gecad.isep.ipp.pt/ASIIO#extAttack> <http://www.gecad.isep.ipp.pt/ASIIO#extAttack>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852786> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175001527> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.w3.org/2004/02/skos/core#definition>
+        rdf:type  owl:AnnotationProperty .
+
+<urn:default:baseUri:#weekOne>
+        rdf:type            owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  <urn:default:baseUri:#weekOne> .
+
+<http://www.w3.org/2006/time#Interval>
+        rdf:type  owl:Class .
+
+<20220215175004071>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://purl.org/dc/terms/created>
+        rdf:type  owl:AnnotationProperty .
+
+<urn:default:baseUri:#weekZero>
+        rdf:type            owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  <urn:default:baseUri:#weekZero> .
+
+<Interval_st_20220215175002706>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215175002706> .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848497>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848497> .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy>
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:label          "launchedBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extLaunches> ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHas>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "has"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAttack>
+        rdf:type         owl:Class ;
+        rdfs:label       "Attack"@en ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAttack__2>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
+                           owl:someValuesFrom  rdfs:Literal
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                           owl:someValuesFrom  rdfs:Literal
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                           owl:someValuesFrom  rdfs:Literal
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  <http://www.gecad.isep.ipp.pt/ASIIO#extVulnerability> ;
+                           owl:onProperty               <http://www.gecad.isep.ipp.pt/ASIIO#extExploits>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAttack__1>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
+                           owl:someValuesFrom  rdfs:Literal
+                         ] ;
+        <http://purl.org/dc/terms/created>
+                "24/Feb/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        <http://www.w3.org/2004/02/skos/core#definition>
+                "An attempt by an unauthorized individual to fool a Verifier or a Relying Party into believing that the unauthorized individual in question is the Subscriber" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasSourceAsset>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "hasSourceAsset"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "28/May/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+        owl:versionInfo     1 .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extIsTriggeredBy>
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:label          "triggeredBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extTriggers> ;
+        owl:versionInfo     "2" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+        rdf:type  owl:Class .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567657>
+        rdf:type                        <urn:default:baseUri:#extIncident> , rdfs:Resource , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> , owl:NamedIndividual ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1309330000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1309330000_st> ;
+        <urn:default:baseUri:#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#89567657_attack> , <http://www.gecad.isep.ipp.pt/ASIIO#607594b2da9e9104e2883c43> , <http://www.gecad.isep.ipp.pt/ASIIO#6075921eda9e9104e2883974> , <http://www.gecad.isep.ipp.pt/ASIIO#6075903eda9e9104e2883768> , <http://www.gecad.isep.ipp.pt/ASIIO#607590f3da9e9104e288382d> ;
+        <urn:default:baseUri:#extDescription>
+                "" ;
+        <urn:default:baseUri:#extHasCriticality>
+                <urn:default:baseUri:#MEDIUM> ;
+        <urn:default:baseUri:#generatedIn>
+                "Cenarios 1 ou 2" ;
+        <urn:default:baseUri:#week>     "2" ;
+        <urn:default:baseUri:#weekOne>  "no" ;
+        <urn:default:baseUri:#weekTwo>  "yes" ;
+        <urn:default:baseUri:#weekZero>
+                "no" .
+
+<urn:default:baseUri:#extIncident>
+        rdf:type             owl:Class ;
+        rdfs:subClassOf      _:b0 ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extIncident__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extIncident__0>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   <urn:default:baseUri:#extHasCriticality>
+                             ] ;
+        owl:equivalentClass  _:b0 .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567657_attackType>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extScenario2> , <urn:default:baseUri:#extAttackType> , owl:NamedIndividual .
+
+<urn:default:baseUri:#TS__extAttackType__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extAttackType 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extAttackType__0>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extAttackType>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215175003553> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extAttackType> <urn:default:baseUri:#extAttackType>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175003553> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89610535>
+        rdf:type                        owl:NamedIndividual , <urn:default:baseUri:#extIncident> , rdfs:Resource , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> ;
+        <urn:default:baseUri:#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8> ;
+        <urn:default:baseUri:#extDescription>
+                "" ;
+        <urn:default:baseUri:#extHasCriticality>
+                <urn:default:baseUri:#MEDIUM> ;
+        <urn:default:baseUri:#generatedIn>
+                "Zagreb" ;
+        <urn:default:baseUri:#week>     "3" ;
+        <urn:default:baseUri:#weekOne>  "no" ;
+        <urn:default:baseUri:#weekThree>
+                "yes" ;
+        <urn:default:baseUri:#weekTwo>  "no" ;
+        <urn:default:baseUri:#weekZero>
+                "no" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasTargetEvent>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "hasTargetEvent"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "28/May/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extTargetEventOf> ;
+        owl:versionInfo     1 .
+
+<20220215175003553>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<urn:default:baseUri:#extHasCriticality>
+        rdf:type  rdf:Property , owl:TransitiveProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89612204_attack>
+        rdf:type  <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , rdfs:Resource , owl:NamedIndividual ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> .
+
+[ rdf:type            owl:Restriction ;
+  owl:onProperty      <urn:default:baseUri:#extHas> ;
+  owl:someValuesFrom  owl:NamedIndividual
+] .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+[ rdf:type  owl:Ontology ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#TS__extAlert__2>
+        rdf:type             owl:Class ;
+        rdfs:label           "Alert"@en , "TimeSlice extAlert 2" ;
+        rdfs:subClassOf      <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAlert__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAlert>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215175004071> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://www.gecad.isep.ipp.pt/ASIIO#extAlert> <http://www.gecad.isep.ipp.pt/ASIIO#extAlert>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175004071> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<urn:default:baseUri:#TS__extEvent__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extEvent 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extEvent__0>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215175000641> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extEvent> <urn:default:baseUri:#extEvent>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175000641> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89610542_attack>
+        rdf:type  <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , rdfs:Resource , owl:NamedIndividual ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89612224>
+        rdf:type                        rdfs:Resource , <urn:default:baseUri:#extIncident> , owl:NamedIndividual , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> ;
+        <urn:default:baseUri:#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf> , <http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795> ;
+        <urn:default:baseUri:#extDescription>
+                "" ;
+        <urn:default:baseUri:#extHasCriticality>
+                <urn:default:baseUri:#MEDIUM> ;
+        <urn:default:baseUri:#generatedIn>
+                "Zagreb" ;
+        <urn:default:baseUri:#week>     "3" ;
+        <urn:default:baseUri:#weekOne>  "no" ;
+        <urn:default:baseUri:#weekThree>
+                "yes" ;
+        <urn:default:baseUri:#weekTwo>  "no" ;
+        <urn:default:baseUri:#weekZero>
+                "no" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAlert>
+        rdf:type         owl:Class ;
+        rdfs:label       "Alert"@en ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.gecad.isep.ipp.pt/ASIIO#extSeverityValuePartition> ;
+                           owl:onProperty            <http://www.gecad.isep.ipp.pt/ASIIO#extHasSeverity> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAlert__1>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAlert__2>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> ;
+                           owl:onProperty            <http://www.gecad.isep.ipp.pt/ASIIO#extIsTriggeredBy> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.gecad.isep.ipp.pt/ASIIO#extStatusValuePartition> ;
+                           owl:onProperty            <http://www.gecad.isep.ipp.pt/ASIIO#extHasStatus> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        <http://purl.org/dc/terms/created>
+                "14/Nov/2019" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        <http://www.w3.org/2004/02/skos/core#definition>
+                "A notification that a specific attack has been directed at an organizationâ??s information systems."@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89612195_attack>
+        rdf:type  <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , rdfs:Resource , owl:NamedIndividual ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#TS__extAttack__2>
+        rdf:type             owl:Class ;
+        rdfs:label           "Attack"@en , "TimeSlice extAttack 2" ;
+        rdfs:subClassOf      <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215175001527> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttack>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extLaunchedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttacker>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAttack__1>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://www.gecad.isep.ipp.pt/ASIIO#extAttack> <http://www.gecad.isep.ipp.pt/ASIIO#extAttack>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175001527> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st>
+        rdf:type    <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , owl:NamedIndividual , rdfs:Resource , <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T13:50:30+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extIncident>
+        rdf:type         owl:Class ;
+        rdfs:label       "Incident"@en ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.w3.org/2006/time#Instant> ;
+                           owl:onProperty            <http://www.w3.org/2006/time#hasBeginning> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                           owl:someValuesFrom  xsd:long
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction ;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass                  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> ;
+                           owl:onProperty               <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                           owl:someValuesFrom  rdfs:Literal
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extIncident__1>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                           owl:someValuesFrom  xsd:long
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                           owl:someValuesFrom  rdfs:Literal
+                         ] ;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
+                           owl:onClass               <http://www.w3.org/2006/time#Instant> ;
+                           owl:onProperty            <http://www.w3.org/2006/time#hasEnd> ;
+                           owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extIncident__2>
+                         ] ;
+        <http://purl.org/dc/terms/created>
+                "14/Nov/2019" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "15/Nov/2019" ;
+        owl:versionInfo  "2" ;
+        <http://www.w3.org/2004/02/skos/core#definition>
+                "An Event (or group of Events) that compromises an Asset. An Incident may be retroactively classified as an attack. Additionally, it has some sort of impact within the organization, which is described by its severity and completion level."@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60759e8ada9e9104e28846f7>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567604>
+        rdf:type                        <urn:default:baseUri:#extIncident> , owl:Thing , owl:NamedIndividual , rdfs:Resource , <http://www.w3.org/2006/time#TemporalEntity> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1156440000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1156440000_st> ;
+        <urn:default:baseUri:#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#60758757da9e9104e2882d89> , <http://www.gecad.isep.ipp.pt/ASIIO#89567604_attack> , <http://www.gecad.isep.ipp.pt/ASIIO#60758846da9e9104e2882e93> , <http://www.gecad.isep.ipp.pt/ASIIO#607586a2da9e9104e2882cc2> ;
+        <urn:default:baseUri:#extDescription>
+                "" ;
+        <urn:default:baseUri:#extHasCriticality>
+                <urn:default:baseUri:#MEDIUM> ;
+        <urn:default:baseUri:#generatedIn>
+                "Cenarios 1 ou 2" ;
+        <urn:default:baseUri:#week>     "2" ;
+        <urn:default:baseUri:#weekOne>  "no" ;
+        <urn:default:baseUri:#weekTwo>  "yes" ;
+        <urn:default:baseUri:#weekZero>
+                "no" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6075921eda9e9104e2883974>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extScenario5>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
+<20220215175001527>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://purl.org/dc/terms/creator>
+        rdf:type  owl:AnnotationProperty .
+
+<urn:default:baseUri:#TS__extScenario2__0>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extScenario2 0" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extScenario2__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848483> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extScenario2>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extScenario2> <urn:default:baseUri:#extScenario2>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848483> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175000163> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89610542>
+        rdf:type                        <urn:default:baseUri:#extIncident> , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> , owl:NamedIndividual , rdfs:Resource ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> ;
+        <urn:default:baseUri:#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395> , <http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419> ;
+        <urn:default:baseUri:#extDescription>
+                "" ;
+        <urn:default:baseUri:#extHasCriticality>
+                <urn:default:baseUri:#MEDIUM> ;
+        <urn:default:baseUri:#generatedIn>
+                "Zagreb" ;
+        <urn:default:baseUri:#week>     "3" ;
+        <urn:default:baseUri:#weekOne>  "no" ;
+        <urn:default:baseUri:#weekThree>
+                "yes" ;
+        <urn:default:baseUri:#weekTwo>  "no" ;
+        <urn:default:baseUri:#weekZero>
+                "no" .
+
+<Interval_st_20220215175004625>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215175004625> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#TS__extIncident__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extIncident 1" , "Incident"@en ;
+        rdfs:subClassOf      <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extIncident>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174852085> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extIncident__2>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> <http://www.gecad.isep.ipp.pt/ASIIO#extIncident>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852085> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175002706> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st>
+        rdf:type    <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , owl:NamedIndividual , rdfs:Resource , <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T10:09:49+00:00" .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848497>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasStatus>
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:label          "hasStatus"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extStatusOf> ;
+        owl:versionInfo     "2" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extIsPartOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "isPartOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extExploitedBy>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "exploitedBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extExploits> ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567667_attack>
+        rdf:type                       rdfs:Resource , <urn:default:baseUri:#extAttack> , owl:NamedIndividual , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1328590000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1328590000_st> ;
+        <urn:default:baseUri:#extHas>  <http://www.gecad.isep.ipp.pt/ASIIO#89567667_attackType> .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848565>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848565> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+        rdf:type  owl:DatatypeProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extConfigurationAffectedBy>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "configurationAffectedBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+<urn:default:baseUri:#extHas>
+        rdf:type  rdf:Property , owl:TransitiveProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210413T1156440000_st>
+        rdf:type    <http://www.w3.org/2006/time#Instant> , rdfs:Resource , owl:NamedIndividual , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> ;
+        rdfs:label  "2021-04-13T11:56:44+00:00" .
+
+<http://www.w3.org/2006/time#hasDuration>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extExposes>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "exposes"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasVerison>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "hasVersion"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "24/Feb/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extVersionOf> ;
+        owl:versionInfo     "1" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st>
+        rdf:type    <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , owl:NamedIndividual , rdfs:Resource , <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T10:15:49+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extSeverityValuePartition>
+        rdf:type  owl:Class .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567657_attack>
+        rdf:type                       rdfs:Resource , <urn:default:baseUri:#extAttack> , owl:NamedIndividual , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1309330000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1309330000_st> ;
+        <urn:default:baseUri:#extHas>  <http://www.gecad.isep.ipp.pt/ASIIO#89567657_attackType> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty>
+        rdf:type         owl:ObjectProperty ;
+        rdfs:label       "objectProperty"@en ;
+        <http://purl.org/dc/terms/created>
+                "27/May/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo  "1" .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+<Interval_st_20220215175005874>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215175005874> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasConfiguration>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "hasConfiguration"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "24/Feb/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "affectedBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:versionInfo     "1" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAssetAffectedBy>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "assetAffectedBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extHasAffectedAsset> ;
+        owl:versionInfo     "1"@en .
+
+<Interval_st_20220215175004071>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215175004071> .
+
+<urn:default:baseUri:#TS__extIncident__0>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extIncident 0" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extIncident__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848565> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extIncident>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extIncident> <urn:default:baseUri:#extIncident>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848565> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175005874> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+<Interval_st_20220215175000163>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215175000163> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAffectesConfiguration>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "affectsConfiguration"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "24/Feb/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extConfigurationAffectedBy> ;
+        owl:versionInfo     "1" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extPreventedBy>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "preventedBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extPrevents> ;
+        owl:versionInfo     "1"@en .
+
+<http://www.w3.org/2006/time#hasEnd>
+        rdf:type  owl:ObjectProperty .
+
+<urn:default:baseUri:#TS__extScenario2__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extScenario2 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extScenario2__0>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extScenario2>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215175000163> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extScenario2> <urn:default:baseUri:#extScenario2>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175000163> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174852085>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852085> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#TS__extIncident__2>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extIncident 2" , "Incident"@en ;
+        rdfs:subClassOf      <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extIncident__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extIncident>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215175002706> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> <http://www.gecad.isep.ipp.pt/ASIIO#extIncident>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175002706> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89612195>
+        rdf:type                        <urn:default:baseUri:#extIncident> , <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , rdfs:Resource , owl:NamedIndividual ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> ;
+        <urn:default:baseUri:#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d> , <http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea> , <http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910> , <http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22> ;
+        <urn:default:baseUri:#extDescription>
+                "" ;
+        <urn:default:baseUri:#extHasCriticality>
+                <urn:default:baseUri:#HIGH> ;
+        <urn:default:baseUri:#generatedIn>
+                "Zagreb" ;
+        <urn:default:baseUri:#week>     "3" ;
+        <urn:default:baseUri:#weekOne>  "no" ;
+        <urn:default:baseUri:#weekThree>
+                "yes" ;
+        <urn:default:baseUri:#weekTwo>  "no" ;
+        <urn:default:baseUri:#weekZero>
+                "no" .
+
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasAffectedAsset>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "hasAffectedAsset"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "28/May/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848565>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<Interval_st_20220215175003553>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215175003553> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extScenario1>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
+<urn:default:baseUri:#TS__extAttack__0>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extAttack 0" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extAttack__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848544> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extAttack>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extAttack> <urn:default:baseUri:#extAttack>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848544> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215174959461> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+<urn:default:baseUri:#weekThree>
+        rdf:type  owl:FunctionalProperty , rdf:Property .
+
+<http://www.w3.org/2006/time#Instant>
+        rdf:type  owl:Class .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#607594b2da9e9104e2883c43>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848434>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848434> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extBelongsTo>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "belongsTo"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extHas> ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567604_attackType>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extScenario2> , <urn:default:baseUri:#extAttackType> , owl:NamedIndividual .
+
+<urn:default:baseUri:#generatedIn>
+        rdf:type            owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  <urn:default:baseUri:#generatedIn> .
+
+<urn:default:baseUri:#extScenario2>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <urn:default:baseUri:#TS__extScenario2__1>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <urn:default:baseUri:#TS__extScenario2__0>
+                         ] .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  owl:ObjectProperty .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "0"^^xsd:int ;
+  owl:onProperty   <urn:default:baseUri:#extHasCriticality>
+] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extExposedBy>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "exposedBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "24/Feb/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extExposes> ;
+        owl:versionInfo     "1" .
+
+<http://www.w3.org/2006/time#isTimeSliceOf>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extTargetEventOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "targetEventOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+<urn:default:baseUri:#extEvent>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <urn:default:baseUri:#TS__extEvent__1>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <urn:default:baseUri:#TS__extEvent__0>
+                         ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extConfigurationOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "configurationOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extHasConfiguration> ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extCausedBy>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "causedBy"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extCauses> ;
+        owl:versionInfo     "1"@en .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "0"^^xsd:int ;
+  owl:onProperty   <urn:default:baseUri:#extHas>
+] .
+
+<urn:default:baseUri:#TS__extIncident__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extIncident 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extIncident__0>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <urn:default:baseUri:#extConsistsOf> ;
+                               owl:someValuesFrom  owl:NamedIndividual
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   <urn:default:baseUri:#extHasCriticality>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extIncident>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215175005874> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <urn:default:baseUri:#extConsistsOf> ;
+                               owl:someValuesFrom  owl:NamedIndividual
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extIncident> <urn:default:baseUri:#extIncident>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175005874> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<Interval_st_20220215175000641>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215175000641> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<Interval_st_20220215175001527>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215175001527> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAsset>
+        rdf:type         owl:Class ;
+        rdfs:label       "Asset"@en ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                           owl:someValuesFrom  rdfs:Literal
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAsset__1>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAsset__2>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                           owl:someValuesFrom  rdfs:Literal
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                           owl:someValuesFrom  xsd:long
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                           owl:someValuesFrom  xsd:long
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+                         ] ;
+        <http://purl.org/dc/terms/created>
+                "14/Nov/2019" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "28/May/2020" ;
+        owl:versionInfo  4 ;
+        <http://www.w3.org/2004/02/skos/core#definition>
+                "Information or resource which have value to an organization or person."@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "sourceAssetOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174852647>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852647> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extSeverityOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "severityOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extCauses>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "causes"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "24/Feb/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extLaunches>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "launches"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "24/Feb/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+<20220215174959461>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852085>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasSourceEvent>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "hasSourceEvent"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "28/May/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extSourceEventOf> ;
+        owl:versionInfo     1 .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174852786>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852786> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extVersionOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "versionOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60759c6eda9e9104e28844a9>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848483>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848483> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#TS__extAsset__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extAsset 1" , "Asset"@en ;
+        rdfs:subClassOf      <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAsset__2>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174852647> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAsset>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://www.gecad.isep.ipp.pt/ASIIO#extAsset> <http://www.gecad.isep.ipp.pt/ASIIO#extAsset>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852647> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175004625> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasSeverity>
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:label          "hasSeverity"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extSeverityOf> ;
+        owl:versionInfo     "2" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extScenario2>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
+[ rdf:type            owl:Restriction ;
+  owl:onProperty      <urn:default:baseUri:#extConsistsOf> ;
+  owl:someValuesFrom  owl:NamedIndividual
+] .
+
+<urn:default:baseUri:#TS__extAttack__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extAttack 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extAttack__0>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  owl:NamedIndividual ;
+                               owl:onProperty     <urn:default:baseUri:#extHas>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   <urn:default:baseUri:#extHas>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extAttack>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215174959461> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extAttack> <urn:default:baseUri:#extAttack>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215174959461> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<urn:default:baseUri:#extDescription>
+        rdf:type            owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  <urn:default:baseUri:#extDescription> .
+
+<20220215175002706>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extStatusValuePartition>
+        rdf:type  owl:Class .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extType>
+        rdf:type  owl:AnnotationProperty .
+
+<urn:default:baseUri:#weekTwo>
+        rdf:type            owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  <urn:default:baseUri:#weekTwo> .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:label          "hasCriticality"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extZagreb>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extAttackType> .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848434>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+_:b0    rdf:type            owl:Restriction ;
+        owl:onProperty      <urn:default:baseUri:#extConsistsOf> ;
+        owl:someValuesFrom  owl:NamedIndividual .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174852570>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852570> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567667>
+        rdf:type                        rdfs:Resource , owl:Thing , <urn:default:baseUri:#extIncident> , owl:NamedIndividual , <http://www.w3.org/2006/time#TemporalEntity> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1328590000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1328590000_st> ;
+        <urn:default:baseUri:#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#89567667_attack> , <http://www.gecad.isep.ipp.pt/ASIIO#60759c6eda9e9104e28844a9> , <http://www.gecad.isep.ipp.pt/ASIIO#60759d9bda9e9104e28845f2> , <http://www.gecad.isep.ipp.pt/ASIIO#60759e8ada9e9104e28846f7> ;
+        <urn:default:baseUri:#extDescription>
+                "" ;
+        <urn:default:baseUri:#extHasCriticality>
+                <urn:default:baseUri:#MEDIUM> ;
+        <urn:default:baseUri:#generatedIn>
+                "Cenarios 1 ou 2" ;
+        <urn:default:baseUri:#week>     "2" ;
+        <urn:default:baseUri:#weekOne>  "no" ;
+        <urn:default:baseUri:#weekTwo>  "yes" ;
+        <urn:default:baseUri:#weekZero>
+                "no" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210413T1328590000_st>
+        rdf:type    <http://www.w3.org/2006/time#Instant> , rdfs:Resource , owl:NamedIndividual , <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing ;
+        rdfs:label  "2021-04-13T13:28:59+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extDestinationAssetOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "destinationAssetOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extHasDestinationAsset> ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extStatusOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "statusOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+        rdf:type  owl:Class .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848544>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848544> .
+
+<20220215175000163>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852647>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89612224_attack>
+        rdf:type  <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , rdfs:Resource , owl:NamedIndividual ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60758757da9e9104e2882d89>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#607590f3da9e9104e288382d>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extID>
+        rdf:type  owl:DatatypeProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAdditionalData>
+        rdf:type  owl:DatatypeProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6075903eda9e9104e2883768>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extExploits>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "exploits"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#607586a2da9e9104e2882cc2>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<urn:default:baseUri:#week>
+        rdf:type            owl:TransitiveProperty , rdf:Property , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  <urn:default:baseUri:#week> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60758846da9e9104e2882e93>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extCriticalityOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "criticalityOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality> ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extHasDestinationAsset>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "hasDestinationAsset"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "28/May/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo     1 .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89610535_attack>
+        rdf:type  <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , rdfs:Resource , owl:NamedIndividual ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852786>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60759d9bda9e9104e28845f2>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extEvent> , owl:NamedIndividual .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<urn:default:baseUri:#extAttack>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <urn:default:baseUri:#TS__extAttack__1>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <urn:default:baseUri:#TS__extAttack__0>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   <urn:default:baseUri:#extHas>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction ;
+                           owl:allValuesFrom  owl:NamedIndividual ;
+                           owl:onProperty     <urn:default:baseUri:#extHas>
+                         ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extSourceEventOf>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "sourceEventOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "06/Aug/2020"@en ;
+        <http://purl.org/dc/terms/creator>
+                "Katia aleid"@en ;
+        owl:versionInfo     "1"@en .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#TS__extAsset__2>
+        rdf:type             owl:Class ;
+        rdfs:label           "Asset"@en , "TimeSlice extAsset 2" ;
+        rdfs:subClassOf      <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAsset>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extID> ;
+                               owl:someValuesFrom  xsd:long
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220215175004625> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAsset__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extSourceAssetOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extThreatPropagationEvent>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extDescription> ;
+                               owl:someValuesFrom  rdfs:Literal
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://www.gecad.isep.ipp.pt/ASIIO#extAsset> <http://www.gecad.isep.ipp.pt/ASIIO#extAsset>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175004625> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89612204>
+        rdf:type                        owl:Thing , <urn:default:baseUri:#extIncident> , owl:NamedIndividual , <http://www.w3.org/2006/time#TemporalEntity> , rdfs:Resource ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> ;
+        <urn:default:baseUri:#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e> ;
+        <urn:default:baseUri:#extDescription>
+                "" ;
+        <urn:default:baseUri:#extHasCriticality>
+                <urn:default:baseUri:#INFO> ;
+        <urn:default:baseUri:#generatedIn>
+                "Zagreb" ;
+        <urn:default:baseUri:#week>     "3" ;
+        <urn:default:baseUri:#weekOne>  "no" ;
+        <urn:default:baseUri:#weekThree>
+                "yes" ;
+        <urn:default:baseUri:#weekTwo>  "no" ;
+        <urn:default:baseUri:#weekZero>
+                "no" .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848483>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extPrevents>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "prevents"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/created>
+                "24/Feb/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo     "1" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st>
+        rdf:type    <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , owl:NamedIndividual , rdfs:Resource , <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T09:04:03+00:00" .
+
+<20220215175004625>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210413T1309330000_st>
+        rdf:type    <http://www.w3.org/2006/time#Instant> , rdfs:Resource , owl:NamedIndividual , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> ;
+        rdfs:label  "2021-04-13T13:09:33+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extEvent>
+        rdf:type  owl:Class .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAffests>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "affects"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extAffextedBy> ;
+        owl:versionInfo     "2" .
+
+<urn:default:baseUri:#extAttackType>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <urn:default:baseUri:#TS__extAttackType__1>
+                         ] ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.w3.org/2006/time#hasTimeSlice> ;
+                           owl:someValuesFrom  <urn:default:baseUri:#TS__extAttackType__0>
+                         ] .
+
+<http://www.w3.org/2006/time#hasTimeSlice>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567667_attackType>
+        rdf:type  rdfs:Resource , <urn:default:baseUri:#extScenario2> , <urn:default:baseUri:#extAttackType> , owl:NamedIndividual .
+
+<urn:default:baseUri:#TS__extAttackType__0>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extAttackType 0" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extAttackType__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848497> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extAttackType>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extAttackType> <urn:default:baseUri:#extAttackType>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848497> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175003553> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+<urn:default:baseUri:#extConsistsOf>
+        rdf:type  rdf:Property , owl:TransitiveProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea>
+        rdf:type  owl:NamedIndividual , <urn:default:baseUri:#extEvent> , rdfs:Resource .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st>
+        rdf:type    <http://www.w3.org/2006/time#TemporalEntity> , owl:Thing , owl:NamedIndividual , rdfs:Resource , <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T09:35:11+00:00" .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852570>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
+<20220215175000641>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848544>
+        rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extTriggers>
+        rdf:type            owl:ObjectProperty ;
+        rdfs:label          "triggers"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:versionInfo     "2" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extThing>
+        rdf:type  owl:Class .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#TS__extAlert__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extAlert 1" , "Alert"@en ;
+        rdfs:subClassOf      <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#TS__extAlert__2>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174852570> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAlert>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://www.gecad.isep.ipp.pt/ASIIO#extAlert> <http://www.gecad.isep.ipp.pt/ASIIO#extAlert>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174852570> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175004071> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extActionsToFollow>
+        rdf:type  owl:DatatypeProperty .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89567604_attack>
+        rdf:type                       rdfs:Resource , <urn:default:baseUri:#extAttack> , owl:NamedIndividual , owl:Thing , <http://www.w3.org/2006/time#TemporalEntity> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1156440000_st> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210413T1156440000_st> ;
+        <urn:default:baseUri:#extHas>  <http://www.gecad.isep.ipp.pt/ASIIO#89567604_attackType> .
+
+<Interval_st_20220215174959461>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20220215174959461> .
+
+<http://purl.org/dc/terms/modified>
+        rdf:type  owl:AnnotationProperty .
+
+<20220215175005874>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extAttackType>
+        rdf:type         owl:Class ;
+        rdfs:label       "Attack Type"@en ;
+        rdfs:subClassOf  <http://www.gecad.isep.ipp.pt/ASIIO#extThing> ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      <http://www.gecad.isep.ipp.pt/ASIIO#extBelongsTo> ;
+                           owl:someValuesFrom  <http://www.gecad.isep.ipp.pt/ASIIO#extAttack>
+                         ] ;
+        <http://purl.org/dc/terms/created>
+                "28/July/2020" ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        owl:versionInfo  "1" ;
+        <http://www.w3.org/2004/02/skos/core#definition>
+                "A category or classification of the attack" .
+
+<urn:default:baseUri:#TS__extEvent__0>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice extEvent 0" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#TS__extEvent__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20220215174848434> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <urn:default:baseUri:#extEvent>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <urn:default:baseUri:#extEvent> <urn:default:baseUri:#extEvent>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20220215174848434> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220215175000641> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extVulnerability>
+        rdf:type  owl:Class .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+        rdf:type            owl:ObjectProperty , owl:AsymmetricProperty ;
+        rdfs:label          "consistsOf"@en ;
+        rdfs:subPropertyOf  <http://www.gecad.isep.ipp.pt/ASIIO#extTopObjectProperty> ;
+        <http://purl.org/dc/terms/creator>
+                "Katia Aleid" ;
+        <http://purl.org/dc/terms/modified>
+                "27/May/2020" ;
+        owl:inverseOf       <http://www.gecad.isep.ipp.pt/ASIIO#extIsPartOf> ;
+        owl:versionInfo     "1" .
+
+<>      rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .

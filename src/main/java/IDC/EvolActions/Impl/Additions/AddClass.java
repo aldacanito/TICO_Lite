@@ -7,6 +7,7 @@ package IDC.EvolActions.Impl.Additions;
 
 import IDC.EvolActions.Interfaces.IAddClass;
 import Utils.OntologyUtils;
+import Utils.Utilities;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Set;
@@ -25,6 +26,7 @@ public class AddClass implements IAddClass
     private String URI;
     private OntClass newClass;
     private OntClass oldClass;
+    private boolean copy = true;
     
     private HashMap<OntClass, String> restrictions;
     
@@ -39,6 +41,11 @@ public class AddClass implements IAddClass
     public AddClass(String URI)
     {  
         this.URI = URI;
+    }
+    
+    public void setCopy(boolean copy)
+    {  
+        this.copy = copy;
     }
     
     public void addRestriction(String restrictionType, OntClass restriction)
@@ -94,24 +101,18 @@ public class AddClass implements IAddClass
     @Override
     public void execute() 
     {        
-        
-        // TODO GARANTIR QUE NAO EXECUTA DUAS VEZES
-        
         if(this.originalModel==null)
             Utils.Utilities.logError("Original Model is not instantiated", "ADDCLASS : EXECUTE");
         
         if(this.oldClass==null)
             this.oldClass = this.originalModel.getOntClass(URI);
         
-        boolean create = false;
-        if(this.evolvedModel.getOntClass(URI) == null) // class does not exist in the evolved model
-            create = true;
+        if(Utilities.isInIgnoreList(this.oldClass.getURI()))
+            return;
         
         OntClass theSlice = null;
-        if(create) // preciso instanciar nova classe
+        if(this.evolvedModel.getOntClass(URI) == null) // preciso instanciar nova classe
         {   
-            // cria a nova classe no novo modelo com o URI (nao existe antes)
-            
             this.newClass = this.evolvedModel.createClass(URI);
             
             // cria os time slices
@@ -122,26 +123,10 @@ public class AddClass implements IAddClass
             theSlice = timeSlicer.getSlice();
             
             // copia restriçoes da classe original para o slice
-            Utils.OntologyUtils.copyClassDetails(oldClass, theSlice);
-//            if(this.restrictions!=null && theSlice!=null)
-//            {
-//                for(OntClass restriction : restrictions.keySet())
-//                {
-//                    String restrictionType = restrictions.get(restriction);   
-//                    Utils.OntologyUtils.copyRestriction(restriction, theSlice, restrictionType);
-//                }
-//            }
+            if(copy)
+                Utils.OntologyUtils.copyClassDetails(oldClass, theSlice);
         }
-        else // copia o que já existe
-        {
-           
-        }
-        
-        //adicionar restrições
-        // fazer esta parte sem ser copia!!!
-
        
-        
         this.addDisjoints();
         
     }

@@ -12,7 +12,6 @@
 
 <http://www.gecad.isep.ipp.pt/ASIIO> rdf:type owl:Ontology ;
                                       owl:versionIRI <http://www.gecad.isep.ipp.pt/ASIIO/1.6> ;
-                                      owl:imports <http://www.w3.org/2006/time#2016> ;
                                       terms:created "14/Nov/2019" ;
                                       terms:modified "28/July/2020"^^rdfs:Literal ;
                                       rdfs:comment """Core ontology for cybersecurity to be extended with UCO and ATMONTO, started with 4 main concepts 
@@ -284,6 +283,10 @@ skos:definition rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2006/time#hasEnd
 <http://www.w3.org/2006/time#hasEnd> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/time#inside
+<http://www.w3.org/2006/time#inside> rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -2196,6 +2199,10 @@ Extreme""" ;
 
 ###  http://www.w3.org/2006/time#Instant
 <http://www.w3.org/2006/time#Instant> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#TemporalEntity
+<http://www.w3.org/2006/time#TemporalEntity> rdf:type owl:Class .
 
 
 ###  https://data.nasa.gov/ontologies/atmonto/equipment#EngineeredSystem

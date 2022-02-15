@@ -1,0 +1,289 @@
+@prefix : <urn:default:baseUri:#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.gecad.isep.ipp.pt/ASIIO> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO> rdf:type owl:Ontology ;
+                                      owl:imports <http://www.w3.org/2006/time> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf
+:extConsistsOf rdf:type owl:AnnotationProperty .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#extDescription
+:extDescription rdf:type owl:AnnotationProperty .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality
+:extHasCriticality rdf:type owl:AnnotationProperty .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#generatedIn
+:generatedIn rdf:type owl:AnnotationProperty .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#week
+:week rdf:type owl:AnnotationProperty .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#weekOne
+:weekOne rdf:type owl:AnnotationProperty .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#weekThree
+:weekThree rdf:type owl:AnnotationProperty .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#weekTwo
+:weekTwo rdf:type owl:AnnotationProperty .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#weekZero
+:weekZero rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/2006/time#hasBeginning
+<http://www.w3.org/2006/time#hasBeginning> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#extEvent
+:extEvent rdf:type owl:Class .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#extIncident
+:extIncident rdf:type owl:Class .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#Resource
+rdfs:Resource rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#Instant
+<http://www.w3.org/2006/time#Instant> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> rdf:type owl:NamedIndividual ,
+                                                                     rdfs:Resource ,
+                                                                     <http://www.w3.org/2006/time#Instant> ;
+                                                            rdfs:label "2021-04-22T09:04:03+00:00" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> rdf:type owl:NamedIndividual ,
+                                                                     rdfs:Resource ,
+                                                                     <http://www.w3.org/2006/time#Instant> ;
+                                                            rdfs:label "2021-04-22T09:35:11+00:00" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> rdf:type owl:NamedIndividual ,
+                                                                     rdfs:Resource ,
+                                                                     <http://www.w3.org/2006/time#Instant> ;
+                                                            rdfs:label "2021-04-22T10:09:49+00:00" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> rdf:type owl:NamedIndividual ,
+                                                                     rdfs:Resource ,
+                                                                     <http://www.w3.org/2006/time#Instant> ;
+                                                            rdfs:label "2021-04-22T10:15:49+00:00" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> rdf:type owl:NamedIndividual ,
+                                                                     rdfs:Resource ,
+                                                                     <http://www.w3.org/2006/time#Instant> ;
+                                                            rdfs:label "2021-04-22T13:50:30+00:00" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8
+<http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910
+<http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e
+<http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395
+<http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419
+<http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d
+<http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea
+<http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22
+<http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf
+<http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795
+<http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795> rdf:type owl:NamedIndividual ,
+                                                                       :extEvent ,
+                                                                       rdfs:Resource .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89610535
+<http://www.gecad.isep.ipp.pt/ASIIO#89610535> rdf:type owl:NamedIndividual ,
+                                                       :extIncident ,
+                                                       rdfs:Resource ;
+                                              <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> ;
+                                              :extConsistsOf <http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8> ;
+                                              :extDescription "" ;
+                                              :extHasCriticality :MEDIUM ;
+                                              :generatedIn "Zagreb" ;
+                                              :week "3" ;
+                                              :weekOne "no" ;
+                                              :weekThree "yes" ;
+                                              :weekTwo "no" ;
+                                              :weekZero "no" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89610535_attack
+<http://www.gecad.isep.ipp.pt/ASIIO#89610535_attack> rdf:type owl:NamedIndividual ;
+                                                     <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89610542
+<http://www.gecad.isep.ipp.pt/ASIIO#89610542> rdf:type owl:NamedIndividual ,
+                                                       :extIncident ,
+                                                       rdfs:Resource ;
+                                              <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> ;
+                                              :extConsistsOf <http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395> ,
+                                                             <http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419> ;
+                                              :extDescription "" ;
+                                              :extHasCriticality :MEDIUM ;
+                                              :generatedIn "Zagreb" ;
+                                              :week "3" ;
+                                              :weekOne "no" ;
+                                              :weekThree "yes" ;
+                                              :weekTwo "no" ;
+                                              :weekZero "no" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89610542_attack
+<http://www.gecad.isep.ipp.pt/ASIIO#89610542_attack> rdf:type owl:NamedIndividual ;
+                                                     <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89612195
+<http://www.gecad.isep.ipp.pt/ASIIO#89612195> rdf:type owl:NamedIndividual ,
+                                                       :extIncident ,
+                                                       rdfs:Resource ;
+                                              <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> ;
+                                              :extConsistsOf <http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910> ,
+                                                             <http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d> ,
+                                                             <http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea> ,
+                                                             <http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22> ;
+                                              :extDescription "" ;
+                                              :extHasCriticality :HIGH ;
+                                              :generatedIn "Zagreb" ;
+                                              :week "3" ;
+                                              :weekOne "no" ;
+                                              :weekThree "yes" ;
+                                              :weekTwo "no" ;
+                                              :weekZero "no" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89612195_attack
+<http://www.gecad.isep.ipp.pt/ASIIO#89612195_attack> rdf:type owl:NamedIndividual ;
+                                                     <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89612204
+<http://www.gecad.isep.ipp.pt/ASIIO#89612204> rdf:type owl:NamedIndividual ,
+                                                       :extIncident ,
+                                                       rdfs:Resource ;
+                                              <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> ;
+                                              :extConsistsOf <http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e> ;
+                                              :extDescription "" ;
+                                              :extHasCriticality :INFO ;
+                                              :generatedIn "Zagreb" ;
+                                              :week "3" ;
+                                              :weekOne "no" ;
+                                              :weekThree "yes" ;
+                                              :weekTwo "no" ;
+                                              :weekZero "no" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89612204_attack
+<http://www.gecad.isep.ipp.pt/ASIIO#89612204_attack> rdf:type owl:NamedIndividual ;
+                                                     <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89612224
+<http://www.gecad.isep.ipp.pt/ASIIO#89612224> rdf:type owl:NamedIndividual ,
+                                                       :extIncident ,
+                                                       rdfs:Resource ;
+                                              <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> ;
+                                              :extConsistsOf <http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf> ,
+                                                             <http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795> ;
+                                              :extDescription "" ;
+                                              :extHasCriticality :MEDIUM ;
+                                              :generatedIn "Zagreb" ;
+                                              :week "3" ;
+                                              :weekOne "no" ;
+                                              :weekThree "yes" ;
+                                              :weekTwo "no" ;
+                                              :weekZero "no" .
+
+
+###  http://www.gecad.isep.ipp.pt/ASIIO#89612224_attack
+<http://www.gecad.isep.ipp.pt/ASIIO#89612224_attack> rdf:type owl:NamedIndividual ;
+                                                     <http://www.w3.org/2006/time#hasBeginning> <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

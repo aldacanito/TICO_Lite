@@ -1,60 +1,189 @@
-@prefix :     <http://shizaTest/ONTO_TEST#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-:CLASS3  rdf:type        owl:Class ;
-        rdfs:subClassOf  []  ;
-        rdfs:subClassOf  []  .
+<http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
-:CLASS1_1  rdf:type  :CLASS1 , owl:NamedIndividual ;
-        :DT1      "1.0"^^xsd:float ;
-        :OP1      :CLASS1_1 ;
-        :OP2      :CLASS1_2 .
+<http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
-:CLASS1  rdf:type        owl:Class ;
-        rdfs:subClassOf  []  ;
-        rdfs:subClassOf  []  ;
-        rdfs:subClassOf  []  ;
-        rdfs:subClassOf  []  ;
-        rdfs:subClassOf  []  .
+<http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
-:OP1    rdf:type  owl:ObjectProperty .
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st>
+        rdf:type    <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T13:50:30+00:00" .
 
-:CLASS3_1  rdf:type  :CLASS3 , owl:NamedIndividual ;
-        :OP2      :CLASS1_1 .
+<http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
-:DT2    rdf:type  owl:DatatypeProperty .
+<http://www.gecad.isep.ipp.pt/ASIIO#89610535>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#60802c38da9e9104dd0135d8> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Zagreb" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "3" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekOne>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekThree>
+                "yes" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekTwo>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekZero>
+                "no" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> .
 
-:CLASS4  rdf:type        owl:Class ;
-        rdfs:subClassOf  []  ;
-        rdfs:subClassOf  []  .
+<http://www.gecad.isep.ipp.pt/ASIIO#89612195_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> .
 
-:CLASS1_2  rdf:type  :CLASS1 , owl:NamedIndividual ;
-        :DT2      "2.0"^^xsd:float ;
-        :OP2      :CLASS2_1 .
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st>
+        rdf:type    <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T10:09:49+00:00" .
 
-:CLASS2  rdf:type        owl:Class ;
-        rdfs:subClassOf  []  ;
-        rdfs:subClassOf  []  .
+<http://www.gecad.isep.ipp.pt/ASIIO#89612224>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795> , <http://www.gecad.isep.ipp.pt/ASIIO#60817d3ada9e9104dd02a6cf> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Zagreb" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "3" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekOne>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekThree>
+                "yes" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekTwo>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekZero>
+                "no" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> .
 
-:OP2    rdf:type  owl:ObjectProperty .
+<http://www.gecad.isep.ipp.pt/ASIIO#89610542_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> .
 
-:CLASS3_2  rdf:type  :CLASS3 , owl:NamedIndividual ;
-        :DT1      "3.0"^^xsd:float ;
-        :DT2      "3.0"^^xsd:float .
+<http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
 
-:CLASS2_1  rdf:type  :CLASS2 , owl:NamedIndividual ;
-        :OP2      :CLASS1_2 .
+<http://www.gecad.isep.ipp.pt/ASIIO#89612204>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#INFO> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Zagreb" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "3" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekOne>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekThree>
+                "yes" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekTwo>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekZero>
+                "no" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> .
 
-<http://shizaTest/ONTO_TEST>
-        rdf:type  owl:Ontology .
+<http://www.gecad.isep.ipp.pt/ASIIO#89612204_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st> .
 
-:CLASS4_1  rdf:type  :CLASS4 , owl:NamedIndividual ;
-        :OP1      :CLASS2_1 .
+<http://www.gecad.isep.ipp.pt/ASIIO#89612195>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#60814837da9e9104dd026d22> , <http://www.gecad.isep.ipp.pt/ASIIO#608148ebda9e9104dd026dea> , <http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910> , <http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#HIGH> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Zagreb" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "3" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekOne>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekThree>
+                "yes" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekTwo>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekZero>
+                "no" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1009490000_st> .
 
-:CLASS1_3  rdf:type  :CLASS1 , owl:NamedIndividual .
+<http://www.gecad.isep.ipp.pt/ASIIO#89610535_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st> .
 
-:DT1    rdf:type  owl:DatatypeProperty .
+<http://www.gecad.isep.ipp.pt/ASIIO#89612224_attack>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T1350300000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#89610542>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extIncident> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extConsistsOf>
+                <http://www.gecad.isep.ipp.pt/ASIIO#608130c7da9e9104dd025395> , <http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extDescription>
+                "" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#extHasCriticality>
+                <http://www.gecad.isep.ipp.pt/ASIIO#MEDIUM> ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#generatedIn>
+                "Zagreb" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#week>
+                "3" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekOne>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekThree>
+                "yes" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekTwo>
+                "no" ;
+        <http://www.gecad.isep.ipp.pt/ASIIO#weekZero>
+                "no" ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T1015490000_st>
+        rdf:type    <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T10:15:49+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#6081313fda9e9104dd025419>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60817deeda9e9104dd02a795>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#60803dcbda9e9104dd014910>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#608144bfda9e9104dd02694d>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#608094e8da9e9104dd01a84e>
+        rdf:type  <http://www.gecad.isep.ipp.pt/ASIIO#extEvent> .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T0904030000_st>
+        rdf:type    <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T09:04:03+00:00" .
+
+<http://www.gecad.isep.ipp.pt/ASIIO#20210422T0935110000_st>
+        rdf:type    <http://www.w3.org/2006/time#Instant> ;
+        rdfs:label  "2021-04-22T09:35:11+00:00" .

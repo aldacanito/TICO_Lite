@@ -19,7 +19,7 @@ public class InstanceDrivenComparisonMain
 //        startRounds();
 //        compareAtaque_semAtaque();
         startTest();
-        //startUseWeeks();
+//        startUseWeeks();
     }
     
     public static void startRounds()
@@ -30,7 +30,7 @@ public class InstanceDrivenComparisonMain
         String instance_path  = dir + "24-02-2020_inst.ttl" ;
         String print_path = dir + "round1.ttl";
         
-       runComparator(onto_path, instance_path, print_path, 1);
+//       runComparator(onto_path, instance_path, print_path, 1);
         
 //        // round two
         onto_path      =  print_path;
@@ -82,10 +82,10 @@ public class InstanceDrivenComparisonMain
         runComparator(onto_path, instance_path, print_path, 0); 
         
          onto_path      = dir + "ONTOTEST_EVOLVED.ttl" ;
-         instance_path  = dir + "evolvedModel2.ttl" ;
-         print_path     = dir + "evolvedModel3.ttl";
+         instance_path  = dir + "ONTOTEST_INSTANCIAS_2.ttl" ;
+         print_path     = dir + "ONTOTEST_EVOLVED2.ttl";
          
-//         runComparator(onto_path, instance_path, print_path, 0); 
+         runComparator(onto_path, instance_path, print_path, 0); 
        
         
     }
@@ -115,9 +115,26 @@ public class InstanceDrivenComparisonMain
     
     public static void startUseWeeks()
     {
+//        String dir            = "Indexes/Datasets_Ataques/";
+//        String onto_path      = dir+ "assercoes_min.ttl" ;
+//        String instance_path  = dir+ "subset_20210408_20210415.ttl" ;
+//        String print_path     = dir+ "evolvedModel.ttl";
+//        int round             = 1;
+//        
+//        runComparator(onto_path, instance_path, print_path, round);
+//     
+//        // ROUND TWO
+//        onto_path      = print_path ;
+//        instance_path  = dir+ "subset_20210422_20210423.ttl" ;
+//        print_path     = dir+ "evolvedModel2.ttl";
+//        round = 2;
+//        
+//        runComparator(onto_path, instance_path, print_path, round);
+//        
+        
         String dir            = "Indexes/Datasets_Ataques/";
         String onto_path      = dir+ "assercoes_min.ttl" ;
-        String instance_path  = dir+ "subset_20210408_20210415.ttl" ;
+        String instance_path  = dir+ "semana1.ttl" ;
         String print_path     = dir+ "evolvedModel.ttl";
         int round             = 1;
         
@@ -125,8 +142,8 @@ public class InstanceDrivenComparisonMain
      
         // ROUND TWO
         onto_path      = print_path ;
-        instance_path  = dir+ "subset_20210422_20210423.ttl" ;
-        print_path     = dir+ "evolvedModel.ttl";
+        instance_path  = dir+ "semana2.ttl" ;
+        print_path     = dir+ "evolvedModel2.ttl";
         round = 2;
         
         runComparator(onto_path, instance_path, print_path, round);

@@ -6,6 +6,7 @@ import IDC.EvolActions.Impl.EvolutionaryActionComposite;
 import IDC.Comparison.Interfaces.IClassCompare;
 import IDC.Comparison.Interfaces.IPropertyCompare;
 import IDC.EvolActions.Factories.ComparatorFactory;
+import IDC.EvolActions.Impl.Additions.AddClass;
 import IDC.EvolActions.Impl.Additions.TimeSliceCreator;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.EvolActions.Interfaces.IAddClass;
@@ -27,6 +28,7 @@ import org.apache.jena.ontology.Ontology;
 import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
@@ -73,29 +75,82 @@ public class Comparator
         // guidado pelas instancias
         // só funciona para as instâncias que tenham CLASSES associadas
         // reasoner desligado
-        ExtendedIterator<Individual> listIndividuals = instanceModel.listIndividuals();
+        List <Individual> listIndividuals = instanceModel.listIndividuals().toList();
 
-        
-        while(listIndividuals.hasNext())
-        {
-            Individual instance = listIndividuals.next();
-
+        System.out.println("Individuals before copy:");
+        for(Individual instance : listIndividuals)
+        {    
+            System.out.println("\t> " + instance.getURI());
             if(Utilities.isInIgnoreList(instance.getURI()))
                 continue;
-              
-            this.compareShapes(instance);
+            
+            List<OntClass> listOntClasses = instance.listOntClasses(false).toList();
+            
+            for(OntClass cls : listOntClasses)
+            {
+                if(cls.getURI()!=null && evolvedModel.getOntClass(cls.getURI()) == null)
+                {
+//                    evolvedModel.createClass(cls.getURI());
+                    AddClass addClass = new AddClass(cls.getURI());
+                    addClass.setCopy(false);
+                    addClass.setUp(instanceModel, evolvedModel);
+                    addClass.execute();
+                }
+            }
         }
         
+        System.out.println("Total Individuals before copy: " + listIndividuals.size());
+        
+        
+        System.out.println("Copying individual list...");
+        listIndividuals = instanceModel.listIndividuals().toList();
+        int count = 0;
+        for(Individual instance : listIndividuals)
+        {    
+            if(Utilities.isInIgnoreList(instance.getURI()))
+                continue;
 
-        // primeira coisa a fazer é copiar todas as instâncias pro modelo evolved
-        // depois gerir as instancias DESSE modelo sempre
+            System.out.println("\tCurrent individual: " + instance.getURI());
 
+            List<OntClass> ontClasses = instance.listOntClasses(true).toList();
+    
+            StmtIterator listProperties = instance.listProperties();
+            evolvedModel.add(listProperties);
+            
+            OntClass ontClass = evolvedModel.getOntClass(instance.getOntClass(true).getURI());
+            Individual new_ind = evolvedModel.createIndividual(instance.getURI(), ontClass);
+
+            for(OntClass cls : ontClasses)
+                new_ind.addOntClass(cls);
+                      
+            count++;
+        }
+        System.out.println("Finished copying individuals to evolved model. Total copies: " + count);
+        //remover erros?
+        
+        cleanUnclearClasses(evolvedModel);
+        
+        Utils.OntologyUtils.writeModeltoFile(evolvedModel, "Indexes/TestOnto/middle_Allinstances.ttl");
+
+        listIndividuals = evolvedModel.listIndividuals().toList();
+        this.executer   = new EvolutionaryActionComposite();
+
+        System.out.println("\nGoing through individuals of Evolved Model.\nTotal Individuals:" + listIndividuals.size());
+        
+        for(Individual instance : listIndividuals)
+        {
+            System.out.println("\tCurrent Individual:" + instance.getURI());
+            if(Utilities.isInIgnoreList(instance.getURI()))
+                continue;
+                                 
+            this.compareShapes(instance);
+        }
 
         executer.execute(ontologyModel, evolvedModel);
         
-        Utils.OntologyUtils.writeModeltoFile(instanceModel, "Indexes/TestOnto/middle_instance.ttl");
-        Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/middle_original.ttl");
-        Utils.OntologyUtils.writeModeltoFile(evolvedModel,  "Indexes/TestOnto/middle_evolved.ttl");
+//        Utils.OntologyUtils.writeModeltoFile(instanceModel, "Indexes/TestOnto/middle_instance.ttl");
+//        Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/middle_original.ttl");
+//        Utils.OntologyUtils.writeModeltoFile(evolvedModel,  "Indexes/TestOnto/middle_evolved.ttl");
 
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions();
@@ -104,15 +159,41 @@ public class Comparator
         
     }
    
+    private void cleanUnclearClasses(OntModel model)
+    {
 
+        List<Individual> listIndividuals = model.listIndividuals().toList();
+        
+        for(Individual i : listIndividuals)
+        {
+            List<OntClass> listOntClasses = i.listOntClasses(false).toList();
+        
+            for(OntClass cls : listOntClasses)
+            {
+                try
+                {
+                    model.getOntClass(cls.getURI());
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Class has no URI or otherwise does not"
+                            + " exist in model. Exception Reason: " + e.getMessage());
+                    cls.dropIndividual(i);
+                }
+            }
+        }
+    
+
+    }
 
     private void updateTemporalRestrictions() 
     {
-//        List <OntClass> e_ontClasses = ontologyModel.listClasses().toList();
+        //List <OntClass> e_ontClasses = ontologyModel.listClasses().toList();
         List <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
         LocalDateTime now      = LocalDateTime.now();  
         
-        System.out.println("New Classes:");
+        System.out.println("\n========================================="
+                + "\nNew Classes:");
         for(OntClass newCls : e_ontClasses)
         {
             String uri      = newCls.getURI();
@@ -121,9 +202,12 @@ public class Comparator
         
             System.out.println("\t> URI: " + uri);
         }
+        System.out.println("\n=========================================");
         
         for(OntClass newCls : e_ontClasses)
         {
+            cleanSuperAndEquivalents(newCls);
+            
             String uri      = newCls.getURI();
             if(uri == null || Utilities.isInIgnoreList(uri) ) 
                 continue;
@@ -196,10 +280,12 @@ public class Comparator
                 
                 //copiar para o modelo novo
                 OntologyUtils.copyClassDetails(ontologyModel.getOntClass(prevURI), lastOldSlice);
+//                OntologyUtils.copyClassDetails(ontologyModel.getOntClass(prevURI), lastNewSlice);
 
                 lastOldSlice = evolvedModel.getOntClass(prevURI); // as alteraçoes doravante sao no novo modelo
                 
-                OntologyUtils.copyClassDetails(oldCls, lastNewSlice);
+                //OntologyUtils.copyClassDetails(oldCls, lastNewSlice);
+                OntologyUtils.copyClassDetails(newCls, lastNewSlice);
                 
                 addBefore(lastOldSlice, lastNewSlice);
                 updateTemporalEQRestriction(lastOldSlice, slicer.getSliceBeginning());
@@ -208,6 +294,75 @@ public class Comparator
             }
         }
      }
+    
+    
+    private void cleanSuperAndEquivalents(OntClass cls)
+    {
+        if(cls == null) return;
+        List<OntClass> eqclasses = cls.listEquivalentClasses().toList();
+        
+        for(OntClass eq : eqclasses)
+        {
+            if(eq.isIntersectionClass())
+            {
+                try
+                {
+                    eq.asIntersectionClass().getOperands();  
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Not Intersection. Reason: " + e.getMessage());
+                    cls.removeEquivalentClass(eq);
+                }
+                               
+            }
+                        
+            if(eq.isUnionClass())
+            {
+                try
+                {
+                    eq.asUnionClass().getOperands();  
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Not Union. Reason: " + e.getMessage());
+                    cls.removeEquivalentClass(eq);
+                }                  
+            }
+        }
+                
+       // remover o que estiver em erro, siga
+        eqclasses = cls.listSuperClasses().toList();
+    
+        for(OntClass eq : eqclasses)
+        {
+            if(eq.isUnionClass())
+            {
+                try
+                {
+                    eq.asUnionClass().getOperands();   
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Not Union. Reason: " + e.getMessage());
+                    cls.removeSuperClass(eq);
+                }           
+            }
+            
+            if(eq.isIntersectionClass())
+            {
+                try
+                {
+                    eq.asIntersectionClass().getOperands();   
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Not Intersection. Reason: " + e.getMessage());
+                    cls.removeSuperClass(eq);
+                }           
+            }
+        }
+    }
     
     private void updateTemporalEQRestriction(OntClass cls, Individual ind_end)
     {
@@ -225,9 +380,7 @@ public class Comparator
                 try
                 {
                     IntersectionClass intersection = eq.asIntersectionClass();
-
                     RDFList operands = intersection.getOperands();
-                    
                     HasValueRestriction beforeRestriction = evolvedModel.createHasValueRestriction(null, beforeP, ind_end);
                     operands.add(beforeRestriction);
                 }
@@ -236,9 +389,10 @@ public class Comparator
                     System.out.println("Not Intersection. Reason: " + e.getMessage());
                     cls.removeEquivalentClass(eq);
                 }
-                               
             }
         }
+        
+        
     
     }
     

@@ -122,7 +122,7 @@ public class ClassCompareShape implements IClassCompare
         {
             String classURI = cls.getURI();
             
-            if(Utilities.isInIgnoreList(classURI))
+            if(Utilities.isInIgnoreList(classURI) || classURI == null)
                 continue;
             
             cpm = EntityMetricsStore.getStore()
@@ -471,11 +471,15 @@ public class ClassCompareShape implements IClassCompare
             
             // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
             if(mentions > Utils.Configs.subclass_threshold)
+            {
                 if(isFunctional)
                     rec.setCardinalityType("Exactly", 1, isQualifiedR);
                 else
                     rec.setCardinalityType("Min", 0, isQualifiedR);
-           
+            
+                composite.add(rec);
+            }
+            
         }
         
     }
