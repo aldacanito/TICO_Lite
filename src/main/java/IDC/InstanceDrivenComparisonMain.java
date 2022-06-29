@@ -19,6 +19,9 @@ public class InstanceDrivenComparisonMain
 //        startRounds();
 //        compareAtaque_semAtaque();
         startTest();
+        
+        
+        
 //        startUseWeeks();
     }
     
