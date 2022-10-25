@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="http://purl.org/goodrelations/v1" uri="Indexes/test_ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="http://purl.org/tio/ns" uri="Indexes/ns.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="http://www.gecad.isep.ipp.pt/ASIIO" uri="Indexes/Ontology%20ASIIO/ASIIO_SITE/ontology.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="duplicate:http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension" uri="Indexes/Processed/29-02-2020_ASIIO.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="duplicate:http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension" uri="Indexes/Processed/ASIIO%20Ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="http://www.w3.org/2006/time" uri="Indexes/time.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="https://data.nasa.gov/ontologies/atmontoCore" uri="Indexes/atmonto.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="shadowed:http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension" uri="Indexes/Processed/Versões%20distintas%20o%20suficiente/03-12-2019_ASIIO.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="shadowed:http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension" uri="Indexes/Processed/Versões%20distintas%20o%20suficiente/24-02-2020_ASIIO.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1657976959679" name="shadowed:http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension" uri="Indexes/Processed/Versões%20distintas%20o%20suficiente/28-07-2020_ASIIO.owl"/>
+    </group>
+</catalog>

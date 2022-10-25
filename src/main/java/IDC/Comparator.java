@@ -78,21 +78,22 @@ public class Comparator
         List <Individual> listIndividuals = instanceModel.listIndividuals().toList();
 
         System.out.println("Individuals before copy:");
-        for(Individual instance : listIndividuals)
+        for(Individual individual : listIndividuals)
         {    
-            System.out.println("\t> " + instance.getURI());
-            if(Utilities.isInIgnoreList(instance.getURI()))
+            //System.out.println("\t> " + instance.getURI());
+            if(Utilities.isInIgnoreList(individual.getURI()))
                 continue;
             
-            List<OntClass> listOntClasses = instance.listOntClasses(false).toList();
+            List<OntClass> listOntClasses = individual.listOntClasses(false).toList();
             
             for(OntClass cls : listOntClasses)
             {
-                if(cls.getURI()!=null && evolvedModel.getOntClass(cls.getURI()) == null)
+                if(cls.getURI()!= null && evolvedModel.getOntClass(cls.getURI()) == null)
                 {
 //                    evolvedModel.createClass(cls.getURI());
                     AddClass addClass = new AddClass(cls.getURI());
                     addClass.setCopy(false);
+                    addClass.setStartEndInstance(individual, individual);
                     addClass.setUp(instanceModel, evolvedModel);
                     addClass.execute();
                 }
@@ -101,24 +102,23 @@ public class Comparator
         
         System.out.println("Total Individuals before copy: " + listIndividuals.size());
         
-        
         System.out.println("Copying individual list...");
         listIndividuals = instanceModel.listIndividuals().toList();
         int count = 0;
-        for(Individual instance : listIndividuals)
+        for(Individual individual : listIndividuals)
         {    
-            if(Utilities.isInIgnoreList(instance.getURI()))
+            if(Utilities.isInIgnoreList(individual.getURI()))
                 continue;
 
-            System.out.println("\tCurrent individual: " + instance.getURI());
+            //System.out.println("\tCurrent individual: " + instance.getURI());
 
-            List<OntClass> ontClasses = instance.listOntClasses(true).toList();
+            List<OntClass> ontClasses = individual.listOntClasses(true).toList();
     
-            StmtIterator listProperties = instance.listProperties();
+            StmtIterator listProperties = individual.listProperties();
             evolvedModel.add(listProperties);
             
-            OntClass ontClass = evolvedModel.getOntClass(instance.getOntClass(true).getURI());
-            Individual new_ind = evolvedModel.createIndividual(instance.getURI(), ontClass);
+            OntClass ontClass  = evolvedModel.getOntClass(individual.getOntClass(true).getURI());
+            Individual new_ind = evolvedModel.createIndividual(individual.getURI(), ontClass);
 
             for(OntClass cls : ontClasses)
                 new_ind.addOntClass(cls);
@@ -128,18 +128,20 @@ public class Comparator
         System.out.println("Finished copying individuals to evolved model. Total copies: " + count);
         //remover erros?
         
-        cleanUnclearClasses(evolvedModel);
-        
-        Utils.OntologyUtils.writeModeltoFile(evolvedModel, "Indexes/TestOnto/middle_Allinstances.ttl");
-
         listIndividuals = evolvedModel.listIndividuals().toList();
+        
+      //  cleanUnclearClasses(evolvedModel, listIndividuals);
+        
+        //Utils.OntologyUtils.writeModeltoFile(evolvedModel, "Indexes/TestOnto/middle_Allinstances.ttl");
+
+        
         this.executer   = new EvolutionaryActionComposite();
 
         System.out.println("\nGoing through individuals of Evolved Model.\nTotal Individuals:" + listIndividuals.size());
         
         for(Individual instance : listIndividuals)
         {
-            System.out.println("\tCurrent Individual:" + instance.getURI());
+            //System.out.println("\tCurrent Individual:" + instance.getURI());
             if(Utilities.isInIgnoreList(instance.getURI()))
                 continue;
                                  
@@ -154,16 +156,14 @@ public class Comparator
 
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions();
-       
 
-        
     }
    
-    private void cleanUnclearClasses(OntModel model)
+    private void cleanUnclearClasses(OntModel model, List<Individual> listIndividuals)
     {
-
-        List<Individual> listIndividuals = model.listIndividuals().toList();
+        System.out.println("\n\n==STARTING CLEAN UNCLEAR CLASSES ===");
         
+        System.out.println("\n\nList obtained. Iterating...");
         for(Individual i : listIndividuals)
         {
             List<OntClass> listOntClasses = i.listOntClasses(false).toList();
@@ -182,6 +182,7 @@ public class Comparator
                 }
             }
         }
+        System.out.println("\n\n==FINISHED CLEAN UNCLEAR CLASSES ===");
     
 
     }

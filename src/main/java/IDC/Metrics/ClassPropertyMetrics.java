@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 
 
@@ -22,6 +23,8 @@ public class ClassPropertyMetrics extends EntityMetrics
     
     private List<PropertyMetrics> propertyMetrics;
     
+    private Individual first_mention, last_mention;
+    
     public ClassPropertyMetrics(String EntityURI)
     {
         super(EntityURI);      
@@ -31,7 +34,7 @@ public class ClassPropertyMetrics extends EntityMetrics
         propertyMetrics      = new ArrayList<>();
     }
     
-    public ClassPropertyMetrics(OntClass cls)
+    public ClassPropertyMetrics(OntClass cls, Individual first_mention)
     {
         super(cls.getURI());
         ontClass             = cls;        
@@ -40,6 +43,9 @@ public class ClassPropertyMetrics extends EntityMetrics
         functionalCandidates = new ArrayList<>();
         classMentions        = 0;
         propertyMetrics      = new ArrayList<>();
+        
+        this.first_mention   = first_mention;
+        this.last_mention    = first_mention;
     }
     
     @Override
@@ -173,6 +179,23 @@ public class ClassPropertyMetrics extends EntityMetrics
     {
         classMentions++;
     }
+    
+    public void addClassMention(Individual mention)
+    {
+        classMentions++;
+        this.last_mention = mention;
+    }
+    
+    public Individual getFirstMention()
+    {
+        return this.first_mention;
+    }
+    
+    public Individual getLastMention()
+    {
+        return this.last_mention;
+    }
+    
     
     public float getPropertyRatio(String propertyURI)
     {

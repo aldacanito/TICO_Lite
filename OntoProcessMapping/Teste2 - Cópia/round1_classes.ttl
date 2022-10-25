@@ -1,0 +1,1608 @@
+@prefix :                       <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix CM_ontology:            <http://www.example.org/CM/CM_ontology.owl#> .
+@prefix OntoPianismERP:         <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix OntoPianismIndividuals: <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix components4ExtruOnt:    <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#> .
+@prefix j.0:                    <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix j.1:                    <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix j.2:                    <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix j.3:                    <http://www.w3.org/2006/time#> .
+@prefix j.4:                    <http://www.loa-cnr.it/ontologies/DUL.owl#> .
+@prefix j.5:                    <http://www.w3.org/ns/ssn/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sensors4ExtruOnt:       <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#> .
+@prefix xml:                    <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
+
+<>      rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+OntoPianismIndividuals:erpTimeInstant_d8c02be0-1e2b-321f-912d-1a4e48c08550
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:24:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:24:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_0d452c55-1738-3234-8bcd-2070ef805655
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:50:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:50:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c7976182-8a03-3b6d-a359-02b9176af0f5
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:24:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:24:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_20df0623-42b4-3a84-aa03-5aaf8055df8d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:51:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:51:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_84a00aba-c559-39ce-8e1c-235da967d3cb
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:23:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:23:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_fbd37fa5-dd16-3aef-bfb3-472b9814e5bf
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:11:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:11:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_91f999d8-1a09-3142-9e30-cf9750f0137f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:27:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:27:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_ae071b91-5850-341d-9a5d-5f9329afb356
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:29:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:29:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_1a4cba9e-1789-39cb-9aa4-0f19102060b1
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:41:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:41:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_910ade78-42c1-393a-9d33-ded61bbd03fd
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:33:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:33:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_410182f2-c89a-3c27-a7c8-ac07e8f15ffa
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:51:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:51:00.000Z" .
+
+CM_ontology:hasSensorID
+        rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+CM_ontology:hasTimeStamp
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismIndividuals:erpTimeInstant_19fbf905-a9c9-365e-943a-618f69ede0d2
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:44:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:44:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_1
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2020-08-15T09:00:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2020-08-15T09:00:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_5dd312c9-1f44-300a-ae44-27e98486480e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:28:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:28:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c19051af-73e9-3a05-a44f-968b80251367
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:51:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:51:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_aeac4774-64d8-340a-9d3d-7e6367eff55f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:17:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:17:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_ca8e3ffa-ba92-32a8-9cff-6e78dc2e6dbf
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:39:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:39:00.000Z" .
+
+OntoPianismERP:TS__VirtualSensor__0
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice VirtualSensor 0" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  OntoPianismERP:VirtualSensor
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220801231027421> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( OntoPianismERP:VirtualSensor OntoPianismERP:VirtualSensor
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220801231027421> ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] .
+
+OntoPianismIndividuals:erpTimeInstant_f60440a8-136d-3b67-a8be-cbb65f376bb3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:08:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:08:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_93f9eb4b-1f41-3527-811e-51050bc2606e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:59:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:59:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_19569dc1-eb2c-32c7-9209-927c1c0d59dc
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:07:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:07:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4aa1c063-adaf-3b50-8c00-20dfa334d54b
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:57:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:57:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_bfaf6b72-7e03-3a27-83ea-c8887a4033fa
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:59:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:59:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b3a28fbb-dd12-395b-a1a4-d93ada5d3073
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:41:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:41:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_129526e4-e2b4-3390-a266-91b9142e69ab
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:58:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:58:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_e1d1ffeb-efe8-3ca3-849d-1bae9365f8bf
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:40:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:40:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_bd03c1db-cd33-3cff-9856-0cebfc15567e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:04:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:04:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_39d1060f-df6a-3a18-b8f6-efd43fb96948
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:32:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:32:00.000Z" .
+
+OntoPianismERP:hasValue
+        rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+OntoPianismIndividuals:erpTimeInstant_4f3a97b9-3413-3b7b-a074-80f5a2f790e3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:15:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:15:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4e01ea5e-23bc-386a-b491-38315a796153
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:11:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:11:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_aceccce6-05a8-32b6-8577-ed3b7b41233a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:09:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:09:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c607e9b4-4d84-3b9c-ab6f-cabf29148059
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:56:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:56:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b6250874-2a72-32be-ade1-5cc5e2d24179
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:13:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:13:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_3b48dbb3-9231-34dd-86f6-e1f18def5656
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:20:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:20:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_e8b09783-468f-3f9d-ba38-07999e75ba70
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:15:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:15:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_ef893f9e-5b07-3576-b651-cc68d1847caf
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:37:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:37:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b7b3b6d7-cead-3db1-8475-722b6f0961e0
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:08:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:08:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_54f206ab-bb51-3577-a151-f52fcfcdf9ee
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:06:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:06:00.000Z" .
+
+OntoPianismERP:VirtualSensor
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      OntoPianismERP:derivedFrom ;
+                           owl:someValuesFrom  owl:NamedIndividual
+                         ] ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   OntoPianismERP:derivedFrom
+                         ] .
+
+OntoPianismIndividuals:erpTimeInstant_ce2039cd-4727-3353-b9c5-b5af420ce16c
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:34:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:34:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_90ad486e-969b-386d-bcc6-d3f374aadebe
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:04:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:04:00.000Z" .
+
+sensors4ExtruOnt:TS__Sensor__0
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice Sensor 0" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  sensors4ExtruOnt:Sensor
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220801231027464> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( sensors4ExtruOnt:Sensor sensors4ExtruOnt:Sensor
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220801231027464> ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] .
+
+OntoPianismIndividuals:erpTimeInstant_69bcf380-9952-3e7f-bf49-de353a4e05b7
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:37:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:37:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_2776c51c-704c-36c9-bfce-4323e8e1e2a4
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:43:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:43:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_3d32ce4b-e4d0-3dd7-a429-fc621f8bb24b
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:48:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:48:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_5148d482-51ce-306a-a785-095cc9716af5
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:42:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:42:00.000Z" .
+
+[ rdf:type  owl:Ontology ] .
+
+OntoPianismIndividuals:erpTimeInstant_7ecdd6a7-3d44-3371-967b-667cf0fee410
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:30:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:30:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_cff1ad9f-91c1-3e1f-95a5-8904eb65359a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:59:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:59:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_5b7672c4-84f7-3532-96c0-f2f6d4be20fa
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:28:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:28:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_445e9a3c-d5e8-3fb1-b955-395e573355d4
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:23:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:23:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7a4dfc6d-3044-34ec-abab-28605729040b
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:09:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:09:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4b94e9ea-c55b-3dac-9c0f-8bf5ae1831ba
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:37:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:37:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_07d79026-f56c-3c45-91f1-40e4192474ef
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:01:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a8b02f21-db8c-3bc6-97ee-eaa712648f3b
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:20:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:20:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4007f663-3425-34a9-8aac-03c4eb9254d3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:25:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:25:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_77876420-68dc-3b43-a78b-b12436d226c0
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:56:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:56:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_374c3739-ba53-34dc-be13-27cb5877d3f9
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:09:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:09:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_25191413-66c0-33b6-8fa6-cbc731129782
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:08:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:08:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_fefce543-33fb-3c5a-8a35-d319c338bf6e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:53:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:53:00.000Z" .
+
+j.3:hasDuration  rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInstant_9dc4a436-6ec4-3ed5-88d8-956015f3ed79
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:28:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:28:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_fc6b5d79-8b1f-30a4-92f3-eb318413deb8
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:45:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:45:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_77b851e0-feb8-36d7-b167-c7048de0b58e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:46:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:46:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a5530743-7bc2-3bce-a94e-28e04ebda818
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:19:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:19:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c6fe4dd4-e775-3971-b17e-808f4330c751
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:22:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:22:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_ea61ac43-c9bd-3679-9f9f-3a3fad900dc3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:03:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:03:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_beb61560-094e-35c4-8b14-04dc0fb19a07
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:37:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:37:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_aa0ac1d3-6d0c-3082-80d3-d2356b98d278
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:32:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:32:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_12de4f2d-80ac-31e4-9bab-9cb72da1fcee
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:03:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:03:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_2
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2020-08-15T10:00:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2020-08-15T10:00:00.000Z" .
+
+<20220801231610531>  rdf:type  j.3:Instant .
+
+OntoPianismIndividuals:erpTimeInstant_15e2155c-75c2-39fb-922c-bd24cbf0d0e8
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:43:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:43:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d2df1a83-b876-36ba-979c-92e6b617da8d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:55:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:55:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_90e55242-e905-3762-b5d4-62902a17146f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:14:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:14:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b66764d2-d6d5-33de-8338-9616e9dc3965
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:00:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:00:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d623aee0-9d5c-3ccf-b50d-0402153e5ba3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T12:03:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T12:03:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_3608e883-df9e-3054-b41a-8cd7a266e472
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:05:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:05:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_1378b947-77f6-37df-ae12-68e30c5e6d0d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:01:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_bd7ced10-0c6b-3c3c-b647-e2704ec0cd73
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:24:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:24:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_0fd8e94c-017b-3c65-ab5a-716db0cdb8d5
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:55:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:55:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_73a199c4-a393-353a-8ee4-6bb1dd7f9388
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:49:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:49:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_61d07149-7ef0-352e-897e-1398cfbd6d97
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:27:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:27:00.000Z" .
+
+j.3:Instant  rdf:type  owl:Class .
+
+OntoPianismIndividuals:erpTimeInstant_9daf4945-864d-3d3e-9f1c-601b5e47d1be
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:32:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:32:00.000Z" .
+
+_:b0    rdf:type            owl:Restriction ;
+        owl:onProperty      j.4:includesEvent ;
+        owl:someValuesFrom  owl:NamedIndividual .
+
+OntoPianismIndividuals:erpTimeInstant_c1ad9ed9-1e90-3186-bb81-094fbf7556d9
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:18:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:18:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_40293ce1-efb6-360e-b47f-ee833f4ead54
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:47:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:47:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_292c3f6e-506b-3336-b35b-a762a28c3daf
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:23:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:23:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_93cb6462-41a5-3635-b51c-59a62c521381
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:21:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:21:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_34d8c4cd-1700-3de3-982b-dc859f1fa139
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:41:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:41:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c945c011-fae1-3328-af72-5a5ec03c18bf
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:47:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:47:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_e16cbb7f-f10a-3b20-bd8d-6c33fa2456a3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:01:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7b10252b-8e91-3ffd-83f8-537442ed6c91
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:14:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:14:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_0be9d335-b3a6-3e9e-a1a9-9f52f128b3b9
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:11:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:11:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_2c95e49d-c8cf-32d4-b301-5ab084dee6cf
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:55:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:55:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_581d6ddd-34e2-3140-818c-92550eab8366
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:21:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:21:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d8dc5d75-2b11-387f-91c8-3340808e946b
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:42:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:42:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_9cbb5177-730f-3995-996b-278d883a61db
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:46:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:46:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_46aa3fca-15d0-3571-98ab-1dad43524746
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:26:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:26:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_387f176f-0fdb-3802-9df7-7366cf55f8cd
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:39:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:39:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_382c83cf-581e-3ecc-9fed-af27b443054a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:58:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:58:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_deb5b326-cd70-39f3-804f-6e51cfc50346
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:46:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:46:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_edd1ce5b-7a20-3128-81f9-c1d27ce9d850
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:33:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:33:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_bcc4d35d-140e-315a-9f34-3d8fd55e47ae
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:35:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:35:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_ef238b17-cc10-3ab8-be36-8ff1d977efee
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:31:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:31:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_fa2f4dc6-6008-3128-aba9-5dd6eeba4bbe
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:06:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:06:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_9a86845b-0640-317f-8839-a3555126ada1
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:30:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:30:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_f56a2859-f1c5-3472-9175-43b591717d62
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:59:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:59:00.000Z" .
+
+OntoPianismERP:derivedFrom
+        rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
+
+<20220801231027421>  rdf:type  j.3:Instant .
+
+OntoPianismIndividuals:erpTimeInstant_94a62450-8ccb-363e-81d9-3d85cbd048c4
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:05:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:05:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_3d2a569e-b9c6-3ad8-b16a-c50c23e09ab8
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:59:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:59:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_6012f0ec-52d5-3ad6-badd-9a68a467ec65
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:29:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:29:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_6c550a0a-5dd9-32c8-b1b3-2f8a8a1cc07c
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:45:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:45:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_eebcaefc-e12d-381f-861d-6c47c72d1861
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:21:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:21:00.000Z" .
+
+sensors4ExtruOnt:Sensor
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
+                           owl:onProperty      OntoPianismERP:derivedFrom ;
+                           owl:someValuesFrom  owl:NamedIndividual
+                         ] ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   OntoPianismERP:derivedFrom
+                         ] .
+
+OntoPianismIndividuals:erpTimeInstant_16744cd8-4a27-39f2-bd8b-8465cdb3f0c7
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:49:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:49:00.000Z" .
+
+<Interval_st_20220801231610531>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20220801231610531> .
+
+OntoPianismIndividuals:erpTimeInstant_dd0bd79c-71d0-3173-ad83-c7673732a514
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:23:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:23:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_61223d71-c55d-3030-b30e-fd36113e5fe9
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:42:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:42:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_afb89484-6bee-3e0e-afa3-e25182677060
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:07:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:07:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_f006686f-b063-338d-91df-0581d8e7fd56
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:16:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:16:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7ac6177d-2dd0-33dd-bf1c-5e9f30bdfb7a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:39:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:39:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a4f37ec8-c433-36c0-98af-bb6d5daa5541
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:34:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:34:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2020-08-15T11:00:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2020-08-15T11:00:00.000Z" .
+
+j.3:intervalDuring  rdf:type  owl:ObjectProperty .
+
+_:b1    rdf:type         owl:Restriction ;
+        owl:cardinality  "1"^^xsd:int ;
+        owl:onProperty   j.4:includesEvent .
+
+OntoPianismIndividuals:erpTimeInstant_b0ad5c0d-228c-3f05-a04c-7df232730bed
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:49:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:49:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_6c5e53dc-cb38-34cd-a3dc-7047d6dc8a06
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:16:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:16:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_538bffd0-ead6-38cb-b299-3dc9911a6e97
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:33:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:33:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b2ac37e0-6947-3c1c-8e1b-f3032987ba45
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:34:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:34:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_46581b9f-6cf7-34be-9733-a475be5f059b
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:13:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:13:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_73889470-4350-3e95-b4b6-3f248577d101
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:53:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:53:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_89f60f1f-6041-34bd-88ee-a3d611cd1d14
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:18:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:18:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_119023e6-f00c-34a2-abdd-50bd49a0a8aa
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:28:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:28:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_71ba706f-d54b-3a17-8295-171ac83ddffa
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:57:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:57:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_98f92557-a1f0-34c2-8c45-ecf5b1e735dd
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:53:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:53:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d0f721af-d3d5-3ddb-bec7-3446b202d7ae
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:26:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:26:00.000Z" .
+
+j.3:before  rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInstant_f000ab0c-17dd-3342-83dc-5baa1905770d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:49:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:49:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4af6bee6-990c-3a23-b43f-68e9eb1b92fa
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:56:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:56:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_44bc7be8-1364-3536-aa3d-1b338f62d1c7
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:01:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_06a11f03-b19c-3e3a-a60b-d913647735f8
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:03:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:03:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_2996ef41-dd5d-3266-85cd-f320c5bcca18
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:01:00.000Z" .
+
+j.5:hasOutput  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+OntoPianismIndividuals:erpTimeInstant_267f7d71-f306-3aca-a937-6ecb1e7e3165
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:30:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:30:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a47c3b7e-2ec9-301e-a683-7ddf04bf017d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:19:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:19:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_235fceb0-f354-3e5a-b367-9451e10f490d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:50:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:50:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_099c986d-87c0-3b5d-9855-d8ce7ce6fa6e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:11:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:11:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_0781212f-389d-3761-98b0-b55a0850db70
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:09:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:09:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7fcf4ee0-249b-394d-8407-b8ac5f3fa73e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:53:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:53:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_03fe417a-ce5d-3e44-8510-daa0a20cdfdd
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:13:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:13:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_1eb08e91-a2c1-31c8-a239-7ad32b9ce418
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:39:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:39:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_022e56a7-47b2-39f9-b736-e87a99dc8f1a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:58:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:58:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_74421d8a-6ff0-324a-90b4-c39d4369fb08
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:50:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:50:00.000Z" .
+
+j.2:TS__Sensor__1  rdf:type  owl:Class ;
+        rdfs:label           "TimeSlice Sensor 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  j.2:Sensor
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:detects
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.4:includesEvent ;
+                               owl:someValuesFrom  owl:NamedIndividual
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.4:includesEvent
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   CM_ontology:hasSensorID
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220801231610431> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      OntoPianismERP:detects ;
+                               owl:someValuesFrom  j.0:extEvent
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.4:includesEvent ;
+                               owl:someValuesFrom  owl:NamedIndividual
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( j.2:Sensor j.2:Sensor
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220801231610431> ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] ;
+        owl:equivalentClass  [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.4:includesEvent
+                             ] .
+
+OntoPianismIndividuals:erpTimeInstant_45850457-622b-398b-8e6d-170824d26974
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:43:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:43:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4d07723d-370b-3291-bf2c-dff6cae62e67
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:45:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:45:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_8912ded6-016a-3efb-9e3d-f8b10dd07657
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:55:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:55:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c2a4edc4-b69c-3c55-92b8-02282b07fadf
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:59:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:59:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b30f7581-064c-3ac2-b284-c56816110e2f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:55:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:55:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_f8fe6bc9-c0f6-379f-a855-f464023f0264
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:32:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:32:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7273eb3c-c73e-3917-8503-db85b891a8e3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:17:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:17:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_37483d46-2cdd-3b2c-a287-155d99265d60
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:57:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:57:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_dcef5177-a2ac-3e5f-a336-329940d76d8b
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:16:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:16:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_6039ceb8-3492-3488-9eee-5cf10c5623d3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:11:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:11:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_300682bf-30fa-3975-bcb7-4fdf5cf68091
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:30:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:30:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_163388b9-eac9-3b3d-9132-e331df402279
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:31:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:31:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_10f10551-830d-3446-9d7e-5a6afe30bd7d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:47:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:47:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_84405c5d-2e8f-37fc-872e-e6f0a7c80dba
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:20:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:20:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b6b61477-3a15-39ea-b033-6c73f5b89ab7
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:21:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:21:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_2c21de0e-cb03-34b7-91fe-1d8d41bfb947
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:22:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:22:00.000Z" .
+
+<Interval_st_20220801231027421>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20220801231027421> .
+
+OntoPianismIndividuals:erpTimeInstant_e7e3f45c-b632-3141-8ad8-d334cf7ad59f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:19:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:19:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_44571a97-24fe-3593-9e65-4414dfd56d8e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:51:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:51:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_f911ced8-bf7d-3617-a046-46ba20ec710d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:11:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:11:00.000Z" .
+
+j.0:extEvent  rdf:type   owl:Class ;
+        rdfs:subClassOf  [ rdf:type           owl:Restriction ;
+                           owl:allValuesFrom  sensors4ExtruOnt:Sensor ;
+                           owl:onProperty     OntoPianismERP:hasSensorCorrelation
+                         ] ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   OntoPianismERP:hasSensorCorrelation
+                         ] ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   OntoPianismERP:erpOccurred
+                         ] ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   j.5:hasOutput
+                         ] .
+
+<20220801231027464>  rdf:type  j.3:Instant .
+
+OntoPianismIndividuals:erpTimeInstant_1f640289-41de-3e8c-8e52-e5db7040ae4a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:01:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_5bff810d-4136-3a37-81d4-8f9e9cf5cd32
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:10:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:10:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4afcf985-f6c6-3e7f-a8d2-cade3b194ab0
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:59:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:59:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a50cb144-afa9-3e6f-b2a7-979b64905ca7
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:13:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:13:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_85b5eb9a-13f7-36ab-b73a-45eb768f7649
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:19:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:19:00.000Z" .
+
+j.4:includesEvent  rdf:type  owl:TransitiveProperty , rdf:Property .
+
+OntoPianismIndividuals:erpTimeInstant_90a3b041-4880-3406-ac96-9f8093abc285
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:27:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:27:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_9083cfaa-8504-35c2-8ce0-fc55e7dc63ee
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:06:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:06:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_df45b6d6-750b-3b74-be19-5fed451bbbc0
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:33:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:33:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_fe624bae-056b-39c7-81fb-d92f96f38174
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:20:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:20:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d75581d7-13ac-363a-b066-2aeca6acdd5f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:36:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:36:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c28ecd81-96d7-38ad-ba37-3d79b79c3ee4
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:16:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:16:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_de7ffaa9-fdfb-3e80-a1d2-feee618097ee
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:26:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:26:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_9fb04e54-615a-3391-a15c-5046fe65799e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:26:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:26:00.000Z" .
+
+sensors4ExtruOnt:sensorName
+        rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+OntoPianismIndividuals:erpTimeInstant_8583c9d4-c20d-3c40-95bf-a7a1844d3a47
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:41:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:41:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_895d7cad-1a4e-3a19-a2b2-08970f99efc6
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:16:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:16:00.000Z" .
+
+OntoPianismERP:hasOutput
+        rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInstant_ffb2e198-bb7c-3e43-98c2-652386029249
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:14:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:14:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7d12c26b-a86a-343a-a54f-d824aa0d0a84
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:21:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:21:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_77fee993-193a-3725-8626-827866d06c2c
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:30:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:30:00.000Z" .
+
+j.3:hasEnd  rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInstant_5eb674db-6a54-3c17-9c33-de432ab85644
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:43:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:43:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_612b2a73-e28a-3a88-b299-3aecc733b183
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:36:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:36:00.000Z" .
+
+<20220801231610431>  rdf:type  j.3:Instant .
+
+OntoPianismIndividuals:erpTimeInstant_6b08e40b-bf0d-3df5-818b-c7e10151199d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:48:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:48:00.000Z" .
+
+OntoPianismERP:erpOccurred
+        rdf:type  owl:TransitiveProperty , rdf:Property .
+
+OntoPianismIndividuals:erpTimeInstant_fe5a238d-df90-3445-85a8-2f88ff7b657c
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:44:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:44:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b7bbd063-c9b6-3a59-885e-73e1a96d76d2
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:11:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:11:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_01167d41-0b28-3256-a19d-e6b73813e0b7
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:25:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:25:00.000Z" .
+
+j.3:isTimeSliceOf  rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInstant_9c8e8f3e-b0e9-3f74-91b9-a2aaf9b2127d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:39:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:39:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_86400f30-e70a-30ac-8be6-18d4d0c1fc39
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T12:07:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T12:07:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_629a6f54-0392-32e5-a611-2f4037f1298f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:03:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:03:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_76d145ff-c4ed-3115-95be-29b390fed29d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:05:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:05:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_e1e5613e-6bc1-3b10-b582-5bc7e209b012
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:39:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:39:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a44ffe64-0f1c-3df7-9088-b7f9dbeb0ade
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:08:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:08:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a68b480b-85c3-39c5-95ba-a9f042054509
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:27:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:27:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_e9119ca6-94ef-33e9-a04b-6b2a9ea4a19c
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:38:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:38:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_fc1c31ba-3da0-330e-80f4-39c1ac239607
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:53:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:53:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_aa56f1eb-264a-37fb-bc03-156a5f923739
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:47:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:47:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a3584fcf-abe6-3413-aa2a-8119f0c155cd
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:35:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:35:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7cf6e363-e6cc-39b2-ab31-51064f7bc1b8
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:07:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:07:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_8417347e-9167-3907-9b62-2942e1fecbc0
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:37:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:37:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4e40f7a6-53cd-3225-9004-9faefa64ba0a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:35:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:35:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_27c51d42-1cd3-34a6-a778-8edb2149761d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:29:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:29:00.000Z" .
+
+j.2:Sensor  rdf:type         owl:Class ;
+        rdfs:subClassOf      _:b0 , _:b1 ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      OntoPianismERP:detects ;
+                               owl:someValuesFrom  j.0:extEvent
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:detects
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   CM_ontology:hasSensorID
+                             ] ;
+        owl:equivalentClass  _:b0 , _:b1 .
+
+OntoPianismIndividuals:erpTimeInstant_52573e87-fe7f-36c1-be03-fc1b93b8426e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:22:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:22:00.000Z" .
+
+j.3:after  rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInstant_387072c9-29af-33d4-a391-e70fc45a482a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:49:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:49:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_37517253-3682-37ba-b8da-b72e618e95c1
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:03:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:03:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d40c34b5-dee2-3007-bf2e-d29d0fcdc8cd
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:38:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:38:00.000Z" .
+
+<Interval_st_20220801231027464>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20220801231027464> .
+
+OntoPianismIndividuals:erpTimeInstant_f77ee37b-cdfe-390e-891a-711461699374
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:35:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:35:00.000Z" .
+
+j.3:DateTimeInterval  rdf:type  owl:Class .
+
+OntoPianismIndividuals:erpTimeInstant_84717f46-86ab-34a6-baf7-91f05fd608ea
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:49:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:49:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_81c84d81-002f-3712-b6b2-2564ed53ca6c
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:45:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:45:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_18504346-9f2a-302d-b525-9ec97c35598d
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:03:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:03:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_95445dc1-2986-36ae-8049-a94fa2dea933
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:06:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:06:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_eb1d3f92-72b8-3764-82bf-4b5a8cbf64a1
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:41:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:41:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7c7a2d03-5f3a-3bd0-93a7-cc74fb063f83
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:17:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:17:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_019e5de5-b46e-3833-8ce7-ad80f9106d8a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:01:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_cee2bcb2-4185-3126-b5f2-0e5b3af66ead
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:16:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:16:00.000Z" .
+
+j.3:hasBeginning  rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInstant_d118f8a1-7e41-38ea-93fd-0b349e08d70a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:47:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:47:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_4ed099ce-c082-3f11-9b6c-e2ae26d849a6
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:26:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:26:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_cf8f3f5e-de0f-39ec-9e0b-d278ce3ac529
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:33:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:33:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b0a0cfc9-4385-30ba-8fa8-a0739539e8e5
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:13:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:13:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_2c559ce6-0961-31de-84e4-699b052d869a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:01:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a9380a1c-e669-3176-a70b-d55d82e5579b
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:10:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:10:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_45195fb2-fe1b-3ded-ae1b-b0c76fee1804
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:35:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:35:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_df33e346-33b5-3f2f-806c-84ec2b123ba1
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:00:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:00:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_04e76ff1-6dea-3f4f-b03b-53664c61758c
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:37:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:37:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7b175677-69e4-30f4-a2f2-8b9037bd3f25
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:01:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:01:00.000Z" .
+
+<Interval_st_20220801231610431>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20220801231610431> .
+
+OntoPianismIndividuals:erpTimeInstant_52492c9d-d08c-34b7-bf55-75bc4fe8c068
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:54:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:54:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c763bc7b-049a-3bf6-a7b7-8192897ee072
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:04:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:04:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_9353d538-b9a7-3448-b72a-4737abb8d754
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:31:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:31:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_99d04b6f-b2a5-319c-b9a6-ce8e7d10cdfd
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:19:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:19:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_8e56de55-fa3a-3c07-b23b-d20aa7c7fe88
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:47:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:47:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c3832c2e-8548-3e9e-8e9d-1fc057c57fa1
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-09T12:15:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-09T12:15:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c1d54d41-837d-3462-a2e7-7663cb08e689
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:57:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:57:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_2ada7dda-982e-328f-a138-56efa079d7bd
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:43:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:43:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_e216eae5-6f09-388a-88e2-dfe9677906d9
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:04:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:04:00.000Z" .
+
+OntoPianismERP:hasSensorCorrelation
+        rdf:type  owl:TransitiveProperty , rdf:Property .
+
+OntoPianismIndividuals:erpTimeInstant_01632362-b8d5-3ee4-be9a-ee88cef4637a
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:44:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:44:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_94d719d3-d9b8-3535-b521-2876093286c8
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:43:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:43:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_50c5d0bb-e905-3b2a-a308-ff6fdb706ec2
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:33:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:33:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_067108fc-9184-317a-89b1-6ada31639f79
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:21:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:21:00.000Z" .
+
+j.3:Interval  rdf:type  owl:Class .
+
+OntoPianismIndividuals:erpTimeInstant_4857da2e-fef6-3ce8-9f4e-8c2a1df44693
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:45:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:45:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_3cb99176-109c-395e-ac90-395e39770075
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:56:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:56:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_adcf72ec-40ce-3134-8f8b-936841c12cba
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:44:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:44:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b522f577-bc7c-37e0-a11b-19ab41107179
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:25:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:25:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_6e6c3893-8a53-3faa-8bc4-55f1ce01a87f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:37:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:37:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_29947126-3e44-3c55-a6cc-c03242d7937f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T10:39:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T10:39:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_ab441966-2b58-3aff-b0a8-1d7836e7a485
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:02:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:02:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_f059b801-eb35-3a47-b55a-5a45b612d467
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:03:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:03:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_aae90157-5357-3af4-a2d7-6bb6086c08c6
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:40:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:40:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_78222e20-1538-326c-bacf-b00d16397335
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:48:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:48:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_50f1e010-5b34-3190-afdc-422eda29f209
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T05:23:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T05:23:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b0ca1ad0-6c6f-3818-9efa-1b2147dfcf20
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T11:04:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T11:04:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7da9b843-00b4-3792-a5cb-f70e73a53579
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:13:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:13:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_c5dcdd1c-ec7c-3531-b685-8110fedaecb3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:25:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:25:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_1dc16e48-28e6-3f56-ab49-0ed23b2e274f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T06:31:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T06:31:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_fd4f9179-0716-35e8-b472-761edbd91dbc
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:57:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:57:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_469e2558-b369-300e-a531-5755ffc030e4
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:08:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:08:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_8f9f8733-9bf1-34af-9e4b-86a716549f0f
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:08:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:08:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a285cb0d-893c-3fcb-9fc6-377f9416bb35
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T02:12:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T02:12:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_9efd66f4-ef75-3a41-8652-f4f2dd3c8116
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:55:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:55:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d5e12931-2122-3fcb-b2fb-ef1f9f1ad2a3
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:55:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:55:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_fe6c2dcb-30bc-3268-afde-8e0d26bb0528
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T01:35:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T01:35:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_40099086-6a95-334f-bbd3-5192cdcc9f15
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:16:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:16:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d9bbcbf7-526e-36ce-82d1-3744f293357e
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:28:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:28:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_b73a78a8-335c-3176-8581-795d00b0b931
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T00:47:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T00:47:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_a245839d-7bff-365b-a515-576e5432d4d0
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T09:06:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T09:06:00.000Z" .
+
+OntoPianismERP:detects
+        rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInstant_95235739-0e7b-3f84-8bd5-72c2d4b90d46
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:24:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:24:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_46f43a51-fef1-3b18-9c4a-8a03577ff202
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T04:39:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T04:39:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_7cbd13d0-6aa5-35f3-86c0-5918f63d30a2
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:29:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:29:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_d9301263-529d-3cce-bdf8-670a0dd08160
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T07:36:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T07:36:00.000Z" .
+
+OntoPianismIndividuals:erpTimeInstant_3c85c977-7db1-35e1-8f55-5af799f000b9
+        rdf:type                  j.3:Instant , owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:50:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:50:00.000Z" .
+
+j.0:TS__extEvent__1  rdf:type  owl:Class ;
+        rdfs:label           "TimeSlice extEvent 1" ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:erpOccurred
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:hasSensorCorrelation
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  sensors4ExtruOnt:Sensor ;
+                               owl:onProperty     OntoPianismERP:hasSensorCorrelation
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  j.0:extEvent
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20220801231610531> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( j.0:extEvent j.0:extEvent
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20220801231610531> ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] .

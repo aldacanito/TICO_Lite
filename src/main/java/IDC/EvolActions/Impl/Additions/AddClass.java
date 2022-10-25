@@ -11,6 +11,7 @@ import Utils.Utilities;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Set;
+import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 
@@ -28,9 +29,22 @@ public class AddClass implements IAddClass
     private OntClass oldClass;
     private boolean copy = true;
     
+    private Individual start_ind, end_ind;
+    
     private HashMap<OntClass, String> restrictions;
     
     private List<OntClass> disjoinWith;
+    
+    
+    public AddClass(OntClass oldClass, Individual start_ind, Individual end_ind)
+    {
+        this.oldClass  = oldClass;
+        this.URI       = oldClass.getURI();
+    
+        this.start_ind = start_ind;
+        this.end_ind   = end_ind;
+    }
+    
     
     public AddClass(OntClass oldClass)
     {
@@ -98,6 +112,14 @@ public class AddClass implements IAddClass
         this.evolvedModel  = evolvedModel;
     }
 
+    public void setStartEndInstance(Individual start_ind, Individual end_ind)
+    {
+        this.end_ind    = end_ind;
+        this.start_ind  = start_ind;
+        
+    }
+    
+    
     @Override
     public void execute() 
     {        
@@ -114,10 +136,20 @@ public class AddClass implements IAddClass
         if(this.evolvedModel.getOntClass(URI) == null) // preciso instanciar nova classe
         {   
             this.newClass = this.evolvedModel.createClass(URI);
+            OntClass lastOldSlice = OntologyUtils.getLastTimeSlice(newClass);
+            int version = OntologyUtils.getSliceNumber(lastOldSlice);
+            
+            String parts []= this.URI.split("#");
+            String sliceName = parts[0] + "#TS__" + parts[1] + "__" + version;
             
             // cria os time slices
+            TimeSliceCreator timeSlicer;
             
-            TimeSliceCreator timeSlicer = new TimeSliceCreator(this.newClass);
+            if(this.start_ind != null)
+                timeSlicer = new TimeSliceCreator(this.newClass, start_ind, end_ind, sliceName);
+            else
+                timeSlicer = new TimeSliceCreator(this.evolvedModel, this.newClass, version);
+            
             timeSlicer.execute();
             
             theSlice = timeSlicer.getSlice();

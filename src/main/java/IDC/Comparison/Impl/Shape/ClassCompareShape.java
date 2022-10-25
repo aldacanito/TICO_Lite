@@ -114,10 +114,14 @@ public class ClassCompareShape implements IClassCompare
             return composite;   
         
 //        composite.setUp(ontModel, evolvedModel); // start
-       composite.setUp(ontModel, ontModel);
+        composite.setUp(ontModel, ontModel);
        
         ClassPropertyMetrics cpm = null;
         
+        
+        Individual before = OntologyUtils.getBeforeInstant(instance);
+        Individual after  = OntologyUtils.getAfterInstant(instance);
+            
         for(OntClass cls : ontClassList)
         {
             String classURI = cls.getURI();
@@ -128,10 +132,15 @@ public class ClassCompareShape implements IClassCompare
             cpm = EntityMetricsStore.getStore()
                     .getMetricsByClassURI(classURI);
             
+            // get before e after da classe se existirem, senao deixa os individuals a null
+            
             if(cpm==null)
-                cpm = new ClassPropertyMetrics(cls);
+                cpm = new ClassPropertyMetrics(cls, after);
         
-            cpm.addClassMention();
+            if(before!=null)
+                cpm.addClassMention(before);
+            else
+                cpm.addClassMention();
             
             HashMap<String, Integer> repeated = new HashMap<>();
             
@@ -193,7 +202,7 @@ public class ClassCompareShape implements IClassCompare
                     .getMetricsByClassURI(classURI);
             
             if(cpm==null)
-                cpm = new ClassPropertyMetrics(cls);
+                cpm = new ClassPropertyMetrics(cls, null);
         
             cpm.addClassMention();
             

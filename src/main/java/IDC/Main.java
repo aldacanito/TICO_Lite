@@ -9,7 +9,7 @@ import org.apache.jena.ontology.OntModel;
  *
  * @author shizamura
  */
-public class InstanceDrivenComparisonMain 
+public class Main 
 {
 
     
@@ -18,11 +18,89 @@ public class InstanceDrivenComparisonMain
         Configs configs = new Configs();
 //        startRounds();
 //        compareAtaque_semAtaque();
-        startTest();
+       // startTest();
         
-        
+//        testArmando();
+        testArmandoTest();
         
 //        startUseWeeks();
+    }
+    
+    
+        public static void testArmandoTest()
+    {
+        //C:\Users\shiza\OneDrive\Documentos\GitHub\DatasetConverter\OntoProcessMapping
+        String dir = "OntoProcessMapping/";
+        
+        String semente = dir + "FeatureEngineeringOntoPianismERP_seed.ttl";
+        semente = dir + "seed_A_instances.ttl";
+        
+        System.out.println("\n\n===========================================================");
+        System.out.println("\n\n\tComeça primeiro round: semente + hasSensorCorrelation");
+        System.out.println("\n\n===========================================================\n\n");
+        // round one
+        String onto_path      = semente;
+        String instance_path  = dir + "OntoPianismIndividuals.B.ttl" ;
+        String print_path = dir + "round1.ttl";
+        
+       runComparator(onto_path, instance_path, print_path, 1);
+        
+        System.out.println("\n\n===========================================================");
+        System.out.println("\n\n\tComeça segundo round: round1 + hasRunningAverage");
+        System.out.println("\n\n===========================================================\n\n");
+//        // round two
+        onto_path      =  print_path;
+        instance_path  =  dir+ "OntoPianismIndividuals.C.ttl" ;
+        print_path     =  dir + "round2.ttl";
+        
+        runComparator(onto_path, instance_path, print_path, 2);
+
+
+    
+    }
+    
+    
+    public static void testArmando()
+    {
+        //C:\Users\shiza\OneDrive\Documentos\GitHub\DatasetConverter\OntoProcessMapping
+        String dir = "OntoProcessMapping/Teste2/";
+        
+        String semente = dir + "seed_A_instances.ttl";
+        
+//        System.out.println("\n\n===========================================================");
+//        System.out.println("\n\n\tComeça primeiro round: semente + hasSensorCorrelation");
+//        System.out.println("\n\n===========================================================\n\n");
+//        // round one
+        String onto_path      = semente;
+        String instance_path  = dir + "OntoPianismIndividuals.B.ttl" ;
+        String print_path     = dir + "round1.ttl";
+//        
+//        runComparator(onto_path, instance_path, print_path, 1);
+
+        System.out.println("\n\n===========================================================");
+        System.out.println("\n\n\tComeça segundo round: round1 + hasRunningAverage");
+        System.out.println("\n\n===========================================================\n\n");
+//        // round two
+        onto_path      =  print_path;
+        instance_path  =  dir+ "OntoPianismIndividuals.C.ttl" ;
+        onto_path      =  dir+ "round1_classes.ttl" ;
+        print_path     =  dir + "round2.ttl";
+        
+        runComparator(onto_path, instance_path, print_path, 2);
+
+        System.out.println("\n\n===========================================================");
+        System.out.println("\n\n\tComeça terceiro round: round2 + hasSensorCorrelation + hasRunningAverage");
+        System.out.println("\n\n===========================================================\n\n");
+        
+////        // round three
+        onto_path      = print_path;
+        instance_path  = dir + "OntoPianismIndividuals.D.ttl" ;
+        onto_path      =  dir+ "round2_classes.ttl" ;
+        print_path     = dir + "round3.ttl";
+
+        runComparator(onto_path, instance_path, print_path, 3);
+        
+       
     }
     
     public static void startRounds()

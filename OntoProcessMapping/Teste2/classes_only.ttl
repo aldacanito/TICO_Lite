@@ -1,0 +1,104 @@
+@base          <file:///C:/Users/nobre/NetBeansProjects/OntoExtruder/OntoExtruder/TURTLE> .
+@prefix : <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix j.0: <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix j.1: <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix j.2: <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix j.3: <http://www.w3.org/2006/time#> .
+@prefix j.4: <http://www.loa-cnr.it/ontologies/DUL.owl#> .
+@prefix j.5: <http://www.w3.org/ns/ssn/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix CM_ontology: <http://www.example.org/CM/CM_ontology.owl#> .
+@prefix OntoPianismERP: <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix sensors4ExtruOnt: <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#> .
+@prefix components4ExtruOnt: <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#> .
+@prefix OntoPianismIndividuals: <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.example.org/CM/CM_ontology.owl#hasTimeStamp
+CM_ontology:hasTimeStamp rdf:type owl:AnnotationProperty .
+
+
+###  http://www.example.org/Pianism/OntoPianismERP.owl#hasValue
+OntoPianismERP:hasValue rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2006/time#before
+j.3:before rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/ssn/hasOutput
+j.5:hasOutput rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#hasHead
+components4ExtruOnt:hasHead rdf:type owl:ObjectProperty .
+
+
+###  http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#hasSensor
+components4ExtruOnt:hasSensor rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/Pianism/OntoPianismERP.owl#FeatureEngineering
+OntoPianismERP:FeatureEngineering rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/Pianism/OntoPianismERP.owl#derivedFrom
+OntoPianismERP:derivedFrom rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf OntoPianismERP:FeatureEngineering .
+
+
+###  http://www.example.org/Pianism/OntoPianismERP.owl#hasSensorCorrelation
+OntoPianismERP:hasSensorCorrelation rdf:type owl:ObjectProperty ;
+                                    rdfs:subPropertyOf OntoPianismERP:FeatureEngineering .
+
+
+###  http://www.w3.org/2006/time#hasBeginning
+j.3:hasBeginning rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/time#hasEnd
+j.3:hasEnd rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/time#intervalDuring
+j.3:intervalDuring rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Sensor
+j.2:Sensor rdf:type owl:Class .
+
+
+###  http://www.example.org/Pianism/OntoPianismERP.owl#VirtualSensor
+OntoPianismERP:VirtualSensor rdf:type owl:Class ;
+                             rdfs:subClassOf j.2:Sensor .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEvent
+j.0:extEvent rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#DateTimeInterval
+j.3:DateTimeInterval rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#Instant
+j.3:Instant rdf:type owl:Class .

@@ -59,6 +59,7 @@ public class OntologyUtils
     public static final String INSTANT_CLS      = "http://www.w3.org/2006/time#Instant";
     public static final String HAS_ENDING_P     = "http://www.w3.org/2006/time#hasEnd";
     public static final String HAS_BEGINNING_P  = "http://www.w3.org/2006/time#hasBeginning";
+    public static final String HAS_TIMESTAMP_P  = "http://www.example.org/CM/CM_ontology.owl#hasTimeStamp";
     public static final String BEFORE_P         = "http://www.w3.org/2006/time#before";
     public static final String AFTER_P          = "http://www.w3.org/2006/time#after";
     public static final String INTERVAL_CLS     = "http://www.w3.org/2006/time#Interval";
@@ -85,8 +86,88 @@ public class OntologyUtils
     }
     
     
-    public static void writeModeltoFile(OntModel theModel, String filename)
+    public static void writeInstanceModel(String filename)
     {
+        OntModel theModel = OntologyUtils.readModel(filename);
+        
+        filename = filename.replace(".ttl", "");
+        filename += "_instances.ttl";
+        
+        List<OntClass> toList = theModel.listClasses().toList();
+       
+        
+        for(OntClass ontClass : toList)
+        {
+            ontClass.remove();
+        }
+       
+        OntologyUtils.writeFullModel(theModel, filename);
+        
+    }
+    
+    public static void writeClassesModel(String filename)
+    {
+        System.out.println("Write Classes Model begin.");
+        OntModel theModel = OntologyUtils.readModel(filename);
+        
+        filename = filename.replace(".ttl", "");
+        filename += "_classes.ttl";
+        
+        List<Individual> toList = theModel.listIndividuals().toList();        
+        for(Individual i : toList)
+        {   
+            if(i.getOntClass().getURI().equalsIgnoreCase(INSTANT_CLS))
+                System.out.println("Instant individual: " + i.getURI());
+            
+            if(i.getOntClass().getURI().equalsIgnoreCase(INTERVAL_CLS))
+                System.out.println("Interval individual: " + i.getURI());
+            
+
+            if(!Utilities.isInIgnoreList(i.getURI()))
+                 i.remove();
+        }
+       
+        OntologyUtils.writeFullModel(theModel, filename);
+        System.out.println("Write Classes Model finished.");
+        
+    }
+    
+    public static void writeClassesModel(OntModel theModel, String filename)
+    {
+        System.out.println("Write Classes Model begin.");
+
+        filename = filename.replace(".ttl", "");
+        filename += "_classes.ttl";
+        
+        List<Individual> toList = theModel.listIndividuals().toList();
+        System.out.println("Individuals List obtained");        
+        for(Individual i : toList)
+        {   
+            if(i.getOntClass().getURI().equalsIgnoreCase(INSTANT_CLS))
+            {
+                System.out.println("Instant individual: " + i.getURI());
+                continue;
+            }
+            
+            if(i.getOntClass().getURI().equalsIgnoreCase(INTERVAL_CLS))
+            {
+                System.out.println("Interval individual: " + i.getURI());
+                continue;
+            }
+            
+
+            if(!Utilities.isInIgnoreList(i.getURI()))
+                 i.remove();
+        }
+       
+        OntologyUtils.writeFullModel(theModel, filename);
+        System.out.println("Write Classes Model finished.");
+        
+    }
+    
+    public static void writeFullModel(OntModel theModel, String filename)
+    {
+        Utilities.logInfo("================\nStarting writing model to: " + filename);
         FileWriter out=null;
         try 
         {
@@ -113,8 +194,19 @@ public class OntologyUtils
                // ignore
            }
         }
-
+        
+        Utilities.logInfo("================\nFinished writing model to: " + filename);
     
+    }
+    
+    
+    
+    public static void writeModeltoFile(OntModel theModel, String filename)
+    {
+        writeFullModel(theModel, filename);
+        writeInstanceModel(filename);
+        
+        writeClassesModel(theModel, filename);
     }
     
     
@@ -151,6 +243,117 @@ public class OntologyUtils
         
     }
 
+    public static int getSliceNumber(OntClass theSlice)
+    {
+        String oldURI = theSlice.getURI();
+
+        String olds     []= oldURI.split("#");
+        String className  = olds[1];
+        int versionNumber = 0;
+
+        // ja existe
+        if(className.contains("TS__"))
+        {
+            String[] split = className.split("__"); //  TS__CLASSNAME__VERSIONNUMBER
+            try
+            {
+                versionNumber = Integer.parseInt(split[2]);
+            }
+            catch(Exception e)
+            {
+                System.out.println("Error split/converting string " + oldURI + ". Error: " + e.getLocalizedMessage());
+                versionNumber = 0;
+            }
+        }
+
+        return versionNumber ++;
+    }
+    
+    
+    public static Individual getBeforeInstant(Individual instance)
+    {
+        OntModel model = instance.getOntModel();
+        
+        OntProperty       beforeP = instance.getOntModel().getObjectProperty(OntologyUtils.BEFORE_P);
+        if(beforeP==null) beforeP = instance.getOntModel().createOntProperty(OntologyUtils.BEFORE_P);
+        
+        OntProperty       duringP = instance.getOntModel().getObjectProperty(OntologyUtils.DURING_P);
+        if(duringP==null) duringP = instance.getOntModel().createOntProperty(OntologyUtils.DURING_P);
+        
+        String ind_uri = null;
+        
+        Statement stmt = instance.getProperty(beforeP);
+                
+        if(stmt == null)
+        {
+            //procurar o during
+            
+            stmt = instance.getProperty(duringP);
+        
+            if(stmt!=null && stmt.getObject().isResource())
+            {
+                Resource res    = stmt.getObject().asResource();
+                ind_uri         = res.getURI();
+                Statement stmt2 = res.getProperty(beforeP);
+                
+                if(stmt2!=null && stmt2.getObject().isResource())
+                    ind_uri = stmt.getObject().asResource().getURI();
+            }   
+            
+        }
+        else if(stmt.getObject().isResource())
+            ind_uri = stmt.getObject().asResource().getURI();
+        
+        
+        if(ind_uri == null)
+            return null;
+        
+        return model.getIndividual(ind_uri);
+    }
+    
+     public static Individual getAfterInstant(Individual instance)
+    {
+        OntModel model = instance.getOntModel();
+        
+        OntProperty       afterP = instance.getOntModel().getObjectProperty(OntologyUtils.AFTER_P);
+        if(afterP==null) afterP = instance.getOntModel().createOntProperty(OntologyUtils.AFTER_P);
+        
+        OntProperty       duringP = instance.getOntModel().getObjectProperty(OntologyUtils.DURING_P);
+        if(duringP==null) duringP = instance.getOntModel().createOntProperty(OntologyUtils.DURING_P);
+        
+        String ind_uri = null;
+        
+        Statement stmt = instance.getProperty(afterP);
+        
+        if(stmt == null)
+        {
+            //procurar o during
+            
+            stmt = instance.getProperty(duringP);
+        
+            if(stmt!=null && stmt.getObject().isResource())
+            {
+                Resource res    = stmt.getObject().asResource();
+                ind_uri         = res.getURI();
+                Statement stmt2 = res.getProperty(afterP);
+                
+                if(stmt2!=null && stmt2.getObject().isResource())
+                    ind_uri = stmt.getObject().asResource().getURI();
+            }   
+            
+        }
+        else if(stmt.getObject().isResource())
+            ind_uri = stmt.getObject().asResource().getURI();
+        
+        if(ind_uri == null)
+            return null;
+        
+        return model.getIndividual(ind_uri);
+    }
+    
+    
+    
+    
     public static OntClass getLastTimeSlice(OntClass cls) 
     {
         List<OntClass> timeSlices = getTimeSlices(cls);
@@ -995,7 +1198,7 @@ public class OntologyUtils
        return null;
     }
 
-    public static void copyIndividual(Individual instance, OntModel model)
+    public static Individual copyIndividual(Individual instance, OntModel model)
     {
         Individual new_ind = model.createIndividual(instance.getOntClass(true));
         
@@ -1050,5 +1253,8 @@ public class OntologyUtils
            
             
         }
+        return new_ind;
     }
+    
+    
 }
