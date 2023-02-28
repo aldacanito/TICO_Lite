@@ -3,19 +3,17 @@
 
 ======================================
 Evolutionary Action Composite Stats
-	Total evolutionary actions executed: 4
+	Total evolutionary actions executed: 7
 List of Evolutionary Actions:
 	
 
 
 ======================================
 Evolutionary Action Composite Stats
-	Total evolutionary actions executed: 5
+	Total evolutionary actions executed: 3
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@58e5a81c
-	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@1d5a2267
-	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@42d6aa88
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@751661b
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@3419c97b
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@29b00068
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEvent
 ======================================
@@ -27,30 +25,16 @@ List of Evolutionary Actions:
 
 ======================================
 Evolutionary Action Composite Stats
-	Total evolutionary actions executed: 5
+	Total evolutionary actions executed: 8
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@412de677
-	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@e1c387e
-	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@1c57a111
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@2cef365b
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@2954ccdb
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@aad633c
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@378c0aaa
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@615cee4
 	> ADD CLASS : EVOLUTIONARY ACTION
-			 URI: http://www.example.org/Pianism/OntoPianismERP.owl#VirtualEvent
-======================================
-
-
-
-	
-
-
-======================================
-Evolutionary Action Composite Stats
-	Total evolutionary actions executed: 6
-List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@25f73ef
-	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@6d6f7412
-	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@4c110f87
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@1919b5b0
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@60a07d77
+			 URI: http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#Sensor
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@9a8e8e9
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@687dce63
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://www.example.org/Pianism/OntoPianismERP.owl#VirtualSensor
 ======================================
@@ -62,13 +46,82 @@ List of Evolutionary Actions:
 
 ======================================
 Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 4
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@3f73509c
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@17b9db78
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@599886c6
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://purl.oclc.org/NET/ssnx/ssn#Sensor
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 4
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@5f905540
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@7ac2199e
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@23f97fa5
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEvent
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
 	Total evolutionary actions executed: 6
 List of Evolutionary Actions:
-	IDC.EvolActions.Impl.Additions.AddObjectProperty@76795a95
-	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@32d00eea
-	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@66b09935
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@5981b51
-	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@39894485
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@3eca73aa
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@632d1b66
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@9c9e074
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@61a5b2bf
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@c9fca02
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEvent
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 6
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@7e216dc
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@416e8c14
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@d12eecc
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@7f2feab6
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@68ec4779
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://purl.oclc.org/NET/ssnx/ssn#Sensor
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 7
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@5d57785c
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@472999b4
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@4753b1bd
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@4d0ee1a1
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@2b7df5c4
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@20922d26
 	> ADD CLASS : EVOLUTIONARY ACTION
 			 URI: http://purl.oclc.org/NET/ssnx/ssn#Sensor
 ======================================

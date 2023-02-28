@@ -30,40 +30,27 @@ import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.iterator.ExtendedIterator;
-
+import IDC.ModelManager;
 /**
  *
  * @author shizamura
  */
 public class Comparator 
 {
-    OntModel ontologyModel;
-    OntModel instanceModel;
-    OntModel evolvedModel;
-    
-    public static OntModel temporal_instancesModel;
-    
     EvolutionaryActionComposite executer, ontologyModelUpdater;
     List<ClassPropertyMetrics> clsPropMetrics ;
     
-
     DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
         
-    public Comparator(OntModel ontologyModel, OntModel evolvedModel, OntModel instanceModel) 
+    public Comparator() 
     {
-        Comparator.temporal_instancesModel = evolvedModel;
-        
-        this.ontologyModel = ontologyModel;
-        this.instanceModel = instanceModel;
-    
-        this.evolvedModel  = evolvedModel; 
-       
+
         this.executer      = new EvolutionaryActionComposite();
         this.ontologyModelUpdater      = new EvolutionaryActionComposite();
         
-        Ontology evolvedOnt = this.evolvedModel.createOntology("");
-        evolvedOnt.addImport(this.evolvedModel.createResource(OntologyUtils.ONT_TIME_URL));
+        Ontology evolvedOnt = ModelManager.getManager().getEvolvingModel().createOntology("");
+        evolvedOnt.addImport(ModelManager.getManager().getEvolvingModel().createResource(OntologyUtils.ONT_TIME_URL));
      
         clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
     }
@@ -75,7 +62,7 @@ public class Comparator
         // guidado pelas instancias
         // só funciona para as instâncias que tenham CLASSES associadas
         // reasoner desligado
-        List <Individual> listIndividuals = instanceModel.listIndividuals().toList();
+        List <Individual> listIndividuals = ModelManager.getManager().getInstanceModel().listIndividuals().toList();
 
         System.out.println("Individuals before copy:");
         for(Individual individual : listIndividuals)
@@ -88,13 +75,12 @@ public class Comparator
             
             for(OntClass cls : listOntClasses)
             {
-                if(cls.getURI()!= null && evolvedModel.getOntClass(cls.getURI()) == null)
+                if(cls.getURI()!= null && ModelManager.getManager().getEvolvingModel().getOntClass(cls.getURI()) == null)
                 {
-//                    evolvedModel.createClass(cls.getURI());
+//                    ModelManager.getManager().getEvolvingModel().createClass(cls.getURI());
                     AddClass addClass = new AddClass(cls.getURI());
                     addClass.setCopy(false);
                     addClass.setStartEndInstance(individual, individual);
-                    addClass.setUp(instanceModel, evolvedModel);
                     addClass.execute();
                 }
             }
@@ -103,7 +89,7 @@ public class Comparator
         System.out.println("Total Individuals before copy: " + listIndividuals.size());
         
         System.out.println("Copying individual list...");
-        listIndividuals = instanceModel.listIndividuals().toList();
+        listIndividuals = ModelManager.getManager().getInstanceModel().listIndividuals().toList();
         int count = 0;
         for(Individual individual : listIndividuals)
         {    
@@ -115,10 +101,10 @@ public class Comparator
             List<OntClass> ontClasses = individual.listOntClasses(true).toList();
     
             StmtIterator listProperties = individual.listProperties();
-            evolvedModel.add(listProperties);
+            ModelManager.getManager().getEvolvingModel().add(listProperties);
             
-            OntClass ontClass  = evolvedModel.getOntClass(individual.getOntClass(true).getURI());
-            Individual new_ind = evolvedModel.createIndividual(individual.getURI(), ontClass);
+            OntClass ontClass  = ModelManager.getManager().getEvolvingModel().getOntClass(individual.getOntClass(true).getURI());
+            Individual new_ind = ModelManager.getManager().getEvolvingModel().createIndividual(individual.getURI(), ontClass);
 
             for(OntClass cls : ontClasses)
                 new_ind.addOntClass(cls);
@@ -128,7 +114,7 @@ public class Comparator
         System.out.println("Finished copying individuals to evolved model. Total copies: " + count);
         //remover erros?
         
-        listIndividuals = evolvedModel.listIndividuals().toList();
+        listIndividuals = ModelManager.getManager().getEvolvingModel().listIndividuals().toList();
         
       //  cleanUnclearClasses(evolvedModel, listIndividuals);
         
@@ -148,7 +134,7 @@ public class Comparator
             this.compareShapes(instance);
         }
 
-        executer.execute(ontologyModel, evolvedModel);
+        executer.execute();
         
 //        Utils.OntologyUtils.writeModeltoFile(instanceModel, "Indexes/TestOnto/middle_instance.ttl");
 //        Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/middle_original.ttl");
@@ -189,8 +175,8 @@ public class Comparator
 
     private void updateTemporalRestrictions() 
     {
-        //List <OntClass> e_ontClasses = ontologyModel.listClasses().toList();
-        List <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
+        //List <OntClass> e_ontClasses = ModelManager.getManager().getOriginalModel().listClasses().toList();
+        List <OntClass> e_ontClasses = ModelManager.getManager().getEvolvingModel().listClasses().toList();
         LocalDateTime now      = LocalDateTime.now();  
         
         System.out.println("\n========================================="
@@ -213,7 +199,7 @@ public class Comparator
             if(uri == null || Utilities.isInIgnoreList(uri) ) 
                 continue;
                         
-            OntClass oldCls = ontologyModel.getOntClass(uri);
+            OntClass oldCls = ModelManager.getManager().getOriginalModel().getOntClass(uri);
             
             if(oldCls==null || Utilities.isInIgnoreList(oldCls.getURI()))
                 continue;
@@ -269,21 +255,21 @@ public class Comparator
                 
                 versionNumber ++;
                                 
-                TimeSliceCreator slicer = new TimeSliceCreator(evolvedModel, lastNewSlice, versionNumber);
+                TimeSliceCreator slicer = new TimeSliceCreator(lastNewSlice, versionNumber);
                 slicer.execute();
 
                 lastNewSlice = slicer.getSlice(); // as alteraçoes doravante sao no novo modelo
 
-                if(evolvedModel.getOntClass(prevURI)==null)
-                    lastOldSlice = evolvedModel.createClass(prevURI);
+                if(ModelManager.getManager().getEvolvingModel().getOntClass(prevURI)==null)
+                    lastOldSlice = ModelManager.getManager().getEvolvingModel().createClass(prevURI);
                 else
-                    lastOldSlice = evolvedModel.getOntClass(prevURI);
+                    lastOldSlice = ModelManager.getManager().getEvolvingModel().getOntClass(prevURI);
                 
                 //copiar para o modelo novo
-                OntologyUtils.copyClassDetails(ontologyModel.getOntClass(prevURI), lastOldSlice);
-//                OntologyUtils.copyClassDetails(ontologyModel.getOntClass(prevURI), lastNewSlice);
+                OntologyUtils.copyClassDetails(ModelManager.getManager().getOriginalModel().getOntClass(prevURI), lastOldSlice);
+//                OntologyUtils.copyClassDetails(ModelManager.getManager().getOriginalModel().getOntClass(prevURI), lastNewSlice);
 
-                lastOldSlice = evolvedModel.getOntClass(prevURI); // as alteraçoes doravante sao no novo modelo
+                lastOldSlice = ModelManager.getManager().getEvolvingModel().getOntClass(prevURI); // as alteraçoes doravante sao no novo modelo
                 
                 //OntologyUtils.copyClassDetails(oldCls, lastNewSlice);
                 OntologyUtils.copyClassDetails(newCls, lastNewSlice);
@@ -369,8 +355,8 @@ public class Comparator
     {
         if(cls == null || ind_end == null) return;
         
-        OntProperty beforeP = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
-        if(beforeP == null) beforeP = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
+        OntProperty beforeP = ModelManager.getManager().getEvolvingModel().getOntProperty(OntologyUtils.BEFORE_P);
+        if(beforeP == null) beforeP = ModelManager.getManager().getEvolvingModel().createObjectProperty(OntologyUtils.BEFORE_P, false);
 
         List<OntClass> eqclasses = cls.listEquivalentClasses().toList();
     
@@ -382,7 +368,7 @@ public class Comparator
                 {
                     IntersectionClass intersection = eq.asIntersectionClass();
                     RDFList operands = intersection.getOperands();
-                    HasValueRestriction beforeRestriction = evolvedModel.createHasValueRestriction(null, beforeP, ind_end);
+                    HasValueRestriction beforeRestriction = ModelManager.getManager().getEvolvingModel().createHasValueRestriction(null, beforeP, ind_end);
                     operands.add(beforeRestriction);
                 }
                 catch(Exception e)
@@ -408,15 +394,15 @@ public class Comparator
     private void addHasEnding(OntClass cls, LocalDateTime enddate)
     {
         
-        OntProperty ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.HAS_ENDING_P);
+        OntProperty ontProperty = ModelManager.getManager().getEvolvingModel().getOntProperty(OntologyUtils.HAS_ENDING_P);
 
         if(ontProperty == null)
-            ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.HAS_ENDING_P, false);
+            ontProperty = ModelManager.getManager().getEvolvingModel().createObjectProperty(OntologyUtils.HAS_ENDING_P, false);
             
-        OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
+        OntClass instantClass = ModelManager.getManager().getEvolvingModel().getOntClass(OntologyUtils.INSTANT_CLS);
         if(instantClass == null)
-            instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
-        Individual date1 = this.evolvedModel.createIndividual(dtf2.format(enddate), instantClass);
+            instantClass = ModelManager.getManager().getEvolvingModel().createClass(OntologyUtils.INSTANT_CLS);
+        Individual date1 = ModelManager.getManager().getEvolvingModel().createIndividual(dtf2.format(enddate), instantClass);
     
         HasValueRestriction createHasValueRestriction = cls.getOntModel().createHasValueRestriction(null, ontProperty, date1);
            
@@ -427,15 +413,15 @@ public class Comparator
     private void addBefore(OntClass cls, LocalDateTime enddate)
     {
         
-        OntProperty ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
+        OntProperty ontProperty = ModelManager.getManager().getEvolvingModel().getOntProperty(OntologyUtils.BEFORE_P);
 
         if(ontProperty == null)
-            ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
+            ontProperty = ModelManager.getManager().getEvolvingModel().createObjectProperty(OntologyUtils.BEFORE_P, false);
             
-        OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
+        OntClass instantClass = ModelManager.getManager().getEvolvingModel().getOntClass(OntologyUtils.INSTANT_CLS);
         if(instantClass == null)
-            instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
-        Individual date1 = this.evolvedModel.createIndividual(dtf2.format(enddate), instantClass);
+            instantClass = ModelManager.getManager().getEvolvingModel().createClass(OntologyUtils.INSTANT_CLS);
+        Individual date1 = ModelManager.getManager().getEvolvingModel().createIndividual(dtf2.format(enddate), instantClass);
     
         HasValueRestriction createHasValueRestriction = cls.getOntModel().createHasValueRestriction(null, ontProperty, date1);
            
@@ -464,11 +450,11 @@ public class Comparator
                     if(hvr.getOnProperty().getURI().equalsIgnoreCase(OntologyUtils.AFTER_P))
                     {
                         
-                        OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
+                        OntClass instantClass = ModelManager.getManager().getEvolvingModel().getOntClass(OntologyUtils.INSTANT_CLS);
                         if(instantClass == null)
-                            instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
+                            instantClass = ModelManager.getManager().getEvolvingModel().createClass(OntologyUtils.INSTANT_CLS);
                         
-                        Individual date1 = this.evolvedModel.createIndividual(dtf2.format(startdate), instantClass);
+                        Individual date1 = ModelManager.getManager().getEvolvingModel().createIndividual(dtf2.format(startdate), instantClass);
             
                         hvr.setHasValue(date1);   
                     }
@@ -500,11 +486,11 @@ public class Comparator
                     if(hvr.getOnProperty().getURI().equalsIgnoreCase(OntologyUtils.HAS_BEGINNING_P))
                     {
                         
-                        OntClass instantClass = this.evolvedModel.getOntClass(OntologyUtils.INSTANT_CLS);
+                        OntClass instantClass = ModelManager.getManager().getEvolvingModel().getOntClass(OntologyUtils.INSTANT_CLS);
                         if(instantClass == null)
-                            instantClass = this.evolvedModel.createClass(OntologyUtils.INSTANT_CLS);
+                            instantClass = ModelManager.getManager().getEvolvingModel().createClass(OntologyUtils.INSTANT_CLS);
                         
-                        Individual date1 = this.evolvedModel.createIndividual(dtf2.format(startdate), instantClass);
+                        Individual date1 = ModelManager.getManager().getEvolvingModel().createIndividual(dtf2.format(startdate), instantClass);
             
                         hvr.setHasValue(date1);   
                     }
@@ -519,32 +505,28 @@ public class Comparator
         
         if(ontClass.getURI().contains("TS__"))
         {
-            OntProperty ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.BEFORE_P);
+            OntProperty ontProperty = ModelManager.getManager().getEvolvingModel().getOntProperty(OntologyUtils.BEFORE_P);
 
             if(ontProperty == null)
-                ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
+                ontProperty = ModelManager.getManager().getEvolvingModel().createObjectProperty(OntologyUtils.BEFORE_P, false);
 
-            SomeValuesFromRestriction svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, newCls);
+            SomeValuesFromRestriction svfr = ModelManager.getManager().getEvolvingModel().createSomeValuesFromRestriction(null, ontProperty, newCls);
             ontClass.addSuperClass(svfr);
 
-            ontProperty = this.evolvedModel.getOntProperty(OntologyUtils.AFTER_P);
+            ontProperty = ModelManager.getManager().getEvolvingModel().getOntProperty(OntologyUtils.AFTER_P);
 
             if(ontProperty == null)
-                ontProperty = this.evolvedModel.createObjectProperty(OntologyUtils.AFTER_P, false);
+                ontProperty = ModelManager.getManager().getEvolvingModel().createObjectProperty(OntologyUtils.AFTER_P, false);
 
-            svfr = this.evolvedModel.createSomeValuesFromRestriction(null, ontProperty, ontClass);
+            svfr = ModelManager.getManager().getEvolvingModel().createSomeValuesFromRestriction(null, ontProperty, ontClass);
             newCls.addSuperClass(svfr);
         }
         
     }
 
-
-
-
-
     private void addClassRestrictions() 
     {       
-        List <OntClass> e_ontClasses = evolvedModel.listClasses().toList();
+        List <OntClass> e_ontClasses = ModelManager.getManager().getEvolvingModel().listClasses().toList();
 
         for(OntClass cls : e_ontClasses)
         {
@@ -553,16 +535,15 @@ public class Comparator
             if(Utilities.isInIgnoreList(classURI))
                 continue;
             
-            ClassPropertyMetrics cpm = EntityMetricsStore.getStore()
-                    .getMetricsByClassURI(classURI);  
+            ClassPropertyMetrics cpm = EntityMetricsStore.getStore().getMetricsByClassURI(classURI);  
             
             if(cpm==null) continue;
             
-            ClassCompareShape.populateComposite(evolvedModel, cpm, executer);
+            ClassCompareShape.populateComposite(cpm, executer);
         }
         
-        ClassCompareShape.run(evolvedModel, executer);        
-        executer.execute(ontologyModel, evolvedModel);
+        ClassCompareShape.run(executer);        
+        executer.execute();
         
         
     
@@ -574,7 +555,7 @@ public class Comparator
         boolean ignore = Utilities.isInIgnoreList(t.getPredicate().getURI());
         
         if(ignore) return;
-        IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t, this.ontologyModel);
+        IPropertyCompare comparator = ComparatorFactory.getInstance().getPropertyComparator(t, ModelManager.getManager().getOriginalModel());
         
         if(comparator != null)
         {
@@ -596,7 +577,7 @@ public class Comparator
             
             if(ignore) continue;
             
-            IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(cls, this.ontologyModel); 
+            IClassCompare classComparator  = ComparatorFactory.getInstance().getClassComparator(cls); 
             
             if(classComparator!=null)
             {
@@ -613,9 +594,8 @@ public class Comparator
         boolean ignore = Utilities.isInIgnoreList(instance.getURI());
         if(ignore) return;
        
-        ClassCompareShape shapeC  = new ClassCompareShape(instance, ontologyModel);
-        shapeC.setup(ontologyModel, evolvedModel);
-        
+        ClassCompareShape shapeC  = new ClassCompareShape(instance);
+
         EvolutionaryAction compare = shapeC.compare();
         this.executer.add(compare);
     

@@ -40,25 +40,20 @@ public class ComparatorFactory
     }
     
     //TODO alterar para ser dinamico
-    public IClassCompare getClassComparator(OntClass cls, OntModel mdl)
+    public IClassCompare getClassComparator(OntClass cls)
     {
         boolean ignore = Utilities.isInIgnoreList(cls.getURI());
         
         if(ignore)
             return null;
         
-        IClassCompare compare = new ClassCompareSimple(cls, mdl);
+        IClassCompare compare = new ClassCompareSimple(cls);
         return compare;
     }
 
-    public IClassCompare getClassComparator(Individual ind, OntModel mdl)
+    public IClassCompare getClassComparator(Individual ind)
     {
-//        boolean ignore = Utilities.isInIgnoreList(cls.getURI());
-//        
-//        if(ignore)
-//            return null;
-        
-        IClassCompare compare = new ClassCompareShape(ind, mdl);
+        IClassCompare compare = new ClassCompareShape(ind);
         return compare;
     }
     

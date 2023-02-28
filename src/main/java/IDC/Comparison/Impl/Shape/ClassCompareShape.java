@@ -17,6 +17,7 @@ import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.Metrics.ClassPropertyMetrics;
 import IDC.Metrics.EntityMetricsStore;
 import IDC.Metrics.PropertyMetrics;
+import IDC.ModelManager;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import java.util.ArrayList;
@@ -41,39 +42,30 @@ import org.apache.jena.rdf.model.StmtIterator;
  * @author shizamura
  */
 public class ClassCompareShape implements IClassCompare
-{
-//    protected OntClass ontClass;
-    protected OntModel   ontModel;
+{    
     protected Individual instance;
-    protected OntModel evolvedModel;
-    
-    public ClassCompareShape(Individual ind, OntModel ontModel)
+
+
+    public ClassCompareShape(Individual ind)
     {
         this.instance = ind;
-        this.ontModel = ontModel;
     }
     
-    public void setup(OntModel o, OntModel e)
-    {
-        this.evolvedModel = e;
-        this.ontModel = o;
-    }
 
     
-    public static EvolutionaryActionComposite run(OntModel ontModel)
+    public static EvolutionaryActionComposite run()
     {
         EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
-        composite.setUp(ontModel, ontModel); // start
-        
-        return ClassCompareShape.run(ontModel, composite);
+       
+        return ClassCompareShape.run(composite);
     
     }
     
-    public static EvolutionaryActionComposite run(OntModel ontModel, EvolutionaryActionComposite composite)
+    public static EvolutionaryActionComposite run(EvolutionaryActionComposite composite)
     {
         ClassPropertyMetrics cpm = null;
         
-        List<OntClass> ontClassList = ontModel.listClasses().toList();
+        List<OntClass> ontClassList = ModelManager.getManager().getOriginalModel().listClasses().toList();
         
         for(OntClass cls : ontClassList)
         {
@@ -91,7 +83,7 @@ public class ClassCompareShape implements IClassCompare
             }
             
             System.out.println("populating composite with CPM for URI: " + cls.getURI());
-            ClassCompareShape.populateComposite(ontModel, cpm, composite);
+            ClassCompareShape.populateComposite(cpm, composite);
         
         }
         
@@ -113,9 +105,6 @@ public class ClassCompareShape implements IClassCompare
         if(ontClassList==null) 
             return composite;   
         
-//        composite.setUp(ontModel, evolvedModel); // start
-        composite.setUp(ontModel, ontModel);
-       
         ClassPropertyMetrics cpm = null;
         
         
@@ -176,7 +165,7 @@ public class ClassCompareShape implements IClassCompare
                     cpm.updateFunctionalCandidate(predicateURI);
             
             EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
-            ClassCompareShape.populateComposite(ontModel, cpm, composite);
+            ClassCompareShape.populateComposite(cpm, composite);
         }
         
         return composite;
@@ -246,7 +235,7 @@ public class ClassCompareShape implements IClassCompare
             //if(cpm!=null)
                 
             EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
-            ClassCompareShape.populateComposite(ontModel, cpm, composite);
+            ClassCompareShape.populateComposite(cpm, composite);
         }
         
         return composite;
@@ -254,7 +243,7 @@ public class ClassCompareShape implements IClassCompare
     }
     
     
-    public static void populateObjProperties(OntModel ontModel, ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
+    public static void populateObjProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
         OntClass ontClass    = cpm.getOntClass();
         OntModel originModel = ontClass.getOntModel();
@@ -276,9 +265,9 @@ public class ClassCompareShape implements IClassCompare
             if(Utils.Utilities.isInIgnoreList(propertyURI))
                 continue;
             
-            OntProperty onProperty = ontModel.getOntProperty(propertyURI);
+            OntProperty onProperty = ModelManager.getManager().getOriginalModel().getOntProperty(propertyURI);
             if(onProperty==null) // just in case
-                onProperty = ontModel.createObjectProperty(propertyURI, false);
+                onProperty = ModelManager.getManager().getOriginalModel().createObjectProperty(propertyURI, false);
             
             boolean isFunctional = false;
             boolean isQualifiedR = false;
@@ -342,7 +331,7 @@ public class ClassCompareShape implements IClassCompare
                     {
 //                        Individual individual = ontModel.getIndividual(rangeURI);
                         
-                        Individual individual = OntologyUtils.getIndividual(rangeURI, ontModel);
+                        Individual individual = OntologyUtils.getIndividual(rangeURI, ModelManager.getManager().getOriginalModel());
                         individual = OntologyUtils.getIndividual(rangeURI, originModel);
                         
                         if(individual!=null)
@@ -392,7 +381,7 @@ public class ClassCompareShape implements IClassCompare
 
                     if(rangeClass==null) // range é individual
                     {
-                        Individual individual = ontModel.getIndividual(rangeURI);
+                        Individual individual = ModelManager.getManager().getOriginalModel().getIndividual(rangeURI);
                         individual = originModel.getIndividual(rangeURI);
 
                         
@@ -435,7 +424,7 @@ public class ClassCompareShape implements IClassCompare
     }
     
     
-    public static void populateDtProperties(OntModel ontModel, ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
+    public static void populateDtProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
         OntClass ontClass = cpm.getOntClass();
     
@@ -451,9 +440,9 @@ public class ClassCompareShape implements IClassCompare
             if(Utilities.isInIgnoreList(propertyURI))
                 continue;
             
-            DatatypeProperty onProperty = ontModel.getDatatypeProperty(propertyURI);
+            DatatypeProperty onProperty = ModelManager.getManager().getOriginalModel().getDatatypeProperty(propertyURI);
             if(onProperty==null) // just in case
-                onProperty = ontModel.createDatatypeProperty(propertyURI, false);
+                onProperty = ModelManager.getManager().getOriginalModel().createDatatypeProperty(propertyURI, false);
             
             boolean isFunctional = false;
             boolean isQualifiedR = false;
@@ -493,10 +482,10 @@ public class ClassCompareShape implements IClassCompare
         
     }
     
-    public static void populateComposite(OntModel ontModel, ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
+    public static void populateComposite(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
     {
-        ClassCompareShape.populateObjProperties(ontModel, cpm, composite);
-        ClassCompareShape.populateDtProperties(ontModel, cpm, composite);
+        ClassCompareShape.populateObjProperties(cpm, composite);
+        ClassCompareShape.populateDtProperties(cpm, composite);
        
         OntClass ontClass = cpm.getOntClass();
         AddClass addCls = new AddClass(ontClass);

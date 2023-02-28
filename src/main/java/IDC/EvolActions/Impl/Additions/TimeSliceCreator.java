@@ -1,7 +1,7 @@
 package IDC.EvolActions.Impl.Additions;
 
-import IDC.Comparator;
 import IDC.EvolActions.Interfaces.IAddTimeSlices;
+import IDC.ModelManager;
 import Utils.OntologyUtils;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -11,10 +11,8 @@ import org.apache.jena.ontology.IntersectionClass;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFList;
-import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
  *
@@ -37,8 +35,7 @@ public class TimeSliceCreator implements IAddTimeSlices
     
     public TimeSliceCreator(OntClass toExpand)
     {
-        this.theTimeModel = Comparator.temporal_instancesModel;
-         
+        this.theTimeModel = ModelManager.getManager().getTemporal_instancesModel();         
         this.toExpand  = toExpand;
         this.URI       = toExpand.getURI();
         
@@ -52,9 +49,9 @@ public class TimeSliceCreator implements IAddTimeSlices
 
     }
     
-    public TimeSliceCreator(OntModel theModel, OntClass toExpand, int version)
+    public TimeSliceCreator(OntClass toExpand, int version)
     {
-        this.theTimeModel = Comparator.temporal_instancesModel;
+        this.theTimeModel = ModelManager.getManager().getTemporal_instancesModel();
          
         this.toExpand  = toExpand;
         this.URI       = toExpand.getURI();
@@ -65,13 +62,13 @@ public class TimeSliceCreator implements IAddTimeSlices
         this.start = LocalDateTime.now();
         this.end   = null;
         
-        this.theModel = theModel;
+        this.theModel = ModelManager.getManager().getEvolvingModel();
     }
     
     
     public TimeSliceCreator(OntClass toExpand, Individual start, Individual end, String sliceName)
     {
-        this.theTimeModel = Comparator.temporal_instancesModel;
+        this.theTimeModel = ModelManager.getManager().getTemporal_instancesModel();
          
         this.sliceName = sliceName;
         this.toExpand  = toExpand;
@@ -88,7 +85,7 @@ public class TimeSliceCreator implements IAddTimeSlices
     
     public TimeSliceCreator(OntClass toExpand, LocalDateTime start, LocalDateTime end, String sliceName)
     {   
-        this.theTimeModel = Comparator.temporal_instancesModel;
+        this.theTimeModel = ModelManager.getManager().getTemporal_instancesModel();
          
         this.sliceName = sliceName;
         this.toExpand  = toExpand;

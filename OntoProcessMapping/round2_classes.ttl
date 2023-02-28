@@ -21,7 +21,7 @@ j.3:hasTimeSlice  rdf:type  rdf:Property .
 j.2:TS__Sensor__1  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice Sensor 1" ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220803102257992> ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221220112345730> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
@@ -39,16 +39,14 @@ j.2:TS__Sensor__1  rdf:type  owl:Class ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( j.2:Sensor j.2:Sensor
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220803102257992> ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345730> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
                              ] .
 
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "0"^^xsd:int ;
-  owl:onProperty   OntoPianismERP:detects
-] .
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_feedRate_2feedRate_2>
+        rdf:type  j.3:Interval .
 
 j.0:extEvent  rdf:type   owl:Class ;
         rdfs:subClassOf  [ rdf:type         owl:Restriction ;
@@ -62,7 +60,14 @@ j.0:extEvent  rdf:type   owl:Class ;
 
 j.3:Instant  rdf:type  owl:Class .
 
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682>
+        rdf:type  j.3:Interval .
+
 j.5:hasOutput  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221220112345730>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345730> .
 
 OntoPianismIndividuals:erpTimeInstant_5
         rdf:type                  j.3:Instant , owl:NamedIndividual ;
@@ -71,9 +76,6 @@ OntoPianismIndividuals:erpTimeInstant_5
 
 OntoPianismERP:derivedFrom
         rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682>
-        rdf:type  j.3:Interval .
 
 j.3:hasDuration  rdf:type  owl:ObjectProperty .
 
@@ -88,19 +90,18 @@ OntoPianismERP:VirtualEvent
                            owl:someValuesFrom  owl:NamedIndividual
                          ] .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220803102257992>
-        rdf:type  j.3:Instant .
-
 j.3:hasBeginning  rdf:type  owl:ObjectProperty .
 
 OntoPianismERP:hasValue
         rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
 
+[ rdf:type  owl:Ontology ] .
+
 OntoPianismERP:TS__VirtualEvent__0
         rdf:type             owl:Class ;
         rdfs:label           "TimeSlice VirtualEvent 0" ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_feedRate_2feedRate_2> ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_feedRate_2feedRate_2> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
@@ -130,15 +131,13 @@ CM_ontology:hasSensorID
 OntoPianismERP:hasSensorCorrelation
         rdf:type  rdf:Property , owl:TransitiveProperty .
 
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345730>
+        rdf:type  j.3:Instant .
+
 j.3:intervalDuring  rdf:type  owl:ObjectProperty .
 
 CM_ontology:hasTimeStamp
         rdf:type  owl:DatatypeProperty .
-
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "1"^^xsd:int ;
-  owl:onProperty   OntoPianismERP:derivedFrom
-] .
 
 OntoPianismERP:hasOutput
         rdf:type  owl:ObjectProperty .
@@ -154,23 +153,15 @@ OntoPianismERP:VirtualSensor
                            owl:someValuesFrom  owl:NamedIndividual
                          ] .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220803102257992>
-        rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220803102257992> .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/>
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/>
         rdf:type     owl:Ontology ;
         owl:imports  <http://www.w3.org/2006/time> .
 
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "0"^^xsd:int ;
-  owl:onProperty   OntoPianismERP:hasSensorCorrelation
-] .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220803102258682>
-        rdf:type  j.3:Instant .
-
 j.3:hasEnd  rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221220112345781>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345781> .
 
 sensors4ExtruOnt:sensorName
         rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
@@ -179,7 +170,7 @@ OntoPianismERP:TS__VirtualSensor__0
         rdf:type             owl:Class ;
         rdfs:label           "TimeSlice VirtualSensor 0" ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682> ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
@@ -200,7 +191,7 @@ OntoPianismERP:TS__VirtualSensor__0
 j.0:TS__extEvent__1  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice extEvent 1" ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220803102258682> ;
+                               owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221220112345781> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
@@ -218,15 +209,13 @@ j.0:TS__extEvent__1  rdf:type  owl:Class ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( j.0:extEvent j.0:extEvent
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220803102258682> ;
+                                                       owl:hasValue    <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345781> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
                              ] .
 
 j.3:DateTimeInterval  rdf:type  owl:Class .
-
-[ rdf:type  owl:Ontology ] .
 
 j.2:Sensor  rdf:type     owl:Class ;
         rdfs:subClassOf  [ rdf:type         owl:Restriction ;
@@ -238,25 +227,40 @@ j.2:Sensor  rdf:type     owl:Class ;
                            owl:someValuesFrom  j.0:extEvent
                          ] .
 
-j.3:Interval  rdf:type  owl:Class .
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "0"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:detects
+] .
 
 [ rdf:type         owl:Restriction ;
   owl:cardinality  "0"^^xsd:int ;
   owl:onProperty   OntoPianismERP:detects
 ] .
 
+j.3:Interval  rdf:type  owl:Class .
+
 OntoPianismERP:hasRunningAverage
         rdf:type  owl:FunctionalProperty , rdf:Property .
 
 j.3:isTimeSliceOf  rdf:type  owl:ObjectProperty .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_feedRate_2feedRate_2>
-        rdf:type  j.3:Interval .
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:derivedFrom
+] .
 
 OntoPianismERP:detects
         rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
 
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345781>
+        rdf:type  j.3:Instant .
+
 j.3:before  rdf:type  rdf:Property .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "0"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:hasSensorCorrelation
+] .
 
 j.3:after  rdf:type  owl:ObjectProperty .
 
@@ -264,10 +268,6 @@ OntoPianismIndividuals:erpTimeInstant_6
         rdf:type                  j.3:Instant , owl:NamedIndividual ;
         rdfs:label                "2021-09-13T03:07:00.000Z" ;
         CM_ontology:hasTimeStamp  "2021-09-13T03:07:00.000Z" .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220803102258682>
-        rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220803102258682> .
 
 <>      rdf:type     owl:Ontology ;
         owl:imports  <http://www.w3.org/2006/time> .

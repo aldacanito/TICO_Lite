@@ -6,6 +6,7 @@
 package IDC.EvolActions.Impl.Additions;
 
 import IDC.EvolActions.Interfaces.IAddClass;
+import IDC.ModelManager;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import java.util.List;
@@ -21,9 +22,7 @@ import org.apache.jena.ontology.OntModel;
  */
 public class AddClass implements IAddClass
 {
-    private OntModel originalModel;
-    private OntModel evolvedModel;
-    
+   
     private String URI;
     private OntClass newClass;
     private OntClass oldClass;
@@ -100,18 +99,9 @@ public class AddClass implements IAddClass
         return this.URI;
     }
 
-    @Override
-    public OntModel getEvolvedModel() {
-        return this.evolvedModel;
-    }
 
-    @Override
-    public void setUp(OntModel originalModel, OntModel evolvedModel) 
-    {
-        this.originalModel = originalModel;
-        this.evolvedModel  = evolvedModel;
-    }
-
+    
+ 
     public void setStartEndInstance(Individual start_ind, Individual end_ind)
     {
         this.end_ind    = end_ind;
@@ -123,19 +113,19 @@ public class AddClass implements IAddClass
     @Override
     public void execute() 
     {        
-        if(this.originalModel==null)
+        if(ModelManager.getManager().getOriginalModel()==null)
             Utils.Utilities.logError("Original Model is not instantiated", "ADDCLASS : EXECUTE");
         
         if(this.oldClass==null)
-            this.oldClass = this.originalModel.getOntClass(URI);
+            this.oldClass = ModelManager.getManager().getOriginalModel().getOntClass(URI);
         
         if(Utilities.isInIgnoreList(this.oldClass.getURI()))
             return;
         
         OntClass theSlice = null;
-        if(this.evolvedModel.getOntClass(URI) == null) // preciso instanciar nova classe
+        if(ModelManager.getManager().getEvolvingModel().getOntClass(URI) == null) // preciso instanciar nova classe
         {   
-            this.newClass = this.evolvedModel.createClass(URI);
+            this.newClass = ModelManager.getManager().getEvolvingModel().createClass(URI);
             OntClass lastOldSlice = OntologyUtils.getLastTimeSlice(newClass);
             int version = OntologyUtils.getSliceNumber(lastOldSlice);
             
@@ -148,7 +138,7 @@ public class AddClass implements IAddClass
             if(this.start_ind != null)
                 timeSlicer = new TimeSliceCreator(this.newClass, start_ind, end_ind, sliceName);
             else
-                timeSlicer = new TimeSliceCreator(this.evolvedModel, this.newClass, version);
+                timeSlicer = new TimeSliceCreator(this.newClass, version);
             
             timeSlicer.execute();
             
@@ -173,5 +163,8 @@ public class AddClass implements IAddClass
             }
         }
     }
+
+
+    
     
 }

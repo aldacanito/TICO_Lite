@@ -21,7 +21,7 @@ public class Main
        // startTest();
         
 //        testArmando();
-        testArmandoTest();
+      testArmandoTest();
         
 //        startUseWeeks();
     }
@@ -67,15 +67,15 @@ public class Main
         
         String semente = dir + "seed_A_instances.ttl";
         
-//        System.out.println("\n\n===========================================================");
-//        System.out.println("\n\n\tComeça primeiro round: semente + hasSensorCorrelation");
-//        System.out.println("\n\n===========================================================\n\n");
-//        // round one
+        System.out.println("\n\n===========================================================");
+        System.out.println("\n\n\tComeça primeiro round: semente + hasSensorCorrelation");
+        System.out.println("\n\n===========================================================\n\n");
+        // round one
         String onto_path      = semente;
         String instance_path  = dir + "OntoPianismIndividuals.B.ttl" ;
         String print_path     = dir + "round1.ttl";
 //        
-//        runComparator(onto_path, instance_path, print_path, 1);
+        runComparator(onto_path, instance_path, print_path, 1);
 
         System.out.println("\n\n===========================================================");
         System.out.println("\n\n\tComeça segundo round: round1 + hasRunningAverage");
@@ -175,22 +175,17 @@ public class Main
     public static void runComparator(String onto_path, String instance_path,
                                      String print_path, int round)
     {
-        OntModel baseO = OntologyUtils.readModel(onto_path);
-        OntModel baseE = OntologyUtils.readModel(onto_path);
-        OntModel baseI = OntologyUtils.readModel(instance_path);
-
-        Comparator comparator = new Comparator(baseO, baseE, baseI);
+        ModelManager.getManager().setup(onto_path, instance_path);
+        Comparator comparator = new Comparator();
         
         comparator.run();
         
         String stats = comparator.printStats();
         System.out.println("Stats time: " + stats );
         
-       
-        
         Utilities.save("Indexes/TestOnto/stats_round"+round+".txt", stats);
         
-        OntologyUtils.writeModeltoFile(comparator.evolvedModel, print_path);
+        OntologyUtils.writeModeltoFile(ModelManager.getManager().getEvolvingModel(), print_path);
     }
     
     

@@ -1,5 +1,6 @@
 package IDC.EvolActions.Impl.Additions.Restriction;
 
+import IDC.ModelManager;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Restriction;
@@ -33,7 +34,7 @@ public class AddSomeValuesFromRestriction extends AddRestriction
     {
         Restriction restriction = null;
                 
-        restriction = this.getEvolvedModel().createSomeValuesFromRestriction(null, onProperty, this.rangeClass);
+        restriction = ModelManager.getManager().getEvolvingModel().createSomeValuesFromRestriction(null, onProperty, this.rangeClass);
         
         if(this.isEquivalent)
             this.ontClass.addEquivalentClass(restriction);

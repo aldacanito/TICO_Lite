@@ -8,12 +8,10 @@ package IDC.Comparison.Impl.Simple;
 import IDC.Comparison.Interfaces.IClassCompare;
 import IDC.EvolActions.Factories.EvolutionaryActionFactory;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
+import IDC.ModelManager;
 import Utils.Utilities;
-import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
@@ -23,21 +21,16 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 public class ClassCompareSimple implements IClassCompare
 {
     protected OntClass ontClass;
-    protected OntModel ontModel;
-    
-    public ClassCompareSimple(OntClass ontClass, OntModel ontModel)
+
+    public ClassCompareSimple(OntClass ontClass)
     {
         this.ontClass = ontClass;
-        this.ontModel = ontModel;
     }
-    
-
-    
-    
+   
     @Override
     public EvolutionaryAction compare() 
     {
-        ExtendedIterator classes = ontModel.listClasses();   
+        ExtendedIterator classes = ModelManager.getManager().getOriginalModel().listClasses();   
         Utilities.logInfo("COMPARING ONTCLASS " + ontClass.getURI() + " to existing classes...");
         
         boolean found = false;

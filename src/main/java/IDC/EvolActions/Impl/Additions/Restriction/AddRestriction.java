@@ -16,9 +16,7 @@ import org.apache.jena.ontology.OntProperty;
  */
 public class AddRestriction implements IAddClass
 {
-    protected OntModel originalModel;
-    protected OntModel evolvedModel;
-    
+   
     protected String URI;
     protected OntClass ontClass;
     
@@ -51,19 +49,8 @@ public class AddRestriction implements IAddClass
         return this.URI;
     }
 
-    @Override
-    public OntModel getEvolvedModel() 
-    {
-        return this.evolvedModel;
-    }
-
-    @Override
-    public void setUp(OntModel originalModel, OntModel evolvedModel) 
-    {
-        this.evolvedModel  = evolvedModel;
-        this.originalModel = originalModel;
-    }
-
+   
+    
     @Override
     public void execute() 
     {

@@ -8,7 +8,6 @@ package IDC.EvolActions.Impl;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.jena.ontology.OntModel;
 
 /**
  *
@@ -16,12 +15,9 @@ import org.apache.jena.ontology.OntModel;
  */
 public class EvolutionaryActionComposite implements EvolutionaryAction
 {
-    private OntModel originalModel;
-    private OntModel evolvedModel;
     private String ontClassURI;
     List<EvolutionaryAction> actions;
-    OntModel evolvingModel; 
-    
+       
     @Override
     public String toString()
     {
@@ -80,26 +76,18 @@ public class EvolutionaryActionComposite implements EvolutionaryAction
         }
     }
 
+
+    
     @Override
-    public OntModel getEvolvedModel()
+    public void execute() 
     {
-        return evolvingModel;
-    }
-    
-    
-    public void execute(OntModel originalModel, OntModel evolvedModel) 
-    {
-        evolvingModel = evolvedModel;
         //nao uses lambda!!
         for(EvolutionaryAction action : actions)
         {
             //depois vai ser preciso garantir qualquer coisa da ordem da execuçao
             if(action!=null)
             {
-                action.setUp(originalModel, evolvingModel);
                 action.execute();
-
-                evolvingModel = action.getEvolvedModel();
             }
         }
     }
@@ -110,17 +98,8 @@ public class EvolutionaryActionComposite implements EvolutionaryAction
         return this.ontClassURI;
     }
 
-    @Override
-    public void setUp(OntModel originalModel, OntModel evolvedModel) 
-    {
-        this.originalModel = originalModel;
-        this.evolvedModel  = evolvedModel;
-    }
+  
 
-    @Override
-    public void execute() 
-    {
-        this.execute(originalModel, evolvedModel);
-    }
+    
     
 }

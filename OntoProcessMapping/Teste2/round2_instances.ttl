@@ -1091,9 +1091,6 @@ OntoPianismIndividuals:erpTimeInstant_895d7cad-1a4e-3a19-a2b2-08970f99efc6
         CM_ontology:hasTimeStamp  "2021-09-10T10:16:00.000Z" ;
         j.3:before                OntoPianismIndividuals:erpTimeInstant_8f27cf34-213a-3816-8cfe-e437f8835d83 .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220801231027421>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220801231027421> .
-
 OntoPianismIndividuals:erpTimeInstant_e22f6154-b49e-3dfb-a3de-2c20e8eb2797
         rdf:type                  owl:NamedIndividual ;
         rdfs:label                "2021-09-10T08:51:59.000Z" ;
@@ -2264,6 +2261,9 @@ OntoPianismIndividuals:erpEvent_1be99e3a-5d2a-3816-b20c-96c51412c91e
         j.3:before          OntoPianismIndividuals:erpTimeInstant_4a939149-cb7c-39ec-bdc4-12d7d023eb48 ;
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_e5ca599e-b374-3bbd-891e-3d4e9aaf88a9 ;
         j.5:hasOutput       "1.787231" .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221221113833937>
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221221113833937> .
 
 OntoPianismIndividuals:erpEvent_6406bf16-9ad3-3400-96ce-daa16abb8786
         rdf:type            owl:NamedIndividual ;
@@ -4728,11 +4728,6 @@ OntoPianismIndividuals:erpEvent_f04bbffa-1800-37fe-86a8-50752769d13e
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_78d5452f-58cc-33f6-a5fa-95f059e53611 ;
         j.5:hasOutput       "1.787231" .
 
-OntoPianismIndividuals:erpTimeInstant_b8908d1d-7720-3c5e-920d-bf7039f4128f
-        rdf:type                  owl:NamedIndividual ;
-        rdfs:label                "2021-09-10T03:45:59.000Z" ;
-        CM_ontology:hasTimeStamp  "2021-09-10T03:45:59.000Z" .
-
 OntoPianismIndividuals:erpEvent_7348f068-f9e2-3e52-b156-3b6e6fa7318a
         rdf:type            owl:NamedIndividual ;
         rdfs:label          "erpEvent_7348f068-f9e2-3e52-b156-3b6e6fa7318a" ;
@@ -4741,8 +4736,10 @@ OntoPianismIndividuals:erpEvent_7348f068-f9e2-3e52-b156-3b6e6fa7318a
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_21d78cec-f488-301f-8209-f18f83d8541f ;
         j.5:hasOutput       "198.0" .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220802074625321>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220802074625321> .
+OntoPianismIndividuals:erpTimeInstant_b8908d1d-7720-3c5e-920d-bf7039f4128f
+        rdf:type                  owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T03:45:59.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T03:45:59.000Z" .
 
 OntoPianismIndividuals:erpEvent_5b460081-cdc0-3661-ae69-5cecfe5c8649
         rdf:type            owl:NamedIndividual ;
@@ -5379,9 +5376,6 @@ OntoPianismIndividuals:erpTimeInterval_fcd92baf-2165-3be4-a6ce-d8d2f66d921b
         rdfs:label        "erpTimeInterval_fcd92baf-2165-3be4-a6ce-d8d2f66d921b" ;
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_34714a82-d361-35c8-9af8-bfe83945261c ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_3a7f7767-0218-33a6-985b-c9ac76506ff0 .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220802074623403>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220802074623403> .
 
 OntoPianismIndividuals:erpTimeInstant_ae4ea64b-cb49-3170-8c56-806e3a1c71c5
         rdf:type                  owl:NamedIndividual ;
@@ -11233,8 +11227,6 @@ OntoPianismIndividuals:erpTimeInterval_a54f60d6-6303-33e8-aecd-54ee14679533
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_0b75839e-efa5-3b0e-b501-2701d2fffd6e ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_79fd8086-0e84-3694-9e77-6b225519d8d9 .
 
-[ rdf:type  owl:Ontology ] .
-
 OntoPianismIndividuals:erpEvent_09b0b0e7-edc5-330e-aba9-bd0632ca2d65
         rdf:type            owl:NamedIndividual ;
         rdfs:label          "erpEvent_09b0b0e7-edc5-330e-aba9-bd0632ca2d65" ;
@@ -11329,6 +11321,9 @@ OntoPianismIndividuals:erpTimeInstant_d2c95134-9b89-3f52-be33-f0be6a1dd76e
         rdf:type                  owl:NamedIndividual ;
         rdfs:label                "2021-09-10T08:45:59.000Z" ;
         CM_ontology:hasTimeStamp  "2021-09-10T08:45:59.000Z" .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221221113833681>
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221221113833681> .
 
 OntoPianismIndividuals:erpTimeInstant_a5948fe6-84ea-3566-a658-bc77103d818c
         rdf:type                  owl:NamedIndividual ;
@@ -13040,6 +13035,8 @@ OntoPianismIndividuals:erpTimeInstant_6b69f479-085b-3332-a9ad-0b0e8f5855fd
         CM_ontology:hasTimeStamp  "2021-09-10T07:35:00.000Z" ;
         j.3:before                OntoPianismIndividuals:erpTimeInstant_d9301263-529d-3cce-bdf8-670a0dd08160 .
 
+j.3:hasTimeSlice  rdf:type  rdf:Property .
+
 OntoPianismIndividuals:erpTimeInstant_574d383e-cd09-368b-870f-4a07bc520c0e
         rdf:type                  owl:NamedIndividual ;
         rdfs:label                "2021-09-10T03:35:59.000Z" ;
@@ -13507,16 +13504,10 @@ OntoPianismIndividuals:erpTimeInterval_e30fb6e6-783d-31fe-9ec4-26adc76781fd
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_b790761c-bd6d-3a75-b5cb-7cf92d8e9c3a ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_1c40e614-736c-38aa-aee8-640ef15cc51c .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220801231610431>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220801231610431> .
-
 OntoPianismIndividuals:erpTimeInstant_1c3e94bf-bad4-3e99-8ef3-93715f37d22f
         rdf:type                  owl:NamedIndividual ;
         rdfs:label                "2021-09-10T01:44:59.000Z" ;
         CM_ontology:hasTimeStamp  "2021-09-10T01:44:59.000Z" .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220801231027464>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220801231027464> .
 
 OntoPianismIndividuals:erpTimeInterval_3ba7f3df-11ae-38af-b5b8-47abdf65af31
         rdf:type          owl:NamedIndividual ;
@@ -16647,13 +16638,10 @@ OntoPianismIndividuals:erpTimeInterval_d7d0b392-c863-3fa2-a0fe-8da11aeb1549
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_2c559ce6-0961-31de-84e4-699b052d869a ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_ceb5bfff-99ae-36dd-9800-6bd56427cc84 .
 
-OntoPianismIndividuals:erpEvent_b086c753-1e92-3689-9958-9d59131ee8ef
-        rdf:type            owl:NamedIndividual ;
-        rdfs:label          "erpEvent_b086c753-1e92-3689-9958-9d59131ee8ef" ;
-        j.3:after           OntoPianismIndividuals:erpTimeInstant_c8d56ad1-198d-38a3-aded-d653ebc47fac ;
-        j.3:before          OntoPianismIndividuals:erpTimeInstant_eb512231-7761-31cd-9673-07681a42a3ed ;
-        j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_6a7a023b-7bda-3d93-91c5-6056854d2fd0 ;
-        j.5:hasOutput       "1.787231" .
+OntoPianismIndividuals:erpTimeInstant_123a40eb-448e-321e-99b2-a7767cf50ec0
+        rdf:type                  owl:NamedIndividual ;
+        rdfs:label                "2020-03-08T04:45:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2020-03-08T04:45:00.000Z" .
 
 OntoPianismIndividuals:erpEvent_69ac19f9-81e8-3b20-acc2-90a7a5646ed9
         rdf:type            owl:NamedIndividual ;
@@ -16665,10 +16653,13 @@ OntoPianismIndividuals:erpEvent_69ac19f9-81e8-3b20-acc2-90a7a5646ed9
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_debac406-df47-3665-9170-155b40805be2 ;
         j.5:hasOutput       "49.0" .
 
-OntoPianismIndividuals:erpTimeInstant_123a40eb-448e-321e-99b2-a7767cf50ec0
-        rdf:type                  owl:NamedIndividual ;
-        rdfs:label                "2020-03-08T04:45:00.000Z" ;
-        CM_ontology:hasTimeStamp  "2020-03-08T04:45:00.000Z" .
+OntoPianismIndividuals:erpEvent_b086c753-1e92-3689-9958-9d59131ee8ef
+        rdf:type            owl:NamedIndividual ;
+        rdfs:label          "erpEvent_b086c753-1e92-3689-9958-9d59131ee8ef" ;
+        j.3:after           OntoPianismIndividuals:erpTimeInstant_c8d56ad1-198d-38a3-aded-d653ebc47fac ;
+        j.3:before          OntoPianismIndividuals:erpTimeInstant_eb512231-7761-31cd-9673-07681a42a3ed ;
+        j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_6a7a023b-7bda-3d93-91c5-6056854d2fd0 ;
+        j.5:hasOutput       "1.787231" .
 
 OntoPianismIndividuals:erpSensor_a595f0a4-4cf5-329e-a4f4-e6c55c5884ce
         rdf:type                     owl:NamedIndividual ;
@@ -17848,10 +17839,6 @@ OntoPianismIndividuals:erpTimeInstant_676cbaed-004d-3111-9f39-dca82befe100
         rdfs:label                "2021-09-10T09:56:59.000Z" ;
         CM_ontology:hasTimeStamp  "2021-09-10T09:56:59.000Z" .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/>
-        rdf:type     owl:Ontology ;
-        owl:imports  <http://www.w3.org/2006/time> .
-
 OntoPianismIndividuals:erpEvent_cc1f8c69-de19-3e0d-92b8-9e1c92ca89a8
         rdf:type            owl:NamedIndividual ;
         rdfs:label          "erpEvent_cc1f8c69-de19-3e0d-92b8-9e1c92ca89a8" ;
@@ -17940,6 +17927,9 @@ OntoPianismIndividuals:erpEvent_0f7b4acf-62a9-39a6-b89b-c0f7319bf001
         j.3:before          OntoPianismIndividuals:erpTimeInstant_95235739-0e7b-3f84-8bd5-72c2d4b90d46 ;
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_794f7cf4-d10a-3acc-a704-beb9c15f882e ;
         j.5:hasOutput       "1.787231" .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221221111928889>
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221221111928889> .
 
 OntoPianismIndividuals:erpEvent_5cc33543-ccef-3113-8dde-915dcc976ab6
         rdf:type            owl:NamedIndividual ;
@@ -22693,9 +22683,6 @@ OntoPianismIndividuals:erpSensor_e302bbfa-117a-3965-a6b7-e5827f8fb93f
         sensors4ExtruOnt:sensorName  "InstantWeight" ;
         CM_ontology:hasSensorID      "e302bbfa-117a-3965-a6b7-e5827f8fb93f" .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220801231610531>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220801231610531> .
-
 OntoPianismIndividuals:erpTimeInstant_8e14ec74-9a8d-3d29-b129-a7db41f0f325
         rdf:type                  owl:NamedIndividual ;
         rdfs:label                "2021-09-10T05:16:59.000Z" ;
@@ -22939,6 +22926,10 @@ OntoPianismIndividuals:erpEvent_b6061aaf-2dbc-3440-b8b6-bdffcb299eac
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_17059743-a85f-3f5c-8bfd-8a38b775ef39 ;
         j.5:hasOutput       "1.787231" .
 
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
 OntoPianismIndividuals:erpTimeInterval_a0ff9f23-c239-3602-a337-1f1986e9574f
         rdf:type          owl:NamedIndividual ;
         rdfs:label        "erpTimeInterval_a0ff9f23-c239-3602-a337-1f1986e9574f" ;
@@ -23072,12 +23063,6 @@ OntoPianismIndividuals:erpTimeInstant_4702349e-4143-349f-b3c3-2205fe05ac63
         CM_ontology:hasTimeStamp  "2021-09-10T03:15:00.000Z" ;
         j.3:before                OntoPianismIndividuals:erpTimeInstant_cee2bcb2-4185-3126-b5f2-0e5b3af66ead .
 
-OntoPianismIndividuals:erpTimeInterval_28583a86-8c35-3c73-88c1-dbe0c3ae9a61
-        rdf:type          owl:NamedIndividual ;
-        rdfs:label        "erpTimeInterval_28583a86-8c35-3c73-88c1-dbe0c3ae9a61" ;
-        j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_fb09202b-5e5e-3f85-86ed-55e325674715 ;
-        j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_502da0de-2ff2-3253-9e7c-0978a94c7fe7 .
-
 OntoPianismIndividuals:erpEvent_1d5716a4-0b08-3475-8105-263d3d94853a
         rdf:type            owl:NamedIndividual ;
         rdfs:label          "erpEvent_1d5716a4-0b08-3475-8105-263d3d94853a" ;
@@ -23085,6 +23070,12 @@ OntoPianismIndividuals:erpEvent_1d5716a4-0b08-3475-8105-263d3d94853a
         j.3:before          OntoPianismIndividuals:erpTimeInstant_07f828e8-1147-3162-98e3-ae0a5e79e1c2 ;
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_0ffb88f5-64ea-3922-9943-7da92ad9f0ef ;
         j.5:hasOutput       "1.787231" .
+
+OntoPianismIndividuals:erpTimeInterval_28583a86-8c35-3c73-88c1-dbe0c3ae9a61
+        rdf:type          owl:NamedIndividual ;
+        rdfs:label        "erpTimeInterval_28583a86-8c35-3c73-88c1-dbe0c3ae9a61" ;
+        j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_fb09202b-5e5e-3f85-86ed-55e325674715 ;
+        j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_502da0de-2ff2-3253-9e7c-0978a94c7fe7 .
 
 OntoPianismIndividuals:erpEvent_2d59ae38-110f-386e-a10f-6735c3b54861
         rdf:type            owl:NamedIndividual ;
@@ -30916,6 +30907,8 @@ OntoPianismIndividuals:erpTimeInterval_6a2ae1e0-c91e-34cb-b0b8-5ee44bf27fac
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_d4d984e2-9230-3a82-88d3-788e2d90a48d ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_8b31bc9e-3787-3097-ba1f-0d95f02382e7 .
 
+[ rdf:type  owl:Ontology ] .
+
 OntoPianismIndividuals:erpEvent_715a5490-ff47-3ae9-9ffe-1cf059e02a97
         rdf:type            owl:NamedIndividual ;
         rdfs:label          "erpEvent_715a5490-ff47-3ae9-9ffe-1cf059e02a97" ;
@@ -31131,6 +31124,12 @@ OntoPianismIndividuals:erpTimeInstant_29947126-3e44-3c55-a6cc-c03242d7937f
         CM_ontology:hasTimeStamp  "2021-09-10T10:39:00.000Z" ;
         j.3:before                OntoPianismIndividuals:erpTimeInstant_11be8136-69a5-354b-b1b1-4a5a77209dcc .
 
+OntoPianismIndividuals:erpTimeInstant_d5ad9aeb-183a-33cb-8d6e-764e9ba45fc7
+        rdf:type                  owl:NamedIndividual ;
+        rdfs:label                "2021-09-10T08:49:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2021-09-10T08:49:00.000Z" ;
+        j.3:before                OntoPianismIndividuals:erpTimeInstant_3c85c977-7db1-35e1-8f55-5af799f000b9 .
+
 OntoPianismIndividuals:erpEvent_651492a7-8236-366f-8129-789006176558
         rdf:type            owl:NamedIndividual ;
         rdfs:label          "erpEvent_651492a7-8236-366f-8129-789006176558" ;
@@ -31139,11 +31138,8 @@ OntoPianismIndividuals:erpEvent_651492a7-8236-366f-8129-789006176558
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_9b00ae95-4e19-3f7a-a6ef-9254a4f97577 ;
         j.5:hasOutput       "198.0" .
 
-OntoPianismIndividuals:erpTimeInstant_d5ad9aeb-183a-33cb-8d6e-764e9ba45fc7
-        rdf:type                  owl:NamedIndividual ;
-        rdfs:label                "2021-09-10T08:49:00.000Z" ;
-        CM_ontology:hasTimeStamp  "2021-09-10T08:49:00.000Z" ;
-        j.3:before                OntoPianismIndividuals:erpTimeInstant_3c85c977-7db1-35e1-8f55-5af799f000b9 .
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221221111928933>
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221221111928933> .
 
 OntoPianismIndividuals:erpTimeInstant_082b7284-1d2e-3317-b045-d8b5bfd44165
         rdf:type                  owl:NamedIndividual ;
@@ -32173,7 +32169,7 @@ OntoPianismIndividuals:erpEvent_5b240796-5e58-3869-9914-cd5a3a8aa284
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_26c27092-162f-308c-a85a-96ce4f69a8af ;
         j.5:hasOutput       "49.0" .
 
-j.3:before  rdf:type  owl:ObjectProperty .
+j.3:before  rdf:type  rdf:Property .
 
 OntoPianismIndividuals:erpEvent_122548df-0f82-34a7-b0b9-0a34212742f4
         rdf:type            owl:NamedIndividual ;

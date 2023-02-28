@@ -1,6 +1,7 @@
 
 package IDC.EvolActions.Impl.Additions.Restriction;
 
+import IDC.ModelManager;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Restriction;
@@ -66,16 +67,16 @@ public class AddCardinalityRestriction extends AddRestriction
             {
                 case "min" : 
                 //create min cardinality;
-                    restriction = this.getEvolvedModel().createMinCardinalityRestriction(null, this.onProperty, cardinality);
+                    restriction = ModelManager.getManager().getEvolvingModel().createMinCardinalityRestriction(null, this.onProperty, cardinality);
                     break;
 
                 case "max" : 
                     //create max cardinality;
-                    restriction = this.getEvolvedModel().createMaxCardinalityRestriction(null, this.onProperty, cardinality);
+                    restriction = ModelManager.getManager().getEvolvingModel().createMaxCardinalityRestriction(null, this.onProperty, cardinality);
                     break;
                 default: 
                     // cardinality normal ??? num
-                    restriction = this.getEvolvedModel().createCardinalityRestriction(null, this.onProperty, cardinality);
+                    restriction = ModelManager.getManager().getEvolvingModel().createCardinalityRestriction(null, this.onProperty, cardinality);
                     break; 
             }
         }
@@ -85,15 +86,15 @@ public class AddCardinalityRestriction extends AddRestriction
             {
                 case "min" : 
                     //create min cardinality;
-                    restriction = this.getEvolvedModel().createMinCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
+                    restriction = ModelManager.getManager().getEvolvingModel().createMinCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
                     break;
                 case "max" : 
                     //create max cardinality;
-                    restriction = this.getEvolvedModel().createMaxCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
+                    restriction = ModelManager.getManager().getEvolvingModel().createMaxCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
                     break;
                 default: 
                     // cardinality normal ??? num
-                    restriction = this.getEvolvedModel().createCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
+                    restriction = ModelManager.getManager().getEvolvingModel().createCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
                     break; 
             }
         }

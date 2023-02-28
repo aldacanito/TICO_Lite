@@ -6,7 +6,6 @@
 package IDC.EvolActions.Impl.Additions;
 
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
-import IDC.EvolActions.Interfaces.IAddProperty;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.ontology.OntModel;
@@ -153,21 +152,8 @@ public class AddProperty implements EvolutionaryAction
         return disjointWith;
     }
 
-    @Override
-    public OntModel getEvolvedModel() {
-        return this.evolvedModel;
-    }
-
-    @Override
-    public void setUp(OntModel originalModel, OntModel evolvedModel) 
-    {
-     
-        this.evolvedModel = evolvedModel;
-        this.originalModel = originalModel;
-        
-        if(evolvedModel == null)
-            this.evolvedModel = this.originalModel;
-    }
+   
+    
 
     @Override
     public void execute() {

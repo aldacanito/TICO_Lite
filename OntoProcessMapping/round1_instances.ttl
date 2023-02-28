@@ -24,6 +24,12 @@ OntoPianismIndividuals:erpEvent_1
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_1 ;
         j.5:hasOutput       "1.787231" .
 
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_feedRate_2feedRate_2>
+        j.3:hasBeginning  OntoPianismIndividuals:feedRate_2 ;
+        j.3:hasEnd        OntoPianismIndividuals:feedRate_2 .
+
+[ rdf:type  owl:Ontology ] .
+
 OntoPianismIndividuals:feedRate_2
         rdf:type                    owl:NamedIndividual ;
         rdfs:label                  "FeedRate Virtual 2" ;
@@ -36,7 +42,14 @@ OntoPianismIndividuals:erpTimeInterval_2
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_2 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_3 .
 
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682>
+        j.3:hasBeginning  OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 ;
+        j.3:hasEnd        OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 .
+
 j.5:hasOutput  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221220112345730>
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345730> .
 
 OntoPianismIndividuals:erpTimeInstant_5
         rdf:type                  owl:NamedIndividual ;
@@ -45,10 +58,6 @@ OntoPianismIndividuals:erpTimeInstant_5
 
 OntoPianismERP:derivedFrom
         rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682>
-        j.3:hasBeginning  OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 ;
-        j.3:hasEnd        OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 .
 
 j.3:hasDuration  rdf:type  owl:ObjectProperty .
 
@@ -115,10 +124,7 @@ OntoPianismIndividuals:erpTimeInstant_3
 OntoPianismERP:hasOutput
         rdf:type  owl:ObjectProperty .
 
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220803102257992>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220803102257992> .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/>
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/>
         rdf:type     owl:Ontology ;
         owl:imports  <http://www.w3.org/2006/time> .
 
@@ -136,6 +142,9 @@ OntoPianismIndividuals:erpTimeInstant_2
         rdf:type                  owl:NamedIndividual ;
         rdfs:label                "2020-08-15T10:00:00.000Z" ;
         CM_ontology:hasTimeStamp  "2020-08-15T10:00:00.000Z" .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221220112345781>
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345781> .
 
 sensors4ExtruOnt:sensorName
         rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
@@ -161,12 +170,6 @@ OntoPianismIndividuals:erpEvent_2
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_2 ;
         j.5:hasOutput       "45.975" .
 
-[ rdf:type  owl:Ontology ] .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_feedRate_2feedRate_2>
-        j.3:hasBeginning  OntoPianismIndividuals:feedRate_2 ;
-        j.3:hasEnd        OntoPianismIndividuals:feedRate_2 .
-
 OntoPianismIndividuals:erpTimeInstant_1
         rdf:type                  owl:NamedIndividual ;
         rdfs:label                "2019-11-12T17:50:00.000Z" ;
@@ -189,6 +192,3 @@ OntoPianismIndividuals:erpTimeInstant_6
         rdf:type                  owl:NamedIndividual ;
         rdfs:label                "2021-09-13T03:07:00.000Z" ;
         CM_ontology:hasTimeStamp  "2021-09-13T03:07:00.000Z" .
-
-<file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/Interval_st_20220803102258682>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/20220803102258682> .

@@ -14,8 +14,6 @@ import org.apache.jena.ontology.OntModel;
 public interface EvolutionaryAction
 {
     public String getURI();
-    public OntModel getEvolvedModel();
-    public void setUp(OntModel originalModel, OntModel evolvedModel);
     public void execute();
     @Override
     public String toString();
