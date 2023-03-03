@@ -177,7 +177,7 @@ public class Main
     {
         ModelManager.getManager().setup(onto_path, instance_path);
         Comparator comparator = new Comparator();
-        
+  
         comparator.run();
         
         String stats = comparator.printStats();

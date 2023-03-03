@@ -6,17 +6,10 @@
 package IDC.EvolActions.Impl.Copy;
 
 import IDC.EvolActions.Interfaces.IAddClass;
+import IDC.ModelManager;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import org.apache.jena.ontology.OntClass;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.ontology.OntResource;
-import org.apache.jena.rdf.model.Literal;
-import org.apache.jena.rdf.model.Property;
-import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.util.iterator.ExtendedIterator;
 
 /**
  *
@@ -25,28 +18,18 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 public class CopyClass implements IAddClass
 {
     private OntClass ontClass;
-    private OntModel originalModel;
-    private OntModel evolvedModel;
     
     public CopyClass(OntClass toAdd)
     {
         this.ontClass = toAdd;
     }
         
-      
-    
-    @Override
-    public void setUp(OntModel originalModel, OntModel evolvedModel) 
-    {
-        this.originalModel = originalModel;
-        this.evolvedModel  = evolvedModel;
-    }
+ 
 
     @Override
     public void execute() 
     {
-        if(evolvedModel.isEmpty())
-            evolvedModel = originalModel;
+        
     
         // BÁSICO, TENTA COPIAR PROPRIEDADES E DEFINICOES DA CLASSE
         //verificar
@@ -54,7 +37,7 @@ public class CopyClass implements IAddClass
 
         
         if(!Utilities.isInIgnoreList(ontClass.getURI()))
-            OntologyUtils.copyClass(ontClass, evolvedModel);
+            OntologyUtils.copyClass(ontClass, ModelManager.getManager().getEvolvingModel());
     }
 
     public String toString()
@@ -64,12 +47,7 @@ public class CopyClass implements IAddClass
         return toPrint;
     }
     
-    
-    @Override
-    public OntModel getEvolvedModel() 
-    {
-        return this.evolvedModel;
-    }
+
 
     @Override
     public String getURI() 

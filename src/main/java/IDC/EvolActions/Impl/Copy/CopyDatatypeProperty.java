@@ -6,6 +6,7 @@
 package IDC.EvolActions.Impl.Copy;
 
 import IDC.EvolActions.Interfaces.IAddDatatypeProperty;
+import IDC.ModelManager;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import org.apache.jena.graph.Triple;
@@ -31,12 +32,12 @@ public class CopyDatatypeProperty extends CopyProperty
     @Override
     public void execute() 
     {
-        evolvedModel.createDatatypeProperty(theProperty.getURI());
+        ModelManager.getManager().getEvolvingModel().createDatatypeProperty(theProperty.getURI());
         
         // TODO VERIFICAR SE ISTO SE AGUENTA     
         
         if(!Utilities.isInIgnoreList(theProperty.getURI()))
-            OntologyUtils.copyProperty(evolvedModel, theProperty);
+            OntologyUtils.copyProperty(ModelManager.getManager().getEvolvingModel(), theProperty);
     }
     
     public String toString()

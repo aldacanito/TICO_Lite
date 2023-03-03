@@ -22,9 +22,6 @@ public class AddProperty implements EvolutionaryAction
     List<String> domains;
     List<String> ranges;
     List<String> disjointWith;
-    
-    OntModel originalModel;
-    OntModel evolvedModel;
    
     protected boolean functional = false;
     
@@ -152,8 +149,7 @@ public class AddProperty implements EvolutionaryAction
         return disjointWith;
     }
 
-   
-    
+  
 
     @Override
     public void execute() {

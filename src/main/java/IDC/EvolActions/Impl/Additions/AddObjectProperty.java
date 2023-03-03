@@ -5,6 +5,7 @@
  */
 package IDC.EvolActions.Impl.Additions;
 
+import IDC.ModelManager;
 import static Utils.OntologyUtils.copyProperty;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +44,8 @@ public class AddObjectProperty extends AddProperty
     @Override
     public void execute()
     {
-        OntProperty oldProperty = this.originalModel.getOntProperty(URI);
-        OntProperty newProperty = this.evolvedModel.getOntProperty(URI);
+        OntProperty oldProperty = ModelManager.getManager().getOriginalModel().getOntProperty(URI);
+        OntProperty newProperty = ModelManager.getManager().getEvolvingModel().getOntProperty(URI);
            
         // tem algum caso em que é preciso apagar ?? ou não copiar ??
         
@@ -52,11 +53,11 @@ public class AddObjectProperty extends AddProperty
         {
             if(oldProperty == null) // propriedade totalmente Nova
             {
-                newProperty = this.evolvedModel.createOntProperty(URI);
+                newProperty = ModelManager.getManager().getEvolvingModel().createOntProperty(URI);
             }
             else // copiar a que existe
             {
-                newProperty = Utils.OntologyUtils.copyProperty(evolvedModel, oldProperty);
+                newProperty = Utils.OntologyUtils.copyProperty(ModelManager.getManager().getEvolvingModel(), oldProperty);
             }
         }
        
@@ -73,7 +74,7 @@ public class AddObjectProperty extends AddProperty
         
         for(String domain : this.domains)
         {
-            Resource resource = this.evolvedModel.getResource(domain);
+            Resource resource = ModelManager.getManager().getEvolvingModel().getResource(domain);
             if(resource!=null)
                 newProperty.addDomain(resource);
             else // domain não existe, tem de ser inventado
@@ -85,7 +86,7 @@ public class AddObjectProperty extends AddProperty
         
         for(String range : this.ranges)
         {
-            Resource resource = this.evolvedModel.getResource(range);
+            Resource resource = ModelManager.getManager().getEvolvingModel().getResource(range);
             if(resource!=null)
                 newProperty.addDomain(resource);
             else // domain não existe, tem de ser inventado
@@ -103,13 +104,13 @@ public class AddObjectProperty extends AddProperty
             {
                 if(sPO == null || sPO.isEmpty())
                     continue;
-                if(this.evolvedModel.getProperty(sPO)!=null)
+                if(ModelManager.getManager().getEvolvingModel().getProperty(sPO)!=null)
                 {   
-                    OntProperty oldSuperProperty = originalModel.getOntProperty(sPO);
+                    OntProperty oldSuperProperty = ModelManager.getManager().getOriginalModel().getOntProperty(sPO);
 
-                    OntProperty property = evolvedModel.getOntProperty(sPO);
+                    OntProperty property = ModelManager.getManager().getEvolvingModel().getOntProperty(sPO);
                     if(property==null && oldSuperProperty!=null) // se a propriedade nao existe é preciso criar
-                        property = copyProperty(evolvedModel, oldSuperProperty);
+                        property = copyProperty(ModelManager.getManager().getEvolvingModel(), oldSuperProperty);
 
                     newProperty.addSuperProperty(property);
                 }
@@ -122,13 +123,13 @@ public class AddObjectProperty extends AddProperty
             {
                 if(sBO == null || sBO.isEmpty())
                     continue;
-                if(this.evolvedModel.getProperty(sBO)!=null)
+                if(ModelManager.getManager().getEvolvingModel().getProperty(sBO)!=null)
                 {   
-                    OntProperty oldSubProperty = originalModel.getOntProperty(sBO);
+                    OntProperty oldSubProperty = ModelManager.getManager().getOriginalModel().getOntProperty(sBO);
 
-                    OntProperty property = evolvedModel.getOntProperty(sBO);
+                    OntProperty property = ModelManager.getManager().getEvolvingModel().getOntProperty(sBO);
                     if(property==null && oldSubProperty!=null) // se a propriedade nao existe é preciso criar
-                        property = copyProperty(evolvedModel, oldSubProperty);
+                        property = copyProperty(ModelManager.getManager().getEvolvingModel(), oldSubProperty);
 
                     newProperty.addSubProperty(property);
                 }

@@ -5,6 +5,7 @@
  */
 package IDC.EvolActions.Impl.Additions;
 
+import IDC.ModelManager;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.Resource;
@@ -32,15 +33,15 @@ public class AddDatatypeProperty extends AddProperty
     {
         Utils.Utilities.logInfo("Executing Evolutionary Action Add Datatype Property for Property with URI " + this.getURI());
    
-        DatatypeProperty dtp = Utils.OntologyUtils.getDatatypePropertyFromModel(this.evolvedModel, URI);
+        DatatypeProperty dtp = Utils.OntologyUtils.getDatatypePropertyFromModel(ModelManager.getManager().getEvolvingModel(), URI);
         
         if(dtp!=null) // property Exists. modify?
         {}
         else
         {}
         
-        OntProperty oldProperty = this.originalModel.getDatatypeProperty(URI);
-        OntProperty newProperty = this.evolvedModel.getDatatypeProperty(URI);
+        OntProperty oldProperty = ModelManager.getManager().getOriginalModel().getDatatypeProperty(URI);
+        OntProperty newProperty = ModelManager.getManager().getEvolvingModel().getDatatypeProperty(URI);
            
         // tem algum caso em que é preciso apagar ?? ou não copiar ??
         
@@ -48,11 +49,11 @@ public class AddDatatypeProperty extends AddProperty
         {
             if(oldProperty == null) // propriedade totalmente Nova
             {
-                newProperty = this.evolvedModel.createDatatypeProperty(URI);
+                newProperty = ModelManager.getManager().getEvolvingModel().createDatatypeProperty(URI);
             }
             else // copiar a que existe
             {
-                newProperty = Utils.OntologyUtils.copyProperty(evolvedModel, oldProperty);
+                newProperty = Utils.OntologyUtils.copyProperty(ModelManager.getManager().getEvolvingModel(), oldProperty);
             }
         }
         
@@ -61,7 +62,7 @@ public class AddDatatypeProperty extends AddProperty
     
         for(String domain : this.domains)
         {
-            Resource resource = this.evolvedModel.getResource(domain);
+            Resource resource = ModelManager.getManager().getEvolvingModel().getResource(domain);
             if(resource!=null)
                 newProperty.addDomain(resource);
             else // domain não existe, tem de ser inventado
@@ -73,7 +74,7 @@ public class AddDatatypeProperty extends AddProperty
         
         for(String range : this.ranges)
         {
-            Resource resource = this.evolvedModel.getResource(range);
+            Resource resource = ModelManager.getManager().getEvolvingModel().getResource(range);
             if(resource!=null)
                 newProperty.addDomain(resource);
             else // domain não existe, tem de ser inventado

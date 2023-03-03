@@ -6,6 +6,7 @@
 package IDC.EvolActions.Impl.Copy;
 
 import IDC.EvolActions.Interfaces.IAddProperty;
+import IDC.ModelManager;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import org.apache.jena.graph.Triple;
@@ -20,8 +21,6 @@ import org.apache.jena.ontology.OntProperty;
 public class CopyProperty implements IAddProperty
 {
     protected Triple thePropertyTriple;
-    protected OntModel ontologyModel;
-    protected OntModel evolvedModel;
     protected OntProperty theProperty;
     protected boolean functional;
     
@@ -50,31 +49,16 @@ public class CopyProperty implements IAddProperty
         this.functional = functional;
     }
     
-    @Override
-    public OntModel getEvolvedModel() 
-    {
-        return this.evolvedModel;
-    }
 
-    @Override
-    public void setUp(OntModel originalModel, OntModel evolvedModel) 
-    {
-        this.ontologyModel = originalModel;
-        this.evolvedModel  = evolvedModel;
-        
-        if(this.evolvedModel == null || this.evolvedModel.isEmpty())
-            this.evolvedModel = ontologyModel;
-    }
 
 
     @Override
     public void execute() 
     {
-        evolvedModel.createOntProperty(theProperty.getURI());
+        ModelManager.getManager().getEvolvingModel().createOntProperty(theProperty.getURI());
         
         if(!Utilities.isInIgnoreList(theProperty.getURI()))
-            OntologyUtils.copyProperty(evolvedModel, theProperty);
-       
+            OntologyUtils.copyProperty(ModelManager.getManager().getEvolvingModel(), theProperty);
         
     }
     

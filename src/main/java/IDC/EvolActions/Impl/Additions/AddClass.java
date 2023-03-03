@@ -117,7 +117,7 @@ public class AddClass implements IAddClass
             Utils.Utilities.logError("Original Model is not instantiated", "ADDCLASS : EXECUTE");
         
         if(this.oldClass==null)
-            this.oldClass = ModelManager.getManager().getOriginalModel().getOntClass(URI);
+            this.oldClass = ModelManager.getManager().getInstanceModel().getOntClass(URI);
         
         if(Utilities.isInIgnoreList(this.oldClass.getURI()))
             return;

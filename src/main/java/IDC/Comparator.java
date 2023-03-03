@@ -30,7 +30,6 @@ import org.apache.jena.rdf.model.RDFList;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
 import org.apache.jena.util.iterator.ExtendedIterator;
-import IDC.ModelManager;
 /**
  *
  * @author shizamura

@@ -33,13 +33,13 @@ j.2:TS__Sensor__1  rdf:type  owl:Class ;
                                owl:someValuesFrom  j.2:Sensor
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20221220112345730> ;
+                               owl:hasValue    <Interval_st_20230228152737002> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( j.2:Sensor j.2:Sensor
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20221220112345730> ;
+                                                       owl:hasValue    <20230228152737002> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
@@ -85,6 +85,10 @@ OntoPianismIndividuals:erpTimeInstant_5
 OntoPianismERP:derivedFrom
         rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
 
+[ rdf:type  owl:Ontology ] .
+
+<20230228152737045>  rdf:type  j.3:Instant .
+
 j.3:hasDuration  rdf:type  owl:ObjectProperty .
 
 OntoPianismERP:VirtualEvent
@@ -119,6 +123,10 @@ OntoPianismIndividuals:erpTimeInterval_1
         rdfs:label        "erpTimeInterval_1" ;
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_1 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_2 .
+
+<Interval_st_20230228152737002>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20230228152737002> .
 
 OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682-c7c53718136d
         rdf:type                     j.2:Sensor , owl:NamedIndividual ;
@@ -181,12 +189,6 @@ CM_ontology:hasTimeStamp
         j.3:hasBeginning  OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 ;
         j.3:hasEnd        OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 .
 
-<20221220112345781>  rdf:type  j.3:Instant .
-
-<Interval_st_20221220112345781>
-        rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <20221220112345781> .
-
 OntoPianismIndividuals:erpEvent_4
         rdf:type            owl:NamedIndividual , j.0:extEvent ;
         rdfs:label          "erpEvent_batch2_4" ;
@@ -201,6 +203,8 @@ OntoPianismIndividuals:erpTimeInstant_3
 OntoPianismERP:hasOutput
         rdf:type  owl:ObjectProperty .
 
+<20230228152737002>  rdf:type  j.3:Instant .
+
 OntoPianismERP:VirtualSensor
         rdf:type         owl:Class ;
         rdfs:subClassOf  [ rdf:type            owl:Restriction ;
@@ -211,8 +215,6 @@ OntoPianismERP:VirtualSensor
                            owl:cardinality  "1"^^xsd:int ;
                            owl:onProperty   OntoPianismERP:detects
                          ] .
-
-[ rdf:type  owl:Ontology ] .
 
 OntoPianismIndividuals:erpEvent_3
         rdf:type            owl:NamedIndividual , j.0:extEvent ;
@@ -247,13 +249,13 @@ j.0:TS__extEvent__1  rdf:type  owl:Class ;
                                owl:someValuesFrom  j.0:extEvent
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20221220112345781> ;
+                               owl:hasValue    <Interval_st_20230228152737045> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( j.0:extEvent j.0:extEvent
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20221220112345781> ;
+                                                       owl:hasValue    <20230228152737045> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
@@ -332,11 +334,9 @@ OntoPianismIndividuals:erpTimeInterval_3
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_4 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_5 .
 
-<20221220112345730>  rdf:type  j.3:Instant .
-
-<Interval_st_20221220112345730>
+<Interval_st_20230228152737045>
         rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <20221220112345730> .
+        j.3:hasBeginning  <20230228152737045> .
 
 j.3:before  rdf:type  rdf:Property .
 

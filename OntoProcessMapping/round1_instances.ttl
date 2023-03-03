@@ -28,8 +28,6 @@ OntoPianismIndividuals:erpEvent_1
         j.3:hasBeginning  OntoPianismIndividuals:feedRate_2 ;
         j.3:hasEnd        OntoPianismIndividuals:feedRate_2 .
 
-[ rdf:type  owl:Ontology ] .
-
 OntoPianismIndividuals:feedRate_2
         rdf:type                    owl:NamedIndividual ;
         rdfs:label                  "FeedRate Virtual 2" ;
@@ -47,9 +45,6 @@ OntoPianismIndividuals:erpTimeInterval_2
         j.3:hasEnd        OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 .
 
 j.5:hasOutput  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
-
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221220112345730>
-        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345730> .
 
 OntoPianismIndividuals:erpTimeInstant_5
         rdf:type                  owl:NamedIndividual ;
@@ -105,7 +100,12 @@ CM_ontology:hasSensorID
 OntoPianismERP:hasSensorCorrelation
         rdf:type  rdf:Property , owl:TransitiveProperty .
 
+[ rdf:type  owl:Ontology ] .
+
 j.3:intervalDuring  rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20230228152737045>
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20230228152737045> .
 
 CM_ontology:hasTimeStamp
         rdf:type  owl:DatatypeProperty .
@@ -143,9 +143,6 @@ OntoPianismIndividuals:erpTimeInstant_2
         rdfs:label                "2020-08-15T10:00:00.000Z" ;
         CM_ontology:hasTimeStamp  "2020-08-15T10:00:00.000Z" .
 
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20221220112345781>
-        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20221220112345781> .
-
 sensors4ExtruOnt:sensorName
         rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
 
@@ -154,6 +151,9 @@ OntoPianismIndividuals:erpTimeInterval_4
         rdfs:label        "erpTimeInterval_4" ;
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_4 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_6 .
+
+<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20230228152737002>
+        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20230228152737002> .
 
 j.3:isTimeSliceOf  rdf:type  owl:ObjectProperty .
 

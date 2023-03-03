@@ -5,12 +5,10 @@
  */
 package IDC.EvolActions.Impl.Copy;
 
-import IDC.EvolActions.Interfaces.IAddObjectProperty;
+import IDC.ModelManager;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import org.apache.jena.graph.Triple;
-import org.apache.jena.ontology.ObjectProperty;
-import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.Property;
 
@@ -46,16 +44,16 @@ public class CopyObjectProperty extends CopyProperty
         
         try
         {
-            OntologyUtils.copyProperty(evolvedModel, theProperty);
+            OntologyUtils.copyProperty(ModelManager.getManager().getEvolvingModel(), theProperty);
     
         }
         catch(ClassCastException e)
         {  
             Utilities.logError("Error casting Property "+ theProperty.getURI() +" to OntProperty. Attempting Property cast...");
             
-            Property property =  this.ontologyModel.getProperty(theProperty.getURI());
-            evolvedModel.createObjectProperty(theProperty.getURI());
-            OntologyUtils.copyProperty(evolvedModel, property);
+            Property property =  ModelManager.getManager().getOriginalModel().getProperty(theProperty.getURI());
+            ModelManager.getManager().getEvolvingModel().createObjectProperty(theProperty.getURI());
+            OntologyUtils.copyProperty(ModelManager.getManager().getEvolvingModel(), property);
             
         }
         
