@@ -1,367 +1,139 @@
-@prefix : <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
-@prefix j.0: <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
-@prefix j.1: <http://www.example.org/Pianism/OntoPianismERP.owl#> .
-@prefix j.2: <http://purl.oclc.org/NET/ssnx/ssn#> .
-@prefix j.3: <http://www.w3.org/2006/time#> .
-@prefix j.4: <http://www.loa-cnr.it/ontologies/DUL.owl#> .
-@prefix j.5: <http://www.w3.org/ns/ssn/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix CM_ontology: <http://www.example.org/CM/CM_ontology.owl#> .
-@prefix OntoPianismERP: <http://www.example.org/Pianism/OntoPianismERP.owl#> .
-@prefix sensors4ExtruOnt: <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#> .
-@prefix components4ExtruOnt: <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#> .
+@prefix :                       <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix CM_ontology:            <http://www.example.org/CM/CM_ontology.owl#> .
+@prefix OntoPianismERP:         <http://www.example.org/Pianism/OntoPianismERP.owl#> .
 @prefix OntoPianismIndividuals: <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
-@base <file:/C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/OntoProcessMapping/Teste2/> .
+@prefix components4ExtruOnt:    <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#> .
+@prefix j.0:                    <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix j.1:                    <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix j.2:                    <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix j.3:                    <http://www.w3.org/2006/time#> .
+@prefix j.4:                    <http://www.loa-cnr.it/ontologies/DUL.owl#> .
+@prefix j.5:                    <http://www.w3.org/ns/ssn/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sensors4ExtruOnt:       <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#> .
+@prefix xml:                    <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
 
-<file:/C:/Users/shiza/OneDrive/Documentos/GitHub/DatasetConverter/OntoProcessMapping/Teste2/> rdf:type owl:Ontology ;
-                                                                                               owl:imports :round3_instances_small.ttl ,
-                                                                                                           <http://www.w3.org/2006/time> .
+<>      rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
 
-#################################################################
-#    Object Properties
-#################################################################
+owl:AnnotationProperty
+        rdf:type  owl:Class .
 
-###  http://www.example.org/Pianism/OntoPianismERP.owl#derivedFrom
-OntoPianismERP:derivedFrom rdf:type owl:ObjectProperty .
+OntoPianismERP:erpResolutionTime
+        rdf:type  owl:ObjectProperty .
 
+OntoPianismERP:erpRequestJobDescription
+        rdf:type  owl:DatatypeProperty .
 
-###  http://www.example.org/Pianism/OntoPianismERP.owl#detects
-OntoPianismERP:detects rdf:type owl:ObjectProperty ,
-                                owl:TransitiveProperty .
+j.0:extEvent  rdf:type  owl:Class .
 
+j.3:Instant  rdf:type  owl:Class .
 
-###  http://www.example.org/Pianism/OntoPianismERP.owl#erpOccurred
-OntoPianismERP:erpOccurred rdf:type owl:ObjectProperty .
+j.4:includesEvent  rdf:type  owl:ObjectProperty .
 
+OntoPianismERP:erpAmountHarnessed
+        rdf:type  owl:DatatypeProperty .
 
-###  http://www.example.org/Pianism/OntoPianismERP.owl#hasOutput
-OntoPianismERP:hasOutput rdf:type owl:ObjectProperty .
+OntoPianismERP:erpOrderCode
+        rdf:type  owl:DatatypeProperty .
 
+j.5:hasValue  rdf:type  owl:DatatypeProperty .
 
-###  http://www.example.org/Pianism/OntoPianismERP.owl#hasSensorCorrelation
-OntoPianismERP:hasSensorCorrelation rdf:type owl:ObjectProperty .
+OntoPianismERP:derivedFrom
+        rdf:type            rdf:Property , rdfs:Resource , owl:ObjectProperty ;
+        rdfs:subPropertyOf  OntoPianismERP:derivedFrom , OntoPianismERP:FeatureEngineering .
 
+[ rdf:type  owl:Ontology ] .
 
-###  http://www.loa-cnr.it/ontologies/DUL.owl#includesEvent
-j.4:includesEvent rdf:type owl:ObjectProperty ,
-                           owl:TransitiveProperty .
+OntoPianismERP:erpJobDescription
+        rdf:type  owl:DatatypeProperty .
 
+OntoPianismERP:erpMachineCode
+        rdf:type  owl:DatatypeProperty .
 
-###  http://www.w3.org/2006/time#after
-j.3:after rdf:type owl:ObjectProperty .
+j.3:hasBeginning  rdf:type  owl:ObjectProperty .
 
+components4ExtruOnt:hasSensor
+        rdf:type  owl:ObjectProperty .
 
-###  http://www.w3.org/2006/time#before
-j.3:before rdf:type owl:ObjectProperty .
+CM_ontology:hasSensorID
+        rdf:type  owl:DatatypeProperty .
 
+OntoPianismERP:hasSensorCorrelation
+        rdf:type            rdf:Property , rdfs:Resource , owl:ObjectProperty ;
+        rdfs:subPropertyOf  OntoPianismERP:hasSensorCorrelation , OntoPianismERP:FeatureEngineering .
 
-###  http://www.w3.org/2006/time#hasBeginning
-j.3:hasBeginning rdf:type owl:ObjectProperty .
+OntoPianismERP:erpOccurred
+        rdf:type  owl:ObjectProperty .
 
+j.3:intervalDuring  rdf:type  owl:ObjectProperty .
 
-###  http://www.w3.org/2006/time#hasDuration
-j.3:hasDuration rdf:type owl:ObjectProperty .
+OntoPianismERP:erpRequestDate
+        rdf:type  owl:ObjectProperty .
 
+OntoPianismERP:erpMachineName
+        rdf:type  owl:DatatypeProperty .
 
-###  http://www.w3.org/2006/time#hasEnd
-j.3:hasEnd rdf:type owl:ObjectProperty .
+OntoPianismERP:erpExtruderHeadName
+        rdf:type  owl:DatatypeProperty .
 
+OntoPianismERP:hasOutput
+        rdf:type  owl:ObjectProperty .
 
-###  http://www.w3.org/2006/time#intervalDuring
-j.3:intervalDuring rdf:type owl:ObjectProperty .
+OntoPianismERP:erpArticleCode
+        rdf:type  owl:DatatypeProperty .
 
+components4ExtruOnt:hasHead
+        rdf:type  owl:ObjectProperty .
 
-###  http://www.w3.org/2006/time#isTimeSliceOf
-j.3:isTimeSliceOf rdf:type owl:ObjectProperty .
+j.3:hasEnd  rdf:type  owl:ObjectProperty .
 
+OntoPianismERP:erpHeads
+        rdf:type  owl:DatatypeProperty .
 
-#################################################################
-#    Data properties
-#################################################################
+OntoPianismERP:erpQuantity
+        rdf:type  owl:DatatypeProperty .
 
-###  http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#sensorName
-sensors4ExtruOnt:sensorName rdf:type owl:DatatypeProperty ,
-                                     owl:FunctionalProperty .
+sensors4ExtruOnt:sensorName
+        rdf:type  owl:DatatypeProperty .
 
+OntoPianismERP:FeatureEngineering
+        rdf:type            rdf:Property , rdfs:Resource , owl:ObjectProperty ;
+        rdfs:subPropertyOf  OntoPianismERP:FeatureEngineering .
 
-###  http://www.example.org/CM/CM_ontology.owl#hasSensorID
-CM_ontology:hasSensorID rdf:type owl:DatatypeProperty ,
-                                 owl:FunctionalProperty .
+j.3:DateTimeInterval  rdf:type  owl:Class .
 
+j.2:Sensor  rdf:type  owl:Class .
 
-###  http://www.example.org/CM/CM_ontology.owl#hasTimeStamp
-CM_ontology:hasTimeStamp rdf:type owl:DatatypeProperty .
+OntoPianismERP:erpSeries
+        rdf:type  owl:DatatypeProperty .
 
+OntoPianismERP:erpOperationFromOrder
+        rdf:type  owl:ObjectProperty .
 
-###  http://www.example.org/Pianism/OntoPianismERP.owl#hasRunningAverage
-OntoPianismERP:hasRunningAverage rdf:type owl:DatatypeProperty .
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
 
+OntoPianismERP:erpSection
+        rdf:type  owl:DatatypeProperty .
 
-###  http://www.example.org/Pianism/OntoPianismERP.owl#hasValue
-OntoPianismERP:hasValue rdf:type owl:DatatypeProperty ,
-                                 owl:FunctionalProperty .
+OntoPianismERP:erpExecuter
+        rdf:type  owl:DatatypeProperty .
 
+OntoPianismERP:erpRejectedQuantity
+        rdf:type  owl:DatatypeProperty .
 
-###  http://www.w3.org/ns/ssn/hasOutput
-j.5:hasOutput rdf:type owl:DatatypeProperty ,
-                       owl:FunctionalProperty .
+OntoPianismERP:hasRunningAverage
+        rdf:type  owl:DatatypeProperty .
 
+j.0:extHasStatus  rdf:type  owl:DatatypeProperty .
 
-###  http://www.w3.org/ns/ssn/hasValue
-j.5:hasValue rdf:type owl:DatatypeProperty .
+OntoPianismERP:detects
+        rdf:type  owl:ObjectProperty .
 
-
-#################################################################
-#    Classes
-#################################################################
-
-###  http://purl.oclc.org/NET/ssnx/ssn#Sensor
-j.2:Sensor rdf:type owl:Class ;
-           rdfs:subClassOf [ rdf:type owl:Restriction ;
-                             owl:onProperty OntoPianismERP:detects ;
-                             owl:someValuesFrom j.0:extEvent
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty j.4:includesEvent ;
-                             owl:someValuesFrom j.0:extEvent
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty CM_ontology:hasSensorID ;
-                             owl:cardinality "1"^^xsd:nonNegativeInteger
-                           ] .
-
-
-###  http://purl.oclc.org/NET/ssnx/ssn#TS__Sensor__1
-j.2:TS__Sensor__1 rdf:type owl:Class ;
-                  owl:equivalentClass [ owl:intersectionOf ( j.2:Sensor
-                                                             [ rdf:type owl:Restriction ;
-                                                               owl:onProperty j.3:after ;
-                                                               owl:hasValue OntoPianismIndividuals:erpTimeInstant_ab441966-2b58-3aff-b0a8-1d7836e7a485
-                                                             ]
-                                                           ) ;
-                                        rdf:type owl:Class
-                                      ] ;
-                  rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                    owl:onProperty j.4:includesEvent ;
-                                    owl:someValuesFrom j.0:extEvent
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty j.3:isTimeSliceOf ;
-                                    owl:someValuesFrom j.2:Sensor
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty CM_ontology:hasSensorID ;
-                                    owl:cardinality "1"^^xsd:nonNegativeInteger
-                                  ] ;
-                  rdfs:label "TimeSlice Sensor 1" .
-
-
-###  http://www.example.org/Pianism/OntoPianismERP.owl#TS__VirtualSensor__0
-OntoPianismERP:TS__VirtualSensor__0 rdf:type owl:Class ;
-                                    owl:equivalentClass [ owl:intersectionOf ( OntoPianismERP:VirtualSensor
-                                                                               [ rdf:type owl:Restriction ;
-                                                                                 owl:onProperty j.3:after ;
-                                                                                 owl:hasValue OntoPianismIndividuals:erpTimeInstant_ab441966-2b58-3aff-b0a8-1d7836e7a485
-                                                                               ]
-                                                                             ) ;
-                                                          rdf:type owl:Class
-                                                        ] ;
-                                    rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                      owl:onProperty OntoPianismERP:derivedFrom ;
-                                                      owl:someValuesFrom j.0:extEvent
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty j.3:isTimeSliceOf ;
-                                                      owl:someValuesFrom OntoPianismERP:VirtualSensor
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty OntoPianismERP:derivedFrom ;
-                                                      owl:cardinality "2"^^xsd:nonNegativeInteger
-                                                    ] ;
-                                    rdfs:label "TimeSlice VirtualSensor 0" .
-
-
-###  http://www.example.org/Pianism/OntoPianismERP.owl#VirtualSensor
-OntoPianismERP:VirtualSensor rdf:type owl:Class ;
-                             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                               owl:onProperty OntoPianismERP:derivedFrom ;
-                                               owl:someValuesFrom j.0:extEvent
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty OntoPianismERP:derivedFrom ;
-                                               owl:cardinality "2"^^xsd:nonNegativeInteger
-                                             ] .
-
-
-###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#TS__extEvent__1
-j.0:TS__extEvent__1 rdf:type owl:Class ;
-                    owl:equivalentClass [ owl:intersectionOf ( j.0:extEvent
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty j.3:after ;
-                                                                 owl:hasValue OntoPianismIndividuals:erpTimeInstant_c3832c2e-8548-3e9e-8e9d-1fc057c57fa1
-                                                               ]
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty j.3:before ;
-                                                                 owl:hasValue OntoPianismIndividuals:erpTimeInstant_ab6cb4b6-eb43-305b-bfb1-b7ceec3f7f01
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ;
-                    rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                      owl:onProperty j.3:isTimeSliceOf ;
-                                      owl:someValuesFrom j.0:extEvent
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty OntoPianismERP:hasSensorCorrelation ;
-                                      owl:allValuesFrom j.2:Sensor
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty OntoPianismERP:hasSensorCorrelation ;
-                                      owl:cardinality "1"^^xsd:nonNegativeInteger
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty j.5:hasOutput ;
-                                      owl:cardinality "1"^^xsd:nonNegativeInteger
-                                    ] ;
-                    rdfs:label "TimeSlice extEvent 1" .
-
-
-###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#TS__extEvent__2
-j.0:TS__extEvent__2 rdf:type owl:Class ;
-                    owl:equivalentClass [ owl:intersectionOf ( j.0:extEvent
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty j.3:after ;
-                                                                 owl:hasValue OntoPianismIndividuals:erpTimeInstant_ab6cb4b6-eb43-305b-bfb1-b7ceec3f7f01
-                                                               ]
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty j.3:before ;
-                                                                 owl:hasValue OntoPianismIndividuals:erpTimeInstant_07f6f688-0797-3563-9f88-dae7cf1c4b2f
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ;
-                    rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                      owl:onProperty j.3:isTimeSliceOf ;
-                                      owl:someValuesFrom j.0:extEvent
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty OntoPianismERP:hasRunningAverage ;
-                                      owl:someValuesFrom rdfs:Literal
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty j.5:hasOutput ;
-                                      owl:cardinality "1"^^xsd:nonNegativeInteger
-                                    ] ;
-                    rdfs:label "TimeSlice extEvent 2" .
-
-
-###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#TS__extEvent__3
-j.0:TS__extEvent__3 rdf:type owl:Class ;
-                    owl:equivalentClass [ owl:intersectionOf ( j.0:extEvent
-                                                               [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty j.3:after ;
-                                                                 owl:hasValue OntoPianismIndividuals:erpTimeInstant_07f6f688-0797-3563-9f88-dae7cf1c4b2f
-                                                               ]
-                                                             ) ;
-                                          rdf:type owl:Class
-                                        ] ;
-                    rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                      owl:onProperty j.3:isTimeSliceOf ;
-                                      owl:someValuesFrom j.0:extEvent
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty OntoPianismERP:hasSensorCorrelation ;
-                                      owl:allValuesFrom j.2:Sensor
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty OntoPianismERP:hasSensorCorrelation ;
-                                      owl:cardinality "1"^^xsd:nonNegativeInteger
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty j.5:hasOutput ;
-                                      owl:cardinality "1"^^xsd:nonNegativeInteger
-                                    ] ;
-                    rdfs:label "TimeSlice extEvent 3" .
-
-
-###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEvent
-j.0:extEvent rdf:type owl:Class ;
-             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                               owl:onProperty OntoPianismERP:erpOccurred ;
-                               owl:cardinality "1"^^xsd:nonNegativeInteger
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty j.5:hasOutput ;
-                               owl:cardinality "1"^^xsd:nonNegativeInteger
-                             ] .
-
-
-###  http://www.w3.org/2002/07/owl#NamedIndividual
-owl:NamedIndividual rdf:type owl:Class .
-
-
-###  http://www.w3.org/2006/time#DateTimeInterval
-j.3:DateTimeInterval rdf:type owl:Class .
-
-
-###  http://www.w3.org/2006/time#Instant
-j.3:Instant rdf:type owl:Class .
-
-
-###  http://www.w3.org/2006/time#Interval
-j.3:Interval rdf:type owl:Class .
-
-
-#################################################################
-#    Individuals
-#################################################################
-
-###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_07f6f688-0797-3563-9f88-dae7cf1c4b2f
-OntoPianismIndividuals:erpTimeInstant_07f6f688-0797-3563-9f88-dae7cf1c4b2f rdf:type owl:NamedIndividual ,
-                                                                                    j.3:Instant ;
-                                                                           j.3:after OntoPianismIndividuals:erpTimeInstant_1382b1e1-5561-33c0-9d2d-4e4f468bba8f ;
-                                                                           j.3:before OntoPianismIndividuals:erpTimeInstant_612b2a73-e28a-3a88-b299-3aecc733b183 ;
-                                                                           CM_ontology:hasTimeStamp "2021-09-10T08:14:59.000Z" ;
-                                                                           rdfs:label "2021-09-10T08:14:59.000Z" .
-
-
-###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_540f35ff-97cf-3c88-998b-42e398a67aa9
-OntoPianismIndividuals:erpTimeInstant_540f35ff-97cf-3c88-998b-42e398a67aa9 rdf:type owl:NamedIndividual .
-
-
-###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_ab441966-2b58-3aff-b0a8-1d7836e7a485
-OntoPianismIndividuals:erpTimeInstant_ab441966-2b58-3aff-b0a8-1d7836e7a485 rdf:type owl:NamedIndividual ,
-                                                                                    j.3:Instant ;
-                                                                           j.3:after OntoPianismIndividuals:erpTimeInstant_c3832c2e-8548-3e9e-8e9d-1fc057c57fa1 ;
-                                                                           j.3:before OntoPianismIndividuals:erpTimeInstant_dcef5177-a2ac-3e5f-a336-329940d76d8b ;
-                                                                           CM_ontology:hasTimeStamp "2021-09-10T00:02:00.000Z" ;
-                                                                           rdfs:label "2021-09-10T00:02:00.000Z" .
-
-
-###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_ab6cb4b6-eb43-305b-bfb1-b7ceec3f7f01
-OntoPianismIndividuals:erpTimeInstant_ab6cb4b6-eb43-305b-bfb1-b7ceec3f7f01 rdf:type owl:NamedIndividual ,
-                                                                                    j.3:Instant ;
-                                                                           j.3:after OntoPianismIndividuals:erpTimeInstant_d02ea533-2a48-3dd0-8a09-3fb15ed5a55a ;
-                                                                           j.3:before OntoPianismIndividuals:erpTimeInstant_ec85d7c8-cf3f-3242-9808-84c72c28afeb ;
-                                                                           CM_ontology:hasTimeStamp "2021-09-10T03:01:00.000Z" ;
-                                                                           rdfs:label "2021-09-10T03:01:00.000Z" .
-
-
-###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_bdb87861-f0db-3236-85ce-1d629d725106
-OntoPianismIndividuals:erpTimeInstant_bdb87861-f0db-3236-85ce-1d629d725106 rdf:type owl:NamedIndividual .
-
-
-###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_c3832c2e-8548-3e9e-8e9d-1fc057c57fa1
-OntoPianismIndividuals:erpTimeInstant_c3832c2e-8548-3e9e-8e9d-1fc057c57fa1 rdf:type owl:NamedIndividual ,
-                                                                                    j.3:Instant ;
-                                                                           j.3:after OntoPianismIndividuals:erpTimeInstant_abe1cb1d-d95c-3143-9130-b3da2f91e1ad ;
-                                                                           j.3:before OntoPianismIndividuals:erpTimeInstant_ab441966-2b58-3aff-b0a8-1d7836e7a485 ;
-                                                                           CM_ontology:hasTimeStamp "2021-09-09T12:15:00.000Z" ;
-                                                                           rdfs:label "2021-09-09T12:15:00.000Z" .
-
-
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+OntoPianismERP:erpInterventionTime
+        rdf:type  owl:ObjectProperty .

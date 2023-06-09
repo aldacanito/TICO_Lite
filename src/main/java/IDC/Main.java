@@ -16,19 +16,45 @@ public class Main
     public static void main(String[] args) 
     {
         Configs configs = new Configs();
-//        startRounds();
-//        compareAtaque_semAtaque();
+       //testConferenceInstances();
+
+
        // startTest();
-        
-//        testArmando();
+      //  testArmando();
       testArmandoTest();
         
-//        startUseWeeks();
+
     }
-    
-    
-        public static void testArmandoTest()
+
+
+
+    public static void testConferenceInstances()
     {
+        //C:\Users\shiza\OneDrive\Documentos\GitHub\DatasetConverter\OntoProcessMapping
+        String dir = "OntoProcessMapping/PopulatedConference/";
+
+        String semente = dir + "conference_eswc_TBOX_reduced.ttl";
+
+        System.out.println("\n\n===========================================================");
+        System.out.println("\n\n\tComeça primeiro round: semente");
+        System.out.println("\n\n===========================================================\n\n");
+        // round one
+        String onto_path      = semente;
+        String instance_path  = dir + "conference_eswc_ABOX_reduced.ttl" ;
+        String print_path = dir + "/Results/round1.ttl";
+
+        runComparator(onto_path, instance_path, print_path, 1);
+
+    }
+
+    public static void testArmandoTest()
+    {
+
+//        Configs.functional_threshold     = 50;
+//        Configs.subclass_threshold       = 100;
+//        Configs.equivalent_threshold     = 150;
+//        Configs.someValuesFrom_threshold = 20;
+
         //C:\Users\shiza\OneDrive\Documentos\GitHub\DatasetConverter\OntoProcessMapping
         String dir = "OntoProcessMapping/";
         
@@ -56,12 +82,28 @@ public class Main
         runComparator(onto_path, instance_path, print_path, 2);
 
 
-    
+        System.out.println("\n\n===========================================================");
+        System.out.println("\n\n\tComeça terceiro round: round2 + hasSensorCorrelation + hasRunningAverage");
+        System.out.println("\n\n===========================================================\n\n");
+
+////        // round three
+        onto_path      = print_path;
+        instance_path  = "OntoProcessMapping/Teste2/OntoPianismIndividuals.D.ttl" ;
+        onto_path      =  dir+ "round2_classes.ttl" ;
+        print_path     = dir + "round3.ttl";
+
+        runComparator(onto_path, instance_path, print_path, 3);
+
     }
     
     
     public static void testArmando()
     {
+        Configs.functional_threshold     = 50;
+        Configs.subclass_threshold       = 100;
+        Configs.equivalent_threshold     = 150;
+        Configs.someValuesFrom_threshold = 20;
+
         //C:\Users\shiza\OneDrive\Documentos\GitHub\DatasetConverter\OntoProcessMapping
         String dir = "OntoProcessMapping/Teste2/";
         
@@ -142,32 +184,33 @@ public class Main
     
     public static void startTest()
     {
-//        String dir            = "Indexes/TestOnto/";
-//        String onto_path      = dir + "shizaTest_base.ttl" ;
-//        String instance_path  = dir + "shizaTest_newInstance.ttl" ;
-//        String print_path = dir + "evolvedModel.ttl";
-//        
-//        runComparator(onto_path, instance_path, print_path, 0); 
-//        
+        String dir            = "Indexes/TestOnto/";
+        String onto_path      = dir + "shizaTest_base.ttl" ;
+        String instance_path  = dir + "shizaTest_newInstance.ttl" ;
+        String print_path = dir + "evolvedModel.ttl";
+
+//        runComparator(onto_path, instance_path, print_path, 0);
+//
 //         onto_path      = dir + "evolvedModel.ttl" ;
 //         instance_path  = dir + "evolvedModel2.ttl" ;
 //         print_path     = dir + "evolvedModel3.ttl";
-//         
-//         runComparator(onto_path, instance_path, print_path, 0); 
-         
-         String dir            = "Indexes/TestOnto/";
-        String onto_path      = dir + "ONTOTEST1.ttl" ;
-        String instance_path  = dir + "ONTOTEST_INSTANCIAS.ttl" ;
-        String print_path = dir + "ONTOTEST_EVOLVED.ttl";
-        
-        runComparator(onto_path, instance_path, print_path, 0); 
-        
-         onto_path      = dir + "ONTOTEST_EVOLVED.ttl" ;
-         instance_path  = dir + "ONTOTEST_INSTANCIAS_2.ttl" ;
-         print_path     = dir + "ONTOTEST_EVOLVED2.ttl";
-         
-         runComparator(onto_path, instance_path, print_path, 0); 
-       
+
+//         runComparator(onto_path, instance_path, print_path, 0);
+
+
+        dir            = "Indexes/TestOnto/";
+        onto_path      = dir + "ONTOTEST1.ttl" ;
+        instance_path  = dir + "ONTOTEST_INSTANCIAS.ttl" ;
+        print_path     = dir + "ONTOTEST_EVOLVED.ttl";
+
+        runComparator(onto_path, instance_path, print_path, 0);
+
+        onto_path      = dir + "ONTOTEST_EVOLVED.ttl" ;
+        instance_path  = dir + "ONTOTEST_INSTANCIAS_2.ttl" ;
+        print_path     = dir + "ONTOTEST_EVOLVED2.ttl";
+
+        runComparator(onto_path, instance_path, print_path, 0);
+
         
     }
     
@@ -182,9 +225,7 @@ public class Main
         
         String stats = comparator.printStats();
         System.out.println("Stats time: " + stats );
-        
-        Utilities.save("Indexes/TestOnto/stats_round"+round+".txt", stats);
-        
+
         OntologyUtils.writeModeltoFile(ModelManager.getManager().getEvolvingModel(), print_path);
     }
     

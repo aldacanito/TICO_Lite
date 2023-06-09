@@ -16,17 +16,11 @@
 @prefix xml:                    <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
 
-j.3:hasTimeSlice  rdf:type  rdf:Property .
-
 OntoPianismIndividuals:erpEvent_1
         rdf:type            owl:NamedIndividual ;
         rdfs:label          "erpEvent_1" ;
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_1 ;
         j.5:hasOutput       "1.787231" .
-
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_feedRate_2feedRate_2>
-        j.3:hasBeginning  OntoPianismIndividuals:feedRate_2 ;
-        j.3:hasEnd        OntoPianismIndividuals:feedRate_2 .
 
 OntoPianismIndividuals:feedRate_2
         rdf:type                    owl:NamedIndividual ;
@@ -40,21 +34,12 @@ OntoPianismIndividuals:erpTimeInterval_2
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_2 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_3 .
 
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682>
-        j.3:hasBeginning  OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 ;
-        j.3:hasEnd        OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 .
-
 j.5:hasOutput  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
-
-OntoPianismIndividuals:erpTimeInstant_5
-        rdf:type                  owl:NamedIndividual ;
-        rdfs:label                "2021-09-11T03:07:00.000Z" ;
-        CM_ontology:hasTimeStamp  "2021-09-11T03:07:00.000Z" .
 
 OntoPianismERP:derivedFrom
         rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
 
-j.3:hasDuration  rdf:type  owl:ObjectProperty .
+j.3:hasDuration  rdf:type  rdf:Property .
 
 j.3:hasBeginning  rdf:type  owl:ObjectProperty .
 
@@ -88,11 +73,8 @@ OntoPianismIndividuals:erpEvent_5
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_4 ;
         j.5:hasOutput       "45.56583333333334" .
 
-OntoPianismIndividuals:erpTimeInstant_4
-        rdf:type                  owl:NamedIndividual ;
-        rdfs:label                "2021-09-10T03:07:00.000Z" ;
-        CM_ontology:hasTimeStamp  "2021-09-10T03:07:00.000Z" ;
-        j.3:before                OntoPianismIndividuals:erpTimeInstant_5 .
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+        rdf:type  owl:AnnotationProperty .
 
 CM_ontology:hasSensorID
         rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
@@ -100,12 +82,9 @@ CM_ontology:hasSensorID
 OntoPianismERP:hasSensorCorrelation
         rdf:type  rdf:Property , owl:TransitiveProperty .
 
-[ rdf:type  owl:Ontology ] .
-
 j.3:intervalDuring  rdf:type  owl:ObjectProperty .
 
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20230228152737045>
-        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20230228152737045> .
+[ rdf:type  owl:Ontology ] .
 
 CM_ontology:hasTimeStamp
         rdf:type  owl:DatatypeProperty .
@@ -124,9 +103,12 @@ OntoPianismIndividuals:erpTimeInstant_3
 OntoPianismERP:hasOutput
         rdf:type  owl:ObjectProperty .
 
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/>
-        rdf:type     owl:Ontology ;
-        owl:imports  <http://www.w3.org/2006/time> .
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608171134359>
+        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608171134359> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
+        <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+                "evolving" .
 
 j.3:hasEnd  rdf:type  owl:ObjectProperty .
 
@@ -152,8 +134,9 @@ OntoPianismIndividuals:erpTimeInterval_4
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_4 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_6 .
 
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Interval_st_20230228152737002>
-        j.3:hasBeginning  <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/20230228152737002> .
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
 
 j.3:isTimeSliceOf  rdf:type  owl:ObjectProperty .
 
@@ -186,9 +169,4 @@ OntoPianismIndividuals:erpTimeInterval_3
 
 j.3:before  rdf:type  rdf:Property .
 
-j.3:after  rdf:type  owl:ObjectProperty .
-
-OntoPianismIndividuals:erpTimeInstant_6
-        rdf:type                  owl:NamedIndividual ;
-        rdfs:label                "2021-09-13T03:07:00.000Z" ;
-        CM_ontology:hasTimeStamp  "2021-09-13T03:07:00.000Z" .
+j.3:after  rdf:type  rdf:Property .

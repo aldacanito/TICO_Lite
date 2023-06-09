@@ -16,7 +16,6 @@ import org.apache.jena.ontology.Restriction;
  */
 public class AddAllValuesFromRestriction extends AddRestriction
 {
-    OntClass rangeClass;
 
     public AddAllValuesFromRestriction(OntClass cls, OntProperty onProperty, boolean isEquivalent, boolean isSubclass) 
     {
@@ -32,7 +31,7 @@ public class AddAllValuesFromRestriction extends AddRestriction
     public AddAllValuesFromRestriction(OntClass cls, OntProperty onProperty, boolean isEquivalent, boolean isSubclass, OntClass rangeClass) 
     {
         super(cls, onProperty, isEquivalent, isSubclass);
-        this.rangeClass = rangeClass;
+        this.setRangeClass(rangeClass);
         
 //        if(cls.getURI()!=null && onProperty.getURI()!=null && rangeClass != null && rangeClass.getURI()!=null)
 //            System.out.println("Creating AllValuesFromRestriction for:"
@@ -45,7 +44,7 @@ public class AddAllValuesFromRestriction extends AddRestriction
     
     public void setQualifiedRestrictionClass(OntClass rangeClass)
     {
-        this.rangeClass = rangeClass;
+        this.setRangeClass(rangeClass);
     }
     
     @Override
@@ -53,11 +52,11 @@ public class AddAllValuesFromRestriction extends AddRestriction
     {
         Restriction restriction = null;
         
-        if(onProperty!=null && this.rangeClass!=null)
+        if(onProperty!=null && this.getRangeClass() !=null)
         {
             System.out.println("Adding AllValuesFromRestriction to " + this.ontClass.getURI() + " on Property " + onProperty.getURI());    
             
-            restriction = ModelManager.getManager().getEvolvingModel().createAllValuesFromRestriction(null, onProperty, this.rangeClass);
+            restriction = ModelManager.getManager().getEvolvingModel().createAllValuesFromRestriction(null, onProperty, this.getRangeClass());
         
             if(this.isEquivalent)
                 this.ontClass.addEquivalentClass(restriction);
@@ -67,4 +66,6 @@ public class AddAllValuesFromRestriction extends AddRestriction
         }
   
     }
+
+
 }

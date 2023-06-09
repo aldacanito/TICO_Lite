@@ -7,6 +7,7 @@ package IDC.EvolActions.Impl.Additions;
 
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.apache.jena.ontology.OntModel;
 
@@ -61,18 +62,26 @@ public class AddProperty implements EvolutionaryAction
     {
         if(!domains.contains(domainURI))
             domains.add(domainURI);
+
+        Collections.sort(domains);
     }
     
     public void addRange(String rangeURI)
     {
         if(!ranges.contains(rangeURI))
             ranges.add(rangeURI);
+
+        Collections.sort(domains);
+
     }
     
     public void addDisjointWith(String disjointWithURI)
     {
         if(!disjointWith.contains(disjointWithURI))
             disjointWith.add(disjointWithURI);
+
+        Collections.sort(domains);
+
     }
     
     /**
@@ -105,8 +114,12 @@ public class AddProperty implements EvolutionaryAction
     
     public void addSubPropertyOf(String propertyURI)
     {
-        this.subPropertyOf.add(propertyURI);
+        if(!subPropertyOf.contains(propertyURI))
+            this.subPropertyOf.add(propertyURI);
+
+        Collections.sort(this.subPropertyOf);
     }
+
 
     /**
      * @return the superPropertyOf
@@ -124,7 +137,10 @@ public class AddProperty implements EvolutionaryAction
 
     public void addSuperPropertyOf(String superProperty)
     {
-        this.superPropertyOf.add(superProperty);
+        if(!subPropertyOf.contains(superProperty))
+            this.superPropertyOf.add(superProperty);
+
+        Collections.sort(this.superPropertyOf);
     }
     
     

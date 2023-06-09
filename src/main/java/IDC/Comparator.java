@@ -10,26 +10,25 @@ import IDC.EvolActions.Impl.Additions.AddClass;
 import IDC.EvolActions.Impl.Additions.TimeSliceCreator;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.EvolActions.Interfaces.IAddClass;
+import IDC.EvolActions.Impl.Additions.Restriction.*;
+
 import IDC.Metrics.ClassPropertyMetrics;
 import IDC.Metrics.EntityMetricsStore;
+import IDC.Metrics.ExecutionHistory;
 import Utils.OntologyUtils;
 import Utils.Utilities;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import org.apache.jena.ontology.HasValueRestriction;
-import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.IntersectionClass;
-import org.apache.jena.ontology.OntClass;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.ontology.Ontology;
-import org.apache.jena.ontology.SomeValuesFromRestriction;
-import org.apache.jena.rdf.model.RDFList;
-import org.apache.jena.rdf.model.Statement;
-import org.apache.jena.rdf.model.StmtIterator;
+
+
+
+import org.apache.jena.ontology.*;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.util.iterator.ExtendedIterator;
+import org.apache.jena.query.*;
 /**
  *
  * @author shizamura
@@ -38,6 +37,8 @@ public class Comparator
 {
     EvolutionaryActionComposite executer, ontologyModelUpdater;
     List<ClassPropertyMetrics> clsPropMetrics ;
+
+    List<ExecutionHistory> executionHistoryList;
     
     DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
@@ -45,129 +46,169 @@ public class Comparator
     public Comparator() 
     {
 
-        this.executer      = new EvolutionaryActionComposite();
-        this.ontologyModelUpdater      = new EvolutionaryActionComposite();
+        this.executer              = new EvolutionaryActionComposite();
+        this.ontologyModelUpdater  = new EvolutionaryActionComposite();
         
         Ontology evolvedOnt = ModelManager.getManager().getEvolvingModel().createOntology("");
         evolvedOnt.addImport(ModelManager.getManager().getEvolvingModel().createResource(OntologyUtils.ONT_TIME_URL));
      
-        clsPropMetrics = new ArrayList<ClassPropertyMetrics>();
+        clsPropMetrics       = new ArrayList<>();
+        executionHistoryList = new ArrayList<>();
     }
 
-   
+
     public void run() 
     {
 
         // guidado pelas instancias
         // só funciona para as instâncias que tenham CLASSES associadas
         // reasoner desligado
-        List <Individual> listIndividuals = ModelManager.getManager().getInstanceModel().listIndividuals().toList();
 
-        System.out.println("Individuals before copy:");
-        for(Individual individual : listIndividuals)
-        {    
-            //System.out.println("\t> " + instance.getURI());
-            if(Utilities.isInIgnoreList(individual.getURI()))
-                continue;
-            
-            List<OntClass> listOntClasses = individual.listOntClasses(false).toList();
-            
-            for(OntClass cls : listOntClasses)
+        List <String> individuals_uris = OntologyUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
+
+        for(String uri : individuals_uris)
+        {
+
+            try
             {
-                if(cls.getURI()!= null && ModelManager.getManager().getEvolvingModel().getOntClass(cls.getURI()) == null)
+                Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
+                List<OntClass> listOntClasses = individual.listOntClasses(false).toList();
+
+                //System.out.println("\t> " + uri);
+
+                for (OntClass cls : listOntClasses)
                 {
-//                    ModelManager.getManager().getEvolvingModel().createClass(cls.getURI());
-                    AddClass addClass = new AddClass(cls.getURI());
-                    addClass.setCopy(false);
-                    addClass.setStartEndInstance(individual, individual);
-                    addClass.execute();
+                    //TODO check anonymous classes!!!!
+
+                    if (cls.getURI() != null && ModelManager.getManager().getEvolvingModel().getOntClass(cls.getURI()) == null)
+                    {
+                        if (Utilities.isInIgnoreList(cls.getURI()))
+                            continue;
+
+                        //System.out.println("Individual with new Class found!\n\t> " + uri + "\n\t\t> New OntClass: " + cls.getURI());
+                        ModelManager.getManager().getEvolvingModel().createClass(cls.getURI());
+                        AddClass addClass = new AddClass(cls.getURI());
+                        addClass.setCopy(false);
+                        addClass.setStartEndInstance(individual, individual);
+                        addClass.execute();
+                    }
                 }
+            } catch (Exception e)
+            {
+                System.out.println("Exception handling individuals list. Reason: " + e.getMessage());
             }
         }
-        
-        System.out.println("Total Individuals before copy: " + listIndividuals.size());
-        
-        System.out.println("Copying individual list...");
-        listIndividuals = ModelManager.getManager().getInstanceModel().listIndividuals().toList();
+
+        System.out.println("Total Individuals before copy: " + individuals_uris.size() + ". Copying individual list...");
+
         int count = 0;
-        for(Individual individual : listIndividuals)
-        {    
-            if(Utilities.isInIgnoreList(individual.getURI()))
-                continue;
+        for(String uri : individuals_uris)
+        {
+            try
+            {
+                Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
 
-            //System.out.println("\tCurrent individual: " + instance.getURI());
+                //System.out.println("\tCurrent individual: " + uri);
 
-            List<OntClass> ontClasses = individual.listOntClasses(true).toList();
-    
-            StmtIterator listProperties = individual.listProperties();
-            ModelManager.getManager().getEvolvingModel().add(listProperties);
-            
-            OntClass ontClass  = ModelManager.getManager().getEvolvingModel().getOntClass(individual.getOntClass(true).getURI());
-            Individual new_ind = ModelManager.getManager().getEvolvingModel().createIndividual(individual.getURI(), ontClass);
+                List<OntClass> ontClasses = individual.listOntClasses(true).toList();
 
-            for(OntClass cls : ontClasses)
-                new_ind.addOntClass(cls);
-                      
-            count++;
+                StmtIterator listProperties = individual.listProperties();
+                ModelManager.getManager().getEvolvingModel().add(listProperties);
+
+                // try to get first class, if not available, try second. if not available, skip.
+
+                OntClass ontClass = null;
+
+                for (OntClass cls : ontClasses) {
+                    try {
+                        cls.getURI();
+                        ontClass = cls;
+                        break;
+                    } catch (Exception e) {
+                    }
+                }
+
+                if (ontClass == null)
+                    continue;
+
+                Individual new_ind = ModelManager.getManager().getEvolvingModel().createIndividual(individual.getURI(), ontClass);
+
+                for (OntClass cls : ontClasses)
+                    new_ind.addOntClass(cls);
+
+                count++;
+            }
+            catch(Exception e)
+            {
+                System.out.println("Exception handling individuals list. Reason: " + e.getMessage());
+            }
         }
         System.out.println("Finished copying individuals to evolved model. Total copies: " + count);
         //remover erros?
-        
-        listIndividuals = ModelManager.getManager().getEvolvingModel().listIndividuals().toList();
-        
-      //  cleanUnclearClasses(evolvedModel, listIndividuals);
-        
-        //Utils.OntologyUtils.writeModeltoFile(evolvedModel, "Indexes/TestOnto/middle_Allinstances.ttl");
 
-        
+        List <String> evolving_uris = OntologyUtils.getIndividualsSPARQL(ModelManager.getManager().getEvolvingModel());
+
+      //  cleanUnclearClasses(evolvedModel, listIndividuals);
+
         this.executer   = new EvolutionaryActionComposite();
 
-        System.out.println("\nGoing through individuals of Evolved Model.\nTotal Individuals:" + listIndividuals.size());
-        
-        for(Individual instance : listIndividuals)
+        System.out.println("\nGoing through individuals of Evolved Model.\nTotal Individuals:" + evolving_uris.size());
+
+        for(String uri : individuals_uris)
         {
-            //System.out.println("\tCurrent Individual:" + instance.getURI());
-            if(Utilities.isInIgnoreList(instance.getURI()))
+            if(Utilities.isInIgnoreList(uri))
                 continue;
-                                 
-            this.compareShapes(instance);
+
+            try
+            {
+                Individual individual = ModelManager.getManager().getEvolvingModel().getIndividual(uri);
+                //System.out.println("\tCurrent Individual:" + individual.getURI());
+                this.compareShapes(individual);
+            }
+            catch (Exception e)
+            {
+                System.out.println("Error handling evolving individuals. Reason: " + e.getMessage());
+            }
         }
 
         executer.execute();
-        
-//        Utils.OntologyUtils.writeModeltoFile(instanceModel, "Indexes/TestOnto/middle_instance.ttl");
-//        Utils.OntologyUtils.writeModeltoFile(ontologyModel, "Indexes/TestOnto/middle_original.ttl");
-//        Utils.OntologyUtils.writeModeltoFile(evolvedModel,  "Indexes/TestOnto/middle_evolved.ttl");
 
         // verificar se é preciso acrescentar validaçoes temporais em classes
         updateTemporalRestrictions();
 
     }
    
-    private void cleanUnclearClasses(OntModel model, List<Individual> listIndividuals)
+    private void cleanAnonymousErrorClasses(OntModel model, List<String> individuals_uris)
     {
-        System.out.println("\n\n==STARTING CLEAN UNCLEAR CLASSES ===");
+        System.out.println("\n\n==STARTING CLEAN ANONYMOUS ERROR CLASSES ===");
         
         System.out.println("\n\nList obtained. Iterating...");
-        for(Individual i : listIndividuals)
-        {
-            List<OntClass> listOntClasses = i.listOntClasses(false).toList();
-        
-            for(OntClass cls : listOntClasses)
+        for(String uri : individuals_uris) {
+            try {
+                Individual i = ModelManager.getManager().getInstanceModel().getIndividual(uri);
+
+                List<OntClass> listOntClasses = i.listOntClasses(false).toList();
+
+                for (OntClass cls : listOntClasses)
+                {
+                    try
+                    {
+                        model.getOntClass(cls.getURI()); // cleans anon
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println("Class has no URI or otherwise does not"
+                                + " exist in model. Exception Reason: " + e.getMessage());
+                        cls.dropIndividual(i);
+                    }
+                }
+            }catch (Exception e)
             {
-                try
-                {
-                    model.getOntClass(cls.getURI());
-                }
-                catch(Exception e)
-                {
-                    System.out.println("Class has no URI or otherwise does not"
-                            + " exist in model. Exception Reason: " + e.getMessage());
-                    cls.dropIndividual(i);
-                }
+                System.out.println("Error cleaning anonymous class. Reason: " + e.getMessage());
             }
         }
-        System.out.println("\n\n==FINISHED CLEAN UNCLEAR CLASSES ===");
+
+        System.out.println("\n\n==FINISHED CLEAN ANON CLASSES ===");
     
 
     }
@@ -192,12 +233,15 @@ public class Comparator
         
         for(OntClass newCls : e_ontClasses)
         {
-            cleanSuperAndEquivalents(newCls);
-            
+
             String uri      = newCls.getURI();
             if(uri == null || Utilities.isInIgnoreList(uri) ) 
                 continue;
-                        
+
+            // todo find something about anonymous classes later
+            if(newCls.isRestriction())
+                continue;
+
             OntClass oldCls = ModelManager.getManager().getOriginalModel().getOntClass(uri);
             
             if(oldCls==null || Utilities.isInIgnoreList(oldCls.getURI()))
@@ -205,8 +249,9 @@ public class Comparator
             
             //ignoremos as timeslices em si para nao andar a TS de TS
             if(OntologyUtils.isTimeSlice(oldCls) || OntologyUtils.isTimeSlice(newCls)) continue;
-            
-             
+
+            cleanSuperAndEquivalents(newCls);
+
             // ver se o ultimo timeframe é diferente
             OntClass lastOldSlice = OntologyUtils.getLastTimeSlice(oldCls);
             OntClass lastNewSlice = newCls;
@@ -285,6 +330,7 @@ public class Comparator
     private void cleanSuperAndEquivalents(OntClass cls)
     {
         if(cls == null) return;
+
         List<OntClass> eqclasses = cls.listEquivalentClasses().toList();
         
         for(OntClass eq : eqclasses)
@@ -300,7 +346,6 @@ public class Comparator
                     System.out.println("Not Intersection. Reason: " + e.getMessage());
                     cls.removeEquivalentClass(eq);
                 }
-                               
             }
                         
             if(eq.isUnionClass())
@@ -381,7 +426,8 @@ public class Comparator
         
     
     }
-    
+
+
     
     private void addLabel(OntClass cls, String label)
     {
@@ -588,35 +634,45 @@ public class Comparator
     }
 
     
-       private void compareShapes(Individual instance)
+    private void compareShapes(Individual instance)
     {
-        boolean ignore = Utilities.isInIgnoreList(instance.getURI());
-        if(ignore) return;
-       
-        ClassCompareShape shapeC  = new ClassCompareShape(instance);
+        if(Utilities.isInIgnoreList(instance.getURI())) return;
 
-        EvolutionaryAction compare = shapeC.compare();
-        this.executer.add(compare);
-    
+        try
+        {
+            ClassCompareShape shapeC   = new ClassCompareShape(instance);
+            EvolutionaryAction compare = shapeC.compare();
+            this.executer.add(compare);
+        }
+        catch(Exception e)
+        {
+            System.out.println("Problem comparing shapes. Reason: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
     
-    
+
+ 
+    public String printStats() 
+    {
+        return this.executer.toString();
+    }
+
+
+
+
+
+
     private void compareProperties(Individual instance)
     {
         List<Statement> listProperties = instance.listProperties().toList();
-               
+
         for(Statement stmt : listProperties)
         {
             Utilities.logInfo(OntologyUtils.printStatement(stmt));
             this.compareProperty(stmt);
         }
     }
-    
-        
- 
-    public String printStats() 
-    {
-        return this.executer.toString();
-    }
-    
+
+
 }

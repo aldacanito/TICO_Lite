@@ -1,0 +1,1866 @@
+@prefix :     <http://conference#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://conference-instances#review-1009967944_-196548213>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1779962486> ;
+        :reviews      <http://conference-instances#paper-1009967944> .
+
+<http://conference-instances#abstr203147640>
+        rdf:type  []  .
+
+<http://conference-instances#paper-1091162264>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person748917895> , <http://conference-instances#person-97359197> , <http://conference-instances#person1321358749> , <http://conference-instances#person1088416870> , <http://conference-instances#person-1395697182> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-1928050802>
+        :contributes      <http://conference-instances#paper-1334870798> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:has_an_organizing_committee
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :has_a_commtitee ;
+        owl:inverseOf       :was_an_organizing_committee_of .
+
+<http://conference-instances#person733641062>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1532581884>
+        :contributes  <http://conference-instances#paper-106680337> .
+
+<http://conference-instances#person-1270430817>
+        :contributes      <http://conference-instances#review-1009967944_-196548214> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#presentation1778733453>
+        :is_given_by  <http://conference-instances#person898828743> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155516539>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155516539> .
+
+<http://conference-instances#person1932363587>
+        :contributes  <http://conference-instances#paper-1040783621> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155728160>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155728160> .
+
+<http://conference-instances#person53633546>
+        :was_a_member_of  <http://conference-instances#oc594425059> .
+
+<http://conference-instances#person1201225561>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person328619528>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#pc594425059>
+        :has_a_committee_chair       <http://conference-instances#person-826848348> ;
+        :has_members                 <http://conference-instances#person1358600378> , <http://conference-instances#person-1601247784> , <http://conference-instances#person-1490639365> , <http://conference-instances#person-1429210758> , <http://conference-instances#person1528217430> , <http://conference-instances#person-947914828> , <http://conference-instances#person1790023491> , <http://conference-instances#person-1717056968> , <http://conference-instances#person675734948> , <http://conference-instances#person1501790147> , <http://conference-instances#person-1901016396> , <http://conference-instances#person2091751687> , <http://conference-instances#person1054964575> , <http://conference-instances#person998560393> , <http://conference-instances#person431365764> , <http://conference-instances#person-1480807342> , <http://conference-instances#person-1335516553> , <http://conference-instances#person1663247174> , <http://conference-instances#person-206577734> , <http://conference-instances#person414686799> , <http://conference-instances#person-1527975652> , <http://conference-instances#person998457579> , <http://conference-instances#person-912550527> , <http://conference-instances#person-1928050802> , <http://conference-instances#person-194169265> , <http://conference-instances#person-252623571> , <http://conference-instances#person-1158497249> , <http://conference-instances#person-284310244> , <http://conference-instances#person-332002573> , <http://conference-instances#person2009564674> , <http://conference-instances#person-1429450262> , <http://conference-instances#person-649897701> , <http://conference-instances#person2140517778> , <http://conference-instances#person-328115705> , <http://conference-instances#person-291572791> , <http://conference-instances#person1214498909> , <http://conference-instances#person-553902281> , <http://conference-instances#person-730713280> , <http://conference-instances#person922608189> , <http://conference-instances#person-2106424506> , <http://conference-instances#person-479000598> , <http://conference-instances#person944580741> , <http://conference-instances#person1001101597> , <http://conference-instances#person1300407721> , <http://conference-instances#person-375613010> , <http://conference-instances#person-308624406> , <http://conference-instances#person-1968896896> , <http://conference-instances#person-799925516> , <http://conference-instances#person-879714352> , <http://conference-instances#person1404044385> , <http://conference-instances#person-692487911> , <http://conference-instances#person-156749421> , <http://conference-instances#person-1430201768> , <http://conference-instances#person-530023765> , <http://conference-instances#person-829543615> , <http://conference-instances#person582904954> , <http://conference-instances#person2054471904> , <http://conference-instances#person-836803373> , <http://conference-instances#person1232203442> , <http://conference-instances#person-830279688> , <http://conference-instances#person-28998318> , <http://conference-instances#person590999547> , <http://conference-instances#person164213845> , <http://conference-instances#person-1035632530> , <http://conference-instances#person1137368944> , <http://conference-instances#person1480859459> , <http://conference-instances#person-2088036511> , <http://conference-instances#person980781899> , <http://conference-instances#person1880281599> , <http://conference-instances#person-951062503> , <http://conference-instances#person2026149960> , <http://conference-instances#person1865332743> , <http://conference-instances#person-96342978> , <http://conference-instances#person1419152603> , <http://conference-instances#person-1552125304> , <http://conference-instances#person1422894180> , <http://conference-instances#person-31445915> , <http://conference-instances#person-1949012060> , <http://conference-instances#person-1278933280> , <http://conference-instances#person2044143756> , <http://conference-instances#person8724234> , <http://conference-instances#person886264772> , <http://conference-instances#person1544774746> , <http://conference-instances#person-1270430817> , <http://conference-instances#person1815456352> , <http://conference-instances#person1432101851> , <http://conference-instances#person-20884083> , <http://conference-instances#person-778893158> , <http://conference-instances#person-1635740835> , <http://conference-instances#person-1456981840> , <http://conference-instances#person-1624228800> , <http://conference-instances#person-1619072798> , <http://conference-instances#person540778131> , <http://conference-instances#person-2031747936> , <http://conference-instances#person-846170127> , <http://conference-instances#person902473293> , <http://conference-instances#person-1174368118> , <http://conference-instances#person2142876560> , <http://conference-instances#person520114114> , <http://conference-instances#person-1359512083> , <http://conference-instances#person765529561> , <http://conference-instances#person769997750> , <http://conference-instances#person-1817866528> , <http://conference-instances#person-418084367> , <http://conference-instances#person-2108129641> , <http://conference-instances#person-256772543> , <http://conference-instances#person-541510756> , <http://conference-instances#person1285671513> , <http://conference-instances#person132703648> , <http://conference-instances#person-1653006824> , <http://conference-instances#person-1983852554> , <http://conference-instances#person-1191153903> , <http://conference-instances#person723383510> , <http://conference-instances#person51351566> , <http://conference-instances#person-371003986> , <http://conference-instances#person-868655376> , <http://conference-instances#person1196155563> , <http://conference-instances#person-1500128947> , <http://conference-instances#person1201225561> , <http://conference-instances#person503188619> , <http://conference-instances#person-1451523249> , <http://conference-instances#person1779962486> , <http://conference-instances#person-349199046> , <http://conference-instances#person14147756> , <http://conference-instances#person-371346755> , <http://conference-instances#person400618907> , <http://conference-instances#person-594533498> , <http://conference-instances#person685413890> , <http://conference-instances#person-553874792> , <http://conference-instances#person2053786245> , <http://conference-instances#person-163417754> , <http://conference-instances#person-1389253724> , <http://conference-instances#person2054586387> , <http://conference-instances#person-644031517> , <http://conference-instances#person-1142717632> , <http://conference-instances#person986570587> , <http://conference-instances#person727755455> , <http://conference-instances#person-2106160812> , <http://conference-instances#person456627070> , <http://conference-instances#person1016850689> , <http://conference-instances#person1867147862> , <http://conference-instances#person-245934101> , <http://conference-instances#person-579607687> , <http://conference-instances#person1995416664> , <http://conference-instances#person472225066> , <http://conference-instances#person596719908> , <http://conference-instances#person733641062> , <http://conference-instances#person328619528> , <http://conference-instances#person891088429> , <http://conference-instances#person1575405463> , <http://conference-instances#person1128207942> , <http://conference-instances#person-1941632919> , <http://conference-instances#person1650539139> , <http://conference-instances#person330340218> , <http://conference-instances#person-324663037> , <http://conference-instances#person-2047873267> , <http://conference-instances#person-1445850056> , <http://conference-instances#person638177473> , <http://conference-instances#person-1315671746> , <http://conference-instances#person-1816445880> , <http://conference-instances#person-794733834> , <http://conference-instances#person-1866256515> , <http://conference-instances#person712287470> , <http://conference-instances#person-477253972> , <http://conference-instances#person906274926> , <http://conference-instances#person-24663610> , <http://conference-instances#person-873513744> , <http://conference-instances#person-372362203> , <http://conference-instances#person-826848348> , <http://conference-instances#person1048971745> , <http://conference-instances#person-663509914> , <http://conference-instances#person-864435221> , <http://conference-instances#person-1246115019> , <http://conference-instances#person-1412481357> , <http://conference-instances#person-1486829362> ;
+        :was_a_committee_of          <http://conference-instances#conference594425059> ;
+        :was_a_program_committee_of  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person1088416870>
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#person1214498909>
+        :contributes      <http://conference-instances#review-1009967944_-196548212> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1501790147>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1159493892>
+        :was_a_member_of  <http://conference-instances#oc594425059> .
+
+<http://conference-instances#person1455067928>
+        :contributes  <http://conference-instances#paper-1396047968> .
+
+<http://conference-instances#presentation392783659>
+        :is_given_by  <http://conference-instances#person-1209614472> .
+
+<http://conference-instances#abstr2041081534>
+        rdf:type  []  .
+
+<http://conference-instances#person-652226830>
+        rdf:type  []  .
+
+<http://conference-instances#paper-1284127744>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-2028988638> , <http://conference-instances#person1923198326> , <http://conference-instances#person-1108445787> , <http://conference-instances#person641473878> , <http://conference-instances#person-1429450262> , <http://conference-instances#person-987189843> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#absDate594425059>
+        :belong_to_a_conference_volume  <http://conference-instances#conference594425059> ;
+        :is_an_abstract_submission_date
+                "2018-01-05T23:59:59"^^xsd:dateTime .
+
+<http://conference-instances#person1732877096>
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop1621863795> .
+
+<http://conference-instances#review975856194_-196548215>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person998560393> .
+
+<http://conference-instances#person1409051213>
+        :contributes  <http://conference-instances#paper-1396047968> .
+
+<http://conference-instances#person150805347>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1598360125> .
+
+:is_a_starting_date  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person-1440474375>
+        :contributes  <http://conference-instances#paper-1396047968> .
+
+<http://conference-instances#person472225066>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#sc594425059>
+        :has_a_committee_chair        <http://conference-instances#person-1315671746> ;
+        :has_members                  <http://conference-instances#person-28998318> , <http://conference-instances#person641473878> , <http://conference-instances#person-826848348> , <http://conference-instances#person-951062503> , <http://conference-instances#person-1717056968> , <http://conference-instances#person1248916960> , <http://conference-instances#person-1359512083> , <http://conference-instances#person-733204710> , <http://conference-instances#person-1315671746> ;
+        :was_a_committee_of           <http://conference-instances#conference594425059> ;
+        :was_a_steering_committee_of  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#track-1504959766>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person1557300782> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#confWebSite594425059>
+        :has_a_URL  "https://2018.eswc-conferences.org/" .
+
+<http://conference-instances#person-20884083>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#invTalk676397886>
+        :has_authors  <http://conference-instances#person-1455297413> .
+
+<http://conference-instances#abstr2054606033>
+        rdf:type  []  .
+
+<http://conference-instances#person-591421728>
+        :contributes  <http://conference-instances#paper-138837013> .
+
+:was_a_committee_chair_of
+        rdf:type            owl:ObjectProperty , owl:InverseFunctionalProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :was_a_member_of .
+
+<http://conference-instances#review950118131_-196548215>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-553902281> .
+
+<http://conference-instances#person2054586387>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation282691561> ;
+        :was_a_member_of      <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1300407721>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1210654860>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-629541459> , <http://conference-instances#person2119407603> , <http://conference-instances#person1354921479> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#presentation595611661>
+        :is_given_by  <http://conference-instances#person512004511> .
+
+<http://conference-instances#abstr302569227>
+        rdf:type  []  .
+
+<http://conference-instances#review999415672_-196548212>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+<http://conference-instances#person-1552125304>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1235172665>
+        :contributes  <http://conference-instances#paper-138837013> .
+
+<http://conference-instances#workshop-1822926834>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person1801613547> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-1124819294>
+        :contributes  <http://conference-instances#paper-1469452252> .
+
+<http://conference-instances#person-1816445880>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#presentation795493673>
+        :is_given_by  <http://conference-instances#person-1382617217> .
+
+<http://conference-instances#abstr1992001122>
+        rdf:type  []  .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155521078>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155521078> .
+
+<http://conference-instances#person907216624>
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop1554024796> .
+
+<http://conference-instances#person-1108445787>
+        :contributes  <http://conference-instances#paper-1284127744> .
+
+<http://conference-instances#review-1009967944_-196548214>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1270430817> ;
+        :reviews      <http://conference-instances#paper-1009967944> .
+
+:has_a_submitted_contribution
+        rdf:type  owl:ObjectProperty , owl:FunctionalProperty .
+
+<http://conference-instances#person-781908610>
+        :contributes  <http://conference-instances#paper-1340964616> .
+
+<http://conference-instances#person-1335516553>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-583004035>
+        :contributes  <http://conference-instances#paper-1340964616> .
+
+<http://conference-instances#person902473293>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:has_a_degree  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:int .
+
+<http://conference-instances#person-1191153903>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:was_a_track-workshop_chair_of
+        rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person-1544784923>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#invTalk1398102472> .
+
+:has_a_commtitee  rdf:type  owl:ObjectProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :was_a_committee_of .
+
+<http://conference-instances#presentation379103972>
+        :is_given_by  <http://conference-instances#person1210174981> .
+
+<http://conference-instances#person2081473083>
+        :contributes  <http://conference-instances#paper-1009967944> .
+
+:has_workshops  rdf:type    owl:ObjectProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :has_parts .
+
+<http://conference-instances#person-912550527>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-31445915>
+        rdf:type          []  ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person512004511>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation595611661> .
+
+<http://conference-instances#presentation1598360125>
+        :is_given_by  <http://conference-instances#person150805347> .
+
+<http://conference-instances#person675734948>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1653006824>
+        :contributes      <http://conference-instances#review-1009967944_-559246915> , <http://conference-instances#paper-1466007994> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1142717632>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#workshop20548200>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person-1397485185> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person1137368944>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1174268499>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person1210439095> , <http://conference-instances#person-334869824> , <http://conference-instances#person-517473726> , <http://conference-instances#person-1767234630> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://www.w3.org/2006/time#after>
+        rdf:type  rdf:Property .
+
+:reviews  rdf:type  owl:ObjectProperty , owl:FunctionalProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person-1397485185>
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop20548200> .
+
+<http://conference-instances#person826824351>
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop2060985167> .
+
+<http://conference-instances#abstr658046772>
+        rdf:type  []  .
+
+:has_a_review_expertise
+        rdf:type       owl:ObjectProperty , owl:InverseFunctionalProperty ;
+        owl:inverseOf  :has_a_submitted_contribution .
+
+<http://conference-instances#abstr657620628>
+        rdf:type  []  .
+
+<http://conference-instances#person1432101851>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1490639365>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-553902281>
+        :contributes      <http://conference-instances#review950118131_-196548215> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155724247>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155724247> .
+
+<http://conference-instances#person-1158497249>
+        :contributes      <http://conference-instances#review-1040783621_-196548214> , <http://conference-instances#review975856194_-196548212> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1105441534>
+        :contributes  <http://conference-instances#paper-1441590578> .
+
+<http://conference-instances#person-97359197>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+:gives_presentations  rdf:type  owl:ObjectProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :is_given_by .
+
+<http://conference-instances#person-570823173>
+        rdf:type  []  .
+
+<http://conference-instances#review999415672_-196548213>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1815456352> .
+
+<http://conference-instances#presentation1776011720>
+        :is_given_by  <http://conference-instances#person445567758> .
+
+<http://conference-instances#oc594425059>
+        :has_a_committee_chair  <http://conference-instances#person-826848348> ;
+        :has_members            <http://conference-instances#person978182263> , <http://conference-instances#person1889213539> , <http://conference-instances#person641473878> , <http://conference-instances#person53633546> , <http://conference-instances#person-1315671746> , <http://conference-instances#person685413890> , <http://conference-instances#person-1509329796> , <http://conference-instances#person-848313398> , <http://conference-instances#person-1558450838> , <http://conference-instances#person-1159493892> , <http://conference-instances#person1570082082> , <http://conference-instances#person-826848348> , <http://conference-instances#person164213845> , <http://conference-instances#person1248916960> , <http://conference-instances#person503188619> , <http://conference-instances#person1557300782> , <http://conference-instances#person-1480807342> , <http://conference-instances#person-28998318> , <http://conference-instances#person-328115705> , <http://conference-instances#person-733204710> ;
+        :was_a_committee_of     <http://conference-instances#conference594425059> ;
+        :was_an_organizing_committee_of
+                <http://conference-instances#conference594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155525694>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155525694> .
+
+<http://conference-instances#person-988902988>
+        :contributes  <http://conference-instances#paper-138837013> .
+
+<http://conference-instances#review-1009967944_-196548215>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person2091751687> ;
+        :reviews      <http://conference-instances#paper-1009967944> .
+
+:is_a_date_of_acceptance_announcement
+        rdf:type    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person-1382617217>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation795493673> .
+
+<http://conference-instances#person-1429450262>
+        :contributes      <http://conference-instances#paper-1284127744> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#abstr2007773372>
+        rdf:type  []  .
+
+<http://conference-instances#person211260173>
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person543393722>
+        :contributes  <http://conference-instances#paper-1155744058> .
+
+:belongs_to_reviewers
+        rdf:type       owl:ObjectProperty ;
+        owl:inverseOf  :has_a_review_reference_or_expertise .
+
+<http://conference-instances#person1189699555>
+        :contributes  <http://conference-instances#paper-138837013> .
+
+:was_a_program_committee_of
+        rdf:type            owl:ObjectProperty , owl:InverseFunctionalProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :was_a_committee_of .
+
+:was_an_organizing_committee_of
+        rdf:type            owl:ObjectProperty , owl:InverseFunctionalProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :was_a_committee_of .
+
+<http://conference-instances#review975856194_-559246915>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-308624406> .
+
+<http://conference-instances#person-663509914>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:has_a_volume  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:int .
+
+<http://conference-instances#person1831390211>
+        rdf:type  []  .
+
+:has_a_topic_or_a_submission_contribution
+        rdf:type       owl:ObjectProperty , owl:FunctionalProperty ;
+        owl:inverseOf  :has_been_assigned_a_review_reference .
+
+<http://conference-instances#person2054471904>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1209614472>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation392783659> .
+
+<http://conference-instances#person-1983852554>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1941632919>
+        :contributes      <http://conference-instances#paper-106680337> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155531755>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155531755> .
+
+<http://conference-instances#endDate594425059>
+        :belong_to_a_conference_volume  <http://conference-instances#conference594425059> ;
+        :is_an_ending_date              "2018-06-07T17:00:00"^^xsd:dateTime .
+
+<http://conference-instances#person-879714352>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#tutorial-1908626681>
+        rdf:type                        []  ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-1717056968>
+        :was_a_member_of  <http://conference-instances#sc594425059> , <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-204144672>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1221050722> .
+
+:was_a_committee_of  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+<http://conference-instances#abstr2128793563>
+        rdf:type  []  .
+
+<http://conference-instances#publisher-1690360934>
+        rdf:type  []  ;
+        :issues   <http://conference-instances#proceedings594425059> .
+
+:has_the_last_name  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person1358600378>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#review-1040783621_-196548212>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> ;
+        :reviews      <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person-579607687>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1429210758>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1080046350>
+        :contributes  <http://conference-instances#paper-1340964616> .
+
+<http://conference-instances#paper-1469452252>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-509669676> , <http://conference-instances#person-873513744> , <http://conference-instances#person-737333300> , <http://conference-instances#person-1124819294> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+:has_an_email  rdf:type  owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person1889213539>
+        :contributes      <http://conference-instances#paper-1156682268> ;
+        :was_a_member_of  <http://conference-instances#oc594425059> .
+
+:was_a_committe_co-chair_of
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :was_a_member_of .
+
+<http://conference-instances#person-1395697182>
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#review999415672_-196548214>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+<http://conference-instances#workshop1554024796>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person907216624> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+:is_an_ending_date  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person1923198326>
+        :contributes  <http://conference-instances#paper-1284127744> .
+
+<http://conference-instances#paper-1155744058>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-764936352> , <http://conference-instances#person611373452> , <http://conference-instances#person543393722> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-1509329796>
+        :was_a_member_of  <http://conference-instances#oc594425059> .
+
+<http://conference-instances#workshop1621863795>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person1732877096> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-737333300>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1469452252> .
+
+<http://conference-instances#person254671973>
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+:has_an_abstract  rdf:type  owl:ObjectProperty , owl:FunctionalProperty ;
+        owl:inverseOf  :is_the_1th_part_of .
+
+<http://conference-instances#paper-1441590578>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-553874792> , <http://conference-instances#person-245934101> , <http://conference-instances#person468319138> , <http://conference-instances#person-1105441534> , <http://conference-instances#person-1719856390> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+:contributes  rdf:type  owl:ObjectProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :has_authors .
+
+<http://conference-instances#person-1212800923>
+        rdf:type  []  .
+
+<http://conference-instances#person998457579>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person2091751687>
+        rdf:type              []  ;
+        :contributes          <http://conference-instances#review-1009967944_-196548215> ;
+        :gives_presentations  <http://conference-instances#presentation601961826> ;
+        :was_a_member_of      <http://conference-instances#pc594425059> .
+
+:has_a_track-workshop-tutorial_topic
+        rdf:type       owl:ObjectProperty ;
+        owl:inverseOf  :is_a_topis_of_conference_parts .
+
+<http://conference-instances#person2009564674>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person1354921479>
+        :contributes  <http://conference-instances#paper-1210654860> .
+
+:belongs_to_a_review_reference
+        rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty .
+
+<http://conference-instances#workshop-2128729747>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person-1389253724> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person1349982148>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation522138275> .
+
+<http://conference-instances#abstr2019043369>
+        rdf:type  []  .
+
+<http://conference-instances#camDateInst594425059>
+        :belong_to_a_conference_volume  <http://conference-instances#conference594425059> ;
+        :is_a_date_of_camera_ready_paper_submission
+                "2018-03-23T23:59:59"^^xsd:dateTime .
+
+<http://conference-instances#paper-138837013>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person1189699555> , <http://conference-instances#person-988902988> , <http://conference-instances#person1235172665> , <http://conference-instances#person921503754> , <http://conference-instances#person-591421728> , <http://conference-instances#person-95822205> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-987189843>
+        :contributes  <http://conference-instances#paper-1284127744> .
+
+:has_gender  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  [ rdf:type   rdfs:Datatype ;
+                      owl:oneOf  [ rdf:type   rdf:List ;
+                                   rdf:first  "female" ;
+                                   rdf:rest   [ rdf:type   rdf:List ;
+                                                rdf:first  "male" ;
+                                                rdf:rest   ()
+                                              ]
+                                 ]
+                    ] .
+
+<http://conference-instances#person8724234>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:invites_co-reviewers
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#review-1040783621_-196548213>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1359512083> ;
+        :reviews      <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person1954271493>
+        :contributes  <http://conference-instances#paper-1134949322> .
+
+<http://conference-instances#person-371346755>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person42601147>
+        rdf:type  []  .
+
+:is_submitted_at  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person-553874792>
+        :contributes      <http://conference-instances#paper-1441590578> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-256772543>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1174368118>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-2106160812>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1389253724>
+        rdf:type                        []  ;
+        :was_a_member_of                <http://conference-instances#pc594425059> ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop-2128729747> .
+
+:invited_by  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :invites_co-reviewers .
+
+<http://conference-instances#person1570082082>
+        :was_a_member_of  <http://conference-instances#oc594425059> .
+
+<http://conference-instances#abstr209499467>
+        rdf:type  []  .
+
+<http://conference-instances#conference594425059>
+        rdf:type                      []  ;
+        :has_a_commtitee              <http://conference-instances#oc594425059> , <http://conference-instances#sc594425059> , <http://conference-instances#pc594425059> ;
+        :has_a_location               "Heraklion, Crete, Greece" ;
+        :has_a_program_committee      <http://conference-instances#pc594425059> ;
+        :has_a_steering_committee     <http://conference-instances#sc594425059> ;
+        :has_an_organizing_committee  <http://conference-instances#oc594425059> ;
+        :has_contributions            <http://conference-instances#paper-1111263395> , <http://conference-instances#paper-1210654860> , <http://conference-instances#paper-1310872672> , <http://conference-instances#paper-1155744058> , <http://conference-instances#paper-1091162264> , <http://conference-instances#paper-1396047968> , <http://conference-instances#paper-1315236544> , <http://conference-instances#paper-1466007994> , <http://conference-instances#paper-106680337> , <http://conference-instances#paper-1298176396> , <http://conference-instances#paper-1040783621> , <http://conference-instances#paper-184625809> , <http://conference-instances#paper-1134949322> , <http://conference-instances#paper-1221050722> , <http://conference-instances#paper-1284127744> , <http://conference-instances#paper-1156682268> , <http://conference-instances#paper-138837013> , <http://conference-instances#paper-1469452252> , <http://conference-instances#paper-1334870798> , <http://conference-instances#paper-1174268499> , <http://conference-instances#paper-1009967944> , <http://conference-instances#paper-1340964616> , <http://conference-instances#paper-1441590578> ;
+        :has_important_dates          <http://conference-instances#notifDate594425059> , <http://conference-instances#absDate594425059> , <http://conference-instances#startDate594425059> , <http://conference-instances#endDate594425059> , <http://conference-instances#camDateInst594425059> , <http://conference-instances#subDate594425059> ;
+        :has_parts                    <http://conference-instances#workshop-2132929196> , <http://conference-instances#track-809664022> , <http://conference-instances#tutorial-465989596> , <http://conference-instances#tutorial-269923293> , <http://conference-instances#tutorial-535947513> , <http://conference-instances#workshop1554024796> , <http://conference-instances#workshop-2128729747> , <http://conference-instances#workshop-1822926834> , <http://conference-instances#track585151142> , <http://conference-instances#workshop20548200> , <http://conference-instances#workshop-116568089> , <http://conference-instances#tutorial-1908626681> , <http://conference-instances#track1792660185> , <http://conference-instances#workshop526045159> , <http://conference-instances#workshop1621863795> , <http://conference-instances#track-1504959766> , <http://conference-instances#workshop2060985167> ;
+        :has_tracks                   <http://conference-instances#track-809664022> , <http://conference-instances#track1792660185> , <http://conference-instances#track-1504959766> , <http://conference-instances#track585151142> ;
+        :has_tutorials                <http://conference-instances#tutorial-1908626681> , <http://conference-instances#tutorial-269923293> , <http://conference-instances#tutorial-465989596> , <http://conference-instances#tutorial-535947513> ;
+        :has_workshops                <http://conference-instances#workshop2060985167> , <http://conference-instances#workshop1554024796> , <http://conference-instances#workshop1621863795> , <http://conference-instances#workshop-2132929196> , <http://conference-instances#workshop20548200> , <http://conference-instances#workshop526045159> , <http://conference-instances#workshop-1822926834> , <http://conference-instances#workshop-116568089> , <http://conference-instances#workshop-2128729747> .
+
+<http://conference-instances#person-332002573>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1817866528>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1454925686>
+        rdf:type  []  .
+
+<http://conference-instances#person-826848348>
+        :was_a_committee_chair_of  <http://conference-instances#oc594425059> , <http://conference-instances#pc594425059> ;
+        :was_a_member_of           <http://conference-instances#sc594425059> , <http://conference-instances#oc594425059> , <http://conference-instances#pc594425059> .
+
+<http://conference-instances#review999415672_-196548215>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1968896896> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155409397>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155409397> .
+
+:has_tracks  rdf:type       owl:ObjectProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :has_parts .
+
+<http://conference-instances#person-24663610>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person711954540>
+        :contributes  <http://conference-instances#paper-1040783621> .
+
+:has_a_committee_co-chair
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :has_members ;
+        owl:inverseOf       :was_a_committe_co-chair_of .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155528028>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155528028> .
+
+<http://conference-instances#person-1527975652>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1949012060>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1396047968>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person1455067928> , <http://conference-instances#person1409051213> , <http://conference-instances#person1184641930> , <http://conference-instances#person-1440474375> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#tutorial-465989596>
+        rdf:type                        []  ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#track585151142>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person503188619> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-477253972>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person611373452>
+        :contributes  <http://conference-instances#paper-1155744058> .
+
+<http://conference-instances#person-829543615>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1430201768>
+        :contributes      <http://conference-instances#paper-1111263395> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-156749421>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1601247784>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:issues  rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person-1217077607>
+        :contributes  <http://conference-instances#paper-1111263395> .
+
+<http://conference-instances#presentation1992001122>
+        :is_given_by  <http://conference-instances#person-629622358> .
+
+<http://conference-instances#person906274926>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#presentation894731363>
+        :is_given_by  <http://conference-instances#person259895487> .
+
+<http://conference-instances#person-868655376>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1359512083>
+        :contributes      <http://conference-instances#review-1040783621_-196548213> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> , <http://conference-instances#sc594425059> .
+
+<http://conference-instances#person596719908>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person445567758>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1776011720> .
+
+:has_members  rdf:type  owl:ObjectProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :was_a_member_of .
+
+<http://conference-instances#paper-1221050722>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-291572791> , <http://conference-instances#person-836803373> , <http://conference-instances#person685413890> , <http://conference-instances#person-204144672> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+:has_contributions  rdf:type  owl:ObjectProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :is_submitted_at .
+
+<http://conference-instances#person520114114>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person2026149960>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:has_a_date_of_issue  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+:was_a_member_of  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person14147756>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:has_a_review_reference_or_expertise
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#review-1040783621_-196548214>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1158497249> ;
+        :reviews      <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person1779962486>
+        :contributes                    <http://conference-instances#review-1009967944_-196548213> ;
+        :was_a_member_of                <http://conference-instances#pc594425059> ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop526045159> .
+
+<http://conference-instances#person978182263>
+        :was_a_member_of  <http://conference-instances#oc594425059> .
+
+<http://conference-instances#person-836803373>
+        :contributes      <http://conference-instances#paper-1221050722> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-375613010>
+        :contributes      <http://conference-instances#review963462360_-196548213> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1575405463>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+xsd:date  rdf:type  rdfs:Datatype .
+
+<http://conference-instances#person-250181782>
+        :contributes  <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person2044143756>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-245934101>
+        :contributes      <http://conference-instances#paper-1441590578> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1278933280>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-848313398>
+        :was_a_member_of  <http://conference-instances#oc594425059> .
+
+<http://conference-instances#person-1635740835>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#abstr236693500>
+        rdf:type  []  .
+
+<http://conference-instances#presentation156925601>
+        :is_given_by  <http://conference-instances#person1630174376> .
+
+<http://conference-instances#person1423149605>
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person944580741>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1486829362>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person431365764>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-2106424506>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1412481357>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1422894180>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:has_a_name  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+:has_an_ISBN  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person1404044385>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-95822205>
+        :contributes  <http://conference-instances#paper-138837013> , <http://conference-instances#paper-1134949322> .
+
+<http://conference-instances#presentation522138275>
+        :is_given_by  <http://conference-instances#person1349982148> .
+
+<http://conference-instances#person723383510>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:is_a_full_paper_submission_date
+        rdf:type    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person164213845>
+        :contributes      <http://conference-instances#review963462360_-196548212> , <http://conference-instances#review999415672_-196548211> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> , <http://conference-instances#oc594425059> .
+
+<http://conference-instances#abstr2134395685>
+        rdf:type  []  .
+
+<http://conference-instances#person922608189>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person2119407603>
+        :contributes  <http://conference-instances#paper-1210654860> .
+
+:has_tutorials  rdf:type    owl:ObjectProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :has_parts .
+
+<http://conference>  rdf:type  owl:Ontology .
+
+<http://conference-instances#paper-1009967944>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_a_review     <http://conference-instances#review-1009967944_-196548212> , <http://conference-instances#review-1009967944_-196548213> , <http://conference-instances#review-1009967944_-559246915> , <http://conference-instances#review-1009967944_-196548215> , <http://conference-instances#review-1009967944_-196548214> ;
+        :has_authors      <http://conference-instances#person2081473083> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person980781899>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#abstr709018979>
+        rdf:type  []  .
+
+<http://conference-instances#person-1456981840>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1555721114>
+        rdf:type  []  .
+
+:has_a_program_committee
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :has_a_commtitee ;
+        owl:inverseOf       :was_a_program_committee_of .
+
+<http://conference-instances#person480255365>
+        :contributes  <http://conference-instances#paper-1466007994> .
+
+<http://conference-instances#tutorial-269923293>
+        rdf:type                        []  ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#abstr244592325>
+        rdf:type  []  .
+
+:has_a_committee_chair
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :has_members ;
+        owl:inverseOf       :was_a_committee_chair_of .
+
+<http://conference-instances#review-1040783621_-196548215>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1880281599> ;
+        :reviews      <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person-33807415>
+        :contributes  <http://conference-instances#paper-1134949322> .
+
+:belong_to_a_conference_volume
+        rdf:type       owl:ObjectProperty , owl:InverseFunctionalProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :has_important_dates .
+
+<http://conference-instances#person-629541459>
+        :contributes  <http://conference-instances#paper-1210654860> .
+
+<http://conference-instances#person-1849700515>
+        :contributes  <http://conference-instances#paper-1156682268> .
+
+<http://conference-instances#person476583342>
+        :contributes  <http://conference-instances#paper-1315236544> .
+
+<http://conference-instances#abstr660629131>
+        rdf:type  []  .
+
+<http://conference-instances#person503188619>
+        :was_a_member_of                <http://conference-instances#oc594425059> , <http://conference-instances#pc594425059> ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#track585151142> .
+
+<http://conference-instances#person641473878>
+        :contributes                    <http://conference-instances#paper-1284127744> ;
+        :was_a_member_of                <http://conference-instances#oc594425059> , <http://conference-instances#sc594425059> ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#track-809664022> .
+
+<http://conference-instances#review963462360_-196548212>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person164213845> .
+
+<http://conference-instances#abstr601961826>
+        rdf:type  []  .
+
+<http://conference-instances#person1528217430>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-778893158>
+        :contributes      <http://conference-instances#review975856194_-196548213> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person2140517778>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1466899771>
+        :contributes  <http://conference-instances#paper-1466007994> .
+
+<http://conference-instances#abstr1985799590>
+        rdf:type  []  .
+
+<http://conference-instances#person259895487>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation894731363> .
+
+<http://conference-instances#person-284310244>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1001101597>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1624228800>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-349199046>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#workshop-116568089>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person-1745090124> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#tutorial-535947513>
+        rdf:type                        []  ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#presentation1620534424>
+        :is_given_by  <http://conference-instances#person-541510756> .
+
+<http://conference-instances#presentation1826868435>
+        :is_given_by  <http://conference-instances#person2035953639> .
+
+<http://conference-instances#person769997750>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1038942658>
+        :contributes  <http://conference-instances#paper-1298176396> .
+
+<http://conference-instances#paper-184625809>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-1457400471> , <http://conference-instances#person-997826642> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-334869824>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1174268499> .
+
+<http://conference-instances#person-1315671746>
+        :was_a_committee_chair_of       <http://conference-instances#sc594425059> ;
+        :was_a_member_of                <http://conference-instances#oc594425059> , <http://conference-instances#sc594425059> , <http://conference-instances#pc594425059> ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#track1792660185> .
+
+<http://conference-instances#subDate594425059>
+        :belong_to_a_conference_volume  <http://conference-instances#conference594425059> ;
+        :is_a_full_paper_submission_date
+                "2018-01-12T23:59:59"^^xsd:dateTime .
+
+:is_a_date_of_camera_ready_paper_submission
+        rdf:type    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#notifDate594425059>
+        :belong_to_a_conference_volume  <http://conference-instances#conference594425059> ;
+        :is_a_date_of_acceptance_announcement
+                "2018-02-16T23:59:59"^^xsd:dateTime .
+
+<http://conference-instances#workshop526045159>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person1779962486> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#paper-1340964616>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-583004035> , <http://conference-instances#person1048971745> , <http://conference-instances#person1080046350> , <http://conference-instances#person-781908610> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#invTalk1398102472>
+        :has_authors  <http://conference-instances#person-1544784923> .
+
+<http://conference-instances#person-1480807342>
+        :contributes      <http://conference-instances#paper-1111263395> ;
+        :was_a_member_of  <http://conference-instances#oc594425059> , <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1419152603>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1466007994>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-1653006824> , <http://conference-instances#person400618907> , <http://conference-instances#person51351566> , <http://conference-instances#person480255365> , <http://conference-instances#person-479000598> , <http://conference-instances#person-1466899771> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+:has_authors  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person-1182702128>
+        rdf:type  []  .
+
+<http://conference-instances#track-809664022>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person641473878> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-1640260074>
+        :contributes  <http://conference-instances#paper-1310872672> .
+
+<http://conference-instances#abstr2111977347>
+        rdf:type  []  .
+
+<http://conference-instances#person-1745090124>
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop-116568089> .
+
+<http://conference-instances#abstr159962680>
+        rdf:type  []  .
+
+<http://conference-instances#person1210174981>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation379103972> .
+
+:has_a_URL  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person1801613547>
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop-1822926834> .
+
+<http://conference-instances#person1630174376>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation156925601> .
+
+<http://conference-instances#person-553478039>
+        :contributes  <http://conference-instances#paper-1310872672> .
+
+:has_the_first_name  rdf:type  owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person-237416086>
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop-2132929196> .
+
+:has_a_track-workshop-tutorial_chair
+        rdf:type       owl:ObjectProperty , owl:FunctionalProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :was_a_track-workshop_chair_of .
+
+<http://conference-instances#person2142876560>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1156682268>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-1246115019> , <http://conference-instances#person-28998318> , <http://conference-instances#person1889213539> , <http://conference-instances#person-1849700515> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-291572791>
+        :contributes      <http://conference-instances#paper-1221050722> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1310872672>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-553478039> , <http://conference-instances#person288485964> , <http://conference-instances#person-1640260074> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person1880281599>
+        :contributes      <http://conference-instances#review-1040783621_-196548215> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1995416664>
+        :contributes      <http://conference-instances#review975856194_-196548214> , <http://conference-instances#review963462360_-196548214> , <http://conference-instances#review999415672_-196548214> , <http://conference-instances#review963462360_-196548215> , <http://conference-instances#review-1040783621_-196548212> , <http://conference-instances#review999415672_-196548212> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#review963462360_-196548213>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-375613010> .
+
+<http://conference-instances#person-163417754>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#abstr231282005>
+        rdf:type  []  .
+
+<http://conference-instances#person288485964>
+        :contributes  <http://conference-instances#paper-1310872672> .
+
+<http://conference-instances#person-1035632530>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-371003986>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1451523249>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-372362203>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-830279688>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1767234630>
+        :contributes  <http://conference-instances#paper-1174268499> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155358920>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155358920> .
+
+:has_a_review  rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :reviews .
+
+<http://conference-instances#person1480859459>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155522193>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155522193> .
+
+<http://conference-instances#person-2028988638>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1284127744> .
+
+<http://conference-instances#person638177473>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person765529561>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1256046882>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation656743813> .
+
+<http://conference-instances#person540778131>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1719856390>
+        :contributes  <http://conference-instances#paper-1441590578> .
+
+:has_been_assigned_a_review_reference
+        rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty .
+
+<http://conference-instances#person891088429>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#abstr595611661>
+        rdf:type  []  .
+
+<http://conference-instances#person-841552660>
+        :contributes  <http://conference-instances#paper-1111263395> .
+
+<http://conference-instances#person-794733834>
+        :contributes      <http://conference-instances#paper-1315236544> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1040783621>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_a_review     <http://conference-instances#review-1040783621_-196548212> , <http://conference-instances#review-1040783621_-196548213> , <http://conference-instances#review-1040783621_-196548214> , <http://conference-instances#review-1040783621_-196548215> ;
+        :has_authors      <http://conference-instances#person1932363587> , <http://conference-instances#person317334787> , <http://conference-instances#person-250181782> , <http://conference-instances#person711954540> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person685413890>
+        :contributes      <http://conference-instances#paper-1221050722> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> , <http://conference-instances#oc594425059> .
+
+<http://conference-instances#person-730713280>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-324663037>
+        :contributes      <http://conference-instances#paper-1298176396> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://www.w3.org/2006/time#hasDuration>
+        rdf:type  rdf:Property .
+
+:was_a_steering_committee_of
+        rdf:type            owl:ObjectProperty , owl:InverseFunctionalProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :was_a_committee_of .
+
+<http://conference-instances#person51351566>
+        :contributes      <http://conference-instances#paper-1466007994> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1196155563>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  rdf:Property .
+
+<http://conference-instances#abstr1960267252>
+        rdf:type  []  .
+
+<http://conference-instances#invTalk326814257>
+        :has_authors  <http://conference-instances#person-733204710> .
+
+<http://conference-instances#person-488080544>
+        rdf:type  []  .
+
+<http://conference-instances#abstr1995444571>
+        rdf:type  []  .
+
+<http://conference-instances#person-2031747936>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-59148036>
+        :contributes  <http://conference-instances#paper-1111263395> .
+
+<http://conference-instances#person-1866256515>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155622813>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155622813> .
+
+<http://conference-instances#person-509669676>
+        :contributes  <http://conference-instances#paper-1469452252> .
+
+<http://conference-instances#person712287470>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-629622358>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1992001122> .
+
+<http://conference-instances#person1867147862>
+        rdf:type          []  ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person330340218>
+        :contributes      <http://conference-instances#paper-1315236544> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#track1792660185>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person-1315671746> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-2108129641>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155733605>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155733605> .
+
+<http://conference-instances#review975856194_-196548212>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1158497249> .
+
+<http://conference-instances#abstr999415672>
+        rdf:type  []  .
+
+<http://conference-instances#person414686799>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person2035953639>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1826868435> .
+
+<http://conference-instances#person1184641930>
+        :contributes  <http://conference-instances#paper-1396047968> .
+
+<http://conference-instances#person-1455297413>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#invTalk676397886> .
+
+<http://conference-instances#person-1968896896>
+        :contributes      <http://conference-instances#review999415672_-196548215> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-997826642>
+        :contributes  <http://conference-instances#paper-184625809> .
+
+<http://conference-instances#review963462360_-196548214>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+:is_a_topis_of_conference_parts
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person732054770>
+        rdf:type  []  .
+
+<http://conference-instances#abstr595623936>
+        rdf:type  []  .
+
+<http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-194169265>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person203595087>
+        :contributes  <http://conference-instances#paper-106680337> .
+
+<http://conference-instances#person-530023765>
+        :contributes      <http://conference-instances#paper-1334870798> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:has_an_expertise  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  [ rdf:type   rdfs:Datatype ;
+                      owl:oneOf  [ rdf:type   rdf:List ;
+                                   rdf:first  "high" ;
+                                   rdf:rest   [ rdf:type   rdf:List ;
+                                                rdf:first  "low" ;
+                                                rdf:rest   [ rdf:type   rdf:List ;
+                                                             rdf:first  "medium" ;
+                                                             rdf:rest   [ rdf:type   rdf:List ;
+                                                                          rdf:first  "very high" ;
+                                                                          rdf:rest   ()
+                                                                        ]
+                                                           ]
+                                              ]
+                                 ]
+                    ] .
+
+<http://conference-instances#person-517473726>
+        :contributes  <http://conference-instances#paper-1174268499> .
+
+<http://conference-instances#person1128207942>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1557300782>
+        :was_a_member_of                <http://conference-instances#oc594425059> ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#track-1504959766> .
+
+<http://conference-instances#person921503754>
+        :contributes  <http://conference-instances#paper-138837013> , <http://conference-instances#paper-1134949322> .
+
+<http://conference-instances#person-1619072798>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person412085136>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation2054606033> .
+
+<http://conference-instances#person-1558450838>
+        :was_a_member_of  <http://conference-instances#oc594425059> .
+
+<http://conference-instances#person-328115705>
+        :was_a_member_of  <http://conference-instances#pc594425059> , <http://conference-instances#oc594425059> .
+
+<http://conference-instances#person1815456352>
+        :contributes      <http://conference-instances#review999415672_-196548213> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#abstr582917391>
+        rdf:type  []  .
+
+<http://conference-instances#person1321358749>
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#presentation656743813>
+        :is_given_by  <http://conference-instances#person1256046882> .
+
+<http://conference-instances#person1016850689>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1880920264>
+        rdf:type  []  .
+
+<http://conference-instances#person582904954>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person590999547>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-418084367>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1111263395>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person-1217077607> , <http://conference-instances#person-841552660> , <http://conference-instances#person-59148036> , <http://conference-instances#person-1480807342> , <http://conference-instances#person-1430201768> , <http://conference-instances#person1306028035> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person886264772>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-28998318>
+        :contributes      <http://conference-instances#paper-1156682268> ;
+        :was_a_member_of  <http://conference-instances#oc594425059> , <http://conference-instances#pc594425059> , <http://conference-instances#sc594425059> .
+
+<http://conference-instances#person727755455>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#abstr581267356>
+        rdf:type  []  .
+
+<http://conference-instances#person1663247174>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-2047873267>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155406062>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155406062> .
+
+<http://conference-instances#review-1009967944_-559246915>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1653006824> ;
+        :reviews      <http://conference-instances#paper-1009967944> .
+
+:has_a_publisher  rdf:type  owl:ObjectProperty , owl:FunctionalProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :issues .
+
+:is_part_of_conference_volumes
+        rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person-649897701>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155740076>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155740076> .
+
+<http://conference-instances#person-1445850056>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#startDate594425059>
+        :belong_to_a_conference_volume  <http://conference-instances#conference594425059> ;
+        :is_a_starting_date             "2018-06-05T09:00:00"^^xsd:dateTime .
+
+<http://conference-instances#abstr62655014>
+        rdf:type  []  .
+
+<http://conference-instances#person456627070>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1457400471>
+        :contributes  <http://conference-instances#paper-184625809> .
+
+<http://conference-instances#person-733204710>
+        rdf:type          []  ;
+        :contributes      <http://conference-instances#invTalk326814257> ;
+        :was_a_member_of  <http://conference-instances#oc594425059> , <http://conference-instances#sc594425059> .
+
+<http://conference-instances#review975856194_-196548213>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-778893158> .
+
+<http://conference-instances#person-2088036511>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#proceedings594425059>
+        rdf:type          []  ;
+        :has_a_publisher  <http://conference-instances#publisher-1690360934> ;
+        :has_a_volume     15 ;
+        :has_an_ISBN      "978-3-319-93417-4" .
+
+<http://conference-instances#person-873513744>
+        :contributes      <http://conference-instances#paper-1469452252> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#review963462360_-196548215>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+<http://conference-instances#presentation2054606033>
+        :is_given_by  <http://conference-instances#person412085136> .
+
+<http://conference-instances#person-951062503>
+        :was_a_member_of  <http://conference-instances#sc594425059> , <http://conference-instances#pc594425059> .
+
+:has_a_location  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#paper-1134949322>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person921503754> , <http://conference-instances#person1525692876> , <http://conference-instances#person-33807415> , <http://conference-instances#person-95822205> , <http://conference-instances#person1954271493> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-799925516>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-644031517>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#workshop-2132929196>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person-237416086> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-206577734>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-106680337>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person1532581884> , <http://conference-instances#person203595087> , <http://conference-instances#person-1941632919> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#presentation282691561>
+        :is_given_by  <http://conference-instances#person2054586387> .
+
+<http://conference-instances#abstr2123905833>
+        rdf:type  []  .
+
+<http://conference-instances#person-96342978>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person986570587>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-846170127>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person400618907>
+        :contributes      <http://conference-instances#paper-1466007994> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1210439095>
+        :contributes  <http://conference-instances#paper-1174268499> .
+
+<http://conference-instances#paper-1315236544>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person330340218> , <http://conference-instances#person-794733834> , <http://conference-instances#person476583342> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person1248916960>
+        :was_a_member_of  <http://conference-instances#sc594425059> , <http://conference-instances#oc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155730639>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155730639> .
+
+<http://conference-instances#review-1009967944_-196548212>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1214498909> ;
+        :reviews      <http://conference-instances#paper-1009967944> .
+
+<http://conference-instances#person-1901016396>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#abstr656743813>
+        rdf:type  []  .
+
+<http://conference-instances#person-541510756>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1620534424> ;
+        :was_a_member_of      <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1232203442>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person468319138>
+        :contributes  <http://conference-instances#paper-1441590578> .
+
+<http://conference-instances#person-479000598>
+        :contributes      <http://conference-instances#paper-1466007994> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person617958794>
+        rdf:type  []  .
+
+<http://conference-instances#person-947914828>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person898828743>
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1778733453> .
+
+<http://conference-instances#person132703648>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1865332743>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:is_given_by  rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person1544774746>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-692487911>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-864435221>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+:is_the_1th_part_of  rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty .
+
+<http://conference-instances#person-778150919>
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person1790023491>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-1500128947>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person998560393>
+        :contributes      <http://conference-instances#review975856194_-196548215> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1987253932>
+        rdf:type  []  .
+
+<http://conference-instances#person307293599>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1298176396> .
+
+<http://conference-instances#person-308624406>
+        :contributes      <http://conference-instances#review975856194_-559246915> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1525692876>
+        :contributes  <http://conference-instances#paper-1134949322> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155332392>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155332392> .
+
+<http://conference-instances#paper-1298176396>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person307293599> , <http://conference-instances#person-324663037> , <http://conference-instances#person-1038942658> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#person-594533498>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#presentation601961826>
+        :is_given_by  <http://conference-instances#person2091751687> .
+
+<http://conference-instances#person2053786245>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person317334787>
+        :contributes  <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person280070114>
+        rdf:type  []  .
+
+<http://conference-instances#person-764936352>
+        :contributes  <http://conference-instances#paper-1155744058> .
+
+<http://conference-instances#review975856194_-196548214>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+<http://conference-instances#person1306028035>
+        :contributes  <http://conference-instances#paper-1111263395> .
+
+:has_parts  rdf:type   owl:ObjectProperty , owl:TransitiveProperty ;
+        owl:inverseOf  :is_part_of_conference_volumes .
+
+<http://conference-instances#person-252623571>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person-495836409>
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person1285671513>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#person1650539139>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230505155524322>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230505155524322> .
+
+:has_a_steering_committee
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty , owl:TransitiveProperty ;
+        rdfs:subPropertyOf  :has_a_commtitee ;
+        owl:inverseOf       :was_a_steering_committee_of .
+
+<http://conference-instances#abstr282691561>
+        rdf:type  []  .
+
+<http://conference-instances#abstr2015448609>
+        rdf:type  []  .
+
+<http://conference-instances#person-1246115019>
+        :contributes      <http://conference-instances#paper-1156682268> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#workshop2060985167>
+        rdf:type                        []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person826824351> ;
+        :is_part_of_conference_volumes  <http://conference-instances#conference594425059> .
+
+<http://conference-instances#review999415672_-196548211>
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person164213845> .
+
+<http://conference-instances#person1048971745>
+        :contributes      <http://conference-instances#paper-1340964616> ;
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://www.w3.org/2006/time#isTimeSliceOf>
+        rdf:type  owl:ObjectProperty .
+
+:is_an_abstract_submission_date
+        rdf:type    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person748917895>
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#person-531078793>
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+:has_important_dates  rdf:type  owl:ObjectProperty , owl:FunctionalProperty , owl:TransitiveProperty .
+
+<http://conference-instances#person1054964575>
+        :was_a_member_of  <http://conference-instances#pc594425059> .
+
+<http://conference-instances#paper-1334870798>
+        rdf:type          []  ;
+        rdf:type          []  ;
+        :has_authors      <http://conference-instances#person211260173> , <http://conference-instances#person-495836409> , <http://conference-instances#person1423149605> , <http://conference-instances#person-531078793> , <http://conference-instances#person-778150919> , <http://conference-instances#person-530023765> , <http://conference-instances#person-1928050802> , <http://conference-instances#person254671973> ;
+        :is_submitted_at  <http://conference-instances#conference594425059> .

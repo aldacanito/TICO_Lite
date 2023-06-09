@@ -2,6 +2,7 @@
 package IDC.EvolActions.Impl.Additions.Restriction;
 
 import IDC.ModelManager;
+import Utils.Utilities;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Restriction;
@@ -12,22 +13,17 @@ import org.apache.jena.ontology.Restriction;
  */
 public class AddCardinalityRestriction extends AddRestriction
 {
-    int      cardinality;
-    String   cardinalityType;
-    boolean  qualified;
-    OntClass rangeClass;
+    private int      cardinality;
+    private String   cardinalityType;
+    private boolean  qualified;
+
+
     
     public AddCardinalityRestriction(OntClass cls, OntProperty onProperty, boolean isEquivalent, boolean isSubclass) 
     {
         super(cls, onProperty, isEquivalent, isSubclass);
         
-//        if(cls.getURI()!=null && onProperty.getURI()!=null)
-//            System.out.println("Creating CardinalityRestriction for:"
-//                + "\n\t Class: " + cls.getURI() +
-//                "\t On Property: " + onProperty.getURI() +
-//                "\t Details: Is EQ? " + isEquivalent + ". Is Subclass? " + isSubclass + "." );
-        
-        qualified = false;
+        setQualified(false);
     }
     
     /**
@@ -39,12 +35,9 @@ public class AddCardinalityRestriction extends AddRestriction
      */
     public void setCardinalityType(String type, int cardinality, boolean qualified)
     {
-        this.cardinality     = cardinality;
-        this.cardinalityType = type;
-        this.qualified       = qualified;
-        
-//        System.out.println("Cardinality of "+ this.ontClass.getURI()+" of property "+ this.onProperty+" will set to:\n"
-//                + "\t - Cardinality:" + cardinality + "\t Type: "+ type + "\tQualified? " + qualified);
+        this.setCardinality(cardinality);
+        this.setCardinalityType(type);
+        this.setQualified(qualified);
     }
     
     /**
@@ -53,7 +46,7 @@ public class AddCardinalityRestriction extends AddRestriction
      */
     public void setQualifiedRestrictionClass(OntClass rangeClass)
     {
-        this.rangeClass = rangeClass;
+        this.setRangeClass(rangeClass);
     }
     
     
@@ -61,40 +54,43 @@ public class AddCardinalityRestriction extends AddRestriction
     public void execute()
     {
         Restriction restriction = null;
-        if(!qualified)
+        if(!isQualified())
         {
-            switch(cardinalityType)
+            switch(getCardinalityType())
             {
                 case "min" : 
                 //create min cardinality;
-                    restriction = ModelManager.getManager().getEvolvingModel().createMinCardinalityRestriction(null, this.onProperty, cardinality);
+                    restriction = ModelManager.getManager().getEvolvingModel().createMinCardinalityRestriction(null, this.onProperty, getCardinality());
                     break;
 
                 case "max" : 
                     //create max cardinality;
-                    restriction = ModelManager.getManager().getEvolvingModel().createMaxCardinalityRestriction(null, this.onProperty, cardinality);
+                    restriction = ModelManager.getManager().getEvolvingModel().createMaxCardinalityRestriction(null, this.onProperty, getCardinality());
                     break;
                 default: 
                     // cardinality normal ??? num
-                    restriction = ModelManager.getManager().getEvolvingModel().createCardinalityRestriction(null, this.onProperty, cardinality);
+                    restriction = ModelManager.getManager().getEvolvingModel().createCardinalityRestriction(null, this.onProperty, getCardinality());
                     break; 
             }
         }
         else
         {
-            switch(cardinalityType)
+            if(Utilities.isInIgnoreList(getRangeClass().getURI()))
+                return;
+
+            switch(getCardinalityType())
             {
                 case "min" : 
                     //create min cardinality;
-                    restriction = ModelManager.getManager().getEvolvingModel().createMinCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
+                    restriction = ModelManager.getManager().getEvolvingModel().createMinCardinalityQRestriction(null, this.onProperty, getCardinality(), getRangeClass());
                     break;
                 case "max" : 
                     //create max cardinality;
-                    restriction = ModelManager.getManager().getEvolvingModel().createMaxCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
+                    restriction = ModelManager.getManager().getEvolvingModel().createMaxCardinalityQRestriction(null, this.onProperty, getCardinality(), getRangeClass());
                     break;
                 default: 
                     // cardinality normal ??? num
-                    restriction = ModelManager.getManager().getEvolvingModel().createCardinalityQRestriction(null, this.onProperty, cardinality, rangeClass);
+                    restriction = ModelManager.getManager().getEvolvingModel().createCardinalityQRestriction(null, this.onProperty, getCardinality(), getRangeClass());
                     break; 
             }
         }
@@ -106,6 +102,31 @@ public class AddCardinalityRestriction extends AddRestriction
             this.ontClass.addSuperClass(restriction);
         
     }
-    
-    
+
+
+    public int getCardinality() {
+        return cardinality;
+    }
+
+    public void setCardinality(int cardinality) {
+        this.cardinality = cardinality;
+    }
+
+    public String getCardinalityType() {
+        return cardinalityType;
+    }
+
+    public void setCardinalityType(String cardinalityType) {
+        this.cardinalityType = cardinalityType;
+    }
+
+    public boolean isQualified() {
+        return qualified;
+    }
+
+    public void setQualified(boolean qualified) {
+        this.qualified = qualified;
+    }
+
+
 }

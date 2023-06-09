@@ -13,6 +13,8 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,8 +41,18 @@ public class Utilities
         
         return class_to_ignore.contains(i);
     }
-    
-    
+
+
+    public static <T> boolean listEqualsIgnoreOrder(List<T> list1, List<T> list2)
+    {
+        if(list1 == null && list2 == null) return true;
+        if(list1 == null && list2 != null) return false;
+        if(list1 != null && list2 == null) return false;
+
+        return new HashSet<>(list1).equals(new HashSet<>(list2));
+    }
+
+
     public static boolean isInIgnoreList(String i)
     {
         

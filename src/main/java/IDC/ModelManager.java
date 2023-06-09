@@ -6,7 +6,11 @@
 package IDC;
 
 import Utils.OntologyUtils;
+import org.apache.jena.ontology.AnnotationProperty;
 import org.apache.jena.ontology.OntModel;
+import org.apache.jena.ontology.OntModelSpec;
+import org.apache.jena.ontology.OntResource;
+
 
 /**
  *
@@ -36,12 +40,29 @@ public class ModelManager
     public void setup(String onto_path, String instance_path)
     {
         originalModel = OntologyUtils.readModel(onto_path);
+
+        AnnotationProperty o_version = originalModel.createAnnotationProperty("version");
+        OntResource o_versionInfo    = originalModel.createOntResource("VersionInfo");
+        o_versionInfo.addLiteral(o_version, "original");
+
         evolvingModel = OntologyUtils.readModel(onto_path);
+        o_version     = evolvingModel.createAnnotationProperty("version");
+        o_versionInfo = evolvingModel.createOntResource("VersionInfo");
+        o_versionInfo.addLiteral(o_version, "evolving");
+
+
         instanceModel = OntologyUtils.readModel(instance_path);
+        o_version     = instanceModel.createAnnotationProperty("version");
+        o_versionInfo = instanceModel.createOntResource("VersionInfo");
+        o_versionInfo.addLiteral(o_version, "instance");
+
         temporal_instancesModel = evolvingModel;
     }
-    
-    
+
+
+
+
+
     /**
      * @return the originalModel
      */

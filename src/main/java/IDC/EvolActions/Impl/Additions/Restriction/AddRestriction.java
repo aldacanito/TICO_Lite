@@ -16,7 +16,9 @@ import org.apache.jena.ontology.OntProperty;
  */
 public class AddRestriction implements IAddClass
 {
-   
+
+    protected OntClass rangeClass;
+
     protected String URI;
     protected OntClass ontClass;
     
@@ -44,17 +46,23 @@ public class AddRestriction implements IAddClass
     
     
     @Override
-    public String getURI() 
-    {
-        return this.URI;
-    }
+    public String      getURI()         { return this.URI;     }
+    public OntProperty onProperty()     { return onProperty;   }
+    public boolean     isEquivalent()   { return isEquivalent; }
+    public boolean     isSubclass()     { return isSubclass;   }
 
-   
-    
     @Override
     public void execute() 
     {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public OntClass getRangeClass() {
+        return rangeClass;
+    }
+
+    public void setRangeClass(OntClass rangeClass) {
+        this.rangeClass = rangeClass;
     }
     
 }

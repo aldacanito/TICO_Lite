@@ -74,9 +74,7 @@ public class TestClassDiff {
         addRestriction(cls1, "property3");
         newVersion = new ClassDiff ().isNewVersion(cls1, cls2);
         System.out.println("DEVE SER VERDADEIRO. É " + newVersion );
-        
-        
-        
+
         
     }
     

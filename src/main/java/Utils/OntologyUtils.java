@@ -12,33 +12,14 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import IDC.ModelManager;
 import org.apache.jena.datatypes.RDFDatatype;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
-import org.apache.jena.ontology.AllValuesFromRestriction;
-import org.apache.jena.ontology.CardinalityQRestriction;
-import org.apache.jena.ontology.CardinalityRestriction;
-import org.apache.jena.ontology.ComplementClass;
-import org.apache.jena.ontology.DatatypeProperty;
-import org.apache.jena.ontology.EnumeratedClass;
-import org.apache.jena.ontology.HasValueRestriction;
-import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.IntersectionClass;
-import org.apache.jena.ontology.MaxCardinalityQRestriction;
-import org.apache.jena.ontology.MaxCardinalityRestriction;
-import org.apache.jena.ontology.MinCardinalityQRestriction;
-import org.apache.jena.ontology.MinCardinalityRestriction;
-import org.apache.jena.ontology.ObjectProperty;
-import org.apache.jena.ontology.OntClass;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.ontology.OntResource;
-import org.apache.jena.ontology.Restriction;
-import org.apache.jena.ontology.SomeValuesFromRestriction;
-import org.apache.jena.ontology.UnionClass;
+import org.apache.jena.ontology.*;
+import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Property;
@@ -49,6 +30,8 @@ import org.apache.jena.rdf.model.Statement;
 
 
 import org.apache.jena.util.iterator.ExtendedIterator;
+
+import javax.swing.*;
 
 /**
  *
@@ -67,15 +50,35 @@ public class OntologyUtils
     public static final String DURING_P         = "http://www.w3.org/2006/time#hasDuration";
     public static final String IS_SLICE_OF_P    = "http://www.w3.org/2006/time#isTimeSliceOf";
     public static final String ONT_TIME_URL     = "http://www.w3.org/2006/time";
-    
-    
+
+
+
+    public static OntModel readModel(String filename, String baseURI)
+    {
+
+        OntModel m = ModelFactory.createOntologyModel();
+        try
+        {
+            m.read(new FileReader(filename, StandardCharsets.ISO_8859_1 ), baseURI, "TTL");
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return m;
+    }
+
     public static OntModel readModel(String filename) 
     {
-    
+
+
         OntModel m = ModelFactory.createOntologyModel();  
         try 
         {
            m.read(new FileReader(filename, StandardCharsets.ISO_8859_1 ), "", "TTL");
+
+           //Ontology theOntology = m.createOntology("");
+           //theOntology.addImport(m.createResource(OntologyUtils.ONT_TIME_URL));
         
         } catch (Exception e) 
         { 
@@ -141,8 +144,10 @@ public class OntologyUtils
         
         List<Individual> toList = theModel.listIndividuals().toList();
         System.out.println("Individuals List obtained");        
+
         for(Individual i : toList)
-        {   
+        {
+            /**
             if(i.getOntClass().getURI().equalsIgnoreCase(INSTANT_CLS))
             {
                 System.out.println("Instant individual: " + i.getURI());
@@ -154,7 +159,7 @@ public class OntologyUtils
                 System.out.println("Interval individual: " + i.getURI());
                 continue;
             }
-            
+            **/
 
             if(!Utilities.isInIgnoreList(i.getURI()))
                  i.remove();
@@ -205,8 +210,7 @@ public class OntologyUtils
     {
         writeFullModel(theModel, filename);
         writeInstanceModel(filename);
-        
-        writeClassesModel(theModel, filename);
+        //writeClassesModel(theModel, filename);
     }
     
     
@@ -757,7 +761,200 @@ public class OntologyUtils
         
         return printSPO(subject, predicate, object);
     }
-   
+
+    public static List <String> getIndividualsSPARQL(OntModel model)
+    {
+        //System.out.println("==SPARQL Listing individuals in the Model.==\n");
+
+        List <String> individuals_uris = new ArrayList<>();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT DISTINCT " +
+                                "?uri" +
+                                " WHERE " +
+                                "{" +
+                                "?uri a ?t . " +
+
+                                " FILTER ( ?t != <" + OntologyUtils.INTERVAL_CLS + "> ) ." +
+                                " FILTER ( ?t != <" + OntologyUtils.INSTANT_CLS + "> ) ." +
+
+                                " FILTER ( ?t != <" + OntologyUtils.ONT_TIME_URL + "#DateTimeInterval> ) ." +
+                                " FILTER ( ?t != <http://www.w3.org/2000/01/rdf-schema#Class> ) ." +
+                                " FILTER ( ?t != <http://www.w3.org/2002/07/owl#Class> ) . " +
+                                " FILTER ( ?t != <http://www.w3.org/2002/07/owl#DatatypeProperty> ) . " +
+                                " FILTER ( ?t != <http://www.w3.org/2002/07/owl#ObjectProperty> ) . " +
+
+                                "}"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                QuerySolution res    = results.nextSolution();
+                Resource theResource = res.getResource("uri");
+
+                // TODO decide what to do about anonymous classes!
+
+                if(theResource.getURI()!=null && !model.getOntResource(theResource.getURI()).isProperty())
+                {
+                    String uri  = theResource.getURI();
+
+                    if(
+                            uri.startsWith("http://www.w3.org/2000/01/rdf-schema#") ||
+                                    uri.startsWith("http://www.w3.org/2002/07/owl#") ||
+                                    uri.contains( OntologyUtils.ONT_TIME_URL ) ||
+                                    uri.startsWith("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+                    )
+                    {
+                        //System.out.println("Skippable URI > " + uri);
+                        continue;
+                    }
+
+                    if (Utilities.isInIgnoreList(uri))
+                        continue;
+
+                    try
+                    {
+                        Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
+
+                        if(individual.canAs(OntClass.class) || individual.canAs(OntProperty.class) || individual.canAs(Ontology.class))
+                            continue;
+
+                        individuals_uris.add(uri);
+                        //System.out.println("Result : " + res.toString() + " is Individual.");
+
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("URI " + uri + " is not an Individual of the Model.");
+                    }
+
+                }
+            }
+        }
+
+        Collections.sort(individuals_uris);
+
+        System.out.println("\t\t== SPARQL Listing individuals in the Model. Count: "+ individuals_uris.size() +" ==");
+
+        return individuals_uris;
+    }
+
+
+    public static List<OntClass> listOntClassesSPARQL(Individual i)
+    {
+        String individual_uri = i.getURI();
+        OntModel model        = i.getOntModel();
+        List<OntClass> clss   = new ArrayList<>();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT DISTINCT " +
+                                "?class " +
+                                " WHERE " +
+                                "{" +
+                                "<"+ individual_uri + "> a ?class . " +
+                                " FILTER ( ?class != <http://www.w3.org/2002/07/owl#NamedIndividual> ) . " +
+
+                                "}"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                QuerySolution res = results.nextSolution();
+                //System.out.println("Result: " + res.toString());
+
+                Resource theResource = res.getResource("?class");
+
+                if(theResource.isURIResource() && Utilities.isInIgnoreList(theResource.getURI()))
+                    continue;
+
+                if(theResource.isURIResource())
+                {
+                    try
+                    {
+                        OntClass cls = model.getOntClass(theResource.getURI());
+                        clss.add(cls);
+
+                        //System.out.println("\t > Added class with uri " + theResource.getURI() + " to list!");
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Error retrieving class with uri " + theResource.getURI() + " from Model." );
+                    }
+                }
+            }
+        }
+
+        //System.out.println("\t\t== SPARQL Listing Classes for individual " + individual_uri + " in the Model. Count: "+clss.size()+" ==\n");
+        return clss;
+    }
+
+
+
+    public static Map<String, RDFNode> listPropertiesSPARQL(Individual i)
+    {
+        String individual_uri = i.getURI();
+
+        //System.out.println("==SPARQL Listing individual "+ individual_uri+"'s properties in the Model.==\n");
+
+        OntModel model        = i.getOntModel();
+
+        Map<String, RDFNode> property_uris = new HashMap<>();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT DISTINCT " +
+                                "?prop ?obj " +
+                                " WHERE " +
+                                "{" +
+                                "<"+ individual_uri + "> ?prop ?obj. " +
+
+                                "}"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                QuerySolution res = results.nextSolution();
+                //System.out.println("Result: " + res.toString());
+
+                String prop = res.getResource("prop").getURI();
+                RDFNode obj_node = res.get("obj");
+
+                if(prop!=null && obj_node!= null)
+                {
+                    try
+                    {
+                        if(Utilities.isInIgnoreList(prop))
+                            continue;
+
+                        Property p = model.getOntProperty(prop);
+                        property_uris.put(prop, obj_node);
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("URI " + prop + " not a Property in the Model.");
+                    }
+                }
+            }
+        }
+
+        //System.out.println("\t\t== SPARQL Listing Properties for individual "+ individual_uri+". Count: "+ property_uris.size()+" ==\n");
+
+        return property_uris;
+    }
+
+
+
     public static String printStatement(Statement t)
     {
         String subject      = t.getSubject().toString().split("#")[1];
@@ -1173,25 +1370,23 @@ public class OntologyUtils
         return ret;
     }
 
-   
-    
 
     public static Individual getIndividual(String URI, OntModel ontModel) 
     {
         String parts []= URI.split("#");
-        
-        List<Individual> toList = ontModel.listIndividuals().toList();
+
+        List<String> individualUris = OntologyUtils.getIndividualsSPARQL(ontModel);
     
-      //  System.out.println("==Looking for individual: " + URI);
-        for(Individual ind : toList)
+        System.out.println("==Looking for individual: " + URI);
+        for(String indURI : individualUris)
         {
-        //    System.out.println("\tParsing ... " + ind.getURI());
-            
-            if(parts.length == 2 && ind.getURI().contains(parts[1]))
-                return ind;
-            
-            if(ind.getURI().equalsIgnoreCase(URI))
-                return ind;
+            System.out.println("\tParsing ... " + indURI);
+
+            if(parts.length == 2 && indURI.contains(parts[1]))
+                return ontModel.getIndividual(indURI);
+
+            if(indURI.equalsIgnoreCase(URI))
+                return ontModel.getIndividual(indURI);
         
         }
     

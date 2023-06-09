@@ -101,7 +101,7 @@ public class Configs
             this.prop.setProperty("deleteOPImplementation",     "EvolutionaryActions.Implementations.Simple.DeleteObjectProperty.java");
             this.prop.setProperty("deletePImplementation",      "EvolutionaryActions.Implementations.Simple.DeleteDatatypeProperty.java");
             
-            this.prop.setProperty("namespace_ignore",           "http://www.w3.org/2002/07/owl;http://www.w3.org/2006/time;http://purl.org/dc/terms;http://www.w3.org/1999/02/22-rdf-syntax-ns;http://www.w3.org/2000/01/rdf-schema;");
+            this.prop.setProperty("namespace_ignore",           "http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant;http://www.w3.org/2002/07/owl;http://www.w3.org/2006/time;http://purl.org/dc/terms;http://www.w3.org/1999/02/22-rdf-syntax-ns;http://www.w3.org/2000/01/rdf-schema;");
             this.prop.setProperty("verbose",                    "true");
             
             this.prop.setProperty("model_print",                "TTL"); // alternatively RDF/XML

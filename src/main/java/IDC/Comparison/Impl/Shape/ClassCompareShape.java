@@ -25,12 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.jena.graph.Node;
-import org.apache.jena.ontology.DatatypeProperty;
-import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.ObjectProperty;
-import org.apache.jena.ontology.OntClass;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
@@ -53,20 +48,13 @@ public class ClassCompareShape implements IClassCompare
     
 
     
-    public static EvolutionaryActionComposite run()
-    {
-        EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
-       
-        return ClassCompareShape.run(composite);
-    
-    }
-    
     public static EvolutionaryActionComposite run(EvolutionaryActionComposite composite)
     {
         ClassPropertyMetrics cpm = null;
         
         List<OntClass> ontClassList = ModelManager.getManager().getOriginalModel().listClasses().toList();
-        
+        //List<OntClass> ontClassList = ModelManager.getManager().getEvolvingModel().listClasses().toList();
+
         for(OntClass cls : ontClassList)
         {
             
@@ -90,181 +78,105 @@ public class ClassCompareShape implements IClassCompare
         
         return composite;
     }
-    
-    
-    @Override
-    public EvolutionaryAction compare() 
+
+
+    private EvolutionaryAction compareSPARQL()
     {
-        Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
-        
-        List<Statement> properties  = instance.listProperties().toList();
-        List<OntClass> ontClassList = instance.listOntClasses(true).toList();
-                
+        //Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
+
+        Map<String, RDFNode> property_URIs    = OntologyUtils.listPropertiesSPARQL(instance);
+        List<OntClass> ontClassList           = OntologyUtils.listOntClassesSPARQL(instance);
         EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
-        
-        if(ontClassList==null) 
-            return composite;   
-        
-        ClassPropertyMetrics cpm = null;
-        
-        
+
+        if(ontClassList==null)
+            return composite;
+
+        ClassPropertyMetrics cpm;
+
         Individual before = OntologyUtils.getBeforeInstant(instance);
         Individual after  = OntologyUtils.getAfterInstant(instance);
-            
+
         for(OntClass cls : ontClassList)
         {
             String classURI = cls.getURI();
-            
+
             if(Utilities.isInIgnoreList(classURI) || classURI == null)
                 continue;
-            
-            cpm = EntityMetricsStore.getStore()
-                    .getMetricsByClassURI(classURI);
-            
+
+            cpm = EntityMetricsStore.getStore().getMetricsByClassURI(classURI);
+
             // get before e after da classe se existirem, senao deixa os individuals a null
-            
+
             if(cpm==null)
                 cpm = new ClassPropertyMetrics(cls, after);
-        
+
             if(before!=null)
                 cpm.addClassMention(before);
             else
                 cpm.addClassMention();
-            
+
             HashMap<String, Integer> repeated = new HashMap<>();
-            
-            if(properties!=null)
-            for(Statement stmt : properties)
-            {
-                String predicateURI = stmt.getPredicate().getURI();
-                 
-                boolean ignore = Utilities.isInIgnoreList(instance.getURI());
-                if(ignore) continue;
-                
-                RDFNode object = stmt.getObject();
-                
-                if(object.isLiteral()) // DT PROP
+
+            if(!property_URIs.isEmpty())
+                for(String predicateURI : property_URIs.keySet())
                 {
-                    Literal asLiteral = object.asLiteral();                  
-                    cpm.addDtProperty(predicateURI, asLiteral.getDatatypeURI());
+                    if(Utilities.isInIgnoreList(predicateURI)) continue;
+
+                    RDFNode object_node = property_URIs.get(predicateURI);
+
+                    if(object_node.isResource())
+                        cpm.addObjProperty(predicateURI, object_node.asResource().getURI());
+                    else if(object_node.isLiteral())
+                        cpm.addDtProperty(predicateURI, object_node.asLiteral().getDatatypeURI());
+
+                    int count = repeated.getOrDefault(predicateURI, 0);
+                    count++;
+
+                    repeated.put(predicateURI, count);
+
                 }
-                if(object.isResource()) // OBJ PROP
-                {
-                    Resource asResource = object.asResource();
-                    cpm.addObjProperty(predicateURI, asResource.getURI());
-                }   
-                int count = repeated.getOrDefault(predicateURI, 0);
-                count++;
-                
-                repeated.put(predicateURI, count);
-                
-            }
-            
+
             for(String predicateURI : repeated.keySet())
                 if(repeated.getOrDefault(predicateURI, 0) != 0)
                     cpm.updateFunctionalCandidate(predicateURI);
-            
+
             EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
             ClassCompareShape.populateComposite(cpm, composite);
         }
-        
+
         return composite;
-       // return fill(composite, instance, ontClassList, properties, this.evolvedModel);
     }
 
-    private static EvolutionaryActionComposite fill(EvolutionaryActionComposite composite,
-                                                    Individual instance,
-                                                    List<OntClass> ontClassList,
-                                                    List<Statement> properties,
-                                                    OntModel ontModel)
+
+    
+    @Override
+    public EvolutionaryAction compare()
     {
-        ClassPropertyMetrics cpm = null;
-        
-        for(OntClass cls : ontClassList)
-        {
-            String classURI = cls.getURI();
-            
-            if(Utilities.isInIgnoreList(classURI))
-                continue;
-            
-            cpm = EntityMetricsStore.getStore()
-                    .getMetricsByClassURI(classURI);
-            
-            if(cpm==null)
-                cpm = new ClassPropertyMetrics(cls, null);
-        
-            cpm.addClassMention();
-            
-            HashMap<String, Integer> repeated = new HashMap<>();
-            
-            if(properties!=null)
-            for(Statement stmt : properties)
-            {
-                String predicateURI = stmt.getPredicate().getURI();
-                 
-                boolean ignore = Utilities.isInIgnoreList(instance.getURI());
-                if(ignore) continue;
-                
-                RDFNode object = stmt.getObject();
-                
-                if(object.isLiteral()) // DT PROP
-                {
-                    Literal asLiteral = object.asLiteral();                  
-                    cpm.addDtProperty(predicateURI, asLiteral.getDatatypeURI());
-                }
-                if(object.isResource()) // OBJ PROP
-                {
-                    Resource asResource = object.asResource();
-                    cpm.addObjProperty(predicateURI, asResource.getURI());
-                }   
-                int count = repeated.getOrDefault(predicateURI, 0);
-                count++;
-                
-                repeated.put(predicateURI, count);
-                
-            }
-            
-            for(String predicateURI : repeated.keySet())
-            {
-                int count = repeated.getOrDefault(predicateURI, 0);
-                if(count!=0)
-                    cpm.updateFunctionalCandidate(predicateURI);
-            }
-            
-            // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
-            //if(cpm!=null)
-                
-            EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
-            ClassCompareShape.populateComposite(cpm, composite);
-        }
-        
-        return composite;
-    
+        System.out.println("\n\nCompare: BEGIN");
+
+        EvolutionaryAction ret =  compareSPARQL();
+
+        System.out.println("Compare: FINISHED\n\n");
+
+        return ret;
     }
-    
-    
+
+
     public static void populateObjProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
         OntClass ontClass    = cpm.getOntClass();
         OntModel originModel = ontClass.getOntModel();
-        //ontClass = ontModel.getOntClass(ontClass.toString()); // trocar pela versao da nova
-        
-//        OntClass slice = OntologyUtils.getLastTimeSlice(ontClass);
-//    
-//        if(slice!=null)
-//            ontClass = slice;
-        
+
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
-        //List<PropertyMetrics> propertyMetrics    = cpm.getPropertyMetrics();
-        
+
         if(classProperties==null) return;
         
         for(String propertyURI : classProperties.keySet())
         {
             if(Utils.Utilities.isInIgnoreList(propertyURI))
                 continue;
-            
+
             OntProperty onProperty = ModelManager.getManager().getOriginalModel().getOntProperty(propertyURI);
             if(onProperty==null) // just in case
                 onProperty = ModelManager.getManager().getOriginalModel().createObjectProperty(propertyURI, false);
@@ -275,7 +187,7 @@ public class ClassCompareShape implements IClassCompare
             boolean isSuperClass = true;
             
             int mentions         = (int) classProperties.get(propertyURI);
-            
+
             if(functionalCandidates.contains(propertyURI) && mentions > Utils.Configs.functional_threshold)
                 isFunctional = true;
         
@@ -284,30 +196,47 @@ public class ClassCompareShape implements IClassCompare
             
             //adicionar na mesma a questao da restricao de equivalencia ao composite, depois ver se é para executar ou não
             
-            if(mentions <= Utils.Configs.subclass_threshold)
-                isSuperClass = false;
-            
-            if(mentions > Utils.Configs.equivalent_threshold)
-                isEquivalent = true;
-            
-            
+            if(mentions <= Utils.Configs.subclass_threshold)  isSuperClass = false;
+            if(mentions > Utils.Configs.equivalent_threshold) isEquivalent = true;
+
+            System.out.println("\t> Property " + propertyURI + " accessed."
+                              +"\n\t\t> Mentions: " + mentions);
+            System.out.println("\t\t> Is SuperClass: " + isSuperClass + "\n\t\t > Is EquivalentClass: " + isEquivalent +
+                               "\n\t\t > Is Functional: " + isFunctional);
+
             if(isEquivalent || isSuperClass)
             {
-                AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
 
                 // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
                 if(mentions > Utils.Configs.subclass_threshold)
-                    if(isFunctional)
-                        rec.setCardinalityType("Exactly", 1, isQualifiedR);
-                    else
-                        rec.setCardinalityType("Min", 0, isQualifiedR);
+                {
+                    AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
 
-                composite.add(rec);
+                    if (isFunctional)
+                    {
+                        rec.setCardinalityType("Exactly", 1, isQualifiedR);
+                        if(composite.add(rec))
+                            System.out.println("\t\t\t Cardinality Restriction Added!");
+                    }
+
+                /*System.out.println("\t\t\t Adding Cardinality Restriction:"  +
+                        "\n\t\t\t\t Class: "    + ontClass.getURI()   +
+                        "\n\t\t\t\t Property: " + onProperty.getURI());
+                */
+
+
+                }
+
+
+
             }
 
             // TODO ACRESCENTAR OUTROS TIPOS DE RESTRIÇAO AQUI
             //UTILIZAR O PROPERTYMETRICS
             PropertyMetrics pmetrics = cpm.getMetricsOfProperty(propertyURI);
+
+//            System.out.println("\t > Checking Metrics of Property " + propertyURI);
+
             if(pmetrics!=null)
             {
                 Map<String, Integer> ranges = pmetrics.getRanges();
@@ -318,45 +247,50 @@ public class ClassCompareShape implements IClassCompare
                 if(numRanges == 1)
                 {
                     //all values from
-                    // OntClass cls, OntProperty onProperty, boolean isEquivalent,
-                    //boolean isSubclass, OntClass rangeClass
-                    
+
                     String rangeURI     = ranges.keySet().iterator().next();
-                    
-//                    OntClass rangeClass = ontModel.getOntClass(rangeURI);
-                    
                     OntClass rangeClass = originModel.getOntClass(rangeURI);
                     
                     if(rangeClass==null) // range é individual
                     {
-//                        Individual individual = ontModel.getIndividual(rangeURI);
-                        
-                        Individual individual = OntologyUtils.getIndividual(rangeURI, ModelManager.getManager().getOriginalModel());
-                        individual = OntologyUtils.getIndividual(rangeURI, originModel);
+                        Individual individual = originModel.getIndividual(rangeURI);
                         
                         if(individual!=null)
                         {
-                           List<OntClass> rangesL = individual.listOntClasses(true).toList();
-                           
+                            List<OntClass> rangesL = OntologyUtils.listOntClassesSPARQL(individual);
+
                            for(OntClass r : rangesL)
                            {
                                 if(r.getURI()!=null && Utilities.isInClassIgnoreList(r.getURI()))
                                     continue;
-                               
-                                AddAllValuesFromRestriction aavfR = 
-                                 new AddAllValuesFromRestriction(
-                                         ontClass,
-                                         onProperty,
-                                         isEquivalent,
-                                         isSuperClass,
-                                         r
-                                 );
-                                composite.add(aavfR);
+
+//                               System.out.println("\t\t\t Adding Some Values From:"  +
+//                                       "\n\t\t\t\t Class: "    + ontClass.getURI()   +
+//                                       "\n\t\t\t\t Property: " + onProperty.getURI() +
+//                                       "\n\t\t\t\t Range: "    + r.getURI());
+
+                               AddAllValuesFromRestriction aavfR =
+                                     new AddAllValuesFromRestriction(
+                                             ontClass,
+                                             onProperty,
+                                             isEquivalent,
+                                             isSuperClass,
+                                             r
+                                     );
+
+                               if(composite.add(aavfR))
+                                   System.out.println("\t\t\t Some Values From Added.");
+
                            }
                         }
                     }
                     else
                     {
+//                        System.out.println("\t\t\t Adding All Values From:"  +
+//                                "\n\t\t\t\t Class: "    + ontClass.getURI()   +
+//                                "\n\t\t\t\t Property: " + onProperty.getURI() +
+//                                "\n\t\t\t\t Range: "    + rangeClass.getURI());
+
                         AddAllValuesFromRestriction aavfR = 
                                  new AddAllValuesFromRestriction(
                                          ontClass,
@@ -365,7 +299,9 @@ public class ClassCompareShape implements IClassCompare
                                          isSuperClass,
                                          rangeClass
                                  );
-                        composite.add(aavfR);
+                        if(composite.add(aavfR))
+                          System.out.println("\t\t\t All Values From Added.");
+
                     }
                 }
                 else if(numRanges >= Utils.Configs.someValuesFrom_threshold)
@@ -375,39 +311,48 @@ public class ClassCompareShape implements IClassCompare
                     String rangeURI     = ranges.keySet().iterator().next();
                     
                     if(rangeURI==null) continue;
-                    
-//                    OntClass rangeClass = ontModel.getOntClass(rangeURI);
+
                     OntClass rangeClass = originModel.getOntClass(rangeURI);
 
                     if(rangeClass==null) // range é individual
                     {
-                        Individual individual = ModelManager.getManager().getOriginalModel().getIndividual(rangeURI);
-                        individual = originModel.getIndividual(rangeURI);
+                        Individual individual = originModel.getIndividual(rangeURI);
 
-                        
                         if(individual!=null)
                         {
-                           List<OntClass> rangesL = individual.listOntClasses(true).toList();
-                           
-                           for(OntClass r : rangesL)
+                            List<OntClass> rangesL = OntologyUtils.listOntClassesSPARQL(individual);
+
+                            for(OntClass r : rangesL)
                            {
                                if(r.getURI()!=null && Utilities.isInClassIgnoreList(r.getURI()))
                                     continue;
-                               
-                                AddSomeValuesFromRestriction aavfR = 
-                                 new AddSomeValuesFromRestriction(
-                                         ontClass,
-                                         onProperty,
-                                         isEquivalent,
-                                         isSuperClass,
-                                         r
-                                 );
-                                composite.add(aavfR);
+
+//                               System.out.println("\t\t\t Adding Some Values From:"  +
+//                                       "\n\t\t\t\t Class: "    + ontClass.getURI()   +
+//                                       "\n\t\t\t\t Property: " + onProperty.getURI() +
+//                                       "\n\t\t\t\t Range: "    + r.getURI());
+
+                               AddSomeValuesFromRestriction aavfR =
+                                     new AddSomeValuesFromRestriction(
+                                             ontClass,
+                                             onProperty,
+                                             isEquivalent,
+                                             isSuperClass,
+                                             r
+                                     );
+
+                               if(composite.add(aavfR))
+                                   System.out.println("\t\t\t Some Values From Added.");
                            }
                         }
                     }
                     else
                     {
+//                        System.out.println("\t\t\t Adding Some Values From:"  +
+//                                "\n\t\t\t\t Class: "    + ontClass.getURI()   +
+//                                "\n\t\t\t\t Property: " + onProperty.getURI() +
+//                                "\n\t\t\t\t Range: "    + rangeClass.getURI());
+
                         AddSomeValuesFromRestriction asvfR = 
                             new AddSomeValuesFromRestriction(
                                     ontClass,
@@ -416,16 +361,23 @@ public class ClassCompareShape implements IClassCompare
                                     isSuperClass,
                                     rangeClass
                             );
-                    composite.add(asvfR);
+
+                        if(composite.add(asvfR))
+                            System.out.println("\t\t\t Some Values From Added.");
+
                     }                 
                 }
             }
         }
+
+        System.out.println("\t== Finished Populate Object Properties Composite");
+
     }
     
     
     public static void populateDtProperties(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite)
     {
+
         OntClass ontClass = cpm.getOntClass();
     
         List<String> functionalCandidates        = cpm.getFunctionalCandidates();
@@ -435,8 +387,6 @@ public class ClassCompareShape implements IClassCompare
         
         for(String propertyURI : classProperties.keySet())
         {
-           // DatatypeProperty onProperty = Utils.OntologyUtils.getDatatypePropertyFromModel(ontModel, propertyURI);
-            
             if(Utilities.isInIgnoreList(propertyURI))
                 continue;
             
@@ -459,40 +409,213 @@ public class ClassCompareShape implements IClassCompare
             
             //adicionar na mesma a questao da restricao de equivalencia ao composite, depois ver se é para executar ou não
             
-            if(mentions <= Utils.Configs.subclass_threshold)
-                isSuperClass = false;
-            
-            if(mentions > Utils.Configs.equivalent_threshold)
-                isEquivalent = true;
-            
-            AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
-            
+            if(mentions <= Utils.Configs.subclass_threshold)   isSuperClass = false;
+            if(mentions >  Utils.Configs.equivalent_threshold) isEquivalent = true;
+
             // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
             if(mentions > Utils.Configs.subclass_threshold)
             {
+                AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
+
                 if(isFunctional)
+                {
                     rec.setCardinalityType("Exactly", 1, isQualifiedR);
-                else
-                    rec.setCardinalityType("Min", 0, isQualifiedR);
-            
-                composite.add(rec);
+                    composite.add(rec);
+                }
+
             }
             
         }
-        
+
+        System.out.println("\t== Finished Populate DataType Properties Composite");
+
     }
     
     public static void populateComposite(ClassPropertyMetrics cpm,  EvolutionaryActionComposite composite) 
     {
+
+        OntClass ontClass    = cpm.getOntClass();
+
+        if(ontClass.isAnon() || Utils.Utilities.isInIgnoreList(ontClass.getURI()))
+            return;
+
+        System.out.println("\n=========================================");
+
+        System.out.println("Populating Properties Composite for class: " + ontClass.getURI());
+
         ClassCompareShape.populateObjProperties(cpm, composite);
         ClassCompareShape.populateDtProperties(cpm, composite);
-       
-        OntClass ontClass = cpm.getOntClass();
+
         AddClass addCls = new AddClass(ontClass);
         
         composite.add(addCls);
-        
+
+        System.out.println("=========================================\n");
     }
-    
-    
+
+
+
+
+
+
+
+    private EvolutionaryAction compareJENA()
+    {
+        //Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
+
+        List<Statement> properties  = instance.listProperties().toList();
+        List<OntClass> ontClassList = instance.listOntClasses(true).toList();
+
+        EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
+
+        if(ontClassList==null)
+            return composite;
+
+        ClassPropertyMetrics cpm = null;
+
+        Individual before = OntologyUtils.getBeforeInstant(instance);
+        Individual after  = OntologyUtils.getAfterInstant(instance);
+
+        for(OntClass cls : ontClassList)
+        {
+            String classURI = cls.getURI();
+
+            if(Utilities.isInIgnoreList(classURI) || classURI == null)
+                continue;
+
+            cpm = EntityMetricsStore.getStore()
+                    .getMetricsByClassURI(classURI);
+
+            // get before e after da classe se existirem, senao deixa os individuals a null
+
+            if(cpm==null)
+                cpm = new ClassPropertyMetrics(cls, after);
+
+            if(before!=null)
+                cpm.addClassMention(before);
+            else
+                cpm.addClassMention();
+
+            HashMap<String, Integer> repeated = new HashMap<>();
+
+            if(properties!=null)
+                for(Statement stmt : properties)
+                {
+                    String predicateURI = stmt.getPredicate().getURI();
+
+                    boolean ignore = Utilities.isInIgnoreList(instance.getURI());
+                    if(ignore) continue;
+
+                    RDFNode object = stmt.getObject();
+
+                    if(object.isLiteral()) // DT PROP
+                    {
+                        Literal asLiteral = object.asLiteral();
+                        cpm.addDtProperty(predicateURI, asLiteral.getDatatypeURI());
+                    }
+                    if(object.isResource()) // OBJ PROP
+                    {
+                        Resource asResource = object.asResource();
+                        cpm.addObjProperty(predicateURI, asResource.getURI());
+                    }
+                    int count = repeated.getOrDefault(predicateURI, 0);
+                    count++;
+
+                    repeated.put(predicateURI, count);
+
+                }
+
+            for(String predicateURI : repeated.keySet())
+                if(repeated.getOrDefault(predicateURI, 0) != 0)
+                    cpm.updateFunctionalCandidate(predicateURI);
+
+            EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
+            ClassCompareShape.populateComposite(cpm, composite);
+        }
+
+        return composite;
+        // return fill(composite, instance, ontClassList, properties, this.evolvedModel);
+    }
+
+    private static EvolutionaryActionComposite fill(EvolutionaryActionComposite composite,
+                                                    Individual instance,
+                                                    List<OntClass> ontClassList,
+                                                    List<Statement> properties,
+                                                    OntModel ontModel)
+    {
+        ClassPropertyMetrics cpm = null;
+
+        for(OntClass cls : ontClassList)
+        {
+            String classURI = cls.getURI();
+
+            if(Utilities.isInIgnoreList(classURI))
+                continue;
+
+            cpm = EntityMetricsStore.getStore()
+                    .getMetricsByClassURI(classURI);
+
+            if(cpm==null)
+                cpm = new ClassPropertyMetrics(cls, null);
+
+            cpm.addClassMention();
+
+            HashMap<String, Integer> repeated = new HashMap<>();
+
+            if(properties!=null)
+                for(Statement stmt : properties)
+                {
+                    String predicateURI = stmt.getPredicate().getURI();
+
+                    boolean ignore = Utilities.isInIgnoreList(instance.getURI());
+                    if(ignore) continue;
+
+                    RDFNode object = stmt.getObject();
+
+                    if(object.isLiteral()) // DT PROP
+                    {
+                        Literal asLiteral = object.asLiteral();
+                        cpm.addDtProperty(predicateURI, asLiteral.getDatatypeURI());
+                    }
+                    if(object.isResource()) // OBJ PROP
+                    {
+                        Resource asResource = object.asResource();
+                        cpm.addObjProperty(predicateURI, asResource.getURI());
+                    }
+                    int count = repeated.getOrDefault(predicateURI, 0);
+                    count++;
+
+                    repeated.put(predicateURI, count);
+
+                }
+
+            for(String predicateURI : repeated.keySet())
+            {
+                int count = repeated.getOrDefault(predicateURI, 0);
+                if(count!=0)
+                    cpm.updateFunctionalCandidate(predicateURI);
+            }
+
+            // run through all Classes and Properties and Check if EvolutionaryActions should be deployed
+            //if(cpm!=null)
+
+            EntityMetricsStore.getStore().addClassPropertyMetrics(cpm);
+            ClassCompareShape.populateComposite(cpm, composite);
+        }
+
+        return composite;
+
+    }
+
+
+
+    public static EvolutionaryActionComposite run()
+    {
+        EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
+
+        return ClassCompareShape.run(composite);
+
+    }
+
+
 }

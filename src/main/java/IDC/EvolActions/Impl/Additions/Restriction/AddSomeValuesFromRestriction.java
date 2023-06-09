@@ -11,7 +11,7 @@ import org.apache.jena.ontology.Restriction;
  */
 public class AddSomeValuesFromRestriction extends AddRestriction
 {
-    OntClass rangeClass;
+
 
     public AddSomeValuesFromRestriction(OntClass cls, OntProperty onProperty, boolean isEquivalent, boolean isSubclass)
     {
@@ -24,11 +24,9 @@ public class AddSomeValuesFromRestriction extends AddRestriction
         this.rangeClass = rangeClass;
     }
     
-    public void setQualifiedRestrictionClass(OntClass rangeClass)
-    {
-        this.rangeClass = rangeClass;
-    }
-    
+
+
+
     @Override
     public void execute()
     {
