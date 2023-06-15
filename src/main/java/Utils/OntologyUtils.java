@@ -916,6 +916,9 @@ public class OntologyUtils
      */
     public static OntClass copyClassDetails(OntClass source, OntClass target)
     {
+        if(source == null)
+            return target;
+
         List<RDFNode> listComments = source.listComments(null).toList();
         for(RDFNode comment : listComments)
             target.addComment((Literal) comment);

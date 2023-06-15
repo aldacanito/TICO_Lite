@@ -19,9 +19,9 @@ public class Main
        //testConferenceInstances();
 
 
-        startTest();
+        //startTest();
         //testArmando();
-     // testArmandoTest();
+      testArmandoTest();
         
 
     }
@@ -203,7 +203,7 @@ public class Main
         instance_path  = dir + "ONTOTEST_INSTANCIAS.ttl" ;
         print_path     = dir + "ONTOTEST_EVOLVED.ttl";
 
-        //runComparator(onto_path, instance_path, print_path, 0);
+        runComparator(onto_path, instance_path, print_path, 0);
 
         onto_path      = dir + "ONTOTEST_EVOLVED.ttl" ;
         instance_path  = dir + "ONTOTEST_INSTANCIAS_2.ttl" ;

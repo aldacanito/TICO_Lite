@@ -80,7 +80,7 @@ public class AddCardinalityRestriction extends AddRestriction
         }
         else
         {
-            if(getRangeClass().getURI() == null || Utilities.isInIgnoreList(getRangeClass().getURI()))
+            if(getRangeClass() == null || getRangeClass().getURI() == null || Utilities.isInIgnoreList(getRangeClass().getURI()))
                 return;
 
             switch(getCardinalityType())

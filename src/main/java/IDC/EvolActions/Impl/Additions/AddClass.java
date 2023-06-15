@@ -115,12 +115,12 @@ public class AddClass implements IAddClass
     {        
         if(ModelManager.getManager().getOriginalModel()==null)
             Utils.Utilities.logError("Original Model is not instantiated", "ADDCLASS : EXECUTE");
-        
+
+        if(Utilities.isInIgnoreList(URI))
+            return;
+
         if(this.oldClass==null)
             this.oldClass = ModelManager.getManager().getInstanceModel().getOntClass(URI);
-        
-        if(Utilities.isInIgnoreList(this.oldClass.getURI()))
-            return;
         
         OntClass theSlice = null;
         if(ModelManager.getManager().getEvolvingModel().getOntClass(URI) == null) // preciso instanciar nova classe
