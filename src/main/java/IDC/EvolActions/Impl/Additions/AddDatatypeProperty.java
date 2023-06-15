@@ -9,6 +9,8 @@ import IDC.ModelManager;
 import org.apache.jena.ontology.DatatypeProperty;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.OWL;
+import org.apache.jena.vocabulary.RDF;
 
 /**
  *
@@ -53,12 +55,17 @@ public class AddDatatypeProperty extends AddProperty
             }
             else // copiar a que existe
             {
+                //newProperty = ModelManager.getManager().getEvolvingModel().createDatatypeProperty(URI, false);
                 newProperty = Utils.OntologyUtils.copyProperty(ModelManager.getManager().getEvolvingModel(), oldProperty);
             }
         }
         
         if(this.functional)
             newProperty = newProperty.convertToFunctionalProperty();
+        else
+        {
+            newProperty.removeProperty(RDF.type, OWL.FunctionalProperty);
+        }
     
         for(String domain : this.domains)
         {
@@ -70,8 +77,7 @@ public class AddDatatypeProperty extends AddProperty
             
             }
         }
-        
-        
+
         for(String range : this.ranges)
         {
             Resource resource = ModelManager.getManager().getEvolvingModel().getResource(range);

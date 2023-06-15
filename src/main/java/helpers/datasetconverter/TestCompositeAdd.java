@@ -1,6 +1,5 @@
 package helpers.datasetconverter;
 
-import IDC.Comparison.Impl.Shape.ClassCompareShape;
 import IDC.EvolActions.Impl.Additions.AddClass;
 import IDC.EvolActions.Impl.Additions.AddDatatypeProperty;
 import IDC.EvolActions.Impl.Additions.AddObjectProperty;
@@ -8,7 +7,6 @@ import IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction;
 import IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction;
 import IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction;
 import IDC.EvolActions.Impl.EvolutionaryActionComposite;
-import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import Utils.Configs;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntModel;

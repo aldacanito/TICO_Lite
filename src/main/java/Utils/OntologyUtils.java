@@ -213,9 +213,210 @@ public class OntologyUtils
         //writeClassesModel(theModel, filename);
     }
     
-    
-    
-    public static List<OntClass> getTimeSlices(OntClass theOgClass) 
+
+
+    public static boolean hasRestrictionSPARQL(OntClass ontClass, Restriction r1)
+    {
+        boolean ret = false;
+
+        if(r1.isMaxCardinalityRestriction())
+        {
+            OntProperty prop = r1.getOnProperty();
+            int cardinality  = r1.getCardinality(prop);
+
+            if( cardinality == 0 ) cardinality = 1; // todo figure why
+
+            if(ontClass.getURI() != null)
+                return hasCardinalitySPARQL(ontClass, prop, cardinality, "maxCardinality");
+        } else if(r1.isMinCardinalityRestriction())
+        {
+            OntProperty prop = r1.getOnProperty();
+            int cardinality  = r1.getCardinality(prop);
+
+            if( cardinality == 0 ) cardinality = 1;
+
+            if(ontClass.getURI() != null)
+                return hasCardinalitySPARQL(ontClass, prop, cardinality, "minCardinality");
+        } else if(r1.isCardinalityRestriction())
+        {
+            OntProperty prop = r1.getOnProperty();
+            int cardinality  = r1.getCardinality(prop);
+
+            if( cardinality == 0 ) cardinality = 1;
+
+            if(ontClass.getURI() != null)
+                return hasCardinalitySPARQL(ontClass, prop, cardinality, "cardinality");
+        }
+
+        if(r1.isHasValueRestriction())
+        {
+            HasValueRestriction hasValueRestriction = r1.asHasValueRestriction();
+            RDFNode hasValue = hasValueRestriction.getHasValue();
+
+            OntProperty prop = hasValueRestriction.getOnProperty();
+
+            String range = null;
+            if(hasValue.isResource())
+                range = hasValue.asResource().getURI();
+
+            return hasValuesFromSPARQL(ontClass, range, prop, "hasValue");
+        } else if(r1.isAllValuesFromRestriction())
+        {
+            AllValuesFromRestriction r11 = r1.asAllValuesFromRestriction();
+            Resource res                 = r11.getAllValuesFrom();
+            OntProperty prop             = r11.getOnProperty();
+            String range                 = res.getURI();
+
+            return hasValuesFromSPARQL(ontClass, range, prop, "allValuesFrom");
+        } else if(r1.isSomeValuesFromRestriction())
+        {
+            SomeValuesFromRestriction r11 = r1.asSomeValuesFromRestriction();
+            Resource res                 = r11.getSomeValuesFrom();
+            OntProperty prop             = r11.getOnProperty();
+            String range                 = res.getURI();
+
+            return hasValuesFromSPARQL(ontClass, range, prop, "someValuesFrom");
+        }
+
+        System.out.println("was not???  restricten????");
+        return ret;
+    }
+
+
+    public static boolean hasValuesFromSPARQL(OntClass domain, String range, OntProperty property, String valueType)
+    {
+        OntModel model      = property.getOntModel();
+        String property_URI = property.getURI();
+        String domain_URI   = domain.getURI();
+
+        String queryString =
+                " SELECT DISTINCT ?d ?value ?range WHERE\n" +
+                "{ \n" +
+                "  <"+ domain_URI + "> <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?d  . \n" +
+                "  ?d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .\n" +
+                "  ?d <http://www.w3.org/2002/07/owl#onProperty> <" + property_URI + "> .  \n" +
+                "  ?d <http://www.w3.org/2002/07/owl#" + valueType + "> ";
+        if(range!=null)
+                queryString += " <"+ range +"> . ";
+        else
+            queryString += " ?range . ";
+
+
+        queryString += " } " +
+                "ORDER BY ASC(?d)" ;
+
+
+        Query query = QueryFactory.create
+                (
+                        queryString
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error querying for Value Restrictions. Reason: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+
+    public static boolean hasCardinalitySPARQL(OntClass ontClass, OntProperty property, int cardinality, String cardinalityType)
+    {
+        OntModel model      = property.getOntModel();
+        String property_URI = property.getURI();
+        String class_URI    = ontClass.getURI();
+
+        Query query = QueryFactory.create
+                (
+                       " SELECT DISTINCT ?d ?value WHERE\n" +
+                               "{ \n" +
+                               "  <"+ class_URI + "> <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?d  . \n" +
+                               "  ?d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .\n" +
+                               "  ?d <http://www.w3.org/2002/07/owl#onProperty> <" + property_URI + "> .  \n" +
+                               "  ?d <http://www.w3.org/2002/07/owl#" + cardinalityType + "> ?value . " +
+                               "  filter(?value = " + cardinality + ") \n" +
+                               "} ORDER BY ASC(?d)" +
+                               ""
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+               return true;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error querying for Cardinality Restrictions. Reason: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+
+
+
+    public static List<OntClass> getTimeSlicesSPARQL(OntClass ontClass)
+    {
+        List<OntClass> timeSlices = new ArrayList<>();
+        OntModel model = ontClass.getOntModel();
+
+        if(ontClass.getURI()==null)
+            return timeSlices;
+
+        Query query = QueryFactory.create
+                (
+                                "SELECT DISTINCT " +
+                                        " ?timeSlice ?b ?d \n" +
+                                " WHERE \n" +
+                                "  { ?timeSlice ?b ?d  .\n" +
+                                "  ?d <http://www.w3.org/2002/07/owl#someValuesFrom> <"+ontClass.getURI()+">.\n" +
+                                "  ?d <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#isTimeSliceOf> .\n" +
+                                "  FILTER (!isBlank(?timeSlice)) " +
+                                "  } \n" +
+                                " ORDER BY ASC(?timeSlice)"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                QuerySolution res = results.nextSolution();
+                Resource theResource = res.getResource("timeSlice");
+
+                if(theResource.isAnon() || theResource == null) continue;
+
+                if(theResource.getURI().contains("TS__"))
+                {
+                    OntClass cls = model.getOntClass(theResource.getURI());
+                    timeSlices.add(cls);
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error obtaining TimeSlices. Reason: " + e.getMessage());
+        }
+
+        return timeSlices;
+    }
+
+    public static List<OntClass> getTimeSlices(OntClass ontClass)
+    {
+        return getTimeSlicesSPARQL(ontClass);
+    }
+    public static List<OntClass> getTimeSlicesJENA(OntClass theOgClass)
     {
         List<OntClass> timeSlices = new ArrayList<>();
         
@@ -270,7 +471,8 @@ public class OntologyUtils
             }
         }
 
-        return versionNumber ++;
+        versionNumber++;
+        return versionNumber;
     }
     
     
@@ -361,15 +563,12 @@ public class OntologyUtils
     public static OntClass getLastTimeSlice(OntClass cls) 
     {
         List<OntClass> timeSlices = getTimeSlices(cls);
-        
-        OntProperty       beforeP = cls.getOntModel().getObjectProperty(OntologyUtils.BEFORE_P);
-        if(beforeP==null) beforeP = cls.getOntModel().createOntProperty(OntologyUtils.BEFORE_P);
-        
-        if(timeSlices.isEmpty()) return cls; 
-        
-        OntClass lastSlice = timeSlices.get(0);
-        // todas têm before menos a última
-        
+
+        if(timeSlices.isEmpty())
+            return cls;
+
+        return timeSlices.get(timeSlices.size()-1);
+        /*
         for(OntClass timeSlice : timeSlices)
         {
             List<OntClass> superClasses = timeSlice.listSuperClasses(true).toList();
@@ -399,6 +598,7 @@ public class OntologyUtils
             return lastSlice;
         else
             return cls;
+        */
         
     }
 
@@ -441,7 +641,15 @@ public class OntologyUtils
         boolean transitiveProperty = old_property.isTransitiveProperty();
         
         //check if property exists
-        OntProperty newProperty = (OntProperty) newModel.createOntProperty(old_property.getURI());
+
+         OntProperty newProperty;
+
+         if(old_property.isDatatypeProperty())
+            newProperty = (OntProperty) newModel.createDatatypeProperty(old_property.getURI(), false);
+         else if(old_property.isObjectProperty())
+             newProperty = (OntProperty) newModel.createObjectProperty(old_property.getURI(), false);
+         else
+             newProperty = (OntProperty) newModel.createDatatypeProperty(old_property.getURI(), false);
         
         if(isFunctional)
             newProperty = newProperty.convertToTransitiveProperty();
@@ -535,9 +743,7 @@ public class OntologyUtils
        
          return stats;
      }
-     
-     
-     
+
      public static String classStats(OntClass ontClass)
      {
         String stats = "\n\tStats for OntClass "+ontClass.getURI()+"\n";
@@ -637,12 +843,15 @@ public class OntologyUtils
       */
      public static DatatypeProperty getDatatypePropertyFromModel(OntModel model, String propertyURI)
      {
-        List<DatatypeProperty> listProperties = model.listDatatypeProperties().toList();
-        for(DatatypeProperty dtp : listProperties)
-            if(propertyURI.equalsIgnoreCase(dtp.getURI()))
-                return dtp;
-        
-        return null;
+         try
+         {
+             return model.getDatatypeProperty(propertyURI);
+         }
+         catch(Exception e)
+         {
+             System.out.println("Problem retrieving DataType Property with URI " + propertyURI + " from Model. Reason: " + e.getMessage());
+             return null;
+         }
      }
      
      
@@ -843,6 +1052,52 @@ public class OntologyUtils
         return individuals_uris;
     }
 
+
+    public static List<OntClass> listOntClassesSPARQL(OntModel model)
+    {
+        List<OntClass> clss   = new ArrayList<>();
+        Query query = QueryFactory.create
+                (
+                    "SELECT DISTINCT " +
+                            "?class " +
+                            " WHERE " +
+                            "{" +
+                            "?a a ?class . " +
+                            " FILTER ( ?class != <http://www.w3.org/2002/07/owl#NamedIndividual> ) . " +
+                            "}" +
+                            " ORDER BY ASC(?class) "
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                QuerySolution res = results.nextSolution();
+                //System.out.println("Result: " + res.toString());
+
+                Resource theResource = res.getResource("?class");
+
+                if(theResource.isURIResource() && Utilities.isInIgnoreList(theResource.getURI()))
+                    continue;
+
+                if(theResource.isURIResource())
+                {
+                    try
+                    {
+                        OntClass cls = model.getOntClass(theResource.getURI());
+                        clss.add(cls);
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Error retrieving class with uri " + theResource.getURI() + " from Model." );
+                    }
+                }
+            }
+        }
+
+        return clss;
+    }
 
     public static List<OntClass> listOntClassesSPARQL(Individual i)
     {

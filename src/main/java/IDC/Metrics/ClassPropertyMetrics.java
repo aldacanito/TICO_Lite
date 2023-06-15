@@ -106,15 +106,17 @@ public class ClassPropertyMetrics extends EntityMetrics
         else
             functionalCandidates.add(newPropertyURI);
     }
-    
+
+
+
+
     public void addObjProperty(String newPropertyURI, String rangeURI)
     {
         int count = 1;
         
         if(Utilities.isInIgnoreList(newPropertyURI))
             return;
-        
-        
+
         if(classObjProperties.containsKey(newPropertyURI))
             count = (int) classObjProperties.get(newPropertyURI) + 1;
         

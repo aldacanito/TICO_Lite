@@ -18,10 +18,6 @@
         :OP1      :CLASS1_1 ;
         :OP2      :CLASS1_2 .
 
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608151353718>
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608151353718> .
-
 <http://www.w3.org/2006/time#hasDuration>
         rdf:type  rdf:Property .
 
@@ -30,21 +26,29 @@
 <http://www.w3.org/2006/time#hasBeginning>
         rdf:type  owl:ObjectProperty .
 
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230614132429902>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230614132429902> .
+
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
         rdf:type  owl:AnnotationProperty .
 
 <http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
         rdf:type  owl:ObjectProperty .
 
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608151353665>
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230614132429975>
         <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608151353665> .
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230614132429975> .
 
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
         <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
                 "evolving" .
 
 :DT2    rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230614132430006>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230614132430006> .
 
 :CLASS1_3  rdf:type  owl:NamedIndividual .
 
@@ -60,10 +64,6 @@
 :CLASS3_2  rdf:type  owl:NamedIndividual ;
         :DT1      "3.0"^^xsd:float ;
         :DT2      "3.0"^^xsd:float .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608151353701>
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608151353701> .
 
 :CLASS1_2  rdf:type  owl:NamedIndividual ;
         :DT2      "2.0"^^xsd:float ;

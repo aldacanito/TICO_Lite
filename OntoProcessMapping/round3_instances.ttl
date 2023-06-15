@@ -15770,6 +15770,8 @@ OntoPianismIndividuals:erpSensor_452c8399-8e62-35a1-8b92-e77cbda04942
         sensors4ExtruOnt:sensorName  "JobUnity" ;
         CM_ontology:hasSensorID      "452c8399-8e62-35a1-8b92-e77cbda04942" .
 
+[ rdf:type  owl:Ontology ] .
+
 OntoPianismERP:erpSeries
         rdf:type  rdf:Property , owl:FunctionalProperty .
 
@@ -28683,12 +28685,6 @@ OntoPianismIndividuals:erpEvent_05953758-6803-36eb-a821-3b04b22cdbeb
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_c303b98e-734f-3bd1-8e63-697e148cb74b ;
         j.5:hasOutput       "198.0" .
 
-OntoPianismIndividuals:erpTimeInterval_d08aeb52-f093-34b5-973b-5cd38c56bd22
-        rdf:type          owl:NamedIndividual ;
-        rdfs:label        "erpTimeInterval_d08aeb52-f093-34b5-973b-5cd38c56bd22" ;
-        j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_9403548b-8c87-3e55-b068-4646149581f1 ;
-        j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_0e1d7015-ec91-31bd-a0ae-72824637e210 .
-
 OntoPianismIndividuals:erpEvent_34ef3f38-1251-3592-9c1a-068dbee06365
         rdf:type            owl:NamedIndividual ;
         rdfs:label          "erpEvent_34ef3f38-1251-3592-9c1a-068dbee06365" ;
@@ -28719,7 +28715,11 @@ OntoPianismIndividuals:erpEvent_99d64e72-224a-372f-8e16-d6cc7585deab
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_5359a86e-5895-38e8-9a2e-10b16c62c4c8 ;
         j.5:hasOutput       "44.75583333333333" .
 
-[ rdf:type  owl:Ontology ] .
+OntoPianismIndividuals:erpTimeInterval_d08aeb52-f093-34b5-973b-5cd38c56bd22
+        rdf:type          owl:NamedIndividual ;
+        rdfs:label        "erpTimeInterval_d08aeb52-f093-34b5-973b-5cd38c56bd22" ;
+        j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_9403548b-8c87-3e55-b068-4646149581f1 ;
+        j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_0e1d7015-ec91-31bd-a0ae-72824637e210 .
 
 OntoPianismIndividuals:erpEvent_e1dbc298-98d4-3f6d-9629-934c90f225d7
         rdf:type            owl:NamedIndividual ;

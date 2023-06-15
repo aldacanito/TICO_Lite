@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.vocabulary.OWL;
+import org.apache.jena.vocabulary.RDF;
 
 /**
  *
@@ -46,31 +48,36 @@ public class AddObjectProperty extends AddProperty
     {
         OntProperty oldProperty = ModelManager.getManager().getOriginalModel().getOntProperty(URI);
         OntProperty newProperty = ModelManager.getManager().getEvolvingModel().getOntProperty(URI);
-           
-        // tem algum caso em que é preciso apagar ?? ou não copiar ??
-        
+
         if(newProperty == null) //propriedade nao existe, é preciso copiar
         {
             if(oldProperty == null) // propriedade totalmente Nova
-            {
                 newProperty = ModelManager.getManager().getEvolvingModel().createOntProperty(URI);
-            }
             else // copiar a que existe
-            {
                 newProperty = Utils.OntologyUtils.copyProperty(ModelManager.getManager().getEvolvingModel(), oldProperty);
-            }
         }
        
         //verificar todas as declarações novas
     
         if(this.functional)
             newProperty = newProperty.convertToTransitiveProperty();
+        else
+            newProperty.removeProperty(RDF.type, OWL.FunctionalProperty);
+
         if(this.inverseFunctional)
             newProperty = newProperty.convertToInverseFunctionalProperty();
+        else
+            newProperty.removeProperty(RDF.type, OWL.InverseFunctionalProperty);
+
         if(this.symmetric)
             newProperty = newProperty.convertToSymmetricProperty();
+        else
+            newProperty.removeProperty(RDF.type, OWL.SymmetricProperty);
+
         if(this.transitive)
             newProperty = newProperty.convertToTransitiveProperty();
+        else
+            newProperty.removeProperty(RDF.type, OWL.TransitiveProperty);
         
         for(String domain : this.domains)
         {

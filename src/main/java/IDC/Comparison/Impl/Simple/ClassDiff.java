@@ -6,7 +6,10 @@
 package IDC.Comparison.Impl.Simple;
 
 import IDC.Comparison.Interfaces.IClassDiff;
+import Utils.OntologyUtils;
 import Utils.Utilities;
+
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.jena.ontology.AllValuesFromRestriction;
 import org.apache.jena.ontology.CardinalityRestriction;
@@ -55,6 +58,26 @@ class ClassDiffs
 public class ClassDiff implements IClassDiff
 {
 
+
+    private List<OntClass> excludeIgnoreElements(List<OntClass> list1)
+    {
+        List<OntClass> ret = new ArrayList<>();
+        for(OntClass cls : list1)
+        {
+            String uri = cls.getURI();
+
+            if(uri != null)
+            {
+                if (!Utils.Utilities.isInIgnoreList(uri))
+                    ret.add(cls);
+            }
+            else
+                ret.add(cls);
+        }
+
+        return ret;
+    }
+
     @Override
     public boolean isNewVersion(OntClass one, OntClass two) 
     {
@@ -63,31 +86,40 @@ public class ClassDiff implements IClassDiff
         OntClass op2 = (OntClass) two;
         
         System.out.println("Comparing:\n"
-                + "\t Class1 :" + op1 + " with Class2: " + op2);
+                + "\t Class1: " + op1 + " with Class2: " + op2);
         
         //check if op2 has the same subclasses and equivalent classes as op2
          
         List<OntClass> list1 = op1.listSuperClasses().toList();
         List<OntClass> list2 = op2.listSuperClasses().toList();
-        
+
         System.out.println("SuperClasses:\n"
-                + "\t Class 1: " + list1
-                + "\t Class 2: " + list2);
+                + "\t > "   + op1 + ": " + list1.size()
+                + "\n\t > " + op2 + ": " + list2.size());
         
         if(list1.isEmpty() && list2.isEmpty()) return false;
-        if(list1.size()    != list2.size())    return true;
-        
-        boolean diffSuperClasses = !compareSuperClasses(op1, op2);
-        if(diffSuperClasses) return true;
-        
-        list1 = op1.listEquivalentClasses().toList();
-        list2 = op2.listEquivalentClasses().toList();
-        
-        if(list1.isEmpty() && list2.isEmpty()) return false;
-        if(list1.size()    != list2.size())    return true;
-        
-        boolean diffEquivalentClasses = !compareEquivalentClasses(op1, op2);
-        return diffEquivalentClasses;
+        //if(list1.size()    != list2.size())    return true;
+
+        boolean diffSuperClasses = false;
+
+        if(list1.size() >= list2.size())
+            diffSuperClasses = !compareSuperClasses(op1, op2);
+        else
+            diffSuperClasses = !compareSuperClasses(op2, op1);
+
+        return diffSuperClasses;
+
+//
+//        list1 = op1.listEquivalentClasses().toList();
+//        list2 = op2.listEquivalentClasses().toList();
+//
+//        if(list1.isEmpty() && list2.isEmpty()) return false;
+//        if(list1.size()    != list2.size())    return true;
+//
+//        boolean diffEquivalentClasses = !compareEquivalentClasses(op1, op2);
+//
+//        System.out.println("Is New Version? " + diffEquivalentClasses);
+//        return diffEquivalentClasses;
     }
 
     private boolean compareRestrictionTypes(Restriction r1, Restriction r2) 
@@ -261,34 +293,86 @@ public class ClassDiff implements IClassDiff
      private boolean compareSuperClasses(OntClass op1, OntClass op2) 
     {
         List<OntClass> list1 = op1.listSuperClasses().toList();
-        List<OntClass> list2 = op2.listSuperClasses().toList();
-               
-        return compareLists(list1, list2);
+        //List<OntClass> list2 = op2.listSuperClasses().toList();
+
+
+        System.out.println("FOR CLASS " + op1.getURI());
+        return compareRestrictionsSPARQL(list1, op2);
+
+        //return compareLists(list1, list2);
     }
+
+
+    private boolean compareRestrictionsSPARQL(List<OntClass> classes, OntClass ontClass2)
+    {
+        for(OntClass cls1 : classes)
+        {
+            if (cls1.isRestriction())
+            {
+                Restriction r1 = cls1.asRestriction();
+                String p_uri1  = r1.getOnProperty().getURI();
+
+                System.out.println("RESTRICTION ON PROPERTY: " + p_uri1 );
+
+                if (p_uri1.equalsIgnoreCase(OntologyUtils.DURING_P) || p_uri1.equalsIgnoreCase(OntologyUtils.HAS_SLICE_P)
+                        || p_uri1.equalsIgnoreCase(OntologyUtils.BEFORE_P))
+                    continue;
+
+                if (Utilities.isInIgnoreList(p_uri1))
+                    continue;
+
+                if(!OntologyUtils.hasRestrictionSPARQL(ontClass2, r1))
+                    return false;
+            }
+            else
+            {
+                System.out.println("!!!!!!!Not restriction!!!!!!");
+
+            }
+        }
+
+        return true;
+    }
+
+
 
     private boolean compareLists(List<OntClass> op1EQ, List<OntClass> op2EQ) 
     {
         boolean no_match = false;
-        
-        System.out.println("Comparing super/eq classes.");
-            
+
         for(OntClass cls1 : op1EQ)
         {
+            if(cls1.isRestriction())
+            {
+                Restriction r1 = cls1.asRestriction();
+                String p_uri1 = r1.getOnProperty().getURI();
+
+                if (p_uri1.equalsIgnoreCase(OntologyUtils.DURING_P) || p_uri1.equalsIgnoreCase(OntologyUtils.HAS_SLICE_P)
+                        || p_uri1.equalsIgnoreCase(OntologyUtils.BEFORE_P))
+                    continue;
+
+                if (Utilities.isInIgnoreList(p_uri1))
+                    continue;
+            }
+
             for(OntClass cls2 : op2EQ)
             {
-                // comparar para ja pelo menos as restricoes
-                System.out.println("Comparing: " + cls1 + " and " + cls2);
-                
                 if(cls1.isRestriction() && cls2.isRestriction())
                 {
-                    Restriction r1 = cls1.asRestriction();
                     Restriction r2 = cls2.asRestriction();
-                    
-                    String p_uri1 = r1.getOnProperty().getURI();
-                    String p_uri2 = r2.getOnProperty().getURI();
-                    
-                    if(!Utilities.isInIgnoreList(p_uri1) && !Utilities.isInIgnoreList(p_uri2)
-                       && !p_uri1.equalsIgnoreCase(p_uri2))
+                    String p_uri2  = r2.getOnProperty().getURI();
+
+                    if(p_uri2.equalsIgnoreCase(OntologyUtils.DURING_P) || p_uri2.equalsIgnoreCase(OntologyUtils.HAS_SLICE_P)
+                            || p_uri2.equalsIgnoreCase(OntologyUtils.BEFORE_P) )
+                        continue;
+
+                    if(Utilities.isInIgnoreList(p_uri2))
+                        continue;
+
+                    Restriction r1 = cls1.asRestriction();
+                    String p_uri1  = r1.getOnProperty().getURI();
+
+                    if(p_uri1.equalsIgnoreCase(p_uri2))
                     {
                         if(compareRestrictionTypes(r1, r2))
                            break; //encontrou o match, nao precisa procurar mais
@@ -300,13 +384,13 @@ public class ClassDiff implements IClassDiff
                 {
                     // se nao é restriçao é superclasse normal?
                     if(cls1.getURI()!=null && cls2.getURI()!=null)
-                    
-                    if(cls1.getURI().equalsIgnoreCase(cls2.getURI()))
-                        break;
+                        if(cls1.getURI().equalsIgnoreCase(cls2.getURI()))
+                            break;
                 }
             }           
         }
 
+        System.out.println("\t\t > Is there a match? " + !no_match);
         return !no_match;
     }
      

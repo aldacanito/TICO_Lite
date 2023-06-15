@@ -7,6 +7,11 @@ import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Restriction;
 
+
+import org.apache.jena.vocabulary.OWL;
+import org.apache.jena.vocabulary.OWL2;
+import org.apache.jena.vocabulary.RDF;
+
 /**
  *
  * @author Alda
@@ -75,23 +80,39 @@ public class AddCardinalityRestriction extends AddRestriction
         }
         else
         {
-            if(Utilities.isInIgnoreList(getRangeClass().getURI()))
+            if(getRangeClass().getURI() == null || Utilities.isInIgnoreList(getRangeClass().getURI()))
                 return;
 
             switch(getCardinalityType())
             {
                 case "min" : 
                     //create min cardinality;
-                    restriction = ModelManager.getManager().getEvolvingModel().createMinCardinalityQRestriction(null, this.onProperty, getCardinality(), getRangeClass());
+                    restriction = ModelManager.getManager().getEvolvingModel().createMinCardinalityRestriction(null, this.onProperty, getCardinality());
+                    restriction.removeAll( OWL.cardinality );
+
+                    restriction.addLiteral(OWL2.qualifiedCardinality, getCardinality() );
+                    restriction.addProperty( OWL2.onClass, getRangeClass() );
                     break;
+
                 case "max" : 
                     //create max cardinality;
-                    restriction = ModelManager.getManager().getEvolvingModel().createMaxCardinalityQRestriction(null, this.onProperty, getCardinality(), getRangeClass());
+
+                    restriction = ModelManager.getManager().getEvolvingModel().createMaxCardinalityRestriction(null, this.onProperty, getCardinality());
+                    restriction.removeAll( OWL.cardinality );
+
+                    restriction.addLiteral(OWL2.qualifiedCardinality, getCardinality() );
+                    restriction.addProperty( OWL2.onClass, getRangeClass() );
                     break;
+
                 default: 
                     // cardinality normal ??? num
-                    restriction = ModelManager.getManager().getEvolvingModel().createCardinalityQRestriction(null, this.onProperty, getCardinality(), getRangeClass());
-                    break; 
+                    restriction = ModelManager.getManager().getEvolvingModel().createCardinalityRestriction(null, this.onProperty, getCardinality());
+                    restriction.removeAll( OWL.cardinality );
+
+                    restriction.addLiteral(OWL2.qualifiedCardinality, getCardinality() );
+                    restriction.addProperty( OWL2.onClass, getRangeClass() );
+
+                    break;
             }
         }
         

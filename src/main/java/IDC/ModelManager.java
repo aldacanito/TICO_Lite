@@ -37,6 +37,26 @@ public class ModelManager
        
     }
 
+    public void setup(OntModel om, OntModel ev, OntModel im)
+    {
+        originalModel = om;
+
+        AnnotationProperty o_version = originalModel.createAnnotationProperty("version");
+        OntResource o_versionInfo    = originalModel.createOntResource("VersionInfo");
+        o_versionInfo.addLiteral(o_version, "original");
+
+        evolvingModel = ev;
+        o_version     = evolvingModel.createAnnotationProperty("version");
+        o_versionInfo = evolvingModel.createOntResource("VersionInfo");
+        o_versionInfo.addLiteral(o_version, "evolving");
+
+        instanceModel = im;
+        o_version     = instanceModel.createAnnotationProperty("version");
+        o_versionInfo = instanceModel.createOntResource("VersionInfo");
+        o_versionInfo.addLiteral(o_version, "instance");
+
+        temporal_instancesModel = evolvingModel;
+    }
     public void setup(String onto_path, String instance_path)
     {
         originalModel = OntologyUtils.readModel(onto_path);

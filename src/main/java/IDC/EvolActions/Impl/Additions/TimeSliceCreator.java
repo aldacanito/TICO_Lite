@@ -5,12 +5,8 @@ import IDC.ModelManager;
 import Utils.OntologyUtils;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import org.apache.jena.ontology.HasValueRestriction;
-import org.apache.jena.ontology.Individual;
-import org.apache.jena.ontology.IntersectionClass;
-import org.apache.jena.ontology.OntClass;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntProperty;
+
+import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFList;
 
@@ -28,6 +24,8 @@ public class TimeSliceCreator implements IAddTimeSlices
     private final String URI, sliceName;
     
     private Individual ind_start, ind_end;
+
+    private OntProperty isSliceOfP, beforeP, afterP, duringP;
    
     DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS");  
@@ -46,7 +44,6 @@ public class TimeSliceCreator implements IAddTimeSlices
         this.end   = null;
         
         theModel = toExpand.getOntModel();
-
     }
     
     public TimeSliceCreator(OntClass toExpand, int version)
@@ -80,7 +77,6 @@ public class TimeSliceCreator implements IAddTimeSlices
         this.end   = null;
         
         theModel = toExpand.getOntModel();
-        
     }
     
     public TimeSliceCreator(OntClass toExpand, LocalDateTime start, LocalDateTime end, String sliceName)
@@ -99,6 +95,8 @@ public class TimeSliceCreator implements IAddTimeSlices
 
     public void execute()
     {
+        setupPropertiesOnModel();
+
         if(this.ind_start!=null)
             this.createRestrictionsWithIndividuals();
         else
@@ -108,22 +106,6 @@ public class TimeSliceCreator implements IAddTimeSlices
     
     public void createRestrictionsWithoutIndividuals()
     {
-        // criar o time slice
-        OntProperty beforeP = this.theModel.getOntProperty(OntologyUtils.BEFORE_P);
-        if(beforeP == null) beforeP = this.theModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
-        
-        OntProperty afterP = this.theModel.getOntProperty(OntologyUtils.AFTER_P);
-        if(afterP == null) afterP = this.theModel.createObjectProperty(OntologyUtils.AFTER_P, false);
-           
-        OntProperty duringP = this.theModel.getOntProperty(OntologyUtils.DURING_P);
-        if(duringP == null) duringP = this.theModel.createObjectProperty(OntologyUtils.DURING_P, false);
-        
-        OntProperty isSliceOfP = this.theModel.getOntProperty(OntologyUtils.IS_SLICE_OF_P);
-        if(isSliceOfP == null) isSliceOfP = this.theModel.createObjectProperty(OntologyUtils.IS_SLICE_OF_P, false);
-        
-        //OntProperty hasSliceP = this.theModel.getOntProperty(OntologyUtils.HAS_SLICE_P);
-        //if(hasSliceP == null) hasSliceP = this.theModel.createObjectProperty(OntologyUtils.HAS_SLICE_P, false);
-       
         OntClass ontSlice = theModel.createClass(sliceName);
         
         getTimeModel();
@@ -148,7 +130,7 @@ public class TimeSliceCreator implements IAddTimeSlices
         {
             
             ind_end = this.createEndIndividual(theModel, interval);
-            HasValueRestriction beforeRestriction = theModel.createHasValueRestriction(null, beforeP, ind_end);
+            HasValueRestriction beforeRestriction = theModel.createHasValueRestriction(null, this.beforeP, ind_end);
             listr.add(beforeRestriction);
             
             ind_end_copy = this.createEndIndividual(this.getTimeModel(), ind_copy);
@@ -156,17 +138,17 @@ public class TimeSliceCreator implements IAddTimeSlices
         
         // temporal slice -> during interval
        
-        HasValueRestriction duringRestriction = theModel.createHasValueRestriction(null, duringP, interval);
+        HasValueRestriction duringRestriction = theModel.createHasValueRestriction(null, this.duringP, interval);
         ontSlice.addSuperClass(duringRestriction);
         
         // originalClass -> hasTemporalSlice
 
 //        toExpand.addSuperClass(theModel.createSomeValuesFromRestriction(null, hasSliceP, ontSlice));
              
-        ontSlice.addSuperClass(theModel.createSomeValuesFromRestriction(null, isSliceOfP, toExpand));
+        ontSlice.addSuperClass(theModel.createSomeValuesFromRestriction(null, this.isSliceOfP, toExpand));
         
         // after ind_start, before ind_end
-        HasValueRestriction afterRestriction  = theModel.createHasValueRestriction(null, afterP, ind_start);  
+        HasValueRestriction afterRestriction  = theModel.createHasValueRestriction(null, this.afterP, ind_start);
         listr.add(afterRestriction);
         
         if(!listr.isEmpty())
@@ -181,25 +163,30 @@ public class TimeSliceCreator implements IAddTimeSlices
         
     }
     
-     
+
+    private void setupPropertiesOnModel()
+    {
+        this.beforeP = this.theModel.getOntProperty(OntologyUtils.BEFORE_P);
+        if(beforeP == null)
+            this.beforeP = this.theModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
+
+        this.afterP = this.theModel.getOntProperty(OntologyUtils.AFTER_P);
+        if(afterP == null)
+            this.afterP = this.theModel.createObjectProperty(OntologyUtils.AFTER_P, false);
+
+        this.duringP = this.theModel.getOntProperty(OntologyUtils.DURING_P);
+        if(duringP == null)
+            this.duringP = this.theModel.createObjectProperty(OntologyUtils.DURING_P, false);
+
+        this.isSliceOfP = this.theModel.getOntProperty(OntologyUtils.IS_SLICE_OF_P);
+        if(isSliceOfP == null)
+            this.isSliceOfP = this.theModel.createObjectProperty(OntologyUtils.IS_SLICE_OF_P, false);
+
+    }
      
      
     private void createRestrictionsWithIndividuals()
     {
-         // criar o time slice
-        OntProperty beforeP = this.theModel.getOntProperty(OntologyUtils.BEFORE_P);
-        if(beforeP == null) beforeP = this.theModel.createObjectProperty(OntologyUtils.BEFORE_P, false);
-        
-        OntProperty afterP = this.theModel.getOntProperty(OntologyUtils.AFTER_P);
-        if(afterP == null) afterP = this.theModel.createObjectProperty(OntologyUtils.AFTER_P, false);
-           
-        OntProperty duringP = this.theModel.getOntProperty(OntologyUtils.DURING_P);
-        if(duringP == null) duringP = this.theModel.createObjectProperty(OntologyUtils.DURING_P, false);
-        
-        OntProperty isSliceOfP = this.theModel.getOntProperty(OntologyUtils.IS_SLICE_OF_P);
-        if(isSliceOfP == null) isSliceOfP = this.theModel.createObjectProperty(OntologyUtils.IS_SLICE_OF_P, false);
-        
-        
         OntClass ontSlice = theModel.createClass(sliceName);
         
         RDFList listr = theModel.createList(toExpand);
@@ -209,8 +196,7 @@ public class TimeSliceCreator implements IAddTimeSlices
 
         this.addEndIndividual(theModel, interval, ind_end);
         this.addStartIndividual(theModel, interval, ind_start);
-        
-        
+
         if(ind_end != null)
         {
             HasValueRestriction beforeRestriction = theModel.createHasValueRestriction(null, beforeP, ind_end);
@@ -363,10 +349,6 @@ public class TimeSliceCreator implements IAddTimeSlices
     public String getURI() 
     {
         return this.URI;
-    }
-
-    public OntModel getEvolvedModel() {
-        return this.theModel;
     }
 
     public OntModel getTimeModel()

@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import org.apache.jena.graph.Node;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.Literal;
@@ -174,30 +176,22 @@ public class ClassCompareShape implements IClassCompare
         
         for(String propertyURI : classProperties.keySet())
         {
-            if(Utils.Utilities.isInIgnoreList(propertyURI))
-                continue;
+            if(Utils.Utilities.isInIgnoreList(propertyURI)) continue;
+
+            PropertyMetrics pmetrics = cpm.getMetricsOfProperty(propertyURI);
+            int mentions = classProperties.get(propertyURI);
 
             OntProperty onProperty = ModelManager.getManager().getOriginalModel().getOntProperty(propertyURI);
             if(onProperty==null) // just in case
                 onProperty = ModelManager.getManager().getOriginalModel().createObjectProperty(propertyURI, false);
-            
-            boolean isFunctional = false;
-            boolean isQualifiedR = false;
-            boolean isEquivalent = false;
-            boolean isSuperClass = true;
-            
-            int mentions         = (int) classProperties.get(propertyURI);
 
-            if(functionalCandidates.contains(propertyURI) && mentions > Utils.Configs.functional_threshold)
-                isFunctional = true;
-        
+            boolean isFunctional = (functionalCandidates.contains(propertyURI) && mentions > Utils.Configs.functional_threshold);
+            boolean isQualifiedR = (pmetrics.getRanges().size() == 1);
+            boolean isEquivalent = (mentions > Utils.Configs.equivalent_threshold);
+            boolean isSuperClass = (mentions >= Utils.Configs.subclass_threshold);
+
             AddObjectProperty add_objProperty = new AddObjectProperty(propertyURI, isFunctional);
             composite.add(add_objProperty);
-            
-            //adicionar na mesma a questao da restricao de equivalencia ao composite, depois ver se é para executar ou não
-            
-            if(mentions <= Utils.Configs.subclass_threshold)  isSuperClass = false;
-            if(mentions > Utils.Configs.equivalent_threshold) isEquivalent = true;
 
             System.out.println("\t> Property " + propertyURI + " accessed."
                               +"\n\t\t> Mentions: " + mentions);
@@ -206,11 +200,25 @@ public class ClassCompareShape implements IClassCompare
 
             if(isEquivalent || isSuperClass)
             {
-
-                // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
                 if(mentions > Utils.Configs.subclass_threshold)
                 {
                     AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
+                    rec.setQualified(isQualifiedR);
+
+                    if(isQualifiedR) // find and instantiate (if needed) the range class
+                    {
+                        String range_URI = pmetrics.getRanges().keySet().iterator().next(); // get the first element risps
+                        OntClass range   = ModelManager.getManager().getEvolvingModel().getOntClass(range_URI);
+
+                        if(range == null)
+                        {
+                            composite.add(new AddClass(range_URI));
+                            rec.setRange_URI(range_URI); // todo ver se é isto ou se é preciso executar a acçao imediatamente
+                        }
+                        else
+                            rec.setRangeClass(range);
+
+                    }
 
                     if (isFunctional)
                     {
@@ -218,24 +226,11 @@ public class ClassCompareShape implements IClassCompare
                         if(composite.add(rec))
                             System.out.println("\t\t\t Cardinality Restriction Added!");
                     }
-
-                /*System.out.println("\t\t\t Adding Cardinality Restriction:"  +
-                        "\n\t\t\t\t Class: "    + ontClass.getURI()   +
-                        "\n\t\t\t\t Property: " + onProperty.getURI());
-                */
-
-
                 }
-
-
-
             }
 
             // TODO ACRESCENTAR OUTROS TIPOS DE RESTRIÇAO AQUI
-            //UTILIZAR O PROPERTYMETRICS
-            PropertyMetrics pmetrics = cpm.getMetricsOfProperty(propertyURI);
 
-//            System.out.println("\t > Checking Metrics of Property " + propertyURI);
 
             if(pmetrics!=null)
             {

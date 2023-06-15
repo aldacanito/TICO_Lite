@@ -5,74 +5,24 @@
 @prefix xml:  <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-:Interval_st_20220215164222363
+:CLASS3_1  rdf:type  owl:NamedIndividual , _:b0 , _:b1 , _:b2 , _:b3 ;
+        :OP2      :CLASS1_1 .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/Interval_st_20230614132430006>
         rdf:type  owl:NamedIndividual , rdfs:Resource , owl:Thing ;
         <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222363> ;
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132430006> ;
         <http://www.w3.org/2006/time#hasTime>
-                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222363> .
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132430006> .
 
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608151353665>
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608151353665> .
+:OP2    rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
 
-:Interval_st_20220215164221123
-        rdf:type  owl:NamedIndividual , rdfs:Resource , owl:Thing ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164221123> ;
-        <http://www.w3.org/2006/time#hasTime>
-                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164221123> .
+:CLASS2_1  rdf:type  owl:NamedIndividual ;
+        rdf:type  []  ;
+        rdf:type  []  ;
+        :OP2      :CLASS1_2 .
 
-<http://shizaTest/ONTO_TEST>
-        rdf:type  owl:Ontology .
-
-<http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
-        rdf:type  owl:ObjectProperty .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608151353718>
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608151353718> .
-
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222363>
-        rdf:type  rdfs:Resource , owl:Thing , owl:NamedIndividual .
-
-<http://www.w3.org/2006/time#isTimeSliceOf>
-        rdf:type  owl:ObjectProperty .
-
-<http://www.w3.org/2006/time#before>
-        rdf:type  rdf:Property .
-
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164221123>
-        rdf:type  rdfs:Resource , owl:Thing , owl:NamedIndividual .
-
-:Interval_st_20220215164222327
-        rdf:type  owl:NamedIndividual , rdfs:Resource , owl:Thing ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222327> ;
-        <http://www.w3.org/2006/time#hasTime>
-                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222327> .
-
-:CLASS1_3  rdf:type  owl:NamedIndividual , _:b0 , _:b1 , _:b2 , _:b3 .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
-        rdf:type  owl:AnnotationProperty .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
-        rdf:type     owl:Ontology ;
-        owl:imports  <http://www.w3.org/2006/time> .
-
-:DT1    rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
-
-:OP1    rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
-
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222327>
-        rdf:type  rdfs:Resource , owl:Thing , owl:NamedIndividual .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608151357357>
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608151357357> .
-
-:CLASS1_1  rdf:type  owl:NamedIndividual , _:b0 , _:b1 , _:b2 , _:b3 ;
+:CLASS1_1  rdf:type  owl:NamedIndividual ;
         :DT1      "1.0"^^xsd:float ;
         :OP1      :CLASS1_1 ;
         :OP2      :CLASS1_2 .
@@ -80,60 +30,101 @@
 <http://www.w3.org/2006/time#hasDuration>
         rdf:type  rdf:Property .
 
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
-        <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
-                "evolving" .
-
-:CLASS2_1  rdf:type  owl:NamedIndividual ;
-        rdf:type  []  ;
-        rdf:type  []  ;
-        rdf:type  []  ;
-        :OP2      :CLASS1_2 .
-
-:Interval_st_20220215164222283
-        rdf:type  owl:NamedIndividual , rdfs:Resource , owl:Thing ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222283> ;
-        <http://www.w3.org/2006/time#hasTime>
-                <file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222283> .
-
-:CLASS3_1  rdf:type  owl:NamedIndividual , _:b4 , _:b5 , _:b6 ;
-        :OP2      :CLASS1_1 .
+:OP1    rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
 
 <http://www.w3.org/2006/time#hasBeginning>
         rdf:type  owl:ObjectProperty .
 
-:CLASS4_1  rdf:type  owl:NamedIndividual , _:b7 , _:b8 , _:b9 ;
-        :OP1      :CLASS2_1 .
-
-:CLASS5_1  rdf:type  owl:NamedIndividual , _:b7 , _:b8 , _:b9 ;
-        :DT1      "princess" .
-
-:CLASS6_1  rdf:type  owl:NamedIndividual ;
-        :DT2      "1.0"^^xsd:float .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608151353701>
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230614132429902>
         <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608151353701> .
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230614132429902> .
 
-<file:///C:/Users/Alda/Documents/NetBeansProjects/DatasetConverter/DatasetConverter/Indexes/TestOnto/20220215164222283>
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615115156673>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615115156673> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+        rdf:type  owl:AnnotationProperty .
+
+<http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
+        rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132429902>
         rdf:type  rdfs:Resource , owl:Thing , owl:NamedIndividual .
+
+:CLASS_6_1  rdf:type  owl:NamedIndividual ;
+        :DT2      22555 .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230614132429975>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230614132429975> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/Interval_st_20230614132429902>
+        rdf:type  owl:NamedIndividual , rdfs:Resource , owl:Thing ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132429902> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132429902> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
+        <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+                "evolving" .
 
 :DT2    rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
 
-:OP2    rdf:type  owl:TransitiveProperty , owl:ObjectProperty .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608151357450>
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230614132430006>
         <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608151357450> .
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230614132430006> .
 
-:CLASS1_2  rdf:type  owl:NamedIndividual , _:b0 , _:b1 , _:b2 , _:b3 ;
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132429975>
+        rdf:type  rdfs:Resource , owl:Thing , owl:NamedIndividual .
+
+:CLASS1_3  rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+:DT1    rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+<http://www.w3.org/2006/time#isTimeSliceOf>
+        rdf:type  owl:ObjectProperty .
+
+:CLASS3_2  rdf:type  owl:NamedIndividual , _:b0 , _:b1 , _:b2 , _:b3 ;
+        :DT1      "3.0"^^xsd:float ;
+        :DT2      "3.0"^^xsd:float .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132430006>
+        rdf:type  rdfs:Resource , owl:Thing , owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/Interval_st_20230614132429975>
+        rdf:type  owl:NamedIndividual , rdfs:Resource , owl:Thing ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132429975> ;
+        <http://www.w3.org/2006/time#hasTime>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132429975> .
+
+:CLASS1_2  rdf:type  owl:NamedIndividual ;
+        rdf:type  []  ;
+        rdf:type  []  ;
+        rdf:type  []  ;
+        rdf:type  []  ;
+        rdf:type  []  ;
+        rdf:type  []  ;
+        rdf:type  []  ;
         :DT2      "2.0"^^xsd:float ;
         :OP2      :CLASS2_1 .
+
+<http://shizaTest/ONTO_TEST>
+        rdf:type  owl:Ontology .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  rdf:Property .
+
+:CLASS5_1  rdf:type  owl:NamedIndividual .
 
 <http://www.w3.org/2006/time#after>
         rdf:type  rdf:Property .
 
-:CLASS3_2  rdf:type  owl:NamedIndividual , _:b4 , _:b5 , _:b6 ;
-        :DT1      "3.0"^^xsd:float ;
-        :DT2      "3.0"^^xsd:float .
+:CLASS4_1  rdf:type  owl:NamedIndividual ;
+        :OP1      :CLASS2_1 .

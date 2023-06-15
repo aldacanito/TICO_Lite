@@ -86,7 +86,7 @@ public class Comparator
                             continue;
 
                         //System.out.println("Individual with new Class found!\n\t> " + uri + "\n\t\t> New OntClass: " + cls.getURI());
-                        ModelManager.getManager().getEvolvingModel().createClass(cls.getURI());
+                        //ModelManager.getManager().getEvolvingModel().createClass(cls.getURI());
                         AddClass addClass = new AddClass(cls.getURI());
                         addClass.setCopy(false);
                         addClass.setStartEndInstance(individual, individual);
@@ -216,32 +216,22 @@ public class Comparator
     private void updateTemporalRestrictions() 
     {
         //List <OntClass> e_ontClasses = ModelManager.getManager().getOriginalModel().listClasses().toList();
-        List <OntClass> e_ontClasses = ModelManager.getManager().getEvolvingModel().listClasses().toList();
-        LocalDateTime now      = LocalDateTime.now();  
-        
-        System.out.println("\n========================================="
-                + "\nNew Classes:");
-        for(OntClass newCls : e_ontClasses)
+
+        List <OntClass> e_ontClasses  = ModelManager.getManager().getEvolvingModel().listClasses().toList();
+        List <OntClass> e_ontClasses1 = OntologyUtils.listOntClassesSPARQL(ModelManager.getManager().getEvolvingModel());
+
+        System.out.println("\n=========================================\nNew Classes:");
+        for(OntClass newCls : e_ontClasses1)
         {
             String uri      = newCls.getURI();
-            if(uri == null || Utilities.isInIgnoreList(uri) ) 
-                continue;
-        
             System.out.println("\t> URI: " + uri);
         }
         System.out.println("\n=========================================");
         
-        for(OntClass newCls : e_ontClasses)
+        for(OntClass newCls : e_ontClasses1)
         {
 
             String uri      = newCls.getURI();
-            if(uri == null || Utilities.isInIgnoreList(uri) ) 
-                continue;
-
-            // todo find something about anonymous classes later
-            if(newCls.isRestriction())
-                continue;
-
             OntClass oldCls = ModelManager.getManager().getOriginalModel().getOntClass(uri);
             
             if(oldCls==null || Utilities.isInIgnoreList(oldCls.getURI()))
@@ -263,8 +253,8 @@ public class Comparator
             System.out.println("\n\t "
                     + "== Source: " + uri 
                     + "\n\t == Comparing:" 
-                    + "\n\t\t" + lastOldSlice.getURI() 
-                    + "\n\t\t and " + lastNewSlice.getURI() + "\n\t\tResult: " + newVersion + "\n\t==");
+                    + " " + lastOldSlice.getURI()
+                    + " & " + lastNewSlice.getURI() + "\n\t\tAre they Different? " + newVersion + "\n\t==");
            
             //newVersion = true;
             if(newVersion)
@@ -411,9 +401,13 @@ public class Comparator
                 try
                 {
                     IntersectionClass intersection = eq.asIntersectionClass();
-                    RDFList operands = intersection.getOperands();
-                    HasValueRestriction beforeRestriction = ModelManager.getManager().getEvolvingModel().createHasValueRestriction(null, beforeP, ind_end);
-                    operands.add(beforeRestriction);
+                    ExtendedIterator<? extends OntClass> operandsL = intersection.listOperands();
+
+                    if(operandsL.toList() != null && operandsL.toList().size() != 0) {
+                        RDFList operands = intersection.getOperands();
+                        HasValueRestriction beforeRestriction = ModelManager.getManager().getEvolvingModel().createHasValueRestriction(null, beforeP, ind_end);
+                        operands.add(beforeRestriction);
+                    }
                 }
                 catch(Exception e)
                 {

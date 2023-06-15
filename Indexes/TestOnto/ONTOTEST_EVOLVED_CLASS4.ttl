@@ -61,6 +61,10 @@
 #    Classes
 #################################################################
 
+###  file:/C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/ONTOTEST_EVOLVED.ttl#CLASS6
+:CLASS6 rdf:type owl:Class .
+
+
 ###  http://shizaTest/ONTO_TEST#CLASS1
 :CLASS1 rdf:type owl:Class ;
         rdfs:subClassOf [ rdf:type owl:Restriction ;
@@ -123,19 +127,6 @@
                           owl:onProperty :DT2 ;
                           owl:cardinality "1"^^xsd:nonNegativeInteger
                         ] .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS4
-:CLASS4 rdf:type owl:Class .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS5
-:CLASS5 rdf:type owl:Class ;
-        rdfs:subClassOf :CLASS4 .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS6
-:CLASS6 rdf:type owl:Class .
 
 
 ###  http://shizaTest/ONTO_TEST#TS__CLASS1__1
@@ -296,52 +287,6 @@
 ###  file:/C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132430006
 <file:/C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Indexes/TestOnto/20230614132430006> rdf:type owl:NamedIndividual ,
                                                                                                                                                                          <http://www.w3.org/2006/time#Instant> .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS1_2
-:CLASS1_2 rdf:type owl:NamedIndividual ,
-                   :CLASS1 ;
-          :OP2 :CLASS2_1 ;
-          :DT2 "2.0"^^xsd:float .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS1_3
-:CLASS1_3 rdf:type owl:NamedIndividual .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS2_1
-:CLASS2_1 rdf:type owl:NamedIndividual ,
-                   :CLASS2 ;
-          :OP2 :CLASS1_2 .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS3_1
-:CLASS3_1 rdf:type owl:NamedIndividual ,
-                   :CLASS3 .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS3_2
-:CLASS3_2 rdf:type owl:NamedIndividual ,
-                   :CLASS3 ;
-          :DT1 "3.0"^^xsd:float ;
-          :DT2 "3.0"^^xsd:float .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS4_1
-:CLASS4_1 rdf:type owl:NamedIndividual ,
-                   :CLASS4 ;
-          :OP1 :CLASS2_1 .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS5_1
-:CLASS5_1 rdf:type owl:NamedIndividual ,
-                   :CLASS5 .
-
-
-###  http://shizaTest/ONTO_TEST#CLASS_6_1
-:CLASS_6_1 rdf:type owl:NamedIndividual ,
-                    :CLASS6 ;
-           :DT2 22555 .
 
 
 #################################################################

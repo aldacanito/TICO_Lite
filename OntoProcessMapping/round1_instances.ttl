@@ -84,8 +84,6 @@ OntoPianismERP:hasSensorCorrelation
 
 j.3:intervalDuring  rdf:type  owl:ObjectProperty .
 
-[ rdf:type  owl:Ontology ] .
-
 CM_ontology:hasTimeStamp
         rdf:type  owl:DatatypeProperty .
 
@@ -102,9 +100,6 @@ OntoPianismIndividuals:erpTimeInstant_3
 
 OntoPianismERP:hasOutput
         rdf:type  owl:ObjectProperty .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230608171134359>
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230608171134359> .
 
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
         <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
@@ -128,6 +123,8 @@ OntoPianismIndividuals:erpTimeInstant_2
 sensors4ExtruOnt:sensorName
         rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
 
+[ rdf:type  owl:Ontology ] .
+
 OntoPianismIndividuals:erpTimeInterval_4
         rdf:type          owl:NamedIndividual ;
         rdfs:label        "erpTimeInterval_4" ;
@@ -137,8 +134,6 @@ OntoPianismIndividuals:erpTimeInterval_4
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
         rdf:type     owl:Ontology ;
         owl:imports  <http://www.w3.org/2006/time> .
-
-j.3:isTimeSliceOf  rdf:type  owl:ObjectProperty .
 
 OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682
         rdf:type                     owl:NamedIndividual ;

@@ -19,6 +19,9 @@ public class AddRestriction implements IAddClass
 
     protected OntClass rangeClass;
 
+    protected String range_URI;
+
+
     protected String URI;
     protected OntClass ontClass;
     
@@ -42,6 +45,7 @@ public class AddRestriction implements IAddClass
         this.ontClass           = cls;
         this.onProperty         = onProperty;
         this.URI                = cls.getURI();
+
     }
     
     
@@ -57,12 +61,31 @@ public class AddRestriction implements IAddClass
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public OntClass getRangeClass() {
-        return rangeClass;
+    public OntClass getRangeClass()
+    {
+        if(rangeClass != null)
+            return rangeClass;
+        else if(this.range_URI != null)
+            return this.ontClass.getOntModel().getOntClass(this.range_URI);
+
+        return null;
     }
 
     public void setRangeClass(OntClass rangeClass) {
         this.rangeClass = rangeClass;
+
+        if(rangeClass!=null && !rangeClass.isAnon())
+            this.range_URI = rangeClass.getURI();
+    }
+
+    public String getRange_URI()
+    {
+        return this.range_URI;
+    }
+
+    public void setRange_URI(String rURI)
+    {
+        this.range_URI = rURI;
     }
     
 }
