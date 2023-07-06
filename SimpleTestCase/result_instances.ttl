@@ -3,41 +3,17 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/2006/time#isTimeSliceOf>
-        rdf:type  owl:ObjectProperty .
-
-<http://localhost/testing#DatatypeProperty2>
-        rdf:type  owl:DatatypeProperty .
-
-<http://localhost/testing#ObjectProperty1>
-        rdf:type  owl:ObjectProperty .
-
 <http://www.w3.org/2006/time#hasDuration>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+<http://localhost/testing#ObjectProperty3>
         rdf:type  owl:ObjectProperty .
 
 <http://localhost/testing#DatatypeProperty1>
         rdf:type  owl:DatatypeProperty .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_i1i1>
-        <http://www.w3.org/2006/time#hasBeginning>
-                <http://localhost/testing#i1> ;
-        <http://www.w3.org/2006/time#hasEnd>
-                <http://localhost/testing#i1> .
-
-<http://www.w3.org/2006/time#after>
-        rdf:type  owl:ObjectProperty .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
-        rdf:type     owl:Ontology ;
-        owl:imports  <http://www.w3.org/2006/time> .
-
-<http://localhost/testing#i3>
-        <http://localhost/testing#DatatypeProperty2>
-                "3"^^xsd:int .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
-        <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
-                "evolving" .
 
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
         rdf:type  owl:AnnotationProperty .
@@ -45,19 +21,38 @@
 <http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
         rdf:type  owl:ObjectProperty .
 
-<http://localhost/testing#i2>
-        <http://localhost/testing#DatatypeProperty2>
-                "2"^^xsd:int .
-
-<http://www.w3.org/2006/time#hasBeginning>
+<http://localhost/testing#ObjectProperty2>
         rdf:type  owl:ObjectProperty .
 
-<http://www.w3.org/2006/time#before>
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230704161317533>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230704161317533> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
+        <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+                "evolving" .
+
+<http://localhost/testing#ObjectProperty1>
         rdf:type  owl:ObjectProperty .
 
 <http://www.w3.org/2006/time#hasEnd>
         rdf:type  owl:ObjectProperty .
 
-<http://localhost/testing#i1>
-        <http://localhost/testing#DatatypeProperty2>
-                "2"^^xsd:int .
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_i1i1>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://localhost/testing#i1> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://localhost/testing#i1> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+<http://www.w3.org/2006/time#isTimeSliceOf>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
