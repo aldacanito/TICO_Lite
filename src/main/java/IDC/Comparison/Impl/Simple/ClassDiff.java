@@ -307,6 +307,9 @@ public class ClassDiff implements IClassDiff
     {
         for(OntClass cls1 : classes)
         {
+            if(!cls1.isAnon())
+                System.out.println("Comparing Super/Equiv Class with URI: " + cls1.getURI() );
+
             if (cls1.isRestriction())
             {
                 Restriction r1 = cls1.asRestriction();
@@ -326,8 +329,15 @@ public class ClassDiff implements IClassDiff
             }
             else
             {
-                System.out.println("!!!!!!!Not restriction!!!!!!");
-
+//                System.out.println("\t>Class is not Restriction. ");
+//                System.out.println("\t> Is Class? " + cls1.isClass() );
+//
+//                System.out.println("\t> Is Anon? " + cls1.isAnon() );
+//                System.out.println("\t> Is Intersection Class? " + cls1.isIntersectionClass() );
+//                System.out.println("\t> Is Complement Class? " + cls1.isComplementClass() );
+//                System.out.println("\t> Is Enumerated Class? " + cls1.isEnumeratedClass() );
+//                System.out.println("\t> Is Union Class? " + cls1.isUnionClass() );
+//                System.out.println("\t> Is Hierarchy Root? " + cls1.isHierarchyRoot() );
             }
         }
 

@@ -136,6 +136,8 @@ public class ClassCompareShape implements IClassCompare
 
                     repeated.put(predicateURI, count);
 
+
+
                 }
 
             for(String predicateURI : repeated.keySet())
@@ -154,13 +156,7 @@ public class ClassCompareShape implements IClassCompare
     @Override
     public EvolutionaryAction compare()
     {
-        System.out.println("\n\nCompare: BEGIN");
-
-        EvolutionaryAction ret =  compareSPARQL();
-
-        System.out.println("Compare: FINISHED\n\n");
-
-        return ret;
+        return compareSPARQL();
     }
 
 

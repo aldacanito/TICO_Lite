@@ -16,12 +16,13 @@ public class Main
     public static void main(String[] args) 
     {
         Configs configs = new Configs();
-       //testConferenceInstances();
+
+        testConferenceInstances();
 
 
         //startTest();
         //testArmando();
-      testArmandoTest();
+      //testArmandoTest();
         
 
     }
@@ -69,7 +70,7 @@ public class Main
         String instance_path  = dir + "OntoPianismIndividuals.B.ttl" ;
         String print_path = dir + "round1.ttl";
         
-       runComparator(onto_path, instance_path, print_path, 1);
+      /// runComparator(onto_path, instance_path, print_path, 1);
         
         System.out.println("\n\n===========================================================");
         System.out.println("\n\n\tComeça segundo round: round1 + hasRunningAverage");
@@ -79,7 +80,7 @@ public class Main
         instance_path  =  dir+ "OntoPianismIndividuals.C.ttl" ;
         print_path     =  dir + "round2.ttl";
         
-        runComparator(onto_path, instance_path, print_path, 2);
+    //   runComparator(onto_path, instance_path, print_path, 2);
 
 
         System.out.println("\n\n===========================================================");
@@ -89,11 +90,10 @@ public class Main
 ////        // round three
         onto_path      = print_path;
         instance_path  = "OntoProcessMapping/Teste2/OntoPianismIndividuals.D.ttl" ;
-        onto_path      =  dir+ "round2_classes.ttl" ;
+       // onto_path      =  dir+ "round2_classes.ttl" ;
         print_path     = dir + "round3.ttl";
 
         runComparator(onto_path, instance_path, print_path, 3);
-
     }
     
     

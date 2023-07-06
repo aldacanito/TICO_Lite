@@ -89,13 +89,19 @@ public class BasicEvolvingTest
         return theModel;
     }
 
+    public static void setupRound3()
+    {
+
+    }
+
+
 
     public static void setupModels1()
     {
         evolvingModel = setUpOriginalModel();
         originalModel = setUpOriginalModel();
         instanceModel = setupInstanceModel();
-        //instanceModel = setupSecondInstanceModel();
+        instanceModel = setupSecondInstanceModel();
     }
 
     public static void runComparator()

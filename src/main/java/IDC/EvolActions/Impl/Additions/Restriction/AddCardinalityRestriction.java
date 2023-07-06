@@ -3,6 +3,7 @@ package IDC.EvolActions.Impl.Additions.Restriction;
 
 import IDC.ModelManager;
 import Utils.Utilities;
+import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.jena.ontology.Restriction;
@@ -82,6 +83,16 @@ public class AddCardinalityRestriction extends AddRestriction
         {
             if(getRangeClass() == null || getRangeClass().getURI() == null || Utilities.isInIgnoreList(getRangeClass().getURI()))
                 return;
+
+
+            try {
+                Individual i = getRangeClass().getOntModel().getIndividual(getRangeClass().getURI());
+                return;
+            } catch (Exception e)
+            {
+                System.out.println("Range Class is not individual! Proceed.");
+            }
+
 
             switch(getCardinalityType())
             {

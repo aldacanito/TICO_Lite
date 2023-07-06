@@ -14,7 +14,7 @@ import org.apache.jena.ontology.OntProperty;
  *
  * @author Alda
  */
-public class AddRestriction implements IAddClass
+public abstract class AddRestriction implements IAddClass
 {
 
     protected OntClass rangeClass;
