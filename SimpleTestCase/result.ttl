@@ -66,11 +66,6 @@
 <http://localhost/testing#ObjectProperty2>
         rdf:type  owl:ObjectProperty .
 
-<Interval_st_20230704161317533>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <20230704161317533> .
-
 <VersionInfo>  <version>  "evolving" .
 
 <http://localhost/testing#TS__Class4__1>
@@ -81,13 +76,13 @@
                                owl:someValuesFrom  <http://localhost/testing#Class4>
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20230704161317533> ;
+                               owl:hasValue    <Interval_st_20230706153147371> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( <http://localhost/testing#Class4> <http://localhost/testing#Class4>
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20230704161317533> ;
+                                                       owl:hasValue    <20230706153147371> ;
                                                        owl:onProperty  <http://www.w3.org/2006/time#after>
                                                      ]
                                                    )
@@ -106,8 +101,6 @@
 <http://www.w3.org/2006/time#hasEnd>
         rdf:type  owl:ObjectProperty .
 
-<20230704161317533>  rdf:type  <http://www.w3.org/2006/time#Instant> .
-
 <http://localhost/testing#Class2>
         rdf:type         owl:Class ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
@@ -120,6 +113,13 @@
 
 <http://www.w3.org/2006/time#isTimeSliceOf>
         rdf:type  owl:ObjectProperty .
+
+<20230706153147371>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<Interval_st_20230706153147371>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20230706153147371> .
 
 <Interval_st_i1i1>  rdf:type  <http://www.w3.org/2006/time#Interval> ;
         <http://www.w3.org/2006/time#hasBeginning>
