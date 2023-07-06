@@ -165,7 +165,7 @@ public class ClassCompareShape implements IClassCompare
         OntClass ontClass    = cpm.getOntClass();
         OntModel originModel = ontClass.getOntModel();
 
-        List<String> functionalCandidates        = cpm.getFunctionalCandidates();
+        HashMap<String, Boolean> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassObjProperties();
 
         if(classProperties==null) return;
@@ -181,7 +181,7 @@ public class ClassCompareShape implements IClassCompare
             if(onProperty==null) // just in case
                 onProperty = ModelManager.getManager().getOriginalModel().createObjectProperty(propertyURI, false);
 
-            boolean isFunctional = (functionalCandidates.contains(propertyURI) && mentions > Utils.Configs.functional_threshold);
+            boolean isFunctional = (functionalCandidates.containsKey(propertyURI) && mentions > Utils.Configs.functional_threshold);
             boolean isQualifiedR = (pmetrics.getRanges().size() == 1);
             boolean isEquivalent = (mentions > Utils.Configs.equivalent_threshold);
             boolean isSuperClass = (mentions >= Utils.Configs.subclass_threshold);
@@ -196,33 +196,34 @@ public class ClassCompareShape implements IClassCompare
 
             if(isEquivalent || isSuperClass)
             {
-                if(mentions > Utils.Configs.subclass_threshold)
+
+                AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
+                rec.setQualified(isQualifiedR);
+
+                if(isQualifiedR) // find and instantiate (if needed) the range class
                 {
-                    AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
-                    rec.setQualified(isQualifiedR);
+                    String range_URI = pmetrics.getRanges().keySet().iterator().next(); // get the first element risps
+                    OntClass range   = ModelManager.getManager().getEvolvingModel().getOntClass(range_URI);
 
-                    if(isQualifiedR) // find and instantiate (if needed) the range class
+                    if(range == null)
                     {
-                        String range_URI = pmetrics.getRanges().keySet().iterator().next(); // get the first element risps
-                        OntClass range   = ModelManager.getManager().getEvolvingModel().getOntClass(range_URI);
-
-                        if(range == null)
-                        {
-                            composite.add(new AddClass(range_URI));
-                            rec.setRange_URI(range_URI); // todo ver se é isto ou se é preciso executar a acçao imediatamente
-                        }
-                        else
-                            rec.setRangeClass(range);
-
+                        composite.add(new AddClass(range_URI));
+                        rec.setRange_URI(range_URI); // todo ver se é isto ou se é preciso executar a acçao imediatamente
                     }
+                    else
+                        rec.setRangeClass(range);
 
-                    if (isFunctional)
-                    {
-                        rec.setCardinalityType("Exactly", 1, isQualifiedR);
-                        if(composite.add(rec))
-                            System.out.println("\t\t\t Cardinality Restriction Added!");
-                    }
                 }
+
+                if (isFunctional)
+                {
+                    rec.setCardinalityType("Exactly", 1, isQualifiedR);
+                    if(composite.add(rec))
+                        System.out.println("\t\t\t Cardinality Restriction Added!");
+                }
+                else
+                    rec.setCardinalityType("Exactly", mentions, isQualifiedR); // todo check
+
             }
 
             // TODO ACRESCENTAR OUTROS TIPOS DE RESTRIÇAO AQUI
@@ -371,7 +372,7 @@ public class ClassCompareShape implements IClassCompare
 
         OntClass ontClass = cpm.getOntClass();
     
-        List<String> functionalCandidates        = cpm.getFunctionalCandidates();
+        HashMap<String, Boolean> functionalCandidates        = cpm.getFunctionalCandidates();
         HashMap<String, Integer> classProperties = cpm.getClassDtProperties();
         
         if(classProperties==null) return;
@@ -384,33 +385,24 @@ public class ClassCompareShape implements IClassCompare
             DatatypeProperty onProperty = ModelManager.getManager().getOriginalModel().getDatatypeProperty(propertyURI);
             if(onProperty==null) // just in case
                 onProperty = ModelManager.getManager().getOriginalModel().createDatatypeProperty(propertyURI, false);
-            
-            boolean isFunctional = false;
-            boolean isQualifiedR = false;
-            boolean isEquivalent = false;
-            boolean isSuperClass = true;
-            
+
+
             int mentions         = (int) classProperties.get(propertyURI);
-            
-            if(functionalCandidates.contains(propertyURI) && mentions > Utils.Configs.functional_threshold)
-                isFunctional = true;
-        
+
+            boolean isFunctional = functionalCandidates.containsKey(propertyURI) && mentions > Utils.Configs.functional_threshold;
+            boolean isEquivalent = (mentions > Utils.Configs.equivalent_threshold);
+            boolean isSuperClass = (mentions >= Utils.Configs.subclass_threshold);
+
             AddDatatypeProperty add_dtProperty = new AddDatatypeProperty(propertyURI, isFunctional);
             composite.add(add_dtProperty);
-            
-            //adicionar na mesma a questao da restricao de equivalencia ao composite, depois ver se é para executar ou não
-            
-            if(mentions <= Utils.Configs.subclass_threshold)   isSuperClass = false;
-            if(mentions >  Utils.Configs.equivalent_threshold) isEquivalent = true;
 
-            // TODO decidir como refinar o qualified (preciso verificar os ranges TODOS
             if(mentions > Utils.Configs.subclass_threshold)
             {
                 AddCardinalityRestriction rec = new AddCardinalityRestriction(ontClass, onProperty, isEquivalent, isSuperClass);
 
                 if(isFunctional)
                 {
-                    rec.setCardinalityType("Exactly", 1, isQualifiedR);
+                    rec.setCardinalityType("Exactly", mentions, false);
                     composite.add(rec);
                 }
 

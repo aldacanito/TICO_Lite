@@ -1,0 +1,63 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2006/time#isTimeSliceOf>
+        rdf:type  owl:ObjectProperty .
+
+<http://localhost/testing#DatatypeProperty2>
+        rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+<http://localhost/testing#ObjectProperty1>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#hasDuration>
+        rdf:type  owl:ObjectProperty .
+
+<http://localhost/testing#DatatypeProperty1>
+        rdf:type  owl:DatatypeProperty .
+
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
+
+<http://localhost/testing#i1.3>
+        <http://localhost/testing#DatatypeProperty2>
+                "3"^^xsd:int .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+<http://localhost/testing#i1.2>
+        <http://localhost/testing#DatatypeProperty2>
+                "2"^^xsd:int .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_i1.1i1.1>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://localhost/testing#i1.1> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://localhost/testing#i1.1> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
+        <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+                "evolving" .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+        rdf:type  owl:AnnotationProperty .
+
+<http://localhost/testing#i1.1>
+        <http://localhost/testing#DatatypeProperty2>
+                "2"^^xsd:int .
+
+<http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#hasEnd>
+        rdf:type  owl:ObjectProperty .

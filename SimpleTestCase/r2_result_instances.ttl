@@ -26,10 +26,6 @@
         <http://localhost/testing#DatatypeProperty2>
                 "2"^^xsd:int .
 
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230706163052032>
-        <http://www.w3.org/2006/time#hasBeginning>
-                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230706163052032> .
-
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
         rdf:type  owl:AnnotationProperty .
 
@@ -61,6 +57,10 @@
                 <http://localhost/testing#i1.1> ;
         <http://www.w3.org/2006/time#hasEnd>
                 <http://localhost/testing#i1.1> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230706164107374>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230706164107374> .
 
 <http://localhost/testing#i1.3>
         <http://localhost/testing#DatatypeProperty2>

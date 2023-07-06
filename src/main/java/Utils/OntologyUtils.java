@@ -52,7 +52,28 @@ public class OntologyUtils
     public static final String ONT_TIME_URL     = "http://www.w3.org/2006/time";
 
 
+    /**
+     * Gets the Version of an OntModel
+     * @param model
+     * @return one of "original", "evolving" or "individuals"
+     */
+    public static String getModelVersion(OntModel model)
+{
+    String version = "original";
 
+    try
+    {
+        OntResource versionInfoR = model.getOntResource("VersionInfo");
+        Statement version1 = versionInfoR.getProperty(model.getAnnotationProperty("version"));
+        Literal lit = version1.getLiteral();
+        version = lit.toString();
+    }
+    catch(Exception e)
+    {}
+
+
+    return version;
+}
     public static OntModel readModel(String filename, String baseURI)
     {
 
@@ -209,12 +230,17 @@ public class OntologyUtils
     public static void writeModeltoFile(OntModel theModel, String filename)
     {
         writeFullModel(theModel, filename);
-        writeInstanceModel(filename);
+   //     writeInstanceModel(filename);
         //writeClassesModel(theModel, filename);
     }
-    
 
 
+    /**
+     * Checks if Restriction r1 is a superclass of OntClass ontClass, using SPARQL.
+     * @param ontClass
+     * @param r1
+     * @return TRUE if r1 is one of the ontClass' restrictions
+     */
     public static boolean hasRestrictionSPARQL(OntClass ontClass, Restriction r1)
     {
         boolean ret = false;

@@ -8,18 +8,17 @@ import java.util.List;
 import java.util.Set;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
-
+import org.apache.jena.tdb.store.Hash;
 
 
 public class ClassPropertyMetrics extends EntityMetrics
 {
     OntClass ontClass;
-    int classMentions = 0;
 
     //USE URI
     HashMap<String, Integer> classObjProperties;
     HashMap<String, Integer> classDtProperties;
-    List<String> functionalCandidates;
+    HashMap<String, Boolean> functionalCandidates;
     
     private List<PropertyMetrics> propertyMetrics;
     
@@ -29,8 +28,7 @@ public class ClassPropertyMetrics extends EntityMetrics
     {
         super(EntityURI);      
         classObjProperties   = new HashMap<>();
-        functionalCandidates = new ArrayList<>();
-        classMentions        = 0;
+        functionalCandidates = new HashMap<>();
         propertyMetrics      = new ArrayList<>();
     }
     
@@ -40,8 +38,7 @@ public class ClassPropertyMetrics extends EntityMetrics
         ontClass             = cls;        
         classObjProperties   = new HashMap<>();
         classDtProperties    = new HashMap<>();
-        functionalCandidates = new ArrayList<>();
-        classMentions        = 0;
+        functionalCandidates = new HashMap<>();
         propertyMetrics      = new ArrayList<>();
         
         this.first_mention   = first_mention;
@@ -52,7 +49,7 @@ public class ClassPropertyMetrics extends EntityMetrics
     public String toString()
     {
         String print = "CLASS METRICS FOR CLASS "  + this.getURI();
-        print += "\n\t Mentions: " + this.classMentions;
+        print += "\n\t Mentions: " + this.getMentions();
         
         Set<String> objP = classObjProperties.keySet();
         
@@ -78,8 +75,8 @@ public class ClassPropertyMetrics extends EntityMetrics
         if(!this.functionalCandidates.isEmpty())
         {
             print += "\n\t Functional Candidates:";
-            for(String s : this.functionalCandidates)
-                print += "\n\t\t " + s;
+            for(String s : this.functionalCandidates.keySet())
+                print += "\n\t\t " + s + ": " + this.functionalCandidates.get(s);
         }
         
         for(PropertyMetrics pm : this.propertyMetrics)
@@ -101,13 +98,11 @@ public class ClassPropertyMetrics extends EntityMetrics
     
     public void updateFunctionalCandidate(String newPropertyURI)
     {
-        if(functionalCandidates.contains(newPropertyURI))
-            functionalCandidates.remove(newPropertyURI);
+        if(functionalCandidates.containsKey(newPropertyURI))
+            functionalCandidates.replace(newPropertyURI, false);
         else
-            functionalCandidates.add(newPropertyURI);
+            functionalCandidates.put(newPropertyURI, true);
     }
-
-
 
 
     public void addObjProperty(String newPropertyURI, String rangeURI)
@@ -179,12 +174,12 @@ public class ClassPropertyMetrics extends EntityMetrics
     
     public void addClassMention()
     {
-        classMentions++;
+        this.mention();
     }
     
     public void addClassMention(Individual mention)
     {
-        classMentions++;
+        this.mention();
         this.last_mention = mention;
     }
     
@@ -203,8 +198,8 @@ public class ClassPropertyMetrics extends EntityMetrics
     {
         int propertyMentions = classObjProperties.get(propertyURI);
                 
-        if(propertyMentions!=0 && classMentions!=0)
-            return (float) propertyMentions / (float) classMentions;
+        if(propertyMentions!=0 && this.getMentions()!=0)
+            return (float) propertyMentions / (float) this.getMentions();
         else
             return 0;
     }
@@ -221,14 +216,14 @@ public class ClassPropertyMetrics extends EntityMetrics
     }
     
     
-    public List<String> getFunctionalCandidates()
+    public HashMap<String, Boolean> getFunctionalCandidates()
     {
         return this.functionalCandidates;
     }
     
     public int getClassMentions()
     {
-        return this.classMentions;
+        return this.getMentions();
     }
     
     public OntClass getOntClass()

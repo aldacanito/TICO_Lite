@@ -11,15 +11,8 @@ import Utils.Utilities;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.jena.ontology.AllValuesFromRestriction;
-import org.apache.jena.ontology.CardinalityRestriction;
-import org.apache.jena.ontology.HasValueRestriction;
-import org.apache.jena.ontology.MaxCardinalityRestriction;
-import org.apache.jena.ontology.MinCardinalityRestriction;
-import org.apache.jena.ontology.OntClass;
-import org.apache.jena.ontology.OntProperty;
-import org.apache.jena.ontology.Restriction;
-import org.apache.jena.ontology.SomeValuesFromRestriction;
+
+import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
@@ -79,14 +72,20 @@ public class ClassDiff implements IClassDiff
     }
 
     @Override
+    /**
+     * Verifies is two is a new version of one.
+     * returns TRUE if the Classes differ in their restrictions.
+     * return FALSE if the Classes are the same.
+     */
     public boolean isNewVersion(OntClass one, OntClass two) 
     {
        
         OntClass op1 = (OntClass) one;
         OntClass op2 = (OntClass) two;
-        
+
         System.out.println("Comparing:\n"
-                + "\t Class1: " + op1 + " with Class2: " + op2);
+                + "\t Class1: " + op1 + " ("+ OntologyUtils.getModelVersion(op1.getOntModel())+") " +
+                "with Class2: " + op2 + " ("+ OntologyUtils.getModelVersion(op2.getOntModel())+") ");
         
         //check if op2 has the same subclasses and equivalent classes as op2
          
@@ -285,24 +284,23 @@ public class ClassDiff implements IClassDiff
     }
 
     /**
-        Verifica se as super Classes são IGUAIS.
-        * Se ambas forem vazias são iguais;
-        * Se tiverem números diferentes são diferentes.
-     * 
+        Returns TRUE if classes op1 and op2 have the same set of Restrictions, FALSE otherwise.
     **/
      private boolean compareSuperClasses(OntClass op1, OntClass op2) 
     {
         List<OntClass> list1 = op1.listSuperClasses().toList();
-        //List<OntClass> list2 = op2.listSuperClasses().toList();
 
-
-        System.out.println("FOR CLASS " + op1.getURI());
+        System.out.println("FOR CLASS " + op1.getURI() +" ("+ OntologyUtils.getModelVersion(op1.getOntModel())+")" );
         return compareRestrictionsSPARQL(list1, op2);
-
-        //return compareLists(list1, list2);
     }
 
 
+    /**
+     *
+     * @param classes
+     * @param ontClass2
+     * @return TRUE if the restrictions are the same, FALSE otherwise.
+     */
     private boolean compareRestrictionsSPARQL(List<OntClass> classes, OntClass ontClass2)
     {
         for(OntClass cls1 : classes)
@@ -315,7 +313,7 @@ public class ClassDiff implements IClassDiff
                 Restriction r1 = cls1.asRestriction();
                 String p_uri1  = r1.getOnProperty().getURI();
 
-                System.out.println("RESTRICTION ON PROPERTY: " + p_uri1 );
+                System.out.println("RESTRICTION ON PROPERTY: " + p_uri1 + " ("+ OntologyUtils.getModelVersion(cls1.getOntModel())+") ");
 
                 if (p_uri1.equalsIgnoreCase(OntologyUtils.DURING_P) || p_uri1.equalsIgnoreCase(OntologyUtils.HAS_SLICE_P)
                         || p_uri1.equalsIgnoreCase(OntologyUtils.BEFORE_P))

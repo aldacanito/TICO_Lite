@@ -111,16 +111,16 @@ public class TestClassDiff {
         System.out.println("\nTesting Value Restrictions.\n");
 
         addValuesFromRestriction(tscls1, cls2, prefix + "property3", "someValuesFrom");
-//       // newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
-//        System.out.println("TimeSlice has a someValuesFrom on property3. " +
-//                "Should be true. Is " + newVersion);
+        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
+        System.out.println("TimeSlice has a someValuesFrom on property3. " +
+                "Should be true. Is " + newVersion);
 
         addValuesFromRestriction(cls1, cls2, prefix + "property3", "someValuesFrom");
-//        //newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
-//        System.out.println("Class1 also has a someValuesFrom on property3. Should be false. Is " + newVersion);
+        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
+        System.out.println("Class1 also has a someValuesFrom on property3. Should be false. Is " + newVersion);
 
         addValuesFromRestriction(tscls1, cls2, prefix + "property4", "allValuesFrom");
-    //    newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
+        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
         System.out.println("TimeSlice has an allValuesFrom on property4. " +
                 "Should be true. Is " + newVersion);
 
@@ -130,11 +130,11 @@ public class TestClassDiff {
                 "Should be false. Is " + newVersion);
 
         addValuesFromRestriction(tscls1, cls2, prefix + "property5", "hasValue");
-   //     newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
+        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
         System.out.println("TimeSlice has a hasValue on property5. Should be true. Is " + newVersion);
 
         addValuesFromRestriction(cls1, cls2, prefix + "property5", "hasValue");
-     //   newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
+        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
         System.out.println("Class1 also has a hasValue on property5. Should be false. Is " + newVersion);
 
         addValuesFromRestriction(cls1, cls4, prefix + "property4", "allValuesFrom");

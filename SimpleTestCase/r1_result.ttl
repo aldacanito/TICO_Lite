@@ -1,0 +1,124 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2006/time#isTimeSliceOf>
+        rdf:type  owl:ObjectProperty .
+
+<http://localhost/testing#DatatypeProperty2>
+        rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+<http://localhost/testing#ObjectProperty1>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#hasDuration>
+        rdf:type  owl:ObjectProperty .
+
+<http://localhost/testing#DatatypeProperty1>
+        rdf:type  owl:DatatypeProperty .
+
+<http://www.w3.org/2006/time#Interval>
+        rdf:type  owl:Class .
+
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
+
+_:b0    rdf:type         owl:Restriction ;
+        owl:cardinality  "3"^^xsd:int ;
+        owl:onProperty   <http://localhost/testing#DatatypeProperty2> .
+
+<http://localhost/testing#i1.3>
+        rdf:type  <http://localhost/testing#Class3> ;
+        <http://localhost/testing#DatatypeProperty2>
+                "3"^^xsd:int .
+
+<http://localhost/testing#Class3>
+        rdf:type             owl:Class ;
+        rdfs:subClassOf      _:b0 ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "2"^^xsd:int ;
+                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
+                             ] ;
+        owl:equivalentClass  _:b0 .
+
+<http://localhost/testing#i1.2>
+        rdf:type  <http://localhost/testing#Class3> ;
+        <http://localhost/testing#DatatypeProperty2>
+                "2"^^xsd:int .
+
+<http://localhost/testing#Class2>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    "24"^^xsd:int ;
+                           owl:onProperty  <http://localhost/testing#DatatypeProperty1>
+                         ] .
+
+<http://www.w3.org/2006/time#Instant>
+        rdf:type  owl:Class .
+
+<http://localhost/testing#i1.1>
+        rdf:type  <http://localhost/testing#Class3> ;
+        <http://localhost/testing#DatatypeProperty2>
+                "2"^^xsd:int .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
+        rdf:type  owl:ObjectProperty .
+
+<http://localhost/testing#TS__Class3__1>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice Class3 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://localhost/testing#Class3>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_i1.1i1.1> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://localhost/testing#Class3> <http://localhost/testing#Class3>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <http://localhost/testing#i1.1> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#before>
+                                                     ]
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <http://localhost/testing#i1.1> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+<http://localhost/testing#Class1>
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type        owl:Restriction ;
+                           owl:hasValue    <http://localhost/testing#Class2> ;
+                           owl:onProperty  <http://localhost/testing#ObjectProperty1>
+                         ] .
+
+<VersionInfo>  <version>  "evolving" .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  owl:ObjectProperty .
+
+<version>  rdf:type  owl:AnnotationProperty .
+
+<Interval_st_i1.1i1.1>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://localhost/testing#i1.1> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://localhost/testing#i1.1> .
+
+<http://www.w3.org/2006/time#hasEnd>
+        rdf:type  owl:ObjectProperty .
+
+<>      rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
