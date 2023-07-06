@@ -250,7 +250,7 @@ public class OntologyUtils
             OntProperty prop = r1.getOnProperty();
             int cardinality  = r1.getCardinality(prop);
 
-            if( cardinality == 0 ) cardinality = 1; // todo figure why
+            //if( cardinality == 0 ) cardinality = 1; // todo figure why
 
             if(ontClass.getURI() != null)
                 return hasCardinalitySPARQL(ontClass, prop, cardinality, "maxCardinality");
@@ -259,7 +259,7 @@ public class OntologyUtils
             OntProperty prop = r1.getOnProperty();
             int cardinality  = r1.getCardinality(prop);
 
-            if( cardinality == 0 ) cardinality = 1;
+//            if( cardinality == 0 ) cardinality = 1;
 
             if(ontClass.getURI() != null)
                 return hasCardinalitySPARQL(ontClass, prop, cardinality, "minCardinality");
@@ -268,7 +268,7 @@ public class OntologyUtils
             OntProperty prop = r1.getOnProperty();
             int cardinality  = r1.getCardinality(prop);
 
-            if( cardinality == 0 ) cardinality = 1;
+            //if( cardinality == 0 ) cardinality = 1;
 
             if(ontClass.getURI() != null)
                 return hasCardinalitySPARQL(ontClass, prop, cardinality, "cardinality");

@@ -75,7 +75,7 @@ public class TestClassDiff {
 
     public static void testTimeSliceComparison()
     {
-
+        boolean newVersion = false;
         String prefix = "http://localhost:3030/TimeSliceQueryTester/";
 
 
@@ -93,27 +93,25 @@ public class TestClassDiff {
         addRestriction(cls1, prefix + "property1");
         addRestriction(tscls1, prefix + "property1");
 
-        boolean newVersion = false;
-//        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
-//        System.out.println("The two classes have the same cardinality restriction on property1" +
-//                "Should be false. Is " + newVersion);
-//
+        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
+        System.out.println("The two classes have the same cardinality restriction on property1. " +
+                "Should be false. Is " + newVersion);
+
         addRestriction(cls1, prefix + "property2");
-//        //newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
-//        System.out.println("Cls1 has a new Cardinality restriction on property2. " +
-//                "Should be true. Is " + newVersion);
+        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
+        System.out.println("Cls1 has a new Cardinality restriction on property2. " +
+                "Should be true. Is " + newVersion);
 
         addRestriction(tscls1, prefix + "property2");
-        //newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
-//        System.out.println("Timeslice also has a new Cardinality restriction on property2. Should be false. Is " + newVersion);
-//
+        newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
+        System.out.println("Timeslice also has a new Cardinality restriction on property2. Should be false. Is " + newVersion);
 
-        System.out.println("\nTesting Value Restrictions.\n");
 
         addValuesFromRestriction(tscls1, cls2, prefix + "property3", "someValuesFrom");
         newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
         System.out.println("TimeSlice has a someValuesFrom on property3. " +
                 "Should be true. Is " + newVersion);
+
 
         addValuesFromRestriction(cls1, cls2, prefix + "property3", "someValuesFrom");
         newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
@@ -142,6 +140,8 @@ public class TestClassDiff {
         newVersion = new ClassDiff ().isNewVersion(cls1, tscls1);
         System.out.println("TimeSlice and Class1 have different ranges for property4. " +
                 "Should be true. Is " + newVersion);
+
+
 
         //OntologyUtils.writeModeltoFile(model, "Indexes/TestOnto/testDiffFile.ttl");
 

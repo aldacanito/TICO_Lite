@@ -92,6 +92,9 @@ public class ClassDiff implements IClassDiff
         List<OntClass> list1 = op1.listSuperClasses().toList();
         List<OntClass> list2 = op2.listSuperClasses().toList();
 
+        list1 = excludeTemporalClasses(list1);
+        list2 = excludeTemporalClasses(list2);
+
         System.out.println("SuperClasses:\n"
                 + "\t > "   + op1 + ": " + list1.size()
                 + "\n\t > " + op2 + ": " + list2.size());
@@ -120,6 +123,35 @@ public class ClassDiff implements IClassDiff
 //        System.out.println("Is New Version? " + diffEquivalentClasses);
 //        return diffEquivalentClasses;
     }
+
+    /**
+     * Removes all OntClasses in a List that are either Temporal on the Ignore List
+     * @param classes List of OntClasses
+     * @return List of OntClasses without temporal or ignore Classes
+     */
+    private List<OntClass> excludeTemporalClasses(List<OntClass> classes)
+    {
+        List<OntClass> ret = new ArrayList<>();
+
+        for(OntClass cls1 : classes)
+        {
+            if (cls1.isRestriction())
+            {
+                Restriction r1 = cls1.asRestriction();
+                String p_uri1 = r1.getOnProperty().getURI();
+
+                if (p_uri1.equalsIgnoreCase(OntologyUtils.DURING_P) || p_uri1.equalsIgnoreCase(OntologyUtils.HAS_SLICE_P)
+                        || p_uri1.equalsIgnoreCase(OntologyUtils.BEFORE_P) || Utilities.isInIgnoreList(p_uri1))
+                    continue;
+            }
+
+            ret.add(cls1);
+
+        }
+
+        return ret;
+    }
+
 
     private boolean compareRestrictionTypes(Restriction r1, Restriction r2) 
     {
@@ -316,10 +348,7 @@ public class ClassDiff implements IClassDiff
                 System.out.println("RESTRICTION ON PROPERTY: " + p_uri1 + " ("+ OntologyUtils.getModelVersion(cls1.getOntModel())+") ");
 
                 if (p_uri1.equalsIgnoreCase(OntologyUtils.DURING_P) || p_uri1.equalsIgnoreCase(OntologyUtils.HAS_SLICE_P)
-                        || p_uri1.equalsIgnoreCase(OntologyUtils.BEFORE_P))
-                    continue;
-
-                if (Utilities.isInIgnoreList(p_uri1))
+                        || p_uri1.equalsIgnoreCase(OntologyUtils.BEFORE_P) || Utilities.isInIgnoreList(p_uri1))
                     continue;
 
                 if(!OntologyUtils.hasRestrictionSPARQL(ontClass2, r1))
