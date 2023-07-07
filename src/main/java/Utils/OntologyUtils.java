@@ -311,7 +311,7 @@ public class OntologyUtils
 
     public static boolean hasValuesFromSPARQL(OntClass domain, String range, OntProperty property, String valueType)
     {
-        OntModel model      = property.getOntModel();
+        OntModel model      = domain.getOntModel();
         String property_URI = property.getURI();
         String domain_URI   = domain.getURI();
 
@@ -356,7 +356,7 @@ public class OntologyUtils
 
     public static boolean hasCardinalitySPARQL(OntClass ontClass, OntProperty property, int cardinality, String cardinalityType)
     {
-        OntModel model      = property.getOntModel();
+        OntModel model      = ontClass.getOntModel();
         String property_URI = property.getURI();
         String class_URI    = ontClass.getURI();
 
