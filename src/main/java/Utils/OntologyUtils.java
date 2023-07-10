@@ -1000,6 +1000,12 @@ public class OntologyUtils
         return printSPO(subject, predicate, object);
     }
 
+    /**
+     * Uses a SPARQL query to obtain an ordered list of URIs of all Individuals in an OntModel.
+     * Ignores individuals in the Ignore List
+     * @param model the OntModel to execute the search
+     * @return List of URIs of Individuals
+     */
     public static List <String> getIndividualsSPARQL(OntModel model)
     {
         //System.out.println("==SPARQL Listing individuals in the Model.==\n");
@@ -1081,7 +1087,11 @@ public class OntologyUtils
         return individuals_uris;
     }
 
-
+    /**
+     * Uses SPARQL to retrieve a list of all OntClasses in an OntModel that are not in the Exclusion/Ignore List.
+     * @param model The OntModel to execute the query
+     * @return List of OntClasses
+     */
     public static List<OntClass> listOntClassesSPARQL(OntModel model)
     {
         List<OntClass> clss   = new ArrayList<>();
@@ -1107,27 +1117,31 @@ public class OntologyUtils
 
                 Resource theResource = res.getResource("?class");
 
-                if(theResource.isURIResource() && Utilities.isInIgnoreList(theResource.getURI()))
-                    continue;
+                if (!theResource.isURIResource()) continue;
 
-                if(theResource.isURIResource())
+                if(Utilities.isInIgnoreList(theResource.getURI())) continue;
+
+                try
                 {
-                    try
-                    {
-                        OntClass cls = model.getOntClass(theResource.getURI());
-                        clss.add(cls);
-                    }
-                    catch(Exception e)
-                    {
-                        System.out.println("Error retrieving class with uri " + theResource.getURI() + " from Model." );
-                    }
+                    OntClass cls = model.getOntClass(theResource.getURI());
+                    clss.add(cls);
                 }
+                catch(Exception e)
+                {
+                    System.out.println("Error retrieving class with uri " + theResource.getURI() + " from Model." );
+                }
+
             }
         }
 
         return clss;
     }
 
+    /**
+     * Lists the OntClasses of a given Individual
+     * @param i the Individual whose OntModel the query will be run again
+     * @return List of OntClasses which form the RDFS:TYPE of the Individual i
+     */
     public static List<OntClass> listOntClassesSPARQL(Individual i)
     {
         String individual_uri = i.getURI();
@@ -1156,23 +1170,21 @@ public class OntologyUtils
 
                 Resource theResource = res.getResource("?class");
 
-                if(theResource.isURIResource() && Utilities.isInIgnoreList(theResource.getURI()))
-                    continue;
+                if (!theResource.isURIResource())                  continue;
+                if(Utilities.isInIgnoreList(theResource.getURI())) continue;
 
-                if(theResource.isURIResource())
+                try
                 {
-                    try
-                    {
-                        OntClass cls = model.getOntClass(theResource.getURI());
-                        clss.add(cls);
+                    OntClass cls = model.getOntClass(theResource.getURI());
+                    clss.add(cls);
 
-                        //System.out.println("\t > Added class with uri " + theResource.getURI() + " to list!");
-                    }
-                    catch(Exception e)
-                    {
-                        System.out.println("Error retrieving class with uri " + theResource.getURI() + " from Model." );
-                    }
+                    //System.out.println("\t > Added class with uri " + theResource.getURI() + " to list!");
                 }
+                catch(Exception e)
+                {
+                    System.out.println("Error retrieving class with uri " + theResource.getURI() + " from Model." );
+                }
+
             }
         }
 
@@ -1181,7 +1193,11 @@ public class OntologyUtils
     }
 
 
-
+    /**
+     * Uses SPARQL to identify the Properties associated with an Individual
+     * @param i the Individual whose OntProperties we're looking for
+     * @return Map of Property URI and RDFNODE value
+     */
     public static Map<String, RDFNode> listPropertiesSPARQL(Individual i)
     {
         String individual_uri = i.getURI();
