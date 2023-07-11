@@ -267,14 +267,20 @@ public class Comparator
         {
             String uri      = newCls.getURI();
             OntClass oldCls = ModelManager.getManager().getOriginalModel().getOntClass(uri);
-            
+
+            cleanSuperAndEquivalents(newCls);
+
+            OntClass hasSlice = OntologyUtils.getLastTimeSlice(newCls);
+
+            if(hasSlice != null && oldCls == null)
+                OntologyUtils.copyClassDetails(newCls, hasSlice);
+
             if(oldCls==null || Utilities.isInIgnoreList(oldCls.getURI()))
                 continue;
             
             //ignoremos as timeslices em si para nao andar a TS de TS
             if(OntologyUtils.isTimeSlice(oldCls) || OntologyUtils.isTimeSlice(newCls)) continue;
 
-            cleanSuperAndEquivalents(newCls);
 
             // ver se o ultimo timeframe é diferente
             OntClass lastOldSlice = OntologyUtils.getLastTimeSlice(oldCls);
