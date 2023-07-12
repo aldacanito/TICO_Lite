@@ -5,7 +5,10 @@
  */
 package IDC.Metrics;
 
+import org.apache.jena.ontology.OntClass;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -112,6 +115,18 @@ public class PropertyMetrics
         {
             this.getDomains().put(domainURI, 1);
         }
+    }
+
+    public void addDomains(List<OntClass> domains)
+    {
+        for (OntClass d : domains)
+            this.addDomain(d);
+    }
+
+    public void addDomain(OntClass domain)
+    {
+        if(domain.isURIResource())
+           this.addDomain(domain.getURI());
     }
     
     public void addMention()

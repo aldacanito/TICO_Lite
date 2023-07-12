@@ -35,7 +35,6 @@ import java.util.Collection.*;
 public class Comparator 
 {
     EvolutionaryActionComposite executer, ontologyModelUpdater;
-    List<ExecutionHistory> executionHistoryList;
     DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
         
@@ -47,8 +46,6 @@ public class Comparator
         
         Ontology evolvedOnt = ModelManager.getManager().getEvolvingModel().createOntology("");
         evolvedOnt.addImport(ModelManager.getManager().getEvolvingModel().createResource(OntologyUtils.ONT_TIME_URL));
-     
-        executionHistoryList = new ArrayList<>();
     }
 
     /**
@@ -63,7 +60,7 @@ public class Comparator
             try
             {
                 Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
-                List<OntClass> listOntClasses = individual.listOntClasses(false).toList();
+                List<OntClass> listOntClasses = SPARQLUtils.listOntClassesSPARQL(individual);
 
                 //System.out.println("\t> " + uri);
 
@@ -189,7 +186,6 @@ public class Comparator
 
         try
         {
-
             ClassCompareShape shapeC   = new ClassCompareShape(instance);
             EvolutionaryAction compare = shapeC.compare();
             this.executer.add(compare);
@@ -220,6 +216,7 @@ public class Comparator
         {
             checkNewClasses(partition);
             copyIndividualsToEvolvedModel(partition);
+            getIndividualsMetrics(partition);
             //  cleanUnclearClasses(evolvedModel, partition);
             runComparatorOnIndividuals(partition);
             updateTemporalRestrictions();         // check if the temporal restrictions on the classes are ok
@@ -227,6 +224,16 @@ public class Comparator
         }
 
     }
+
+    private void getIndividualsMetrics(List<String> individuals_uris)
+    {
+        for(String uri : individuals_uris)
+        {
+            Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
+            EntityMetricsStore.getStore().addIndividualMetrics(individual);
+        }
+    }
+
 
     private void printEntityMetricsStats()
     {

@@ -6,6 +6,8 @@
 package IDC.Metrics;
 
 import Utils.Utilities;
+import org.apache.jena.ontology.Individual;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +19,13 @@ public class EntityMetricsStore
 {
     private static EntityMetricsStore theInstance = new EntityMetricsStore();
     private List<ClassPropertyMetrics> theMetrics;
+    private List<IndividualMetrics> individualMetrics;
    
     private EntityMetricsStore()
     {
-        theMetrics = new ArrayList<ClassPropertyMetrics>();
+
+        theMetrics        = new ArrayList<ClassPropertyMetrics>();
+        individualMetrics = new ArrayList<>();
     }
 
     public static EntityMetricsStore getStore()
@@ -33,7 +38,35 @@ public class EntityMetricsStore
         if(!theMetrics.contains(cpm))
             theMetrics.add(cpm);
     }
-   
+
+    public IndividualMetrics getMetricsForIndividual(Individual i)
+    {
+        for(IndividualMetrics im : individualMetrics)
+            if(im.getIndividual().getURI().equalsIgnoreCase(i.getURI()))
+                return im;
+
+        return null;
+    }
+
+    public void addIndividualMetrics(Individual i)
+    {
+        IndividualMetrics im = new IndividualMetrics(i);
+        this.addIndividualMetrics(im);
+    }
+
+    public void addIndividualMetrics(IndividualMetrics im)
+    {
+        if(individualMetrics != null)
+        {
+            boolean contains = false;
+            for(IndividualMetrics im1 : this.individualMetrics)
+                if(im1.getIndividual().getURI().equalsIgnoreCase(im.getIndividual().getURI()))
+                {    contains = true; break; }
+
+            if(!contains)
+                this.individualMetrics.add(im);
+        }
+    }
     
     public ClassPropertyMetrics getMetricsByClassURI(String classURI)
     {
