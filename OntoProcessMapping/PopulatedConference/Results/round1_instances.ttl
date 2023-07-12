@@ -1,0 +1,3373 @@
+@prefix :     <http://conference#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<http://conference-instances#abstr203147640>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1956194229>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person596719908>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-762238853>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-987189843>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1359512083>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review-1040783621_-196548213> .
+
+<http://conference-instances#person837870437>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1440474375>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1396047968> .
+
+<http://conference-instances#person-1702667339>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1540209584>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-33807415>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1134949322> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154754206>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154754206> .
+
+<http://conference-instances#person641473878>
+        rdf:type                        owl:NamedIndividual ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#track-809664022> .
+
+<http://conference-instances#person-848313398>
+        rdf:type  owl:NamedIndividual .
+
+:reviews  rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#abstr581267356>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-968996751>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review975856194_-559246915>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-308624406> .
+
+<http://conference-instances#paper-1210654860>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-629541459> , <http://conference-instances#person2119407603> , <http://conference-instances#person1354921479> .
+
+<http://conference-instances#person-1012012728>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1686374730>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1461851985>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154746859>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154746859> .
+
+<http://conference-instances#person2008588995>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr231282005>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1872160009>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-778150919>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person-371003986>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-738056450>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#presentation2054606033>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person412085136> .
+
+<http://conference-instances#person1680108329>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1196155563>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-593391641>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1494537726>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1035632530>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1270625449>
+        rdf:type  owl:NamedIndividual .
+
+:was_a_committee_of  rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person611373452>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1155744058> .
+
+<http://conference-instances#person-1466899771>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1466007994> .
+
+<http://conference-instances#person-52687216>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-603818153>
+        rdf:type  owl:NamedIndividual .
+
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-1188363150>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#track-809664022>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person641473878> .
+
+<http://conference-instances#person211260173>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person-1526768508>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2029535560>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review963462360_-196548215>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+<http://conference-instances#person755064020>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person53633546>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2096278213>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review975856194_-196548215>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person998560393> .
+
+<http://conference-instances#person-1433460702>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-778893158>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review975856194_-196548213> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154736887>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154736887> .
+
+<http://conference-instances#person-237416086>
+        rdf:type                        owl:NamedIndividual ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop-2132929196> .
+
+<http://conference-instances#person-208810966>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person313005682>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-879992990>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1340802908>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-241986804>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1108445787>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2052368457>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr1992001122>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+:is_a_full_paper_submission_date
+        rdf:type    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#review-1040783621_-196548215>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1880281599> ;
+        :reviews      <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person-161675169>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-127640860>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-594533498>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person88459267>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-333282847>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1412481357>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person135381604>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1606326258>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person227549285>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_committee_chair
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :has_members ;
+        owl:inverseOf       :was_a_committee_chair_of .
+
+<http://conference-instances#person135269590>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1461031624>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person567261664>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1457400471>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-184625809> .
+
+<http://conference-instances#person604272203>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1455067928>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1396047968> .
+
+<http://conference-instances#person-349199046>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_volume  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:int .
+
+<http://conference-instances#person-908849439>
+        rdf:type  owl:NamedIndividual .
+
+:is_given_by  rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person870428460>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#invTalk326814257>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-54568175>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person595548117>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1691894488>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person19042071>
+        rdf:type  owl:NamedIndividual .
+
+<http://www.w3.org/2006/time#isTimeSliceOf>
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-764936352>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1155744058> .
+
+:is_a_date_of_acceptance_announcement
+        rdf:type    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person-384478898>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1256149023>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-859565398>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1749319598>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1490639365>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1640260074>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1310872672> .
+
+<http://conference-instances#person1845662548>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person259895487>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation894731363> .
+
+<http://conference-instances#person1650539139>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person445567758>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1776011720> .
+
+<http://conference-instances#person-196632458>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1562646103>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person606178685>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1000416713>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#endDate594425059>
+        rdf:type            owl:NamedIndividual ;
+        :is_an_ending_date  "2018-06-07T17:00:00"^^xsd:dateTime .
+
+<http://conference-instances#person1790023491>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2047414038>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2044143756>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2088036511>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1880920264>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person765529561>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-19305532>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-487016660>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1108012868>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1865332743>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1314759077>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-57229685>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1747802045>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person267191043>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155333267>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155333267> .
+
+<http://conference-instances#person-1430201768>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person257061965>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1527975652>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-829543615>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1995416664>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review975856194_-196548214> , <http://conference-instances#review963462360_-196548214> , <http://conference-instances#review999415672_-196548214> , <http://conference-instances#review963462360_-196548215> , <http://conference-instances#review-1040783621_-196548212> , <http://conference-instances#review999415672_-196548212> .
+
+<http://conference-instances#person1858943856>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_person-1035632530person-1035632530>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#person-1035632530> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#person-1035632530> .
+
+<http://conference-instances#person-1802868852>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154813342>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154813342> .
+
+<http://conference-instances#person894418264>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1457605388>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2026149960>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1159493892>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1872968917>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#presentation656743813>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person1256046882> .
+
+<http://conference-instances#abstr709018979>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154736422>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154736422> .
+
+<http://conference-instances#person-1212800923>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person203595087>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-106680337> .
+
+<http://conference-instances#person1088416870>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#person-1773882272>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-903733988>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-1310872672>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-553478039> , <http://conference-instances#person288485964> , <http://conference-instances#person-1640260074> .
+
+<http://conference-instances#person-764989310>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2108129641>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person137783928>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review999415672_-196548214>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+<http://conference-instances#person-96994726>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr1995444571>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-31445915>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1509329796>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2087984670>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person617958794>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1431176998>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-1221050722>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-291572791> , <http://conference-instances#person-836803373> , <http://conference-instances#person685413890> , <http://conference-instances#person-204144672> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155107063>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155107063> .
+
+<http://conference-instances#person-1114876036>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-416594795>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1189699555>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-138837013> .
+
+<http://conference-instances#person-692517781>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_commtitee  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :was_a_committee_of .
+
+<http://conference-instances#person2075069826>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-1396047968>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1455067928> , <http://conference-instances#person1409051213> , <http://conference-instances#person1184641930> , <http://conference-instances#person-1440474375> .
+
+<http://conference-instances#person2009564674>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154740033>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154740033> .
+
+<http://conference-instances#person-1111182028>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-954722841>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2140517778>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1546738049>
+        rdf:type  owl:NamedIndividual .
+
+:issues  rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-1389648928>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person412085136>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation2054606033> .
+
+<http://conference-instances#person1902083368>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person154888402>
+        rdf:type  owl:NamedIndividual .
+
+:is_a_topis_of_conference_parts
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-830658239>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person695455724>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-465120378>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-94879838>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person765816045>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1306028035>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1964915542>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person727755455>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1163037520>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1849200889>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1831390211>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1635740835>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person144490505>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2142876560>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person31997226>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1555721114>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+:has_tracks  rdf:type       owl:ObjectProperty ;
+        rdfs:subPropertyOf  :has_parts .
+
+<http://conference-instances#person-1972208502>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person381454316>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#startDate594425059>
+        rdf:type             owl:NamedIndividual ;
+        :is_a_starting_date  "2018-06-05T09:00:00"^^xsd:dateTime .
+
+<http://conference-instances#person-579607687>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1321358749>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#person1758347137>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#presentation1992001122>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person-629622358> .
+
+<http://conference-instances#person-1944186561>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-1340964616>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-583004035> , <http://conference-instances#person1048971745> , <http://conference-instances#person1080046350> , <http://conference-instances#person-781908610> .
+
+<http://conference-instances#person-1046955323>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-757665067>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_person-1130950635person-1130950635>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#person-1130950635> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#person-1130950635> .
+
+<http://conference-instances#person-781908610>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1340964616> .
+
+<http://conference-instances#person-529788468>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154944995>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154944995> .
+
+<http://conference-instances#person288485964>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1310872672> .
+
+<http://conference-instances#person1239134584>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1229179711>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1456304254>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1126331166>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person565879119>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-14644869>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-531078793>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person-1283033773>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154739436>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154739436> .
+
+<http://conference-instances#paper-1134949322>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person921503754> , <http://conference-instances#person1525692876> , <http://conference-instances#person-33807415> , <http://conference-instances#person-95822205> , <http://conference-instances#person1954271493> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154737608>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154737608> .
+
+<http://conference-instances#paper-1155744058>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-764936352> , <http://conference-instances#person611373452> , <http://conference-instances#person543393722> .
+
+<http://conference-instances#person1422894180>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person769997750>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_publisher  rdf:type  owl:ObjectProperty , owl:FunctionalProperty ;
+        owl:inverseOf  :issues .
+
+<http://conference-instances#person-596851104>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr2007773372>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1648753768>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-599733895>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-372362203>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-206577734>
+        rdf:type  owl:NamedIndividual .
+
+:is_an_ending_date  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person-145348075>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1480859459>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1382617217>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1696439268>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr660629131>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+:is_a_starting_date  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+:was_a_track-workshop_chair_of
+        rdf:type  owl:ObjectProperty .
+
+:has_a_submitted_contribution
+        rdf:type  owl:ObjectProperty , owl:FunctionalProperty .
+
+<http://conference-instances#person-1239051727>
+        rdf:type  owl:NamedIndividual .
+
+:was_a_committee_chair_of
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :was_a_member_of .
+
+<http://conference-instances#person-1983852554>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154737072>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154737072> .
+
+<http://conference-instances#person1395140928>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review963462360_-196548213>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-375613010> .
+
+<http://conference-instances#person-252623571>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1397485185>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-837073113>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review975856194_-196548213>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-778893158> .
+
+<http://conference-instances#presentation156925601>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1874816179>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1781812952>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_track-workshop-tutorial_topic
+        rdf:type       owl:ObjectProperty ;
+        owl:inverseOf  :is_a_topis_of_conference_parts .
+
+<http://conference-instances#person-620534227>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-479309912>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1763099681>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-250808485>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr656743813>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-565573190>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#notifDate594425059>
+        rdf:type  owl:NamedIndividual ;
+        :is_a_date_of_acceptance_announcement
+                "2018-02-16T23:59:59"^^xsd:dateTime .
+
+<http://conference-instances#person-517055492>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1918925939>
+        rdf:type  owl:NamedIndividual .
+
+:has_important_dates  rdf:type  owl:ObjectProperty , owl:FunctionalProperty .
+
+<http://conference-instances#person1137368944>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1978784677>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1270430817>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2031747936>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review-1040783621_-196548213>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1359512083> ;
+        :reviews      <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person2037629273>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-841552660>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1308942491>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1649352149>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1174757453>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1379053978>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-788076726>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person307293599>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person645583150>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_program_committee
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  :has_a_commtitee ;
+        owl:inverseOf       :was_a_program_committee_of .
+
+<http://conference-instances#person-827877342>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_absDate594425059absDate594425059>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#absDate594425059> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#absDate594425059> .
+
+<http://conference-instances#abstr2041081534>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1419152603>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-375613010>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review963462360_-196548213> .
+
+<http://conference-instances#person-1178397751>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1329776646>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1550789330>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1801613547>
+        rdf:type                        owl:NamedIndividual ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop-1822926834> .
+
+<http://conference-instances#person-996308558>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#camDateInst594425059>
+        rdf:type  owl:NamedIndividual ;
+        :is_a_date_of_camera_ready_paper_submission
+                "2018-03-23T23:59:59"^^xsd:dateTime .
+
+<http://conference-instances#paper-1334870798>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person211260173> , <http://conference-instances#person-495836409> , <http://conference-instances#person1423149605> , <http://conference-instances#person-531078793> , <http://conference-instances#person-778150919> , <http://conference-instances#person-530023765> , <http://conference-instances#person-1928050802> , <http://conference-instances#person254671973> .
+
+<http://conference-instances#person1432101851>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1170758949>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1210439095>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1174268499> .
+
+<http://conference-instances#abstr2111977347>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1662517105>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1563674336>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1937064603>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#confWebSite594425059>
+        rdf:type    owl:NamedIndividual ;
+        :has_a_URL  "https://2018.eswc-conferences.org/" .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_tutorial-1908626681tutorial-1908626681>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#tutorial-1908626681> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#tutorial-1908626681> .
+
+<http://conference-instances#person-530023765>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person545950730>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-652226830>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person400618907>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1466007994> .
+
+<http://conference-instances#person944580741>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1647913175>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person306979646>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person898828743>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1778733453> .
+
+<http://conference-instances#person-178522164>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1335516553>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2024667106>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review-1009967944_-196548212>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#presentation1778733453>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person898828743> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_person-1024992117person-1024992117>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#person-1024992117> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#person-1024992117> .
+
+<http://conference-instances#person520114114>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1253694339>
+        rdf:type  owl:NamedIndividual .
+
+:has_parts  rdf:type   owl:ObjectProperty ;
+        owl:inverseOf  :is_part_of_conference_volumes .
+
+<http://conference-instances#person824368903>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1574161836>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person746050633>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person512004511>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation595611661> .
+
+<http://conference-instances#person380175630>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-163417754>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person701934770>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-184625809>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1457400471> , <http://conference-instances#person-997826642> .
+
+<http://conference-instances#abstr1960267252>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person2103756430>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1552125304>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2134277892>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1770851538>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-495836409>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person-1941632919>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-106680337> .
+
+:has_a_review_expertise
+        rdf:type       owl:ObjectProperty , owl:InverseFunctionalProperty ;
+        owl:inverseOf  :has_a_submitted_contribution .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154738232>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154738232> .
+
+<http://conference-instances#person1501790147>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2142997996>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person420446079>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1732877096>
+        rdf:type                        owl:NamedIndividual ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop1621863795> .
+
+<http://conference-instances#person57183013>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-553478039>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1310872672> .
+
+<http://conference-instances#person1920503372>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1558450838>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1547350595>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1016850689>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr595611661>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-988902988>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-138837013> .
+
+<http://conference-instances#presentation379103972>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person1210174981> .
+
+<http://conference-instances#person-1042079922>
+        rdf:type  owl:NamedIndividual .
+
+<http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-2028988638>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-553902281>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review950118131_-196548215> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_abstr159962680abstr159962680>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#abstr159962680> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#abstr159962680> .
+
+<http://conference-instances#person-194169265>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1968896896>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review999415672_-196548215> .
+
+<http://conference-instances#person472225066>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2106160812>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1848273938>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1528217430>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-1174268499>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1210439095> , <http://conference-instances#person-334869824> , <http://conference-instances#person-517473726> , <http://conference-instances#person-1767234630> .
+
+<http://conference-instances#person-1854729966>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person232134855>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1354325101>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1638415562>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr159962680>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1085503236>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review999415672_-196548212>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+:has_members  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :was_a_member_of .
+
+<http://conference-instances#person121388869>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1453009692>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#presentation1776011720>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person445567758> .
+
+<http://conference-instances#person-512737238>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2027434140>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person965221170>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1601474674>
+        rdf:type  owl:NamedIndividual .
+
+:has_tutorials  rdf:type    owl:ObjectProperty ;
+        rdfs:subPropertyOf  :has_parts .
+
+<http://conference-instances#person-1381433503>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1317913774>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review950118131_-196548215>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-553902281> .
+
+<http://conference-instances#person-1667720147>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155235409>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155235409> .
+
+<http://conference-instances#person-1394111938>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person732054770>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-492151014>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr244592325>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-78583551>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-663509914>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1532581884>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-106680337> .
+
+<http://conference-instances#person1248916960>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-503625236>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1779334017>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-591421728>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-138837013> .
+
+<http://conference-instances#person-1259038589>
+        rdf:type  owl:NamedIndividual .
+
+:is_a_date_of_camera_ready_paper_submission
+        rdf:type    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person980781899>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154739025>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154739025> .
+
+<http://conference-instances#person421140002>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2053786245>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154906546>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154906546> .
+
+<http://conference-instances#person-60709154>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr2128793563>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154737802>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154737802> .
+
+<http://conference-instances#person-517175511>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1807852007>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1682716346>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1191207010>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_person-1005487070person-1005487070>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#person-1005487070> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#person-1005487070> .
+
+<http://conference-instances#person-2121041576>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr209499467>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1726179265>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1522809377>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1420947134>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1856326897>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr2123905833>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1512189208>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-727252972>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_paper-1091162264paper-1091162264>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#paper-1091162264> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#person1494568302>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr582917391>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person998457579>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2101409360>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1126710081>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person713513681>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1130950635>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1567320889>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person435569097>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2106424506>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2075670116>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1285671513>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154848905>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154848905> .
+
+<http://conference-instances#person-1711367960>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-418631832>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154834570>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154834570> .
+
+<http://conference-instances#person986570587>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-96342978>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1932363587>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1040783621> .
+
+:is_submitted_at  rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-1560677862>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1480807342>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person476583342>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1315236544> .
+
+<http://conference-instances#person1235172665>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-138837013> .
+
+<http://conference-instances#paper-138837013>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1189699555> , <http://conference-instances#person-988902988> , <http://conference-instances#person1235172665> , <http://conference-instances#person921503754> , <http://conference-instances#person-591421728> , <http://conference-instances#person-95822205> .
+
+:has_a_review_reference_or_expertise
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-829319302>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_degree  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:int .
+
+<http://conference-instances#person-873513744>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1469452252> .
+
+<http://conference-instances#person-1477155278>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-583004035>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1340964616> .
+
+<http://conference-instances#person-1209614472>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person484419589>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#presentation282691561>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person2054586387> .
+
+<http://conference-instances#person-1802744143>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2070379008>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person431365764>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person696513682>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2101497772>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1035221324>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1246115019>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1156682268> .
+
+<http://conference-instances#person1354921479>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1210654860> .
+
+<http://conference-instances#person-644031517>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#tutorial-269923293>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1990962770>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1189929074>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person420348054>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person723844442>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1455297413>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person2112751051>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_topic_or_a_submission_contribution
+        rdf:type       owl:ObjectProperty , owl:FunctionalProperty ;
+        owl:inverseOf  :has_been_assigned_a_review_reference .
+
+<http://conference-instances#person1103255321>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-256772543>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1500128947>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person877231702>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1180676299>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1527647062>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person416102269>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#presentation595611661>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person512004511> .
+
+<http://conference-instances#person-182444831>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-87141778>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1678800917>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2019118130>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person163570319>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person784105829>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person51351566>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1466007994> .
+
+<http://conference-instances#person2021863400>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person460745784>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person67737637>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-373931080>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-3727575>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1954271493>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1134949322> .
+
+<http://conference-instances#person-95822205>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-138837013> , <http://conference-instances#paper-1134949322> .
+
+<http://conference-instances#person1880281599>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review-1040783621_-196548215> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154736687>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154736687> .
+
+:has_a_review  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :reviews .
+
+<http://conference-instances#person-1036754658>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1259423621>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1338722672>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1984126696>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-328115705>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1204651915>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person719989708>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person317334787>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person-1954320427>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1510129109>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-488080544>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-536672934>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1349982148>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation522138275> .
+
+<http://conference-instances#person1197578042>
+        rdf:type  owl:NamedIndividual .
+
+<http://www.w3.org/2006/time#hasEnd>
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-811105366>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1105441534>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-586790>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1155021163>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1174368118>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review-1009967944_-196548215>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person2091751687> .
+
+<http://conference-instances#person-2060056465>
+        rdf:type  owl:NamedIndividual .
+
+:was_a_committe_co-chair_of
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :was_a_member_of .
+
+<http://conference-instances#workshop-116568089>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-593033197>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person456627070>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1663247174>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person683304209>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-106680337>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1532581884> , <http://conference-instances#person203595087> , <http://conference-instances#person-1941632919> .
+
+<http://conference-instances#abstr302569227>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1987253932>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-156749421>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2102778969>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1576636129>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1902216953>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-424155945>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1624355752>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person685413890>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1221050722> .
+
+<http://conference-instances#person-2081612880>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person109631654>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1024992117>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr999415672>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person2023002118>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person300134251>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155307561>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155307561> .
+
+<http://conference-instances#person712287470>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1301290148>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-830279688>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1619366619>
+        rdf:type  owl:NamedIndividual .
+
+:belong_to_a_conference_volume
+        rdf:type       owl:ObjectProperty ;
+        owl:inverseOf  :has_important_dates .
+
+<http://conference-instances#person-1526119665>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1184641930>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1396047968> .
+
+<http://conference-instances#person-265528040>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-359013556>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1901016396>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1100277409>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-868655376>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person218754708>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2119407603>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1210654860> .
+
+<http://conference-instances#person-517473726>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1174268499> .
+
+<http://conference-instances#person1570082082>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1601247784>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1891371122>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person491871620>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1371747764>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person158351951>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person969997393>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154822359>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154822359> .
+
+:has_the_first_name  rdf:type  owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#review999415672_-196548215>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1968896896> .
+
+<http://conference-instances#person-909213933>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person978182263>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1575405463>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-537065269>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1256046882>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation656743813> .
+
+<http://conference-instances#abstr282691561>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+:invites_co-reviewers
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-951062503>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2145507772>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-836803373>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1221050722> .
+
+<http://conference-instances#person-324061752>
+        rdf:type  owl:NamedIndividual .
+
+:was_a_member_of  rdf:type  owl:ObjectProperty .
+
+:has_an_expertise  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  [ rdf:type   rdfs:Datatype ;
+                      owl:oneOf  [ rdf:type   rdf:List ;
+                                   rdf:first  "high" ;
+                                   rdf:rest   [ rdf:type   rdf:List ;
+                                                rdf:first  "low" ;
+                                                rdf:rest   [ rdf:type   rdf:List ;
+                                                             rdf:first  "medium" ;
+                                                             rdf:rest   [ rdf:type   rdf:List ;
+                                                                          rdf:first  "very high" ;
+                                                                          rdf:rest   ()
+                                                                        ]
+                                                           ]
+                                              ]
+                                 ]
+                    ] .
+
+<http://conference-instances#person-1162098494>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1171162537>
+        rdf:type  owl:NamedIndividual .
+
+:is_the_1th_part_of  rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty .
+
+<http://conference-instances#person1536516582>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1235711472>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person23844622>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person636139005>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1201225561>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1451523249>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1717056968>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1928050802>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person-193324767>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1138403052>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1619072798>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person675960670>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154737279>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154737279> .
+
+:was_a_steering_committee_of
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :was_a_committee_of .
+
+:belongs_to_a_review_reference
+        rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty .
+
+<http://conference-instances#person418322429>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person832115029>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1542426113>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2035953639>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1826868435> .
+
+<http://conference-instances#person-879714352>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_steering_committee
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  :has_a_commtitee ;
+        owl:inverseOf       :was_a_steering_committee_of .
+
+<http://conference-instances#person1358600378>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1773949678>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-799925516>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-97359197>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#person896846149>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1607496545>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1210174981>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation379103972> .
+
+<http://conference-instances#person867533661>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person627425283>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-479000598>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1466007994> .
+
+:is_an_abstract_submission_date
+        rdf:type    owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person2054471904>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1158497249>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review-1040783621_-196548214> .
+
+<http://conference-instances#person-204144672>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1221050722> .
+
+<http://conference-instances#person1422253537>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-434868152>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#workshop-2132929196>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person-237416086> .
+
+<http://conference-instances#person14147756>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1388878712>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_date_of_issue  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:date .
+
+<http://conference-instances#person-962302627>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1307497202>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2064935522>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1073378413>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person738219367>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1779962486>
+        rdf:type                        owl:NamedIndividual ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop526045159> .
+
+<http://conference-instances#person1525692876>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1134949322> .
+
+<http://conference-instances#person2054500904>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155205407>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155205407> .
+
+<http://conference-instances#person543424931>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1544774746>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1300407721>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1923198326>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1217077607>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-737333300>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1469452252> .
+
+<http://conference-instances#person-794733834>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1315236544> .
+
+<http://conference-instances#person203269491>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person150805347>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1598360125> .
+
+:belongs_to_reviewers
+        rdf:type       owl:ObjectProperty ;
+        owl:inverseOf  :has_a_review_reference_or_expertise .
+
+<http://conference-instances#person886264772>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1257460930>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-250181782>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person-56059367>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1653006824>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review-1009967944_-559246915> , <http://conference-instances#paper-1466007994> .
+
+<http://conference-instances#person-1562192459>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1429210758>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person902473293>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1667998402>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155401376>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155401376> .
+
+<http://conference-instances#person480255365>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1466007994> .
+
+<http://conference-instances#abstr62655014>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1404739560>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-976943317>
+        rdf:type  owl:NamedIndividual .
+
+:has_contributions  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :is_submitted_at .
+
+<http://conference-instances#person2091751687>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :contributes          <http://conference-instances#review-1009967944_-196548215> ;
+        :gives_presentations  <http://conference-instances#presentation601961826> .
+
+<http://conference-instances#person-475484493>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person49782357>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155037800>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155037800> .
+
+<http://conference-instances#person-1244783083>
+        rdf:type  owl:NamedIndividual .
+
+:gives_presentations  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :is_given_by .
+
+<http://conference-instances#abstr658046772>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1427104913>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-466459168>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-118728975>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person748917895>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1091162264> .
+
+<http://conference-instances#review963462360_-196548214>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+<http://conference-instances#abstr2054606033>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#review975856194_-196548214>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> .
+
+<http://conference-instances#person-1445850056>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1867147862>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-877276697>
+        rdf:type  owl:NamedIndividual .
+
+:is_part_of_conference_volumes
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#presentation1826868435>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person2035953639> .
+
+<http://conference-instances#person-332002573>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1232203442>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-541510756>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#abstr1985799590>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#review-1040783621_-196548214>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1158497249> ;
+        :reviews      <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person-1062243985>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-479267424>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1962233199>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-722265774>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person525053116>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person670810068>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person334560132>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr601961826>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person293538524>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-947914828>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1048971745>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1340964616> .
+
+<http://conference-instances#person543393722>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1155744058> .
+
+<http://conference-instances#person1601220129>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+        rdf:type  owl:AnnotationProperty .
+
+<http://conference-instances#person-1900271165>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#tutorial-465989596>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person20398741>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-916761366>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person386851272>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1818530121>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154738020>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154738020> .
+
+<http://conference-instances#person638177473>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1126099060>
+        rdf:type  owl:NamedIndividual .
+
+:has_the_last_name  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154923762>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154923762> .
+
+<http://conference-instances#person280419645>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1072682942>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1614446468>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154742204>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154742204> .
+
+<http://conference-instances#paper-1040783621>
+        rdf:type       owl:NamedIndividual ;
+        rdf:type       []  ;
+        rdf:type       []  ;
+        :has_a_review  <http://conference-instances#review-1040783621_-196548212> , <http://conference-instances#review-1040783621_-196548213> , <http://conference-instances#review-1040783621_-196548214> , <http://conference-instances#review-1040783621_-196548215> ;
+        :has_authors   <http://conference-instances#person1932363587> , <http://conference-instances#person317334787> , <http://conference-instances#person-250181782> , <http://conference-instances#person711954540> .
+
+:has_an_email  rdf:type  owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person241861175>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2048460527>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#workshop526045159>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person1779962486> .
+
+<http://conference-instances#person1454925686>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-418084367>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-477253972>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1861598908>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-324663037>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1215370279>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-912550527>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-356391908>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person468319138>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-344116908>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person527025309>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1387154337>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1389253724>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1005487070>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1233585643>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-954363154>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-1156682268>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1246115019> , <http://conference-instances#person-28998318> , <http://conference-instances#person1889213539> , <http://conference-instances#person-1849700515> .
+
+<http://conference-instances#person-2083783493>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person371272339>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-236950704>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1727185389>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_committee_co-chair
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :has_members ;
+        owl:inverseOf       :was_a_committe_co-chair_of .
+
+<http://conference-instances#person933334101>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1719856390>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review-1009967944_-559246915>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1653006824> .
+
+<http://conference-instances#person711954540>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1040783621> .
+
+:has_an_ISBN  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person916005214>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1615409046>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-629622358>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation1992001122> .
+
+<http://conference-instances#person-1624228800>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-308624406>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review975856194_-559246915> .
+
+<http://conference-instances#person-20884083>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person922608189>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#presentation1598360125>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person150805347> .
+
+<http://conference-instances#person-609591782>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person890277641>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person826824351>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person923726192>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person164213845>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review999415672_-196548211> , <http://conference-instances#review963462360_-196548212> .
+
+<http://conference-instances#person-1707794382>
+        rdf:type  owl:NamedIndividual .
+
+:has_workshops  rdf:type    owl:ObjectProperty ;
+        rdfs:subPropertyOf  :has_parts .
+
+<http://conference-instances#presentation894731363>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person259895487> .
+
+<http://conference-instances#person-358940562>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1817866528>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person304145594>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-851348433>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1420768679>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-38015965>
+        rdf:type  owl:NamedIndividual .
+
+:has_been_assigned_a_review_reference
+        rdf:type  owl:ObjectProperty , owl:InverseFunctionalProperty .
+
+<http://conference-instances#person776528700>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person540778131>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1143919255>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review999415672_-196548213>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1815456352> .
+
+<http://conference-instances#person-245934101>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#workshop1554024796>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person907216624> .
+
+<http://conference-instances#person-2126469857>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#workshop-1822926834>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person1801613547> .
+
+<http://conference-instances#person1021665478>
+        rdf:type  owl:NamedIndividual .
+
+:has_authors  rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person-1978850061>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-730713280>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154737452>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154737452> .
+
+<http://conference-instances#person-1523724494>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person8724234>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr2019043369>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person577157950>
+        rdf:type  owl:NamedIndividual .
+
+xsd:date  rdf:type  rdfs:Datatype .
+
+<http://conference-instances#person-1626477664>
+        rdf:type  owl:NamedIndividual .
+
+:has_gender  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  [ rdf:type   rdfs:Datatype ;
+                      owl:oneOf  [ rdf:type   rdf:List ;
+                                   rdf:first  "female" ;
+                                   rdf:rest   [ rdf:type   rdf:List ;
+                                                rdf:first  "male" ;
+                                                rdf:rest   ()
+                                              ]
+                                 ]
+                    ] .
+
+<http://conference-instances#person1409051213>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1396047968> .
+
+<http://conference-instances#person880024680>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr2015448609>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1305237605>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-862287354>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person67969092>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-334869824>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :contributes  <http://conference-instances#paper-1174268499> .
+
+<http://conference-instances#person1163091759>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1423149605>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person-1191153903>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-95006294>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1989348910>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1857347791>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1465625928>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1441274935>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr2134395685>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person907216624>
+        rdf:type                        owl:NamedIndividual ;
+        :was_a_track-workshop_chair_of  <http://conference-instances#workshop1554024796> .
+
+<http://conference-instances#person-1816445880>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person328619528>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person594676188>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person582904954>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1077637848>
+        rdf:type  owl:NamedIndividual .
+
+:has_an_abstract  rdf:type  owl:ObjectProperty , owl:FunctionalProperty ;
+        owl:inverseOf  :is_the_1th_part_of .
+
+<http://conference-instances#presentation601961826>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person2091751687> .
+
+<http://conference-instances#person-1542057866>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person998560393>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review975856194_-196548215> .
+
+<http://conference-instances#person-623892281>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1934483174>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr595623936>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference>  rdf:type  owl:Ontology .
+
+<http://conference-instances#person1194531152>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-61831363>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1159815878>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-279292523>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-759370193>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1038942658>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2008711799>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-287492025>
+        rdf:type  owl:NamedIndividual .
+
+:has_an_organizing_committee
+        rdf:type            owl:ObjectProperty , owl:FunctionalProperty ;
+        rdfs:subPropertyOf  :has_a_commtitee ;
+        owl:inverseOf       :was_an_organizing_committee_of .
+
+<http://conference-instances#person1889213539>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1156682268> .
+
+<http://conference-instances#person1030902851>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person254671973>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1334870798> .
+
+<http://conference-instances#person708387671>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#tutorial-1908626681>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person540395866>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-291572791>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1221050722> .
+
+<http://conference-instances#person-1993644559>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person844139487>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2035863523>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1764950305>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-629541459>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1210654860> .
+
+<http://conference-instances#person-1964408853>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1882423422>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1404044385>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-28998318>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1156682268> .
+
+<http://conference-instances#person805035939>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-59148036>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155136431>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155136431> .
+
+<http://conference-instances#person132703648>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1142717632>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1696503161>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person198271813>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#workshop1621863795>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  ;
+        :has_a_track-workshop-tutorial_chair
+                <http://conference-instances#person1732877096> .
+
+:invited_by  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :invites_co-reviewers .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_person-1182702128person-1182702128>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#person-1182702128> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#person-1182702128> .
+
+<http://conference-instances#person891088429>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1767234630>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1174268499> .
+
+<http://conference-instances#person919797389>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-777194902>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review963462360_-196548212>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person164213845> .
+
+<http://conference-instances#person1882802382>
+        rdf:type  owl:NamedIndividual .
+
+:contributes  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :has_authors .
+
+<http://conference-instances#person921503754>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1134949322> , <http://conference-instances#paper-138837013> .
+
+<http://conference-instances#person280070114>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-846170127>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1289866755>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-1315236544>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person330340218> , <http://conference-instances#person-794733834> , <http://conference-instances#person476583342> .
+
+<http://conference-instances#person723383510>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person503188619>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person906274926>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154803779>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154803779> .
+
+<http://conference-instances#person900910217>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1182702128>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#review-1040783621_-196548212>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person1995416664> ;
+        :reviews      <http://conference-instances#paper-1040783621> .
+
+<http://conference-instances#person-5814844>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154740506>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154740506> .
+
+<http://conference-instances#person-991177133>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person45665290>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1152499978>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1151288521>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#presentation522138275>
+        rdf:type      owl:NamedIndividual ;
+        :is_given_by  <http://conference-instances#person1349982148> .
+
+<http://conference-instances#person42601147>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154738522>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154738522> .
+
+<http://conference-instances#person-1167753830>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-692487911>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2047873267>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1293259123>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person330340218>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1315236544> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_invTalk1398102472invTalk1398102472>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#invTalk1398102472> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#invTalk1398102472> .
+
+<http://conference-instances#person1703344909>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-997826642>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-184625809> .
+
+<http://conference-instances#paper-1469452252>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-509669676> , <http://conference-instances#person-873513744> , <http://conference-instances#person-737333300> , <http://conference-instances#person-1124819294> .
+
+<http://conference-instances#person-1425395954>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1054964575>
+        rdf:type  owl:NamedIndividual .
+
+:was_a_program_committee_of
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :was_a_committee_of .
+
+<http://conference-instances#person1128207942>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person675734948>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-371346755>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_track-workshop-tutorial_chair
+        rdf:type       owl:ObjectProperty ;
+        owl:inverseOf  :was_a_track-workshop_chair_of .
+
+<http://conference-instances#person-649897701>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620154743584>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620154743584> .
+
+<http://conference-instances#person42737391>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person856650982>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-284310244>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#absDate594425059>
+        rdf:type  owl:NamedIndividual ;
+        :is_an_abstract_submission_date
+                "2018-01-05T23:59:59"^^xsd:dateTime .
+
+<http://conference-instances#paper-1091162264>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person748917895> , <http://conference-instances#person-97359197> , <http://conference-instances#person1321358749> , <http://conference-instances#person1088416870> .
+
+<http://conference-instances#person1329440132>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1354642941>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1815456352>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#review999415672_-196548213> .
+
+<http://conference-instances#person-1866256515>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-497890167>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_location  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person640675163>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1456981840>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1849700515>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1156682268> .
+
+<http://conference-instances#person-676882191>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2060676703>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-553874792>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-504778015>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2002058682>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1306023708>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-919876309>
+        rdf:type  owl:NamedIndividual .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+<http://conference-instances#person1741423036>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#track-1504959766>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#invTalk1398102472>
+        rdf:type  owl:NamedIndividual .
+
+<http://www.w3.org/2006/time#hasDuration>
+        rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_person-1455297413person-1455297413>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#person-1455297413> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#person-1455297413> .
+
+<http://conference-instances#person-1124819294>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1469452252> .
+
+<http://conference-instances#person-864435221>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1429450262>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person414686799>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-460282222>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1916202538>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1076365032>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr657620628>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person-1942054666>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person22055966>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
+        <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+                "evolving" .
+
+<http://conference-instances#person-1992379746>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person774372358>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-509669676>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1469452252> .
+
+<http://conference-instances#person1939974966>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person887910030>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-24663610>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person902635041>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1949012060>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person575403490>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person984312219>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person733641062>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person690021221>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1723699323>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-557309837>
+        rdf:type  owl:NamedIndividual .
+
+:was_an_organizing_committee_of
+        rdf:type            owl:ObjectProperty ;
+        rdfs:subPropertyOf  :was_a_committee_of .
+
+<http://conference-instances#person-792522441>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_URL  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person-1278933280>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person2054586387>
+        rdf:type              owl:NamedIndividual ;
+        rdf:type              []  ;
+        :gives_presentations  <http://conference-instances#presentation282691561> .
+
+<http://conference-instances#person-1519571988>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-780067503>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#review999415672_-196548211>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person164213845> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_workshop-116568089workshop-116568089>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#workshop-116568089> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#workshop-116568089> .
+
+<http://conference-instances#person-570823173>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person590999547>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1240324832>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person747243646>
+        rdf:type  owl:NamedIndividual .
+
+:has_a_name  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty ;
+        rdfs:range  xsd:string .
+
+<http://conference-instances#person-1712520470>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-2072097242>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1001101597>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#paper-1466007994>
+        rdf:type      owl:NamedIndividual ;
+        rdf:type      []  ;
+        rdf:type      []  ;
+        :has_authors  <http://conference-instances#person-1653006824> , <http://conference-instances#person400618907> , <http://conference-instances#person51351566> , <http://conference-instances#person480255365> , <http://conference-instances#person-479000598> , <http://conference-instances#person-1466899771> .
+
+<http://conference-instances#person-1203096978>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1080046350>
+        rdf:type      owl:NamedIndividual ;
+        :contributes  <http://conference-instances#paper-1340964616> .
+
+<http://conference-instances#person1568883124>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person1220994215>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1706662728>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#abstr236693500>
+        rdf:type  owl:NamedIndividual ;
+        rdf:type  []  .
+
+<http://conference-instances#person1925681155>
+        rdf:type  owl:NamedIndividual .
+
+<http://conference-instances#person-1402994055>
+        rdf:type  owl:NamedIndividual .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230620155010719>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230620155010719> .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_confWebSite594425059confWebSite594425059>
+        <http://www.w3.org/2006/time#hasBeginning>
+                <http://conference-instances#confWebSite594425059> ;
+        <http://www.w3.org/2006/time#hasEnd>
+                <http://conference-instances#confWebSite594425059> .

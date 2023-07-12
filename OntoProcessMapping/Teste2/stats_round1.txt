@@ -1,0 +1,80 @@
+
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 4
+List of Evolutionary Actions:
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 5
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@58e5a81c
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@1d5a2267
+	IDC.EvolActions.Impl.Additions.Restriction.AddAllValuesFromRestriction@42d6aa88
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@751661b
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEvent
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 5
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@412de677
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@e1c387e
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@1c57a111
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@2cef365b
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://www.example.org/Pianism/OntoPianismERP.owl#VirtualEvent
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 6
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@25f73ef
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@6d6f7412
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@4c110f87
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@1919b5b0
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@60a07d77
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://www.example.org/Pianism/OntoPianismERP.owl#VirtualSensor
+======================================
+
+
+
+	
+
+
+======================================
+Evolutionary Action Composite Stats
+	Total evolutionary actions executed: 6
+List of Evolutionary Actions:
+	IDC.EvolActions.Impl.Additions.AddObjectProperty@76795a95
+	IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction@32d00eea
+	IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction@66b09935
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@5981b51
+	IDC.EvolActions.Impl.Additions.AddDatatypeProperty@39894485
+	> ADD CLASS : EVOLUTIONARY ACTION
+			 URI: http://purl.oclc.org/NET/ssnx/ssn#Sensor
+======================================
+
+
+
+======================================
+
+

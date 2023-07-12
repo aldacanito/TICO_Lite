@@ -1,0 +1,186 @@
+@prefix :                       <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix CM_ontology:            <http://www.example.org/CM/CM_ontology.owl#> .
+@prefix OntoPianismERP:         <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix OntoPianismIndividuals: <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix components4ExtruOnt:    <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#> .
+@prefix j.0:                    <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix j.1:                    <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix j.2:                    <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix j.3:                    <http://www.w3.org/2006/time#> .
+@prefix j.4:                    <http://www.loa-cnr.it/ontologies/DUL.owl#> .
+@prefix j.5:                    <http://www.w3.org/ns/ssn/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sensors4ExtruOnt:       <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#> .
+@prefix xml:                    <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
+
+<>      rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+j.2:TS__Sensor__1  rdf:type  owl:Class ;
+        rdfs:label           "TimeSlice Sensor 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  j.2:Sensor
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( j.2:Sensor j.2:Sensor
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  j.0:extEvent ;
+  owl:onProperty     OntoPianismERP:derivedFrom
+] .
+
+[ rdf:type  owl:Ontology ] .
+
+j.0:extEvent  rdf:type  owl:Class , rdfs:Resource , rdfs:Class .
+
+j.3:Instant  rdf:type  owl:Class .
+
+j.5:hasOutput  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
+  owl:onProperty     OntoPianismERP:detects
+] .
+
+j.5:hasValue  rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:derivedFrom
+        rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "0"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:hasSensorCorrelation
+] .
+
+j.3:hasDuration  rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:VirtualEvent
+        rdf:type  owl:Class , rdfs:Class , rdfs:Resource .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:detects
+] .
+
+j.3:hasBeginning  rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:hasValue
+        rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  j.0:extEvent ;
+  owl:onProperty     OntoPianismERP:detects
+] .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "0"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:hasSensorCorrelation
+] .
+
+CM_ontology:hasSensorID
+        rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+OntoPianismERP:hasSensorCorrelation
+        rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+j.3:intervalDuring  rdf:type  owl:ObjectProperty .
+
+CM_ontology:hasTimeStamp
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:hasOutput
+        rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:VirtualSensor
+        rdf:type  owl:Class , rdfs:Resource , rdfs:Class .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   j.5:hasOutput
+] .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:hasSensorCorrelation
+] .
+
+[ rdf:type            owl:Restriction ;
+  owl:onProperty      OntoPianismERP:hasSensorCorrelation ;
+  owl:someValuesFrom  OntoPianismERP:VirtualEvent
+] .
+
+j.3:hasEnd  rdf:type  owl:ObjectProperty .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:detects
+] .
+
+[ rdf:type            owl:Restriction ;
+  owl:onProperty      OntoPianismERP:hasSensorCorrelation ;
+  owl:someValuesFrom  OntoPianismERP:VirtualEvent
+] .
+
+sensors4ExtruOnt:sensorName
+        rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+j.0:TS__extEvent__1  rdf:type  owl:Class ;
+        rdfs:label           "TimeSlice extEvent 1" ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  j.0:extEvent
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( j.0:extEvent j.0:extEvent
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] .
+
+j.3:DateTimeInterval  rdf:type  owl:Class .
+
+[ rdf:type         owl:Restriction ;
+  owl:cardinality  "1"^^xsd:int ;
+  owl:onProperty   OntoPianismERP:derivedFrom
+] .
+
+j.2:Sensor  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+j.3:Interval  rdf:type  owl:Class .
+
+OntoPianismERP:hasRunningAverage
+        rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+
+j.3:isTimeSliceOf  rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:detects
+        rdf:type  owl:ObjectProperty , owl:TransitiveProperty .
+
+j.3:before  rdf:type  owl:ObjectProperty .
+
+[ rdf:type           owl:Restriction ;
+  owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
+  owl:onProperty     OntoPianismERP:hasSensorCorrelation
+] .
+
+j.3:after  rdf:type  owl:ObjectProperty .

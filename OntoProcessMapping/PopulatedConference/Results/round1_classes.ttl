@@ -1,0 +1,329 @@
+@prefix :     <http://conference#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml:  <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+<>      rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+:Call_for_paper  rdf:type  owl:Class ;
+        rdfs:subClassOf  :Conference_document .
+
+:Tutorial  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Conference_participant
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_a_committee_co-chair
+        rdf:type       owl:ObjectProperty ;
+        rdfs:domain    :Committee ;
+        rdfs:range     :Co-chair ;
+        owl:inverseOf  :was_a_committe_co-chair_of .
+
+<http://www.w3.org/2006/time#Instant>
+        rdf:type  owl:Class .
+
+:has_a_date_of_issue  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:domain  :Conference_document ;
+        rdfs:range   xsd:date .
+
+:has_a_track-workshop-tutorial_topic
+        rdf:type       owl:ObjectProperty ;
+        rdfs:domain    :Conference_part ;
+        rdfs:range     :Topic ;
+        owl:inverseOf  :is_a_topis_of_conference_parts .
+
+:Person  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+<http://www.w3.org/2006/time#hasBeginning>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#after>
+        rdf:type  owl:ObjectProperty .
+
+:Late_paid_applicant  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_a_review_reference_or_expertise
+        rdf:type  owl:ObjectProperty .
+
+owl:AnnotationProperty
+        rdf:type  owl:Class .
+
+:Poster  rdf:type  owl:Class .
+
+:has_the_last_name  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:domain  :Person ;
+        rdfs:range   xsd:string .
+
+:Accepted_contribution
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_a_submitted_contribution
+        rdf:type  owl:FunctionalProperty , owl:ObjectProperty .
+
+:Steering_committee  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Written_contribution
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Camera_ready_contribution
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Conference_contribution
+        rdf:type         rdfs:Class , rdfs:Resource , owl:Class ;
+        rdfs:subClassOf  :Conference_document .
+
+:Regular_contribution
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Conference_part  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Registeered_applicant
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+<http://conference>  rdf:type  owl:Ontology .
+
+:Rejected_contribution
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Conference_www  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Contribution_co-author
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Invited_speaker  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:TS__Conference__1  rdf:type  owl:Class ;
+        rdfs:label           "TimeSlice Conference 1" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  :Conference
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( :Conference :Conference
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
+:invited_by  rdf:type  owl:ObjectProperty ;
+        owl:inverseOf  :invites_co-reviewers .
+
+:Paper  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_gender  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:domain  :Person ;
+        rdfs:range   [ rdf:type   rdfs:Datatype ;
+                       owl:oneOf  [ rdf:type   rdf:List ;
+                                    rdf:first  "female" ;
+                                    rdf:rest   [ rdf:type   rdf:List ;
+                                                 rdf:first  "male" ;
+                                                 rdf:rest   ()
+                                               ]
+                                  ]
+                     ] .
+
+:Organizing_committee
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Information_for_participants
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  :Conference_document .
+
+:Reviewed_contribution
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Conference_announcement
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  :Conference_document .
+
+:Organizer  rdf:type     owl:Class ;
+        rdfs:subClassOf  owl:Thing .
+
+:has_a_topic_or_a_submission_contribution
+        rdf:type       owl:FunctionalProperty , owl:ObjectProperty ;
+        owl:inverseOf  :has_been_assigned_a_review_reference .
+
+:Track-workshop_chair
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_an_expertise  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:range  [ rdf:type   rdfs:Datatype ;
+                      owl:oneOf  [ rdf:type   rdf:List ;
+                                   rdf:first  "high" ;
+                                   rdf:rest   [ rdf:type   rdf:List ;
+                                                rdf:first  "low" ;
+                                                rdf:rest   [ rdf:type   rdf:List ;
+                                                             rdf:first  "medium" ;
+                                                             rdf:rest   [ rdf:type   rdf:List ;
+                                                                          rdf:first  "very high" ;
+                                                                          rdf:rest   ()
+                                                                        ]
+                                                           ]
+                                              ]
+                                 ]
+                    ] .
+
+:Invited_talk  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_a_degree  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:range  xsd:int .
+
+:Early_paid_applicant
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Conference_applicant
+        rdf:type         rdfs:Class , rdfs:Resource , owl:Class ;
+        rdfs:subClassOf  :Person .
+
+:Chair  rdf:type             rdfs:Class , rdfs:Resource , owl:Class ;
+        rdfs:subClassOf      :Committee_member ;
+        owl:equivalentClass  [ rdf:type            owl:Restriction ;
+                               owl:someValuesFrom  :Committee
+                             ] .
+
+:Conference  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Reviewer  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Presentation  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Abstract  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_a_name  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty ;
+        rdfs:range  xsd:string .
+
+:Regular_author  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:is_a_topis_of_conference_parts
+        rdf:type     owl:ObjectProperty ;
+        rdfs:domain  :Topic ;
+        rdfs:range   :Conference_part .
+
+:Co-chair  rdf:type          owl:Class ;
+        rdfs:subClassOf      :Committee_member ;
+        owl:equivalentClass  [ rdf:type            owl:Restriction ;
+                               owl:onProperty      :was_a_committe_co-chair_of ;
+                               owl:someValuesFrom  :Committee
+                             ] .
+
+:belongs_to_reviewers
+        rdf:type       owl:ObjectProperty ;
+        owl:inverseOf  :has_a_review_reference_or_expertise .
+
+:Conference_document  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:was_a_committe_co-chair_of
+        rdf:type     owl:ObjectProperty ;
+        rdfs:domain  :Co-chair ;
+        rdfs:range   :Committee .
+
+:has_the_first_name  rdf:type  owl:DatatypeProperty ;
+        rdfs:domain  :Person ;
+        rdfs:range   xsd:string .
+
+:Conference_contributor
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:invites_co-reviewers
+        rdf:type  owl:ObjectProperty .
+
+:Publisher  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+<http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
+        rdf:type  owl:ObjectProperty .
+
+<http://www.w3.org/2006/time#hasDuration>
+        rdf:type  owl:ObjectProperty .
+
+:Active_conference_participant
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+<http://www.w3.org/2006/time#isTimeSliceOf>
+        rdf:type  owl:ObjectProperty .
+
+xsd:date  rdf:type  rdfs:Datatype .
+
+:Passive_conference_participant
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Review  rdf:type        rdfs:Class , rdfs:Resource , owl:Class ;
+        rdfs:subClassOf  :Conference_document .
+
+:Workshop  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Conference_volume  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Topic  rdf:type  owl:Class .
+
+:Track  rdf:type         rdfs:Class , rdfs:Resource , owl:Class ;
+        rdfs:subClassOf  :Conference_part .
+
+:Submitted_contribution
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Committee  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Committee_member  rdf:type  rdfs:Class , rdfs:Resource , owl:Class ;
+        rdfs:subClassOf      :Person ;
+        owl:equivalentClass  [ rdf:type            owl:Restriction ;
+                               owl:someValuesFrom  :Committee
+                             ] .
+
+:has_been_assigned_a_review_reference
+        rdf:type  owl:InverseFunctionalProperty , owl:ObjectProperty .
+
+:has_authors  rdf:type  owl:ObjectProperty ;
+        rdfs:domain  :Conference_document ;
+        rdfs:range   :Person .
+
+:has_a_review_expertise
+        rdf:type       owl:InverseFunctionalProperty , owl:ObjectProperty ;
+        owl:inverseOf  :has_a_submitted_contribution .
+
+:belongs_to_a_review_reference
+        rdf:type     owl:InverseFunctionalProperty , owl:ObjectProperty ;
+        rdfs:domain  :Topic .
+
+:Call_for_participation
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  :Conference_document .
+
+:Extended_abstract  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Important_dates  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_an_email  rdf:type  owl:DatatypeProperty ;
+        rdfs:domain  :Person ;
+        rdfs:range   xsd:string .
+
+:Conference_fees  rdf:type  owl:Class .
+
+:Paid_applicant  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:has_an_abstract  rdf:type  owl:FunctionalProperty , owl:ObjectProperty ;
+        owl:inverseOf  :is_the_1th_part_of .
+
+owl:NamedIndividual  rdf:type  owl:Class .
+
+<http://www.w3.org/2006/time#Interval>
+        rdf:type  owl:Class .
+
+:Contribution_1th-author
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Conference_proceedings
+        rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+:Program_committee  rdf:type  rdfs:Class , rdfs:Resource , owl:Class .
+
+<http://www.w3.org/2006/time#before>
+        rdf:type  owl:ObjectProperty .
+
+:is_the_1th_part_of  rdf:type  owl:InverseFunctionalProperty , owl:ObjectProperty .

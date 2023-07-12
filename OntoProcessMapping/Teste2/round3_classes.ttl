@@ -1,0 +1,139 @@
+@prefix :                       <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix CM_ontology:            <http://www.example.org/CM/CM_ontology.owl#> .
+@prefix OntoPianismERP:         <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix OntoPianismIndividuals: <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix components4ExtruOnt:    <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#> .
+@prefix j.0:                    <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix j.1:                    <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix j.2:                    <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix j.3:                    <http://www.w3.org/2006/time#> .
+@prefix j.4:                    <http://www.loa-cnr.it/ontologies/DUL.owl#> .
+@prefix j.5:                    <http://www.w3.org/ns/ssn/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sensors4ExtruOnt:       <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#> .
+@prefix xml:                    <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
+
+<>      rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+owl:AnnotationProperty
+        rdf:type  owl:Class .
+
+OntoPianismERP:erpResolutionTime
+        rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:erpRequestJobDescription
+        rdf:type  owl:DatatypeProperty .
+
+j.0:extEvent  rdf:type  owl:Class .
+
+j.3:Instant  rdf:type  owl:Class .
+
+j.4:includesEvent  rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:erpAmountHarnessed
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:erpOrderCode
+        rdf:type  owl:DatatypeProperty .
+
+j.5:hasValue  rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:derivedFrom
+        rdf:type            rdf:Property , rdfs:Resource , owl:ObjectProperty ;
+        rdfs:subPropertyOf  OntoPianismERP:derivedFrom , OntoPianismERP:FeatureEngineering .
+
+[ rdf:type  owl:Ontology ] .
+
+OntoPianismERP:erpJobDescription
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:erpMachineCode
+        rdf:type  owl:DatatypeProperty .
+
+j.3:hasBeginning  rdf:type  owl:ObjectProperty .
+
+components4ExtruOnt:hasSensor
+        rdf:type  owl:ObjectProperty .
+
+CM_ontology:hasSensorID
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:hasSensorCorrelation
+        rdf:type            rdf:Property , rdfs:Resource , owl:ObjectProperty ;
+        rdfs:subPropertyOf  OntoPianismERP:hasSensorCorrelation , OntoPianismERP:FeatureEngineering .
+
+OntoPianismERP:erpOccurred
+        rdf:type  owl:ObjectProperty .
+
+j.3:intervalDuring  rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:erpRequestDate
+        rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:erpMachineName
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:erpExtruderHeadName
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:hasOutput
+        rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:erpArticleCode
+        rdf:type  owl:DatatypeProperty .
+
+components4ExtruOnt:hasHead
+        rdf:type  owl:ObjectProperty .
+
+j.3:hasEnd  rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:erpHeads
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:erpQuantity
+        rdf:type  owl:DatatypeProperty .
+
+sensors4ExtruOnt:sensorName
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:FeatureEngineering
+        rdf:type            rdf:Property , rdfs:Resource , owl:ObjectProperty ;
+        rdfs:subPropertyOf  OntoPianismERP:FeatureEngineering .
+
+j.3:DateTimeInterval  rdf:type  owl:Class .
+
+j.2:Sensor  rdf:type  owl:Class .
+
+OntoPianismERP:erpSeries
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:erpOperationFromOrder
+        rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+OntoPianismERP:erpSection
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:erpExecuter
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:erpRejectedQuantity
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:hasRunningAverage
+        rdf:type  owl:DatatypeProperty .
+
+j.0:extHasStatus  rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:detects
+        rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:erpInterventionTime
+        rdf:type  owl:ObjectProperty .

@@ -1,0 +1,162 @@
+@prefix :                       <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix CM_ontology:            <http://www.example.org/CM/CM_ontology.owl#> .
+@prefix OntoPianismERP:         <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix OntoPianismIndividuals: <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix components4ExtruOnt:    <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#> .
+@prefix j.0:                    <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix j.1:                    <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix j.2:                    <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix j.3:                    <http://www.w3.org/2006/time#> .
+@prefix j.4:                    <http://www.loa-cnr.it/ontologies/DUL.owl#> .
+@prefix j.5:                    <http://www.w3.org/ns/ssn/> .
+@prefix owl:                    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:                    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:                   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sensors4ExtruOnt:       <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#> .
+@prefix xml:                    <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd:                    <http://www.w3.org/2001/XMLSchema#> .
+
+OntoPianismIndividuals:erpEvent_1
+        rdf:type            owl:NamedIndividual ;
+        rdfs:label          "erpEvent_1" ;
+        j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_1 ;
+        j.5:hasOutput       "1.787231" .
+
+OntoPianismIndividuals:erpTimeInterval_2
+        rdf:type          owl:NamedIndividual ;
+        rdfs:label        "erpTimeInterval_2" ;
+        j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_2 ;
+        j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_3 .
+
+j.5:hasOutput  rdf:type  owl:DatatypeProperty .
+
+OntoPianismERP:derivedFrom
+        rdf:type  owl:ObjectProperty .
+
+j.3:hasDuration  rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750202>
+        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750202> .
+
+j.3:hasBeginning  rdf:type  owl:ObjectProperty .
+
+OntoPianismERP:hasValue
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismIndividuals:erpTimeInterval_1
+        rdf:type          owl:NamedIndividual ;
+        rdfs:label        "erpTimeInterval_1" ;
+        j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_1 ;
+        j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_2 .
+
+OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682-c7c53718136d
+        rdf:type                     owl:NamedIndividual ;
+        rdfs:label                   "erpSensor_VK09_G_LayerPercentage" ;
+        sensors4ExtruOnt:sensorName  "LayerPercentage" ;
+        CM_ontology:hasSensorID      "28166aca-9a36-36ca-a682-c7c53718136d" ;
+        OntoPianismERP:detects       OntoPianismIndividuals:erpEvent_2 , OntoPianismIndividuals:erpEvent_1 .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682>
+        j.3:hasBeginning  OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 ;
+        j.3:hasEnd        OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 .
+
+OntoPianismIndividuals:erpEvent_5
+        rdf:type            owl:NamedIndividual ;
+        rdfs:label          "erpEvent_batch2_5" ;
+        j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_4 ;
+        j.5:hasOutput       "45.56583333333334" .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+        rdf:type  owl:AnnotationProperty .
+
+CM_ontology:hasSensorID
+        rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+OntoPianismERP:hasSensorCorrelation
+        rdf:type  owl:ObjectProperty .
+
+j.3:intervalDuring  rdf:type  owl:ObjectProperty .
+
+CM_ontology:hasTimeStamp
+        rdf:type  owl:DatatypeProperty .
+
+OntoPianismIndividuals:erpTimeInstant_3
+        rdf:type                  owl:NamedIndividual ;
+        rdfs:label                "2019-11-16T01:50:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2019-11-16T01:50:00.000Z" .
+
+OntoPianismERP:hasOutput
+        rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
+        <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
+                "evolving" .
+
+j.3:hasEnd  rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpEvent_3
+        rdf:type            owl:NamedIndividual ;
+        rdfs:label          "erpEvent_batch2_3" ;
+        j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_3 ;
+        j.5:hasOutput       "1.787231" .
+
+OntoPianismIndividuals:erpTimeInstant_2
+        rdf:type                  owl:NamedIndividual ;
+        rdfs:label                "2020-08-15T10:00:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2020-08-15T10:00:00.000Z" .
+
+sensors4ExtruOnt:sensorName
+        rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+
+OntoPianismIndividuals:erpTimeInterval_4
+        rdf:type          owl:NamedIndividual ;
+        rdfs:label        "erpTimeInterval_4" ;
+        j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_4 ;
+        j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_6 .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
+        rdf:type     owl:Ontology ;
+        owl:imports  <http://www.w3.org/2006/time> .
+
+j.3:isTimeSliceOf  rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682
+        rdf:type                     owl:NamedIndividual ;
+        rdfs:label                   "erpSensor_VK09_G_FeedRate" ;
+        sensors4ExtruOnt:sensorName  "FeedRate Virtual Sensor" ;
+        CM_ontology:hasSensorID      "28166aca-9a36-36ca-a682" .
+
+[ rdf:type  owl:Ontology ] .
+
+OntoPianismIndividuals:erpEvent_2
+        rdf:type            owl:NamedIndividual ;
+        rdfs:label          "erpEvent_2" ;
+        j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_2 ;
+        j.5:hasOutput       "45.975" .
+
+OntoPianismIndividuals:erpTimeInstant_1
+        rdf:type                  owl:NamedIndividual ;
+        rdfs:label                "2019-11-12T17:50:00.000Z" ;
+        CM_ontology:hasTimeStamp  "2019-11-12T17:50:00.000Z" .
+
+OntoPianismERP:detects
+        rdf:type  owl:ObjectProperty .
+
+OntoPianismIndividuals:erpTimeInterval_3
+        rdf:type          owl:NamedIndividual ;
+        rdfs:label        "erpTimeInterval_3" ;
+        j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_4 ;
+        j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_5 .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750299>
+        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750299> .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750117>
+        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750117> .
+
+j.3:before  rdf:type  owl:ObjectProperty .
+
+j.3:after  rdf:type  owl:ObjectProperty .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750152>
+        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750152> .

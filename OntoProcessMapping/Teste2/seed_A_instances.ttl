@@ -1,0 +1,159 @@
+@prefix : <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@prefix j.0: <http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#> .
+@prefix j.1: <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix j.2: <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix j.3: <http://www.w3.org/2006/time#> .
+@prefix j.4: <http://www.loa-cnr.it/ontologies/DUL.owl#> .
+@prefix j.5: <http://www.w3.org/ns/ssn/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix CM_ontology: <http://www.example.org/CM/CM_ontology.owl#> .
+@prefix OntoPianismERP: <http://www.example.org/Pianism/OntoPianismERP.owl#> .
+@prefix sensors4ExtruOnt: <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#> .
+@prefix components4ExtruOnt: <http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/components4ExtruOnt#> .
+@prefix OntoPianismIndividuals: <http://www.example.org/Pianism/OntoPianismIndividuals.owl#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.example.org/Pianism/OntoPianismERP.owl#derivedFrom
+OntoPianismERP:derivedFrom rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/Pianism/OntoPianismERP.owl#detects
+OntoPianismERP:detects rdf:type owl:ObjectProperty .
+
+
+###  http://www.example.org/Pianism/OntoPianismERP.owl#hasOutput
+OntoPianismERP:hasOutput rdf:type owl:ObjectProperty .
+
+OntoPianismERP:hasValue rdf:type owl:DatatypeProperty .
+
+###  http://www.w3.org/2006/time#hasBeginning
+j.3:hasBeginning rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/time#hasEnd
+j.3:hasEnd rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/time#intervalDuring
+j.3:intervalDuring rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://bdi.si.ehu.es/bdi/ontologies/ExtruOnt/sensors4ExtruOnt#sensorName
+sensors4ExtruOnt:sensorName rdf:type owl:DatatypeProperty .
+
+
+###  http://www.example.org/CM/CM_ontology.owl#hasSensorID
+CM_ontology:hasSensorID rdf:type owl:DatatypeProperty .
+
+
+###  http://www.example.org/CM/CM_ontology.owl#hasTimeStamp
+CM_ontology:hasTimeStamp rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/ns/ssn/hasOutput
+j.5:hasOutput rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.oclc.org/NET/ssnx/ssn#Sensor
+j.2:Sensor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/katiaaleid(1181473)/ontologies/2019/10/ontology-extension#extEvent
+j.0:extEvent rdf:type owl:Class  .
+
+
+###  http://www.w3.org/2006/time#DateTimeInterval
+j.3:DateTimeInterval rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#Instant
+j.3:Instant rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpEvent_1
+OntoPianismIndividuals:erpEvent_1 rdf:type owl:NamedIndividual ,
+                                           j.0:extEvent ;
+                                  j.3:intervalDuring OntoPianismIndividuals:erpTimeInterval_1 ;
+                                  j.5:hasOutput "1.787231" ;
+                                  rdfs:label "erpEvent_1" .
+
+
+###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpEvent_2
+OntoPianismIndividuals:erpEvent_2 rdf:type owl:NamedIndividual ,
+                                           j.0:extEvent ;
+                                  j.3:intervalDuring OntoPianismIndividuals:erpTimeInterval_2 ;
+                                  j.5:hasOutput "45.975" ;
+                                  rdfs:label "erpEvent_2" .
+
+
+###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpSensor_28166aca-9a36-36ca-a682-c7c53718136d
+OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682-c7c53718136d rdf:type owl:NamedIndividual ,
+                                                                               j.2:Sensor ;
+                                                                      OntoPianismERP:detects OntoPianismIndividuals:erpEvent_1 ,
+                                                                                             OntoPianismIndividuals:erpEvent_2 ;
+                                                                      sensors4ExtruOnt:sensorName "LayerPercentage" ;
+                                                                      CM_ontology:hasSensorID "28166aca-9a36-36ca-a682-c7c53718136d" ;
+                                                                      rdfs:label "erpSensor_VK09_G_LayerPercentage" .
+
+
+###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_1
+OntoPianismIndividuals:erpTimeInstant_1 rdf:type owl:NamedIndividual ,
+                                                 j.3:Instant ;
+                                        CM_ontology:hasTimeStamp "2020-08-15T09:00:00.000Z" ;
+                                        rdfs:label "2020-08-15T09:00:00.000Z" .
+
+
+###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_2
+OntoPianismIndividuals:erpTimeInstant_2 rdf:type owl:NamedIndividual ,
+                                                 j.3:Instant ;
+                                        CM_ontology:hasTimeStamp "2020-08-15T10:00:00.000Z" ;
+                                        rdfs:label "2020-08-15T10:00:00.000Z" .
+
+
+###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInstant_3
+OntoPianismIndividuals:erpTimeInstant_3 rdf:type owl:NamedIndividual ,
+                                                 j.3:Instant ;
+                                        CM_ontology:hasTimeStamp "2020-08-15T11:00:00.000Z" ;
+                                        rdfs:label "2020-08-15T11:00:00.000Z" .
+
+
+###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInterval_1
+OntoPianismIndividuals:erpTimeInterval_1 rdf:type owl:NamedIndividual ,
+                                                  j.3:DateTimeInterval ;
+                                         j.3:hasBeginning OntoPianismIndividuals:erpTimeInstant_1 ;
+                                         j.3:hasEnd OntoPianismIndividuals:erpTimeInstant_2 ;
+                                         rdfs:label "erpTimeInterval_1" .
+
+
+###  http://www.example.org/Pianism/OntoPianismIndividuals.owl#erpTimeInterval_2
+OntoPianismIndividuals:erpTimeInterval_2 rdf:type owl:NamedIndividual ,
+                                                  j.3:DateTimeInterval ;
+                                         j.3:hasBeginning OntoPianismIndividuals:erpTimeInstant_2 ;
+                                         j.3:hasEnd OntoPianismIndividuals:erpTimeInstant_3 ;
+                                         rdfs:label "erpTimeInterval_2" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
