@@ -222,7 +222,7 @@ public class ClassCompareShape implements IClassCompare
 
                 if(isQualifiedR) // find and instantiate (if needed) the range class
                 {
-                    String range_URI = pmetrics.getRanges().keySet().iterator().next(); // get the first element risps
+                    String range_URI = pmetrics.getRanges().keySet().iterator().next(); // get the first element
                     OntClass range   = ModelManager.getManager().getEvolvingModel().getOntClass(range_URI);
 
                     if(range == null)
@@ -241,8 +241,9 @@ public class ClassCompareShape implements IClassCompare
                     if(composite.add(rec))
                         System.out.println("\t\t\t Cardinality Restriction Added!");
                 }
-                else
-                    rec.setCardinalityType("Exactly", mentions, isQualifiedR); // todo check
+//                else
+  //                  rec.setCardinalityType("Max", mentions, isQualifiedR); // todo check
+
 
             }
 

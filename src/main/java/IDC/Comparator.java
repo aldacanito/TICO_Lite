@@ -11,10 +11,7 @@ import IDC.EvolActions.Impl.Additions.TimeSliceCreator;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.EvolActions.Interfaces.IAddClass;
 
-import IDC.Metrics.ClassPropertyMetrics;
-import IDC.Metrics.EntityMetricsStore;
-import IDC.Metrics.ExecutionHistory;
-import IDC.Metrics.PropertyMetrics;
+import IDC.Metrics.*;
 import Utils.OntologyUtils;
 import Utils.SPARQLUtils;
 import Utils.Utilities;
@@ -179,6 +176,8 @@ public class Comparator
         executer.execute();
     }
 
+
+
     /**
      * Uses the ClassCompareShape comparator on an Individual to determine the evolutionary actions
      * that must be adderd to this.executer.
@@ -190,6 +189,7 @@ public class Comparator
 
         try
         {
+
             ClassCompareShape shapeC   = new ClassCompareShape(instance);
             EvolutionaryAction compare = shapeC.compare();
             this.executer.add(compare);

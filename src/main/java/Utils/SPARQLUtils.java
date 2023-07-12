@@ -402,13 +402,11 @@ public class SPARQLUtils
      */
     public static Map<String, RDFNode> listPropertiesSPARQL(Individual i)
     {
-        String individual_uri = i.getURI();
+        String individual_uri               = i.getURI();
+        OntModel model                      = i.getOntModel();
+        Map<String, RDFNode> property_uris  = new HashMap<>();
 
         //System.out.println("==SPARQL Listing individual "+ individual_uri+"'s properties in the Model.==\n");
-
-        OntModel model        = i.getOntModel();
-
-        Map<String, RDFNode> property_uris = new HashMap<>();
 
         Query query = QueryFactory.create
                 (

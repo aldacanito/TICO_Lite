@@ -70,19 +70,17 @@ public class Main
         System.out.println("\n\n\tComeça primeiro round: semente + hasSensorCorrelation");
         System.out.println("\n\n===========================================================\n\n");
         // round one
-
-
         runComparator(onto_path, instance_path, print_path, 1);
         
-//        System.out.println("\n\n===========================================================");
-//        System.out.println("\n\n\tComeça segundo round: round1 + hasRunningAverage");
-//        System.out.println("\n\n===========================================================\n\n");
-////        // round two
-//        onto_path      =  print_path;
-//        instance_path  =  dir+ "OntoPianismIndividuals.C.ttl" ;
-//        print_path     =  dir + "round2.ttl";
-//
-//      runComparator(onto_path, instance_path, print_path, 2);
+        System.out.println("\n\n===========================================================");
+        System.out.println("\n\n\tComeça segundo round: round1 + hasRunningAverage");
+        System.out.println("\n\n===========================================================\n\n");
+//        // round two
+        onto_path      =  print_path;
+        instance_path  =  dir+ "OntoPianismIndividuals.C.ttl" ;
+        print_path     =  dir + "round2.ttl";
+
+      runComparator(onto_path, instance_path, print_path, 2);
 
 //
 //        System.out.println("\n\n===========================================================");
