@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
-import org.apache.jena.tdb.store.Hash;
 
 
 public class ClassPropertyMetrics extends EntityMetrics
@@ -196,12 +195,14 @@ public class ClassPropertyMetrics extends EntityMetrics
     
     public float getPropertyRatio(String propertyURI)
     {
-        int propertyMentions = classObjProperties.get(propertyURI);
-                
-        if(propertyMentions!=0 && this.getMentions()!=0)
-            return (float) propertyMentions / (float) this.getMentions();
-        else
-            return 0;
+        if(classObjProperties.containsKey(propertyURI))
+        {
+            int propertyMentions = classObjProperties.get(propertyURI);
+
+            if (propertyMentions != 0 && this.getMentions() != 0)
+                return (float) propertyMentions / (float) this.getMentions();
+        }
+        return 0;
     }
     
      public HashMap<String, Integer> getClassDtProperties()

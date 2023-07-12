@@ -75,7 +75,31 @@ public class PropertyMetrics
         }
        
     }
-    
+
+    /**
+     * Gets the ratio between the amount of times a certain domain was associated with a property
+     * and the total amount of times that property has been seen.
+     * @param domainURI the URI of the Domain to check for
+     * @return float percentage, 0 if not found
+     */
+    public float getDomainRatio(String domainURI)
+    {
+        if(this.getCount() == 0 || !this.getDomains().containsKey(domainURI)) return 0;
+        return (float) this.getDomains().get(domainURI) / (float) this.getCount();
+    }
+
+    /**
+     * Gets the ratio between the amount of times a certain range was associated with a property
+     * and the total amount of times that property has been seen.
+     * @param rangeURI the URI of the range to check for
+     * @return float percentage, 0 if not available
+     */
+    public float getRangeRatio(String rangeURI)
+    {
+        if(this.getCount() == 0 || !this.getDomains().containsKey(rangeURI)) return 0;
+        return (float) this.getDomains().get(rangeURI) / (float) this.getCount();
+    }
+
     public void addDomain(String domainURI)
     {
         if(this.getDomains().containsKey(domainURI))

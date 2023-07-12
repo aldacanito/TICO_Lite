@@ -14,16 +14,23 @@ import IDC.EvolActions.Interfaces.IAddClass;
 import IDC.Metrics.ClassPropertyMetrics;
 import IDC.Metrics.EntityMetricsStore;
 import IDC.Metrics.ExecutionHistory;
+import IDC.Metrics.PropertyMetrics;
 import Utils.OntologyUtils;
+import Utils.SPARQLUtils;
 import Utils.Utilities;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.util.iterator.ExtendedIterator;
+
+import java.util.Collection.*;
+
 /**
  *
  * @author shizamura
@@ -31,7 +38,6 @@ import org.apache.jena.util.iterator.ExtendedIterator;
 public class Comparator 
 {
     EvolutionaryActionComposite executer, ontologyModelUpdater;
-    List<ClassPropertyMetrics> clsPropMetrics ;
     List<ExecutionHistory> executionHistoryList;
     DateTimeFormatter dtf  = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss.SSS");
     DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss.SSS");  
@@ -45,7 +51,6 @@ public class Comparator
         Ontology evolvedOnt = ModelManager.getManager().getEvolvingModel().createOntology("");
         evolvedOnt.addImport(ModelManager.getManager().getEvolvingModel().createResource(OntologyUtils.ONT_TIME_URL));
      
-        clsPropMetrics       = new ArrayList<>();
         executionHistoryList = new ArrayList<>();
     }
 
@@ -148,7 +153,7 @@ public class Comparator
      */
     public void runComparatorOnIndividuals(List<String> individuals_uris)
     {
-        List <String> evolving_uris = OntologyUtils.getIndividualsSPARQL(ModelManager.getManager().getEvolvingModel());
+        List <String> evolving_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getEvolvingModel());
 
         this.executer   = new EvolutionaryActionComposite();
 
@@ -196,22 +201,108 @@ public class Comparator
         }
     }
 
+
+
+
     /***
      * Guided by the instances! Only works for individuals with OntClasses associated to them.
      * Doesn't use reasoner.
      */
     public void run() 
     {
-        List <String> individuals_uris = OntologyUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
+        List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
 
-        checkNewClasses(individuals_uris);
-        copyIndividualsToEvolvedModel(individuals_uris);
-        //  cleanUnclearClasses(evolvedModel, individuals_uris);
-        runComparatorOnIndividuals(individuals_uris);
-        updateTemporalRestrictions();         // check if the temporal restrictions on the classes are ok
+        int partitionSize = 10;
+
+        List<List<String>> partitions = Utilities.chopped(individuals_uris, partitionSize);
+
+        for(List<String> partition : partitions)
+        {
+            checkNewClasses(partition);
+            copyIndividualsToEvolvedModel(partition);
+            //  cleanUnclearClasses(evolvedModel, partition);
+            runComparatorOnIndividuals(partition);
+            updateTemporalRestrictions();         // check if the temporal restrictions on the classes are ok
+            printEntityMetricsStats();
+        }
 
     }
-   
+
+    private void printEntityMetricsStats()
+    {
+        List <OntClass> ontClasses = SPARQLUtils.listOntClassesSPARQL(ModelManager.getManager().getEvolvingModel());
+
+        System.out.println("\n=========================================\nPRINTING ENTITY METRICS\n=========================================\n");
+
+        for(OntClass newCls : ontClasses)
+        {
+            String uri                             = newCls.getURI();
+            ClassPropertyMetrics metricsByClassURI = EntityMetricsStore.getStore().getMetricsByClassURI(uri);
+
+            if(metricsByClassURI == null) continue;
+            List<PropertyMetrics> propertyMetrics  = metricsByClassURI.getPropertyMetrics();
+
+            if(propertyMetrics == null) continue;
+
+
+            System.out.println("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.out.println("\t++++++++++++++ " + uri + " ++++++++++++++");
+            System.out.println("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+
+            System.out.println("\tURI: " + uri + " >> Mentions: " +  metricsByClassURI.getMentions());
+            System.out.println("\t> Property Metrics:");
+
+            for(PropertyMetrics pm : propertyMetrics)
+            {
+                String p_uri = pm.getURI();
+                Map<String, Integer> domains =  pm.getDomains();
+                Map<String, Integer> ranges  =  pm.getRanges();
+
+
+                System.out.println("\t\t>> Property URI: " + p_uri );
+                System.out.println("\t\t\t>> Total Mentions: " + pm.getCount() + " | Property Ratio: " + metricsByClassURI.getPropertyRatio(p_uri));
+
+                System.out.println("\t\t\t>> Domains:" );
+                for(String d_uri : domains.keySet())
+                    System.out.println("\t\t\t\t> " + d_uri + " | count: " + domains.get(d_uri) + " | ratio: " + pm.getDomainRatio(d_uri));
+
+                System.out.println("\t\t\t>> Ranges:" );
+                for(String r_uri : ranges.keySet())
+                    System.out.println("\t\t\t\t> " + r_uri + " | count: " + ranges.get(r_uri) + " | ratio: " + pm.getRangeRatio(r_uri));
+
+            }
+
+            System.out.println("\t> Object Properties: ");
+            HashMap<String, Integer> classObjProperties = metricsByClassURI.getClassObjProperties();
+            for(String objP_uri : classObjProperties.keySet())
+                System.out.println("\t\t\t> " + objP_uri + " | count: " + classObjProperties.get(objP_uri));
+
+
+            System.out.println("\t> Datatype Properties: ");
+            HashMap<String, Integer> classDtProperties = metricsByClassURI.getClassDtProperties();
+            for(String dtP_uri : classDtProperties.keySet())
+                System.out.println("\t\t\t> " + dtP_uri + " | count: " + classDtProperties.get(dtP_uri));
+
+            System.out.println("\t> Functional Candidates: ");
+            HashMap<String, Boolean> functionalCandidates = metricsByClassURI.getFunctionalCandidates();
+            for(String fc_uri : functionalCandidates.keySet())
+                System.out.println("\t\t\t> " + fc_uri + " | Is Functional: " + functionalCandidates.get(fc_uri));
+
+            Individual first = metricsByClassURI.getFirstMention();
+            Individual last  = metricsByClassURI.getLastMention();
+
+            if(first!=null) System.out.println("\t\t> First Mentioned on Individual: " + first.getURI());
+            if(last!=null)  System.out.println("\t\t> Last Mentioned on Individual: "  + last.getURI());
+
+            System.out.println("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+
+        }
+        System.out.println("\n=========================================");
+
+
+    }
+
+
     private void cleanAnonymousErrorClasses(OntModel model, List<String> individuals_uris)
     {
         System.out.println("\n\n==STARTING CLEAN ANONYMOUS ERROR CLASSES ===");
@@ -253,7 +344,7 @@ public class Comparator
      */
     private void updateTemporalRestrictions() 
     {
-        List <OntClass> e_ontClasses1 = OntologyUtils.listOntClassesSPARQL(ModelManager.getManager().getEvolvingModel());
+        List <OntClass> e_ontClasses1 = SPARQLUtils.listOntClassesSPARQL(ModelManager.getManager().getEvolvingModel());
 
         System.out.println("\n=========================================\nNew Classes:");
         for(OntClass newCls : e_ontClasses1)

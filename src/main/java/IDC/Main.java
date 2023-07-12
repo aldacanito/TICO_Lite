@@ -17,12 +17,12 @@ public class Main
     {
         Configs configs = new Configs();
 
-        testConferenceInstances();
+        //testConferenceInstances();
 
 
         //startTest();
         //testArmando();
-      //testArmandoTest();
+      testArmandoTest();
         
 
     }
@@ -61,39 +61,41 @@ public class Main
         
         String semente = dir + "FeatureEngineeringOntoPianismERP_seed.ttl";
         semente = dir + "seed_A_instances.ttl";
-        
+
+        String onto_path      = semente;
+        String instance_path  = dir + "OntoPianismIndividuals.B.ttl" ;
+        String print_path = dir + "round1.ttl";
+
         System.out.println("\n\n===========================================================");
         System.out.println("\n\n\tComeça primeiro round: semente + hasSensorCorrelation");
         System.out.println("\n\n===========================================================\n\n");
         // round one
-        String onto_path      = semente;
-        String instance_path  = dir + "OntoPianismIndividuals.B.ttl" ;
-        String print_path = dir + "round1.ttl";
+
+
+        runComparator(onto_path, instance_path, print_path, 1);
         
-      /// runComparator(onto_path, instance_path, print_path, 1);
-        
-        System.out.println("\n\n===========================================================");
-        System.out.println("\n\n\tComeça segundo round: round1 + hasRunningAverage");
-        System.out.println("\n\n===========================================================\n\n");
-//        // round two
-        onto_path      =  print_path;
-        instance_path  =  dir+ "OntoPianismIndividuals.C.ttl" ;
-        print_path     =  dir + "round2.ttl";
-        
-    //   runComparator(onto_path, instance_path, print_path, 2);
+//        System.out.println("\n\n===========================================================");
+//        System.out.println("\n\n\tComeça segundo round: round1 + hasRunningAverage");
+//        System.out.println("\n\n===========================================================\n\n");
+////        // round two
+//        onto_path      =  print_path;
+//        instance_path  =  dir+ "OntoPianismIndividuals.C.ttl" ;
+//        print_path     =  dir + "round2.ttl";
+//
+//      runComparator(onto_path, instance_path, print_path, 2);
 
-
-        System.out.println("\n\n===========================================================");
-        System.out.println("\n\n\tComeça terceiro round: round2 + hasSensorCorrelation + hasRunningAverage");
-        System.out.println("\n\n===========================================================\n\n");
-
-////        // round three
-        onto_path      = print_path;
-        instance_path  = "OntoProcessMapping/Teste2/OntoPianismIndividuals.D.ttl" ;
-       // onto_path      =  dir+ "round2_classes.ttl" ;
-        print_path     = dir + "round3.ttl";
-
-        runComparator(onto_path, instance_path, print_path, 3);
+//
+//        System.out.println("\n\n===========================================================");
+//        System.out.println("\n\n\tComeça terceiro round: round2 + hasSensorCorrelation + hasRunningAverage");
+//        System.out.println("\n\n===========================================================\n\n");
+//
+//////        // round three
+//        onto_path      = print_path;
+//        instance_path  = "OntoProcessMapping/Teste2/OntoPianismIndividuals.D.ttl" ;
+//       // onto_path      =  dir+ "round2_classes.ttl" ;
+//        print_path     = dir + "round3.ttl";
+//
+//        runComparator(onto_path, instance_path, print_path, 3);
     }
     
     

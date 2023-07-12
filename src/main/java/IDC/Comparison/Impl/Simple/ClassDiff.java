@@ -7,6 +7,7 @@ package IDC.Comparison.Impl.Simple;
 
 import IDC.Comparison.Interfaces.IClassDiff;
 import Utils.OntologyUtils;
+import Utils.SPARQLUtils;
 import Utils.Utilities;
 
 import java.util.ArrayList;
@@ -351,7 +352,7 @@ public class ClassDiff implements IClassDiff
                         || p_uri1.equalsIgnoreCase(OntologyUtils.BEFORE_P) || Utilities.isInIgnoreList(p_uri1))
                     continue;
 
-                if(!OntologyUtils.hasRestrictionSPARQL(ontClass2, r1))
+                if(!SPARQLUtils.hasRestrictionSPARQL(ontClass2, r1))
                     return false;
             }
             else

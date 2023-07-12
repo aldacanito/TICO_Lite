@@ -19,6 +19,7 @@ import IDC.Metrics.EntityMetricsStore;
 import IDC.Metrics.PropertyMetrics;
 import IDC.ModelManager;
 import Utils.OntologyUtils;
+import Utils.SPARQLUtils;
 import Utils.Utilities;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
+import jdk.jshell.execution.Util;
 import org.apache.jena.graph.Node;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.Literal;
@@ -53,9 +55,8 @@ public class ClassCompareShape implements IClassCompare
     public static EvolutionaryActionComposite run(EvolutionaryActionComposite composite)
     {
         ClassPropertyMetrics cpm = null;
-        
-        List<OntClass> ontClassList = ModelManager.getManager().getOriginalModel().listClasses().toList();
-        //List<OntClass> ontClassList = ModelManager.getManager().getEvolvingModel().listClasses().toList();
+
+        List<OntClass> ontClassList = SPARQLUtils.listOntClassesSPARQL(ModelManager.getManager().getOriginalModel());
 
         for(OntClass cls : ontClassList)
         {
@@ -86,8 +87,8 @@ public class ClassCompareShape implements IClassCompare
     {
         //Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
 
-        Map<String, RDFNode> property_URIs    = OntologyUtils.listPropertiesSPARQL(instance);
-        List<OntClass> ontClassList           = OntologyUtils.listOntClassesSPARQL(instance);
+        Map<String, RDFNode> property_URIs    = SPARQLUtils.listPropertiesSPARQL(instance);
+        List<OntClass> ontClassList           = SPARQLUtils.listOntClassesSPARQL(instance);
         EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
 
         if(ontClassList==null)
@@ -127,7 +128,29 @@ public class ClassCompareShape implements IClassCompare
                     RDFNode object_node = property_URIs.get(predicateURI);
 
                     if(object_node.isResource())
-                        cpm.addObjProperty(predicateURI, object_node.asResource().getURI());
+                    {
+                        if(object_node.canAs(OntClass.class)) // range is a class
+                            cpm.addObjProperty(predicateURI, object_node.asResource().getURI());
+                        else
+                        {
+                            Individual individual         = cls.getOntModel().getIndividual(object_node.asResource().getURI());
+                            List<OntClass> listOntClasses = individual.listOntClasses(false).toList();
+
+                            boolean didIt = false;
+                            for(OntClass sCls : listOntClasses)
+                            {
+                                if(!Utilities.isInIgnoreList(sCls.getURI()))
+                                {
+                                    cpm.addObjProperty(predicateURI, sCls.getURI());
+                                    didIt = true;
+                                }
+                            }
+
+                            if(!didIt)
+                                cpm.addObjProperty(predicateURI, OntologyUtils.OWL_THING);
+                        }
+
+                    }
                     else if(object_node.isLiteral())
                         cpm.addDtProperty(predicateURI, object_node.asLiteral().getDatatypeURI());
 
@@ -135,9 +158,6 @@ public class ClassCompareShape implements IClassCompare
                     count++;
 
                     repeated.put(predicateURI, count);
-
-
-
                 }
 
             for(String predicateURI : repeated.keySet())
@@ -249,7 +269,7 @@ public class ClassCompareShape implements IClassCompare
                         
                         if(individual!=null)
                         {
-                            List<OntClass> rangesL = OntologyUtils.listOntClassesSPARQL(individual);
+                            List<OntClass> rangesL = SPARQLUtils.listOntClassesSPARQL(individual);
 
                            for(OntClass r : rangesL)
                            {
@@ -312,7 +332,7 @@ public class ClassCompareShape implements IClassCompare
 
                         if(individual!=null)
                         {
-                            List<OntClass> rangesL = OntologyUtils.listOntClassesSPARQL(individual);
+                            List<OntClass> rangesL = SPARQLUtils.listOntClassesSPARQL(individual);
 
                             for(OntClass r : rangesL)
                            {
@@ -437,11 +457,6 @@ public class ClassCompareShape implements IClassCompare
     }
 
 
-
-
-
-
-
     private EvolutionaryAction compareJENA()
     {
         //Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
@@ -466,8 +481,7 @@ public class ClassCompareShape implements IClassCompare
             if(Utilities.isInIgnoreList(classURI) || classURI == null)
                 continue;
 
-            cpm = EntityMetricsStore.getStore()
-                    .getMetricsByClassURI(classURI);
+            cpm = EntityMetricsStore.getStore().getMetricsByClassURI(classURI);
 
             // get before e after da classe se existirem, senao deixa os individuals a null
 
@@ -535,8 +549,7 @@ public class ClassCompareShape implements IClassCompare
             if(Utilities.isInIgnoreList(classURI))
                 continue;
 
-            cpm = EntityMetricsStore.getStore()
-                    .getMetricsByClassURI(classURI);
+            cpm = EntityMetricsStore.getStore().getMetricsByClassURI(classURI);
 
             if(cpm==null)
                 cpm = new ClassPropertyMetrics(cls, null);
