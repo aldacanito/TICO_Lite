@@ -67,16 +67,25 @@ public class EntityMetricsStore
                 this.individualMetrics.add(im);
         }
     }
+
+
+
     
     public ClassPropertyMetrics getMetricsByClassURI(String classURI)
     {
         ClassPropertyMetrics ret = null;
+
         for(ClassPropertyMetrics cpm : this.theMetrics)
         {
             if(cpm.getURI().equalsIgnoreCase(classURI))
-                return cpm;
+            {
+               ret = cpm; break;
+            }
         }
-    
+
+        if(ret == null)
+            ret = new ClassPropertyMetrics(classURI);
+
         //Utilities.logInfo("Class Metrics for URI " + classURI + " are not in the Store.");
         return ret;
     }

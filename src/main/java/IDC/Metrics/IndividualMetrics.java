@@ -57,7 +57,7 @@ public class IndividualMetrics
         for(String property_uri : properties.keySet())
         {
             RDFNode object_node     = properties.get(property_uri);
-            PropertyMetrics pm = new PropertyMetrics(property_uri);
+            PropertyMetrics pm      = new PropertyMetrics(property_uri);
 
             pm.addDomains(this.ontClasses);
 
@@ -65,17 +65,27 @@ public class IndividualMetrics
             {
                 if(object_node.canAs(OntClass.class)) // range is a class
                     this.addObjProperty(property_uri, object_node.asResource().getURI());
-                else
+                else // range is an individual
                 {
                     boolean didIt = false;
-                    for(OntClass sCls : this.ontClasses)
-                    {
-                        if(!Utilities.isInIgnoreList(sCls.getURI()))
-                        {
-                            this.addObjProperty(property_uri, sCls.getURI());
-                            didIt = true;
+
+                    try {
+                        String object_uri = object_node.asResource().getURI();
+                        Individual i = this.individual.getOntModel().getIndividual(object_uri);
+                        List<OntClass> i_classes = SPARQLUtils.listOntClassesSPARQL(i);
+
+                        for (OntClass sCls : i_classes) {
+                            if (!Utilities.isInIgnoreList(sCls.getURI())) {
+                                this.addObjProperty(property_uri, sCls.getURI());
+                                didIt = true;
+                                break;
+                            }
                         }
+                    } catch (Exception e)
+                    {
+                        System.out.println("Could not convert NODE to Individual.");
                     }
+
 
                     if(!didIt)
                         this.addObjProperty(property_uri, OntologyUtils.OWL_THING);

@@ -244,7 +244,12 @@ public class EvolutionaryActionComposite implements EvolutionaryAction
     {
         for(EvolutionaryAction action : actions)
         {
-            action.execute();
+            try {
+                action.execute();
+            }catch(Exception e)
+            {
+                System.out.println("Error executing Evolutionary Action. Reason: " + e.getMessage());
+            }
         }
     }
 

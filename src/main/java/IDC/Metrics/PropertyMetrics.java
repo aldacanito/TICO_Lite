@@ -160,7 +160,27 @@ public class PropertyMetrics
         return domains;
     }
     
-    
+
+    public int getDomainCount(String domainURI)
+    {
+        Map<String, Integer> domains1 = this.getDomains();
+
+        if(domains1.keySet().contains(domainURI))
+            return domains1.get(domainURI);
+
+        return 0;
+    }
+
+    public int getRangeCount(String rangeURI)
+    {
+        Map<String, Integer> r = this.getRanges();
+
+        if(r.keySet().contains(rangeURI))
+            return r.get(rangeURI);
+
+        return 0;
+    }
+
     
     
 }
