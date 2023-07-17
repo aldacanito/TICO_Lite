@@ -2,6 +2,8 @@ package IDC;
 
 import IDC.Comparison.Impl.Shape.ClassCompareShape;
 import IDC.Comparison.Impl.Simple.ClassDiff;
+import IDC.EvolActions.Impl.Additions.AddDatatypeProperty;
+import IDC.EvolActions.Impl.Additions.AddObjectProperty;
 import IDC.EvolActions.Impl.EvolutionaryActionComposite;
 import IDC.Comparison.Interfaces.IClassCompare;
 import IDC.Comparison.Interfaces.IPropertyCompare;
@@ -22,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.util.iterator.ExtendedIterator;
@@ -62,8 +65,6 @@ public class Comparator
                 Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
                 List<OntClass> listOntClasses = SPARQLUtils.listOntClassesSPARQL(individual);
 
-                //System.out.println("\t> " + uri);
-
                 for (OntClass cls : listOntClasses)
                 {
                     //TODO check anonymous classes!!!!
@@ -84,6 +85,53 @@ public class Comparator
                 System.out.println("Exception handling individuals list. Reason: " + e.getMessage());
             }
         }
+    }
+
+    public void checkForOntProperties(List<String> individuals_uris)
+    {
+        for(String uri : individuals_uris)
+        {
+            try
+            {
+                Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
+                List<Pair<String, RDFNode>> pairs = SPARQLUtils.listPropertiesSPARQL(individual);
+
+                for(Pair<String, RDFNode> pair : pairs)
+                {
+                    RDFNode object_node = pair.getRight();
+                    String property_uri = pair.getLeft();
+
+                    if(Utilities.isInIgnoreList(property_uri)) continue;
+
+                    OntProperty oP  = ModelManager.getManager().getEvolvingModel().getOntProperty(pair.getLeft());
+
+                    if(oP==null) // needs to copy the property
+                    {
+
+                        if(object_node.isLiteral())
+                        {
+                            AddDatatypeProperty adt = new AddDatatypeProperty(property_uri);
+                            adt.execute();
+                        }
+                        else
+                        {
+                            if(object_node.isResource())
+                            {
+                            AddObjectProperty aop = new AddObjectProperty(property_uri);
+                            aop.execute();
+
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                System.out.println("Exception handling individuals list. Reason: " + e.getMessage());
+            }
+        }
+
+
     }
 
     /**
@@ -214,6 +262,7 @@ public class Comparator
         for(List<String> partition : partitions)
         {
             checkNewClasses(partition);
+            checkForOntProperties(partition);
             copyIndividualsToEvolvedModel(partition);
             getIndividualsMetrics(partition);
             //  cleanUnclearClasses(evolvedModel, partition);

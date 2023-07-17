@@ -19,8 +19,8 @@ public class BasicEvolvingTest
     public static void main(String[] args)
     {
         Configs configs = new Configs();
-//        setupRound1();
-//        runComparator("r1");
+        setupRound1();
+        runComparator("r1");
 
         setupRound2();
         runComparator("r2");
