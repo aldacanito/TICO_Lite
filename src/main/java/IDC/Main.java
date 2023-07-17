@@ -95,8 +95,7 @@ public class Main
 //
 //        runComparator(onto_path, instance_path, print_path, 3);
     }
-    
-    
+
     public static void testArmando()
     {
         Configs.functional_threshold     = 50;

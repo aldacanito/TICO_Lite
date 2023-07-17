@@ -3,6 +3,7 @@ package IDC.Metrics;
 import Utils.OntologyUtils;
 import Utils.SPARQLUtils;
 import Utils.Utilities;
+import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.rdf.model.RDFNode;
@@ -28,10 +29,7 @@ public class IndividualMetrics
     {
         return this.individual;
     }
-    public void addPropertyMetric(PropertyMetrics pm)
-    {
-        this.propertyMetrics.add(pm);
-    }
+
 
     public List<PropertyMetrics> getAllPropertyMetrics()
     {
@@ -52,25 +50,31 @@ public class IndividualMetrics
 
     private void metrify()
     {
-        Map<String, RDFNode> properties = SPARQLUtils.listPropertiesSPARQL(this.individual);
+        List<Pair<String, RDFNode>> properties = SPARQLUtils.listPropertiesSPARQL(this.individual, false);
 
-        for(String property_uri : properties.keySet())
+        for(Pair<String, RDFNode> tuple : properties)
         {
-            RDFNode object_node     = properties.get(property_uri);
+            String property_uri     = tuple.getLeft();
+            RDFNode object_node     = tuple.getRight();
             PropertyMetrics pm      = new PropertyMetrics(property_uri);
 
             pm.addDomains(this.ontClasses);
+            //this.addPropertyMetric(pm);
 
             if(object_node.isResource())
             {
-                if(object_node.canAs(OntClass.class)) // range is a class
+                String object_uri = object_node.asResource().getURI();
+
+                OntClass pot = this.individual.getOntModel().getOntClass(object_uri);
+
+                if(pot!=null) // range is a class
                     this.addObjProperty(property_uri, object_node.asResource().getURI());
                 else // range is an individual
                 {
                     boolean didIt = false;
 
                     try {
-                        String object_uri = object_node.asResource().getURI();
+
                         Individual i = this.individual.getOntModel().getIndividual(object_uri);
                         List<OntClass> i_classes = SPARQLUtils.listOntClassesSPARQL(i);
 
@@ -102,6 +106,30 @@ public class IndividualMetrics
 
     }
 
+    private void addPropertyMetric(PropertyMetrics new_pm)
+    {
+        String pm_uri = new_pm.getURI();
+        boolean added = false;
+
+        for(PropertyMetrics pm : this.getAllPropertyMetrics())
+        {
+            if(pm.getURI().equalsIgnoreCase(pm_uri))
+            {
+                pm.setCount(pm.getCount() + new_pm.getCount());
+
+                pm.copyDomains(new_pm.getDomains());
+                pm.copyRanges (new_pm.getRanges ());
+
+                added = true;
+                break;
+            }
+        }
+
+        if(!added)
+        {
+            this.propertyMetrics.add(new_pm);
+        }
+    }
 
     public void addObjProperty(String newPropertyURI, String rangeURI)
     {
@@ -118,6 +146,10 @@ public class IndividualMetrics
                 containsPM = true;
                 pm.addRange(rangeURI);
                 pm.addDomains(this.ontClasses);
+
+                count = pm.getCount();
+                count++;
+                pm.setCount(count);
             }
         }
 
@@ -126,7 +158,9 @@ public class IndividualMetrics
             PropertyMetrics pm = new PropertyMetrics(newPropertyURI);
             pm.addDomains(this.ontClasses);
             pm.addRange(rangeURI);
-            this.getAllPropertyMetrics().add(pm);
+            pm.setCount(1);
+            addPropertyMetric(pm);
+
         }
 
     }
@@ -148,6 +182,10 @@ public class IndividualMetrics
                 containsPM = true;
                 pm.addRange(rangeType);
                 pm.addDomains(this.ontClasses);
+
+                count = pm.getCount();
+                count++;
+                pm.setCount(count);
             }
         }
 
@@ -156,7 +194,7 @@ public class IndividualMetrics
             PropertyMetrics pm = new PropertyMetrics(newPropertyURI);
             pm.addDomains(this.ontClasses);
             pm.addRange(rangeType);
-            this.getAllPropertyMetrics().add(pm);
+            addPropertyMetric(pm);
         }
     }
 

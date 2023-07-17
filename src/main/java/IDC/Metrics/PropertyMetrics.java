@@ -117,16 +117,52 @@ public class PropertyMetrics
         }
     }
 
-    public void addDomains(List<OntClass> domains)
+    public void copyRanges(Map<String, Integer> ranges)
     {
-        for (OntClass d : domains)
-            this.addDomain(d);
+        for(String d_uri : ranges.keySet())
+        {
+            int new_count = ranges.get(d_uri);
+
+            if(this.ranges.containsKey(d_uri))
+            {
+                int old_count = this.ranges.get(d_uri);
+                this.ranges.put(d_uri, new_count + old_count);
+            }
+            else
+            {
+                this.ranges.put(d_uri, new_count);
+            }
+        }
+    }
+    public void copyDomains(Map<String, Integer> domains)
+    {
+        for(String d_uri : domains.keySet())
+        {
+            int new_count = domains.get(d_uri);
+
+            if(this.domains.containsKey(d_uri))
+            {
+                int old_count = this.domains.get(d_uri);
+                this.domains.put(d_uri, new_count + old_count);
+            }
+            else
+            {
+                this.domains.put(d_uri, new_count);
+            }
+        }
     }
 
     public void addDomain(OntClass domain)
     {
         if(domain.isURIResource())
            this.addDomain(domain.getURI());
+    }
+
+
+    public void addDomains(List<OntClass> domains)
+    {
+        for (OntClass d : domains)
+            this.addDomain(d);
     }
     
     public void addMention()
@@ -146,6 +182,10 @@ public class PropertyMetrics
         return count;
     }
 
+    public void setCount(int i)
+    {
+        this.count = i;
+    }
     /**
      * @return the ranges
      */

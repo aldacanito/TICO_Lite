@@ -51,7 +51,6 @@ public class ClassCompareShape implements IClassCompare
     }
     
 
-    
     public static EvolutionaryActionComposite run(EvolutionaryActionComposite composite)
     {
         ClassPropertyMetrics cpm = null;
@@ -85,7 +84,7 @@ public class ClassCompareShape implements IClassCompare
     {
         //Utilities.logInfo("ANALYSING INDIVIDUAL " + instance.getURI() + "...");
 
-        Map<String, RDFNode> property_URIs    = SPARQLUtils.listPropertiesSPARQL(instance);
+        //Map<String, RDFNode> property_URIs    = SPARQLUtils.listPropertiesSPARQL(instance);
         List<OntClass> ontClassList           = SPARQLUtils.listOntClassesSPARQL(instance);
         EvolutionaryActionComposite composite = new EvolutionaryActionComposite();
 

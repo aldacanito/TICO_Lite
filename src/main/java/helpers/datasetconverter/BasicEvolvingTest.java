@@ -19,8 +19,8 @@ public class BasicEvolvingTest
     public static void main(String[] args)
     {
         Configs configs = new Configs();
-        setupRound1();
-        runComparator("r1");
+//        setupRound1();
+//        runComparator("r1");
 
         setupRound2();
         runComparator("r2");
@@ -60,11 +60,21 @@ public class BasicEvolvingTest
         DatatypeProperty dtProperty2 = theModel.createDatatypeProperty(prefix + "DatatypeProperty2", false);
         Literal l2 = theModel.createTypedLiteral(2);
         Literal l3 = theModel.createTypedLiteral(3);
-
+        Literal l4 = theModel.createTypedLiteral(4);
 
         i1.addLiteral(dtProperty2, l2);
+
         i2.addLiteral(dtProperty2, l2);
+        i2.addLiteral(dtProperty2, l3);
+
+        i3.addLiteral(dtProperty2, l2);
         i3.addLiteral(dtProperty2, l3);
+        i3.addLiteral(dtProperty2, l4);
+
+//        i1.addLiteral(dtProperty2, l2);
+//        i2.addLiteral(dtProperty2, l2);
+//        i3.addLiteral(dtProperty2, l3);
+//        i3.addLiteral(dtProperty2, l4);
 
         return theModel;
     }
@@ -88,9 +98,16 @@ public class BasicEvolvingTest
         ObjectProperty obProperty3 = theModel.createObjectProperty(prefix + "ObjectProperty3", false);
 
         i1.addProperty(obProperty3, cls4);
+
         i2.addProperty(obProperty3, cls4);
+        i2.addProperty(obProperty2, cls3);
+        i2.addProperty(obProperty2, cls2);
+
+
         i3.addProperty(obProperty2, cls3);
+
         i4.addProperty(obProperty3, cls3);
+        i4.addProperty(obProperty3, cls4);
 
         return theModel;
     }

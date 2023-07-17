@@ -6,6 +6,7 @@ import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.*;
 
@@ -400,23 +401,28 @@ public class SPARQLUtils
      * @param i the Individual whose OntProperties we're looking for
      * @return Map of Property URI and RDFNODE value
      */
-    public static Map<String, RDFNode> listPropertiesSPARQL(Individual i)
+    public static List<Pair<String, RDFNode>> listPropertiesSPARQL(Individual i, boolean distinct)
     {
         String individual_uri               = i.getURI();
         OntModel model                      = i.getOntModel();
-        Map<String, RDFNode> property_uris  = new HashMap<>();
+//        Map<String, RDFNode> property_uris  = new HashMap<>();
+
+        List<Pair<String, RDFNode>> property_uris = new ArrayList<>();
 
         //System.out.println("==SPARQL Listing individual "+ individual_uri+"'s properties in the Model.==\n");
 
-        Query query = QueryFactory.create
-                (
-                        "SELECT DISTINCT " +
-                                "?prop ?obj " +
-                                " WHERE " +
-                                "{" +
-                                "<"+ individual_uri + "> ?prop ?obj. " +
-                                "}"
-                );
+        String query_String =  "SELECT ";
+
+        if(distinct)
+            query_String += "DISTINCT ";
+
+        query_String+= "?prop ?obj " +
+                " WHERE " +
+                "{" +
+                "<"+ individual_uri + "> ?prop ?obj. " +
+                "}";
+
+        Query query = QueryFactory.create(query_String);
 
         try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
         {
@@ -435,7 +441,8 @@ public class SPARQLUtils
                             continue;
 
                         Property p = model.getOntProperty(prop);
-                        property_uris.put(prop, obj_node);
+                        Pair<String, RDFNode> pap = Pair.of(prop, obj_node);
+                        property_uris.add(pap);
                     }
                     catch(Exception e)
                     {
@@ -448,6 +455,12 @@ public class SPARQLUtils
         //System.out.println("\t\t== SPARQL Listing Properties for individual "+ individual_uri+". Count: "+ property_uris.size()+" ==\n");
 
         return property_uris;
+    }
+
+
+    public static List<Pair<String, RDFNode>> listPropertiesSPARQL(Individual i)
+    {
+        return listPropertiesSPARQL(i, true);
     }
 
 

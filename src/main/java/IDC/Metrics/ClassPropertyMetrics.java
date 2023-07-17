@@ -114,7 +114,7 @@ public class ClassPropertyMetrics extends EntityMetrics
 
     public int propertyMinMentionsPerIndividual(String propertyURI)
     {
-        int count = 0;
+        int count = Integer.MAX_VALUE;
 
         for(IndividualMetrics im : this.individualMetrics)
         {
