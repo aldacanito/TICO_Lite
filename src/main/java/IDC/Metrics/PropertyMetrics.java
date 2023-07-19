@@ -22,7 +22,9 @@ public class PropertyMetrics
     protected String URI;
     private Map<String, Integer> ranges;
     private Map<String, Integer> domains;
-    
+
+    boolean isSymmetric = false;
+
     public PropertyMetrics(String URI)
     {
         count        = 1;
@@ -31,7 +33,10 @@ public class PropertyMetrics
         this.domains = new HashMap<>();
     }
     
-    
+
+
+
+
     @Override
     public String toString()
     {

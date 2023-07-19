@@ -169,6 +169,36 @@ public class SPARQLUtils
     }
 
 
+    public static boolean testSymmetrySPARQL(Individual individual, String propertyURI)
+    {
+        boolean isSymmetric     = false;
+        OntModel model          = individual.getOntModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT " +
+                                " ?obj \n" +
+                                " WHERE \n" +
+                                "  { <" + individualURI + "> <" + propertyURI + "> ?obj . " +
+                                "    ?obj <" + propertyURI + "> <" + individualURI + ">  ." +
+                                "  } \n"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+            isSymmetric         = results.hasNext();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+
+        return isSymmetric;
+    }
+
 
 
     public static List<OntClass> getTimeSlicesSPARQL(OntClass ontClass)

@@ -291,6 +291,50 @@ public class ClassPropertyMetrics extends EntityMetrics
     }
 
 
+    public float getPropertyReflexiveRatio(String propertyURI)
+    {
+
+        List<String> ranges     = getAllRangesOfProperty(propertyURI);
+        List<String> domains    = getAllDomainsOfProperty(propertyURI);
+
+        int mentions            = getPropertyMentions(propertyURI);
+        int count               = 0;
+        float ratio             = 0;
+
+        for(String range : ranges)
+        {
+            if(domains.contains(range))
+                count++;
+        }
+
+        if(mentions!=0)
+            ratio = (float) count / mentions;
+
+        return ratio;
+    }
+
+    public float getPropertyIrreflexiveRatio(String propertyURI)
+    {
+        List<String> ranges     = getAllRangesOfProperty(propertyURI);
+        List<String> domains    = getAllDomainsOfProperty(propertyURI);
+
+        int mentions            = getPropertyMentions(propertyURI);
+        int count               = 0;
+        float ratio             = 0;
+
+        for(String range : ranges)
+        {
+            if(!domains.contains(range))
+                count++;
+        }
+
+        if(mentions!=0)
+            ratio = (float) count / mentions;
+
+        return ratio;
+    }
+
+
     public List<String> getAllDatatypePropertiesURIs()
     {
         OntModel model = this.ontClass.getOntModel();
@@ -389,6 +433,9 @@ public class ClassPropertyMetrics extends EntityMetrics
     public List<IndividualMetrics> getIndividualMetrics() {
         return individualMetrics;
     }
+
+
+
 
 
     /**

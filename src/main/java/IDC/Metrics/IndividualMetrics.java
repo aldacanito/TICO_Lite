@@ -48,6 +48,11 @@ public class IndividualMetrics
     }
 
 
+    public boolean isSymmetric(String propertyURI)
+    {
+        return SPARQLUtils.testSymmetrySPARQL(this.individual, propertyURI);
+    }
+
     private void metrify()
     {
         List<Pair<String, RDFNode>> properties = SPARQLUtils.listPropertiesSPARQL(this.individual, false);
