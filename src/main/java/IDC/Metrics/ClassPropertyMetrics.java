@@ -3,6 +3,7 @@ package IDC.Metrics;
 
 import java.util.*;
 
+import Utils.SPARQLUtils;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.*;
@@ -61,7 +62,14 @@ public class ClassPropertyMetrics extends EntityMetrics
 
         for(String p_uri : properties)
         {
-            print += ("\n\t\t>> Property URI: " + p_uri );
+            String type = "Object Property";
+            OntProperty p = this.ontClass.getOntModel().getOntProperty(p_uri);
+
+            if(p.isDatatypeProperty())
+                type = "Datatype Property";
+
+
+            print += ("\n\t\t>> URI " + p_uri + " is a " + type );
 
             print += ("\n\t\t\t>> Total Mentions: "                              + this.getPropertyMentions(p_uri)
                                     + "\n\t\t\t>> Distinct Mentions: "           + this.getDistinctPropertyMentions(p_uri)
@@ -71,7 +79,20 @@ public class ClassPropertyMetrics extends EntityMetrics
                                     + "\n\t\t\t>> AVG Mentions per Individual: " + this.propertyAvgMentionsPerIndividual(p_uri)
             );
 
-            print += ("\n\t\t\t> Is Functional? " + this.isFunctionalCandidate(p_uri));
+            print += ("\n\t\t\t>> Is Functional? " + this.isFunctionalCandidate(p_uri));
+
+
+            if(!p.isDatatypeProperty())
+            {
+                print += ("\n\t\t\t>> Reflexiviness > count: "   + this.getPropertyReflexiveCount(p_uri)     + " > ratio: " + this.getPropertyReflexiveRatio(p_uri));
+                print += ("\n\t\t\t>> Irreflexiviness > count: " + this.getPropertyIrreflexiveCount(p_uri)   + " > ratio: " + this.getPropertyIrreflexiveRatio(p_uri));
+                print += ("\n\t\t\t>> Symmetry > count: "        + this.getPropertySymmetryCount(p_uri)      + " > ratio: " + this.getPropertySymmetryRatio(p_uri));
+                print += ("\n\t\t\t>> Transtiviness:"
+                        + "\n\t\t\t\t> 2 level count: "        + this.getPropertyTransitiveCount(p_uri, 2)      + " > ratio: " + this.getPropertyTransitiveRatio(p_uri, 2)
+                        + "\n\t\t\t\t> 3 level count: "        + this.getPropertyTransitiveCount(p_uri, 3)      + " > ratio: " + this.getPropertyTransitiveRatio(p_uri, 3)
+                );
+
+            }
 
             print += ("\n\t\t\t>> Domains:" );
             for(String d_uri : this.getAllDomainsOfProperty(p_uri))
@@ -264,6 +285,35 @@ public class ClassPropertyMetrics extends EntityMetrics
         return new ArrayList<>(domains);
     }
 
+
+    public int getPropertySymmetryCount(String propertyURI)
+    {
+        int count = 0;
+
+        for(IndividualMetrics im : this.individualMetrics)
+        {
+            Individual i = im.getIndividual();
+            boolean isSymmetric = SPARQLUtils.testSymmetrySPARQL(i, propertyURI);
+
+            if (isSymmetric)
+                count++;
+        }
+
+        return count;
+    }
+
+    public float getPropertySymmetryRatio(String propertyURI)
+    {
+        float symmetryRatio    = 0;
+        int symmetricCount     = this.getPropertySymmetryCount(propertyURI);
+        int propertyMentions   = getDistinctPropertyMentions(propertyURI);
+
+        if(propertyMentions > 0)
+            symmetryRatio = (float) symmetricCount / (float) propertyMentions;
+
+        return symmetryRatio;
+    }
+
     public List<String> getAllRangesOfProperty(String propertyURI)
     {
         Set<String> ranges = new TreeSet(String.CASE_INSENSITIVE_ORDER);
@@ -275,6 +325,7 @@ public class ClassPropertyMetrics extends EntityMetrics
         }
         return new ArrayList<>(ranges);
     }
+
     public int getDistinctPropertyMentions(String propertyURI)
     {
         int count = 0;
@@ -293,19 +344,37 @@ public class ClassPropertyMetrics extends EntityMetrics
 
     public float getPropertyReflexiveRatio(String propertyURI)
     {
+        float ratio             = 0;
+        int count               = getPropertyReflexiveCount(propertyURI);
+        List<String> ranges     = getAllRangesOfProperty(propertyURI);
+        int totalR              = ranges.size();
+
+        if(totalR!=0)
+            ratio = (float) count / (float) totalR;
+
+        return ratio;
+    }
+
+    public int getPropertyReflexiveCount(String propertyURI)
+    {
+        int count = 0;
 
         List<String> ranges     = getAllRangesOfProperty(propertyURI);
         List<String> domains    = getAllDomainsOfProperty(propertyURI);
 
-        int mentions            = getPropertyMentions(propertyURI);
-        int count               = 0;
-        float ratio             = 0;
-
         for(String range : ranges)
-        {
             if(domains.contains(range))
                 count++;
-        }
+
+        return count;
+    }
+
+
+    public float getPropertyTransitiveRatio(String propertyURI, int levels)
+    {
+        int mentions            = getPropertyMentions(propertyURI);
+        int count               = getPropertyTransitiveCount(propertyURI, levels);
+        float ratio             = 0;
 
         if(mentions!=0)
             ratio = (float) count / mentions;
@@ -313,23 +382,46 @@ public class ClassPropertyMetrics extends EntityMetrics
         return ratio;
     }
 
-    public float getPropertyIrreflexiveRatio(String propertyURI)
+    public int getPropertyTransitiveCount(String propertyURI, int levels)
     {
-        List<String> ranges     = getAllRangesOfProperty(propertyURI);
-        List<String> domains    = getAllDomainsOfProperty(propertyURI);
+        int count = 0;
 
-        int mentions            = getPropertyMentions(propertyURI);
-        int count               = 0;
-        float ratio             = 0;
-
-        for(String range : ranges)
+        for(IndividualMetrics im : this.individualMetrics)
         {
-            if(!domains.contains(range))
+            Individual i = im.getIndividual();
+            if (SPARQLUtils.testTransitivenessSPARQL(i, propertyURI, levels))
                 count++;
         }
 
-        if(mentions!=0)
-            ratio = (float) count / mentions;
+        return count;
+    }
+
+    public int getPropertyIrreflexiveCount(String propertyURI)
+    {
+        List<String> ranges     = getAllRangesOfProperty(propertyURI);
+        List<String> domains    = getAllDomainsOfProperty(propertyURI);
+        int count               = 0;
+
+        for(String range : ranges)
+            if(!domains.contains(range))
+                count++;
+
+
+        return count;
+
+    }
+
+    public float getPropertyIrreflexiveRatio(String propertyURI)
+    {
+        int mentions            = getPropertyMentions(propertyURI);
+        int count               = getPropertyIrreflexiveCount(propertyURI);
+        float ratio             = 0;
+
+        List<String> ranges     = getAllRangesOfProperty(propertyURI);
+        int totalR              = ranges.size();
+
+        if(totalR!=0)
+            ratio = (float) count / (float) totalR;
 
         return ratio;
     }

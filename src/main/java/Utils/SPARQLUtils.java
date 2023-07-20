@@ -180,8 +180,8 @@ public class SPARQLUtils
                         "SELECT " +
                                 " ?obj \n" +
                                 " WHERE \n" +
-                                "  { <" + individualURI + "> <" + propertyURI + "> ?obj . " +
-                                "    ?obj <" + propertyURI + "> <" + individualURI + ">  ." +
+                                "  { <"+individualURI+"> <" + propertyURI + "> ?obj . " +
+                                "    ?obj <" + propertyURI + "> <"+individualURI+">  . " +
                                 "  } \n"
                 );
 
@@ -195,10 +195,79 @@ public class SPARQLUtils
             System.out.println("Error testing symmetry. Reason: " + e.getMessage());
         }
 
-
         return isSymmetric;
     }
 
+
+    public static boolean testTransitivenessSPARQL(Individual individual, String propertyURI, int levels)
+    {
+        if(levels == 0 )
+            levels = 1;
+
+        boolean isTransitive    = false;
+        OntModel model          = individual.getOntModel();
+        String individualURI    = individual.getURI();
+
+        String queryString =
+                "SELECT DISTINCT ?obj1 " ;
+
+        for(int i = 2; i <=levels+1; i++)
+            queryString+= " ?obj"+ i ;
+
+        queryString += "\n WHERE \n" +
+                "  { <" + individualURI + "> <" + propertyURI + "> ?obj1 . \n";
+
+        for(int i = 1; i <=levels; i++)
+        {
+            int i2 = i+1;
+            queryString+= " ?obj"+ i + " <" + propertyURI + "> ?obj" + i2+ "  . \n" ;
+        }
+
+        queryString+= " } \n";
+
+        Query query = QueryFactory.create(queryString);
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            List<String> theResURIS = new ArrayList<String>();
+            ResultSet results   = qexec.execSelect();
+            while(results.hasNext())
+            {
+                QuerySolution querySolution = results.nextSolution();
+
+                for(int i = 1; i <= levels+1; i++)
+                {
+                    String resN = "obj" + i;
+                    Resource r1 = querySolution.getResource(resN);
+                    theResURIS.add(r1.getURI());
+                }
+
+                boolean validAnswer = true;
+                for (int i = 0; i < theResURIS.size(); i++)
+                {
+                    for (int j = i+1; j < theResURIS.size(); j++)
+                    {
+                        if(theResURIS.get(i).equalsIgnoreCase(theResURIS.get(j)))
+                        {
+                            validAnswer = false;
+                            break;
+                        }
+                    }
+                    if(!validAnswer) break;
+                }
+
+                if(!validAnswer) continue;
+                else isTransitive = true;
+            }
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing transitiveness. Reason: " + e.getMessage());
+        }
+
+        return isTransitive;
+    }
 
 
     public static List<OntClass> getTimeSlicesSPARQL(OntClass ontClass)
