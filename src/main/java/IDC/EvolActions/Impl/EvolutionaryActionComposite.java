@@ -14,7 +14,6 @@ import IDC.EvolActions.Impl.Additions.Restriction.AddCardinalityRestriction;
 import IDC.EvolActions.Impl.Additions.Restriction.AddRestriction;
 import IDC.EvolActions.Impl.Additions.Restriction.AddSomeValuesFromRestriction;
 import IDC.EvolActions.Interfaces.EvolutionaryAction;
-import IDC.Metrics.ExecutionHistory;
 import org.apache.jena.ontology.AllValuesFromRestriction;
 
 import java.sql.ClientInfoStatus;

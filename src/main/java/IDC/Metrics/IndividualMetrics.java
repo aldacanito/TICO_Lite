@@ -16,12 +16,15 @@ public class IndividualMetrics
     List<OntClass> ontClasses;
     //USE URI
     private List<PropertyMetrics> propertyMetrics;
+    private List<String> propertyURIs;
 
     public IndividualMetrics(Individual i)
     {
         this.individual = i;
         this.ontClasses = SPARQLUtils.listOntClassesSPARQL(i);
+        //this.propertyMetrics = EntityMetricsStore.getStore().getPropertyMetrics();
         this.propertyMetrics = new ArrayList<>();
+        this.propertyURIs = new ArrayList<>();
         this.metrify();
     }
 
@@ -53,6 +56,16 @@ public class IndividualMetrics
         return SPARQLUtils.testSymmetrySPARQL(this.individual, propertyURI);
     }
 
+    public boolean hasProperty(String propertyURI)
+    {
+         return this.propertyURIs.contains(propertyURI);
+    }
+
+    public List<String> getProperties()
+    {
+        return this.propertyURIs;
+    }
+
     private void metrify()
     {
         List<Pair<String, RDFNode>> properties = SPARQLUtils.listPropertiesSPARQL(this.individual, false);
@@ -62,6 +75,8 @@ public class IndividualMetrics
             String property_uri     = tuple.getLeft();
             RDFNode object_node     = tuple.getRight();
             PropertyMetrics pm      = new PropertyMetrics(property_uri);
+
+            this.propertyURIs.add(property_uri);
 
             pm.addDomains(this.ontClasses);
             //this.addPropertyMetric(pm);
@@ -106,11 +121,16 @@ public class IndividualMetrics
 
             // todo finish metrifying
 
+
+
+
             this.propertyMetrics.add(pm);
         }
 
     }
 
+
+    // todo it's here actually
     private void addPropertyMetric(PropertyMetrics new_pm)
     {
         String pm_uri = new_pm.getURI();
@@ -136,6 +156,9 @@ public class IndividualMetrics
         }
     }
 
+
+
+    // todo metrificar!!!! aqui!!!
     public void addObjProperty(String newPropertyURI, String rangeURI)
     {
         int count = 1;
@@ -171,7 +194,7 @@ public class IndividualMetrics
     }
 
 
-
+// todo metrificar
     public void addDtProperty(String newPropertyURI, String rangeType)
     {
         int count = 1;

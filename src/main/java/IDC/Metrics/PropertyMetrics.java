@@ -7,23 +7,21 @@ package IDC.Metrics;
 
 import org.apache.jena.ontology.OntClass;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
+import Utils.OntologyUtils;
 /**
  *
  * @author shizamura
  */
-public class PropertyMetrics
+public class                                                                                                                                                                                                                                                                                                                                                                                                                                    PropertyMetrics
 {
     private int count;
     protected String URI;
     private Map<String, Integer> ranges;
     private Map<String, Integer> domains;
 
-    boolean isSymmetric = false;
+    private List<ConstructorMetrics> constructors;
 
     public PropertyMetrics(String URI)
     {
@@ -31,10 +29,36 @@ public class PropertyMetrics
         this.URI     = URI;
         this.ranges  = new HashMap<>();
         this.domains = new HashMap<>();
+
+        this.constructors = new ArrayList<>();
+
+        //instantiate constructors
+
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_FUNCTIONAL));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_INVERSE_FUNCTIONAL));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_TRANSITIVE2));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_TRANSITIVE3));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_SYMMETRIC));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_ASYMMETRIC));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_REFLEXIVE));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_IRREFLEXIVE));
+
     }
     
 
+    public ConstructorMetrics getConstructorMetrics(String type)
+    {
+        for(ConstructorMetrics cm : this.constructors)
+            if(cm.getConstructorName().equalsIgnoreCase(type))
+                return cm;
 
+        return null;
+    }
+
+    public List<ConstructorMetrics> getConstructors()
+    {
+        return this.constructors;
+    }
 
 
     @Override

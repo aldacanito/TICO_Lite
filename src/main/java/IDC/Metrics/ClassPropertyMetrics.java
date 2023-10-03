@@ -3,7 +3,9 @@ package IDC.Metrics;
 
 import java.util.*;
 
+import Utils.OntologyUtils;
 import Utils.SPARQLUtils;
+import Utils.Utilities;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.*;
@@ -16,9 +18,10 @@ public class ClassPropertyMetrics extends EntityMetrics
     //USE URI
     private OntClass ontClass;
 
-    //private List<PropertyMetrics> propertyMetrics;
     private List<IndividualMetrics> individualMetrics;
     private Individual first_mention, last_mention;
+
+    private boolean metricsComputed = false;
     
     public ClassPropertyMetrics(String EntityURI)
     {
@@ -116,6 +119,66 @@ public class ClassPropertyMetrics extends EntityMetrics
     }
 
 
+    public void print()
+    {
+        String className = this.getURI();
+        String print = "";
+
+        List<String> properties = this.getAllProperties();
+
+        for(String p_uri : properties)
+        {
+            OntProperty p = this.ontClass.getOntModel().getOntProperty(p_uri);
+            String fileName = Utils.Utilities.writeHeader(className, p, p_uri);
+
+            String line = this.getPropertyMentions(p_uri)
+                    + ";" + this.getDistinctPropertyMentions(p_uri)
+                    + ";" + this.getPropertyRatio(p_uri)
+                    + ";" + this.propertyMaxMentionsPerIndividual(p_uri)
+                    + ";" + this.propertyMinMentionsPerIndividual(p_uri)
+                    + ";" + this.propertyAvgMentionsPerIndividual(p_uri);
+
+            line += (";" + this.isFunctionalCandidate(p_uri));
+
+
+            if(!p.isDatatypeProperty())
+            {
+                line += (";" + this.getPropertyReflexiveCount(p_uri)     + ";" + this.getPropertyReflexiveRatio(p_uri));
+                line += (";" + this.getPropertyIrreflexiveCount(p_uri)   + ";" + this.getPropertyIrreflexiveRatio(p_uri));
+                line += (";" + this.getPropertySymmetryCount(p_uri)      + ";" + this.getPropertySymmetryRatio(p_uri));
+                line += (";"        + this.getPropertyTransitiveCount(p_uri, 2) + ";" + this.getPropertyTransitiveRatio(p_uri, 2)
+                        + ";"        + this.getPropertyTransitiveCount(p_uri, 3)      + ";" + this.getPropertyTransitiveRatio(p_uri, 3)
+                );
+
+            }
+
+            Utils.Utilities.writeAnalyticsLine(fileName, line);
+
+            /**
+            print += ("\n\t\t\t>> Domains:" );
+            for(String d_uri : this.getAllDomainsOfProperty(p_uri))
+                print += ("\n\t\t\t\t> " + d_uri + " | frequency: " + this.propertyDomainRatio(p_uri, d_uri));
+
+            print += ("\n\t\t\t>> Ranges:" );
+            for(String r_uri : this.getAllRangesOfProperty(p_uri))
+                print += ("\n\t\t\t\t> " + r_uri + " | frequency: " + this.propertyRangeRatio(p_uri, r_uri));
+            **/
+        }
+
+        /**
+        Individual first = this.getFirstMention();
+        Individual last  = this.getLastMention();
+
+        if(first!=null) print += ("\n\t\t> First Mentioned on Individual: " + first.getURI());
+        if(last!=null)  print += ("\n\t\t> Last Mentioned on Individual: "  + last.getURI());
+
+        print += ("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
+        **/
+
+    }
+
+
+
     public int propertyMaxMentionsPerIndividual(String propertyURI)
     {
         int count = 0;
@@ -185,12 +248,189 @@ public class ClassPropertyMetrics extends EntityMetrics
         return functionalCandidate;
     }
 
-    
+
+    public String printComputations()
+    {
+        String ret = "===\nRetrieving Constructor Metrics...\n";
+
+        if(!metricsComputed)
+            computeAllMetrics();
+
+        Set<String> propertyURIs = new HashSet<>();
+
+        for(IndividualMetrics im : this.individualMetrics)
+            propertyURIs.addAll(im.getProperties());
+
+        for(String propertyURI : propertyURIs)
+        {
+            PropertyMetrics pm        = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+
+            ConstructorMetrics func   = pm.getConstructorMetrics(OntologyUtils.C_FUNCTIONAL);
+            ConstructorMetrics ref    = pm.getConstructorMetrics(OntologyUtils.C_REFLEXIVE);
+            ConstructorMetrics sym    = pm.getConstructorMetrics(OntologyUtils.C_SYMMETRIC);
+            ConstructorMetrics trans2 = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE2);
+            ConstructorMetrics trans3 = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE3);
+
+            ret += func.toString()   + "\n";
+            ret += ref.toString()    + "\n";
+            ret += sym.toString()    + "\n";
+            ret += trans2.toString() + "\n";
+            ret += trans3.toString() + "\n";
+
+        }
+
+        ret+="====\n";
+        return ret;
+    }
+
+
+
+    public void computeAllMetrics()
+    {
+        resetComputations();
+
+        Set<String> propertyURIs = new HashSet<>();
+
+        for(IndividualMetrics im : this.individualMetrics)
+            propertyURIs.addAll(im.getProperties());
+
+        for(String propertyURI : propertyURIs)
+        {
+            computeFunctionality(propertyURI);
+            computeSymmetry(propertyURI);
+            computeReflexiveness(propertyURI);
+            computeTransitiveness(propertyURI, 2);
+            computeTransitiveness(propertyURI, 3);
+        }
+    }
+
+    public void resetComputations()
+    {
+        Set<String> propertyURIs = new HashSet<>();
+
+        for(IndividualMetrics im : this.individualMetrics)
+            propertyURIs.addAll(im.getProperties());
+
+        for(String propertyURI : propertyURIs)
+        {
+            PropertyMetrics pm = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+
+            List<ConstructorMetrics> constructors = pm.getConstructors();
+            for(ConstructorMetrics cm : constructors)
+                cm.clean();
+        }
+
+    }
+
+
+
+    public ConstructorMetrics computeFunctionality(String propertyURI)
+    {
+        PropertyMetrics pm       = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_FUNCTIONAL);
+
+        for(IndividualMetrics im : this.getIndividualMetrics())
+        {
+            PropertyMetrics pm1 = im.getPropertyMetricForProperty(propertyURI);
+
+            if(!im.hasProperty(propertyURI))
+                cm.addNeutral();
+            else {
+                if (pm1.getCount() > 1)
+                    cm.addSupport();
+                else
+                    cm.addAgainst();
+            }
+        }
+
+        return cm;
+    }
+
+    public ConstructorMetrics computeSymmetry(String propertyURI)
+    {
+
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_SYMMETRIC);
+
+        for(IndividualMetrics im : this.individualMetrics)
+        {
+            Individual i = im.getIndividual();
+
+            if(!im.hasProperty(propertyURI))
+                cm.addNeutral();
+            else {
+
+                if (SPARQLUtils.testSymmetrySPARQL(i, propertyURI))
+                    cm.addSupport();
+                else
+                    cm.addAgainst();
+            }
+        }
+
+        return cm;
+    }
+
+    public ConstructorMetrics computeTransitiveness(String propertyURI, int levels)
+    {
+
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = null;
+
+        if(levels == 2)          cm = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE2);
+        else if(levels == 3)     cm = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE3);
+
+        if(cm!=null)
+        {
+            for(IndividualMetrics im : this.individualMetrics)
+            {
+                Individual i = im.getIndividual();
+
+                if(!im.hasProperty(propertyURI))
+                    cm.addNeutral();
+                else {
+                    if (SPARQLUtils.testTransitivenessSPARQL(i, propertyURI, levels))
+                        cm.addSupport();
+                    else
+                        cm.addAgainst();
+                }
+
+            }
+        }
+
+        return cm;
+    }
+
+    public ConstructorMetrics computeReflexiveness(String propertyURI)
+    {
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_REFLEXIVE);
+
+        List<String> ranges     = getAllRangesOfProperty(propertyURI);
+        List<String> domains    = getAllDomainsOfProperty(propertyURI);
+
+        for(String range : ranges)
+        {
+            if (domains.contains(range))
+                cm.addSupport();
+            else
+                cm.addAgainst();
+        }
+
+        //todo what happens if range/domain are not defined?
+
+        return cm;
+    }
+
+
+
     public void addClassMention(Individual mention)
     {
         this.last_mention = mention;
         IndividualMetrics im = new IndividualMetrics(mention);
         this.individualMetrics.add(im);
+
+
+        this.print();
     }
     
     public Individual getFirstMention()

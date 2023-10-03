@@ -17,6 +17,8 @@ import IDC.Metrics.*;
 import Utils.OntologyUtils;
 import Utils.SPARQLUtils;
 import Utils.Utilities;
+
+import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -269,6 +271,7 @@ public class Comparator
             runComparatorOnIndividuals(partition);
             updateTemporalRestrictions();         // check if the temporal restrictions on the classes are ok
             printEntityMetricsStats();
+
         }
 
     }
@@ -296,7 +299,10 @@ public class Comparator
             if(metricsByClassURI == null)
                 continue;
 
+            String computations = metricsByClassURI.printComputations();
+
             System.out.println(metricsByClassURI.toString());
+            System.out.println(computations);
 
         }
         System.out.println("\n=========================================");

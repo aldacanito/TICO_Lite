@@ -54,6 +54,21 @@ public class OntologyUtils
     public static final String OWL_THING        = "http://www.w3.org/2002/07/owl#Thing";
 
 
+
+    public static final String C_FUNCTIONAL       = "FUNCTIONAL";
+
+    public static final String C_INVERSE_FUNCTIONAL       = "INVERSE_FUNCTIONAL";
+    public static final String C_REFLEXIVE        = "REFLEXIVE";
+    public static final String C_IRREFLEXIVE      = "IRREFLEXIVE";
+    public static final String C_SYMMETRIC        = "SYMMETRIC";
+
+    public static final String C_ASYMMETRIC        = "ASYMMETRIC";
+    public static final String C_TRANSITIVE2      = "TRANSITIVE_2_LEVELS";
+    public static final String C_TRANSITIVE3      = "TRANSITIVE_3_LEVELS";
+
+
+
+
     /**
      * Gets the Version of an OntModel
      * @param model

@@ -2,14 +2,12 @@ package Utils;
 
 import static Utils.Configs.NS_to_ignore;
 import static Utils.Configs.class_to_ignore;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 
 
@@ -20,10 +18,74 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+
+import org.apache.jena.ontology.OntProperty;
 import org.apache.log4j.BasicConfigurator;
 
 public class Utilities 
 {
+
+    public static String writeHeader(String className, OntProperty p, String p_uri)
+    {
+
+        className = className.split("#")[1];
+        p_uri     = p_uri.split("#")[1];
+
+        String filename = "Analytics/" + className + "_" + p_uri + ".csv";
+
+        String header = "TMen;DMen;Freq;MaxMenI;MinMenI;AVGMenI;Funct;";
+
+        if(!p.isDatatypeProperty())
+            header +="R_Count;R_Ratio;IR_Count;IR_Ratio;Sym_Count;Sym_Ratio;TR2_Count;TR2_Ratio;TR3_Count;TR3_Ratio";
+
+
+        header+="\n";
+        File file = new File(filename);
+        File dir  = file.toPath().getParent().toFile();
+
+        if(!dir.exists()) dir.mkdirs();
+
+        if(!file.exists())
+        {
+            try {
+
+                FileOutputStream outputStream = new FileOutputStream(filename);
+                OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
+                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+                bufferedWriter.write(header);
+                bufferedWriter.close();
+
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        return filename;
+    }
+
+
+    public static void writeAnalyticsLine(String filename, String line)
+    {
+        try
+        {
+            line += "\n";
+            Files.write(Paths.get(filename), line.getBytes(), StandardOpenOption.APPEND);
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+
+
+
+
 
     // chops a list into non-view sublists of length L
     public static <T> List<List<T>> chopped(List<T> list, final int L) {

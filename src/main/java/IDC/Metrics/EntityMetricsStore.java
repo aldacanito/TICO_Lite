@@ -20,12 +20,16 @@ public class EntityMetricsStore
     private static EntityMetricsStore theInstance = new EntityMetricsStore();
     private List<ClassPropertyMetrics> theMetrics;
     private List<IndividualMetrics> individualMetrics;
-   
+
+    private List<PropertyMetrics> propertyMetrics;
+
+
     private EntityMetricsStore()
     {
 
         theMetrics        = new ArrayList<ClassPropertyMetrics>();
         individualMetrics = new ArrayList<>();
+        propertyMetrics   = new ArrayList<>();
     }
 
     public static EntityMetricsStore getStore()
@@ -38,6 +42,26 @@ public class EntityMetricsStore
         if(!theMetrics.contains(cpm))
             theMetrics.add(cpm);
     }
+
+    public void addPropertMetrics(PropertyMetrics pm)
+    {
+        this.propertyMetrics.add(pm);
+    }
+
+    public List<PropertyMetrics> getPropertyMetrics()
+    {
+        return this.propertyMetrics;
+    }
+
+    public PropertyMetrics getPropertyMetricsByURI(String URI)
+    {
+        for(PropertyMetrics pm : this.propertyMetrics)
+            if(pm.getURI().equalsIgnoreCase(URI))
+                return pm;
+
+        return null;
+    }
+
 
     public IndividualMetrics getMetricsForIndividual(Individual i)
     {
@@ -69,6 +93,26 @@ public class EntityMetricsStore
     }
 
 
+    public PropertyMetrics getMetricsByPropertyURI(String propURI)
+    {
+        PropertyMetrics met = null;
+
+        for(PropertyMetrics pm: this.propertyMetrics)
+        {
+            if(pm.getURI().equalsIgnoreCase(propURI))
+            {
+                met = pm; break;
+            }
+        }
+
+        if(met == null)
+        {
+            met = new PropertyMetrics(propURI);
+            this.propertyMetrics.add(met);
+        }
+
+        return met;
+    }
 
     
     public ClassPropertyMetrics getMetricsByClassURI(String classURI)
