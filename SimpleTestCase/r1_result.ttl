@@ -7,7 +7,7 @@
         rdf:type  owl:ObjectProperty .
 
 <http://localhost/testing#DatatypeProperty2>
-        rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+        rdf:type  owl:DatatypeProperty .
 
 <http://localhost/testing#ObjectProperty1>
         rdf:type  owl:ObjectProperty .
@@ -24,32 +24,22 @@
 <http://www.w3.org/2006/time#after>
         rdf:type  owl:ObjectProperty .
 
-_:b0    rdf:type         owl:Restriction ;
-        owl:cardinality  "3"^^xsd:int ;
-        owl:onProperty   <http://localhost/testing#DatatypeProperty2> .
-
 <http://localhost/testing#i1.3>
         rdf:type  <http://localhost/testing#Class3> ;
         <http://localhost/testing#DatatypeProperty2>
-                "3"^^xsd:int .
+                "2"^^xsd:int , "3"^^xsd:int , "4"^^xsd:int .
 
 <http://localhost/testing#Class3>
-        rdf:type             owl:Class ;
-        rdfs:subClassOf      _:b0 ;
-        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
-                               owl:cardinality  "2"^^xsd:int ;
-                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
-                             ] ;
-        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
-                               owl:cardinality  "1"^^xsd:int ;
-                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
-                             ] ;
-        owl:equivalentClass  _:b0 .
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   <http://localhost/testing#DatatypeProperty2>
+                         ] .
 
 <http://localhost/testing#i1.2>
         rdf:type  <http://localhost/testing#Class3> ;
         <http://localhost/testing#DatatypeProperty2>
-                "2"^^xsd:int .
+                "2"^^xsd:int , "3"^^xsd:int .
 
 <http://localhost/testing#Class2>
         rdf:type         owl:Class ;
@@ -75,6 +65,10 @@ _:b0    rdf:type         owl:Restriction ;
 <http://localhost/testing#TS__Class3__1>
         rdf:type             owl:Class ;
         rdfs:label           "TimeSlice Class3 1" ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
+                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  <http://localhost/testing#Class3>

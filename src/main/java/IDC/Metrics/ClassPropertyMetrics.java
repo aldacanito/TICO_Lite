@@ -3,6 +3,7 @@ package IDC.Metrics;
 
 import java.util.*;
 
+import Utils.AnalyticUtils;
 import Utils.OntologyUtils;
 import Utils.SPARQLUtils;
 import Utils.Utilities;
@@ -22,12 +23,15 @@ public class ClassPropertyMetrics extends EntityMetrics
     private Individual first_mention, last_mention;
 
     private boolean metricsComputed = false;
+
+    private HashMap<String, List<String>> seenRanges;
     
     public ClassPropertyMetrics(String EntityURI)
     {
         super(EntityURI);      
         //propertyMetrics      = new ArrayList<>();
         individualMetrics    = new ArrayList<>();
+        seenRanges = new HashMap<>();
     }
     
     public ClassPropertyMetrics(String EntityURI, Individual first_mention)
@@ -35,6 +39,8 @@ public class ClassPropertyMetrics extends EntityMetrics
         super(EntityURI);
         //propertyMetrics      = new ArrayList<>();
         individualMetrics    = new ArrayList<>();
+        seenRanges = new HashMap<>();
+
 
         this.first_mention   = first_mention;
         this.last_mention    = first_mention;
@@ -122,14 +128,13 @@ public class ClassPropertyMetrics extends EntityMetrics
     public void print()
     {
         String className = this.getURI();
-        String print = "";
 
         List<String> properties = this.getAllProperties();
 
         for(String p_uri : properties)
         {
             OntProperty p = this.ontClass.getOntModel().getOntProperty(p_uri);
-            String fileName = Utils.Utilities.writeHeader(className, p, p_uri);
+            String fileName = Utils.AnalyticUtils.writeHeader(className, p, p_uri);
 
             String line = this.getPropertyMentions(p_uri)
                     + ";" + this.getDistinctPropertyMentions(p_uri)
@@ -152,31 +157,11 @@ public class ClassPropertyMetrics extends EntityMetrics
 
             }
 
-            Utils.Utilities.writeAnalyticsLine(fileName, line);
+            Utils.Utilities.appendLineToFile(fileName, line);
 
-            /**
-            print += ("\n\t\t\t>> Domains:" );
-            for(String d_uri : this.getAllDomainsOfProperty(p_uri))
-                print += ("\n\t\t\t\t> " + d_uri + " | frequency: " + this.propertyDomainRatio(p_uri, d_uri));
-
-            print += ("\n\t\t\t>> Ranges:" );
-            for(String r_uri : this.getAllRangesOfProperty(p_uri))
-                print += ("\n\t\t\t\t> " + r_uri + " | frequency: " + this.propertyRangeRatio(p_uri, r_uri));
-            **/
         }
 
-        /**
-        Individual first = this.getFirstMention();
-        Individual last  = this.getLastMention();
-
-        if(first!=null) print += ("\n\t\t> First Mentioned on Individual: " + first.getURI());
-        if(last!=null)  print += ("\n\t\t> Last Mentioned on Individual: "  + last.getURI());
-
-        print += ("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
-        **/
-
     }
-
 
 
     public int propertyMaxMentionsPerIndividual(String propertyURI)
@@ -264,19 +249,10 @@ public class ClassPropertyMetrics extends EntityMetrics
         for(String propertyURI : propertyURIs)
         {
             PropertyMetrics pm        = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
-
-            ConstructorMetrics func   = pm.getConstructorMetrics(OntologyUtils.C_FUNCTIONAL);
-            ConstructorMetrics ref    = pm.getConstructorMetrics(OntologyUtils.C_REFLEXIVE);
-            ConstructorMetrics sym    = pm.getConstructorMetrics(OntologyUtils.C_SYMMETRIC);
-            ConstructorMetrics trans2 = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE2);
-            ConstructorMetrics trans3 = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE3);
-
-            ret += func.toString()   + "\n";
-            ret += ref.toString()    + "\n";
-            ret += sym.toString()    + "\n";
-            ret += trans2.toString() + "\n";
-            ret += trans3.toString() + "\n";
-
+            for(ConstructorMetrics cm : pm.getConstructors())
+            {
+                ret += cm.toString();
+            }
         }
 
         ret+="====\n";
@@ -284,6 +260,32 @@ public class ClassPropertyMetrics extends EntityMetrics
     }
 
 
+
+    public void computeAllMetricsForIndividual(IndividualMetrics im)
+    {
+        Set<String> propertyURIs = new HashSet<>();
+
+        propertyURIs.addAll(im.getProperties());
+
+
+
+        for(String propertyURI : propertyURIs)
+        {
+
+            if(propertyURI.contains("issues") )
+                System.out.println("THIS IS IT!");
+
+            computeFunctionality(propertyURI, im);
+            computeSymmetry(propertyURI, im);
+            computeReflexiveness(propertyURI, im);
+            computeIrreflexiveness(propertyURI, im);
+            computeTransitiveness(propertyURI, 2, im);
+            computeTransitiveness(propertyURI, 3, im);
+            computeAsymmetry(propertyURI, im);
+            computeInverseFunctionality(propertyURI, im);
+        }
+
+    }
 
     public void computeAllMetrics()
     {
@@ -299,9 +301,30 @@ public class ClassPropertyMetrics extends EntityMetrics
             computeFunctionality(propertyURI);
             computeSymmetry(propertyURI);
             computeReflexiveness(propertyURI);
+            computeIrreflexiveness(propertyURI);
             computeTransitiveness(propertyURI, 2);
             computeTransitiveness(propertyURI, 3);
+            computeAsymmetry(propertyURI);
+            computeInverseFunctionality(propertyURI);
         }
+
+        metricsComputed = true;
+    }
+
+    public void printComputations2File()
+    {
+        String ret = "";
+
+        if(!metricsComputed)
+            computeAllMetrics();
+
+        Set<String> propertyURIs = new HashSet<>();
+
+        for(IndividualMetrics im : EntityMetricsStore.getStore().getIndividualMetrics())
+            propertyURIs.addAll(im.getProperties());
+
+        AnalyticUtils.printAllComputations(propertyURIs);
+
     }
 
     public void resetComputations()
@@ -318,10 +341,113 @@ public class ClassPropertyMetrics extends EntityMetrics
             List<ConstructorMetrics> constructors = pm.getConstructors();
             for(ConstructorMetrics cm : constructors)
                 cm.clean();
+
+            String propertyPart = propertyURI.split("#")[1];
+            String fileName   = "Analytics/Constructors/" + propertyPart + "_constructors" + ".csv";
+
+            //Utilities.deleteFile(fileName);
         }
+
+
 
     }
 
+
+    public ConstructorMetrics computeInverseFunctionality(String propertyURI, IndividualMetrics im)
+    {
+        PropertyMetrics pm       = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm    = pm.getConstructorMetrics(OntologyUtils.C_INVERSE_FUNCTIONAL);
+
+        PropertyMetrics pm1 = im.getPropertyMetricForProperty(propertyURI);
+
+        if(!im.hasProperty(propertyURI))
+            cm.addNeutral();
+        else
+        {
+            Set<String> ranges_PURI = pm1.getRanges().keySet();
+            List<String> total_seen_ranges_of_PURI = this.seenRanges.get(propertyURI);
+
+            for (String range : ranges_PURI)
+            {
+                if (total_seen_ranges_of_PURI!=null && total_seen_ranges_of_PURI.contains(range))
+                    cm.addSupport();
+                else
+                {
+                    if(total_seen_ranges_of_PURI == null)
+                        total_seen_ranges_of_PURI = new ArrayList<>();
+
+                    total_seen_ranges_of_PURI.add(range);
+                    cm.addAgainst();
+                }
+            }
+
+            if (total_seen_ranges_of_PURI.size() == 50)
+                total_seen_ranges_of_PURI.remove(0);
+
+        }
+        return cm;
+    }
+
+    public ConstructorMetrics computeInverseFunctionality(String propertyURI)
+    {
+        PropertyMetrics pm       = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm    = pm.getConstructorMetrics(OntologyUtils.C_INVERSE_FUNCTIONAL);
+
+        for(IndividualMetrics im : this.getIndividualMetrics())
+        {
+            PropertyMetrics pm1 = im.getPropertyMetricForProperty(propertyURI);
+
+            if(!im.hasProperty(propertyURI))
+                cm.addNeutral();
+            else {
+
+            Set<String> ranges_PURI = pm1.getRanges().keySet();
+            List<String> total_seen_ranges_of_PURI = this.seenRanges.get(propertyURI);
+
+
+                for (String range : ranges_PURI)
+                {
+                    if (total_seen_ranges_of_PURI!=null && total_seen_ranges_of_PURI.contains(range))
+                        cm.addSupport();
+                    else
+                    {
+                        if(total_seen_ranges_of_PURI == null)
+                            total_seen_ranges_of_PURI = new ArrayList<>();
+
+                        total_seen_ranges_of_PURI.add(range);
+                        cm.addAgainst();
+                    }
+                }
+
+                if (total_seen_ranges_of_PURI.size() == 50)
+                    total_seen_ranges_of_PURI.remove(0);
+
+            }
+        }
+
+        return cm;
+    }
+
+
+    public ConstructorMetrics computeFunctionality(String propertyURI, IndividualMetrics im)
+    {
+        PropertyMetrics pm       = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_FUNCTIONAL);
+
+        PropertyMetrics pm1 = im.getPropertyMetricForProperty(propertyURI);
+
+        if(!im.hasProperty(propertyURI))
+            cm.addNeutral();
+        else
+        {
+            if (pm1.getCount() == 1)
+                cm.addSupport();
+            else
+                cm.addAgainst();
+        }
+
+        return cm;
+    }
 
 
     public ConstructorMetrics computeFunctionality(String propertyURI)
@@ -346,6 +472,25 @@ public class ClassPropertyMetrics extends EntityMetrics
         return cm;
     }
 
+    public ConstructorMetrics computeSymmetry(String propertyURI, IndividualMetrics im)
+    {
+
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_SYMMETRIC);
+        Individual i          = im.getIndividual();
+
+        if(!im.hasProperty(propertyURI))
+            cm.addNeutral();
+        else {
+
+            if (SPARQLUtils.testSymmetrySPARQL(i, propertyURI))
+                cm.addSupport();
+            else
+                cm.addAgainst();
+        }
+
+        return cm;
+    }
     public ConstructorMetrics computeSymmetry(String propertyURI)
     {
 
@@ -370,6 +515,76 @@ public class ClassPropertyMetrics extends EntityMetrics
         return cm;
     }
 
+    public ConstructorMetrics computeAsymmetry(String propertyURI, IndividualMetrics im)
+    {
+
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_ASYMMETRIC);
+        Individual i          = im.getIndividual();
+
+        if(!im.hasProperty(propertyURI))
+            cm.addNeutral();
+        else {
+
+            if (!SPARQLUtils.testSymmetrySPARQL(i, propertyURI))
+                cm.addSupport();
+            else
+                cm.addAgainst();
+        }
+
+        return cm;
+    }
+
+
+    public ConstructorMetrics computeAsymmetry(String propertyURI)
+    {
+
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_ASYMMETRIC);
+
+        for(IndividualMetrics im : this.individualMetrics)
+        {
+            Individual i = im.getIndividual();
+
+            if(!im.hasProperty(propertyURI))
+                cm.addNeutral();
+            else {
+
+                if (!SPARQLUtils.testSymmetrySPARQL(i, propertyURI))
+                    cm.addSupport();
+                else
+                    cm.addAgainst();
+            }
+        }
+
+        return cm;
+    }
+
+    public ConstructorMetrics computeTransitiveness(String propertyURI, int levels, IndividualMetrics im)
+    {
+
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = null;
+        Individual i          = im.getIndividual();
+
+        if(levels == 2)          cm = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE2);
+        else if(levels == 3)     cm = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE3);
+
+        if(cm!=null)
+        {
+            if(!im.hasProperty(propertyURI))
+                cm.addNeutral();
+            else
+            {
+                if (SPARQLUtils.testTransitivenessSPARQL(i, propertyURI, levels))
+                    cm.addSupport();
+                else
+                    cm.addAgainst();
+            }
+        }
+
+        return cm;
+    }
     public ConstructorMetrics computeTransitiveness(String propertyURI, int levels)
     {
 
@@ -400,6 +615,30 @@ public class ClassPropertyMetrics extends EntityMetrics
         return cm;
     }
 
+    public ConstructorMetrics computeReflexiveness(String propertyURI, IndividualMetrics im)
+    {
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_REFLEXIVE);
+
+        Set<String> ranges     = im.getPropertyMetricForProperty(propertyURI).getRanges().keySet();
+        Set<String> domains    = im.getPropertyMetricForProperty(propertyURI).getDomains().keySet();
+
+        for(String range : ranges)
+        {
+            if (domains.contains(range))
+                cm.addSupport();
+            else
+                cm.addAgainst();
+        }
+
+        if(ranges.isEmpty()  || domains.isEmpty())
+        {
+            cm.getNeutral(); return cm;
+        }
+
+        return cm;
+    }
+
     public ConstructorMetrics computeReflexiveness(String propertyURI)
     {
         PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
@@ -416,11 +655,61 @@ public class ClassPropertyMetrics extends EntityMetrics
                 cm.addAgainst();
         }
 
-        //todo what happens if range/domain are not defined?
+        if(ranges.isEmpty()  || domains.isEmpty())
+        {
+            cm.getNeutral(); return cm;
+        }
 
         return cm;
     }
 
+    public ConstructorMetrics computeIrreflexiveness(String propertyURI, IndividualMetrics im)
+    {
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_IRREFLEXIVE);
+
+        Set<String> ranges     = im.getPropertyMetricForProperty(propertyURI).getRanges().keySet();
+        Set<String> domains    = im.getPropertyMetricForProperty(propertyURI).getDomains().keySet();
+
+        if(ranges.isEmpty()  || domains.isEmpty())
+        {
+            cm.getNeutral(); return cm;
+        }
+
+        for(String range : ranges)
+        {
+            if (!domains.contains(range))
+                cm.addSupport();
+            else
+                cm.addAgainst();
+        }
+
+        return cm;
+    }
+
+    public ConstructorMetrics computeIrreflexiveness(String propertyURI)
+    {
+        PropertyMetrics pm    = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
+        ConstructorMetrics cm = pm.getConstructorMetrics(OntologyUtils.C_IRREFLEXIVE);
+
+        List<String> ranges     = getAllRangesOfProperty(propertyURI);
+        List<String> domains    = getAllDomainsOfProperty(propertyURI);
+
+        if(ranges.isEmpty()  || domains.isEmpty())
+        {
+            cm.getNeutral(); return cm;
+        }
+
+        for(String range : ranges)
+        {
+            if (!domains.contains(range))
+                cm.addSupport();
+            else
+                cm.addAgainst();
+        }
+
+        return cm;
+    }
 
 
     public void addClassMention(Individual mention)
@@ -428,7 +717,6 @@ public class ClassPropertyMetrics extends EntityMetrics
         this.last_mention = mention;
         IndividualMetrics im = new IndividualMetrics(mention);
         this.individualMetrics.add(im);
-
 
         this.print();
     }

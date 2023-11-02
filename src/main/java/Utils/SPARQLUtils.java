@@ -199,6 +199,44 @@ public class SPARQLUtils
     }
 
 
+    public static boolean testFunctionalitySPARQL(Individual individual, String propertyURI)
+    {
+        boolean isFunctional     = false;
+        OntModel model          = individual.getOntModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                    "SELECT ?b ?s ?s1 \n" +
+                                "WHERE \n" +
+                                "{ \n" +
+                                "    <"+individualURI+"> <"+propertyURI+"> ?s . \n" +
+                                "  OPTIONAL { \n" +
+                                "    <"+individualURI+"> <"+propertyURI+"> ?s1 . \n" +
+                                "    FILTER (?s != ?s1 ) } . \n" +
+                                "} "
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            List<String> theResURIS = new ArrayList<String>();
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext()) {
+                QuerySolution querySolution = results.nextSolution();
+
+
+
+
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing functionality. Reason: " + e.getMessage());
+        }
+
+        return isFunctional;
+    }
+
     public static boolean testTransitivenessSPARQL(Individual individual, String propertyURI, int levels)
     {
         if(levels == 0 )

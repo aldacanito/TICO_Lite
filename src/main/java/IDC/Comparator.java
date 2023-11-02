@@ -14,10 +14,12 @@ import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.EvolActions.Interfaces.IAddClass;
 
 import IDC.Metrics.*;
+import Utils.AnalyticUtils;
 import Utils.OntologyUtils;
 import Utils.SPARQLUtils;
 import Utils.Utilities;
 
+import java.io.File;
 import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.jena.ontology.*;
 import org.apache.jena.rdf.model.*;
@@ -255,6 +258,9 @@ public class Comparator
      */
     public void run() 
     {
+
+        AnalyticUtils.deleteAnalytics();
+
         List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
 
         int partitionSize = 10;
@@ -263,16 +269,22 @@ public class Comparator
 
         for(List<String> partition : partitions)
         {
+
+            /*
             checkNewClasses(partition);
             checkForOntProperties(partition);
             copyIndividualsToEvolvedModel(partition);
+            */
             getIndividualsMetrics(partition);
+
             //  cleanUnclearClasses(evolvedModel, partition);
-            runComparatorOnIndividuals(partition);
-            updateTemporalRestrictions();         // check if the temporal restrictions on the classes are ok
+
+            //runComparatorOnIndividuals(partition);
+            //updateTemporalRestrictions();         // check if the temporal restrictions on the classes are ok
             printEntityMetricsStats();
 
         }
+
 
     }
 
@@ -281,7 +293,24 @@ public class Comparator
         for(String uri : individuals_uris)
         {
             Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
-            EntityMetricsStore.getStore().addIndividualMetrics(individual);
+            IndividualMetrics im  = EntityMetricsStore.getStore().addIndividualMetrics(individual);
+
+            List<OntClass> ontClasses = SPARQLUtils.listOntClassesSPARQL(individual);
+            for(OntClass cls : ontClasses)
+            {
+                String clsURI                          = cls.getURI();
+                ClassPropertyMetrics metricsByClassURI = EntityMetricsStore.getStore().getMetricsByClassURI(clsURI);
+
+                if(metricsByClassURI == null)
+                    continue;
+
+
+                if(clsURI.contains("conference59"))
+                    System.out.println("this is it!!!! ");
+
+                metricsByClassURI.computeAllMetricsForIndividual(im);
+                metricsByClassURI.printComputations2File();
+            }
         }
     }
 
@@ -296,10 +325,13 @@ public class Comparator
         {
             String uri                             = newCls.getURI();
             ClassPropertyMetrics metricsByClassURI = EntityMetricsStore.getStore().getMetricsByClassURI(uri);
+
             if(metricsByClassURI == null)
                 continue;
 
             String computations = metricsByClassURI.printComputations();
+
+            //metricsByClassURI.printComputations2File();
 
             System.out.println(metricsByClassURI.toString());
             System.out.println(computations);

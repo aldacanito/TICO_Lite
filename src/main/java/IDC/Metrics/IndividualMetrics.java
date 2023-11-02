@@ -22,9 +22,9 @@ public class IndividualMetrics
     {
         this.individual = i;
         this.ontClasses = SPARQLUtils.listOntClassesSPARQL(i);
-        //this.propertyMetrics = EntityMetricsStore.getStore().getPropertyMetrics();
+
         this.propertyMetrics = new ArrayList<>();
-        this.propertyURIs = new ArrayList<>();
+        this.propertyURIs    = new ArrayList<>();
         this.metrify();
     }
 
@@ -50,11 +50,6 @@ public class IndividualMetrics
         return null;
     }
 
-
-    public boolean isSymmetric(String propertyURI)
-    {
-        return SPARQLUtils.testSymmetrySPARQL(this.individual, propertyURI);
-    }
 
     public boolean hasProperty(String propertyURI)
     {
@@ -118,11 +113,6 @@ public class IndividualMetrics
             }
             else if(object_node.isLiteral())
                 this.addDtProperty(property_uri, object_node.asLiteral().getDatatypeURI());
-
-            // todo finish metrifying
-
-
-
 
             this.propertyMetrics.add(pm);
         }

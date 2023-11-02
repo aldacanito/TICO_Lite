@@ -8,28 +8,21 @@
 
 <http://localhost/testing#i2.2>
         rdf:type  <http://localhost/testing#Class3> ;
+        <http://localhost/testing#ObjectProperty2>
+                <http://localhost/testing#Class3> , <http://localhost/testing#Class2> ;
         <http://localhost/testing#ObjectProperty3>
                 <http://localhost/testing#Class4> .
-
-_:b0    rdf:type         owl:Restriction ;
-        owl:cardinality  "3"^^xsd:int ;
-        owl:onProperty   <http://localhost/testing#DatatypeProperty2> .
 
 <http://www.w3.org/2006/time#Instant>
         rdf:type  owl:Class .
 
-<Interval_st_20230706173709752>
-        rdf:type  <http://www.w3.org/2006/time#Interval> ;
-        <http://www.w3.org/2006/time#hasBeginning>
-                <20230706173709752> .
-
 <http://localhost/testing#DatatypeProperty2>
-        rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
+        rdf:type  owl:DatatypeProperty .
 
 <http://localhost/testing#i1.2>
         rdf:type  <http://localhost/testing#Class3> ;
         <http://localhost/testing#DatatypeProperty2>
-                "2"^^xsd:int .
+                "3"^^xsd:int , "2"^^xsd:int .
 
 <http://www.w3.org/2006/time#hasDuration>
         rdf:type  owl:ObjectProperty .
@@ -44,8 +37,36 @@ _:b0    rdf:type         owl:Restriction ;
         <http://localhost/testing#ObjectProperty3>
                 <http://localhost/testing#Class4> .
 
+<http://localhost/testing#TS__Class3__2>
+        rdf:type             owl:Class ;
+        rdfs:label           "TimeSlice Class3 2" ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#after> ;
+                               owl:someValuesFrom  <http://localhost/testing#TS__Class3__1>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
+                               owl:someValuesFrom  <http://localhost/testing#Class3>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20230927174513647> ;
+                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( <http://localhost/testing#Class3> <http://localhost/testing#Class3>
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20230927174513647> ;
+                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
+                                                     ]
+                                                   )
+                             ] .
+
 <http://localhost/testing#ObjectProperty3>
-        rdf:type  owl:ObjectProperty .
+        rdf:type  rdf:Property .
 
 <http://localhost/testing#DatatypeProperty1>
         rdf:type  owl:DatatypeProperty .
@@ -58,22 +79,20 @@ _:b0    rdf:type         owl:Restriction ;
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
         rdf:type  owl:AnnotationProperty .
 
-<20230706173709752>  rdf:type  <http://www.w3.org/2006/time#Instant> .
-
-[ rdf:type           owl:Restriction ;
-  owl:allValuesFrom  <http://localhost/testing#Class3> ;
-  owl:onProperty     <http://localhost/testing#ObjectProperty2>
-] .
-
 <http://www.example.org/CM/CM_ontology.owl#hasTimeStamp>
         rdf:type  owl:ObjectProperty .
-
-<http://localhost/testing#Class4>
-        rdf:type  owl:Class .
 
 <http://localhost/testing#TS__Class3__1>
         rdf:type             owl:Class ;
         rdfs:label           "TimeSlice Class3 1" ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      <http://www.w3.org/2006/time#before> ;
+                               owl:someValuesFrom  <http://localhost/testing#TS__Class3__2>
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
                                owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_i1.1i1.1> ;
                                owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
@@ -81,6 +100,10 @@ _:b0    rdf:type         owl:Restriction ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
                                owl:someValuesFrom  <http://localhost/testing#Class3>
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( <http://localhost/testing#Class3> <http://localhost/testing#Class3>
@@ -96,47 +119,16 @@ _:b0    rdf:type         owl:Restriction ;
                              ] .
 
 <http://localhost/testing#ObjectProperty2>
-        rdf:type  owl:ObjectProperty .
-
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "3"^^xsd:int ;
-  owl:onProperty   <http://localhost/testing#DatatypeProperty2>
-] .
+        rdf:type  rdf:Property .
 
 <VersionInfo>  <version>  "evolving" .
 
-<http://localhost/testing#TS__Class4__1>
-        rdf:type             owl:Class ;
-        rdfs:label           "TimeSlice Class4 1" ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      <http://www.w3.org/2006/time#isTimeSliceOf> ;
-                               owl:someValuesFrom  <http://localhost/testing#Class4>
-                             ] ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20230706173709752> ;
-                               owl:onProperty  <http://www.w3.org/2006/time#hasDuration>
-                             ] ;
-        owl:equivalentClass  [ rdf:type            owl:Class ;
-                               owl:intersectionOf  ( <http://localhost/testing#Class4> <http://localhost/testing#Class4>
-                                                     [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20230706173709752> ;
-                                                       owl:onProperty  <http://www.w3.org/2006/time#after>
-                                                     ]
-                                                   )
-                             ] .
-
 <http://localhost/testing#Class3>
-        rdf:type             owl:Class ;
-        rdfs:subClassOf      _:b0 ;
-        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
-                               owl:cardinality  "1"^^xsd:int ;
-                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
-                             ] ;
-        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
-                               owl:cardinality  "2"^^xsd:int ;
-                               owl:onProperty   <http://localhost/testing#DatatypeProperty2>
-                             ] ;
-        owl:equivalentClass  _:b0 .
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   <http://localhost/testing#DatatypeProperty2>
+                         ] .
 
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
         <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
@@ -145,13 +137,17 @@ _:b0    rdf:type         owl:Restriction ;
 <http://localhost/testing#ObjectProperty1>
         rdf:type  owl:ObjectProperty .
 
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  [] 
+] .
+
 <http://www.w3.org/2006/time#hasEnd>
         rdf:type  owl:ObjectProperty .
 
 <http://localhost/testing#i2.4>
         rdf:type  <http://localhost/testing#Class2> ;
         <http://localhost/testing#ObjectProperty3>
-                <http://localhost/testing#Class3> .
+                <http://localhost/testing#Class3> , <http://localhost/testing#Class4> .
 
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/>
         rdf:type     owl:Ontology ;
@@ -159,10 +155,6 @@ _:b0    rdf:type         owl:Restriction ;
 
 <http://localhost/testing#Class2>
         rdf:type         owl:Class ;
-        rdfs:subClassOf  [ rdf:type           owl:Restriction ;
-                           owl:allValuesFrom  <http://localhost/testing#Class3> ;
-                           owl:onProperty     <http://localhost/testing#ObjectProperty3>
-                         ] ;
         rdfs:subClassOf  [ rdf:type        owl:Restriction ;
                            owl:hasValue    "24"^^xsd:int ;
                            owl:onProperty  <http://localhost/testing#DatatypeProperty1>
@@ -173,6 +165,13 @@ _:b0    rdf:type         owl:Restriction ;
 
 <http://www.w3.org/2006/time#isTimeSliceOf>
         rdf:type  owl:ObjectProperty .
+
+<20230927174513647>  rdf:type  <http://www.w3.org/2006/time#Instant> .
+
+<Interval_st_20230927174513647>
+        rdf:type  <http://www.w3.org/2006/time#Interval> ;
+        <http://www.w3.org/2006/time#hasBeginning>
+                <20230927174513647> .
 
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_i1.1i1.1>
         rdf:type  <http://www.w3.org/2006/time#Interval> ;
@@ -189,7 +188,7 @@ _:b0    rdf:type         owl:Restriction ;
 <http://localhost/testing#i1.3>
         rdf:type  <http://localhost/testing#Class3> ;
         <http://localhost/testing#DatatypeProperty2>
-                "3"^^xsd:int .
+                "4"^^xsd:int , "3"^^xsd:int , "2"^^xsd:int .
 
 <http://www.w3.org/2006/time#before>
         rdf:type  owl:ObjectProperty .

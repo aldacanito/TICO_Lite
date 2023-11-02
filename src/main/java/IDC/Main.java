@@ -17,12 +17,12 @@ public class Main
     {
         Configs configs = new Configs();
 
-        //testConferenceInstances();
+        testConferenceInstances();
 
 
         //startTest();
         //testArmando();
-      testArmandoTest();
+     // testArmandoTest();
         
 
     }
@@ -34,14 +34,14 @@ public class Main
         //C:\Users\shiza\OneDrive\Documentos\GitHub\DatasetConverter\OntoProcessMapping
         String dir = "OntoProcessMapping/PopulatedConference/";
 
-        String semente = dir + "conference_eswc_TBOX_reduced.ttl";
+        String semente = dir + "conference_eswc.ttl";
 
         System.out.println("\n\n===========================================================");
         System.out.println("\n\n\tComeça primeiro round: semente");
         System.out.println("\n\n===========================================================\n\n");
         // round one
         String onto_path      = semente;
-        String instance_path  = dir + "conference_eswc_ABOX_reduced.ttl" ;
+        String instance_path  = dir + "conference_eswc.ttl" ;
         String print_path = dir + "/Results/round1.ttl";
 
         runComparator(onto_path, instance_path, print_path, 1);

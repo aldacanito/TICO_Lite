@@ -1,8 +1,5 @@
 package Utils;
 
-import static Utils.Configs.NS_to_ignore;
-import static Utils.Configs.class_to_ignore;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,32 +11,39 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+import IDC.Metrics.ConstructorMetrics;
+import IDC.Metrics.EntityMetricsStore;
+import IDC.Metrics.PropertyMetrics;
+import org.apache.commons.io.FileUtils;
 import org.apache.jena.ontology.OntProperty;
 import org.apache.log4j.BasicConfigurator;
+
+import static Utils.Configs.*;
 
 public class Utilities 
 {
 
-    public static String writeHeader(String className, OntProperty p, String p_uri)
+    public static boolean deleteFile(String filename)
     {
+        File myObj = new File(filename);
+        if (myObj.delete()) {
+            System.out.println("Deleted the file: " + myObj.getName());
+            return true;
+        } else {
+            System.out.println("Failed to delete the file.");
+            return false;
+        }
+    }
 
-        className = className.split("#")[1];
-        p_uri     = p_uri.split("#")[1];
 
-        String filename = "Analytics/" + className + "_" + p_uri + ".csv";
-
-        String header = "TMen;DMen;Freq;MaxMenI;MinMenI;AVGMenI;Funct;";
-
-        if(!p.isDatatypeProperty())
-            header +="R_Count;R_Ratio;IR_Count;IR_Ratio;Sym_Count;Sym_Ratio;TR2_Count;TR2_Ratio;TR3_Count;TR3_Ratio";
-
-
-        header+="\n";
+    public static void createFile(String filename)
+    {
         File file = new File(filename);
         File dir  = file.toPath().getParent().toFile();
 
@@ -47,12 +51,12 @@ public class Utilities
 
         if(!file.exists())
         {
-            try {
-
-                FileOutputStream outputStream = new FileOutputStream(filename);
+            try
+            {
+                FileOutputStream outputStream         = new FileOutputStream(filename);
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
-                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                bufferedWriter.write(header);
+                BufferedWriter bufferedWriter         = new BufferedWriter(outputStreamWriter);
+                bufferedWriter.write("");
                 bufferedWriter.close();
 
             } catch (IOException e)
@@ -60,12 +64,11 @@ public class Utilities
                 e.printStackTrace();
             }
         }
-
-        return filename;
     }
 
 
-    public static void writeAnalyticsLine(String filename, String line)
+
+    public static void appendLineToFile(String filename, String line)
     {
         try
         {
@@ -253,26 +256,7 @@ public class Utilities
         return content;
     }
 
-    /**
-     * Reads a text file content
-     * 
-     * @param filePath the text file path
-     * @return the text file content
-     */
-//    public static String readTextFileContent(String filePath) {
-//        String content = null;
-//
-//        if (Files.exists(Path.of(filePath))) {
-//            try {
-//                content = new String(Files.readAllBytes(Paths.get(filePath)));
-//            } catch (IOException e) {
-//                content = null;
-//            }
-//        }
-//
-//        return content;
-//    }
-    
+
     public static String readTextFileContent(String filePath, boolean addList) {
         String content = "";
 
@@ -293,6 +277,12 @@ public class Utilities
 
         return content;
     }
+
+
+
+
+
+
 
 //    
 //    

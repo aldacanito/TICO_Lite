@@ -26,7 +26,6 @@ public class EntityMetricsStore
 
     private EntityMetricsStore()
     {
-
         theMetrics        = new ArrayList<ClassPropertyMetrics>();
         individualMetrics = new ArrayList<>();
         propertyMetrics   = new ArrayList<>();
@@ -53,6 +52,11 @@ public class EntityMetricsStore
         return this.propertyMetrics;
     }
 
+    public List<IndividualMetrics> getIndividualMetrics()
+    {
+        return this.individualMetrics;
+    }
+
     public PropertyMetrics getPropertyMetricsByURI(String URI)
     {
         for(PropertyMetrics pm : this.propertyMetrics)
@@ -72,10 +76,12 @@ public class EntityMetricsStore
         return null;
     }
 
-    public void addIndividualMetrics(Individual i)
+    public IndividualMetrics addIndividualMetrics(Individual i)
     {
         IndividualMetrics im = new IndividualMetrics(i);
         this.addIndividualMetrics(im);
+
+        return im;
     }
 
     public void addIndividualMetrics(IndividualMetrics im)

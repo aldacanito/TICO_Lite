@@ -106,7 +106,7 @@ public class OntologyUtils
         return m;
     }
 
-    public static OntModel readModel(String filename) 
+    public static OntModel readModel(String filename)
     {
         OntModel m = ModelFactory.createOntologyModel();  
         try 
@@ -122,6 +122,28 @@ public class OntologyUtils
         }
         
         return m;
+    }
+
+    public static OntModel readModel(String filename, boolean turtle)
+    {
+        OntModel m = ModelFactory.createOntologyModel();
+        try
+        {
+            if(turtle)
+                m.read(new FileReader(filename, StandardCharsets.ISO_8859_1 ), "", "TTL");
+            else
+                m.read(new FileReader(filename, StandardCharsets.ISO_8859_1 ), "", "RDF/XML");
+
+            //Ontology theOntology = m.createOntology("");
+            //theOntology.addImport(m.createResource(OntologyUtils.ONT_TIME_URL));
+
+        } catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+        return m;
+
     }
     
     
