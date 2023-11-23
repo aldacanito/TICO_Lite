@@ -79,7 +79,6 @@ public class BasicEvolvingTest
         return theModel;
     }
 
-
     public static OntModel setupSecondInstanceModel()
     {
         OntModel theModel = ModelFactory.createOntologyModel();

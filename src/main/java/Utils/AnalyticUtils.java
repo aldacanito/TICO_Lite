@@ -12,8 +12,8 @@ import java.util.Set;
 
 public class AnalyticUtils
 {
-    public static final String CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/Constructors/";
-    public static final String ANALYTICS_FOLDER = "Analytics/";
+    public static String CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/Constructors/";
+    public static String ANALYTICS_FOLDER = "Analytics/";
 
 
     public static String getPropertyNameforPath(String propertyURI)

@@ -2,6 +2,7 @@ package helpers.datasetconverter;
 
 import IDC.Comparator;
 import IDC.ModelManager;
+import Utils.AnalyticUtils;
 import Utils.Configs;
 import Utils.OntologyUtils;
 import org.apache.jena.ontology.OntModel;
@@ -12,50 +13,65 @@ import java.io.File;
 public class TestConferenceInstances
 {
 
+    static String base = "C:\\Users\\Alda\\OneDrive - Instituto Superior de Engenharia do Porto\\Documentos\\GitHub\\DatasetConverter\\";
+    static String datasetsFolder = base + "PopulatedDatasets/";
+
+    static OntModel originalModel = ModelFactory.createOntologyModel();
+    static OntModel evolvingModel = ModelFactory.createOntologyModel();
+    static OntModel instanceModel = ModelFactory.createOntologyModel();
+
     public static void main(String[] args)
     {
         Configs configs = new Configs();
 
-        String folder = "C:\\Users\\shiza\\OneDrive - Instituto Superior de Engenharia do Porto\\Documentos\\GitHub\\Conference Subset";
+        //String [] datasets = {"cmt", "conference", "confOf", "edas", "ekaw", "gmo"};
 
-        OntModel originalModel = OntologyUtils.readModel("C:\\Users\\shiza\\OneDrive - Instituto Superior de Engenharia do Porto\\Documentos\\GitHub\\DatasetConverter\\OntoProcessMapping\\PopulatedConference\\conference_eswc.ttl");
-        OntModel evolvingModel = OntologyUtils.readModel("C:\\Users\\shiza\\OneDrive - Instituto Superior de Engenharia do Porto\\Documentos\\GitHub\\DatasetConverter\\OntoProcessMapping\\PopulatedConference\\conference_eswc.ttl");
+        String [] datasets = {"cmt"};
 
-        OntModel instanceModel = ModelFactory.createOntologyModel();
+        for(String dataset : datasets)
+            run(dataset);
 
+    }
+
+    public static void run(String ontologyName)
+    {
+        String folder = datasetsFolder + ontologyName + "/";
+        String instancesFolder = folder + "/instances/";
+
+        AnalyticUtils.CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/"+ontologyName+"/Constructors/";
+        AnalyticUtils.ANALYTICS_FOLDER = "Analytics/" + ontologyName;
+
+        originalModel = OntologyUtils.readModel(folder + ontologyName + ".ttl");
+        evolvingModel = OntologyUtils.readModel(folder + ontologyName + ".ttl");
+        instanceModel = ModelFactory.createOntologyModel();
 
         ModelManager.getManager().setup(originalModel, evolvingModel, instanceModel);
 
-
-
-        File dir = new File(folder);
+        // read all instances files in the instance folder
+        File dir                = new File(instancesFolder);
         File[] directoryListing = dir.listFiles();
+
         if (directoryListing != null)
         {
             for (File child : directoryListing)
             {
-
-                try {
+                try
+                {
                     String fileName = child.getAbsolutePath();
 
-                    if(fileName.contains(".rdf"))
+                    if(fileName.contains(".ttl"))
                     {
-                        OntModel ontModel = OntologyUtils.readModel(child.getAbsolutePath(), false);
+                        OntModel ontModel = OntologyUtils.readModel(child.getAbsolutePath(), true);
                         instanceModel.add(ontModel);
 
                         System.out.println("Added instance file " + child.getAbsolutePath());
                     }
-                }catch(Exception e)
+                }
+                catch(Exception e)
                 {
                     System.out.println("Exception reading model. Reason: " + e.getMessage());
                 }
-
             }
-        } else {
-            // Handle the case where dir is not really a directory.
-            // Checking dir.isDirectory() above would not be sufficient
-            // to avoid race conditions with another process that deletes
-            // directories.
         }
 
         System.out.println("Finished reading instance files.");
@@ -65,7 +81,6 @@ public class TestConferenceInstances
 
         String stats = comparator.printStats();
         System.out.println(" stats time: " + stats );
-
     }
 
 

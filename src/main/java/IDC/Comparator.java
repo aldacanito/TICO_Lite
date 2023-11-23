@@ -72,9 +72,7 @@ public class Comparator
 
                 for (OntClass cls : listOntClasses)
                 {
-                    //TODO check anonymous classes!!!!
-
-                    if (cls.getURI() != null && ModelManager.getManager().getEvolvingModel().getOntClass(cls.getURI()) == null)
+                     if (cls.getURI() != null && ModelManager.getManager().getEvolvingModel().getOntClass(cls.getURI()) == null)
                     {
                         if (Utilities.isInIgnoreList(cls.getURI()))
                             continue;
@@ -259,7 +257,7 @@ public class Comparator
     public void run() 
     {
 
-        AnalyticUtils.deleteAnalytics();
+        //AnalyticUtils.deleteAnalytics();
 
         List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
 
@@ -304,9 +302,10 @@ public class Comparator
                 if(metricsByClassURI == null)
                     continue;
 
-
+/**
                 if(clsURI.contains("conference59"))
                     System.out.println("this is it!!!! ");
+**/
 
                 metricsByClassURI.computeAllMetricsForIndividual(im);
                 metricsByClassURI.printComputations2File();
@@ -746,12 +745,8 @@ public class Comparator
         
         ClassCompareShape.run(executer);        
         executer.execute();
-        
-        
-    
-    }
-    
 
+    }
 
 
     public String printStats() 

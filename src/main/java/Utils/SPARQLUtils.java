@@ -368,12 +368,14 @@ public class SPARQLUtils
 
         Query query = QueryFactory.create
                 (
-                        "SELECT DISTINCT " +
+                        "SELECT " +
+                                //" DISTINCT " +
                                 "?uri" +
                                 " WHERE " +
                                 "{" +
                                 "?uri a ?t . " +
 
+                                /*
                                 " FILTER ( ?t != <" + OntologyUtils.INTERVAL_CLS + "> ) ." +
                                 " FILTER ( ?t != <" + OntologyUtils.INSTANT_CLS + "> ) ." +
 
@@ -382,6 +384,7 @@ public class SPARQLUtils
                                 " FILTER ( ?t != <http://www.w3.org/2002/07/owl#Class> ) . " +
                                 " FILTER ( ?t != <http://www.w3.org/2002/07/owl#DatatypeProperty> ) . " +
                                 " FILTER ( ?t != <http://www.w3.org/2002/07/owl#ObjectProperty> ) . " +
+                                */
 
                                 "}"
                 );
@@ -427,6 +430,7 @@ public class SPARQLUtils
             }
         }
 
+        individuals_uris = new ArrayList<>(new HashSet<>(individuals_uris));
         Collections.sort(individuals_uris);
 
         System.out.println("\t\t== SPARQL Listing individuals in the Model. Count: "+ individuals_uris.size() +" ==");
