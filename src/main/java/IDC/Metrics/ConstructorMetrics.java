@@ -63,21 +63,21 @@ public class ConstructorMetrics
     public void addAgainst()
     {
         this.against = this.getAgainst() + 1;
-        this.print();
+        //this.print();
 
     }
 
     public void addSupport()
     {
         this.support = this.getSupport() + 1;
-        this.print();
+        //this.print();
 
     }
 
     public void addNeutral()
     {
         this.neutral = this.getNeutral() + 1;
-        this.print();
+        //this.print();
 
 
     }

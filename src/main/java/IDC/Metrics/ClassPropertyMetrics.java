@@ -267,14 +267,8 @@ public class ClassPropertyMetrics extends EntityMetrics
 
         propertyURIs.addAll(im.getProperties());
 
-
-
         for(String propertyURI : propertyURIs)
         {
-
-            if(propertyURI.contains("issues") )
-                System.out.println("THIS IS IT!");
-
             computeFunctionality(propertyURI, im);
             computeSymmetry(propertyURI, im);
             computeReflexiveness(propertyURI, im);

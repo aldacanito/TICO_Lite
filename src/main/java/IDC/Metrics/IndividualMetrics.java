@@ -68,13 +68,16 @@ public class IndividualMetrics
         for(Pair<String, RDFNode> tuple : properties)
         {
             String property_uri     = tuple.getLeft();
-            RDFNode object_node     = tuple.getRight();
-            PropertyMetrics pm      = new PropertyMetrics(property_uri);
+
+            if(!Utilities.isImportantProp(property_uri))
+                continue;
 
             this.propertyURIs.add(property_uri);
 
+            RDFNode object_node     = tuple.getRight();
+            PropertyMetrics pm      = new PropertyMetrics(property_uri);
+
             pm.addDomains(this.ontClasses);
-            //this.addPropertyMetric(pm);
 
             if(object_node.isResource())
             {
@@ -105,7 +108,6 @@ public class IndividualMetrics
                         System.out.println("Could not convert NODE to Individual.");
                     }
 
-
                     if(!didIt)
                         this.addObjProperty(property_uri, OntologyUtils.OWL_THING);
                 }
@@ -114,7 +116,7 @@ public class IndividualMetrics
             else if(object_node.isLiteral())
                 this.addDtProperty(property_uri, object_node.asLiteral().getDatatypeURI());
 
-            this.propertyMetrics.add(pm);
+            this.addPropertyMetric(pm);
         }
 
     }

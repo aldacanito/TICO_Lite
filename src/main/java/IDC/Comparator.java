@@ -259,7 +259,9 @@ public class Comparator
 
         //AnalyticUtils.deleteAnalytics();
 
-        List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
+        List<String> individuals_uris = Utilities.extractInstancesFromFile();
+
+        //List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
 
         int partitionSize = 10;
 
@@ -318,7 +320,7 @@ public class Comparator
     {
         List <OntClass> ontClasses = SPARQLUtils.listOntClassesSPARQL(ModelManager.getManager().getEvolvingModel());
 
-        System.out.println("\n=========================================\nPRINTING ENTITY METRICS\n=========================================\n");
+        //System.out.println("\n=========================================\nPRINTING ENTITY METRICS\n=========================================\n");
 
         for(OntClass newCls : ontClasses)
         {
@@ -330,10 +332,10 @@ public class Comparator
 
             String computations = metricsByClassURI.printComputations();
 
-            //metricsByClassURI.printComputations2File();
+            metricsByClassURI.printComputations2File();
 
-            System.out.println(metricsByClassURI.toString());
-            System.out.println(computations);
+           // System.out.println(metricsByClassURI.toString());
+           // System.out.println(computations);
 
         }
         System.out.println("\n=========================================");

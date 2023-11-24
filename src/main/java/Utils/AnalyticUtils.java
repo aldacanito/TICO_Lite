@@ -14,7 +14,10 @@ public class AnalyticUtils
 {
     public static String CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/Constructors/";
     public static String ANALYTICS_FOLDER = "Analytics/";
+    public static String ONTO_NAME = "cmt";
 
+    public static String CURRENT_FOLDER =  "/";
+    public static String INSTANCE_FOLDER = "/instances/";
 
     public static String getPropertyNameforPath(String propertyURI)
     {

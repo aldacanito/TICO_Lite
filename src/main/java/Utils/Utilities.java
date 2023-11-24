@@ -8,10 +8,7 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +25,84 @@ import static Utils.Configs.*;
 
 public class Utilities 
 {
+
+
+    public static HashMap <String, List<String>> importantProps = new HashMap<>();
+    public static boolean init = false;
+
+
+    public static void initProps()
+    {
+
+        if(!init) {
+            importantProps = new HashMap<>();
+
+            List<String> props = new ArrayList<>();
+
+            props.add("http://cmt#acceptedby");
+            props.add("http://cmt#acceptedPaper");
+            props.add("http://cmt#addedBy");
+            props.add("http://cmt#addProgramCommitteeMember");
+            props.add("http://cmt#adjustBid");
+            props.add("http://cmt#adjustedBy");
+            props.add("http://cmt#assignedByReviewer");
+            props.add("http://cmt#assignExternalReviewer");
+            props.add("http://cmt#hasAuthor");
+            props.add("http://cmt#hasBid");
+            props.add("http://cmt#hasDecision");
+            props.add("http://cmt#readByMeta-Reviewer");
+            props.add("http://cmt#rejectedBy");
+            props.add("http://cmt#rejectPaper");
+            props.add("http://cmt#writePaper");
+            props.add("http://cmt#writeReview");
+            props.add("http://cmt#writtenBy");
+
+            importantProps.put("cmt", props);
+
+            init = true;
+        }
+
+    }
+    public static boolean isImportantProp( String propertyURI)
+    {
+        initProps();
+
+        if( importantProps.containsKey(AnalyticUtils.ONTO_NAME) )
+        {
+            List<String> theProps = importantProps.get(AnalyticUtils.ONTO_NAME);
+
+            if(theProps.contains(propertyURI))
+                return true;
+        }
+
+        return false;
+    }
+
+
+    public static List<String> extractInstancesFromFile()
+    {
+        List<String> individuals_uris = new ArrayList<>();
+
+        String file_content = readFileContent(AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_0.ttl");
+        String lines [] = file_content.split("\\r?\\n");
+
+        for(String line : lines)
+        {
+            if(line.contains("-instances") && line.startsWith("<"))
+            {
+                line = line.replace("<", "").replace(">", "");
+                individuals_uris.add(line);
+            }
+        }
+
+        individuals_uris = new ArrayList<>(new HashSet<>(individuals_uris));
+        Collections.sort(individuals_uris);
+
+        return individuals_uris;
+    }
+
+
+
 
     public static boolean deleteFile(String filename)
     {
@@ -49,7 +124,9 @@ public class Utilities
 
         if(!dir.exists()) dir.mkdirs();
 
-        if(!file.exists())
+        boolean fe = !file.exists() && !file.isDirectory()  ;
+
+        if(!file.isFile())
         {
             try
             {
@@ -253,6 +330,23 @@ public class Utilities
             // ignored
         }
 
+        return content;
+    }
+
+
+    public static String readFileContent(String filePath)
+    {
+        String content = "";
+
+        if (Files.exists(Path.of(filePath)))
+        {
+            try
+            {
+                content += new String(Files.readAllBytes(Paths.get(filePath)));
+            } catch (IOException e) {
+                content = null;
+            }
+        }
         return content;
     }
 

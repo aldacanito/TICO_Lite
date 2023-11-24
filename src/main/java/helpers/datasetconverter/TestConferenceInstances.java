@@ -13,7 +13,7 @@ import java.io.File;
 public class TestConferenceInstances
 {
 
-    static String base = "C:\\Users\\Alda\\OneDrive - Instituto Superior de Engenharia do Porto\\Documentos\\GitHub\\DatasetConverter\\";
+    static String base = "C:\\Users\\Alda\\Documents\\TICO\\";
     static String datasetsFolder = base + "PopulatedDatasets/";
 
     static OntModel originalModel = ModelFactory.createOntologyModel();
@@ -28,6 +28,8 @@ public class TestConferenceInstances
 
         String [] datasets = {"cmt"};
 
+
+
         for(String dataset : datasets)
             run(dataset);
 
@@ -35,20 +37,22 @@ public class TestConferenceInstances
 
     public static void run(String ontologyName)
     {
-        String folder = datasetsFolder + ontologyName + "/";
-        String instancesFolder = folder + "/instances/";
+        AnalyticUtils.ONTO_NAME = ontologyName;
+
+        AnalyticUtils.CURRENT_FOLDER = datasetsFolder + ontologyName + "/";
+        AnalyticUtils.INSTANCE_FOLDER = AnalyticUtils.CURRENT_FOLDER + "/instances/";
 
         AnalyticUtils.CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/"+ontologyName+"/Constructors/";
         AnalyticUtils.ANALYTICS_FOLDER = "Analytics/" + ontologyName;
 
-        originalModel = OntologyUtils.readModel(folder + ontologyName + ".ttl");
-        evolvingModel = OntologyUtils.readModel(folder + ontologyName + ".ttl");
+        originalModel = OntologyUtils.readModel(AnalyticUtils.CURRENT_FOLDER + ontologyName + ".ttl");
+        evolvingModel = OntologyUtils.readModel(AnalyticUtils.CURRENT_FOLDER + ontologyName + ".ttl");
         instanceModel = ModelFactory.createOntologyModel();
 
         ModelManager.getManager().setup(originalModel, evolvingModel, instanceModel);
 
         // read all instances files in the instance folder
-        File dir                = new File(instancesFolder);
+        File dir                = new File(AnalyticUtils.INSTANCE_FOLDER);
         File[] directoryListing = dir.listFiles();
 
         if (directoryListing != null)
