@@ -81,6 +81,7 @@ public class AnalyticUtils
         {
             String propertyPart = getPropertyNameforPath(propertyURI);
 
+            System.out.println("\n=======================\nPrinting computations for " + propertyPart);
             String fileName   = CONSTRUCTOR_ANALYTICS_FOLDER + "Constructors_totals_" + propertyPart + ".csv";
             Utilities.createFile(fileName);
 
@@ -99,6 +100,8 @@ public class AnalyticUtils
             }
 
             Utils.Utilities.appendLineToFile(fileName, line);
+            System.out.println("\n=======================\nFinished printing computations for " + propertyPart + ". File: " + fileName);
+
         }
     }
 

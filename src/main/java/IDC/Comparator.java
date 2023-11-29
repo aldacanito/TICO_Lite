@@ -260,7 +260,6 @@ public class Comparator
 
         //List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
 
-
         getIndividualsMetrics(individuals_uris);
         printEntityMetricsStats();
 
@@ -294,13 +293,19 @@ public class Comparator
     {
         for(String uri : individuals_uris)
         {
+
             Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
 
+            IndividualMetrics im = new IndividualMetrics(individual);
+
+            if(im.getProperties().size() == 0)
+                continue;
             // use sliding window
             individual = ModelManager.getManager().addToWindow(individual);
 
-            IndividualMetrics im  = EntityMetricsStore.getStore().addIndividualMetrics(individual);
+            EntityMetricsStore.getStore().addIndividualMetrics(im);
 
+            System.out.println("Analysing individual: " + uri);
             List<OntClass> ontClasses = SPARQLUtils.listOntClassesSPARQL(individual);
             for(OntClass cls : ontClasses)
             {

@@ -307,8 +307,6 @@ public class ClassPropertyMetrics extends EntityMetrics
 
     public void printComputations2File()
     {
-        String ret = "";
-
         if(!metricsComputed)
             computeAllMetrics();
 

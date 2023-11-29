@@ -103,14 +103,22 @@ public class ModelManager
 
     public Individual addToWindow(Individual i)
     {
-        if(slidingUris.size() >= Configs.windowSize)
+        int currentWindowSize = slidingUris.size();
+        System.out.println("Current window size: " + currentWindowSize + ". Max: " + Configs.windowSize );
+
+        if(currentWindowSize >= Configs.windowSize)
         {
             String toRemove = slidingUris.remove();
             OntologyUtils.removeIndividual(toRemove, slidingWindowModel);
+
+            System.out.println("Removed " + toRemove + " from the sliding model.");
         }
 
         i = OntologyUtils.copyIndividual(i, slidingWindowModel);
         slidingUris.add(i.getURI());
+
+        System.out.println("Added " + i.getURI() + " from the sliding model.");
+
 
         return i;
     }
