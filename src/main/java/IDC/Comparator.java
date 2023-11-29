@@ -14,10 +14,7 @@ import IDC.EvolActions.Interfaces.EvolutionaryAction;
 import IDC.EvolActions.Interfaces.IAddClass;
 
 import IDC.Metrics.*;
-import Utils.AnalyticUtils;
-import Utils.OntologyUtils;
-import Utils.SPARQLUtils;
-import Utils.Utilities;
+import Utils.*;
 
 import java.io.File;
 import java.sql.SQLOutput;
@@ -263,27 +260,32 @@ public class Comparator
 
         //List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
 
-        int partitionSize = 10;
+
+        getIndividualsMetrics(individuals_uris);
+        printEntityMetricsStats();
+
+
+        /*
+
+        int partitionSize = Configs.windowSize;
 
         List<List<String>> partitions = Utilities.chopped(individuals_uris, partitionSize);
 
         for(List<String> partition : partitions)
         {
+            //checkNewClasses(partition);
+            //checkForOntProperties(partition);
+            //copyIndividualsToEvolvedModel(partition);
 
-            /*
-            checkNewClasses(partition);
-            checkForOntProperties(partition);
-            copyIndividualsToEvolvedModel(partition);
-            */
             getIndividualsMetrics(partition);
 
-            //  cleanUnclearClasses(evolvedModel, partition);
+            //cleanUnclearClasses(evolvedModel, partition);
 
             //runComparatorOnIndividuals(partition);
             //updateTemporalRestrictions();         // check if the temporal restrictions on the classes are ok
             printEntityMetricsStats();
 
-        }
+        }*/
 
 
     }
@@ -293,6 +295,10 @@ public class Comparator
         for(String uri : individuals_uris)
         {
             Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
+
+            // use sliding window
+            individual = ModelManager.getManager().addToWindow(individual);
+
             IndividualMetrics im  = EntityMetricsStore.getStore().addIndividualMetrics(individual);
 
             List<OntClass> ontClasses = SPARQLUtils.listOntClassesSPARQL(individual);

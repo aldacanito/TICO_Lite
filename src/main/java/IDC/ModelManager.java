@@ -5,11 +5,15 @@
  */
 package IDC;
 
+import Utils.Configs;
 import Utils.OntologyUtils;
-import org.apache.jena.ontology.AnnotationProperty;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
-import org.apache.jena.ontology.OntResource;
+import org.apache.jena.ontology.*;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 
 /**
@@ -23,10 +27,14 @@ public class ModelManager
     private OntModel evolvingModel;
     private OntModel instanceModel;
     private OntModel temporal_instancesModel;
-    
-    
+    private OntModel slidingWindowModel;
+
+    Queue<String> slidingUris;
+
+
     private ModelManager()
-    {}
+    {
+    }
     
     public static ModelManager getManager()
     {
@@ -55,7 +63,14 @@ public class ModelManager
         o_versionInfo = instanceModel.createOntResource("VersionInfo");
         o_versionInfo.addLiteral(o_version, "instance");
 
+        slidingWindowModel  = ModelFactory.createOntologyModel();
+        o_version           = slidingWindowModel.createAnnotationProperty("version");
+        o_versionInfo       = slidingWindowModel.createOntResource("VersionInfo");
+        o_versionInfo.addLiteral(o_version, "sliding");
+
         temporal_instancesModel = evolvingModel;
+        slidingUris = new PriorityQueue<String>(Configs.windowSize);
+
     }
     public void setup(String onto_path, String instance_path)
     {
@@ -76,10 +91,29 @@ public class ModelManager
         o_versionInfo = instanceModel.createOntResource("VersionInfo");
         o_versionInfo.addLiteral(o_version, "instance");
 
+        slidingWindowModel  = ModelFactory.createOntologyModel();
+        o_version           = slidingWindowModel.createAnnotationProperty("version");
+        o_versionInfo       = slidingWindowModel.createOntResource("VersionInfo");
+        o_versionInfo.addLiteral(o_version, "sliding");
+
         temporal_instancesModel = evolvingModel;
+        slidingUris = new PriorityQueue<String>();
+
     }
 
+    public Individual addToWindow(Individual i)
+    {
+        if(slidingUris.size() >= Configs.windowSize)
+        {
+            String toRemove = slidingUris.remove();
+            OntologyUtils.removeIndividual(toRemove, slidingWindowModel);
+        }
 
+        i = OntologyUtils.copyIndividual(i, slidingWindowModel);
+        slidingUris.add(i.getURI());
+
+        return i;
+    }
 
 
 

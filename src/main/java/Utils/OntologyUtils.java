@@ -1274,26 +1274,52 @@ public class OntologyUtils
        return null;
     }
 
+    public static boolean removeIndividual(String individualURI, OntModel model)
+    {
+        try
+        {
+            Individual i = model.getIndividual(individualURI);
+
+            /*
+            List<Statement> propertyStmtList    = i.listProperties().toList();
+            List<OntClass> ontClasses           = i.listOntClasses(false).toList();
+
+            for(OntClass cls : ontClasses)
+                i.removeOntClass(cls);
+*/
+           // i.removeProperties();
+            i.remove();
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error deleting individual " + individualURI + ". Reason:" + e.getMessage());
+            return false;
+        }
+
+
+        return true;
+    }
+
     public static Individual copyIndividual(Individual instance, OntModel model)
     {
-        Individual new_ind = model.createIndividual(instance.getOntClass(true));
-        
-        List<Statement> propertyStmtList = instance.listProperties().toList();            
-            
+        String iUri        = instance.getURI();
+        Individual new_ind = model.createIndividual( iUri, instance.getOntClass(true));
+
         //copy all classes
-        
-        List<OntClass> ontClasses = instance.listOntClasses(true).toList();
-        
-        for(OntClass cls : ontClasses)
+        List<OntClass> oldClasses = instance.listOntClasses(true).toList();
+        for(OntClass oldClass: oldClasses)
         {
-            if(cls.getURI()!=null && model.getOntClass(cls.getURI())==null)
+            if(oldClass.getURI() != null)
             {
-                model.createClass(cls.getURI());
-                new_ind.addOntClass(cls);
+                model.createClass(oldClass.getURI());
+                new_ind.addOntClass(oldClass);
             }
+
         }
         
         // copy all properties
+        List<Statement> propertyStmtList = instance.listProperties().toList();
         for(Statement stmt : propertyStmtList)
         {
             Property predicate = stmt.getPredicate();
@@ -1305,9 +1331,8 @@ public class OntologyUtils
             
             if(object.isURIResource()) // objectProperty
             {
-                Resource asResource = object.asResource();
+                Resource asResource     = object.asResource();
                 OntResource ontResource = model.getOntResource(asResource.getURI());
-                
                 RDFNode newObj;
                 
                 if(ontResource==null) // nao existe no modelo novo
@@ -1316,18 +1341,13 @@ public class OntologyUtils
                     newObj = ontResource;
                 
                 new_ind.addProperty(newProperty, newObj);
-                
             }
             else if(object.isLiteral())
             {
                 RDFDatatype datatype = object.asLiteral().getDatatype();
                 String value         =  object.asLiteral().getString();
-            
                 new_ind.addProperty(newProperty, value, datatype);
-                
             }
-           
-            
         }
         return new_ind;
     }

@@ -30,6 +30,8 @@ public class Configs
     public static int subclass_threshold;
     public static int equivalent_threshold;
     public static int someValuesFrom_threshold;
+
+    public static int windowSize = 10;
     
     
     public Configs()
