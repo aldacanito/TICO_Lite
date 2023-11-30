@@ -18,7 +18,7 @@ public class                                                                    
 {
     private int count;
     protected String URI;
-    private Map<String, Integer> ranges;
+    private Map<String, List<String>> ranges;
     private Map<String, Integer> domains;
 
     private List<ConstructorMetrics> constructors;
@@ -73,8 +73,12 @@ public class                                                                    
             Set<String> keys = ranges.keySet();
             for(String key : keys)
             {
-                Integer value = ranges.get(key);
-                print += key + ": " + value;
+                List<String> value = ranges.get(key);
+                print += key + ".\n\t Values: + ";
+
+                for(String val : value)
+                    print += "\n\t\t> " + val;
+
             }    
         }
         
@@ -93,17 +97,18 @@ public class                                                                    
     }
     
     
-    public void addRange(String rangeURI)
+    public void addRange(String rangeURI, String rangeValue)
     {
         if(this.getRanges().containsKey(rangeURI))
         {
-            int c = this.getRanges().get(rangeURI);
-            c++;
-            this.getRanges().put(rangeURI, c);
+            List<String> rangeValues = this.getRanges().get(rangeURI);
+            rangeValues.add(rangeValue);
         }
         else
         {
-            this.getRanges().put(rangeURI, 1);
+            List<String> newRanges = new ArrayList<>();
+            newRanges.add(rangeValue);
+            this.getRanges().put(rangeURI, newRanges);
         }
        
     }
@@ -146,20 +151,23 @@ public class                                                                    
         }
     }
 
-    public void copyRanges(Map<String, Integer> ranges)
+    public void copyRanges(Map<String, List<String>> ranges)
     {
         for(String d_uri : ranges.keySet())
         {
-            int new_count = ranges.get(d_uri);
+            if(this.ranges.containsKey(d_uri) && ranges.containsKey(d_uri))
+            {
+                List <String> rangeValues = ranges.get(d_uri);
+                List <String> old_rangeValues = this.ranges.get(d_uri);
 
-            if(this.ranges.containsKey(d_uri))
-            {
-                int old_count = this.ranges.get(d_uri);
-                this.ranges.put(d_uri, new_count + old_count);
+                for(String range : rangeValues)
+                {
+                    old_rangeValues.add(range);
+                }
             }
-            else
+            else if (!this.ranges.containsKey(d_uri))
             {
-                this.ranges.put(d_uri, new_count);
+                this.ranges.put(d_uri, ranges.get(d_uri));
             }
         }
     }
@@ -218,7 +226,7 @@ public class                                                                    
     /**
      * @return the ranges
      */
-    public Map<String, Integer> getRanges() {
+    public Map<String, List<String>> getRanges() {
         return ranges;
     }
 
@@ -242,10 +250,14 @@ public class                                                                    
 
     public int getRangeCount(String rangeURI)
     {
-        Map<String, Integer> r = this.getRanges();
-
+        Map<String, List<String>> r = this.getRanges();
+        
         if(r.keySet().contains(rangeURI))
-            return r.get(rangeURI);
+        {
+            List<String> strings = r.get(rangeURI);
+            return strings.size();
+
+        }
 
         return 0;
     }

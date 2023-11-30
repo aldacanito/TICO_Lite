@@ -256,9 +256,9 @@ public class Comparator
 
         //AnalyticUtils.deleteAnalytics();
 
-        List<String> individuals_uris = Utilities.extractInstancesFromFile();
+        //List<String> individuals_uris = Utilities.extractInstancesFromFile();
 
-        //List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
+        List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
 
         getIndividualsMetrics(individuals_uris);
         printEntityMetricsStats();

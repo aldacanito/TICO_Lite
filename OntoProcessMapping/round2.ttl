@@ -21,6 +21,22 @@
 
 j.2:TS__Sensor__1  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice Sensor 1" ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   CM_ontology:hasSensorID
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  j.0:extEvent ;
+                               owl:onProperty     OntoPianismERP:detects
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20230717144244249> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  j.2:Sensor
+                             ] ;
         rdfs:subClassOf      [ rdf:type           owl:Restriction ;
                                owl:allValuesFrom  j.0:extEvent ;
                                owl:onProperty     OntoPianismERP:detects
@@ -29,42 +45,34 @@ j.2:TS__Sensor__1  rdf:type  owl:Class ;
                                owl:cardinality  "1"^^xsd:int ;
                                owl:onProperty   CM_ontology:hasSensorID
                              ] ;
-        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
-                               owl:cardinality  "1"^^xsd:int ;
-                               owl:onProperty   sensors4ExtruOnt:sensorName
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20230717144242989> ;
+                               owl:onProperty  j.3:hasDuration
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      j.3:isTimeSliceOf ;
                                owl:someValuesFrom  j.2:Sensor
                              ] ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20230615172753807> ;
-                               owl:onProperty  j.3:hasDuration
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   sensors4ExtruOnt:sensorName
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   sensors4ExtruOnt:sensorName
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( j.2:Sensor j.2:Sensor
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20230615172753807> ;
+                                                       owl:hasValue    <20230717144244249> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
-                             ] .
-
-OntoPianismIndividuals:TS__feedRate_1__1
-        rdf:type             owl:Class ;
-        rdfs:label           "TimeSlice feedRate_1 1" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750117> ;
-                               owl:onProperty  j.3:hasDuration
-                             ] ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      j.3:isTimeSliceOf ;
-                               owl:someValuesFrom  OntoPianismIndividuals:feedRate_1
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
-                               owl:intersectionOf  ( OntoPianismIndividuals:feedRate_1 OntoPianismIndividuals:feedRate_1
+                               owl:intersectionOf  ( j.2:Sensor j.2:Sensor
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750117> ;
+                                                       owl:hasValue    <20230717144242989> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
@@ -76,9 +84,13 @@ OntoPianismIndividuals:erpTimeInterval_8
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_8 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_9 .
 
+<Interval_st_20230717144243281>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20230717144243281> .
+
 j.3:Instant  rdf:type  owl:Class .
 
-<20230615172753676>  rdf:type  j.3:Instant .
+<20230717144244316>  rdf:type  j.3:Instant .
 
 OntoPianismERP:TS__VirtualEvent__2
         rdf:type             owl:Class ;
@@ -87,30 +99,54 @@ OntoPianismERP:TS__VirtualEvent__2
                                owl:onProperty      j.3:after ;
                                owl:someValuesFrom  OntoPianismERP:TS__VirtualEvent__1
                              ] ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      OntoPianismERP:derivedFrom ;
-                               owl:someValuesFrom  j.0:extEvent
-                             ] ;
-        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
-                               owl:cardinality  "1"^^xsd:int ;
-                               owl:onProperty   OntoPianismERP:hasValue
-                             ] ;
         rdfs:subClassOf      [ rdf:type           owl:Restriction ;
                                owl:allValuesFrom  j.0:extEvent ;
                                owl:onProperty     OntoPianismERP:derivedFrom
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:after ;
+                               owl:someValuesFrom  OntoPianismERP:TS__VirtualEvent__1
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      j.3:isTimeSliceOf ;
                                owl:someValuesFrom  OntoPianismERP:VirtualEvent
                              ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  OntoPianismERP:VirtualEvent
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  j.0:extEvent ;
+                               owl:onProperty     OntoPianismERP:derivedFrom
+                             ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20230615172753878> ;
+                               owl:hasValue    <Interval_st_20230717144244316> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:hasValue
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:hasValue
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20230717144243121> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( OntoPianismERP:VirtualEvent OntoPianismERP:VirtualEvent
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20230615172753878> ;
+                                                       owl:hasValue    <20230717144243121> ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( OntoPianismERP:VirtualEvent OntoPianismERP:VirtualEvent
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20230717144244316> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
@@ -124,23 +160,22 @@ j.3:hasEnd  rdf:type  owl:ObjectProperty .
         j.3:hasEnd        OntoPianismIndividuals:feedRate_1 .
 
 OntoPianismIndividuals:erpEvent_1
-        rdf:type            owl:Class , owl:NamedIndividual , j.0:extEvent ;
+        rdf:type            owl:NamedIndividual , j.0:extEvent ;
         rdfs:label          "erpEvent_1" ;
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_1 ;
         j.5:hasOutput       "1.787231" .
 
+<Interval_st_20230717144243205>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20230717144243205> .
+
 OntoPianismERP:hasValue
-        rdf:type  owl:DatatypeProperty .
+        rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
 
 CM_ontology:hasSensorID
         rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
 
-[ rdf:type            owl:Class ;
-  owl:intersectionOf  [] 
-] .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750117>
-        rdf:type  j.3:Instant .
+<20230717144243281>  rdf:type  j.3:Instant .
 
 OntoPianismIndividuals:erpTimeInterval_3
         rdf:type          j.3:DateTimeInterval , owl:NamedIndividual ;
@@ -148,43 +183,27 @@ OntoPianismIndividuals:erpTimeInterval_3
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_4 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_5 .
 
-j.0:extEvent  rdf:type   owl:Class ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               OntoPianismIndividuals:feedRate_1 ;
-                           owl:onProperty            OntoPianismERP:hasSensorCorrelation ;
-                           owl:qualifiedCardinality  "1"^^xsd:long
-                         ] ;
-        rdfs:subClassOf  [ rdf:type           owl:Restriction ;
-                           owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
-                           owl:onProperty     OntoPianismERP:hasSensorCorrelation
-                         ] ;
-        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:int ;
-                           owl:onProperty   j.5:hasOutput
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      OntoPianismERP:hasSensorCorrelation ;
-                           owl:someValuesFrom  OntoPianismERP:VirtualEvent
-                         ] .
+j.0:extEvent  rdf:type       owl:Class ;
+        rdfs:subClassOf      _:b0 ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        owl:equivalentClass  _:b0 .
 
 OntoPianismERP:VirtualSensor
         rdf:type         owl:Class ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               OntoPianismIndividuals:feedRate_2 ;
-                           owl:onProperty            OntoPianismERP:detects ;
-                           owl:qualifiedCardinality  "1"^^xsd:long
-                         ] ;
         rdfs:subClassOf  [ rdf:type           owl:Restriction ;
                            owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
                            owl:onProperty     OntoPianismERP:detects
                          ] ;
         rdfs:subClassOf  [ rdf:type         owl:Restriction ;
                            owl:cardinality  "1"^^xsd:int ;
-                           owl:onProperty   CM_ontology:hasSensorID
+                           owl:onProperty   sensors4ExtruOnt:sensorName
                          ] ;
         rdfs:subClassOf  [ rdf:type         owl:Restriction ;
                            owl:cardinality  "1"^^xsd:int ;
-                           owl:onProperty   sensors4ExtruOnt:sensorName
+                           owl:onProperty   CM_ontology:hasSensorID
                          ] .
 
 OntoPianismIndividuals:erpEvent_9
@@ -195,6 +214,10 @@ OntoPianismIndividuals:erpEvent_9
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_7 ;
         j.5:hasOutput       "45.37583333333333" .
 
+_:b0    rdf:type         owl:Restriction ;
+        owl:cardinality  "1"^^xsd:int ;
+        owl:onProperty   j.5:hasOutput .
+
 j.3:Interval  rdf:type  owl:Class .
 
 OntoPianismERP:hasOutput
@@ -203,23 +226,88 @@ OntoPianismERP:hasOutput
 CM_ontology:hasTimeStamp
         rdf:type  owl:DatatypeProperty .
 
-<Interval_st_20230615172753807>
+<Interval_st_20230717144243121>
         rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <20230615172753807> .
+        j.3:hasBeginning  <20230717144243121> .
+
+<20230717144243205>  rdf:type  j.3:Instant .
+
+j.0:TS__extEvent__2  rdf:type  owl:Class ;
+        rdfs:label           "TimeSlice extEvent 2" ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:after ;
+                               owl:someValuesFrom  j.0:TS__extEvent__1
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20230717144243281> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:after ;
+                               owl:someValuesFrom  j.0:TS__extEvent__1
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20230717144244522> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  j.0:extEvent
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  j.0:extEvent
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( j.0:extEvent j.0:extEvent
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20230717144244522> ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( j.0:extEvent j.0:extEvent
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20230717144243281> ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] ;
+        owl:equivalentClass  [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        owl:equivalentClass  [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] .
+
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230717144240711>
+        rdf:type  j.3:Instant .
 
 j.3:isTimeSliceOf  rdf:type  owl:ObjectProperty .
-
-<Interval_st_20230615172753878>
-        rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <20230615172753878> .
-
-OntoPianismERP:hasSensorCorrelation
-        rdf:type  owl:ObjectProperty .
 
 j.3:before  rdf:type  owl:ObjectProperty .
 
 OntoPianismIndividuals:erpEvent_4
-        rdf:type            j.0:extEvent , owl:NamedIndividual , owl:Class ;
+        rdf:type            j.0:extEvent , owl:NamedIndividual ;
         rdfs:label          "erpEvent_batch2_4" ;
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_3 ;
         j.5:hasOutput       "45.975" .
@@ -231,6 +319,8 @@ OntoPianismIndividuals:erpTimeInstant_2
         rdfs:label                "2020-08-15T10:00:00.000Z" ;
         CM_ontology:hasTimeStamp  "2020-08-15T10:00:00.000Z" .
 
+<20230717144243121>  rdf:type  j.3:Instant .
+
 OntoPianismIndividuals:erpTimeInterval_6
         rdf:type          owl:NamedIndividual , j.3:DateTimeInterval ;
         rdfs:label        "erpTimeInterval_6" ;
@@ -238,19 +328,14 @@ OntoPianismIndividuals:erpTimeInterval_6
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_7 .
 
 OntoPianismIndividuals:feedRate_2
-        rdf:type                    OntoPianismERP:VirtualEvent , owl:NamedIndividual , owl:Class ;
+        rdf:type                    OntoPianismERP:VirtualEvent , owl:NamedIndividual ;
         rdfs:label                  "FeedRate Virtual 2" ;
         OntoPianismERP:derivedFrom  OntoPianismIndividuals:erpEvent_5 , OntoPianismIndividuals:erpEvent_4 ;
         OntoPianismERP:hasValue     "0.0232232323" .
 
-OntoPianismERP:hasRunningAverage
-        rdf:type  owl:DatatypeProperty .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750117>
+<Interval_st_20230717144244522>
         rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750117> .
-
-[ rdf:type  owl:Ontology ] .
+        j.3:hasBeginning  <20230717144244522> .
 
 j.3:intervalDuring  rdf:type  owl:ObjectProperty .
 
@@ -260,8 +345,7 @@ OntoPianismERP:derivedFrom
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
         rdf:type  owl:AnnotationProperty .
 
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750299>
-        rdf:type  j.3:Instant .
+<20230717144244522>  rdf:type  j.3:Instant .
 
 OntoPianismIndividuals:erpTimeInterval_1
         rdf:type          owl:NamedIndividual , j.3:DateTimeInterval ;
@@ -281,22 +365,9 @@ OntoPianismIndividuals:erpEvent_7
         rdf:type     owl:Ontology ;
         owl:imports  <http://www.w3.org/2006/time> .
 
-<20230615172753919>  rdf:type  j.3:Instant .
-
-<Interval_st_20230615172753676>
+<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230717144240711>
         rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <20230615172753676> .
-
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "1"^^xsd:int ;
-  owl:onProperty   j.5:hasOutput
-] .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750202>
-        rdf:type  j.3:Instant .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750152>
-        rdf:type  j.3:Instant .
+        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230717144240711> .
 
 sensors4ExtruOnt:sensorName
         rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
@@ -310,17 +381,57 @@ OntoPianismIndividuals:erpEvent_2
 OntoPianismERP:TS__VirtualSensor__1
         rdf:type             owl:Class ;
         rdfs:label           "TimeSlice VirtualSensor 1" ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   sensors4ExtruOnt:sensorName
+                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      j.3:before ;
                                owl:someValuesFrom  OntoPianismERP:TS__VirtualSensor__2
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  OntoPianismERP:VirtualSensor
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
+                               owl:onProperty     OntoPianismERP:detects
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   CM_ontology:hasSensorID
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   CM_ontology:hasSensorID
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
                                owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   sensors4ExtruOnt:sensorName
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   CM_ontology:hasSensorID
+                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      j.3:isTimeSliceOf ;
-                               owl:someValuesFrom  OntoPianismERP:VirtualSensor
+                               owl:onProperty      j.3:before ;
+                               owl:someValuesFrom  OntoPianismERP:TS__VirtualSensor__2
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   sensors4ExtruOnt:sensorName
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
+                               owl:onProperty     OntoPianismERP:detects
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
+                               owl:onProperty     OntoPianismERP:detects
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( OntoPianismERP:VirtualSensor OntoPianismERP:VirtualSensor
@@ -342,6 +453,10 @@ OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682
         CM_ontology:hasSensorID      "28166aca-9a36-36ca-a682" ;
         OntoPianismERP:detects       OntoPianismIndividuals:feedRate_2 , OntoPianismIndividuals:feedRate_1 .
 
+<Interval_st_20230717144244249>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20230717144244249> .
+
 OntoPianismIndividuals:erpTimeInterval_4
         rdf:type          j.3:DateTimeInterval , owl:NamedIndividual ;
         rdfs:label        "erpTimeInterval_4" ;
@@ -350,53 +465,28 @@ OntoPianismIndividuals:erpTimeInterval_4
 
 <version>  rdf:type  owl:AnnotationProperty .
 
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750299>
-        rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750299> .
-
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_erpSensor_28166aca-9a36-36ca-a682erpSensor_28166aca-9a36-36ca-a682>
         rdf:type          j.3:Interval ;
         j.3:hasBeginning  OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 ;
         j.3:hasEnd        OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682 .
 
-OntoPianismIndividuals:TS__erpEvent_4__1
-        rdf:type             owl:Class ;
-        rdfs:label           "TimeSlice erpEvent_4 1" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750202> ;
-                               owl:onProperty  j.3:hasDuration
-                             ] ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      j.3:isTimeSliceOf ;
-                               owl:someValuesFrom  OntoPianismIndividuals:erpEvent_4
-                             ] ;
-        owl:equivalentClass  [ rdf:type            owl:Class ;
-                               owl:intersectionOf  ( OntoPianismIndividuals:erpEvent_4 OntoPianismIndividuals:erpEvent_4
-                                                     [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750202> ;
-                                                       owl:onProperty  j.3:after
-                                                     ]
-                                                   )
-                             ] .
-
 j.2:Sensor  rdf:type     owl:Class ;
-        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
-                           owl:cardinality  "1"^^xsd:int ;
-                           owl:onProperty   sensors4ExtruOnt:sensorName
-                         ] ;
         rdfs:subClassOf  [ rdf:type         owl:Restriction ;
                            owl:cardinality  "1"^^xsd:int ;
                            owl:onProperty   CM_ontology:hasSensorID
                          ] ;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction ;
+                           owl:cardinality  "1"^^xsd:int ;
+                           owl:onProperty   sensors4ExtruOnt:sensorName
+                         ] ;
         rdfs:subClassOf  [ rdf:type           owl:Restriction ;
                            owl:allValuesFrom  j.0:extEvent ;
                            owl:onProperty     OntoPianismERP:detects
-                         ] ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               OntoPianismIndividuals:erpEvent_1 ;
-                           owl:onProperty            OntoPianismERP:detects ;
-                           owl:qualifiedCardinality  "1"^^xsd:long
                          ] .
+
+<Interval_st_20230717144242989>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20230717144242989> .
 
 OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682-c7c53718136d
         rdf:type                     j.2:Sensor , owl:NamedIndividual ;
@@ -405,40 +495,13 @@ OntoPianismIndividuals:erpSensor_28166aca-9a36-36ca-a682-c7c53718136d
         CM_ontology:hasSensorID      "28166aca-9a36-36ca-a682-c7c53718136d" ;
         OntoPianismERP:detects       OntoPianismIndividuals:erpEvent_8 , OntoPianismIndividuals:erpEvent_7 , OntoPianismIndividuals:erpEvent_6 , OntoPianismIndividuals:erpEvent_10 , OntoPianismIndividuals:erpEvent_9 , OntoPianismIndividuals:erpEvent_2 , OntoPianismIndividuals:erpEvent_1 .
 
-OntoPianismIndividuals:TS__erpEvent_1__1
-        rdf:type             owl:Class ;
-        rdfs:label           "TimeSlice erpEvent_1 1" ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      j.3:isTimeSliceOf ;
-                               owl:someValuesFrom  OntoPianismIndividuals:erpEvent_1
-                             ] ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20230615172753676> ;
-                               owl:onProperty  j.3:hasDuration
-                             ] ;
-        owl:equivalentClass  [ rdf:type            owl:Class ;
-                               owl:intersectionOf  ( OntoPianismIndividuals:erpEvent_1 OntoPianismIndividuals:erpEvent_1
-                                                     [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20230615172753676> ;
-                                                       owl:onProperty  j.3:after
-                                                     ]
-                                                   )
-                             ] .
+<20230717144244249>  rdf:type  j.3:Instant .
 
 j.3:hasDuration  rdf:type  owl:ObjectProperty .
 
 <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/VersionInfo>
         <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/version>
                 "evolving" .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750202>
-        rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750202> .
-
-[ rdf:type            owl:Restriction ;
-  owl:onProperty      OntoPianismERP:hasSensorCorrelation ;
-  owl:someValuesFrom  OntoPianismIndividuals:feedRate_1
-] .
 
 OntoPianismIndividuals:erpEvent_5
         rdf:type            j.0:extEvent , owl:NamedIndividual ;
@@ -447,10 +510,6 @@ OntoPianismIndividuals:erpEvent_5
                 OntoPianismIndividuals:feedRate_2 ;
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_4 ;
         j.5:hasOutput       "45.56583333333334" .
-
-<file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750152>
-        rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750152> .
 
 OntoPianismIndividuals:erpTimeInstant_3
         rdf:type                  owl:NamedIndividual , j.3:Instant ;
@@ -465,22 +524,52 @@ OntoPianismIndividuals:erpTimeInterval_7
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_7 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_8 .
 
-j.5:hasOutput  rdf:type  owl:FunctionalProperty , owl:DatatypeProperty .
+<20230717144242989>  rdf:type  j.3:Instant .
+
+j.5:hasOutput  rdf:type  owl:DatatypeProperty , owl:FunctionalProperty .
 
 OntoPianismERP:TS__VirtualEvent__1
         rdf:type             owl:Class ;
         rdfs:label           "TimeSlice VirtualEvent 1" ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  OntoPianismERP:VirtualEvent
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      j.3:before ;
                                owl:someValuesFrom  OntoPianismERP:TS__VirtualEvent__2
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  j.0:extEvent ;
+                               owl:onProperty     OntoPianismERP:derivedFrom
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:hasValue
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:hasValue
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   OntoPianismERP:hasValue
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  j.0:extEvent ;
+                               owl:onProperty     OntoPianismERP:derivedFrom
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  j.0:extEvent ;
+                               owl:onProperty     OntoPianismERP:derivedFrom
                              ] ;
         rdfs:subClassOf      [ rdf:type        owl:Restriction ;
                                owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_feedRate_1feedRate_1> ;
                                owl:onProperty  j.3:hasDuration
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      j.3:isTimeSliceOf ;
-                               owl:someValuesFrom  OntoPianismERP:VirtualEvent
+                               owl:onProperty      j.3:before ;
+                               owl:someValuesFrom  OntoPianismERP:TS__VirtualEvent__2
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( OntoPianismERP:VirtualEvent OntoPianismERP:VirtualEvent
@@ -495,32 +584,15 @@ OntoPianismERP:TS__VirtualEvent__1
                                                    )
                              ] .
 
-OntoPianismIndividuals:TS__feedRate_2__1
-        rdf:type             owl:Class ;
-        rdfs:label           "TimeSlice feedRate_2 1" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750152> ;
-                               owl:onProperty  j.3:hasDuration
-                             ] ;
-        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      j.3:isTimeSliceOf ;
-                               owl:someValuesFrom  OntoPianismIndividuals:feedRate_2
-                             ] ;
-        owl:equivalentClass  [ rdf:type            owl:Class ;
-                               owl:intersectionOf  ( OntoPianismIndividuals:feedRate_2 OntoPianismIndividuals:feedRate_2
-                                                     [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750152> ;
-                                                       owl:onProperty  j.3:after
-                                                     ]
-                                                   )
-                             ] .
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  _:b1
+] .
 
 OntoPianismERP:detects
         rdf:type  owl:ObjectProperty .
 
-[ rdf:type         owl:Restriction ;
-  owl:cardinality  "1"^^xsd:int ;
-  owl:onProperty   OntoPianismERP:hasRunningAverage
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  _:b2
 ] .
 
 OntoPianismIndividuals:erpTimeInterval_2
@@ -528,6 +600,10 @@ OntoPianismIndividuals:erpTimeInterval_2
         rdfs:label        "erpTimeInterval_2" ;
         j.3:hasBeginning  OntoPianismIndividuals:erpTimeInstant_2 ;
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_3 .
+
+<Interval_st_20230717144244389>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20230717144244389> .
 
 OntoPianismIndividuals:erpEvent_8
         rdf:type            owl:NamedIndividual , j.0:extEvent ;
@@ -538,55 +614,52 @@ OntoPianismIndividuals:erpEvent_8
         j.5:hasOutput       "45.56583333333334" .
 
 [ rdf:type            owl:Class ;
-  owl:intersectionOf  [] 
+  owl:intersectionOf  _:b1
 ] .
-
-<Interval_st_20230615172753919>
-        rdf:type          j.3:Interval ;
-        j.3:hasBeginning  <20230615172753919> .
 
 j.0:TS__extEvent__1  rdf:type  owl:Class ;
         rdfs:label           "TimeSlice extEvent 1" ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230615172750299> ;
-                               owl:onProperty  j.3:hasDuration
-                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      j.3:isTimeSliceOf ;
                                owl:someValuesFrom  j.0:extEvent
                              ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      OntoPianismERP:hasSensorCorrelation ;
-                               owl:someValuesFrom  OntoPianismERP:VirtualEvent
+                               owl:onProperty      j.3:before ;
+                               owl:someValuesFrom  j.0:TS__extEvent__2
                              ] ;
         rdfs:subClassOf      [ rdf:type         owl:Restriction ;
                                owl:cardinality  "1"^^xsd:int ;
                                owl:onProperty   j.5:hasOutput
                              ] ;
-        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
-                               owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
-                               owl:onProperty     OntoPianismERP:hasSensorCorrelation
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/Interval_st_20230717144240711> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   j.5:hasOutput
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:before ;
+                               owl:someValuesFrom  j.0:TS__extEvent__2
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( j.0:extEvent j.0:extEvent
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230615172750299> ;
+                                                       owl:hasValue    <file:///C:/Users/shiza/OneDrive%20-%20Instituto%20Superior%20de%20Engenharia%20do%20Porto/Documentos/GitHub/DatasetConverter/20230717144240711> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
                              ] .
 
-<20230615172753807>  rdf:type  j.3:Instant .
-
-<20230615172753878>  rdf:type  j.3:Instant .
+<20230717144244389>  rdf:type  j.3:Instant .
 
 OntoPianismERP:VirtualEvent
         rdf:type         owl:Class ;
-        rdfs:subClassOf  [ rdf:type                  owl:Restriction ;
-                           owl:onClass               OntoPianismIndividuals:erpEvent_4 ;
-                           owl:onProperty            OntoPianismERP:derivedFrom ;
-                           owl:qualifiedCardinality  "1"^^xsd:long
-                         ] ;
         rdfs:subClassOf  [ rdf:type           owl:Restriction ;
                            owl:allValuesFrom  j.0:extEvent ;
                            owl:onProperty     OntoPianismERP:derivedFrom
@@ -594,10 +667,6 @@ OntoPianismERP:VirtualEvent
         rdfs:subClassOf  [ rdf:type         owl:Restriction ;
                            owl:cardinality  "1"^^xsd:int ;
                            owl:onProperty   OntoPianismERP:hasValue
-                         ] ;
-        rdfs:subClassOf  [ rdf:type            owl:Restriction ;
-                           owl:onProperty      OntoPianismERP:derivedFrom ;
-                           owl:someValuesFrom  j.0:extEvent
                          ] .
 
 OntoPianismIndividuals:erpEvent_3
@@ -616,9 +685,41 @@ OntoPianismIndividuals:erpTimeInstant_1
 OntoPianismERP:TS__VirtualSensor__2
         rdf:type             owl:Class ;
         rdfs:label           "TimeSlice VirtualSensor 2" ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   CM_ontology:hasSensorID
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  OntoPianismERP:VirtualSensor
+                             ] ;
+        rdfs:subClassOf      [ rdf:type            owl:Restriction ;
+                               owl:onProperty      j.3:isTimeSliceOf ;
+                               owl:someValuesFrom  OntoPianismERP:VirtualSensor
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20230717144244389> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
                                owl:onProperty      j.3:after ;
                                owl:someValuesFrom  OntoPianismERP:TS__VirtualSensor__1
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
+                               owl:onProperty     OntoPianismERP:detects
+                             ] ;
+        rdfs:subClassOf      [ rdf:type         owl:Restriction ;
+                               owl:cardinality  "1"^^xsd:int ;
+                               owl:onProperty   sensors4ExtruOnt:sensorName
+                             ] ;
+        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
+                               owl:hasValue    <Interval_st_20230717144243205> ;
+                               owl:onProperty  j.3:hasDuration
+                             ] ;
+        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
+                               owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
+                               owl:onProperty     OntoPianismERP:detects
                              ] ;
         rdfs:subClassOf      [ rdf:type         owl:Restriction ;
                                owl:cardinality  "1"^^xsd:int ;
@@ -628,22 +729,22 @@ OntoPianismERP:TS__VirtualSensor__2
                                owl:cardinality  "1"^^xsd:int ;
                                owl:onProperty   CM_ontology:hasSensorID
                              ] ;
-        rdfs:subClassOf      [ rdf:type           owl:Restriction ;
-                               owl:allValuesFrom  OntoPianismERP:VirtualEvent ;
-                               owl:onProperty     OntoPianismERP:detects
-                             ] ;
         rdfs:subClassOf      [ rdf:type            owl:Restriction ;
-                               owl:onProperty      j.3:isTimeSliceOf ;
-                               owl:someValuesFrom  OntoPianismERP:VirtualSensor
-                             ] ;
-        rdfs:subClassOf      [ rdf:type        owl:Restriction ;
-                               owl:hasValue    <Interval_st_20230615172753919> ;
-                               owl:onProperty  j.3:hasDuration
+                               owl:onProperty      j.3:after ;
+                               owl:someValuesFrom  OntoPianismERP:TS__VirtualSensor__1
                              ] ;
         owl:equivalentClass  [ rdf:type            owl:Class ;
                                owl:intersectionOf  ( OntoPianismERP:VirtualSensor OntoPianismERP:VirtualSensor
                                                      [ rdf:type        owl:Restriction ;
-                                                       owl:hasValue    <20230615172753919> ;
+                                                       owl:hasValue    <20230717144244389> ;
+                                                       owl:onProperty  j.3:after
+                                                     ]
+                                                   )
+                             ] ;
+        owl:equivalentClass  [ rdf:type            owl:Class ;
+                               owl:intersectionOf  ( OntoPianismERP:VirtualSensor OntoPianismERP:VirtualSensor
+                                                     [ rdf:type        owl:Restriction ;
+                                                       owl:hasValue    <20230717144243205> ;
                                                        owl:onProperty  j.3:after
                                                      ]
                                                    )
@@ -656,12 +757,22 @@ OntoPianismIndividuals:erpTimeInterval_5
         j.3:hasEnd        OntoPianismIndividuals:erpTimeInstant_6 .
 
 OntoPianismIndividuals:feedRate_1
-        rdf:type                    OntoPianismERP:VirtualEvent , owl:NamedIndividual , owl:Class ;
+        rdf:type                    OntoPianismERP:VirtualEvent , owl:NamedIndividual ;
         rdfs:label                  "FeedRate Virtual 1" ;
         OntoPianismERP:derivedFrom  OntoPianismIndividuals:erpEvent_4 , OntoPianismIndividuals:erpEvent_3 ;
         OntoPianismERP:hasValue     "0.005089037037037037" .
 
 <VersionInfo>  <version>  "evolving" .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  _:b3
+] .
+
+[ rdf:type  owl:Ontology ] .
+
+<Interval_st_20230717144244316>
+        rdf:type          j.3:Interval ;
+        j.3:hasBeginning  <20230717144244316> .
 
 j.3:after  rdf:type  owl:ObjectProperty .
 
@@ -676,3 +787,11 @@ OntoPianismIndividuals:erpEvent_6
         rdfs:label          "erpEvent_batch3_6" ;
         j.3:intervalDuring  OntoPianismIndividuals:erpTimeInterval_4 ;
         j.5:hasOutput       "1.787231" .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  _:b3
+] .
+
+[ rdf:type            owl:Class ;
+  owl:intersectionOf  _:b2
+] .

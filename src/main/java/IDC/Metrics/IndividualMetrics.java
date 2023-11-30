@@ -69,8 +69,8 @@ public class IndividualMetrics
         {
             String property_uri     = tuple.getLeft();
 
-            if(!Utilities.isImportantProp(property_uri))
-                continue;
+            //if(!Utilities.isImportantProp(property_uri))
+            //    continue;
 
             this.propertyURIs.add(property_uri);
 
@@ -83,10 +83,11 @@ public class IndividualMetrics
             {
                 String object_uri = object_node.asResource().getURI();
 
-                OntClass pot = this.individual.getOntModel().getOntClass(object_uri);
+                OntClass pot   = this.individual.getOntModel().getOntClass(object_uri);
+                String pot_uri = object_node.asResource().getURI();
 
                 if(pot!=null) // range is a class
-                    this.addObjProperty(property_uri, object_node.asResource().getURI());
+                    this.addObjProperty(property_uri, pot.getURI(), pot_uri);
                 else // range is an individual
                 {
                     boolean didIt = false;
@@ -96,9 +97,11 @@ public class IndividualMetrics
                         Individual i = this.individual.getOntModel().getIndividual(object_uri);
                         List<OntClass> i_classes = SPARQLUtils.listOntClassesSPARQL(i);
 
-                        for (OntClass sCls : i_classes) {
-                            if (!Utilities.isInIgnoreList(sCls.getURI())) {
-                                this.addObjProperty(property_uri, sCls.getURI());
+                        for (OntClass sCls : i_classes)
+                        {
+                            //if (!Utilities.isInIgnoreList(sCls.getURI()))
+                            {
+                                this.addObjProperty(property_uri, sCls.getURI(), pot_uri);
                                 didIt = true;
                                 break;
                             }
@@ -109,20 +112,21 @@ public class IndividualMetrics
                     }
 
                     if(!didIt)
-                        this.addObjProperty(property_uri, OntologyUtils.OWL_THING);
+                        this.addObjProperty(property_uri, OntologyUtils.OWL_THING, pot_uri);
                 }
 
             }
             else if(object_node.isLiteral())
-                this.addDtProperty(property_uri, object_node.asLiteral().getDatatypeURI());
-
+            {
+                String val = object_node.asLiteral().getValue().toString();
+                this.addDtProperty(property_uri, object_node.asLiteral().getDatatypeURI(), val);
+            }
             this.addPropertyMetric(pm);
         }
 
     }
 
 
-    // todo it's here actually
     private void addPropertyMetric(PropertyMetrics new_pm)
     {
         String pm_uri = new_pm.getURI();
@@ -151,10 +155,10 @@ public class IndividualMetrics
 
 
     // todo metrificar!!!! aqui!!!
-    public void addObjProperty(String newPropertyURI, String rangeURI)
+    public void addObjProperty(String newPropertyURI, String rangeURI, String rangeValue)
     {
-        int count = 1;
 
+        int count;
         if(Utilities.isInIgnoreList(newPropertyURI))
             return;
 
@@ -164,7 +168,7 @@ public class IndividualMetrics
             if(pm.getURI().equalsIgnoreCase(newPropertyURI))
             {
                 containsPM = true;
-                pm.addRange(rangeURI);
+                pm.addRange(rangeURI, rangeValue);
                 pm.addDomains(this.ontClasses);
 
                 count = pm.getCount();
@@ -177,17 +181,16 @@ public class IndividualMetrics
         {
             PropertyMetrics pm = new PropertyMetrics(newPropertyURI);
             pm.addDomains(this.ontClasses);
-            pm.addRange(rangeURI);
+            pm.addRange(rangeURI, rangeValue);
             pm.setCount(1);
             addPropertyMetric(pm);
-
         }
 
     }
 
 
 // todo metrificar
-    public void addDtProperty(String newPropertyURI, String rangeType)
+    public void addDtProperty(String newPropertyURI, String rangeType, String rangeValue)
     {
         int count = 1;
 
@@ -200,7 +203,7 @@ public class IndividualMetrics
             if(pm.getURI().equalsIgnoreCase(newPropertyURI))
             {
                 containsPM = true;
-                pm.addRange(rangeType);
+                pm.addRange(rangeType, rangeValue);
                 pm.addDomains(this.ontClasses);
 
                 count = pm.getCount();
@@ -213,7 +216,7 @@ public class IndividualMetrics
         {
             PropertyMetrics pm = new PropertyMetrics(newPropertyURI);
             pm.addDomains(this.ontClasses);
-            pm.addRange(rangeType);
+            pm.addRange(rangeType, rangeValue);
             addPropertyMetric(pm);
         }
     }

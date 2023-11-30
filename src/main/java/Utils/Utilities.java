@@ -222,8 +222,24 @@ public class Utilities
    
         return ret;
     }
-    
-    
+
+    // Generic method to check for duplicates in an array
+    public static <T> boolean checkForDuplicates(T... array)
+    {
+        // for every array element, check if it is found afterward in the array
+        for (int i = 0; i < array.length; i++)
+        {
+            for (int j = i + 1; j < array.length; j++)
+            {
+                if (array[i] != null && array[i].equals(array[j])) {
+                    return true;
+                }
+            }
+        }
+
+        // no duplicate is found
+        return false;
+    }
     
     /** LOG UTILITIES **/
     

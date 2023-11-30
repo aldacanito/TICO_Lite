@@ -3,10 +3,7 @@ package IDC.Metrics;
 
 import java.util.*;
 
-import Utils.AnalyticUtils;
-import Utils.OntologyUtils;
-import Utils.SPARQLUtils;
-import Utils.Utilities;
+import Utils.*;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.*;
@@ -361,19 +358,24 @@ public class ClassPropertyMetrics extends EntityMetrics
 
             for (String range : ranges_PURI)
             {
-                if (total_seen_ranges_of_PURI!=null && total_seen_ranges_of_PURI.contains(range))
-                    cm.addSupport();
-                else
-                {
-                    if(total_seen_ranges_of_PURI == null)
-                        total_seen_ranges_of_PURI = new ArrayList<>();
+                List<String> values = pm1.getRanges().get(range);
 
-                    total_seen_ranges_of_PURI.add(range);
-                    cm.addAgainst();
+                for(String range_Value : values)
+                {
+                    if (total_seen_ranges_of_PURI!=null && total_seen_ranges_of_PURI.contains(range_Value))
+                        cm.addSupport();
+                    else
+                    {
+                        if(total_seen_ranges_of_PURI == null)
+                            total_seen_ranges_of_PURI = new ArrayList<>();
+
+                        total_seen_ranges_of_PURI.add(range_Value);
+                        cm.addAgainst();
+                    }
                 }
             }
 
-            if (total_seen_ranges_of_PURI.size() == 50)
+            if (total_seen_ranges_of_PURI.size() == Configs.windowSize)
                 total_seen_ranges_of_PURI.remove(0);
 
         }
@@ -391,10 +393,11 @@ public class ClassPropertyMetrics extends EntityMetrics
 
             if(!im.hasProperty(propertyURI))
                 cm.addNeutral();
-            else {
+            else
+            {
 
-            Set<String> ranges_PURI = pm1.getRanges().keySet();
-            List<String> total_seen_ranges_of_PURI = this.seenRanges.get(propertyURI);
+                Set<String> ranges_PURI = pm1.getRanges().keySet();
+                List<String> total_seen_ranges_of_PURI = this.seenRanges.get(propertyURI);
 
 
                 for (String range : ranges_PURI)
@@ -432,10 +435,69 @@ public class ClassPropertyMetrics extends EntityMetrics
             cm.addNeutral();
         else
         {
+
             if (pm1.getCount() == 1)
                 cm.addSupport();
             else
-                cm.addAgainst();
+                if(pm1.getCount() > 1)
+                {
+                    boolean functionalCandidate = true;
+                    Map<String, List<String>> ranges = pm1.getRanges();
+                    // <CLASS URI>, List <IND 1, IND 2...>
+
+                    // within same class all must be the same value
+                    for(String classURI1 : ranges.keySet())
+                    {
+                        Set<String> range_values_distinct = new HashSet<>(ranges.get(classURI1));
+
+                        if(range_values_distinct.size() != 1 && ranges.get(classURI1).size() != 1) // if any is different then it's not candidate
+                        {
+                            functionalCandidate = false;
+                            break;
+                        }
+                        else
+                        {
+                            for (String classURI2 : ranges.keySet())
+                            {
+                                // same URI shows up in different classes
+                                if (classURI1 != classURI2)
+                                {
+                                    List<String> range_values1 = ranges.get(classURI1);
+                                    List<String> range_values2 = ranges.get(classURI2);
+
+                                    Set<String> bigSet = new HashSet<>(range_values1);
+                                    bigSet.addAll(range_values2);
+
+                                    if(bigSet.size() > 0 && bigSet.size() != 1)
+                                    {
+                                        functionalCandidate = false;
+                                        break;
+                                    }
+                                }
+                                if(!functionalCandidate) break;
+                            }
+                        }
+                        if(!functionalCandidate) break;
+                    }
+
+                    // different classes must compare all values for duplicate
+
+                    /*
+                    if (functionalCandidate)
+                    {
+                        for (String classURI1 : ranges.keySet())
+                        {
+
+                        }
+                    }*/
+
+                    if(!functionalCandidate)
+                        cm.addAgainst();
+                    else
+                        cm.addSupport();
+                }
+                else
+                    cm.addSupport();
         }
 
         return cm;
