@@ -581,9 +581,35 @@ public class SPARQLUtils
                         if(Utilities.isInIgnoreList(prop))
                             continue;
 
-                        Property p = model.getOntProperty(prop);
                         Pair<String, RDFNode> pap = Pair.of(prop, obj_node);
-                        property_uris.add(pap);
+                        
+
+                    
+                                
+                        boolean insert = true;
+                        for(Pair<String, RDFNode> old_node : property_uris)
+                        {
+                            boolean sameProp = old_node.getLeft().equalsIgnoreCase(pap.getLeft());
+                            
+                            if(sameProp)
+                            {
+                                if(obj_node.isURIResource() && 
+                                        pap.getRight().isURIResource())
+                                {
+                                    String old_uri = obj_node.asResource().getURI();
+                                    String new_uri = pap.getRight().asResource().getURI();
+
+                                    if(old_uri.equalsIgnoreCase(new_uri))
+                                    {
+                                        insert = false;
+                                        break;
+                                    }
+                                }
+                            }       
+                        }
+                        
+                        if (insert) 
+                            property_uris.add(pap);
                     }
                     catch(Exception e)
                     {

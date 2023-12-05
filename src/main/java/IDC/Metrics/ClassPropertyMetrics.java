@@ -474,7 +474,6 @@ public class ClassPropertyMetrics extends EntityMetrics
                                         break;
                                     }
                                 }
-                                if(!functionalCandidate) break;
                             }
                         }
                         if(!functionalCandidate) break;

@@ -63,14 +63,15 @@ public class IndividualMetrics
 
     private void metrify()
     {
+        
         List<Pair<String, RDFNode>> properties = SPARQLUtils.listPropertiesSPARQL(this.individual, false);
 
         for(Pair<String, RDFNode> tuple : properties)
         {
             String property_uri     = tuple.getLeft();
 
-            //if(!Utilities.isImportantProp(property_uri))
-            //    continue;
+            if(!Utilities.isImportantProp(property_uri))
+                continue;
 
             this.propertyURIs.add(property_uri);
 
@@ -182,7 +183,7 @@ public class IndividualMetrics
             PropertyMetrics pm = new PropertyMetrics(newPropertyURI);
             pm.addDomains(this.ontClasses);
             pm.addRange(rangeURI, rangeValue);
-            pm.setCount(1);
+            pm.setCount(0);
             addPropertyMetric(pm);
         }
 
