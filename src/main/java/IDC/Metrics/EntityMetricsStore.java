@@ -5,7 +5,9 @@
  */
 package IDC.Metrics;
 
+import Utils.Configs;
 import Utils.Utilities;
+import org.apache.commons.lang3.tuple.Triple;
 import org.apache.jena.ontology.Individual;
 
 import java.util.ArrayList;
@@ -23,12 +25,16 @@ public class EntityMetricsStore
 
     private List<PropertyMetrics> propertyMetrics;
 
+    private List<Triple<String, String, String>> seenTriples;
+
+
 
     private EntityMetricsStore()
     {
         theMetrics        = new ArrayList<ClassPropertyMetrics>();
         individualMetrics = new ArrayList<>();
         propertyMetrics   = new ArrayList<>();
+        seenTriples       = new ArrayList<>();
     }
 
     public static EntityMetricsStore getStore()
@@ -41,6 +47,49 @@ public class EntityMetricsStore
         if(!theMetrics.contains(cpm))
             theMetrics.add(cpm);
     }
+
+
+    public List<Triple<String,String,String>> getAllSeenTriples()
+    {
+        return this.seenTriples;
+    }
+
+
+    public List<Triple<String, String, String>> getSeenTriplesOfProperty(String propertyURI)
+    {
+        List<Triple<String, String, String>> triplesOf = new ArrayList<>();
+        for(Triple<String, String, String> triple : this.seenTriples)
+        {
+            if(triple.getMiddle().equalsIgnoreCase(propertyURI))
+                triplesOf.add(triple);
+
+        }
+
+        return triplesOf;
+    }
+
+    public void addTriple(String domain, String prop, String range)
+    {
+        Triple<String, String, String> t = Triple.of(domain, prop, range);
+        this.addTriple(t);
+    }
+
+    /**
+     * ensure you only keep Configs.windowSize many triples with the same property.
+     * @param t
+     */
+    public void addTriple(Triple<String, String, String> t)
+    {
+        List<Triple<String,String,String>> similar_triples = this.getSeenTriplesOfProperty(t.getMiddle());
+
+        if (similar_triples.size() == Configs.windowSize)
+        {
+            this.seenTriples.remove(similar_triples.get(0));
+        }
+
+        this.seenTriples.add(t);
+    }
+
 
     public void addPropertMetrics(PropertyMetrics pm)
     {

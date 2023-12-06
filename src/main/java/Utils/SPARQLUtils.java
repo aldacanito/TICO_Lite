@@ -546,8 +546,6 @@ public class SPARQLUtils
     {
         String individual_uri               = i.getURI();
         OntModel model                      = i.getOntModel();
-//        Map<String, RDFNode> property_uris  = new HashMap<>();
-
         List<Pair<String, RDFNode>> property_uris = new ArrayList<>();
 
         //System.out.println("==SPARQL Listing individual "+ individual_uri+"'s properties in the Model.==\n");
@@ -582,30 +580,31 @@ public class SPARQLUtils
                             continue;
 
                         Pair<String, RDFNode> pap = Pair.of(prop, obj_node);
-                        
 
-                    
-                                
                         boolean insert = true;
                         for(Pair<String, RDFNode> old_node : property_uris)
                         {
                             boolean sameProp = old_node.getLeft().equalsIgnoreCase(pap.getLeft());
-                            
-                            if(sameProp)
-                            {
-                                if(obj_node.isURIResource() && 
-                                        pap.getRight().isURIResource())
-                                {
-                                    String old_uri = obj_node.asResource().getURI();
-                                    String new_uri = pap.getRight().asResource().getURI();
+                            boolean sameVal  = false;
 
-                                    if(old_uri.equalsIgnoreCase(new_uri))
-                                    {
-                                        insert = false;
-                                        break;
-                                    }
+                            if(old_node.getRight().isURIResource() && pap.getRight().isURIResource())
+                            {
+                                String prev_URI = old_node.getRight().asResource().getURI();
+                                String new_uri = pap.getRight().asResource().getURI();
+
+                                if(prev_URI.equalsIgnoreCase(new_uri))
+                                {
+                                    sameVal = true;
                                 }
-                            }       
+                            }
+
+
+                            if(sameProp && sameVal)
+                            {
+                                insert = false; break;
+                            }
+
+
                         }
                         
                         if (insert) 

@@ -39,7 +39,10 @@ public class Utilities
 
             List<String> props = new ArrayList<>();
 
-            /*props.add("http://cmt#acceptedby");
+
+            props.add("http://cmt#acceptedby");
+
+            /*
             props.add("http://cmt#acceptedPaper");
             props.add("http://cmt#addedBy");
             props.add("http://cmt#addProgramCommitteeMember");
@@ -49,17 +52,19 @@ public class Utilities
             props.add("http://cmt#assignExternalReviewer");
             props.add("http://cmt#hasAuthor");
             props.add("http://cmt#hasBid");
-            */
+
             props.add("http://cmt#hasDecision");
-            
-            /*
-            props.add("http://cmt#readByMeta-Reviewer");
+
+
+            props.add("http://cmt#readByMeta-Reviewer"); */
+
             props.add("http://cmt#rejectedBy");
             props.add("http://cmt#rejectPaper");
             props.add("http://cmt#writePaper");
             props.add("http://cmt#writeReview");
-            props.add("http://cmt#writtenBy");
-            */
+
+            //props.add("http://cmt#writtenBy");
+
 
             importantProps.put("cmt", props);
 
@@ -85,13 +90,11 @@ public class Utilities
 
     public static List<String> extractInstancesFromFile()
     {
-        List<String> individuals_uris = new ArrayList<>();
+        //String file_content = readFileContent(AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_instance.ttl");
 
-        String file_content = readFileContent(AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_instance.ttl");
-        
-        
-        //String file_content = readFileContent(AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_0.ttl");
-        String lines [] = file_content.split("\\r?\\n");
+        String file_content = readFileContent(AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_0.ttl");
+        String lines []     = file_content.split("\\r?\\n");
+        List<String> individuals_uris = new ArrayList<>();
 
         for(String line : lines)
         {

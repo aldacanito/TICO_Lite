@@ -13,9 +13,9 @@ import java.io.File;
 public class TestConferenceInstances
 {
 
-    static String base = "C:\\Users\\Alda\\Documents\\TICO\\";
+    //static String base = "C:\\Users\\Alda\\Documents\\TICO\\";
 
-    //static String base = "C:\\Users\\shiza\\OneDrive - Instituto Superior de Engenharia do Porto\\Documentos\\GitHub\\DatasetConverter\\";
+    static String base = "C:\\Users\\shiza\\OneDrive - Instituto Superior de Engenharia do Porto\\Documentos\\GitHub\\TICO\\";
     static String datasetsFolder = base + "PopulatedDatasets/";
 
     static OntModel originalModel = ModelFactory.createOntologyModel();

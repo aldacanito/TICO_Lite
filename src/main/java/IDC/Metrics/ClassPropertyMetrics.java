@@ -4,9 +4,12 @@ package IDC.Metrics;
 import java.util.*;
 
 import Utils.*;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.lang3.tuple.Triple;
 import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntClass;
 import org.apache.jena.ontology.*;
+import org.apache.jena.rdf.model.RDFNode;
 
 
 public class ClassPropertyMetrics extends EntityMetrics
@@ -21,14 +24,14 @@ public class ClassPropertyMetrics extends EntityMetrics
 
     private boolean metricsComputed = false;
 
-    private HashMap<String, List<String>> seenRanges;
-    
+
+
     public ClassPropertyMetrics(String EntityURI)
     {
         super(EntityURI);      
         //propertyMetrics      = new ArrayList<>();
         individualMetrics    = new ArrayList<>();
-        seenRanges = new HashMap<>();
+
     }
     
     public ClassPropertyMetrics(String EntityURI, Individual first_mention)
@@ -36,7 +39,6 @@ public class ClassPropertyMetrics extends EntityMetrics
         super(EntityURI);
         //propertyMetrics      = new ArrayList<>();
         individualMetrics    = new ArrayList<>();
-        seenRanges = new HashMap<>();
 
 
         this.first_mention   = first_mention;
@@ -267,13 +269,19 @@ public class ClassPropertyMetrics extends EntityMetrics
         for(String propertyURI : propertyURIs)
         {
             computeFunctionality(propertyURI, im);
-            computeSymmetry(propertyURI, im);
-            computeReflexiveness(propertyURI, im);
-            computeIrreflexiveness(propertyURI, im);
+
+            computeInverseFunctionality(propertyURI, im);
+
+            /*
             computeTransitiveness(propertyURI, 2, im);
             computeTransitiveness(propertyURI, 3, im);
+
+            computeSymmetry(propertyURI, im);
             computeAsymmetry(propertyURI, im);
-            computeInverseFunctionality(propertyURI, im);
+
+            computeReflexiveness(propertyURI, im);
+            computeIrreflexiveness(propertyURI, im);
+            */
         }
 
     }
@@ -290,13 +298,17 @@ public class ClassPropertyMetrics extends EntityMetrics
         for(String propertyURI : propertyURIs)
         {
             computeFunctionality(propertyURI);
-            computeSymmetry(propertyURI);
-            computeReflexiveness(propertyURI);
-            computeIrreflexiveness(propertyURI);
+            computeInverseFunctionality(propertyURI);
+
             computeTransitiveness(propertyURI, 2);
             computeTransitiveness(propertyURI, 3);
+
+            computeSymmetry(propertyURI);
             computeAsymmetry(propertyURI);
-            computeInverseFunctionality(propertyURI);
+
+            computeReflexiveness(propertyURI);
+            computeIrreflexiveness(propertyURI);
+
         }
 
         metricsComputed = true;
@@ -347,78 +359,83 @@ public class ClassPropertyMetrics extends EntityMetrics
         PropertyMetrics pm       = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
         ConstructorMetrics cm    = pm.getConstructorMetrics(OntologyUtils.C_INVERSE_FUNCTIONAL);
 
-        PropertyMetrics pm1 = im.getPropertyMetricForProperty(propertyURI);
+        // Inverse Functionality: The Range determines the individual
+
+        // IF : if  P(A,B) & P(C,B) -> A=C
+        // need to take notice of both ranges and individual uris
+        /*
+             LIST TUPLE( < URI, PROP, RANGE_VALUE > ) ->
+                -> If more one pair only: good
+                -> more pairs: must all have same URI for the same value!!!!
+
+                -> keep list of seen tuples (max 10)
+         */
+
+        if(this.getURI().equalsIgnoreCase("http://cmt#Person"))
+            System.out.println("FOUND PERSON CLASS");
 
         if(!im.hasProperty(propertyURI))
             cm.addNeutral();
         else
         {
-            Set<String> ranges_PURI = pm1.getRanges().keySet();
-            List<String> total_seen_ranges_of_PURI = this.seenRanges.get(propertyURI);
+            PropertyMetrics pm1 = im.getPropertyMetricForProperty(propertyURI);
 
-            for (String range : ranges_PURI)
+            Map<String, List<String>> ranges = pm1.getRanges();
+            Set<String> ranges_pURI          = ranges.keySet();
+            String domain_value              = im.getIndividual().getURI();
+
+            boolean if_candidate = true;
+            for(String range : ranges_pURI)
             {
-                List<String> values = pm1.getRanges().get(range);
+                List<String> range_values = ranges.get(range);
 
-                for(String range_Value : values)
+                for(String range_value : range_values)
                 {
-                    if (total_seen_ranges_of_PURI!=null && total_seen_ranges_of_PURI.contains(range_Value))
-                        cm.addSupport();
-                    else
-                    {
-                        if(total_seen_ranges_of_PURI == null)
-                            total_seen_ranges_of_PURI = new ArrayList<>();
+                    if(domain_value.contains("person-1"))
+                        System.out.println("Found bad data!");
 
-                        total_seen_ranges_of_PURI.add(range_Value);
-                        cm.addAgainst();
+                    List<Triple<String, String, String>> seenTriplesOfProperty = EntityMetricsStore.getStore().getSeenTriplesOfProperty(propertyURI);
+
+                    for(Triple<String, String, String> triple : seenTriplesOfProperty)
+                    {
+                        String tuple_domain_uri  = triple.getLeft();
+                        String tuple_range_value = triple.getRight();
+
+                        if(tuple_range_value.equalsIgnoreCase(range_value) && !tuple_domain_uri.equalsIgnoreCase(domain_value))
+                        {
+                            if_candidate = false;
+                            break;
+                        }
+
                     }
+
+                    Triple<String, String, String> currentTriple = Triple.of(domain_value, propertyURI, range_value);
+                    EntityMetricsStore.getStore().addTriple(currentTriple);
+
+                    if(!if_candidate) break;
                 }
+
             }
 
-            if (total_seen_ranges_of_PURI.size() == Configs.windowSize)
-                total_seen_ranges_of_PURI.remove(0);
+
+            if(if_candidate) cm.addSupport();
+            else             cm.addAgainst();
 
         }
+
+
+
         return cm;
     }
 
+    // todo check ????
     public ConstructorMetrics computeInverseFunctionality(String propertyURI)
     {
         PropertyMetrics pm       = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
         ConstructorMetrics cm    = pm.getConstructorMetrics(OntologyUtils.C_INVERSE_FUNCTIONAL);
 
-        for(IndividualMetrics im : this.getIndividualMetrics())
-        {
-            PropertyMetrics pm1 = im.getPropertyMetricForProperty(propertyURI);
-
-            if(!im.hasProperty(propertyURI))
-                cm.addNeutral();
-            else
-            {
-
-                Set<String> ranges_PURI = pm1.getRanges().keySet();
-                List<String> total_seen_ranges_of_PURI = this.seenRanges.get(propertyURI);
 
 
-                for (String range : ranges_PURI)
-                {
-                    if (total_seen_ranges_of_PURI!=null && total_seen_ranges_of_PURI.contains(range))
-                        cm.addSupport();
-                    else
-                    {
-                        if(total_seen_ranges_of_PURI == null)
-                            total_seen_ranges_of_PURI = new ArrayList<>();
-
-                        total_seen_ranges_of_PURI.add(range);
-                        cm.addAgainst();
-                    }
-                }
-
-                if (total_seen_ranges_of_PURI.size() == 50)
-                    total_seen_ranges_of_PURI.remove(0);
-
-            }
-        }
 
         return cm;
     }
@@ -478,17 +495,6 @@ public class ClassPropertyMetrics extends EntityMetrics
                         }
                         if(!functionalCandidate) break;
                     }
-
-                    // different classes must compare all values for duplicate
-
-                    /*
-                    if (functionalCandidate)
-                    {
-                        for (String classURI1 : ranges.keySet())
-                        {
-
-                        }
-                    }*/
 
                     if(!functionalCandidate)
                         cm.addAgainst();
