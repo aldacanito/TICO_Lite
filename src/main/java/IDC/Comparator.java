@@ -300,13 +300,16 @@ public class Comparator
 
             if(im.getProperties().size() == 0)
                 continue;
+
             // use sliding window
             individual = ModelManager.getManager().addToWindow(individual);
 
             EntityMetricsStore.getStore().addIndividualMetrics(im);
 
             System.out.println("Analysing individual: " + uri);
+
             List<OntClass> ontClasses = SPARQLUtils.listOntClassesSPARQL(individual);
+
             for(OntClass cls : ontClasses)
             {
                 String clsURI                          = cls.getURI();

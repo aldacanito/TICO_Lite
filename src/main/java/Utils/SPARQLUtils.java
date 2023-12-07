@@ -242,7 +242,6 @@ public class SPARQLUtils
         if(levels == 0 )
             levels = 1;
 
-        boolean isTransitive    = false;
         OntModel model          = individual.getOntModel();
         String individualURI    = individual.getURI();
 
@@ -253,7 +252,7 @@ public class SPARQLUtils
             queryString+= " ?obj"+ i ;
 
         queryString += "\n WHERE \n" +
-                "  { <" + individualURI + "> <" + propertyURI + "> ?obj1 . \n";
+                "  { \n<" + individualURI + "> <" + propertyURI + "> ?obj1 . \n";
 
         for(int i = 1; i <=levels; i++)
         {
@@ -261,9 +260,85 @@ public class SPARQLUtils
             queryString+= " ?obj"+ i + " <" + propertyURI + "> ?obj" + i2+ "  . \n" ;
         }
 
+        //queryString+= " FILTER ( ?obj1 != ?obj2 ) .   \n";
+        for(int i = 1; i <=levels; i++)
+        {
+            int i2 = i+1;
+            queryString+= " FILTER (?obj1 != ?obj" + i2+ " ) . \n" ;
+            queryString+= " FILTER (<" + individualURI + "> != ?obj" + i2+ " ) . \n" ;
+        }
+
+
         queryString+= " } \n";
 
-        Query query = QueryFactory.create(queryString);
+        String queryString2  =
+                "SELECT DISTINCT ?obj1 " ;
+
+        for(int i = 2; i <= levels+1; i++)
+            queryString2+= " ?obj"+ i ;
+
+        queryString2 += "\n WHERE { \n" ;
+
+        int lasti = 1;
+        for(int i = 1; i <=levels; i++)
+        {
+            int i2 = i+1;
+            queryString2+= " ?obj"+ i + " <" + propertyURI + "> ?obj" + i2+ "  . \n" ;
+            lasti = i2;
+        }
+        queryString2 += "   \n ?obj"+ lasti +" <" + propertyURI + ">  <" + individualURI + ">. \n";
+
+
+        for(int i = levels; i >= 1; i--)
+        {
+            queryString2 += " FILTER (?obj"+lasti+" != ?obj" + i+ " ) . \n" ;
+            queryString2+= " FILTER (<" + individualURI + "> != ?obj" + i+ " ) . \n" ;
+
+        }
+
+        queryString2 += " \n }";
+
+        String finalQuery  = " SELECT * {\n "
+                + "{ \n " + queryString + "\n }"
+                + "OPTIONAL { \n " + queryString2 + "\n }"
+                + "}";
+
+        //Query query = QueryFactory.create(queryString);
+
+        Query query = QueryFactory.create(finalQuery);
+
+/*
+        Transitive: if P(a,b) and P(b,c) then P(a,c)
+
+            a can be in the beginning or ending of the query, in case we land somewhere in the middle
+
+ */
+
+/*
+SELECT * {
+    {
+        SELECT (?population AS ?population_max) {
+            ?state rdf:type :State .
+            ?state :hasPopulation ?population .
+        }
+
+    }
+    {
+        SELECT (?population AS ?population_min) {
+            ?state rdf:type :State .
+            ?state :hasPopulation ?population .
+        }
+
+    }
+ */
+
+        if(individualURI.contains("Test-Trans-3"))
+            System.out.println("FOUNDIT");
+
+
+
+
+        boolean isTransitive    = false;
 
         try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
         {

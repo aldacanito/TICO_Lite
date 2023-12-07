@@ -28,7 +28,7 @@ public class TestConferenceInstances
 
         //String [] datasets = {"cmt", "conference", "confOf", "edas", "ekaw", "gmo"};
 
-        String [] datasets = {"cmt"};
+        String [] datasets = {"confOf"};
 
 
 

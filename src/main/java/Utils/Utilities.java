@@ -41,8 +41,8 @@ public class Utilities
 
 
             props.add("http://cmt#acceptedby");
+            props.add("http://cmt#hasDecision");
 
-            /*
             props.add("http://cmt#acceptedPaper");
             props.add("http://cmt#addedBy");
             props.add("http://cmt#addProgramCommitteeMember");
@@ -53,20 +53,37 @@ public class Utilities
             props.add("http://cmt#hasAuthor");
             props.add("http://cmt#hasBid");
 
-            props.add("http://cmt#hasDecision");
-
-
-            props.add("http://cmt#readByMeta-Reviewer"); */
+            props.add("http://cmt#readByMeta-Reviewer");
 
             props.add("http://cmt#rejectedBy");
             props.add("http://cmt#rejectPaper");
             props.add("http://cmt#writePaper");
             props.add("http://cmt#writeReview");
 
-            //props.add("http://cmt#writtenBy");
+            props.add("http://cmt#writtenBy");
 
 
             importantProps.put("cmt", props);
+
+
+            props.add("http://confOf#parallel_with");
+            props.add("http://confOf#follows");
+
+            props.add("http://confOf#dealsWith");
+            props.add("http://confOf#employedBy");
+            props.add("http://confOf#expertOn");
+            props.add("http://confOf#hasCity");
+            props.add("http://confOf#hasAdministrativeEvent");
+            props.add("http://confOf#hasCountry");
+            props.add("http://confOf#hasTopic");
+
+            props.add("http://confOf#reviewes");
+            props.add("http://confOf#writes");
+            props.add("http://confOf#writtenBy");
+
+
+            importantProps.put("confOf", props);
+
 
             init = true;
         }

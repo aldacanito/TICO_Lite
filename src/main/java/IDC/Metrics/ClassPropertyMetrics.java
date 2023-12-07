@@ -268,15 +268,16 @@ public class ClassPropertyMetrics extends EntityMetrics
 
         for(String propertyURI : propertyURIs)
         {
-            computeFunctionality(propertyURI, im);
 
+            computeFunctionality(propertyURI, im);
             computeInverseFunctionality(propertyURI, im);
 
-            /*
+            computeTransitiveness(propertyURI, 1, im);
             computeTransitiveness(propertyURI, 2, im);
-            computeTransitiveness(propertyURI, 3, im);
 
             computeSymmetry(propertyURI, im);
+/*
+
             computeAsymmetry(propertyURI, im);
 
             computeReflexiveness(propertyURI, im);
@@ -371,8 +372,6 @@ public class ClassPropertyMetrics extends EntityMetrics
                 -> keep list of seen tuples (max 10)
          */
 
-        if(this.getURI().equalsIgnoreCase("http://cmt#Person"))
-            System.out.println("FOUND PERSON CLASS");
 
         if(!im.hasProperty(propertyURI))
             cm.addNeutral();
@@ -391,8 +390,6 @@ public class ClassPropertyMetrics extends EntityMetrics
 
                 for(String range_value : range_values)
                 {
-                    if(domain_value.contains("person-1"))
-                        System.out.println("Found bad data!");
 
                     List<Triple<String, String, String>> seenTriplesOfProperty = EntityMetricsStore.getStore().getSeenTriplesOfProperty(propertyURI);
 
@@ -626,8 +623,8 @@ public class ClassPropertyMetrics extends EntityMetrics
         ConstructorMetrics cm = null;
         Individual i          = im.getIndividual();
 
-        if(levels == 2)          cm = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE2);
-        else if(levels == 3)     cm = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE3);
+        if(levels == 1)          cm = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE2);
+        else if(levels == 2)     cm = pm.getConstructorMetrics(OntologyUtils.C_TRANSITIVE3);
 
         if(cm!=null)
         {
