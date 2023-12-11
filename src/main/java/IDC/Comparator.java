@@ -291,8 +291,19 @@ public class Comparator
 
     private void getIndividualsMetrics(List<String> individuals_uris)
     {
+        int total_inds = individuals_uris.size();
+        int count_inds = 0;
+
         for(String uri : individuals_uris)
         {
+            count_inds++;
+
+            float percent_inds = (float) count_inds / (float) total_inds ;
+
+            System.out.println("Analysing individual " + uri +
+                    ".\n\t> Total individuals to analyse: " + total_inds
+                    + ".\n\t Currently on individual number: " + count_inds
+                    + ".\n\t Analaysed percentage: " + percent_inds);
 
             Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
 

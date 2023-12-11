@@ -26,10 +26,9 @@ public class TestConferenceInstances
     {
         Configs configs = new Configs();
 
-        //String [] datasets = {"cmt", "conference", "confOf", "edas", "ekaw", "gmo"};
+        //String [] datasets = {"cmt", "conference", "confOf", "ekaw"};
 
-        String [] datasets = {"confOf"};
-
+        String [] datasets = {"ekaw"};
 
 
         for(String dataset : datasets)

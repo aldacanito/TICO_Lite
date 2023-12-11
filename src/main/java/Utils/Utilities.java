@@ -65,6 +65,7 @@ public class Utilities
 
             importantProps.put("cmt", props);
 
+            props = new ArrayList<>();
 
             props.add("http://confOf#parallel_with");
             props.add("http://confOf#follows");
@@ -81,8 +82,45 @@ public class Utilities
             props.add("http://confOf#writes");
             props.add("http://confOf#writtenBy");
 
-
             importantProps.put("confOf", props);
+
+            props = new ArrayList<>();
+
+            props.add("http://ekaw#hasPart");
+            props.add("http://ekaw#partOf");
+
+            props.add("http://ekaw#partOfEvent");
+
+            importantProps.put("ekaw", props);
+
+            props = new ArrayList<>();
+
+            props.add("http://conference#is_the_1th_part_of");
+            props.add("http://conference#reviews");
+            props.add("http://conference#was_a_program_committee_of");
+            props.add("http://conference#was_a_steering_committee_of");
+            props.add("http://conference#was_an_organizing_committee_of");
+            props.add("http://conference#was_a_committee_chair_of");
+            props.add("http://conference#was_a_track-workshop_chair_of");
+            props.add("http://conference#belong_to_a_conference_volume");
+            props.add("http://conference#belongs_to_a_review_reference");
+            props.add("http://conference#has_a_program_committee");
+            props.add("http://conference#has_a_steering_committee");
+            props.add("http://conference#has_an_organizing_committee");
+            props.add("http://conference#has_a_publisher");
+            props.add("http://conference#has_a_review");
+            props.add("http://conference#has_a_review_expertise");
+            props.add("http://conference#has_a_submitted_contribution");
+            props.add("http://conference#has_a_topic_or_a_submission_contribution");
+            props.add("http://conference#has_a_track-workshop-tutorial_chair");
+            props.add("http://conference#has_a_track-workshop-tutorial_topic");
+            props.add("http://conference#has_an_abstract");
+            props.add("http://conference#has_been_assigned_a_review_reference");
+            props.add("http://conference#has_important_dates");
+            props.add("http://conference#has_a_committee_chair");
+
+
+            importantProps.put("conference", props);
 
 
             init = true;
