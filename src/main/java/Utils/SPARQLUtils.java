@@ -3,10 +3,9 @@ package Utils;
 import IDC.ModelManager;
 import org.apache.jena.ontology.*;
 import org.apache.jena.query.*;
-import org.apache.jena.rdf.model.Property;
-import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.*;
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.jena.reasoner.BaseInfGraph;
 
 import java.util.*;
 
@@ -169,10 +168,135 @@ public class SPARQLUtils
     }
 
 
-    public static boolean testSymmetrySPARQL(Individual individual, String propertyURI)
+    public static boolean testSupportReflexivenessSPARQL(Individual individual, String propertyURI)
+    {
+        boolean isReflexive     = false;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT " +
+                                " ?obj \n" +
+                                " WHERE \n" +
+                                "  { " +
+                                    "?obj <" + propertyURI + "> <" + individualURI + ">. " +
+
+                                " FILTER (?obj = <" + individualURI + "> ) . \n" +
+                                "  } \n"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+            isReflexive         = results.hasNext();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isReflexive;
+    }
+
+    public static boolean testAgainstReflexivenessSPARQL(Individual individual, String propertyURI)
+    {
+        boolean isReflexive     = true;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT " +
+                                " ?obj \n" +
+                                " WHERE \n" +
+                                "  { " +
+                                " FILTER NOT EXISTS { ?obj <" + propertyURI + "> <" + individualURI + ">. } " +
+                                " FILTER (?obj = <" + individualURI + "> ) . \n" +
+                                "  } \n"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+            isReflexive         = results.hasNext();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isReflexive;
+    }
+
+
+    public static boolean testSupportIrreflexivenessSPARQL(Individual individual, String propertyURI)
+    {
+        boolean isIrreflexive     = false;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT " +
+                                " * \n" +
+                                " WHERE \n" +
+                                "  { " +
+                                " FILTER NOT EXISTS { <" + individualURI + "> <" + propertyURI + "> <" + individualURI + ">. } " +
+                                //" FILTER (?obj = <" + individualURI + "> ) . \n" +
+                                "  } \n"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+            isIrreflexive         = results.hasNext();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isIrreflexive;
+    }
+
+    public static boolean testAgainstIrreflexivenessSPARQL(Individual individual, String propertyURI)
+    {
+        boolean isIrreflexive   = true;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT " +
+                                " ?obj \n" +
+                                " WHERE \n" +
+                                "  { " +
+                                " <" + individualURI + "> <" + propertyURI + "> <" + individualURI + ">.  " +
+                                //" FILTER (?obj = <" + individualURI + "> ) . \n" +
+                                "  } \n"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+
+            if(results.hasNext())
+                isIrreflexive = false;
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isIrreflexive;
+    }
+
+    public static boolean testSupportSymmetrySPARQL(Individual individual, String propertyURI)
     {
         boolean isSymmetric     = false;
-        OntModel model          = individual.getOntModel();
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
         String individualURI    = individual.getURI();
 
         Query query = QueryFactory.create
@@ -188,7 +312,7 @@ public class SPARQLUtils
         try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
         {
             ResultSet results   = qexec.execSelect();
-            isSymmetric         = results.hasNext();
+            isSymmetric  = results.hasNext();
         }
         catch(Exception e)
         {
@@ -198,6 +322,415 @@ public class SPARQLUtils
         return isSymmetric;
     }
 
+
+
+
+    public static boolean testAgainstSymmetrySPARQL(Individual individual, String propertyURI)
+    {
+        boolean isNotSymmetric  = true;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT " +
+                                " ?obj ?obj2 \n" +
+                                " WHERE \n" +
+                                "  { " +
+                                "       <"+individualURI+"> <" + propertyURI + "> ?obj . " +
+                                "       ?obj <" + propertyURI + "> ?obj2 . " +
+                                "  FILTER(?obj2 != <"+individualURI+">) " +
+                                "  FILTER(?obj2 != ?obj) " +
+                                //"   FILTER NOT EXISTS { ?obj <" + propertyURI + "> <"+individualURI+"> } . " +
+                                "  } \n"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+            while (results.hasNext())
+            {
+                QuerySolution querySolution = results.nextSolution();
+                Resource object2 = querySolution.getResource("?obj2");
+                if(object2.getURI().equalsIgnoreCase(individualURI))
+                {
+                    isNotSymmetric = false;
+                    break;
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isNotSymmetric;
+    }
+
+
+    public static boolean testSupportAsymmetrySPARQL(Individual individual, String propertyURI)
+    {
+        boolean isAsymmetric    = true;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT " +
+                                " ?obj ?obj2 \n" +
+                                " WHERE \n" +
+                                "  { " +
+                                "       <"+individualURI+"> <" + propertyURI + "> ?obj . " +
+                                "       ?obj <" + propertyURI + "> ?obj2 . " +
+                                //"   FILTER NOT EXISTS { ?obj <" + propertyURI + "> <"+individualURI+">  . } " +
+                                "  FILTER(?obj2 != <"+individualURI+">) " +
+                                "  FILTER(?obj2 != ?obj) " +
+                                "} \n"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+
+            while (results.hasNext())
+            {
+                    QuerySolution querySolution = results.nextSolution();
+                    Resource object2 = querySolution.getResource("?obj2");
+                    if(object2.getURI().equalsIgnoreCase(individualURI))
+                    {
+                        isAsymmetric = false;
+                        break;
+                    }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isAsymmetric;
+    }
+
+    public static boolean testAgainstAsymmetrySPARQL(Individual individual, String propertyURI)
+    {
+        boolean isNotAsymmetric = false;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        "SELECT " +
+                                " ?obj \n" +
+                                " WHERE \n" +
+                                "  { <"+individualURI+"> <" + propertyURI + "> ?obj . " +
+                                "    ?obj <" + propertyURI + "> <"+individualURI+">  . " +
+                                "  } \n"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            isNotAsymmetric   = results.hasNext();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isNotAsymmetric;
+    }
+
+
+
+
+
+    public static boolean testNegativeInverseFunctionalitySPARQL(Individual individual, String propertyURI, List<String> propertyValues, boolean sliding)
+    {
+
+        OntModel model          = individual.getOntModel();
+        String individualURI    = individual.getURI();
+
+
+        if(sliding)
+            model  = ModelManager.getManager().getSlidingWindowModel();
+
+        List<Boolean> test_results = new ArrayList<>();
+
+        for(String propertyValue : propertyValues)
+        {
+
+            if(propertyValue==null || propertyValue.isEmpty() || propertyValue.contains("zygarde"))
+                continue;
+
+            boolean current_test = true;
+            // get quantos sujeitos
+            Query query = QueryFactory.create
+                    (
+                            "SELECT ?s1 ?s2 \n " +
+                                    " WHERE \n " +
+                                    " { \n " +
+                                    "    ?s1 <" + propertyURI + "> <" + propertyValue + "> . \n  " +
+                                    "    ?s2 <" + propertyURI + "> <" + propertyValue + "> . \n  " +
+                                    " } "
+                    );
+
+            try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
+                List<String> theResURIS = new ArrayList<String>();
+                ResultSet results = qexec.execSelect();
+
+                while (results.hasNext()) {
+                    QuerySolution querySolution = results.nextSolution();
+
+                    try
+                    {
+                        Resource object1 = querySolution.getResource("?s1");
+                        Resource object2 = querySolution.getResource("?s2");
+                        theResURIS.add(object1.getURI());
+                        theResURIS.add(object2.getURI());
+                    }
+                    catch(Exception e)
+                    {
+                        System.out.println("Not a Resource. Trying Literal...");
+                        Literal l1 = querySolution.getLiteral("?s1");
+                        Literal l2 = querySolution.getLiteral("?s2");
+
+                        theResURIS.add(l1.getValue().toString());
+                        theResURIS.add(l2.getValue().toString());
+                    }
+                }
+
+                Set<String> distinctURIsSet = new HashSet<>(theResURIS);
+                List<String> distinctURIs   = new ArrayList<>(distinctURIsSet);
+
+                for (int i = 0; i < distinctURIs.size(); i++)
+                {
+                    String s = distinctURIs.get(i);
+                    if (!individualURI.equalsIgnoreCase(s)) {
+                        current_test = false;
+                    }
+                }
+            } catch (Exception e)
+            {
+                System.out.println("Error testing inverse functionality. Reason: " + e.getMessage());
+            }
+
+            test_results.add(current_test);
+
+        }
+
+        // all current tests must be false
+        for(boolean b : test_results)
+        {
+            if(b) return false;
+        }
+
+        return true;
+
+    }
+
+    public static boolean testPositiveInverseFunctionalitySPARQL(Individual individual, String propertyURI, List<String> propertyValues, boolean sliding)
+    {
+
+        OntModel model          = individual.getOntModel();
+        String individualURI    = individual.getURI();
+
+        if(sliding)
+            model  = ModelManager.getManager().getSlidingWindowModel();
+
+        List<Boolean> test_results = new ArrayList<>();
+
+       for(String propertyValue : propertyValues)
+       {
+
+           if(propertyValue==null || propertyValue.isEmpty())
+               continue;
+
+           boolean currentTest = false;
+           Query query;
+           // get quantos sujeitos
+           boolean wellFormed = true;
+           try {
+               query = QueryFactory.create
+                       (
+                               "SELECT ?s1 \n " +
+                                       " WHERE \n " +
+                                       " { \n " +
+                                       "    ?s1 <" + propertyURI + "> <" + propertyValue + "> . \n  " +
+                                       " } "
+                       );
+
+           }
+           catch(Exception e)
+           {
+
+               continue;
+           }
+
+
+           try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
+               List<String> theResURIS = new ArrayList<String>();
+               ResultSet results = qexec.execSelect();
+
+               while (results.hasNext()) {
+                   QuerySolution querySolution = results.nextSolution();
+
+                   try
+                   {
+                       Resource object1 = querySolution.getResource("?s1");
+                       theResURIS.add(object1.getURI());
+                   }
+                   catch(Exception e)
+                   {
+                       System.out.println("Not a Resource. Trying Literal...");
+                       Literal l = querySolution.getLiteral("?s1");
+                       theResURIS.add(l.getValue().toString());
+                   }
+
+               }
+
+               Set<String> distinctURIsSet = new HashSet<>(theResURIS);
+               distinctURIsSet.add(individualURI);
+               List<String> distinctURIs = new ArrayList<>(distinctURIsSet);
+
+               if (distinctURIs.size() == 1)
+                   currentTest = true;
+
+           } catch (Exception e) {
+               System.out.println("Error testing inverse functionality. Reason: " + e.getMessage());
+           }
+
+           test_results.add(currentTest);
+       }
+
+       //all current tests must be true
+        for(boolean b : test_results)
+        {
+            if(!b) return false;
+        }
+
+        return true;
+    }
+
+    public static boolean testPositiveFunctionalitySPARQL(Individual individual, String propertyURI, boolean sliding)
+    {
+
+        boolean isFunctional    = false;
+        OntModel model          = individual.getOntModel();
+        String individualURI    = individual.getURI();
+
+        if(sliding)
+            model  = ModelManager.getManager().getSlidingWindowModel();
+
+
+        // get quantas propriedades
+        Query query = QueryFactory.create
+                (
+                        "SELECT ?o1 \n " +
+                                " WHERE \n " +
+                                " { \n " +
+                                "    <"+individualURI+"> <"+propertyURI+"> ?o1 . \n  " +
+                                " } "
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            List<String> theResURIS = new ArrayList<String>();
+            ResultSet results = qexec.execSelect();
+
+            while (results.hasNext())
+            {
+                QuerySolution querySolution = results.nextSolution();
+
+                try
+                {
+                    Resource object1 = querySolution.getResource("?o1");
+                    theResURIS.add(object1.getURI());
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Not a Resource. Trying Literal...");
+                    Literal l = querySolution.getLiteral("?o1");
+                    theResURIS.add(l.getValue().toString());
+                }
+
+            }
+            Set<String> theResURISset = new HashSet<>(theResURIS);
+
+            if(theResURISset.size() == 1)
+                isFunctional = true;
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing functionality. Reason: " + e.getMessage());
+        }
+
+        return isFunctional;
+    }
+
+    public static boolean testNegativeFunctionalitySPARQL(Individual individual, String propertyURI, boolean sliding)
+    {
+
+        boolean isFunctional    = true;
+        OntModel model          = individual.getOntModel();
+        String individualURI    = individual.getURI();
+
+        if(sliding)
+            model  = ModelManager.getManager().getSlidingWindowModel();
+
+        // get quantas propriedades
+        Query query = QueryFactory.create
+                (
+                        "SELECT ?o1 ?o2 \n " +
+                                " WHERE \n " +
+                                " { \n " +
+                                "    <"+individualURI+"> <"+propertyURI+"> ?o1 . \n  " +
+                                "    <"+individualURI+"> <"+propertyURI+"> ?o2 . \n  " +
+                                " } "
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            List<String> theResURIS = new ArrayList<String>();
+            ResultSet results = qexec.execSelect();
+
+            while (results.hasNext())
+            {
+                QuerySolution querySolution = results.nextSolution();
+
+                try
+                {
+                    Resource object1 = querySolution.getResource("?o1");
+                    Resource object2 = querySolution.getResource("?o2");
+                    theResURIS.add(object1.getURI());
+                    theResURIS.add(object2.getURI());
+
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Not a Resource. Trying Literal...");
+                    Literal l1 = querySolution.getLiteral("?o1");
+                    Literal l2 = querySolution.getLiteral("?o2");
+                    theResURIS.add(l1.getValue().toString());
+                    theResURIS.add(l2.getValue().toString());
+                }
+
+            }
+            Set<String> theResURISset = new HashSet<>(theResURIS);
+
+            if(theResURISset.size() > 1)
+                isFunctional = false;
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing functionality. Reason: " + e.getMessage());
+        }
+
+        return isFunctional;
+
+
+    }
 
     public static boolean testFunctionalitySPARQL(Individual individual, String propertyURI)
     {
@@ -224,9 +757,6 @@ public class SPARQLUtils
             while (results.hasNext()) {
                 QuerySolution querySolution = results.nextSolution();
 
-
-
-
             }
         }
         catch(Exception e)
@@ -242,8 +772,9 @@ public class SPARQLUtils
         if(levels == 0 )
             levels = 1;
 
-        OntModel model          = individual.getOntModel();
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
         String individualURI    = individual.getURI();
+
 
         String queryString =
                 "SELECT DISTINCT ?obj1 " ;
@@ -254,45 +785,44 @@ public class SPARQLUtils
         queryString += "\n WHERE \n" +
                 "  { \n<" + individualURI + "> <" + propertyURI + "> ?obj1 . \n";
 
-        for(int i = 1; i <=levels; i++)
+        int i = 1, i2 = 2;
+        for(i = 1; i <=levels; i++)
         {
-            int i2 = i+1;
+            i2 = i+1;
             queryString+= " ?obj"+ i + " <" + propertyURI + "> ?obj" + i2+ "  . \n" ;
         }
 
-        //queryString+= " FILTER ( ?obj1 != ?obj2 ) .   \n";
-        for(int i = 1; i <=levels; i++)
+        for(i = 1; i <=levels; i++)
         {
-            int i2 = i+1;
+            i2 = i+1;
             queryString+= " FILTER (?obj1 != ?obj" + i2+ " ) . \n" ;
-            queryString+= " FILTER (<" + individualURI + "> != ?obj" + i2+ " ) . \n" ;
+            queryString+= " FILTER ( <" + individualURI + "> != ?obj" + i2+ " ) . \n" ;
         }
-
 
         queryString+= " } \n";
 
         String queryString2  =
                 "SELECT DISTINCT ?obj1 " ;
 
-        for(int i = 2; i <= levels+1; i++)
+        for(i = 2; i <= levels+1; i++)
             queryString2+= " ?obj"+ i ;
 
         queryString2 += "\n WHERE { \n" ;
 
         int lasti = 1;
-        for(int i = 1; i <=levels; i++)
+        for(i = 1; i <=levels; i++)
         {
-            int i2 = i+1;
+            i2 = i+1;
             queryString2+= " ?obj"+ i + " <" + propertyURI + "> ?obj" + i2+ "  . \n" ;
             lasti = i2;
         }
         queryString2 += "   \n ?obj"+ lasti +" <" + propertyURI + ">  <" + individualURI + ">. \n";
 
 
-        for(int i = levels; i >= 1; i--)
+        for(i = levels; i >= 1; i--)
         {
             queryString2 += " FILTER (?obj"+lasti+" != ?obj" + i+ " ) . \n" ;
-            queryString2+= " FILTER (<" + individualURI + "> != ?obj" + i+ " ) . \n" ;
+            queryString2+= " FILTER ( <" + individualURI + "> != ?obj" + i+ " ) . \n" ;
 
         }
 
@@ -314,29 +844,6 @@ public class SPARQLUtils
 
  */
 
-/*
-SELECT * {
-    {
-        SELECT (?population AS ?population_max) {
-            ?state rdf:type :State .
-            ?state :hasPopulation ?population .
-        }
-
-    }
-    {
-        SELECT (?population AS ?population_min) {
-            ?state rdf:type :State .
-            ?state :hasPopulation ?population .
-        }
-
-    }
- */
-
-        if(individualURI.contains("Test-Trans-3"))
-            System.out.println("FOUNDIT");
-
-
-
 
         boolean isTransitive    = false;
 
@@ -348,7 +855,7 @@ SELECT * {
             {
                 QuerySolution querySolution = results.nextSolution();
 
-                for(int i = 1; i <= levels+1; i++)
+                for(i = 1; i <= levels+1; i++)
                 {
                     String resN = "obj" + i;
                     Resource r1 = querySolution.getResource(resN);
@@ -356,7 +863,7 @@ SELECT * {
                 }
 
                 boolean validAnswer = true;
-                for (int i = 0; i < theResURIS.size(); i++)
+                for (i = 0; i < theResURIS.size(); i++)
                 {
                     for (int j = i+1; j < theResURIS.size(); j++)
                     {
@@ -369,8 +876,8 @@ SELECT * {
                     if(!validAnswer) break;
                 }
 
-                if(!validAnswer) continue;
-                else isTransitive = true;
+                if(validAnswer)
+                    isTransitive = true;
             }
 
         }
@@ -381,6 +888,284 @@ SELECT * {
 
         return isTransitive;
     }
+
+    public static boolean testSupportTransitivenessSPARQL(Individual individual, String propertyURI)
+    {
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        String queryString =
+                "SELECT DISTINCT ?obj1 \n WHERE \n" +
+                "  { \n" +
+                        " <" + individualURI + "> <" + propertyURI + "> ?obj1 . \n" +
+                        " ?obj1 <" + propertyURI + "> ?obj2 . \n" +
+
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                "  } \n";
+
+        String queryString2  =
+                "SELECT DISTINCT ?obj1 \n WHERE " +
+                "{ \n" +
+                            " ?obj1 <" + propertyURI + "> ?obj2   . \n" +
+                            " ?obj2 <" + propertyURI + "> <" + individualURI + ">  . \n" +
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                " \n }";
+
+        String finalQuery  = " SELECT * {\n "
+                + "{ \n " + queryString + "\n }"
+                + "OPTIONAL { \n " + queryString2 + "\n }"
+                + "}";
+
+
+        Query query = QueryFactory.create(finalQuery);
+
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+
+            if(results.hasNext())
+            {
+                QuerySolution querySolution = results.nextSolution();
+                Resource object1 = querySolution.getResource("?obj1");
+
+                return true;
+            }
+            else
+                return false;
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing transitiveness. Reason: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+
+    public static Resource getTransitiveSequenceSPARQL(Individual individual, String propertyURI)
+    {
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        String queryString =
+                "SELECT DISTINCT ?obj2 \n WHERE \n" +
+                        "  { \n" +
+                        " <" + individualURI + "> <" + propertyURI + "> ?obj1 . \n" +
+                        " ?obj1 <" + propertyURI + "> ?obj2 . \n" +
+
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                        "  } \n";
+
+        String queryString2  =
+                "SELECT DISTINCT ?obj2 \n WHERE " +
+                        "{ \n" +
+                        " ?obj2 <" + propertyURI + "> ?obj1   . \n" +
+                        " ?obj1 <" + propertyURI + "> <" + individualURI + ">  . \n" +
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                        " \n }";
+
+        String finalQuery  = " SELECT * {\n "
+                + "{ \n " + queryString + "\n }"
+                + "OPTIONAL { \n " + queryString2 + "\n }"
+                + "}";
+
+
+        Query query = QueryFactory.create(finalQuery);
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+
+            if(results.hasNext())
+            {
+                QuerySolution querySolution = results.nextSolution();
+                Resource res = querySolution.getResource("?obj2");
+
+                return res;
+            }
+            else
+                return null;
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing transitiveness. Reason: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    public static boolean testAgainstTransitivenessSPARQL(Individual individual, String propertyURI)
+    {
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        String queryString =
+                "SELECT DISTINCT ?obj1 \n WHERE \n" +
+                        "  { \n" +
+                        " <" + individualURI + "> <" + propertyURI + "> ?obj1 . \n" +
+
+                        " FILTER NOT EXISTS { ?obj1 <" + propertyURI + "> ?obj2 } . \n" +
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                        "  } \n";
+
+        String queryString2  =
+                "SELECT DISTINCT ?obj1 \n WHERE " +
+                        "{ \n" +
+
+                        " ?obj1 <" + propertyURI + "> <" + individualURI + ">  . \n" +
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                        " FILTER NOT EXISTS { ?obj1 <" + propertyURI + "> ?obj2 }   . \n" +
+                        " \n }";
+
+        String finalQuery  = " SELECT * {\n "
+                + "{ \n " + queryString + "\n }"
+                + "OPTIONAL { \n " + queryString2 + "\n }"
+                + "}";
+
+
+        Query query = QueryFactory.create(finalQuery);
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+
+            if(results.hasNext())
+                return true;
+            else
+                return false;
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing transitiveness. Reason: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+    public static boolean testSupportExplicitTransitivenessSPARQL(Individual individual, String propertyURI)
+    {
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        String queryString =
+                "SELECT DISTINCT ?obj1 \n WHERE \n" +
+                        "  { \n" +
+
+                        " <" + individualURI + "> <" + propertyURI + "> ?obj1 . \n" +
+                        " ?obj1 <" + propertyURI + "> ?obj2 . \n" +
+
+                        " <" + individualURI + "> <" + propertyURI + "> ?obj2 . \n" +
+
+
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                        "  } \n";
+
+        String queryString2  =
+                "SELECT DISTINCT ?obj1 \n WHERE " +
+                        "{ \n" +
+                        " ?obj1 <" + propertyURI + "> ?obj2   . \n" +
+
+                        " ?obj2 <" + propertyURI + "> <" + individualURI + ">  . \n" +
+                        " ?obj1 <" + propertyURI + "> <" + individualURI + ">   . \n" +
+
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                        " \n }";
+
+        String finalQuery  = " SELECT * {\n "
+                + "{ \n " + queryString + "\n }"
+                + "OPTIONAL { \n " + queryString2 + "\n }"
+                + "}";
+
+        Query query = QueryFactory.create(finalQuery);
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+
+            if(results.hasNext())
+                return true;
+            else
+                return false;
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing transitiveness. Reason: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+    public static boolean testAgainstExplicitTransitivenessSPARQL(Individual individual, String propertyURI)
+    {
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        String queryString =
+                "SELECT DISTINCT ?obj1 \n WHERE \n" +
+                        "  { \n" +
+
+                        " <" + individualURI + "> <" + propertyURI + "> ?obj1 . \n" +
+                        " ?obj1 <" + propertyURI + "> ?obj2 . \n" +
+
+                        "FILTER NOT EXISTS { <" + individualURI + "> <" + propertyURI + "> ?obj2 . } \n" +
+
+
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                        "  } \n";
+
+        String queryString2  =
+                "SELECT DISTINCT ?obj1 \n WHERE " +
+                        "{ \n" +
+                        " ?obj1 <" + propertyURI + "> ?obj2   . \n" +
+
+                        "  ?obj2 <" + propertyURI + "> <" + individualURI + ">  . \n" +
+
+                        " FILTER NOT EXISTS { ?obj1 <" + propertyURI + "> <" + individualURI + "> }  . \n" +
+
+                        " FILTER ( ?obj1 != ?obj2 ) . \n" +
+                        " FILTER ( <" + individualURI + "> != ?obj1 ) . \n" +
+                        " \n }";
+
+        String finalQuery  = " SELECT * {\n "
+                + "{ \n " + queryString + "\n }"
+                + "OPTIONAL { \n " + queryString2 + "\n }"
+                + "}";
+
+        Query query = QueryFactory.create(finalQuery);
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+
+            if(results.hasNext())
+                return true;
+            else
+                return false;
+
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing transitiveness. Reason: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+
 
 
     public static List<OntClass> getTimeSlicesSPARQL(OntClass ontClass)
@@ -571,6 +1356,9 @@ SELECT * {
         OntModel model        = i.getOntModel();
         List<OntClass> clss   = new ArrayList<>();
 
+        if(individual_uri.contains("zygarde"))
+            return clss;
+
         Query query = QueryFactory.create
                 (
                         "SELECT DISTINCT " +
@@ -632,9 +1420,9 @@ SELECT * {
 
         query_String+= "?prop ?obj " +
                 " WHERE " +
-                "{" +
+                "{ " +
                 "<"+ individual_uri + "> ?prop ?obj. " +
-                "}";
+                " }";
 
         Query query = QueryFactory.create(query_String);
 

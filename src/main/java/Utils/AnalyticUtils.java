@@ -4,6 +4,7 @@ import IDC.Metrics.ConstructorMetrics;
 import IDC.Metrics.EntityMetricsStore;
 import IDC.Metrics.PropertyMetrics;
 import org.apache.commons.io.FileUtils;
+import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntProperty;
 
 import java.io.File;
@@ -12,7 +13,7 @@ import java.util.Set;
 
 public class AnalyticUtils
 {
-    public static String CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/Constructors/";
+    public static String CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/Constructors" + Configs.windowSize + "/";
     public static String ANALYTICS_FOLDER = "Analytics/";
     public static String ONTO_NAME = "cmt";
 
@@ -21,6 +22,7 @@ public class AnalyticUtils
 
     public static String getPropertyNameforPath(String propertyURI)
     {
+
         if(propertyURI.contains("#"))
             propertyURI     = propertyURI.split("#")[1];
         else if (propertyURI.contains("/"))
@@ -28,6 +30,7 @@ public class AnalyticUtils
             String parts []= propertyURI.split("/");
             propertyURI = parts[parts.length - 1];
         }
+
         return propertyURI;
     }
     public static String getConstructorFilename(String constructor, String propertyURI)
@@ -75,32 +78,36 @@ public class AnalyticUtils
 
     }
 
-    public static void printAllComputations(Set<String> propertyURIs)
+    public static void printAllComputations(Set<String> propertyURIs, int ind_number)
     {
+
         for(String propertyURI : propertyURIs)
         {
             String propertyPart = getPropertyNameforPath(propertyURI);
 
-            System.out.println("\n=======================\nPrinting computations for " + propertyPart);
-            String fileName   = CONSTRUCTOR_ANALYTICS_FOLDER + "Constructors_totals_" + propertyPart + ".csv";
+            //System.out.println("\n=======================\nPrinting computations for " + propertyPart);
+            String fileName   = CONSTRUCTOR_ANALYTICS_FOLDER  + "Constructors_totals_" + propertyPart + ".csv";
             Utilities.createFile(fileName);
 
             PropertyMetrics pm = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
             List<ConstructorMetrics> constructorMetrics = pm.getConstructors();
 
-            String line  = "";
+            String line  = ind_number + ";";
 
             for(ConstructorMetrics cm : constructorMetrics)
             {
                 int support        = cm.getSupport();
                 int against        = cm.getAgainst();
+
                 int neutral        = cm.getNeutral();
+
+                //int neutral  = ind_number - support - against;
 
                 line += support + ";" + against + ";" + neutral + ";";
             }
 
             Utils.Utilities.appendLineToFile(fileName, line);
-            System.out.println("\n=======================\nFinished printing computations for " + propertyPart + ". File: " + fileName);
+            System.out.println("Printed computations for " + propertyPart + ". File: " + fileName);
 
         }
     }

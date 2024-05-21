@@ -5,9 +5,7 @@
     <groupId>com.mycompany</groupId>
     <artifactId>TICO</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
- 
-    
+
     
     <packaging>jar</packaging>
     
@@ -33,7 +31,14 @@
             <version>0.9.6</version>
             <type>jar</type>
         </dependency>
-    
+
+
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
     </dependencies>
     
     

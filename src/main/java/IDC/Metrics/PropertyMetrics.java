@@ -14,7 +14,7 @@ import Utils.OntologyUtils;
  *
  * @author shizamura
  */
-public class                                                                                                                                                                                                                                                                                                                                                                                                                                    PropertyMetrics
+public class PropertyMetrics
 {
     private int count;
     protected String URI;
@@ -42,6 +42,16 @@ public class                                                                    
         this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_ASYMMETRIC));
         this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_REFLEXIVE));
         this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.C_IRREFLEXIVE));
+
+
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.NOT_C_FUNCTIONAL));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.NOT_C_INVERSE_FUNCTIONAL));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.NOT_C_TRANSITIVE2));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.NOT_C_TRANSITIVE3));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.NOT_C_SYMMETRIC));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.NOT_C_ASYMMETRIC));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.NOT_C_REFLEXIVE));
+        this.constructors.add(new ConstructorMetrics(URI, OntologyUtils.NOT_C_IRREFLEXIVE));
 
     }
     

@@ -15,21 +15,21 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import IDC.ModelManager;
+
+
 import org.apache.jena.datatypes.RDFDatatype;
+import org.apache.jena.graph.Graph;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Triple;
 import org.apache.jena.ontology.*;
 import org.apache.jena.query.*;
-import org.apache.jena.rdf.model.Literal;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.Property;
-import org.apache.jena.rdf.model.RDFList;
-import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.rdf.model.Resource;
-import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.rdf.model.*;
 
 
+import org.apache.jena.reasoner.*;
 import org.apache.jena.util.iterator.ExtendedIterator;
+
+
 
 import javax.swing.*;
 
@@ -65,8 +65,14 @@ public class OntologyUtils
     public static final String C_ASYMMETRIC        = "ASYMMETRIC";
     public static final String C_TRANSITIVE2      = "TRANSITIVE_2_LEVELS";
     public static final String C_TRANSITIVE3      = "TRANSITIVE_3_LEVELS";
-
-
+    public static final String NOT_C_FUNCTIONAL       = "!FUNCTIONAL";
+    public static final String NOT_C_INVERSE_FUNCTIONAL       = "!INVERSE_FUNCTIONAL";
+    public static final String NOT_C_REFLEXIVE        = "!REFLEXIVE";
+    public static final String NOT_C_IRREFLEXIVE      = "!IRREFLEXIVE";
+    public static final String NOT_C_SYMMETRIC        = "!SYMMETRIC";
+    public static final String NOT_C_ASYMMETRIC        = "!ASYMMETRIC";
+    public static final String NOT_C_TRANSITIVE2      = "!TRANSITIVE_2_LEVELS";
+    public static final String NOT_C_TRANSITIVE3      = "!TRANSITIVE_3_LEVELS";
 
 
     /**
@@ -75,22 +81,22 @@ public class OntologyUtils
      * @return one of "original", "evolving" or "individuals"
      */
     public static String getModelVersion(OntModel model)
-{
-    String version = "original";
-
-    try
     {
-        OntResource versionInfoR = model.getOntResource("VersionInfo");
-        Statement version1 = versionInfoR.getProperty(model.getAnnotationProperty("version"));
-        Literal lit = version1.getLiteral();
-        version = lit.toString();
+        String version = "original";
+
+        try
+        {
+            OntResource versionInfoR = model.getOntResource("VersionInfo");
+            Statement version1 = versionInfoR.getProperty(model.getAnnotationProperty("version"));
+            Literal lit = version1.getLiteral();
+            version = lit.toString();
+        }
+        catch(Exception e)
+        {}
+
+
+        return version;
     }
-    catch(Exception e)
-    {}
-
-
-    return version;
-}
     public static OntModel readModel(String filename, String baseURI)
     {
 
@@ -144,6 +150,19 @@ public class OntologyUtils
 
         return m;
 
+    }
+
+
+    public static boolean checkEntailment(OntModel model, Resource s, Property p, Resource o)
+    {
+        Reasoner reasoner = ReasonerRegistry.getOWLReasoner();
+        InfModel inf = ModelFactory.createInfModel(reasoner, model);
+
+        inf.add(s, p, o);
+        inf.rebind();
+
+        ValidityReport rp = inf.validate();
+        return rp.isValid();
     }
     
     

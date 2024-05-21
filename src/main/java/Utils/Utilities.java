@@ -18,7 +18,10 @@ import IDC.Metrics.ConstructorMetrics;
 import IDC.Metrics.EntityMetricsStore;
 import IDC.Metrics.PropertyMetrics;
 import org.apache.commons.io.FileUtils;
+import org.apache.jena.ontology.Individual;
+import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntProperty;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import org.apache.log4j.BasicConfigurator;
 
 import static Utils.Configs.*;
@@ -39,7 +42,6 @@ public class Utilities
 
             List<String> props = new ArrayList<>();
 
-
             props.add("http://cmt#acceptedby");
             props.add("http://cmt#hasDecision");
 
@@ -58,69 +60,96 @@ public class Utilities
             props.add("http://cmt#rejectedBy");
             props.add("http://cmt#rejectPaper");
             props.add("http://cmt#writePaper");
-            props.add("http://cmt#writeReview");
+
 
             props.add("http://cmt#writtenBy");
+
+            props.add("http://cmt#writeReview");
 
 
             importantProps.put("cmt", props);
 
-            props = new ArrayList<>();
+            List<String> props2 = new ArrayList<>();
 
-            props.add("http://confOf#parallel_with");
-            props.add("http://confOf#follows");
+            props2.add("http://confOf#parallel_with");
+            props2.add("http://confOf#follows");
+            props2.add("http://confOf#hasCountry");
 
-            props.add("http://confOf#dealsWith");
-            props.add("http://confOf#employedBy");
-            props.add("http://confOf#expertOn");
-            props.add("http://confOf#hasCity");
-            props.add("http://confOf#hasAdministrativeEvent");
-            props.add("http://confOf#hasCountry");
-            props.add("http://confOf#hasTopic");
+            props2.add("http://confOf#dealsWith");
+            props2.add("http://confOf#employedBy");
+            props2.add("http://confOf#expertOn");
+            props2.add("http://confOf#hasCity");
+            props2.add("http://confOf#hasAdministrativeEvent");
 
-            props.add("http://confOf#reviewes");
-            props.add("http://confOf#writes");
-            props.add("http://confOf#writtenBy");
+            props2.add("http://confOf#hasTopic");
 
-            importantProps.put("confOf", props);
+            props2.add("http://confOf#reviewes");
+            props2.add("http://confOf#writes");
+            props2.add("http://confOf#writtenBy");
 
-            props = new ArrayList<>();
+            importantProps.put("confOf", props2);
 
-            props.add("http://ekaw#hasPart");
-            props.add("http://ekaw#partOf");
+            List<String> props3 = new ArrayList<>();
 
-            props.add("http://ekaw#partOfEvent");
+            props3.add("http://ekaw#hasPart");
+            props3.add("http://ekaw#partOf");
 
-            importantProps.put("ekaw", props);
+            props3.add("http://ekaw#partOfEvent");
 
-            props = new ArrayList<>();
+            importantProps.put("ekaw", props3);
 
-            props.add("http://conference#is_the_1th_part_of");
-            props.add("http://conference#reviews");
-            props.add("http://conference#was_a_program_committee_of");
-            props.add("http://conference#was_a_steering_committee_of");
-            props.add("http://conference#was_an_organizing_committee_of");
-            props.add("http://conference#was_a_committee_chair_of");
-            props.add("http://conference#was_a_track-workshop_chair_of");
-            props.add("http://conference#belong_to_a_conference_volume");
-            props.add("http://conference#belongs_to_a_review_reference");
-            props.add("http://conference#has_a_program_committee");
-            props.add("http://conference#has_a_steering_committee");
-            props.add("http://conference#has_an_organizing_committee");
-            props.add("http://conference#has_a_publisher");
-            props.add("http://conference#has_a_review");
-            props.add("http://conference#has_a_review_expertise");
-            props.add("http://conference#has_a_submitted_contribution");
-            props.add("http://conference#has_a_topic_or_a_submission_contribution");
-            props.add("http://conference#has_a_track-workshop-tutorial_chair");
-            props.add("http://conference#has_a_track-workshop-tutorial_topic");
-            props.add("http://conference#has_an_abstract");
-            props.add("http://conference#has_been_assigned_a_review_reference");
-            props.add("http://conference#has_important_dates");
-            props.add("http://conference#has_a_committee_chair");
+            List<String> props4 = new ArrayList<>();
+
+            props4.add("http://conference#is_the_1th_part_of");
+            props4.add("http://conference#reviews");
+            props4.add("http://conference#was_a_program_committee_of");
+            props4.add("http://conference#was_a_steering_committee_of");
+            props4.add("http://conference#was_an_organizing_committee_of");
+            props4.add("http://conference#was_a_committee_chair_of");
+            props4.add("http://conference#was_a_track-workshop_chair_of");
+            props4.add("http://conference#belong_to_a_conference_volume");
+            props4.add("http://conference#belongs_to_a_review_reference");
+            props4.add("http://conference#has_a_program_committee");
+            props4.add("http://conference#has_a_steering_committee");
+            props4.add("http://conference#has_an_organizing_committee");
+            props4.add("http://conference#has_a_publisher");
+            props4.add("http://conference#has_a_review");
+            props4.add("http://conference#has_a_review_expertise");
+            props4.add("http://conference#has_a_submitted_contribution");
+            props4.add("http://conference#has_a_topic_or_a_submission_contribution");
+            props4.add("http://conference#has_a_track-workshop-tutorial_chair");
+            props4.add("http://conference#has_a_track-workshop-tutorial_topic");
+            props4.add("http://conference#has_an_abstract");
+            props4.add("http://conference#has_been_assigned_a_review_reference");
+            props4.add("http://conference#has_important_dates");
+            props4.add("http://conference#has_a_committee_chair");
+
+            importantProps.put("conference", props4);
 
 
-            importantProps.put("conference", props);
+            List<String> props5 = new ArrayList<>();
+
+            props5.add("http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#adjacentRegion");
+            props5.add("http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasMaker");
+            props5.add("http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn");
+
+            importantProps.put("wine", props5);
+
+            List<String> props6 = new ArrayList<>();
+
+            props6.add("http://purl.obolibrary.org/obo/BFO_0000051");
+            props6.add("http://purl.obolibrary.org/obo/BFO_0000050");
+            props6.add("http://purl.obolibrary.org/obo/part_of");
+            props6.add("http://purl.obolibrary.org/obo/RO_0002202");
+            props6.add("http://data.bioontology.org/metadata/obo/part_of");
+
+            importantProps.put("plant", props6);
+
+
+            List<String> props7 = new ArrayList<>();
+            props7.add("https://pokemon.com#bordersWith");
+
+            importantProps.put("pokemon", props7);
 
 
             init = true;
@@ -129,7 +158,7 @@ public class Utilities
     }
     public static boolean isImportantProp( String propertyURI)
     {
-        initProps();
+        //initProps();
 
         if( importantProps.containsKey(AnalyticUtils.ONTO_NAME) )
         {
@@ -143,6 +172,94 @@ public class Utilities
     }
 
 
+    private static boolean relevantIndividual(String line)
+    {
+
+        //if( line.contains("paper") )
+        //    return true;
+
+
+      //  if( line.toLowerCase().contains("region") )
+        //    return true;
+
+
+
+        if(line.contains("person") || line.contains("paper") )
+            return true;
+
+        if(AnalyticUtils.ONTO_NAME.equalsIgnoreCase("conference"))
+            if(line.contains("abstr") ||  line.contains("Date") )
+                return true;
+
+        if(AnalyticUtils.ONTO_NAME.equalsIgnoreCase("confOf"))
+            if(line.contains("event") || line.contains("workshop") || line.contains("Evt")  || line.contains("tutorial")  || line.contains("topic"))
+                return true;
+
+        if(AnalyticUtils.ONTO_NAME.equalsIgnoreCase("ekaw"))
+            if(line.contains("presentation") || line.contains("proceedings") || line.contains("topic")  || line.contains("tutorial")  || line.contains("conference"))
+                return true;
+
+
+        return false;
+    }
+
+
+    public static void generateInstanceListFile(String fileName, OntModel model)
+    {
+        List<Individual> inds = model.listIndividuals().toList();
+
+        for(Individual i : inds)
+        {
+            if(i.getURI() != null && !i.getURI().isEmpty() && !i.getURI().isEmpty())
+                Utilities.appendLineToFile(fileName, i.getURI());
+        }
+    }
+
+    public static List<String> extractInstancesFromFile(String datasetFolder)
+    {
+        //String file_content = readFileContent(AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_instance.ttl");
+
+        List<String> individuals_uris = new ArrayList<>();
+
+        String filename = AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_0.ttl";
+
+//        String filename = datasetFolder + "/" + AnalyticUtils.ONTO_NAME + "//" + AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_0.ttl";
+
+        if(!filename.contains("plant") && !filename.contains("wine"))
+        {
+            String file_content = readFileContent(filename);
+            String lines[] = file_content.split("\\r?\\n");
+
+            for (String line : lines) {
+                if (line.contains("-instances") && line.startsWith("<") && relevantIndividual(line)) {
+                    line = line.replace("<", "").replace(">", "");
+                    individuals_uris.add(line);
+                }
+            }
+        }
+        else
+        {
+            filename = datasetFolder + "/" + AnalyticUtils.ONTO_NAME + "//" + AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_instances.txt";
+            String file_content = readFileContent(filename);
+            String lines[] = file_content.split("\\r?\\n");
+
+            for (String line : lines) {
+                if (!line.isEmpty()) {
+                    individuals_uris.add(line);
+                }
+            }
+
+
+        }
+
+        individuals_uris = new ArrayList<>(new HashSet<>(individuals_uris));
+        //Collections.sort(individuals_uris);
+
+        Collections.shuffle(individuals_uris);
+
+        return individuals_uris;
+    }
+
     public static List<String> extractInstancesFromFile()
     {
         //String file_content = readFileContent(AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_instance.ttl");
@@ -153,7 +270,7 @@ public class Utilities
 
         for(String line : lines)
         {
-            if(line.contains("-instances") && line.startsWith("<"))
+            if(line.contains("-instances") && line.startsWith("<") && relevantIndividual(line))
             {
                 line = line.replace("<", "").replace(">", "");
                 individuals_uris.add(line);
@@ -161,7 +278,9 @@ public class Utilities
         }
 
         individuals_uris = new ArrayList<>(new HashSet<>(individuals_uris));
-        Collections.sort(individuals_uris);
+        //Collections.sort(individuals_uris);
+
+        Collections.shuffle(individuals_uris);
 
         return individuals_uris;
     }

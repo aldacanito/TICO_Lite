@@ -5,10 +5,12 @@ import IDC.ModelManager;
 import Utils.AnalyticUtils;
 import Utils.Configs;
 import Utils.OntologyUtils;
+import Utils.Utilities;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.rdf.model.ModelFactory;
 
 import java.io.File;
+import java.util.List;
 
 public class TestConferenceInstances
 {
@@ -26,24 +28,44 @@ public class TestConferenceInstances
     {
         Configs configs = new Configs();
 
+        Configs.windowSize = 50;
+
         //String [] datasets = {"cmt", "conference", "confOf", "ekaw"};
 
-        String [] datasets = {"ekaw"};
 
+        AnalyticUtils.ONTO_NAME = "conference";
 
+        String [] datasets = { AnalyticUtils.ONTO_NAME };
+
+        List<String> individuals_uris = Utilities.extractInstancesFromFile(datasetsFolder);
+
+        int partitionSize  = 3000;
+
+        List<List<String>> partitions = Utilities.chopped(individuals_uris, partitionSize);
+
+        Configs.windowSize = 10;
         for(String dataset : datasets)
-            run(dataset);
+            run(dataset, partitions.get(0), 10);
+
+        Configs.windowSize = 50;
+        for(String dataset : datasets)
+            run(dataset, partitions.get(0),50);
+
+        Configs.windowSize = 100;
+        for(String dataset : datasets)
+            run(dataset, partitions.get(0), 100);
 
     }
 
-    public static void run(String ontologyName)
+    public static void run(String ontologyName, List<String> inds, int windo_size)
     {
         AnalyticUtils.ONTO_NAME = ontologyName;
 
         AnalyticUtils.CURRENT_FOLDER = datasetsFolder + ontologyName + "/";
         AnalyticUtils.INSTANCE_FOLDER = AnalyticUtils.CURRENT_FOLDER + "/instances/";
 
-        AnalyticUtils.CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/"+ontologyName+"/Constructors/";
+
+        AnalyticUtils.CONSTRUCTOR_ANALYTICS_FOLDER = "Analytics/"+ontologyName+"/Constructors" + windo_size + "/";
         AnalyticUtils.ANALYTICS_FOLDER = "Analytics/" + ontologyName;
 
         originalModel = OntologyUtils.readModel(AnalyticUtils.CURRENT_FOLDER + ontologyName + ".ttl");
@@ -82,11 +104,13 @@ public class TestConferenceInstances
         System.out.println("Finished reading instance files.");
 
         Comparator comparator = new Comparator();
-        comparator.run();
+        comparator.run(inds);
 
         String stats = comparator.printStats();
         System.out.println(" stats time: " + stats );
     }
+
+
 
 
 

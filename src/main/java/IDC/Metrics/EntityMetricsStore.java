@@ -37,6 +37,14 @@ public class EntityMetricsStore
         seenTriples       = new ArrayList<>();
     }
 
+    public static void cleanStore()
+    {
+        theInstance.theMetrics        = new ArrayList<ClassPropertyMetrics>();
+        theInstance.individualMetrics = new ArrayList<>();
+        theInstance.propertyMetrics   = new ArrayList<>();
+        theInstance.seenTriples       = new ArrayList<>();
+    }
+
     public static EntityMetricsStore getStore()
     {
         return theInstance;

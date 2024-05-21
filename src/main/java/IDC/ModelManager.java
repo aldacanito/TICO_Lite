@@ -126,6 +126,13 @@ public class ModelManager
 
 
     /**
+     * @return the slidingModel
+     */
+    public OntModel getSlidingWindowModel() {
+        return slidingWindowModel;
+    }
+
+    /**
      * @return the originalModel
      */
     public OntModel getOriginalModel() {

@@ -247,22 +247,19 @@ public class Comparator
 
 
 
+
+
     /***
      * Guided by the instances! Only works for individuals with OntClasses associated to them.
      * Doesn't use reasoner.
      */
-    public void run() 
+    public void run(List<String> inds)
     {
 
         //AnalyticUtils.deleteAnalytics();
+        getIndividualsMetrics(inds);
 
-        List<String> individuals_uris = Utilities.extractInstancesFromFile();
-
-        //List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
-
-        getIndividualsMetrics(individuals_uris);
-        printEntityMetricsStats();
-
+       // printEntityMetricsStats();
 
         /*
 
@@ -289,7 +286,52 @@ public class Comparator
 
     }
 
-    private void getIndividualsMetrics(List<String> individuals_uris)
+    /***
+     * Guided by the instances! Only works for individuals with OntClasses associated to them.
+     * Doesn't use reasoner.
+     */
+    public void run()
+    {
+        List<String> individuals_uris = Utilities.extractInstancesFromFile();
+
+        //List <String> individuals_uris = SPARQLUtils.getIndividualsSPARQL(ModelManager.getManager().getInstanceModel());
+
+        int partitionSize  = 3000;
+
+        List<List<String>> partitions = Utilities.chopped(individuals_uris, partitionSize);
+        List<String> inds = partitions.get(0);
+
+        AnalyticUtils.deleteAnalytics();
+        getIndividualsMetrics(inds);
+
+        // printEntityMetricsStats();
+
+        /*
+
+        int partitionSize = Configs.windowSize;
+
+        List<List<String>> partitions = Utilities.chopped(individuals_uris, partitionSize);
+
+        for(List<String> partition : partitions)
+        {
+            //checkNewClasses(partition);
+            //checkForOntProperties(partition);
+            //copyIndividualsToEvolvedModel(partition);
+
+            getIndividualsMetrics(partition);
+
+            //cleanUnclearClasses(evolvedModel, partition);
+
+            //runComparatorOnIndividuals(partition);
+            //updateTemporalRestrictions();         // check if the temporal restrictions on the classes are ok
+            printEntityMetricsStats();
+
+        }*/
+
+
+    }
+
+    public void getIndividualsMetrics(List<String> individuals_uris)
     {
         int total_inds = individuals_uris.size();
         int count_inds = 0;
@@ -307,19 +349,24 @@ public class Comparator
 
             Individual individual = ModelManager.getManager().getInstanceModel().getIndividual(uri);
 
+            //if(individual.getURI().contains("zygarde")) continue;
+
             IndividualMetrics im = new IndividualMetrics(individual);
 
             if(im.getProperties().size() == 0)
                 continue;
 
+            EntityMetricsStore.getStore().addIndividualMetrics(im);
+
             // use sliding window
             individual = ModelManager.getManager().addToWindow(individual);
 
-            EntityMetricsStore.getStore().addIndividualMetrics(im);
-
             System.out.println("Analysing individual: " + uri);
 
-            List<OntClass> ontClasses = SPARQLUtils.listOntClassesSPARQL(individual);
+            ClassPropertyMetrics.computeAllMetricsForIndividual(im, count_inds);
+            ClassPropertyMetrics.static_printComputations2File(count_inds);
+
+            /*List<OntClass> ontClasses = SPARQLUtils.listOntClassesSPARQL(individual);
 
             for(OntClass cls : ontClasses)
             {
@@ -329,9 +376,9 @@ public class Comparator
                 if(metricsByClassURI == null)
                     continue;
 
-                metricsByClassURI.computeAllMetricsForIndividual(im);
-                metricsByClassURI.printComputations2File();
-            }
+                metricsByClassURI.computeAllMetricsForIndividual(im, count_inds);
+                metricsByClassURI.static_printComputations2File(count_inds);
+            }*/
         }
     }
 
@@ -352,7 +399,7 @@ public class Comparator
 
             String computations = metricsByClassURI.printComputations();
 
-            metricsByClassURI.printComputations2File();
+           // metricsByClassURI.printComputations2File();
 
            // System.out.println(metricsByClassURI.toString());
            // System.out.println(computations);
