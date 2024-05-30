@@ -1,0 +1,18 @@
+SELECT DISTINCT
+?pokemon ?pokemonLabel
+?megapokemon ?megapokemonLabel
+?megaStone ?megaStoneLabel
+
+WHERE
+{
+  ?pokemon wdt:P31/wdt:P279* wd:Q3966183 . 
+  ?megapokemon wdt:P31/wdt:P279* wd:Q3966183 . 
+  
+  
+  ?pokemon wdt:P2283 ?megaStone .
+  ?megapokemon wdt:P828 ?megaStone . # pokemon caused by MegaStone
+  ?megaStone p:P366 ?megaStoneStmt .
+  ?megaStoneStmt ps:P366 wd:Q16577590.
+  
+   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+}

@@ -1,0 +1,1962 @@
+
+@prefix : <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix food: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+@base <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#> .
+
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine2> rdf:type owl:Ontology ;
+                                                        owl:imports <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food> ;
+                                                        rdfs:comment "An example OWL ontology" ,
+                                                                     """Derived from the DAML Wine ontology at 
+      http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml
+      Substantially changed, in particular the Region based relations.
+    """ ;
+                                                        rdfs:label "Wine Ontology" ;
+                                                        owl:priorVersion <http://www.w3.org/TR/2003/CR-owl-guide-20030818/wine> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#madeFromFruit
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#madeFromFruit> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasBody> rdf:type owl:ObjectProperty ;
+                                                               rdfs:subPropertyOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasWineDescriptor> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasColor> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasWineDescriptor> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasFlavor> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:subPropertyOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasWineDescriptor> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasSugar> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasWineDescriptor> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasWineDescriptor
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#hasWineDescriptor> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#madeFromGrape
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#madeFromGrape> rdf:type owl:ObjectProperty ;
+                                                                     rdfs:subPropertyOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#madeFromFruit> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#madeIntoWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#madeIntoWine> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf [ owl:inverseOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#madeFromFruit>
+                                                                                       ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#BlandFish
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#BlandFish> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fish> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#BlandFishCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#BlandFishCourse> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FishCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#CheeseNutsDessert
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#CheeseNutsDessert> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Dessert> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#CheeseNutsDessertCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#CheeseNutsDessertCourse> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DessertCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ConsumableThing
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ConsumableThing> rdf:type owl:Class .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DarkMeatFowl
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DarkMeatFowl> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fowl> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DarkMeatFowlCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DarkMeatFowlCourse> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Dessert
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Dessert> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DessertCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DessertCourse> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EatingGrape
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EatingGrape> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Grape> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ConsumableThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fish
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fish> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Seafood> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FishCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FishCourse> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SeafoodCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fowl
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fowl> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fruit
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fruit> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FruitCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FruitCourse> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Grape
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Grape> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetFruit> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Juice
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Juice> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PotableLiquid> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#LightMeatFowl
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#LightMeatFowl> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fowl> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#LightMeatFowlCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#LightMeatFowlCourse> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Meal
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Meal> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ConsumableThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ConsumableThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Meat
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Meat> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonBlandFish
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonBlandFish> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fish> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonBlandFishCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonBlandFishCourse> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FishCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonOysterShellfish
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonOysterShellfish> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Shellfish> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonOysterShellfishCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonOysterShellfishCourse> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ShellfishCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonRedMeat
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonRedMeat> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Meat> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonRedMeatCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonRedMeatCourse> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSpicyRedMeat
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSpicyRedMeat> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeat> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSpicyRedMeatCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSpicyRedMeatCourse> rdf:type owl:Class ;
+                                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeatCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSweetFruit
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSweetFruit> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fruit> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSweetFruitCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#NonSweetFruitCourse> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FruitCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OtherTomatoBasedFood
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OtherTomatoBasedFood> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OtherTomatoBasedFoodCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OtherTomatoBasedFoodCourse> rdf:type owl:Class ;
+                                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OysterShellfish
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OysterShellfish> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Shellfish> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OysterShellfishCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#OysterShellfishCourse> rdf:type owl:Class ;
+                                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ShellfishCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Pasta
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Pasta> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithHeavyCreamCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithHeavyCreamCourse> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithHeavyCreamSauce
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithHeavyCreamSauce> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithWhiteSauce> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithLightCreamCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithLightCreamCourse> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithLightCreamSauce
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithLightCreamSauce> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithWhiteSauce> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithNonSpicyRedSauce
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithNonSpicyRedSauce> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithRedSauce> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithNonSpicyRedSauceCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithNonSpicyRedSauceCourse> rdf:type owl:Class ;
+                                                                                       rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithRedSauce
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithRedSauce> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Pasta> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithSpicyRedSauce
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithSpicyRedSauce> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithRedSauce> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithSpicyRedSauceCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithSpicyRedSauceCourse> rdf:type owl:Class ;
+                                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithWhiteSauce
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PastaWithWhiteSauce> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Pasta> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PotableLiquid
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PotableLiquid> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ConsumableThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeat
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeat> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Meat> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeatCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeatCourse> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Seafood
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Seafood> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#EdibleThing> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SeafoodCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SeafoodCourse> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#MealCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Shellfish
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Shellfish> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Seafood> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ShellfishCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#ShellfishCourse> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SeafoodCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SpicyRedMeat
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SpicyRedMeat> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeat> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SpicyRedMeatCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SpicyRedMeatCourse> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#RedMeatCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetDessert
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetDessert> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Dessert> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetDessertCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetDessertCourse> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#DessertCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetFruit
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetFruit> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Fruit> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetFruitCourse
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#SweetFruitCourse> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#FruitCourse> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> rdf:type owl:Class ;
+                                                            owl:equivalentClass <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> ;
+                                                            rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PotableLiquid> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AlsatianWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AlsatianWine> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AmericanWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AmericanWine> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                    <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Anjou
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Anjou> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Loire> ,
+                                                                             <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RoseWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Beaujolais
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Beaujolais> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                                  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine> ,
+                                                                                  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Gamay> ,
+                                                                                  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bordeaux
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bordeaux> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Burgundy
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Burgundy> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetFranc
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetFranc> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                                     <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignon
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignon> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                                         <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CaliforniaWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CaliforniaWine> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AmericanWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chardonnay
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chardonnay> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CheninBlanc
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CheninBlanc> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteNonSweetWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chianti
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chianti> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                               <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ItalianWine> ,
+                                                                               <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotesDOr
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotesDOr> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBurgundy> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DessertWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DessertWine> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> rdf:type owl:Class ;
+                                                                  owl:equivalentClass <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine> ,
+                                                                                  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine> ,
+                                                                                  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRiesling
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRiesling> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWhiteWine> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Riesling> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWhiteWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWhiteWine> rdf:type owl:Class ;
+                                                                    owl:equivalentClass <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteTableWine> ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine> ,
+                                                                                    <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine> ,
+                                                                                    <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteNonSweetWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine> rdf:type owl:Class ;
+                                                               owl:equivalentClass <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine> ;
+                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                               <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#EarlyHarvest
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#EarlyHarvest> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                    <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FullBodiedWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FullBodiedWine> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                      <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Gamay
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Gamay> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                             <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GermanWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GermanWine> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#IceWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#IceWine> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DessertWine> ,
+                                                                               <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LateHarvest> ,
+                                                                               <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ItalianWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ItalianWine> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LateHarvest
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LateHarvest> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Loire
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Loire> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Margaux
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Margaux> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medoc> ,
+                                                                               <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Merlot> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medoc
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medoc> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                             <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBordeaux> ,
+                                                                             <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Meritage
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Meritage> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Merlot
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Merlot> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                              <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Meursault
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Meursault> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FullBodiedWine> ,
+                                                                                 <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBurgundy> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Muscadet
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Muscadet> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWhiteWine> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotBlanc> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteLoire> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Pauillac
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Pauillac> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignon> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FullBodiedWine> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medoc> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteSyrah
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteSyrah> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotBlanc
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotBlanc> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotNoir
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotNoir> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Port
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Port> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FullBodiedWine> ,
+                                                                            <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine> ,
+                                                                            <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBordeaux
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBordeaux> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bordeaux> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBurgundy
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBurgundy> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Burgundy> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotNoir> ,
+                                                                                   <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine> ,
+                                                                                    <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine> ,
+                                                                                    <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedWine> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                               <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Riesling
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Riesling> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RoseWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RoseWine> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sancerre
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sancerre> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauvignonBlanc> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteLoire> ,
+                                                                                <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteNonSweetWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sauternes
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sauternes> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LateHarvest> ,
+                                                                                 <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBordeaux> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauvignonBlanc
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauvignonBlanc> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonOrSauvignonBlanc> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Semillon
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Semillon> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonOrSauvignonBlanc> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonOrSauvignonBlanc
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonOrSauvignonBlanc> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StEmilion
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StEmilion> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignon> ,
+                                                                                 <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedBordeaux> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetRiesling
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetRiesling> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DessertWine> ,
+                                                                                     <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FullBodiedWine> ,
+                                                                                     <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Riesling> ,
+                                                                                     <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SweetWine> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                 <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                 <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasWine> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AmericanWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Tours
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Tours> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CheninBlanc> ,
+                                                                             <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteLoire> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBordeaux
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBordeaux> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bordeaux> ,
+                                                                                     <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonOrSauvignonBlanc> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBurgundy
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteBurgundy> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Burgundy> ,
+                                                                                     <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Chardonnay> ,
+                                                                                     <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWhiteWine> ,
+                                                                                     <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteTableWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteLoire
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteLoire> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Loire> ,
+                                                                                  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteNonSweetWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteNonSweetWine> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteTableWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteTableWine> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryWine> ,
+                                                                                      <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TableWine> ,
+                                                                                      <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteNonSweetWine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhiteWine> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Wine> ,
+                                                                                 <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Wine> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#PotableLiquid> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineBody
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineBody> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineTaste> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineColor
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineColor> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineDescriptor> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineDescriptor
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineDescriptor> rdf:type owl:Class .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineFlavor
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineFlavor> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineTaste> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineGrape
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineGrape> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/food#Grape> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineSugar
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineSugar> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineTaste> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineTaste
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineTaste> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WineDescriptor> .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Zinfandel
+<http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Zinfandel> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DryRedWine> ,
+                                                                                 <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RedTableWine> .
+
+
+
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AlsaceRegion
+vin:AlsaceRegion rdf:type owl:NamedIndividual ,
+                          vin:Region ;
+                 vin:locatedIn vin:FrenchRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AnjouRegion
+vin:AnjouRegion rdf:type owl:NamedIndividual ,
+                         vin:Region ;
+                vin:locatedIn vin:LoireRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ArroyoGrandeRegion
+vin:ArroyoGrandeRegion rdf:type owl:NamedIndividual ,
+                                vin:Region ;
+                       vin:locatedIn vin:CaliforniaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#AustralianRegion
+vin:AustralianRegion rdf:type owl:NamedIndividual ,
+                              vin:Region .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Bancroft
+vin:Bancroft rdf:type owl:NamedIndividual ,
+                      vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BancroftChardonnay
+vin:BancroftChardonnay rdf:type owl:NamedIndividual ,
+                                vin:Chardonnay ;
+                       vin:hasBody vin:Medium ;
+                       vin:hasFlavor vin:Moderate ;
+                       vin:hasMaker vin:Bancroft ;
+                       vin:hasSugar vin:Dry ;
+                       vin:locatedIn vin:NapaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BeaujolaisRegion
+vin:BeaujolaisRegion rdf:type owl:NamedIndividual ,
+                              vin:Region ;
+                     vin:locatedIn vin:FrenchRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Beringer
+vin:Beringer rdf:type owl:NamedIndividual ,
+                      vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BordeauxRegion
+vin:BordeauxRegion rdf:type owl:NamedIndividual ,
+                            vin:Region ;
+                   vin:locatedIn vin:FrenchRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#BourgogneRegion
+vin:BourgogneRegion rdf:type owl:NamedIndividual ,
+                             vin:Region ;
+                    vin:locatedIn vin:FrenchRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetFrancGrape
+vin:CabernetFrancGrape rdf:type owl:NamedIndividual ,
+                                owl:Thing ,
+                                vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CabernetSauvignonGrape
+vin:CabernetSauvignonGrape rdf:type owl:NamedIndividual ,
+                                    owl:Thing ,
+                                    vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CaliforniaRegion
+vin:CaliforniaRegion rdf:type owl:NamedIndividual ,
+                              vin:Region ;
+                     vin:locatedIn vin:USRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CentralCoastRegion
+vin:CentralCoastRegion rdf:type owl:NamedIndividual ,
+                                vin:Region ;
+                       vin:locatedIn vin:CaliforniaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CentralTexasRegion
+vin:CentralTexasRegion rdf:type owl:NamedIndividual ,
+                                vin:Region ;
+                       vin:locatedIn vin:TexasRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChardonnayGrape
+vin:ChardonnayGrape rdf:type owl:NamedIndividual ,
+                             vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauChevalBlanc
+vin:ChateauChevalBlanc rdf:type owl:NamedIndividual ,
+                                vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauChevalBlancStEmilion
+vin:ChateauChevalBlancStEmilion rdf:type owl:NamedIndividual ,
+                                         vin:StEmilion ;
+                                vin:hasMaker vin:ChateauChevalBlanc .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDYchem
+vin:ChateauDYchem rdf:type owl:NamedIndividual ,
+                           vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDYchemSauterne
+vin:ChateauDYchemSauterne rdf:type owl:NamedIndividual ,
+                                   vin:Sauternes ;
+                          vin:hasFlavor vin:Strong ;
+                          vin:hasMaker vin:ChateauDYchem ;
+                          vin:madeFromGrape vin:SauvignonBlancGrape ,
+                                            vin:SemillonGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDeMeursault
+vin:ChateauDeMeursault rdf:type owl:NamedIndividual ,
+                                vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauDeMeursaultMeursault
+vin:ChateauDeMeursaultMeursault rdf:type owl:NamedIndividual ,
+                                         vin:Meursault ;
+                                vin:hasFlavor vin:Moderate ;
+                                vin:hasMaker vin:ChateauDeMeursault .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauLafiteRothschild
+vin:ChateauLafiteRothschild rdf:type owl:NamedIndividual ,
+                                     vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauLafiteRothschildPauillac
+vin:ChateauLafiteRothschildPauillac rdf:type owl:NamedIndividual ,
+                                             vin:Pauillac ;
+                                    vin:hasMaker vin:ChateauLafiteRothschild .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMargaux
+vin:ChateauMargaux rdf:type owl:NamedIndividual ,
+                            vin:Margaux ;
+                   vin:hasMaker vin:ChateauMargauxWinery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMargauxWinery
+vin:ChateauMargauxWinery rdf:type owl:NamedIndividual ,
+                                  vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMorgon
+vin:ChateauMorgon rdf:type owl:NamedIndividual ,
+                           vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChateauMorgonBeaujolais
+vin:ChateauMorgonBeaujolais rdf:type owl:NamedIndividual ,
+                                     vin:Beaujolais ;
+                            vin:hasMaker vin:ChateauMorgon .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CheninBlancGrape
+vin:CheninBlancGrape rdf:type owl:NamedIndividual ,
+                              owl:Thing ,
+                              vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChiantiClassico
+vin:ChiantiClassico rdf:type owl:NamedIndividual ,
+                             vin:Chianti ;
+                    vin:hasBody vin:Medium ;
+                    vin:hasMaker vin:McGuinnesso .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ChiantiRegion
+vin:ChiantiRegion rdf:type owl:NamedIndividual ,
+                           vin:Region ;
+                  vin:locatedIn vin:ItalianRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeLaPoussie
+vin:ClosDeLaPoussie rdf:type owl:NamedIndividual ,
+                             vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeLaPoussieSancerre
+vin:ClosDeLaPoussieSancerre rdf:type owl:NamedIndividual ,
+                                     vin:Sancerre ;
+                            vin:hasMaker vin:ClosDeLaPoussie .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeVougeot
+vin:ClosDeVougeot rdf:type owl:NamedIndividual ,
+                           vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ClosDeVougeotCotesDOr
+vin:ClosDeVougeotCotesDOr rdf:type owl:NamedIndividual ,
+                                   vin:CotesDOr ;
+                          vin:hasMaker vin:ClosDeVougeot .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CongressSprings
+vin:CongressSprings rdf:type owl:NamedIndividual ,
+                             vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CongressSpringsSemillon
+vin:CongressSpringsSemillon rdf:type owl:NamedIndividual ,
+                                     vin:Semillon ;
+                            vin:hasBody vin:Medium ;
+                            vin:hasFlavor vin:Moderate ;
+                            vin:hasMaker vin:CongressSprings ;
+                            vin:hasSugar vin:Dry .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Corbans
+vin:Corbans rdf:type owl:NamedIndividual ,
+                     vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansDryWhiteRiesling
+vin:CorbansDryWhiteRiesling rdf:type owl:NamedIndividual ,
+                                     vin:Riesling ;
+                            vin:hasBody vin:Medium ;
+                            vin:hasFlavor vin:Moderate ;
+                            vin:hasMaker vin:Corbans ;
+                            vin:hasSugar vin:OffDry ;
+                            vin:locatedIn vin:NewZealandRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansPrivateBinSauvignonBlanc
+vin:CorbansPrivateBinSauvignonBlanc rdf:type owl:NamedIndividual ,
+                                             vin:SauvignonBlanc ;
+                                    vin:hasBody vin:Full ;
+                                    vin:hasFlavor vin:Strong ;
+                                    vin:hasMaker vin:Corbans ;
+                                    vin:hasSugar vin:Dry ;
+                                    vin:locatedIn vin:NewZealandRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CorbansSauvignonBlanc
+vin:CorbansSauvignonBlanc rdf:type owl:NamedIndividual ,
+                                   vin:SauvignonBlanc ;
+                          vin:hasBody vin:Medium ;
+                          vin:hasFlavor vin:Strong ;
+                          vin:hasMaker vin:Corbans ;
+                          vin:hasSugar vin:Dry ;
+                          vin:locatedIn vin:NewZealandRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CortonMontrachet
+vin:CortonMontrachet rdf:type owl:NamedIndividual ,
+                              vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CortonMontrachetWhiteBurgundy
+vin:CortonMontrachetWhiteBurgundy rdf:type owl:NamedIndividual ,
+                                           vin:WhiteBurgundy ;
+                                  vin:hasBody vin:Full ;
+                                  vin:hasFlavor vin:Strong ;
+                                  vin:hasMaker vin:CortonMontrachet ;
+                                  vin:hasSugar vin:Dry .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotesDOrRegion
+vin:CotesDOrRegion rdf:type owl:NamedIndividual ,
+                            vin:Region ;
+                   vin:locatedIn vin:BourgogneRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Cotturi
+vin:Cotturi rdf:type owl:NamedIndividual ,
+                     vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#CotturiZinfandel
+vin:CotturiZinfandel rdf:type owl:NamedIndividual ,
+                              vin:Zinfandel ;
+                     vin:hasBody vin:Full ;
+                     vin:hasFlavor vin:Strong ;
+                     vin:hasMaker vin:Cotturi ;
+                     vin:hasSugar vin:Dry ;
+                     vin:locatedIn vin:SonomaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#DAnjou
+vin:DAnjou rdf:type owl:NamedIndividual ,
+                    vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Delicate
+vin:Delicate rdf:type owl:NamedIndividual ,
+                      owl:Thing ,
+                      vin:WineFlavor .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Dry
+vin:Dry rdf:type owl:NamedIndividual ,
+                 owl:Thing ,
+                 vin:WineSugar ;
+        owl:differentFrom vin:OffDry ,
+                          vin:Sweet .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#EdnaValleyRegion
+vin:EdnaValleyRegion rdf:type owl:NamedIndividual ,
+                              vin:Region ;
+                     vin:locatedIn vin:CaliforniaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Elyse
+vin:Elyse rdf:type owl:NamedIndividual ,
+                   vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ElyseZinfandel
+vin:ElyseZinfandel rdf:type owl:NamedIndividual ,
+                            vin:Zinfandel ;
+                   vin:hasBody vin:Full ;
+                   vin:hasFlavor vin:Moderate ;
+                   vin:hasMaker vin:Elyse ;
+                   vin:hasSugar vin:Dry ;
+                   vin:locatedIn vin:NapaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Forman
+vin:Forman rdf:type owl:NamedIndividual ,
+                    vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanCabernetSauvignon
+vin:FormanCabernetSauvignon rdf:type owl:NamedIndividual ,
+                                     vin:CabernetSauvignon ;
+                            vin:hasBody vin:Medium ;
+                            vin:hasFlavor vin:Strong ;
+                            vin:hasMaker vin:Forman ;
+                            vin:hasSugar vin:Dry ;
+                            vin:locatedIn vin:NapaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FormanChardonnay
+vin:FormanChardonnay rdf:type owl:NamedIndividual ,
+                              vin:Chardonnay ;
+                     vin:hasBody vin:Full ;
+                     vin:hasFlavor vin:Moderate ;
+                     vin:hasMaker vin:Forman ;
+                     vin:hasSugar vin:Dry ;
+                     vin:locatedIn vin:NapaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Foxen
+vin:Foxen rdf:type owl:NamedIndividual ,
+                   vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FoxenCheninBlanc
+vin:FoxenCheninBlanc rdf:type owl:NamedIndividual ,
+                              vin:CheninBlanc ;
+                     vin:hasBody vin:Full ;
+                     vin:hasFlavor vin:Moderate ;
+                     vin:hasMaker vin:Foxen ;
+                     vin:hasSugar vin:Dry ;
+                     vin:locatedIn vin:SantaBarbaraRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#FrenchRegion
+vin:FrenchRegion rdf:type owl:NamedIndividual ,
+                          vin:Region .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Full
+vin:Full rdf:type owl:NamedIndividual ,
+                  owl:Thing ,
+                  vin:WineBody .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GamayGrape
+vin:GamayGrape rdf:type owl:NamedIndividual ,
+                        vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GaryFarrell
+vin:GaryFarrell rdf:type owl:NamedIndividual ,
+                         vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GaryFarrellMerlot
+vin:GaryFarrellMerlot rdf:type owl:NamedIndividual ,
+                               vin:Merlot ;
+                      vin:hasBody vin:Medium ;
+                      vin:hasFlavor vin:Moderate ;
+                      vin:hasMaker vin:GaryFarrell ;
+                      vin:hasSugar vin:Dry ;
+                      vin:locatedIn vin:SonomaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#GermanyRegion
+vin:GermanyRegion rdf:type owl:NamedIndividual ,
+                           vin:Region .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Handley
+vin:Handley rdf:type owl:NamedIndividual ,
+                     vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ItalianRegion
+vin:ItalianRegion rdf:type owl:NamedIndividual ,
+                           vin:Region .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KalinCellars
+vin:KalinCellars rdf:type owl:NamedIndividual ,
+                          vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KalinCellarsSemillon
+vin:KalinCellarsSemillon rdf:type owl:NamedIndividual ,
+                                  vin:Semillon ;
+                         vin:hasBody vin:Full ;
+                         vin:hasFlavor vin:Strong ;
+                         vin:hasMaker vin:KalinCellars ;
+                         vin:hasSugar vin:Dry .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KathrynKennedy
+vin:KathrynKennedy rdf:type owl:NamedIndividual ,
+                            vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#KathrynKennedyLateral
+vin:KathrynKennedyLateral rdf:type owl:NamedIndividual ,
+                                   vin:Meritage ;
+                          vin:hasBody vin:Medium ;
+                          vin:hasFlavor vin:Delicate ;
+                          vin:hasMaker vin:KathrynKennedy ;
+                          vin:hasSugar vin:Dry .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LaneTanner
+vin:LaneTanner rdf:type owl:NamedIndividual ,
+                        vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LaneTannerPinotNoir
+vin:LaneTannerPinotNoir rdf:type owl:NamedIndividual ,
+                                 vin:PinotNoir ;
+                        vin:hasBody vin:Light ;
+                        vin:hasFlavor vin:Delicate ;
+                        vin:hasMaker vin:LaneTanner ;
+                        vin:hasSugar vin:Dry ;
+                        vin:locatedIn vin:SantaBarbaraRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Light
+vin:Light rdf:type owl:NamedIndividual ,
+                   owl:Thing ,
+                   vin:WineBody .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LoireRegion
+vin:LoireRegion rdf:type owl:NamedIndividual ,
+                         vin:Region ;
+                vin:locatedIn vin:FrenchRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Longridge
+vin:Longridge rdf:type owl:NamedIndividual ,
+                       vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#LongridgeMerlot
+vin:LongridgeMerlot rdf:type owl:NamedIndividual ,
+                             vin:Merlot ;
+                    vin:hasBody vin:Light ;
+                    vin:hasFlavor vin:Moderate ;
+                    vin:hasMaker vin:Longridge ;
+                    vin:hasSugar vin:Dry ;
+                    vin:locatedIn vin:NewZealandRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MalbecGrape
+vin:MalbecGrape rdf:type owl:NamedIndividual ,
+                         owl:Thing ,
+                         vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MargauxRegion
+vin:MargauxRegion rdf:type owl:NamedIndividual ,
+                           vin:Region ;
+                  vin:locatedIn vin:MedocRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Marietta
+vin:Marietta rdf:type owl:NamedIndividual ,
+                      vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaCabernetSauvignon
+vin:MariettaCabernetSauvignon rdf:type owl:NamedIndividual ,
+                                       vin:CabernetSauvignon ;
+                              vin:hasBody vin:Medium ;
+                              vin:hasFlavor vin:Moderate ;
+                              vin:hasMaker vin:Marietta ;
+                              vin:hasSugar vin:Dry ;
+                              vin:locatedIn vin:SonomaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaOldVinesRed
+vin:MariettaOldVinesRed rdf:type owl:NamedIndividual ,
+                                 vin:RedTableWine ;
+                        vin:hasBody vin:Medium ;
+                        vin:hasFlavor vin:Moderate ;
+                        vin:hasMaker vin:Marietta ;
+                        vin:hasSugar vin:Dry ;
+                        vin:locatedIn vin:SonomaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaPetiteSyrah
+vin:MariettaPetiteSyrah rdf:type owl:NamedIndividual ,
+                                 vin:PetiteSyrah ;
+                        vin:hasBody vin:Medium ;
+                        vin:hasFlavor vin:Moderate ;
+                        vin:hasMaker vin:Marietta ;
+                        vin:hasSugar vin:Dry ;
+                        vin:locatedIn vin:SonomaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MariettaZinfandel
+vin:MariettaZinfandel rdf:type owl:NamedIndividual ,
+                               vin:Zinfandel ;
+                      vin:hasBody vin:Medium ;
+                      vin:hasFlavor vin:Moderate ;
+                      vin:hasMaker vin:Marietta ;
+                      vin:hasSugar vin:Dry ;
+                      vin:locatedIn vin:SonomaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#McGuinnesso
+vin:McGuinnesso rdf:type owl:NamedIndividual ,
+                         vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Medium
+vin:Medium rdf:type owl:NamedIndividual ,
+                    owl:Thing ,
+                    vin:WineBody .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MedocRegion
+vin:MedocRegion rdf:type owl:NamedIndividual ,
+                         vin:Region ;
+                vin:locatedIn vin:BordeauxRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MendocinoRegion
+vin:MendocinoRegion rdf:type owl:NamedIndividual ,
+                             vin:Region ;
+                    vin:adjacentRegion vin:SonomaRegion ;
+                    vin:locatedIn vin:CaliforniaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MerlotGrape
+vin:MerlotGrape rdf:type owl:NamedIndividual ,
+                         owl:Thing ,
+                         vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MeursaultRegion
+vin:MeursaultRegion rdf:type owl:NamedIndividual ,
+                             vin:Region ;
+                    vin:locatedIn vin:BourgogneRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Moderate
+vin:Moderate rdf:type owl:NamedIndividual ,
+                      owl:Thing ,
+                      vin:WineFlavor .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyard
+vin:MountEdenVineyard rdf:type owl:NamedIndividual ,
+                               vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyardEdnaValleyChardonnay
+vin:MountEdenVineyardEdnaValleyChardonnay rdf:type owl:NamedIndividual ,
+                                                   vin:Chardonnay ;
+                                          vin:hasBody vin:Medium ;
+                                          vin:hasFlavor vin:Moderate ;
+                                          vin:hasMaker vin:MountEdenVineyard ;
+                                          vin:hasSugar vin:Dry ;
+                                          vin:locatedIn vin:EdnaValleyRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountEdenVineyardEstatePinotNoir
+vin:MountEdenVineyardEstatePinotNoir rdf:type owl:NamedIndividual ,
+                                              vin:PinotNoir ;
+                                     vin:hasBody vin:Full ;
+                                     vin:hasFlavor vin:Strong ;
+                                     vin:hasMaker vin:MountEdenVineyard ;
+                                     vin:hasSugar vin:Dry ;
+                                     vin:locatedIn vin:EdnaValleyRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Mountadam
+vin:Mountadam rdf:type owl:NamedIndividual ,
+                       vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamChardonnay
+vin:MountadamChardonnay rdf:type owl:NamedIndividual ,
+                                 vin:Chardonnay ;
+                        vin:hasBody vin:Full ;
+                        vin:hasFlavor vin:Strong ;
+                        vin:hasMaker vin:Mountadam ;
+                        vin:hasSugar vin:Dry ;
+                        vin:locatedIn vin:SouthAustraliaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamPinotNoir
+vin:MountadamPinotNoir rdf:type owl:NamedIndividual ,
+                                vin:PinotNoir ;
+                       vin:hasBody vin:Medium ;
+                       vin:hasFlavor vin:Moderate ;
+                       vin:hasMaker vin:Mountadam ;
+                       vin:hasSugar vin:Dry ;
+                       vin:locatedIn vin:SouthAustraliaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MountadamRiesling
+vin:MountadamRiesling rdf:type owl:NamedIndividual ,
+                               vin:DryRiesling ;
+                      vin:hasBody vin:Medium ;
+                      vin:hasFlavor vin:Delicate ;
+                      vin:hasMaker vin:Mountadam ;
+                      vin:hasSugar vin:Dry ;
+                      vin:locatedIn vin:SouthAustraliaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#MuscadetRegion
+vin:MuscadetRegion rdf:type owl:NamedIndividual ,
+                            vin:Region ;
+                   vin:locatedIn vin:LoireRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#NapaRegion
+vin:NapaRegion rdf:type owl:NamedIndividual ,
+                        vin:Region ;
+               vin:locatedIn vin:CaliforniaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#NewZealandRegion
+vin:NewZealandRegion rdf:type owl:NamedIndividual ,
+                              vin:Region .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#OffDry
+vin:OffDry rdf:type owl:NamedIndividual ,
+                    owl:Thing ,
+                    vin:WineSugar ;
+           owl:differentFrom vin:Sweet .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PageMillWinery
+vin:PageMillWinery rdf:type owl:NamedIndividual ,
+                            vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PageMillWineryCabernetSauvignon
+vin:PageMillWineryCabernetSauvignon rdf:type owl:NamedIndividual ,
+                                             vin:CabernetSauvignon ;
+                                    vin:hasBody vin:Medium ;
+                                    vin:hasFlavor vin:Moderate ;
+                                    vin:hasMaker vin:PageMillWinery ;
+                                    vin:hasSugar vin:Dry ;
+                                    vin:locatedIn vin:NapaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PauillacRegion
+vin:PauillacRegion rdf:type owl:NamedIndividual ,
+                            vin:Region ;
+                   vin:locatedIn vin:MedocRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PeterMccoy
+vin:PeterMccoy rdf:type owl:NamedIndividual ,
+                        vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PeterMccoyChardonnay
+vin:PeterMccoyChardonnay rdf:type owl:NamedIndividual ,
+                                  vin:Chardonnay ;
+                         vin:hasBody vin:Medium ;
+                         vin:hasFlavor vin:Moderate ;
+                         vin:hasMaker vin:PeterMccoy ;
+                         vin:hasSugar vin:Dry ;
+                         vin:locatedIn vin:SonomaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteSyrahGrape
+vin:PetiteSyrahGrape rdf:type owl:NamedIndividual ,
+                              vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PetiteVerdotGrape
+vin:PetiteVerdotGrape rdf:type owl:NamedIndividual ,
+                               owl:Thing ,
+                               vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotBlancGrape
+vin:PinotBlancGrape rdf:type owl:NamedIndividual ,
+                             owl:Thing ,
+                             vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PinotNoirGrape
+vin:PinotNoirGrape rdf:type owl:NamedIndividual ,
+                            vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PortugalRegion
+vin:PortugalRegion rdf:type owl:NamedIndividual ,
+                            vin:Region .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PulignyMontrachet
+vin:PulignyMontrachet rdf:type owl:NamedIndividual ,
+                               vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#PulignyMontrachetWhiteBurgundy
+vin:PulignyMontrachetWhiteBurgundy rdf:type owl:NamedIndividual ,
+                                            vin:WhiteBurgundy ;
+                                   vin:hasBody vin:Medium ;
+                                   vin:hasFlavor vin:Moderate ;
+                                   vin:hasMaker vin:PulignyMontrachet ;
+                                   vin:hasSugar vin:Dry .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Red
+vin:Red rdf:type owl:NamedIndividual ,
+                 owl:Thing ,
+                 vin:WineColor .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RieslingGrape
+vin:RieslingGrape rdf:type owl:NamedIndividual ,
+                           vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Rose
+vin:Rose rdf:type owl:NamedIndividual ,
+                  owl:Thing ,
+                  vin:WineColor .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#RoseDAnjou
+vin:RoseDAnjou rdf:type owl:NamedIndividual ,
+                        vin:Anjou ;
+               vin:hasMaker vin:DAnjou .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SancerreRegion
+vin:SancerreRegion rdf:type owl:NamedIndividual ,
+                            vin:Region ;
+                   vin:locatedIn vin:LoireRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SangioveseGrape
+vin:SangioveseGrape rdf:type owl:NamedIndividual ,
+                             vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaBarbaraRegion
+vin:SantaBarbaraRegion rdf:type owl:NamedIndividual ,
+                                vin:Region ;
+                       vin:locatedIn vin:CaliforniaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainVineyard
+vin:SantaCruzMountainVineyard rdf:type owl:NamedIndividual ,
+                                       vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainVineyardCabernetSauvignon
+vin:SantaCruzMountainVineyardCabernetSauvignon rdf:type owl:NamedIndividual ,
+                                                        vin:CabernetSauvignon ;
+                                               vin:hasBody vin:Full ;
+                                               vin:hasFlavor vin:Strong ;
+                                               vin:hasMaker vin:SantaCruzMountainVineyard ;
+                                               vin:hasSugar vin:Dry ;
+                                               vin:locatedIn vin:SantaCruzMountainsRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SantaCruzMountainsRegion
+vin:SantaCruzMountainsRegion rdf:type owl:NamedIndividual ,
+                                      vin:Region ;
+                             vin:locatedIn vin:CaliforniaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyon
+vin:SaucelitoCanyon rdf:type owl:NamedIndividual ,
+                             vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyonZinfandel
+vin:SaucelitoCanyonZinfandel rdf:type owl:NamedIndividual ,
+                                      vin:Zinfandel ;
+                             vin:hasBody vin:Medium ;
+                             vin:hasFlavor vin:Moderate ;
+                             vin:hasMaker vin:SaucelitoCanyon ;
+                             vin:hasSugar vin:Dry ;
+                             vin:locatedIn vin:ArroyoGrandeRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SaucelitoCanyonZinfandel1998
+vin:SaucelitoCanyonZinfandel1998 rdf:type owl:NamedIndividual ,
+                                          vin:Zinfandel ;
+                                 vin:hasBody vin:Medium ;
+                                 vin:hasFlavor vin:Moderate ;
+                                 vin:hasMaker vin:SaucelitoCanyon ;
+                                 vin:hasSugar vin:Dry ;
+                                 vin:hasVintageYear vin:Year1998 ;
+                                 vin:locatedIn vin:ArroyoGrandeRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauterneRegion
+vin:SauterneRegion rdf:type owl:NamedIndividual ,
+                            vin:Region ;
+                   vin:locatedIn vin:BordeauxRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SauvignonBlancGrape
+vin:SauvignonBlancGrape rdf:type owl:NamedIndividual ,
+                                 owl:Thing ,
+                                 vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossRothermel
+vin:SchlossRothermel rdf:type owl:NamedIndividual ,
+                              vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossRothermelTrochenbierenausleseRiesling
+vin:SchlossRothermelTrochenbierenausleseRiesling rdf:type owl:NamedIndividual ,
+                                                          vin:SweetRiesling ;
+                                                 vin:hasBody vin:Full ;
+                                                 vin:hasFlavor vin:Strong ;
+                                                 vin:hasMaker vin:SchlossRothermel ;
+                                                 vin:hasSugar vin:Sweet ;
+                                                 vin:locatedIn vin:GermanyRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossVolrad
+vin:SchlossVolrad rdf:type owl:NamedIndividual ,
+                           vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SchlossVolradTrochenbierenausleseRiesling
+vin:SchlossVolradTrochenbierenausleseRiesling rdf:type owl:NamedIndividual ,
+                                                       vin:SweetRiesling ;
+                                              vin:hasBody vin:Full ;
+                                              vin:hasFlavor vin:Moderate ;
+                                              vin:hasMaker vin:SchlossVolrad ;
+                                              vin:hasSugar vin:Sweet ;
+                                              vin:locatedIn vin:GermanyRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SeanThackrey
+vin:SeanThackrey rdf:type owl:NamedIndividual ,
+                          vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SeanThackreySiriusPetiteSyrah
+vin:SeanThackreySiriusPetiteSyrah rdf:type owl:NamedIndividual ,
+                                           vin:PetiteSyrah ;
+                                  vin:hasBody vin:Full ;
+                                  vin:hasFlavor vin:Strong ;
+                                  vin:hasMaker vin:SeanThackrey ;
+                                  vin:hasSugar vin:Dry ;
+                                  vin:locatedIn vin:NapaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Selaks
+vin:Selaks rdf:type owl:NamedIndividual ,
+                    vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SelaksIceWine
+vin:SelaksIceWine rdf:type owl:NamedIndividual ,
+                           vin:IceWine ;
+                  vin:hasBody vin:Medium ;
+                  vin:hasColor vin:White ;
+                  vin:hasFlavor vin:Moderate ;
+                  vin:hasMaker vin:Selaks ;
+                  vin:locatedIn vin:NewZealandRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SelaksSauvignonBlanc
+vin:SelaksSauvignonBlanc rdf:type owl:NamedIndividual ,
+                                  vin:SauvignonBlanc ;
+                         vin:hasBody vin:Medium ;
+                         vin:hasFlavor vin:Moderate ;
+                         vin:hasMaker vin:Selaks ;
+                         vin:hasSugar vin:Dry ;
+                         vin:locatedIn vin:NewZealandRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SemillonGrape
+vin:SemillonGrape rdf:type owl:NamedIndividual ,
+                           owl:Thing ,
+                           vin:WineGrape .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SevreEtMaine
+vin:SevreEtMaine rdf:type owl:NamedIndividual ,
+                          vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SevreEtMaineMuscadet
+vin:SevreEtMaineMuscadet rdf:type owl:NamedIndividual ,
+                                  vin:Muscadet ;
+                         vin:hasMaker vin:SevreEtMaine .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SonomaRegion
+vin:SonomaRegion rdf:type owl:NamedIndividual ,
+                          vin:Region ;
+                 vin:locatedIn vin:CaliforniaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#SouthAustraliaRegion
+vin:SouthAustraliaRegion rdf:type owl:NamedIndividual ,
+                                  vin:Region ;
+                         vin:locatedIn vin:AustralianRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StEmilionRegion
+vin:StEmilionRegion rdf:type owl:NamedIndividual ,
+                             vin:Region ;
+                    vin:locatedIn vin:BordeauxRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StGenevieve
+vin:StGenevieve rdf:type owl:NamedIndividual ,
+                         vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StGenevieveTexasWhite
+vin:StGenevieveTexasWhite rdf:type owl:NamedIndividual ,
+                                   vin:WhiteWine ;
+                          vin:hasFlavor vin:Moderate ;
+                          vin:hasMaker vin:StGenevieve ;
+                          vin:hasSugar vin:Dry ;
+                          vin:locatedIn vin:CentralTexasRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Stonleigh
+vin:Stonleigh rdf:type owl:NamedIndividual ,
+                       vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#StonleighSauvignonBlanc
+vin:StonleighSauvignonBlanc rdf:type owl:NamedIndividual ,
+                                     vin:SauvignonBlanc ;
+                            vin:hasBody vin:Medium ;
+                            vin:hasFlavor vin:Delicate ;
+                            vin:hasMaker vin:Stonleigh ;
+                            vin:hasSugar vin:Dry ;
+                            vin:locatedIn vin:NewZealandRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Strong
+vin:Strong rdf:type owl:NamedIndividual ,
+                    owl:Thing ,
+                    vin:WineFlavor .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Sweet
+vin:Sweet rdf:type owl:NamedIndividual ,
+                   owl:Thing ,
+                   vin:WineSugar .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Taylor
+vin:Taylor rdf:type owl:NamedIndividual ,
+                    vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TaylorPort
+vin:TaylorPort rdf:type owl:NamedIndividual ,
+                        vin:Port ;
+               vin:hasMaker vin:Taylor .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasRegion
+vin:TexasRegion rdf:type owl:NamedIndividual ,
+                         vin:Region ;
+                vin:locatedIn vin:USRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ToursRegion
+vin:ToursRegion rdf:type owl:NamedIndividual ,
+                         vin:Region ;
+                vin:locatedIn vin:LoireRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#USRegion
+vin:USRegion rdf:type owl:NamedIndividual ,
+                      vin:Region .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ventana
+vin:Ventana rdf:type owl:NamedIndividual ,
+                     vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#VentanaCheninBlanc
+vin:VentanaCheninBlanc rdf:type owl:NamedIndividual ,
+                                vin:CheninBlanc ;
+                       vin:hasBody vin:Medium ;
+                       vin:hasFlavor vin:Moderate ;
+                       vin:hasMaker vin:Ventana ;
+                       vin:hasSugar vin:OffDry ;
+                       vin:locatedIn vin:CentralCoastRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#White
+vin:White rdf:type owl:NamedIndividual ,
+                   owl:Thing ,
+                   vin:WineColor .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLane
+vin:WhitehallLane rdf:type owl:NamedIndividual ,
+                           vin:Winery .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLaneCabernetFranc
+vin:WhitehallLaneCabernetFranc rdf:type owl:NamedIndividual ,
+                                        vin:CabernetFranc ;
+                               vin:hasBody vin:Medium ;
+                               vin:hasFlavor vin:Moderate ;
+                               vin:hasMaker vin:WhitehallLane ;
+                               vin:hasSugar vin:Dry ;
+                               vin:locatedIn vin:NapaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#WhitehallLanePrimavera
+vin:WhitehallLanePrimavera rdf:type owl:NamedIndividual ,
+                                    vin:DessertWine ;
+                           vin:hasBody vin:Light ;
+                           vin:hasFlavor vin:Delicate ;
+                           vin:hasSugar vin:Sweet ;
+                           vin:locatedIn vin:NapaRegion .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Year1998
+vin:Year1998 rdf:type owl:NamedIndividual ,
+                      vin:VintageYear ;
+             vin:yearValue "1998"^^xsd:positiveInteger .
+
+
+###  http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#ZinfandelGrape
+vin:ZinfandelGrape rdf:type owl:NamedIndividual ,
+                            vin:WineGrape .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( vin:Bancroft
+                        vin:ChateauChevalBlanc
+                        vin:ChateauDYchem
+                        vin:ChateauDeMeursault
+                        vin:ChateauLafiteRothschild
+                        vin:ChateauMargauxWinery
+                        vin:ChateauMorgon
+                        vin:ClosDeLaPoussie
+                        vin:ClosDeVougeot
+                        vin:CongressSprings
+                        vin:Corbans
+                        vin:CortonMontrachet
+                        vin:Cotturi
+                        vin:DAnjou
+                        vin:Elyse
+                        vin:Forman
+                        vin:Foxen
+                        vin:GaryFarrell
+                        vin:KalinCellars
+                        vin:KathrynKennedy
+                        vin:LaneTanner
+                        vin:Longridge
+                        vin:Marietta
+                        vin:McGuinnesso
+                        vin:MountEdenVineyard
+                        vin:Mountadam
+                        vin:PageMillWinery
+                        vin:PeterMccoy
+                        vin:PulignyMontrachet
+                        vin:SantaCruzMountainVineyard
+                        vin:SaucelitoCanyon
+                        vin:SchlossRothermel
+                        vin:SchlossVolrad
+                        vin:SeanThackrey
+                        vin:Selaks
+                        vin:SevreEtMaine
+                        vin:StGenevieve
+                        vin:Stonleigh
+                        vin:Taylor
+                        vin:Ventana
+                        vin:WhitehallLane
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( vin:Delicate
+                        vin:Moderate
+                        vin:Strong
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( vin:Dry
+                        vin:OffDry
+                        vin:Sweet
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( vin:Full
+                        vin:Light
+                        vin:Medium
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( vin:Red
+                        vin:Rose
+                        vin:White
+                      )
+] .
+

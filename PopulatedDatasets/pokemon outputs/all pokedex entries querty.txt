@@ -1,0 +1,40 @@
+SELECT DISTINCT 
+ 
+?pokemon ?pokemonLabel 
+
+?nationalDexNumber ?nationalStmt
+?johtoDexNumber ?johtoStmt
+?hoennDexNumber ?hoennStmt
+
+?sinnohDexNumber ?sinnohStmt
+?unovaDexNumber ?unovaStmt
+
+?kalosDexNumber ?kalosStmt
+?alolaDexNumber ?alolaStmt
+
+
+?galarDexNumber ?galarStmt
+?hisuiDexNumber ?hisuiStmt
+
+?paldeaDexNumber ?paldeaStmt
+?kitakamiDexNumber ?kitakamiStmt
+
+WHERE
+{
+    ?pokemon wdt:P31/wdt:P279* wd:Q3966183 . 
+   
+    ?pokemon p:P1685 ?nationalStmt. ?nationalStmt ps:P1685 ?nationalDexNumber . ?nationalStmt pq:P972 wd:Q20005020 . # kanto. base for national pokedex
+    OPTIONAL  { ?pokemon p:P1685 ?johtoStmt. ?johtoStmt ps:P1685 ?johtoDexNumber . ?johtoStmt pq:P972 wd:Q11310550. } # johto, gen II
+    OPTIONAL  { ?pokemon p:P1685 ?hoennStmt. ?hoennStmt ps:P1685 ?hoennDexNumber . ?hoennStmt pq:P972 wd:Q18086665. } # hoenn, gen III
+    OPTIONAL  { ?pokemon p:P1685 ?sinnohStmt. ?sinnohStmt ps:P1685 ?sinnohDexNumber . ?sinnohStmt pq:P972 wd:Q18086666. } #sinnoh, gen IV
+    OPTIONAL  { ?pokemon p:P1685 ?unovaStmt. ?unovaStmt ps:P1685 ?unovaDexNumber . ?unovaStmt pq:P972 wd:Q18086667. } #unova, gen V
+    OPTIONAL  { ?pokemon p:P1685 ?kalosStmt. ?kalosStmt ps:P1685 ?kalosDexNumber . ?kalosStmt pq:P972 wd:Q18086671. } #kalos, gen VI 
+    OPTIONAL  { ?pokemon p:P1685 ?alolaStmt. ?alolaStmt ps:P1685 ?alolaDexNumber . ?alolaStmt pq:P972 wd:Q25336664. } #alola, gen VII 
+    OPTIONAL  { ?pokemon p:P1685 ?galarStmt. ?galarStmt ps:P1685 ?galarDexNumber . ?galarStmt pq:P972 wd:Q75387698. } #galar, gen VIII
+    OPTIONAL  { ?pokemon p:P1685 ?hisuiStmt. ?hisuiStmt ps:P1685 ?hisuiDexNumber . ?hisuiStmt pq:P972 wd:Q111148855. } #Hisui, gen VIII  
+    OPTIONAL  { ?pokemon p:P1685 ?paldeaStmt. ?paldeaStmt ps:P1685 ?paldeaDexNumber . ?paldeaStmt pq:P972 wd:Q116698491. } #paldea, gen IX
+    OPTIONAL  { ?pokemon p:P1685 ?kitakamiStmt. ?kitakamiStmt ps:P1685 ?kitakamiDexNumber . ?kitakamiStmt pq:P972 wd:Q122674304. } #kitakami, gen IX
+  
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+}
+ORDER BY (?pokedexNumber)

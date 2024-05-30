@@ -1,0 +1,348 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://pokemon.com#alternateDexEntry
+<https://pokemon.com#alternateDexEntry> rdf:type owl:ObjectProperty ;
+                                        rdfs:label "as in other Pokédex"@en .
+
+
+###  https://pokemon.com#bordersWith
+<https://pokemon.com#bordersWith> rdf:type owl:ObjectProperty ;
+                                  rdfs:label "borders with"@en .
+
+
+###  https://pokemon.com#catalogsRegion
+<https://pokemon.com#catalogsRegion> rdf:type owl:ObjectProperty ;
+                                     rdfs:label "catalogs Region"@en .
+
+
+###  https://pokemon.com#evolutionGroup
+<https://pokemon.com#evolutionGroup> rdf:type owl:ObjectProperty ;
+                                     rdfs:label "in evolution group"@en .
+
+
+###  https://pokemon.com#followedBy
+<https://pokemon.com#followedBy> rdf:type owl:ObjectProperty ;
+                                 rdfs:label "followed By"@en .
+
+
+###  https://pokemon.com#follows
+<https://pokemon.com#follows> rdf:type owl:ObjectProperty ;
+                              rdfs:label "follows"@en .
+
+
+###  https://pokemon.com#from
+<https://pokemon.com#from> rdf:type owl:ObjectProperty ;
+                           rdfs:label "from"@en .
+
+
+###  https://pokemon.com#hasAbility
+<https://pokemon.com#hasAbility> rdf:type owl:ObjectProperty ;
+                                 rdfs:label "uses ability"@en .
+
+
+###  https://pokemon.com#hasAltForm
+<https://pokemon.com#hasAltForm> rdf:type owl:ObjectProperty ;
+                                 rdfs:label "has Alternative Form"@en .
+
+
+###  https://pokemon.com#hasGender
+<https://pokemon.com#hasGender> rdf:type owl:ObjectProperty .
+
+
+###  https://pokemon.com#hasGenderRatio
+<https://pokemon.com#hasGenderRatio> rdf:type owl:ObjectProperty ;
+                                     rdfs:label "known Gender Ratio"@en .
+
+
+###  https://pokemon.com#hasHalfEffectAgainst
+<https://pokemon.com#hasHalfEffectAgainst> rdf:type owl:ObjectProperty ;
+                                           rdfs:label "is not very effective against"@en .
+
+
+###  https://pokemon.com#hasMegaEvolution
+<https://pokemon.com#hasMegaEvolution> rdf:type owl:ObjectProperty ;
+                                       rdfs:subPropertyOf <https://pokemon.com#hasAltForm> ;
+                                       rdfs:label "has MegaEvolution"@en .
+
+
+###  https://pokemon.com#hasMoveType
+<https://pokemon.com#hasMoveType> rdf:type owl:ObjectProperty ;
+                                  rdfs:label "has move type"@en .
+
+
+###  https://pokemon.com#hasNoEffectAgainst
+<https://pokemon.com#hasNoEffectAgainst> rdf:type owl:ObjectProperty ;
+                                         rdfs:label "has no effect against"@en .
+
+
+###  https://pokemon.com#hasNormalEffectAgainst
+<https://pokemon.com#hasNormalEffectAgainst> rdf:type owl:ObjectProperty ;
+                                             rdfs:label "has normal effect against"@en .
+
+
+###  https://pokemon.com#hasPart
+<https://pokemon.com#hasPart> rdf:type owl:ObjectProperty ;
+                              rdfs:label "has Part"@en .
+
+
+###  https://pokemon.com#hasPokedexEntry
+<https://pokemon.com#hasPokedexEntry> rdf:type owl:ObjectProperty ;
+                                      rdfs:label "has PokeDex Entry"@en .
+
+
+###  https://pokemon.com#hasRegionalForm
+<https://pokemon.com#hasRegionalForm> rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf <https://pokemon.com#hasAltForm> ;
+                                      rdfs:label "has Regional Variant"@en .
+
+
+###  https://pokemon.com#hasSignatureAbility
+<https://pokemon.com#hasSignatureAbility> rdf:type owl:ObjectProperty ;
+                                          rdfs:label "has signature Ability"@en .
+
+
+###  https://pokemon.com#hatches
+<https://pokemon.com#hatches> rdf:type owl:ObjectProperty ;
+                              rdfs:label "hatches"@en .
+
+
+###  https://pokemon.com#instanceOf
+<https://pokemon.com#instanceOf> rdf:type owl:ObjectProperty ;
+                                 rdfs:label "instance Of"@en .
+
+
+###  https://pokemon.com#introducedIn
+<https://pokemon.com#introducedIn> rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf <https://pokemon.com#presentIn> ;
+                                   rdfs:label "introduced in"@en .
+
+
+###  https://pokemon.com#isSignatureAbilityOf
+<https://pokemon.com#isSignatureAbilityOf> rdf:type owl:ObjectProperty ;
+                                           rdfs:label "is signature Ability of"@en .
+
+
+###  https://pokemon.com#isSuperEffectiveAgainst
+<https://pokemon.com#isSuperEffectiveAgainst> rdf:type owl:ObjectProperty ;
+                                              rdfs:label "is super effective against"@en .
+
+
+###  https://pokemon.com#locatedIn
+<https://pokemon.com#locatedIn> rdf:type owl:ObjectProperty ;
+                                rdfs:label "located in"@en .
+
+
+###  https://pokemon.com#partOf
+<https://pokemon.com#partOf> rdf:type owl:ObjectProperty ;
+                             rdfs:label "part Of"@en .
+
+
+###  https://pokemon.com#pokemonType
+<https://pokemon.com#pokemonType> rdf:type owl:ObjectProperty ;
+                                  rdfs:label "has Type"@en .
+
+
+###  https://pokemon.com#presentIn
+<https://pokemon.com#presentIn> rdf:type owl:ObjectProperty ;
+                                rdfs:label "present in"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://pokemon.com#hasColor
+<https://pokemon.com#hasColor> rdf:type owl:DatatypeProperty ;
+                               rdfs:label "has Color"@en .
+
+
+###  https://pokemon.com#hasFacet
+<https://pokemon.com#hasFacet> rdf:type owl:DatatypeProperty ;
+                               rdfs:label "has Facet"@en .
+
+
+###  https://pokemon.com#hasHeight
+<https://pokemon.com#hasHeight> rdf:type owl:DatatypeProperty ;
+                                rdfs:label "has Height"@en .
+
+
+###  https://pokemon.com#hasName
+<https://pokemon.com#hasName> rdf:type owl:DatatypeProperty ;
+                              rdfs:label "has Name"@en .
+
+
+###  https://pokemon.com#hasPokedexNumber
+<https://pokemon.com#hasPokedexNumber> rdf:type owl:DatatypeProperty ;
+                                       rdfs:label "has Pokedex Number"@en .
+
+
+###  https://pokemon.com#hasShape
+<https://pokemon.com#hasShape> rdf:type owl:DatatypeProperty ;
+                               rdfs:label "has Shape"@en .
+
+
+###  https://pokemon.com#hasValue
+<https://pokemon.com#hasValue> rdf:type owl:DatatypeProperty ;
+                               rdfs:label "value"@en .
+
+
+###  https://pokemon.com#hasWeight
+<https://pokemon.com#hasWeight> rdf:type owl:DatatypeProperty ;
+                                rdfs:label "has Weight"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.wikidata.org/entity/Q11310550
+<http://www.wikidata.org/entity/Q11310550> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.wikidata.org/entity/Q1250520> .
+
+
+###  http://www.wikidata.org/entity/Q115980997
+<http://www.wikidata.org/entity/Q115980997> rdf:type owl:Class ;
+                                            rdfs:label "Pokemon Type"@en .
+
+
+###  http://www.wikidata.org/entity/Q116752947
+<http://www.wikidata.org/entity/Q116752947> rdf:type owl:Class ;
+                                            rdfs:label "gender listing"@en .
+
+
+###  http://www.wikidata.org/entity/Q116753925
+<http://www.wikidata.org/entity/Q116753925> rdf:type owl:Class ;
+                                            rdfs:label "Pokemon Gender Ratio"@en .
+
+
+###  http://www.wikidata.org/entity/Q1250520
+<http://www.wikidata.org/entity/Q1250520> rdf:type owl:Class ;
+                                          rdfs:label "Pokedex"@en .
+
+
+###  http://www.wikidata.org/entity/Q1266830
+<http://www.wikidata.org/entity/Q1266830> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://www.wikidata.org/entity/Q15141195> ;
+                                          rdfs:label "Move Type Category"@en .
+
+
+###  http://www.wikidata.org/entity/Q15141195
+<http://www.wikidata.org/entity/Q15141195> rdf:type owl:Class .
+
+
+###  http://www.wikidata.org/entity/Q15795637
+<http://www.wikidata.org/entity/Q15795637> rdf:type owl:Class ;
+                                           rdfs:label "Pokemon Evolutionary Line"@en .
+
+
+###  http://www.wikidata.org/entity/Q15830
+<http://www.wikidata.org/entity/Q15830> rdf:type owl:Class ;
+                                        rdfs:label "Pokemon Region"@en .
+
+
+###  http://www.wikidata.org/entity/Q16577590
+<http://www.wikidata.org/entity/Q16577590> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.wikidata.org/entity/Q3966183> ;
+                                           rdfs:label "Mega Pokemon"@en .
+
+
+###  http://www.wikidata.org/entity/Q20005020
+<http://www.wikidata.org/entity/Q20005020> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.wikidata.org/entity/Q1250520> .
+
+
+###  http://www.wikidata.org/entity/Q25991640
+<http://www.wikidata.org/entity/Q25991640> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.wikidata.org/entity/Q32860792> ;
+                                           rdfs:label "Pokemon Route"@en .
+
+
+###  http://www.wikidata.org/entity/Q26001247
+<http://www.wikidata.org/entity/Q26001247> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.wikidata.org/entity/Q15141195> ;
+                                           rdfs:label "Move Damage Category"@en .
+
+
+###  http://www.wikidata.org/entity/Q26012310
+<http://www.wikidata.org/entity/Q26012310> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.wikidata.org/entity/Q15141195> ;
+                                           rdfs:label "Move Contest Category"@en .
+
+
+###  http://www.wikidata.org/entity/Q26037540
+<http://www.wikidata.org/entity/Q26037540> rdf:type owl:Class ;
+                                           rdfs:label "Pokemon Egg Group"@en .
+
+
+###  http://www.wikidata.org/entity/Q32860792
+<http://www.wikidata.org/entity/Q32860792> rdf:type owl:Class ;
+                                           rdfs:label "Pokemon Location"@en .
+
+
+###  http://www.wikidata.org/entity/Q3759600
+<http://www.wikidata.org/entity/Q3759600> rdf:type owl:Class ;
+                                          rdfs:label "Pokemon Generation"@en .
+
+
+###  http://www.wikidata.org/entity/Q3966183
+<http://www.wikidata.org/entity/Q3966183> rdf:type owl:Class ;
+                                          rdfs:label "Pokemon"@en .
+
+
+###  http://www.wikidata.org/entity/Q56707607
+<http://www.wikidata.org/entity/Q56707607> rdf:type owl:Class ;
+                                           rdfs:label "Regional Variant"@en .
+
+
+###  https://pokemon.com#Pokemon_City
+<https://pokemon.com#Pokemon_City> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://www.wikidata.org/entity/Q32860792> .
+
+
+###  https://pokemon.com#Pokemon_Landmark
+<https://pokemon.com#Pokemon_Landmark> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://www.wikidata.org/entity/Q32860792> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.wikidata.org/entity/Q15133081
+<http://www.wikidata.org/entity/Q15133081> rdf:type owl:NamedIndividual ,
+                                                    <http://www.wikidata.org/entity/Q32860792> ,
+                                                    <https://pokemon.com#Pokemon_City> ;
+                                           rdfs:label "Goldenrod City"@en .
+
+
+###  http://www.wikidata.org/entity/Q25991682
+<http://www.wikidata.org/entity/Q25991682> rdf:type owl:NamedIndividual ,
+                                                    <http://www.wikidata.org/entity/Q25991640> ;
+                                           rdfs:label "Route 2"@en .
+
+
+###  http://www.wikidata.org/entity/Q26920612
+<http://www.wikidata.org/entity/Q26920612> rdf:type owl:NamedIndividual ,
+                                                    <http://www.wikidata.org/entity/Q25991640> ;
+                                           rdfs:label "Route 28"@en .
+
+
+###  http://www.wikidata.org/entity/Q97051215
+<http://www.wikidata.org/entity/Q97051215> rdf:type owl:NamedIndividual ,
+                                                    <http://www.wikidata.org/entity/Q32860792> ;
+                                           rdfs:label "Pokémon world"@en .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi

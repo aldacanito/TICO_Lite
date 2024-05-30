@@ -1,0 +1,62 @@
+GET ALL POKEMON CATEGORIES OF MOVE
+
+
+GET ALL TYPES
+
+SELECT DISTINCT ?pokeMove ?pokeMoveLabel ?thingstmt ?typeMoveStmt ?typeMoveStmtLabel WHERE
+{
+
+  ?pokeMove p:P31 ?thingstmt .
+  
+  ?thingstmt ps:P31 ?typeMoveStmt .
+
+  ?typeMoveStmt wdt:P279 wd:Q15141195 .  #pokemon Move
+  
+  ?typeMoveStmt wdt:P1552 wd:Q1266830. # type move 
+              
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+
+   } 
+
+GET DAMAGE CATEGORY
+
+SELECT DISTINCT ?pokeMove ?pokeMoveLabel ?thingstmt ?damageCategoryMoveStmt ?damageCategoryMoveStmtLabel WHERE
+{
+
+  ?pokeMove p:P31 ?thingstmt .
+  
+  ?thingstmt ps:P31 ?damageCategoryMoveStmt .
+
+  ?damageCategoryMoveStmt wdt:P279 wd:Q15141195 .  #pokemon Move
+  
+  ?damageCategoryMoveStmt wdt:P279 wd:Q26001247. # category move 
+            
+
+  
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+
+  
+   } 
+
+
+GET CONTEST CATEGORY 
+
+SELECT DISTINCT ?pokeMove ?pokeMoveLabel ?thingstmt ?pokemonMoveStmt ?pokemonMoveStmtLabel WHERE
+{
+
+  ?pokeMove p:P31 ?thingstmt .
+  
+  ?thingstmt ps:P31 ?pokemonMoveStmt .
+
+  ?pokemonMoveStmt wdt:P279 wd:Q15141195 .  #pokemon Move
+  
+  ?pokemonMoveStmt wdt:P1552 wd:Q26012310. # category move 
+              
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+  
+   } 
+
+
+
+
+

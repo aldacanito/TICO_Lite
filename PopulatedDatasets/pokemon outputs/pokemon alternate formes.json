@@ -1,0 +1,494 @@
+[
+{
+	"pokemon" : "Pikachu",
+	"Generation VI" : 
+	[
+		"Cosplay Pikachu", "Pikachu Rock Star",
+		"Pikachu Belle", "Pikachu Pop Star", "Pikachu, Ph.D", "Pikachu Libre"
+	],
+	"Generation VII" :
+	[
+		"Pikachu Original Cap", "Pikachu Hoenn Cap",
+		"Pikachu Sinnoh Cap", "Pikachu Unova Cap", "Pikachu Alola Cap", "Pikachu Partner Cap"
+	],
+	"Generation VIII" :
+	[
+		"Pikachu Original Cap", "Pikachu Hoenn Cap",
+		"Pikachu Sinnoh Cap", "Pikachu Unova Cap", "Pikachu Alola Cap", "Pikachu World Cap"
+	]
+},
+
+{
+	"pokemon": "Pichu",
+	"Generation IV" : [ "Spikey-eared Pichu" ]
+},
+{
+	"pokemon": "Taurus",
+	"Generation IX" : [ 
+		"Paldean Taurus (Combat Breed)",
+		"Paldean Taurus (Blaze Breed)",
+		"Paldean Taurus (Water Breed)" ]
+},
+
+{
+	"pokemon": "Unown",
+	"Generation II" : [ "Alphabet" ]
+},
+
+{
+	"pokemon": "Castform",
+	"Generation III" : 
+	[ 
+		"Normal Castform", "Sunny Castform",
+		"Rainy Castform", "Snowy Castform"
+	 ]
+},
+
+{
+	"pokemon": "Kyrogue",
+	"Generation VI" : [ "Primal Kyrogue" ]
+},
+
+{
+	"pokemon": "Reshiram",
+	"Generation VI" : [ "Overdrive Reshiram" ]
+},
+{
+	"pokemon": "Zekrom",
+	"Generation VI" : [ "Overdrive Zekrom" ]
+},
+
+{
+	"pokemon": "Deoxys",
+	"Generation III" : 
+	[ 	"Deoxys Normal Forme", "Deoxys Attack Forme",
+	"Deoxys Defense Forme", "Deoxys Speed Forme" ]
+},
+
+{
+	"pokemon": "Burmy",
+	"Generation IV" : 	[ 	"Burmy Plant Cloak", "Burmy Sandy Cloak", 	"Burmy Trash Cloak" ]
+},
+
+
+{
+	"pokemon": "Wormadam",
+	"Generation IV" : 	[ 	"Wormadam Plant Cloak", "Wormadam Sandy Cloak", "Wormadam Trash Cloak" ]
+},
+
+{
+	"pokemon": "Cherrim",
+	"Generation VI" : 	[ 	"Cherrim Overcast Form", "Cherrim Sunshine Form" ]
+},
+{
+	"pokemon": "Shellos",
+	"Generation IV" : 	[ 	"West Sea Shellos", "East Sea Shellos" ]
+},
+
+{
+	"pokemon": "Gastrodon",
+	"Generation IV" : 	[ 	"West Sea Gastrodon", "East Sea Gastrodon" ]
+},
+
+{
+	"pokemon": "Rotom",
+	"Generation IV" : 	[ "Heat Rotom", "Wash Rotom","Frost Rotom", "Fan Rotom", "Mow Rotom"],
+	"Generation VI":  [ "Pokedex Rotom", "Phone Rotom", "Rotomi Rotom", "Drone Rotom", "Bike Rotom" ]
+},
+
+{
+	"pokemon": "Dialga",
+	"Generation VIII" : 	[ "Dialga Origin Forme" ]
+},
+
+{
+	"pokemon": "Palkia",
+	"Generation VIII" : 	[ "Palkia Origin Forme" ]
+},
+
+{
+	"pokemon": "Giratina",
+	"Generation IV" : 	[ "Giratina Origin Forme" ]
+},
+
+{
+	"pokemon": "Shaymin",
+	"Generation IV" : 	[ "Shaymin Land Forme", "Shaymin Sky Forme" ]
+},
+
+{
+	"pokemon": "Arceus",
+	"Generation IV" : 	[ "Arceus Plate Forms" ]
+},
+
+{
+	"pokemon": "Basculin",
+	"Generation V" : [ "Red-Striped Basculin",
+	"Blue-Striped Basculin" ],
+	"Generation VII" : [ "White-Striped Basculin"]
+},
+
+{
+	"pokemon": "Darmanitan",
+	"Generation V" : [ "Zen Mode" ],
+	"Generation VIII" : [ "Galarian Zen Mode"]
+},
+
+{
+	"pokemon": "Deerling",
+	"Generation V" : [ "Deerling Spring Form", "Deerling Summer Form", "Deerling Autumn Form", "Deerling Winter Form" ]
+},
+
+{
+	"pokemon": "Sawsbuck",
+	"Generation V" : [ "Sawsbuck Spring Form", "Sawsbuck Summer Form", "Sawsbuck Autumn Form", "Sawsbuck Winter Form" ]
+},
+
+{	
+	"pokemon": "Tornados",
+	"Generation V" : [ "Tornadus Incarnate Forme", "Tornadus Therian Forme" ]
+},
+
+{	
+	"pokemon": "Thundurus",
+	"Generation V" : [ "Thundurus Incarnate Forme", "Thundurus Therian Forme" ]
+},
+
+{	
+	"pokemon": "Landorus",
+	"Generation V" : [ "Landorus Incarnate Forme", "Landorus Therian Forme" ]
+},
+
+{	
+	"pokemon": "Enamorus",
+	"Generation V" : [ "Enamorus Incarnate Forme", "Enamorus Therian Forme" ]
+},
+
+{	
+	"pokemon": "Kyurem",
+	"Generation V" : [ "White Kyurem", "Black Kyurem", "White Kyurem Overdrive", "Black Kyurem Overdrive" ]
+},
+
+{	
+	"pokemon": "Keldeo",
+	"Generation V" : [ "Resolute Form Keldeo"]
+},
+
+{	
+	"pokemon": "Meloetta",
+	"Generation V" : [ "Pirouette Forme"]
+},
+
+{	
+	"pokemon": "Genesect",
+	"Generation V" : [ "Shock Drive Genesect", "Burn Drive Genesect", "Chill Drive Genesect", "Douse Drive Genesect"]
+},
+
+{	
+	"pokemon": "Greninja",
+	"Generation VI" : [ "Battle Bond Greninja",
+	"Ash-Greninja" ]
+},
+
+{	
+	"pokemon": "Vivillon",
+	"Generation VI" : 
+	[ 
+	"Archipelago Pattern Vivillon",
+	"Continental Pattern Vivillon",
+	"Elegant Pattern Vivillon",
+	"Fancy Pattern Vivillon",
+	"Garden Pattern Vivillon",
+	"High Plains Pattern Vivillon",
+	"Icy Snow Pattern Vivillon",
+	"Jungle Pattern Vivillon",
+	"Marine Pattern Vivillon",
+	"Meadow Pattern Vivillon",
+	"Modern Pattern Vivillon",
+	"Monsoon Pattern Vivillon",
+	"Ocean Pattern Vivillon",
+	"Poké Ball Pattern Vivillon",
+	"Polar Pattern Vivillon",
+	"River Pattern Vivillon",
+	"Sandstorm Pattern Vivillon",
+	"Savanna Pattern Vivillon",
+	"Sun Pattern Vivillon",
+	"Tundra Pattern Vivillon"
+	]
+},
+
+{	
+	"pokemon": "Flabébé",
+	"Generation VI" : 
+	[ "Red Flower Flabébé", "Yellow Flower Flabébé", "Orange Flower Flabébé","Blue Flower Flabébé", "White Flower Flabébé"
+	]
+},
+
+
+{	
+	"pokemon": "Floette",
+	"Generation VI" : 
+	[ "Red Flower Floette", "Yellow Flower Floette", "Orange Flower Floette","Blue Flower Floette", "White Flower Floette", "Eternal Flower Floette"
+	]
+},
+
+{	
+	"pokemon": "Florges",
+	"Generation VI" : 
+	[ "Red Flower Florges", "Yellow Flower Florges", "Orange Flower Florges","Blue Flower Florges", "White Flower Florges"
+	]
+},
+
+{	
+	"pokemon": "Furfrow",
+	"Generation VI" : 
+	[ "Heart Trim Furfrow", "Star Trim Furfrow", "Diamon Trim Furfrow","Debutante Trim Furfrow", "Matron Trim Furfrow", "Dandy Trim Furfrow", "Kabuki Trim Furfrow", "Pharaoh Trim Furfrow"
+	]
+},
+
+{	
+	"pokemon": "Aegislash",
+	"Generation VI" : 	[ "Shield Forme Aegislash" ]
+},
+
+{	
+	"pokemon": "Pumpkaboo",
+	"Generation VI" : [ "Small Size Pumpkaboo",
+	"Large Size Pumpkaboo", "Super Size Pumpkaboo" ]
+},
+
+{	
+	"pokemon": "Gourgeist",
+	"Generation VI" : [ "Small Size Gourgeist",
+	"Large Size Gourgeist", "Super Size Gourgeist" ]
+},
+
+{	
+	"pokemon": "Xerneas",
+	"Generation VI" : [ "Active Mode Xerneas" ]
+},
+
+{	
+	"pokemon": "Zygarde",
+	"Generation VI" : [ "Zygarde 10%", "Zygarde 50%" ]
+},
+
+{	
+	"pokemon": "Hoopa",
+	"Generation VI" : [ "Hoopa Unbound" ]
+},
+
+{	
+	"pokemon": "Oricorio",
+	"Generation VII" : [ "Baile Oricorio",
+	"Pom-Pom Oricorio", "Pa'u Oricorio", "Sensu Oricorio" ]
+},
+
+{	
+	"pokemon": "Lycanroc",
+	"Generation VII" : [ "Midnight Lycanroc", "Dusk Lycanroc" ]
+},
+
+{	
+	"pokemon": "Wishiwashi",
+	"Generation VII" : [ "School of Wishiwashi" ]
+},
+
+{	
+	"pokemon": "Silvally",
+	"Generation VII" : [ "Memory Type Silvally" ]
+},
+
+{	
+	"pokemon": "Minior",
+	"Generation VII" : [ "Red Core Minior", "Orange Core Minior", "Yellow Core Minior", "Green Core Minior", "Blue Core Minior", "Indigo Core Minior", "Violet Core Minior" ]
+},
+
+{	
+	"pokemon": "Mimikyu",
+	"Generation VII" : [ "Busted Mimikyu" ]
+},
+
+{	
+	"pokemon": "Necrozma",
+	"Generation VII" : [ "Dusk Mane Necrozma", "Dawn Wings Necrozoma", "Ultra Necrozoma" ]
+},
+
+{	
+	"pokemon": "Magearna",
+	"Generation VII" : [ "Magearna (Original Color)" ]
+},
+
+{	
+	"pokemon": "Cramorant",
+	"Generation VIII" : ["Cramorant Gulping Form", "Cramorant Gorging Form" ]
+},
+
+{	
+	"pokemon": "Toxtricity",
+	"Generation VIII" : [ "Amped Toxtricity",
+	"Gigantamax Toxtricity" ]
+},
+
+{	
+	"pokemon": "Sinistea",
+	"Generation VIII" : [ "Phony Sinistea",
+	"Antique Sinistea" ]
+},
+
+{	
+	"pokemon": "Polteageist",
+	"Generation VIII" : [ "Phony Polteageist",
+	"Antique Polteageist" ]
+},
+
+{	
+	"pokemon": "Alcremie",
+	"Generation VIII" : [ "Alcremie with Swirl Type", "Gigantamax Alcremie"]
+},
+
+{	
+	"pokemon": "Eiscue",
+	"Generation VIII" : [ "Noice Eiscue" ]
+},
+
+{	
+	"pokemon": "Morpeko",
+	"Generation VIII" : [ "Hangry Morpeko" ]
+},
+
+{	
+	"pokemon": "Zacian",
+	"Generation VIII" : [ "Crowned Sword Zacian" ]
+},
+
+{	
+	"pokemon": "Zamazenta",
+	"Generation VIII" : [ "Crowned Sword Zamazenta" ]
+}
+
+
+{	
+	"pokemon": "Eternatus",
+	"Generation VIII" : [ "Eternamax" ]
+}
+
+{	
+	"pokemon": "Urshifu",
+	"Generation VIII" : [ "Urshifu Rapid Strike Style", "Gigantamax Urshifu Single Strike Style", "Gigantamax Urshifu Rapid Strike Style" ]
+}
+
+{	
+	"pokemon": "Zarude",
+	"Generation VIII" : [ "Dada" ]
+},
+
+{	
+	"pokemon": "Calyrex",
+	"Generation VIII" : [ "Calyrex Ice Rider", "Calyrex Shadow Rider" ]
+},
+
+{	
+	"pokemon": "Ursaluna",
+	"Generation VIII" : [ "Bloodmoon" ]
+},
+
+{	
+	"pokemon": "Maushold",
+	"Generation IX" : [ "Maushold Family of Four" ]
+},
+
+{	
+	"pokemon": "Squawkabilly",
+	"Generation IX" : [ "White Plumage Squawkabilly",
+	"Green Plumage Squawkabilly","Yellow Plumage Squawkabilly", "Blue Plumage Squawkabilly" ]
+},
+
+{	
+	"pokemon": "Palafin",
+	"Generation IX" : [ "Hero Palafin" ]
+},
+
+
+{	
+	"pokemon": "Tatsugiri",
+	"Generation IX": [ "Curly Tatsugiri", "Droopy Tatsugiri" ]
+},
+
+{	
+	"pokemon": "Dundunsparce",
+	"Generation IX": [ "Three-Segment Dundunsparce" ]
+},
+
+{	
+	"pokemon": "Gimmighoul",
+	"Generation IX": [ "Roaming Gimmighoul" ]
+},
+
+{	
+	"pokemon": "Poltchageist",
+	"Generation IX": [ "Counterfeit Poltchageist",
+	"Artisan Poltchageist" ]
+},
+
+
+{	
+	"pokemon": "Sinistcha",
+	"Generation IX": [ "Counterfeit Sinistcha",
+	"Artisan Sinistcha" ]
+},
+
+{	
+	"pokemon": "Ogerpon",
+	"Generation IX": [ "Ogerpon Mask Mode" ]
+},
+
+{	
+	"pokemon": "Terapagos",
+	"Generation IX": [ "Terastal Terapagos",
+	"Stellar Terapagos" ]
+},
+
+{	
+	"pokemon": "Solgaleo",
+	"Generation VII" : [ "Radiant Sun Solgaleo" ]
+},
+
+{	
+	"pokemon": "Lunala",
+	"Generation VII" : [ "Full Moonn Lunala" ]
+},
+
+{	
+	"pokemon": "Marshadow",
+	"Generation VII" : [ "Zenith Marshadow" ]
+},
+
+{	
+	"pokemon": "Revavroom",
+	"Generation IX": [ "Segin Starmobile Revavroom",
+	"Schedar Starmobile Revavroom",
+	"Navi Starmobile Revavroom",
+	"Ruchbah Starmobile Revavroom",
+	"Caph Starmobile Revavroom" ]
+},
+
+{	
+	"pokemon": "Cyclizar",
+	"Generation IX": [ "Cyclizar Battle Form",
+	"Cyclizar Ride Form" ]
+},
+
+{	
+	"pokemon": "Koraidon",
+	"Generation IX": [ "Limited Build Koraidon",
+	"Sprinting Build Koraidon", "Swimming Build Koraidon","Gliding Build Koraidon", ]
+},
+
+{	
+	"pokemon": "Miraidon",
+	"Generation IX": [ "Low-Power Miraidon",
+	"Drive Miraidon", "Aquatic Miraidon","Glide Miraidon", ]
+}
+
+]

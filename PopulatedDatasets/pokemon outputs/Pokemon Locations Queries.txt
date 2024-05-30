@@ -1,0 +1,28 @@
+SELECT DISTINCT
+
+?pokemonRoute ?pokemonRouteLabel ?regionStmt ?regionLabel ?bordersStmt ?bordersLabel
+
+WHERE
+{
+  ?pokemonRoute wdt:P31 wd:Q25991640 .
+  
+  OPTIONAL { ?pokemonRoute p:P276 ?regionStmt . ?regionStmt ps:P276 ?region . }
+  
+  OPTIONAL { ?pokemonRoute p:P47 ?bordersStmt. ?bordersStmt ps:P47 ?borders . }
+  
+   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+}
+
+
+SELECT DISTINCT
+?pokearea ?pokeareaLabel ?regionstmt ?region ?regionLabel ?bordersStmt ?borders ?bordersLabel
+WHERE
+{
+  ?pokearea wdt:P31 wd:Q32860792 .
+  
+  OPTIONAL { ?pokearea p:P276 ?regionstmt . ?regionstmt ps:P276 ?region . }
+  
+  OPTIONAL { ?pokearea p:P47 ?bordersStmt. ?bordersStmt ps:P47 ?borders . }
+  
+   SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+}

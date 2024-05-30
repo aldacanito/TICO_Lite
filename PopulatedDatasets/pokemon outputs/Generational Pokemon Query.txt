@@ -1,0 +1,42 @@
+SELECT DISTINCT 
+
+?pokemon ?pokemonLabel ?pokedexNumber 
+
+?evolFamilyStmt ?evolFamilyStmtLabel 
+
+?type ?typeLabel
+
+?colorLabel
+?heightLabel
+?weightLabel
+
+?shape ?shapeLabel
+
+WHERE
+{
+    ?pokemon wdt:P31/wdt:P279* wd:Q3966183 . 
+    ?pokemon p:P1685 ?statement.
+
+  OPTIONAL { ?pokemon p:P462 ?colorStmt . ?colorStmt ps:P462 ?color . }
+  OPTIONAL { ?pokemon p:P2048 ?heightStmt . ?heightStmt ps:P2048 ?height . }
+  OPTIONAL { ?pokemon p:P2067 ?weightStmt . ?weightStmt ps:P2067 ?weight . }
+  OPTIONAL { ?pokemon   wdt:P361 ?evolFamilyStmt . ?evolFamilyStmt wdt:P31 wd:Q15795637 . }
+ # OPTIONAL { ?pokemon  wdt:P361 ?eggGroupStmt . ?eggGroupStmt wdt:P279 wd:Q26037540 . }
+  
+  #OPTIONAL { ?pokemon wdt:P21 ?genderRatioStmt . ?genderRatioStmt wdt:P31 wd:Q116753925 . ?genderRatioStmt rdfs:label ?grStmtLabel . }
+  OPTIONAL { ?pokemon wdt:P1419 ?shape . ?shape rdfs:label ?shapeLabel . }
+
+  
+  ?pokemon p:P31 ?typeStmt .
+  ?typeStmt ps:P31 ?type .
+  ?typeStmt pq:P518 ?typeNumber .
+  
+ # OPTIONAL { ?pokemon p:P2283 ?usesStmt . ?usesStmt ps:P2283 ?megaEvolStone . }
+  
+   ?statement ps:P1685 ?pokedexNumber; pq:P972 wd:Q20005020.
+  
+    FILTER ( ?pokedexNumber <= "151" )
+  
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+}
+ORDER BY (?pokedexNumber)

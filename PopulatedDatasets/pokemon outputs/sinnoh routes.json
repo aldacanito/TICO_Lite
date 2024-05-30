@@ -1,0 +1,272 @@
+[
+	
+{
+	"name" : "Route 201", 	"type" : "route",
+	"bordersWith" : [ "Verity LakeFront", "Twinleaf Town", "Sandgem Town" ]
+},
+
+{
+	"name" : "Route 202", 	"type" : "route",
+	"bordersWith" : [ "Jubilife City", "Sandgem Town" ]
+},
+
+{
+	"name" : "Route 203", 	"type" : "route",
+	"bordersWith" : [ "Jubilife City", "Oreburgh Gate"]
+},
+
+{
+	"name" : "Route 204", 	"type" : "route",
+	"bordersWith" : [ "Floaroma Town", "Jubilife City" ]
+},
+
+{
+	"name" : "Route 205", 	"type" : "route",
+	"bordersWith" : [ "Eterna Forest", "Eterna City", "Floaroma Town"]
+},
+
+{
+	"name" : "Route 206", 	"type" : "route",
+	"bordersWith" : [ "Eterna City", "Route 207"]
+},
+
+{
+	"name" : "Route 207", 	"type" : "route",
+	"bordersWith" : [ "Route 206", "Oreburgh City", "Mount Coronet"]
+},
+
+{
+	"name" : "Route 208", 	"type" : "route",
+	"bordersWith" : [ "Mount Coronet", "Hearthome City"]
+},
+
+{
+	"name" : "Route 209", 	"type" : "route",
+	"bordersWith" : [ "Solaceon Town", "Hearthome City"]
+},
+
+{
+	"name" : "Route 210", 	"type" : "route",
+	"bordersWith" : [ "Celestic Town", "Solaceon Town", "Route 215"]
+},
+
+	
+{
+	"name" : "Route 211", 	"type" : "route",
+	"bordersWith" : [ "Mount Coronet", "Eterna City", "Celestic Town"]
+},
+
+{
+	"name" : "Route 212", 	"type" : "route",
+	"bordersWith" : [ "Hearthome City", "Pastoria City"]
+},
+
+{
+	"name" : "Route 213", 	"type" : "route",
+	"bordersWith" : [ "Valor LakeFront", "Pastoria City"]
+},
+
+{
+	"name" : "Route 214", 	"type" : "route",
+	"bordersWith" : [ "Veilstone City", "Valor LakeFront", "Spring Path", "Maniac Tunnel"]
+},
+
+{
+	"name" : "Route 215", 	"type" : "route",
+	"bordersWith" : [ "Route 210", "Veilstone City" ]
+},
+
+{
+	"name" : "Route 216", 	"type" : "route",
+	"bordersWith" : [ "Route 217", "Mount Coronet" ]
+},
+
+{
+	"name" : "Route 217", 	"type" : "route",
+	"bordersWith" : [ "Acuity LakeFront", "Route 216"]
+},
+
+{
+	"name" : "Route 218", 	"type" : "route",
+	"bordersWith" : [ "Canavale City", "Jubilife City"]
+},
+
+{
+	"name" : "Route 219", 	"type" : "route",
+	"bordersWith" : [ "Sandgem Town", "Route 220"]
+},
+
+{
+	"name" : "Route 220", 	"type" : "route",
+	"bordersWith" : [ "Route 119", "Route 221"]
+},
+
+	
+{
+	"name" : "Route 221", 	"type" : "route",
+	"bordersWith" : [ "Route 220", "Pal Park"]
+},
+
+{
+	"name" : "Route 222", 	"type" : "route",
+	"bordersWith" : [ "Valor LakeFront", "Sunyshore City"]
+},
+
+{
+	"name" : "Route 223", 	"type" : "route",
+	"bordersWith" : [ "Pokémon League", "Sunyshore City" ]
+},
+
+{
+	"name" : "Route 224", 	"type" : "route",
+	"bordersWith" : [ "Victory Road", "Seabreak Path"]
+},
+
+{
+	"name" : "Route 225", 	"type" : "route",
+	"bordersWith" : [ "Survival Area", "Fight Area"]
+},
+
+{
+	"name" : "Route 226", 	"type" : "route",
+	"bordersWith" : [ "Survival Area", "Route 227", "Route 228"]
+},
+
+{
+	"name" : "Route 227", 	"type" : "route",
+	"bordersWith" : [ "Stark Mountain", "Route 226"]
+},
+
+{
+	"name" : "Route 228", 	"type" : "route",
+	"bordersWith" : [ "Route 226", "Route 229" ]
+},
+
+{
+	"name" : "Route 229", 	"type" : "route",
+	"bordersWith" : [ "Route 228", "Resort Area", "Route 230" ]
+},
+
+{
+	"name" : "Route 230", 	"type" : "route",
+	"bordersWith" : [ "Route 229", "Fight Area"]
+},
+
+
+
+{
+	"name" : "Twinleaf Town", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Sandgem Town", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+
+{
+	"name" : "Jubilife City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Oreburgh City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+
+{
+	"name" : "Floaroma Town", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Eterna City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+
+{
+	"name" : "Hearthome City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Solaceon City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Veilstone City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Pastoria City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+
+{
+	"name" : "Celestic Town", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Canavale City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Snowpoint City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Sunyshore City", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+
+{
+	"name" : "Pokémon League", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Fight Area", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Survival Area", 	"type" : "settlement",
+	"bordersWith" : [ ]
+},
+
+
+{
+	"name" : "Resort Area", 	"type" : "settlement",
+	"bordersWith" : [ ]
+}
+
+
+]
+
+

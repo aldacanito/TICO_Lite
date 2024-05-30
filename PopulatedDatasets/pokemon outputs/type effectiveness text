@@ -1,0 +1,154 @@
+[
+{
+	"type" : "normal",
+	"normal effectiveness" : [ "normal", "fighting", "flying", "poison", "ground", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy" ],
+	"no effect" : ["ghost"],
+	"not very effective" : [ "rock", "steel"],
+	"super effective" : []
+},
+
+{
+	"type" : "fighting",
+	"normal effectiveness" : [ "fighting". "ground", "fire", "water", "grass", "electric", "dragon" ],
+	"no effect" : [ "ghost" ],
+	"not very effective" : [ "flying", "poison", "bug", "psychic", "fairy" ],
+	"super effective" : [ "normal", "rock", "steel", "ice", "dark" ]
+},
+
+
+{
+	"type" : "flying",
+	"normal effectiveness" : [ "normal", "flying", "poison", "ground", "fire", "water", "psychic", "ice", "dragon", "dark", "fairy"  ],
+	"no effect" : [ ],
+	"not very effective" : [ "rock", "steel", "electric"],
+	"super effective" : [ "fighting", "bug", "grass" ]
+},
+
+{
+	"type" : "poison",
+	"normal effectiveness" : [ "normal". "fighting", "flying", "bug", "fire", "water", "electric", "psychic", "ice", "dragon", "dark" ],
+	"no effect" : [ "steel" ],
+	"not very effective" : [ "poison", "ground", "rock", "ghost"],
+	"super effective" : [ "grass", "fairy"]
+},
+
+{
+	"type" : "ground",
+	"normal effectiveness" : [ "normal", "fighting", "ground", "ghost", "water", "psychic", "ice", "dragon", "dark", "fairy" ],
+	"no effect" : [ "flying" ],
+	"not very effective" : [ "bug", "grass" ],
+	"super effective" : [ "poison", "rock", "steel", "fire", "electric" ]
+},
+
+
+{
+	"type" : "rock",
+	"normal effectiveness" : [ "normal", "poison", "rock", "ghost", "water", "grass", "electric", "psychic", "dragon", "dark", "fairy" ],
+	"no effect" : [ ],
+	"not very effective" : [ "fighting", "ground", "steel"],
+	"super effective" : [ "flying", "bug", "fire", "ice"]
+},
+
+
+{
+	"type" : "bug",
+	"normal effectiveness" : [ "normal", "ground", "rock", "bug", "water", "electric", "ice", "dragon"  ],
+	"no effect" : [ ],
+	"not very effective" : [ "fighting", "flying", "poison", "ghost", "steel", "fire", "fairy"],
+	"super effective" : [ "grass", "psychic", "dark"]
+},
+
+
+{
+	"type" : "ghost",
+	"normal effectiveness" : [ "fighting", "flying", "poison", "ground", "rock", "bug", "steel", "fire", "water", "grass", "electric", "ice", "dragon", "fairy" ],
+	"no effect" : [ "normal" ],
+	"not very effective" : [ "dark" ],
+	"super effective" : [ "ghost", "psychic"]
+},
+
+
+{
+	"type" : "steel",
+	"normal effectiveness" : [ "normal", "fighting". "flying", "poison", "ground", "bug", "ghost", "grass", "psychic", "dragon", "dark"  ],
+	"no effect" : [ ],
+	"not very effective" : [ "steel", "fire", "water" ],
+	"super effective" : [ "rock", "ice", "fairy" ]
+},
+
+{
+	"type" : "fire",
+	"normal effectiveness" : [ "normal", "fighting", "flying", "poison", "ground", "ghost", "electric", "psychic", "dark", "fairy" ],
+	"no effect" : [ ],
+	"not very effective" : [ "rock", "fire", "water", "dragon" ],
+	"super effective" : ["bug","steel","grass","ice" ]
+},
+
+
+{
+	"type" : "water",
+	"normal effectiveness" : [ "normal","fighting","flying","poison","ghost","bug", "steel","electric","psychic","ice","dark","fairy" ],
+	"no effect" : [ ],
+	"not very effective" : [ "water", "grass", "dragon" ],
+	"super effective" : [ "ground", "rock", "fire"]
+},
+
+{
+	"type" : "grass",
+	"normal effectiveness" : [ "normal","fighting","ghost","electric","psychic","ice","dark","fairy" ],
+	"no effect" : [ ],
+	"not very effective" : [ "flying","poison","bug","steel","fire","grass","dragon"],
+	"super effective" : [ "ground","rock","water"]
+},
+
+
+{
+	"type" : "electric",
+	"normal effectiveness" : [ "normal","fighting","rock","bug","ghost","steel","fire","psychic","ice","dark","fairy" ],
+	"no effect" : [ "ground" ],
+	"not very effective" : [ "grass", "electric", "dragon"],
+	"super effective" : [ "flying","water"]
+},
+
+{
+	"type" : "psychic",
+	"normal effectiveness" : [ "normal","flying","ground","rock","bug","ghost","steel","fire","water","grass","electric","ice","dragon","fairy"  ],
+	"no effect" : [ "dark" ],
+	"not very effective" : [ "steel","psychic" ],
+	"super effective" : [ "fighting","poison" ]
+},
+
+
+{
+	"type" : "ice",
+	"normal effectiveness" : [ "normal","fighting","poison","rock","bug","ghost","electric","psychic","dark","fairy"  ],
+	"no effect" : [ ],
+	"not very effective" : [ "steel","fire","water","ice" ],
+	"super effective" : [ "flying","ground","dragon" ]
+},
+
+{
+	"type" : "dragon",
+	"normal effectiveness" : [ "normal","fighting","flying","poison","ground","rock","bug","ghost","fire","water","grass","electric","psychic","ice","dark" ],
+	"no effect" : [ "fairy"],
+	"not very effective" : ["steel" ],
+	"super effective" : [ "dragon" ]
+},
+
+{
+	"type" : "dark",
+	"normal effectiveness" : [ "normal","flying","poison","ground","rock","bug","fire","water","grass","electric","dragon","ice" ],
+	"no effect" : [ ],
+	"not very effective" : [ "fighting","dark","fairy"],
+	"super effective" : [ "ghost", "psychic" ]
+},
+
+{
+	"type" : "fairy",
+	"normal effectiveness" : [ "normal","flying","ground","rock","bug","ghost","water","grass","electric","psychic","ice","fairy"  ],
+	"no effect" : [ ],
+	"not very effective" : [ "poison", "steel","fire" ],
+	"super effective" : [ "fighting", "dragon", "dark"]
+}
+
+]

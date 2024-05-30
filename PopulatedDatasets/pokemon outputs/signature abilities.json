@@ -1,0 +1,1574 @@
+[
+	{
+		"pokemon" : "Alolan Raichu",
+		"Generation VII" : "Surge Surfer",
+		"Generation VIII" : "Surge Surfer",
+		"Generation IX" : "Surge Surfer" 
+	},
+
+	{
+		"pokemon": "Clefairy",
+		"Generation IV" : "Magic Guard"
+	},
+	
+	{
+		"pokemon": "Clefable",
+		"Generation IV" : "Magic Guard"
+	},
+
+	{
+		"pokemon" : "Alolan Diglett",
+		"Generation VII" : "Tangling Hair",
+		"Generation VIII" : "Tangling Hair",
+		"Generation IX" : "Tangling Hair" 
+	},
+
+	{
+		"pokemon" : "Alolan Dugtrio",
+		"Generation VII" : "Tangling Hair",
+		"Generation VIII" : "Tangling Hair",
+		"Generation IX" : "Tangling Hair" 
+	},
+
+	{
+		"pokemon" : "Alolan Persian",
+		"Generation VIII" : "Tangling Hair",
+		"Generation IX" : "Tangling Hair" 
+	},
+
+	{
+		"pokemon" : "Psyduck",
+		"Generation III" : "Cloud Nine",
+		"Generation IV" : "Cloud Nine"
+	},
+
+	{
+		"pokemon" : "Golduck",
+		"Generation III" : "Cloud Nine",
+		"Generation IV" : "Cloud Nine"
+	},
+	{
+		"pokemon" : "Machop",
+		"Generation IV" : "No Guard"
+	},
+	{
+		"pokemon" : "Machoke",
+		"Generation IV" : "No Guard"
+	},
+
+	{
+		"pokemon" : "Machamp",
+		"Generation IV" : "No Guard"
+	},
+
+	{
+		"pokemon" : "Alolan Geodude",
+		"Generation VII" : "Galvanize",
+		"Generation IX" : "Galvanize" 
+	},
+
+
+	{
+		"pokemon" : "Alolan Graveler",
+		"Generation VII" : "Galvanize",
+		"Generation IX" : "Galvanize" 
+	},
+
+	{
+		"pokemon" : "Alolan Golem",
+		"Generation VII" : "Galvanize",
+		"Generation IX" : "Galvanize" 
+	},
+
+	{
+		"pokemon" : "Alolan Ponita",
+		"Generation VIII" : "Pastel Veil"
+	},
+
+	{
+		"pokemon" : "Alolan Rapidash",
+		"Generation VIII" : "Pastel Veil"
+	},
+	{
+		"pokemon" : "Alolan Slowbro",
+		"Generation VIII" : "Quick Draw",
+		"Generation IX" : "Quick Draw"
+	},
+
+	{
+		"pokemon" : "Grimer",
+		"Generation III" : "Stench"
+	},
+
+	{
+		"pokemon" : "Muk",
+		"Generation III" : "Stench"
+	},
+
+	{
+		"pokemon" : "Alolan Grimer",
+		"Generation VII" : "Power of Alchemy",
+		"Generation IX" : "Power of Alchemy"
+	},
+	{
+		"pokemon" : "Alolan Muk",
+		"Generation VII" : "Power of Alchemy",
+		"Generation IX" : "Power of Alchemy"
+	},
+
+	{
+		"pokemon" : "Shellder",
+		"Generation IV" : "Skill Link"
+	},
+
+	{
+		"pokemon" : "Cloyster",
+		"Generation IV" : "Skill Link"
+	},
+
+	{
+		"pokemon" : "Drowsee",
+		"Generation IX" : "Forewarn"
+	},
+
+	{
+		"pokemon" : "Hypno",
+		"Generation IX" : "Forewarn"
+	},
+
+
+	{
+		"pokemon" : "Hitmonlee",
+		"Generation IV" : "Reckless"
+	},
+
+	{
+		"pokemon" : "Hitmonchan",
+		"Generation IV" : "Iron Fist"
+	},
+
+	{
+		"pokemon" : "Koffing",
+		"Generation VIII" : "Neutralizing Gas",
+		"Generation IX" : "Neutralizing Gas"
+	},
+
+
+	{
+		"pokemon" : "Weezing",
+		"Generation VIII" : "Neutralizing Gas",
+		"Generation IX" : "Neutralizing Gas"
+	},
+
+
+	{
+		"pokemon" : "Galarian Weezing",
+		"Generation VIII" : "Neutralizing Gas",
+		"Generation IX" : "Neutralizing Gas"
+	},
+
+	{
+		"pokemon" : "Kangaskhan",
+		"Generation VII" : "Parental Bond",
+		"Generation VI" : "Parental Bond"
+	},
+
+	{
+		"pokemon" : "Mr. Mime",
+		"Generation V" : "Filter",
+		"Generation VI" : "Filter",
+		"Generation VIII" : "Filter"
+	},
+
+	{
+		"pokemon" : "Galarian Mr. Mime",
+		"Generation VIII" : "Screen Cleaner"
+	},
+
+	{
+		"pokemon" : "Ditto",
+		"Generation V" : "Imposter",
+		"Generation VI" : "Imposter",
+		"Generation VII" : "Imposter",
+		"Generation IX" : "Imposter",
+		"Generation VIII" : "Imposter"
+	},
+
+	{
+		"pokemon" : "Porygon",
+		"Generation IV" : "Download",
+		"Generation IX" : "Download"
+	},
+
+
+	{
+		"pokemon" : "Galarian Moltres",
+		"Generation IX" : "Berserk"
+	},
+
+
+	{
+		"pokemon" : "Cleffa",
+		"Generation IV" : "Magic Guard"
+	},
+
+	{
+		"pokemon" : "Marill",
+		"Generation III" : "Huge Power",
+		"Generation IV" : "Huge Power",
+		"Generation V" : "Huge Power",
+		"Generation IX" : "Huge Power"
+	},
+
+	{
+		"pokemon" : "Azumarill",
+		"Generation III" : "Huge Power",
+		"Generation IV" : "Huge Power",
+		"Generation V" : "Huge Power",
+		"Generation IX" : "Huge Power"
+	},
+
+	{
+		"pokemon" : "Murkrow",
+		"Generation IX" : "Super Luck"
+	},
+
+
+	{
+		"pokemon" : "Galarian Slowking",
+		"Generation VIII" : "Curious Medicine",
+		"Generation IX" : "Curious Medicine"
+	},
+
+	{
+		"pokemon" : "Wobbuffet",
+		"Generation III" : "Shadow Tag",
+		"Generation IV" : "Shadow Tag"
+	},
+
+	{
+		"pokemon" : "Porygon2",
+		"Generation IV" : "Download",
+		"Generation IX" : "Download"
+	},
+
+
+	{
+		"pokemon" : "Tyranitar",
+		"Generation III" : "Sand Stream"
+	},
+
+	{
+		"pokemon" : "Lotad",
+		"Generation III" : "Rain Dish",
+		"Generation IV" : "Rain Dish"
+	},
+
+
+	{
+		"pokemon" : "Lombre",
+		"Generation III" : "Rain Dish",
+		"Generation IV" : "Rain Dish"
+	},
+
+	{
+		"pokemon" : "Ludicolo",
+		"Generation III" : "Rain Dish",
+		"Generation IV" : "Rain Dish"
+	},
+
+	{
+		"pokemon" : "Shroomish",
+		"Generation IV" : "Poison Heal"
+	},
+
+	{
+		"pokemon" : "Breloom",
+		"Generation IV" : "Poison Heal"
+	},
+
+	{
+		"pokemon" : "Slakoth",
+		"Generation III" : "Truant",
+		"Generation IV" : "Truant",
+		"Generation IX" : "Truant"
+	},
+
+	{
+		"pokemon" : "Slaking",
+		"Generation III" : "Truant",
+		"Generation IV" : "Truant",
+		"Generation IX" : "Truant"
+	},
+
+	{
+		"pokemon" : "Shedinja",
+		"Generation III" : "Wonder Guard",
+		"Generation IV" : "Wonder Guard",
+		"Generation V" : "Wonder Guard",
+		"Generation VI" : "Wonder Guard",
+		"Generation VII" : "Wonder Guard",
+		"Generation VIII" : "Wonder Guard"
+	},
+
+	{
+		"pokemon" : "Azurill",
+		"Generation III" : "Huge Power",
+		"Generation IV" : "Huge Power",
+		"Generation V" : "Huge Power",
+		"Generation IX" : "Huge Power"
+	},
+
+	{
+		"pokemon" : "Skitty",
+		"Generation IV" : "Normalise",
+		"Generation V" : "Normalise",
+		"Generation VI" : "Normalise",
+		"Generation VII" : "Normalise",
+		"Generation VIII" : "Normalise"
+	},
+	{
+		"pokemon" : "Delcatty",
+		"Generation IV" : "Normalise",
+		"Generation V" : "Normalise",
+		"Generation VI" : "Normalise",
+		"Generation VII" : "Normalise",
+		"Generation VIII" : "Normalise"
+	},
+	{
+		"pokemon" : "Sableye",
+		"Generation IV" : "Stall",
+		"Generation V" : "Stall",
+		"Generation VI" : "Stall",
+		"Generation VII" : "Stall",
+		"Generation VIII" : "Stall",
+		"Generation IX" : "Stall"
+	},
+
+
+	{
+		"pokemon" : "Meditite",
+		"Generation III" : "Pure Power",
+		"Generation IV" : "Pure Power",
+		"Generation V" : "Pure Power",
+		"Generation VI" : "Pure Power",
+		"Generation VII" : "Pure Power",
+		"Generation VIII" : "Pure Power",
+		"Generation IX" : "Pure Power"
+	},
+
+	{
+		"pokemon" : "Medicham",
+		"Generation III" : "Pure Power",
+		"Generation IV" : "Pure Power",
+		"Generation V" : "Pure Power",
+		"Generation VI" : "Pure Power",
+		"Generation VII" : "Pure Power",
+		"Generation VIII" : "Pure Power",
+		"Generation IX" : "Pure Power"
+	},
+
+	{
+		"pokemon" : "Plusle",
+		"Generation III" : "Plus",
+		"Generation IV" : "Plus"
+	},
+
+	{
+		"pokemon" : "Minum",
+		"Generation III" : "Minus",
+		"Generation IV" : "Minus"
+	},
+
+	{
+		"pokemon" : "Carvanha",
+		"Generation III" : "Rough Skin",
+		"Generation IV" : "Rough Skin"
+	},
+
+	{
+		"pokemon" : "Sharpedo",
+		"Generation III" : "Rough Skin",
+		"Generation IV" : "Rough Skin"
+	},
+
+	{
+		"pokemon" : "Numel",
+		"Generation IX" : "Simple"
+	},
+
+	{
+		"pokemon" : "Torkoal",
+		"Generation III" : "White Smoke",
+		"Generation IV" : "White Smoke",
+		"Generation IX" : "White Smoke"
+	},
+
+
+	{
+		"pokemon" : "Zangoose",
+		"Generation V" : "Toxic Boost",
+		"Generation VI" : "Toxic Boost",
+		"Generation VII" : "Toxic Boost",
+		"Generation VIII" : "Toxic Boost",
+		"Generation IX" : "Toxic Boost"
+	},
+
+	{
+		"pokemon" : "Milotic",
+		"Generation III" : "Marvel Scale",
+		"Generation IV" : "Marvel Scale"
+	},
+
+	{
+		"pokemon" : "Castform",
+		"Generation III" : "Forecast",
+		"Generation IV" : "Forecast",
+		"Generation V" : "Forecast",
+		"Generation VI" : "Forecast",
+		"Generation VII" : "Forecast",
+		"Generation VIII" : "Forecast"
+	},
+	{
+		"pokemon" : "Kecleon",
+		"Generation III" : "Color Change",
+		"Generation IV" : "Color Change",
+		"Generation V" : "Color Change",
+		"Generation VI" : "Color Change",
+		"Generation VII" : "Color Change",
+		"Generation VIII" : "Color Change"
+	},
+
+	{
+		"pokemon" : "Wynaut",
+		"Generation III" : "Shadow Tag",
+		"Generation IV" : "Shadow Tag"
+	},
+	{
+		"pokemon" : "Kyogre",
+		"Generation III" : "Drizzle",
+		"Generation IV" : "Drizzle"
+	},
+
+	{
+		"pokemon" : "Primal Kyogre",
+		"Generation VI" : "Primordial Sea",
+		"Generation VII" : "Primordial Sea"
+	},
+	{
+		"pokemon" : "Groudon",
+		"Generation III" : "Drought",
+		"Generation IV" : "Drought"
+	},
+
+	{
+		"pokemon" : "Primal Groudon",
+		"Generation VI" : "Desolate Land",
+		"Generation VII" : "Desolate Land"
+	},
+	{
+		"pokemon" : "Rayquaza",
+		"Generation III" : "Air Lock",
+		"Generation IV" : "Air Lock",
+		"Generation V" : "Air Lock",
+		"Generation VI" : "Air Lock",
+		"Generation VII" : "Air Lock",
+		"Generation VIII" : "Air Lock",
+		"Generation IX" : "Air Lock"
+	},	
+	{
+		"pokemon" : "Mega Rayquaza",
+		"Generation VI" : "Delta Stream",
+		"Generation VII" : "Delta Stream"
+	},
+
+	{
+		"pokemon" : "Bidoof",
+		"Generation IV" : "Unaware"
+	},
+
+	{
+		"pokemon" : "Bibarel",
+		"Generation IV" : "Unaware"
+	},
+
+	{
+		"pokemon" : "Combee",
+		"Generation IV" : "Honey Gather"
+	},
+
+	{
+		"pokemon" : "Cherrim",
+		"Generation IV" : "Flower Gift",
+		"Generation V" : "Flower Gift",
+		"Generation VI" : "Flower Gift",
+		"Generation VII" : "Flower Gift",
+		"Generation VIII" : "Flower Gift"
+	},
+
+	{
+		"pokemon" : "Drifloon",
+		"Generation IV" : "Unburden",
+		"Generation V" : "Flare Boost",
+		"Generation VI" : "Flare Boost",
+		"Generation VII" : "Flare Boost",
+		"Generation VIII" : "Flare Boost",
+		"Generation IX" : "Flare Boost"
+	},
+
+	{
+		"pokemon" : "Drifblim",
+		"Generation IV" : "Unburden",
+		"Generation V" : "Flare Boost",
+		"Generation VI" : "Flare Boost",
+		"Generation VII" : "Flare Boost",
+		"Generation VIII" : "Flare Boost",
+		"Generation IX" : "Flare Boost"
+	},
+
+	{
+		"pokemon" : "Buneary",
+		"Generation IV" : "Klutz"
+	},
+	{
+		"pokemon" : "Lopunny",
+		"Generation IV" : "Klutz"
+	},
+	{
+		"pokemon" : "Honchkrow",
+		"Generation IX" : "Super Luck"
+	},
+
+
+	{
+		"pokemon" : "Bronzor",
+		"Generation IV" : "Heatproof",
+		"Generation V" : "Heatproof",
+		"Generation VI" : "Heatproof",
+		"Generation VII" : "Heatproof"
+	},
+	{
+		"pokemon" : "Bronzong",
+		"Generation IV" : "Heatproof",
+		"Generation V" : "Heatproof",
+		"Generation VI" : "Heatproof",
+		"Generation VII" : "Heatproof"
+	},
+
+	{
+		"pokemon" : "Mime Jr.",
+		"Generation IV" : "Filter",
+		"Generation V" : "Filter",
+		"Generation VIII" : "Filter"
+	},
+
+
+	{
+		"pokemon" : "Croagunk",
+		"Generation IX" : "Dry Skin"
+	},
+	{
+		"pokemon" : "Toxicroak",
+		"Generation IX" : "Dry Skin"
+	},
+
+
+	{
+		"pokemon" : "Snover",
+		"Generation IV" : "Snow Warning",
+		"Generation V" : "Snow Warning"
+	},
+
+	{
+		"pokemon" : "Abomasnow",
+		"Generation IV" : "Snow Warning",
+		"Generation V" : "Snow Warning"
+	},
+
+	{
+		"pokemon" : "Electivire",
+		"Generation IV" : "Motor Drive"
+	},
+
+	{
+		"pokemon" : "Porygon-Z",
+		"Generation IV" : "Download",
+		"Generation IX" : "Download"
+	},
+
+	{
+		"pokemon" : "Regigigas",
+		"Generation IV" : "Slow Start",
+		"Generation V" : "Slow Start",
+		"Generation VI" : "Slow Start",
+		"Generation VII" : "Slow Start",
+		"Generation VIII" : "Slow Start"
+	},
+
+	{
+		"pokemon" : "Darkrai",
+		"Generation IV" : "Bad Dreams",
+		"Generation V" : "Bad Dreams",
+		"Generation VI" : "Bad Dreams",
+		"Generation VII" : "Bad Dreams",
+		"Generation VIII" : "Bad Dreams",
+		"Generation IX" : "Bad Dreams"
+	},
+	{
+		"pokemon" : "Arceus",
+		"Generation IV" : "Multitype",
+		"Generation V" : "Multitype",
+		"Generation VI" : "Multitype",
+		"Generation VII" : "Multitype",
+		"Generation VIII" : "Multitype",
+		"Generation IX" : "Multitype"
+	},
+
+	{
+		"pokemon" : "Victini",
+		"Generation V" : "Victory Star",
+		"Generation VI" : "Victory Star",
+		"Generation VII" : "Victory Star",
+		"Generation VIII" : "Victory Star"
+	},	
+	{
+		"pokemon" : "Darmanitan",
+		"Generation V" : "Zen Mode",
+		"Generation VI" : "Zen Mode",
+		"Generation VII" : "Zen Mode",
+		"Generation VIII" : "Zen Mode"
+	},
+
+	{
+		"pokemon" : "Galarian Darmanitan",
+		"Generation VIII" : "Zen Mode Gorilla Tactics"
+	},
+
+	{
+		"pokemon" : "Yamask",
+		"Generation V" : "Mummy",
+		"Generation VI" : "Mummy",
+		"Generation VII" : "Mummy",
+		"Generation VIII" : "Mummy"
+	},
+
+	{
+		"pokemon" : "Galarian Yamask",
+		"Generation VIII" : "Wandering Spirit"
+	},
+
+	{
+		"pokemon" : "Cofagrigus",
+		"Generation V" : "Mummy",
+		"Generation VI" : "Mummy",
+		"Generation VII" : "Mummy",
+		"Generation VIII" : "Mummy"
+	},
+	{
+		"pokemon" : "Archen",
+		"Generation V" : "Defeatist",
+		"Generation VI" : "Defeatist",
+		"Generation VII" : "Defeatist",
+		"Generation VIII" : "Defeatist"
+	},	
+	{
+		"pokemon" : "Archeops",
+		"Generation V" : "Defeatist",
+		"Generation VI" : "Defeatist",
+		"Generation VII" : "Defeatist",
+		"Generation VIII" : "Defeatist"
+	},
+
+	{
+		"pokemon" : "Zorua",
+		"Generation V" : "Illusion",
+		"Generation VI" : "Illusion",
+		"Generation VII" : "Illusion",
+		"Generation VIII" : "Illusion",
+		"Generation IX" : "Illusion"
+	},	
+	{
+		"pokemon" : "Hisuian Zorua",
+		"Generation VIII" : "Illusion",
+		"Generation IX" : "Illusion"
+	},	
+	{
+		"pokemon" : "Zoroark",
+		"Generation V" : "Illusion",
+		"Generation VI" : "Illusion",
+		"Generation VII" : "Illusion",
+		"Generation VIII" : "Illusion",
+		"Generation IX" : "Illusion"
+	},	
+	{
+		"pokemon" : "Hisuian Zoroark",
+		"Generation VIII" : "Illusion",
+		"Generation IX" : "Illusion"
+	},
+
+	{
+		"pokemon" : "Gothita",
+		"Generation IX" : "Shadow Tag"
+	},
+	{
+		"pokemon" : "Gothorita",
+		"Generation IX" : "Shadow Tag"
+	},
+
+	{
+		"pokemon" : "Gothitelle",
+		"Generation IX" : "Shadow Tag"
+	},
+
+	{
+		"pokemon" : "Ferroseed",
+		
+		"Generation V" : "Iron Barbs",
+		"Generation VI" : "Iron Barbs"
+	},
+
+	{
+		"pokemon" : "Ferrothorn",
+		
+		"Generation V" : "Iron Barbs",
+		"Generation VI" : "Iron Barbs"
+	},
+
+
+	{
+		"pokemon" : "Stunfisk",
+		"Generation VIII" : "Mimicry"
+	},
+
+	{
+		"pokemon" : "Reshiram",
+		"Generation V" : "Turboblaze",
+		"Generation VI" : "Turboblaze",
+		"Generation VII" : "Turboblaze",
+		"Generation VIII" : "Turboblaze",
+		"Generation IX" : "Turboblaze"
+	},
+
+	{
+		"pokemon" : "White Kyurem",
+		"Generation V" : "Turboblaze",
+		"Generation VI" : "Turboblaze",
+		"Generation VII" : "Turboblaze",
+		"Generation VIII" : "Turboblaze",
+		"Generation IX" : "Turboblaze"
+	},
+	{
+		"pokemon" : "Zekrom",
+		"Generation V" : "Teravolt",
+		"Generation VI" : "Teravolt",
+		"Generation VII" : "Teravolt",
+		"Generation VIII" : "Teravolt",
+		"Generation IX" : "Teravolt"
+	},
+
+	{
+		"pokemon" : "Black Kyurem",
+		"Generation V" : "Teravolt",
+		"Generation VI" : "Teravolt",
+		"Generation VII" : "Teravolt",
+		"Generation VIII" : "Teravolt",
+		"Generation IX" : "Teravolt"
+	},
+
+
+	{
+		"pokemon" : "Chespin",
+		"Generation VI" : "Bulletproof"
+	},
+	{
+		"pokemon" : "Quilladin",
+		"Generation VI" : "Bulletproof"
+	},
+	{
+		"pokemon" : "Chesnaught",
+		"Generation VI" : "Bulletproof"
+	},
+
+
+	{
+		"pokemon" : "Greninja",
+		"Generation VII" : "Battle Bond",
+		"Generation IX" : "Battle Bond"
+	},
+
+		{
+		"pokemon" : "Ash-Greninja",
+		"Generation VII" : "Battle Bond"
+		},
+
+	{
+		"pokemon" : "Fletchling",
+		"Generation VI" : "Gale Wings",
+		"Generation VII" : "Gale Wings",
+		"Generation VIII" : "Gale Wings",
+		"Generation IX" : "Gale Wings"
+	},
+	{
+		"pokemon" : "Fletchinder",
+		"Generation VI" : "Gale Wings",
+		"Generation VII" : "Gale Wings",
+		"Generation VIII" : "Gale Wings",
+		"Generation IX" : "Gale Wings"
+	},
+
+	{
+		"pokemon" : "TalonFlame",
+		"Generation VI" : "Gale Wings",
+		"Generation VII" : "Gale Wings",
+		"Generation VIII" : "Gale Wings",
+		"Generation IX" : "Gale Wings"
+	},
+
+	{
+		"pokemon" : "Flabébé",
+		"Generation VI" : "Flower Veil"
+	},
+
+	{
+		"pokemon" : "Floette",
+		"Generation VI" : "Flower Veil"
+	},
+	{
+		"pokemon" : "Florges",
+		"Generation VI" : "Flower Veil"
+	},
+
+	{
+		"pokemon" : "Skiddo",
+		"Generation VI" : "Grass Pelt",
+		"Generation VII" : "Grass Pelt",
+		"Generation IX" : "Grass Pelt"
+	},	{
+		"pokemon" : "Gogoat",
+		"Generation VI" : "Grass Pelt",
+		"Generation VII" : "Grass Pelt",
+		"Generation IX" : "Grass Pelt"
+	},
+	{
+		"pokemon" : "Furfrow",
+		"Generation VI" : "Fur Coat",
+	},
+
+	{
+		"pokemon" : "Aegislash",
+		"Generation VI" : "Stance Change",
+		"Generation VII" : "Stance Change",
+		"Generation VIII" : "Stance Change"
+	},	
+	{
+		"pokemon" : "Spritzee",
+		"Generation VI" : "Aroma Veil",
+		"Generation VII" : "Aroma Veil"
+	},
+	{
+		"pokemon" : "Aromatisse",
+		"Generation VI" : "Aroma Veil",
+		"Generation VII" : "Aroma Veil"
+	},
+	{
+		"pokemon" : "Swirlix",
+		"Generation VI" : "Sweet Veil"
+	},
+	{
+		"pokemon" : "Slurpuff",
+		"Generation VI" : "Sweet Veil"
+	},
+
+	{
+		"pokemon" : "Clauncher",
+		"Generation VIII" : "Mega Launcher",
+		"Generation IX" : "Mega Launcher"
+	},
+	{
+		"pokemon" : "Clawitzer",
+		"Generation VIII" : "Mega Launcher",
+		"Generation IX" : "Mega Launcher"
+	},
+	{
+		"pokemon" : "Amaura",
+		"Generation VIII" : "Refrigerate"
+	},
+	{
+		"pokemon" : "Aurorus",
+		"Generation VIII" : "Refrigerate"
+	},
+	{
+		"pokemon" : "Sylveon",
+		"Generation VIII" : "Pixilate",
+		"Generation IX" : "Pixilate"
+	},
+
+	{
+		"pokemon" : "Goomy",
+		"Generation VI" : "Gooey",
+		"Generation VII" : "Gooey",
+		"Generation VIII" : "Gooey"
+	},
+	{
+		"pokemon" : "Sliggoo",
+		"Generation VI" : "Gooey",
+		"Generation VII" : "Gooey",
+		"Generation VIII" : "Gooey"
+	},
+	{
+		"pokemon" : "Goodra",
+		"Generation VI" : "Gooey",
+		"Generation VII" : "Gooey",
+		"Generation VIII" : "Gooey"
+	},
+
+	{
+		"pokemon" : "Klefki",
+		"Generation VIII" : "Magician"
+	},
+
+	{
+		"pokemon" : "Xerneas",
+		
+		"Generation VI" : "Fairy Aura",
+		"Generation VII" : "Fairy Aura",
+		"Generation VIII" : "Fairy Aura"
+	},	
+	{
+		"pokemon" : "Yveltal",
+		
+		"Generation VI" : "Dark Aura",
+		"Generation VII" : "Dark Aura",
+		"Generation VIII" : "Dark Aura"
+	},
+
+	{
+		"pokemon" : "50% Zygarde",
+		
+		"Generation VI" : "Aura Break",
+		"Generation VII" : "Power Construct",
+		"Generation VIII" : "Power Construct"
+	},
+		
+	{
+		"pokemon" : "10% Zygarde",
+		"Generation VII" : "Power Construct",
+		"Generation VIII" : "Power Construct"
+	},
+
+	{
+		"pokemon" : "Zygarde",
+		
+		"Generation VII" : "Power Construct",
+		"Generation VIII" : "Power Construct"
+	},
+	{
+		"pokemon" : "Rowlet",
+		"Generation VII" : "Long Reach",
+		"Generation VIII" : "Long Reach",
+		"Generation IX" : "Long Reach"
+	},
+	{
+		"pokemon" : "Dartrix",
+		"Generation VII" : "Long Reach",
+		"Generation VIII" : "Long Reach",
+		"Generation IX" : "Long Reach"
+	},
+	{
+		"pokemon" : "Decidueye",
+		"Generation VII" : "Long Reach",
+		"Generation VIII" : "Long Reach",
+		"Generation IX" : "Long Reach"
+	},
+	{
+		"pokemon" : "Popplio",
+		"Generation VII" : "Liquid Voice",
+		"Generation VIII" : "Liquid Voice",
+		"Generation IX" : "Liquid Voice"
+	},
+
+	{
+		"pokemon" : "Brionne",
+		"Generation VII" : "Liquid Voice",
+		"Generation VIII" : "Liquid Voice",
+		"Generation IX" : "Liquid Voice"
+	},
+
+	{
+		"pokemon" : "Primarina",
+		"Generation VII" : "Liquid Voice",
+		"Generation VIII" : "Liquid Voice",
+		"Generation IX" : "Liquid Voice"
+	},
+
+	{
+		"pokemon" : "Yungoos",
+		"Generation VII" : "Stakeout"
+	},
+	{
+		"pokemon" : "Gumshoos",
+		"Generation VII" : "Stakeout"
+	},
+
+	{
+		"pokemon" : "Charjabug",
+		"Generation VII" : "Battery",
+		"Generation VIII" : "Battery",
+		"Generation IX" : "Battery"
+	},
+
+	{
+		"pokemon" : "Oricorio",
+		"Generation VII" : "Dancer",
+		"Generation IX" : "Dancer"
+	},
+	{
+		"pokemon" : "Wishiwashi",
+		"Generation VII" : "Schooling",
+		"Generation VIII" : "Schooling"
+	},
+	{
+		"pokemon" : "Mareanie",
+		"Generation VII" : "Merciless",
+		"Generation VIII" : "Merciless",
+		"Generation IX" : "Merciless"
+	},
+	{
+		"pokemon" : "Toxapex",
+		"Generation VII" : "Merciless",
+		"Generation VIII" : "Merciless",
+		"Generation IX" : "Merciless"
+	},
+	{
+		"pokemon" : "Mudbray",
+		"Generation VII" : "Stamina",
+		"Generation VIII" : "Stamina"
+	},
+	{
+		"pokemon" : "Mudsdale",
+		"Generation VII" : "Stamina",
+		"Generation VIII" : "Stamina"
+	},	
+	{
+		"pokemon" : "Dewpider",
+		"Generation VII" : "Water Bubble",
+		"Generation VIII" : "Water Bubble",
+		"Generation IX" : "Water Bubble"
+	},	{
+		"pokemon" : "Araquanid",
+		"Generation VII" : "Water Bubble",
+		"Generation VIII" : "Water Bubble",
+		"Generation IX" : "Water Bubble"
+	},	{
+		"pokemon" : "Salandit",
+		"Generation VII" : "Corrosion",
+		"Generation VIII" : "Corrosion"
+	},	{
+		"pokemon" : "Salazzle",
+		"Generation VII" : "Corrosion",
+		"Generation VIII" : "Corrosion"
+	},	{
+		"pokemon" : "Stufful",
+		"Generation VII" : "Fluffy"	},	
+	{
+		"pokemon" : "Bewear",
+		"Generation VII" : "Fluffy"	},	
+	{
+		"pokemon" : "Tsareena",
+		"Generation VII" : "Queenly Majesty",
+		"Generation VIII" : "Queenly Majesty",
+		"Generation IX" : "Queenly Majesty"
+	},{
+		"pokemon" : "Comfey",
+		"Generation VII" : "Triage",
+		"Generation VIII" : "Flower Veil",
+		"Generation IX" : "Triage"
+	},
+	{
+		"pokemon" : "Oranguru",
+		"Generation VIII" : "Symbiosis"
+	},{
+		"pokemon" : "Passimian",
+		"Generation VII" : "Receiver",
+		"Generation VIII" : "Receiver",
+		"Generation IX" : "Receiver"
+	},
+{
+		"pokemon" : "Wimpod",
+		"Generation VII" : "Wimp Out",
+		"Generation VIII" : "Wimp Out"	},
+
+{
+		"pokemon" : "Golisopod",
+		"Generation VII" : "Emergency Exit",
+		"Generation VIII" : "Emergency Exit"	},
+
+{
+		"pokemon" : "Sandygast",
+		"Generation VII" : "Water Compaction",
+		"Generation VIII" : "Water Compaction",
+		"Generation IX" : "Water Compaction"
+	},
+	{
+		"pokemon" : "Palossand",
+		"Generation VII" : "Water Compaction",
+		"Generation VIII" : "Water Compaction",
+		"Generation IX" : "Water Compaction"
+	},
+
+	{
+		"pokemon" : "Pyukumuku",
+		"Generation VII" : "Innards Out",
+		"Generation VIII" : "Innards Out"
+	},
+	{
+		"pokemon" : "Silvally",
+		"Generation VII" : "RKS System",
+		"Generation VIII" : "RKS System"
+	},
+
+	{
+		"pokemon" : "Minior",
+		"Generation VII" : "Shields Down",
+		"Generation IX" : "Shields Down"
+	},
+	{
+		"pokemon" : "Komala",
+		"Generation VII" : "Comatose",
+		"Generation IX" : "Comatose"
+	},{
+		"pokemon" : "Mimikyu",
+		"Generation VII" : "Disguise",
+		"Generation VIII" : "Disguise",
+		"Generation IX" : "Disguise"
+	},{
+		"pokemon" : "Bruxish",
+		"Generation VII" : "Dazzling",
+		"Generation IX" : "Dazzling"
+	},
+
+	{
+		"pokemon" : "Drampa",
+		"Generation VII" : "Berserk"
+	},
+	{
+		"pokemon" : "Dhelmise",
+		"Generation VII" : "Steelworker",
+		"Generation VIII" : "Steelworker"
+	},
+
+	{
+		"pokemon" : "Tapu Koko",
+		"Generation VII" : "Electric Surge"
+	},
+	{
+		"pokemon" : "Tapu Lele",
+		"Generation VII" : "Psychic Surge"
+	},
+
+	{
+		"pokemon" : "Tapu Bulu",
+		"Generation VII" : "Grassy Surge"
+	},
+	{
+		"pokemon" : "Tapu Fini",
+		"Generation VII" : "Misty Surge"
+	},
+
+	{
+		"pokemon" : "Solgaleo",
+		"Generation VII" : "Full Metal Body",
+		"Generation VIII" : "Full Metal Body",
+		"Generation IX" : "Full Metal Body"
+	},	{
+		"pokemon" : "Lunala",
+		"Generation VII" : "Shadow Shield",
+		"Generation VIII" : "Shadow Shield",
+		"Generation IX" : "Shadow Shield"
+	},{
+		"pokemon" : "Necrozma",
+		"Generation VII" : "Prism Armor",
+		"Generation VIII" : "Prism Armor",
+		"Generation IX" : "Prism Armor"
+	},
+	{
+		"pokemon" : "Dusk Mane Necrozma",
+		"Generation VII" : "Prism Armor",
+		"Generation VIII" : "Prism Armor",
+		"Generation IX" : "Prism Armor"
+	},	{
+		"pokemon" : "Dark Wings Necrozma",
+		"Generation VII" : "Prism Armor",
+		"Generation VIII" : "Prism Armor",
+		"Generation IX" : "Prism Armor"
+	},
+
+	{
+		"pokemon" : "Ultra Necrozma",
+		"Generation VII" : "Neuroforce"
+	},
+	{
+		"pokemon" : "Grookey",
+		"Generation VII" : "Grassy Surge"
+	},
+	{
+		"pokemon" : "Thwackey",
+		"Generation VII" : "Grassy Surge"
+	},	{
+		"pokemon" : "Rillaboom",
+		"Generation VII" : "Grassy Surge"
+	},
+
+	{
+		"pokemon" : "Scorbunny",
+		"Generation VIII" : "Libero",
+		"Generation IX" : "Libero"
+	},
+{
+		"pokemon" : "Cinderace",
+		"Generation VIII" : "Libero",
+		"Generation IX" : "Libero"
+	},{
+		"pokemon" : "Corviknight",
+		"Generation VIII" : "Mirror Armor",
+		"Generation IX" : "Mirror Armor"
+	},{
+		"pokemon" : "Nickit",
+		"Generation VIII" : "Stakeout"
+	},{
+		"pokemon" : "Thievul",
+		"Generation VIII" : "Stakeout"
+	},{
+		"pokemon" : "Gossifleur",
+		"Generation VIII" : "Cotton Down"
+	},{
+		"pokemon" : "Eldegoss",
+		"Generation VIII" : "Cotton Down"
+	},{
+		"pokemon" : "Yamper",
+		"Generation VIII" : "Ball Fetch"
+	},{
+		"pokemon" : "Rolycoly",
+		"Generation VIII" : "Steam Engine",
+		"Generation IX" : "Steam Engine"
+	},{
+		"pokemon" : "Carkol",
+		"Generation VIII" : "Steam Engine",
+		"Generation IX" : "Steam Engine"
+	},{
+		"pokemon" : "Coalossal",
+		"Generation VIII" : "Steam Engine",
+		"Generation IX" : "Steam Engine"
+	},{
+		"pokemon" : "Applin",
+		"Generation VIII" : "Ripen",
+		"Generation IX" : "Ripen"
+	},{
+		"pokemon" : "Appletun",
+		"Generation VIII" : "Ripen",
+		"Generation IX" : "Ripen"
+	},{
+		"pokemon" : "Flapple",
+		"Generation VIII" : "Ripen",
+		"Generation IX" : "Ripen"
+	},{
+		"pokemon" : "Silicobra",
+		"Generation VIII" : "Sand Spit",
+		"Generation IX" : "Sand Spit"
+	},{
+		"pokemon" : "Cramorant",
+		"Generation VIII" : "Gulp Missile",
+		"Generation IX" : "Gulp Missile"
+	},
+	{
+		"pokemon" : "Barraskewda",
+		"Generation VIII" : "Propeller Tail",
+		"Generation IX" : "Propeller Tail"
+	},
+	{
+		"pokemon" : "Toxtricity",
+		"Generation VIII" : "Punk Rock",
+		"Generation IX" : "Punk Rock"
+	},
+	{
+		"pokemon" : "Low Key Toxtricity",
+		"Generation VIII" : "Punk Rock",
+		"Generation IX" : "Punk Rock"
+	},
+	{
+		"pokemon" : "Perrserker",
+		"Generation VIII" : "Steely Spirit",
+		"Generation IX" : "Steely Spirit"
+	},
+{
+		"pokemon" : "Cursola",
+		"Generation VIII" : "Perish Body"
+	},{
+		"pokemon" : "Mr. Rime",
+		"Generation VIII" : "Screen Cleaner"
+	},{
+		"pokemon" : "Runerigus",
+		"Generation VIII" : "Wandering Spirit"
+	},{
+		"pokemon" : "Pincurchin",
+		"Generation IX" : "Electric Surge"
+	},{
+		"pokemon" : "Snom",
+		"Generation VIII" : "Ice Scales",
+		"Generation IX" : "Ice Scales"
+	},
+	{
+		"pokemon" : "Frosmoth",
+		"Generation VIII" : "Ice Scales",
+		"Generation IX" : "Ice Scales"
+	},
+	{
+		"pokemon" : "Stonjourner",
+		"Generation VIII" : "Power Spot",
+		"Generation IX" : "Power Spot"
+	},	{
+		"pokemon" : "Eiscue",
+		"Generation VIII" : "Ice Face",
+		"Generation IX" : "Ice Face"
+	},
+	{
+		"pokemon" : "Noice Eiscue",
+		"Generation VIII" : "Ice Face",
+		"Generation IX" : "Ice Face"
+	},
+
+	{
+		"pokemon" : "Indeedee",
+		"Generation IX" : "Psychic Surge"
+	},
+
+	{
+		"pokemon" : "Morpeko",
+		"Generation VIII" : "Hunger Switch",
+		"Generation IX" : "Hunger Switch"
+	},{
+		"pokemon" : "Duraludon",
+		"Generation VIII" : "Stalwart",
+		"Generation IX" : "Stalwart"
+	},{
+		"pokemon" : "Zacian",
+		"Generation VIII" : "Intrepid Sword",
+		"Generation IX" : "Intrepid Sword"
+	},
+{
+		"pokemon" : "Crowned Zacian",
+		"Generation VIII" : "Intrepid Sword",
+		"Generation IX" : "Intrepid Sword"
+	},
+	{
+		"pokemon" : "Zamazenta",
+		"Generation VIII" : "Dauntless Shield",
+		"Generation IX" : "Dauntless Shield"
+	},
+{
+		"pokemon" : "Crowned Zamazenta",
+		"Generation VIII" : "Dauntless Shield",
+		"Generation IX" : "Dauntless Shield"
+	},
+
+	{
+		"pokemon" : "Urshifu",
+		"Generation VIII" : "Unseen Fist",
+		"Generation IX" : "Unseen Fist"
+	},{
+		"pokemon" : "Regieleki",
+		"Generation VIII" : "Transistor",
+		"Generation IX" : "Transistor"
+	},{
+		"pokemon" : "Regidrago",
+		"Generation VIII" : "Dragon's Maw",
+		"Generation IX" : "Dragon's Maw"
+	},{
+		"pokemon" : "Glastrier",
+		"Generation VIII" : "Chilling Neigh",
+		"Generation IX" : "Chilling Neigh"
+	},{
+		"pokemon" : "Spectrier",
+		"Generation VIII" : "Grim Neigh",
+		"Generation IX" : "Grim Neigh"
+	},{
+		"pokemon" : "Calyrex",
+		"Generation VIII" : "As One",
+		"Generation IX" : "As One"
+	},
+
+	{
+		"pokemon" : "Ice Rider Calyrex",
+		"Generation VIII" : "As One",
+		"Generation IX" : "As One"
+	},
+	{
+		"pokemon" : "Shadow Rider Calyrex",
+		"Generation VIII" : "As One",
+		"Generation IX" : "As One"
+	},
+	{
+		"pokemon" : "Ursaluna",
+		"Generation IX" : "Mind's Eye"
+	},
+	{
+		"pokemon" : "Bloodmoon",
+		"Generation IX" : "Mind's Eye"
+	},
+
+	{
+		"pokemon" : "Oinkologne",
+		"Generation IX" : "Lingering Aroma"
+	},{
+		"pokemon" : "Dachsbun",
+		"Generation IX" : "Well-Baked Body"
+	},{
+		"pokemon" : "Arboliva",
+		"Generation IX" : "Seed Sower"
+	},{
+		"pokemon" : "Nacli",
+		"Generation IX" : "Purifying Salt"
+	},{
+		"pokemon" : "Naclstack",
+		"Generation IX" : "Purifying Salt"
+	},{
+		"pokemon" : "Garganacl",
+		"Generation IX" : "Purifying Salt"
+	},{
+		"pokemon" : "Bellibolt",
+		"Generation IX" : "Electromorphosis"
+	},{
+		"pokemon" : "Wattrel",
+		"Generation IX" : "Wind Power"
+	},{
+		"pokemon" : "Kilowattrel",
+		"Generation IX" : "Wind Power"
+	},{
+		"pokemon" : "Toedscool",
+		"Generation IX" : "Mycelium Might"
+	},{
+		"pokemon" : "Toedscruel",
+		"Generation IX" : "Mycelium Might"
+	},{
+		"pokemon" : "Klawf",
+		"Generation IX" : "Anger Shell"
+	},{
+		"pokemon" : "Espathra",
+		"Generation IX" : "Opportunist"
+	},
+	{
+		"pokemon" : "Bombirdier",
+		"Generation IX" : "Rocky Payload"
+	},
+	{
+		"pokemon" : "Palafin",
+		"Generation IX" : "Zero to Hero"
+	},{
+		"pokemon" : "Zero Palafin",
+		"Generation IX" : "Zero to Hero"
+	},{
+		"pokemon" : "Hero Palafin",
+		"Generation IX" : "Zero to Hero"
+	},
+	{
+		"pokemon" : "Revavroom",
+		"Generation IX" : "Filter"
+	},{
+		"pokemon" : "Orthworm",
+		"Generation IX" : "Earth Eater"
+	},{
+		"pokemon" : "Glimmet",
+		"Generation IX" : "Toxic Debris"
+	},{
+		"pokemon" : "Glimmora",
+		"Generation IX" : "Toxic Debris"
+	},{
+		"pokemon" : "Greavard",
+		"Generation IX" : "Fluffy"
+	},{
+		"pokemon" : "Houndstone",
+		"Generation IX" : "Fluffy"
+	},{
+		"pokemon" : "Flamigo",
+		"Generation IX" : "Costar"
+	},{
+		"pokemon" : "Tatsugiri",
+		"Generation IX" : "Commander"
+	},{
+		"pokemon" : "Farigiraf",
+		"Generation IX" : "Armor Tail"
+	},
+{
+		"pokemon" : "Kingambit",
+		"Generation IX" : "Supreme Overlord"
+	},
+{
+		"pokemon" : "Frigibax",
+		"Generation IX" : "Thermal Exchange"
+	},{
+		"pokemon" : "Arctibax",
+		"Generation IX" : "Thermal Exchange"
+	},{
+		"pokemon" : "Baxcalibur",
+		"Generation IX" : "Thermal Exchange"
+	},{
+		"pokemon" : "Gholdengo",
+		"Generation IX" : "Good as Gold"
+	},{
+		"pokemon" : "Wo-Chien",
+		"Generation IX" : "Tablets of Ruin"
+	},
+	{
+		"pokemon" : "Chien-Pao",
+		"Generation IX" : "Swords of Ruin"
+	},
+{
+		"pokemon" : "Ting-Lu",
+		"Generation IX" : "Vessel of Ruin"
+	},
+	{
+		"pokemon" : "Chi-Yu",
+		"Generation IX" : "Beads of Ruin"
+	},{
+		"pokemon" : "Koraidon",
+		"Generation IX" : "Orichalcum Pulse"
+	},{
+		"pokemon" : "Miraidon",
+		"Generation IX" : "Hadron Engine"
+	},{
+		"pokemon" : "Dipplin",
+		"Generation IX" : "Supersweet Syrup"
+	},
+	{
+		"pokemon" : "Poltchageist",
+		"Generation IX" : "Hospitality"
+	},
+	{
+		"pokemon" : "Sinistcha",
+		"Generation IX" : "Hospitality"
+	},	{
+		"pokemon" : "Ogerpon",
+		"Generation IX" : "Embody Aspect"
+	},
+	{
+		"pokemon" : "Archaludon",
+		"Generation IX" : "Stalwart"
+	},
+		
+	{	
+		"pokemon" : "Hydrapple",
+		"Generation IX" : "Supersweet Syrup"
+	},
+		{	
+		"pokemon" : "Terapagos",
+		"Generation IX" : "Tera Shell"
+	},{	
+		"pokemon" : "Stellar Terapagos",
+		"Generation IX" : "Teraform Zero"
+	},
+	{	
+		"pokemon" : "Pecharunt",
+		"Generation IX" : "Poison Puppeteer"
+}
+
+]
