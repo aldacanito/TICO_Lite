@@ -4,7 +4,6 @@ import IDC.Metrics.ConstructorMetrics;
 import IDC.Metrics.EntityMetricsStore;
 import IDC.Metrics.PropertyMetrics;
 import org.apache.commons.io.FileUtils;
-import org.apache.jena.ontology.Individual;
 import org.apache.jena.ontology.OntProperty;
 
 import java.io.File;

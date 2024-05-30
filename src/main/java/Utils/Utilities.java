@@ -172,6 +172,10 @@ public class Utilities
     }
 
 
+    /*
+    Determines whether an individual is potentially interesting for analysis. Only works because the OAEI files have
+    very clearly defined naming conventions for individuals (that hint at their Classes too).
+     */
     private static boolean relevantIndividual(String line)
     {
 
@@ -181,8 +185,6 @@ public class Utilities
 
       //  if( line.toLowerCase().contains("region") )
         //    return true;
-
-
 
         if(line.contains("person") || line.contains("paper") )
             return true;
@@ -204,26 +206,19 @@ public class Utilities
     }
 
 
-    public static void generateInstanceListFile(String fileName, OntModel model)
-    {
-        List<Individual> inds = model.listIndividuals().toList();
 
-        for(Individual i : inds)
-        {
-            if(i.getURI() != null && !i.getURI().isEmpty() && !i.getURI().isEmpty())
-                Utilities.appendLineToFile(fileName, i.getURI());
-        }
-    }
+
+    /*
+        Reads the model file for instances. In the ontologies provided by OAEI, the individuals are very clearly named.
+        Shortcut in order to not be processing all individuals using SPARQL or JENA, which would take a very long time.
+
+        Uses the relevant individual method
+     */
 
     public static List<String> extractInstancesFromFile(String datasetFolder)
     {
-        //String file_content = readFileContent(AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_instance.ttl");
-
         List<String> individuals_uris = new ArrayList<>();
-
         String filename = AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_0.ttl";
-
-//        String filename = datasetFolder + "/" + AnalyticUtils.ONTO_NAME + "//" + AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_0.ttl";
 
         if(!filename.contains("plant") && !filename.contains("wine"))
         {
@@ -239,22 +234,21 @@ public class Utilities
         }
         else
         {
-            filename = datasetFolder + "/" + AnalyticUtils.ONTO_NAME + "//" + AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_instances.txt";
-            String file_content = readFileContent(filename);
-            String lines[] = file_content.split("\\r?\\n");
+         //   filename = datasetFolder + "/" + AnalyticUtils.ONTO_NAME + "//" + AnalyticUtils.INSTANCE_FOLDER + "/" + AnalyticUtils.ONTO_NAME + "_instances.txt";
+            OntModel ontModel     = OntologyUtils.readModel(filename);
+            List<Individual> list = ontModel.listIndividuals().toList();
 
-            for (String line : lines) {
-                if (!line.isEmpty()) {
-                    individuals_uris.add(line);
+            for (Individual i : list) {
+                if (i.getURI() != null) {
+                    individuals_uris.add(i.getURI());
                 }
             }
-
 
         }
 
         individuals_uris = new ArrayList<>(new HashSet<>(individuals_uris));
-        //Collections.sort(individuals_uris);
 
+        //Collections.sort(individuals_uris);
         Collections.shuffle(individuals_uris);
 
         return individuals_uris;

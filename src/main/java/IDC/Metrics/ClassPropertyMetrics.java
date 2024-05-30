@@ -34,18 +34,7 @@ public class ClassPropertyMetrics extends EntityMetrics
 
     }
     
-    public ClassPropertyMetrics(String EntityURI, Individual first_mention)
-    {
-        super(EntityURI);
-        //propertyMetrics      = new ArrayList<>();
-        individualMetrics    = new ArrayList<>();
 
-
-        this.first_mention   = first_mention;
-        this.last_mention    = first_mention;
-
-        this.addClassMention(first_mention);
-    }
 
     @Override
     public int getMentions()
@@ -53,83 +42,7 @@ public class ClassPropertyMetrics extends EntityMetrics
         return this.individualMetrics.size();
     }
 
-    public void cleanMetrics()
-    {
-        individualMetrics = new ArrayList<>();
-        metricsComputed   = false;
-        first_mention     = null;
-        last_mention      = null;
-    }
 
-    @Override
-    public String toString()
-    {
-        String print = "";
-
-        print += "\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
-        print += ("\t++++++++++++++ " + this.getURI() + " ++++++++++++++\n");
-
-        print += ("\n\tClass " + this.getURI() + " is mentioned " +  this.getMentions() + " times.\n");
-        print += ("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-
-        print += ("\n\t> Property Metrics:");
-
-        List<String> properties = this.getAllProperties();
-
-        for(String p_uri : properties)
-        {
-            String type = "Object Property";
-            OntProperty p = this.ontClass.getOntModel().getOntProperty(p_uri);
-
-            if(p.isDatatypeProperty())
-                type = "Datatype Property";
-
-
-            print += ("\n\t\t>> URI " + p_uri + " is a " + type );
-
-            print += ("\n\t\t\t>> Total Mentions: "                              + this.getPropertyMentions(p_uri)
-                                    + "\n\t\t\t>> Distinct Mentions: "           + this.getDistinctPropertyMentions(p_uri)
-                                    + "\n\t\t\t>> Frequency: "                   + this.getPropertyRatio(p_uri)
-                                    + "\n\t\t\t>> Max Mentions per Individual: " + this.propertyMaxMentionsPerIndividual(p_uri)
-                                    + "\n\t\t\t>> Min Mentions per Individual: " + this.propertyMinMentionsPerIndividual(p_uri)
-                                    + "\n\t\t\t>> AVG Mentions per Individual: " + this.propertyAvgMentionsPerIndividual(p_uri)
-            );
-
-            print += ("\n\t\t\t>> Is Functional? " + this.isFunctionalCandidate(p_uri));
-
-
-            if(!p.isDatatypeProperty())
-            {
-                print += ("\n\t\t\t>> Reflexiviness > count: "   + this.getPropertyReflexiveCount(p_uri)     + " > ratio: " + this.getPropertyReflexiveRatio(p_uri));
-                print += ("\n\t\t\t>> Irreflexiviness > count: " + this.getPropertyIrreflexiveCount(p_uri)   + " > ratio: " + this.getPropertyIrreflexiveRatio(p_uri));
-                print += ("\n\t\t\t>> Symmetry > count: "        + this.getPropertySymmetryCount(p_uri)      + " > ratio: " + this.getPropertySymmetryRatio(p_uri));
-                print += ("\n\t\t\t>> Transtiviness:"
-                        + "\n\t\t\t\t> 2 level count: "        + this.getPropertyTransitiveCount(p_uri, 2)      + " > ratio: " + this.getPropertyTransitiveRatio(p_uri, 2)
-                        + "\n\t\t\t\t> 3 level count: "        + this.getPropertyTransitiveCount(p_uri, 3)      + " > ratio: " + this.getPropertyTransitiveRatio(p_uri, 3)
-                );
-
-            }
-
-            print += ("\n\t\t\t>> Domains:" );
-            for(String d_uri : this.getAllDomainsOfProperty(p_uri))
-                print += ("\n\t\t\t\t> " + d_uri + " | frequency: " + this.propertyDomainRatio(p_uri, d_uri));
-
-            print += ("\n\t\t\t>> Ranges:" );
-            for(String r_uri : this.getAllRangesOfProperty(p_uri))
-                print += ("\n\t\t\t\t> " + r_uri + " | frequency: " + this.propertyRangeRatio(p_uri, r_uri));
-
-        }
-
-        Individual first = this.getFirstMention();
-        Individual last  = this.getLastMention();
-
-        if(first!=null) print += ("\n\t\t> First Mentioned on Individual: " + first.getURI());
-        if(last!=null)  print += ("\n\t\t> Last Mentioned on Individual: "  + last.getURI());
-
-        print += ("\n\t+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n\n");
-
-        return print;
-    }
 
 
     public void print()
@@ -241,30 +154,7 @@ public class ClassPropertyMetrics extends EntityMetrics
     }
 
 
-    public String printComputations()
-    {
-        String ret = "===\nRetrieving Constructor Metrics...\n";
 
-        if(!metricsComputed)
-            computeAllMetrics();
-
-        Set<String> propertyURIs = new HashSet<>();
-
-        for(IndividualMetrics im : this.individualMetrics)
-            propertyURIs.addAll(im.getProperties());
-
-        for(String propertyURI : propertyURIs)
-        {
-            PropertyMetrics pm        = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
-            for(ConstructorMetrics cm : pm.getConstructors())
-            {
-                ret += cm.toString();
-            }
-        }
-
-        ret+="====\n";
-        return ret;
-    }
 
 
 
@@ -305,47 +195,8 @@ public class ClassPropertyMetrics extends EntityMetrics
 
     }
 
-    public void computeAllMetrics()
-    {
-        resetComputations();
 
-        Set<String> propertyURIs = new HashSet<>();
 
-        for(IndividualMetrics im : this.individualMetrics)
-            propertyURIs.addAll(im.getProperties());
-
-        for(String propertyURI : propertyURIs)
-        {
-            /*
-            computeFunctionality(propertyURI);
-            computeInverseFunctionality(propertyURI);
-
-            computeTransitiveness(propertyURI, 2);
-            computeTransitiveness(propertyURI, 3);
-
-            computeSymmetry(propertyURI);
-            computeAsymmetry(propertyURI);
-
-            computeReflexiveness(propertyURI);
-            computeIrreflexiveness(propertyURI);
-            */
-        }
-
-        metricsComputed = true;
-    }
-
-    public void printComputations2File(int ind_count)
-    {
-        if(!metricsComputed)    computeAllMetrics();
-
-        Set<String> propertyURIs = new HashSet<>();
-
-        for(IndividualMetrics im : EntityMetricsStore.getStore().getIndividualMetrics())
-            propertyURIs.addAll(im.getProperties());
-
-        AnalyticUtils.printAllComputations(propertyURIs, ind_count);
-
-    }
 
     public static void static_printComputations2File(int ind_count)
     {
@@ -358,30 +209,8 @@ public class ClassPropertyMetrics extends EntityMetrics
 
     }
 
-    public void resetComputations()
-    {
-        Set<String> propertyURIs = new HashSet<>();
-
-        for(IndividualMetrics im : this.individualMetrics)
-            propertyURIs.addAll(im.getProperties());
-
-        for(String propertyURI : propertyURIs)
-        {
-            PropertyMetrics pm = EntityMetricsStore.getStore().getMetricsByPropertyURI(propertyURI);
-
-            List<ConstructorMetrics> constructors = pm.getConstructors();
-            for(ConstructorMetrics cm : constructors)
-                cm.clean();
-
-            String propertyPart = propertyURI.split("#")[1];
-            String fileName   = "Analytics/Constructors/" + propertyPart + "_constructors" + ".csv";
-
-            //Utilities.deleteFile(fileName);
-        }
 
 
-
-    }
 
 
     public void addClassMention(Individual mention)
@@ -393,15 +222,8 @@ public class ClassPropertyMetrics extends EntityMetrics
         this.print();
     }
     
-    public Individual getFirstMention()
-    {
-        return this.first_mention;
-    }
-    
-    public Individual getLastMention()
-    {
-        return this.last_mention;
-    }
+
+
     
 
     public int getPropertyMentions(String propertyURI)
@@ -437,41 +259,7 @@ public class ClassPropertyMetrics extends EntityMetrics
         return properties;
     }
 
-    public float propertyDomainRatio(String propertyURI, String domainURI)
-    {
-        int domainCount         = 0;
-        float propertyMentions  = getDistinctPropertyMentions(propertyURI);
 
-        if(propertyMentions==0) return 0;
-
-        for(IndividualMetrics im : this.individualMetrics)
-        {
-            PropertyMetrics pm = im.getPropertyMetricForProperty(propertyURI);
-
-            if(pm!=null)
-                domainCount += pm.getDomainCount(domainURI);
-        }
-
-        return (float) domainCount / propertyMentions;
-    }
-
-    public float propertyRangeRatio(String propertyURI, String rangeURI)
-    {
-        int domainCount = 0;
-        float propertyMentions = getDistinctPropertyMentions(propertyURI);
-
-        if(propertyMentions==0) return 0;
-
-        for(IndividualMetrics im : this.individualMetrics)
-        {
-            PropertyMetrics pm = im.getPropertyMetricForProperty(propertyURI);
-
-            if(pm!=null)
-                domainCount += pm.getRangeCount(rangeURI);
-        }
-
-        return (float) domainCount / propertyMentions;
-    }
 
     public List<String> getAllDomainsOfProperty(String propertyURI)
     {
@@ -643,21 +431,8 @@ public class ClassPropertyMetrics extends EntityMetrics
         return properties;
     }
 
-    public List<DatatypeProperty> getAllDatatypeProperties()
-    {
-        OntModel model = this.ontClass.getOntModel();
-        List<DatatypeProperty> properties = new ArrayList<>();
 
-        for(String i : this.getAllProperties())
-        {
-            OntProperty ontProperty = model.getOntProperty(i);
-            if(ontProperty != null)
-                if(ontProperty.isDatatypeProperty())
-                    properties.add(ontProperty.asDatatypeProperty());
-        }
 
-        return properties;
-    }
 
     public List<String> getAllObjectPropertiesURIs()
     {
@@ -675,21 +450,7 @@ public class ClassPropertyMetrics extends EntityMetrics
         return properties;
     }
 
-    public List<ObjectProperty> getAllObjectProperties()
-    {
-        OntModel model = this.ontClass.getOntModel();
-        List<ObjectProperty> properties = new ArrayList<>();
 
-        for(String i : this.getAllProperties())
-        {
-            OntProperty ontProperty = model.getOntProperty(i);
-            if(ontProperty != null)
-                if(ontProperty.isObjectProperty())
-                    properties.add(ontProperty.asObjectProperty());
-        }
-
-        return properties;
-    }
 
 
     /**
@@ -730,11 +491,5 @@ public class ClassPropertyMetrics extends EntityMetrics
 
 
 
-    /**
-     * @return the propertyMetrics
-     */
-//    public List<PropertyMetrics> getPropertyMetrics() {
-//        return propertyMetrics;
-//    }
     
 }

@@ -26,7 +26,7 @@ public class ModelManager
     private OntModel originalModel;
     private OntModel evolvingModel;
     private OntModel instanceModel;
-    private OntModel temporal_instancesModel;
+
     private OntModel slidingWindowModel;
 
     Queue<String> slidingUris;
@@ -68,7 +68,7 @@ public class ModelManager
         o_versionInfo       = slidingWindowModel.createOntResource("VersionInfo");
         o_versionInfo.addLiteral(o_version, "sliding");
 
-        temporal_instancesModel = evolvingModel;
+
         slidingUris = new PriorityQueue<String>(Configs.windowSize);
 
     }
@@ -96,7 +96,7 @@ public class ModelManager
         o_versionInfo       = slidingWindowModel.createOntResource("VersionInfo");
         o_versionInfo.addLiteral(o_version, "sliding");
 
-        temporal_instancesModel = evolvingModel;
+
         slidingUris = new PriorityQueue<String>();
 
     }
@@ -167,29 +167,8 @@ public class ModelManager
         return instanceModel;
     }
 
-    /**
-     * @param instanceModel the instanceModel to set
-     */
-    public void setInstanceModel(OntModel instanceModel) {
-        this.instanceModel = instanceModel;
-    }
 
-    /**
-     * @return the temporal_instancesModel
-     */
-    public OntModel getTemporal_instancesModel() {
-        return temporal_instancesModel;
-    }
 
-    /**
-     * @param aTemporal_instancesModel the temporal_instancesModel to set
-     */
-    public void setTemporal_instancesModel(OntModel aTemporal_instancesModel) {
-        temporal_instancesModel = aTemporal_instancesModel;
-    }
-    
-    
-    
     
     
 }
