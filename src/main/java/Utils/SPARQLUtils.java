@@ -12,6 +12,219 @@ import java.util.*;
 public class SPARQLUtils
 {
 
+    /*
+    public static boolean testAllValuesFrom(Individual individual,
+                                            String classURI,
+                                            String propertyURI,
+                                            String range, boolean rangeURI)
+    {
+        boolean isReflexive     = false;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        String sparql = "SELECT " +
+                " ?i \n" +
+                " WHERE \n" +
+                "  { " +
+                " <"+ individualURI +"> a <" + classURI +"> . " ;
+
+        if(rangeURI)
+            sparql +=  " ?i  <" + propertyURI + "> <" + range +  "> . \n"; // class or ind
+        else
+            sparql +=  " ?i  <" + propertyURI + "> \""+range+"\" . \n";
+
+        sparql +="  } \n";
+
+
+
+        Query query = QueryFactory.create
+                (
+                    sparql
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+            isReflexive         = results.hasNext();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isReflexive;
+    }
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Checks if Restriction r1 is a superclass of OntClass ontClass, using SPARQL.
+     * @param ontClass
+     * @param r1
+     * @return TRUE if r1 is one of the ontClass' restrictions
+     */
+    public static boolean hasRestrictionSPARQL(OntClass ontClass, Restriction r1)
+    {
+        boolean ret = false;
+
+        if(r1.isMaxCardinalityRestriction())
+        {
+            OntProperty prop = r1.getOnProperty();
+            int cardinality  = r1.getCardinality(prop);
+
+            //if( cardinality == 0 ) cardinality = 1; // todo figure why
+
+            if(ontClass.getURI() != null)
+                return hasCardinalitySPARQL(ontClass, prop, cardinality, "maxCardinality");
+        } else if(r1.isMinCardinalityRestriction())
+        {
+            OntProperty prop = r1.getOnProperty();
+            int cardinality  = r1.getCardinality(prop);
+
+//            if( cardinality == 0 ) cardinality = 1;
+
+            if(ontClass.getURI() != null)
+                return hasCardinalitySPARQL(ontClass, prop, cardinality, "minCardinality");
+        } else if(r1.isCardinalityRestriction())
+        {
+            OntProperty prop = r1.getOnProperty();
+            int cardinality  = r1.getCardinality(prop);
+
+            //if( cardinality == 0 ) cardinality = 1;
+
+            if(ontClass.getURI() != null)
+                return hasCardinalitySPARQL(ontClass, prop, cardinality, "cardinality");
+        }
+
+        if(r1.isHasValueRestriction())
+        {
+            HasValueRestriction hasValueRestriction = r1.asHasValueRestriction();
+            RDFNode hasValue = hasValueRestriction.getHasValue();
+
+            OntProperty prop = hasValueRestriction.getOnProperty();
+
+            String range = null;
+            if(hasValue.isResource())
+                range = hasValue.asResource().getURI();
+
+            return hasValuesFromSPARQL(ontClass, range, prop, "hasValue");
+        } else if(r1.isAllValuesFromRestriction())
+        {
+            AllValuesFromRestriction r11 = r1.asAllValuesFromRestriction();
+            Resource res                 = r11.getAllValuesFrom();
+            OntProperty prop             = r11.getOnProperty();
+            String range                 = res.getURI();
+
+            return hasValuesFromSPARQL(ontClass, range, prop, "allValuesFrom");
+        } else if(r1.isSomeValuesFromRestriction())
+        {
+            SomeValuesFromRestriction r11 = r1.asSomeValuesFromRestriction();
+            Resource res                 = r11.getSomeValuesFrom();
+            OntProperty prop             = r11.getOnProperty();
+            String range                 = res.getURI();
+
+            return hasValuesFromSPARQL(ontClass, range, prop, "someValuesFrom");
+        }
+
+        System.out.println("was not???  restricten????");
+        return ret;
+    }
+
+
+    public static boolean hasValuesFromSPARQL(OntClass domain, String range, OntProperty property, String valueType)
+    {
+        OntModel model      = domain.getOntModel();
+        String property_URI = property.getURI();
+        String domain_URI   = domain.getURI();
+
+        String queryString =
+                " SELECT DISTINCT ?d ?value ?range WHERE\n" +
+                        "{ \n" +
+                        "  <"+ domain_URI + "> <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?d  . \n" +
+                        "  ?d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .\n" +
+                        "  ?d <http://www.w3.org/2002/07/owl#onProperty> <" + property_URI + "> .  \n" +
+                        "  ?d <http://www.w3.org/2002/07/owl#" + valueType + "> ";
+        if(range!=null)
+            queryString += " <"+ range +"> . ";
+        else
+            queryString += " ?range . ";
+
+
+        queryString += " } " +
+                "ORDER BY ASC(?d)" ;
+
+
+        Query query = QueryFactory.create
+                (
+                        queryString
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error querying for Value Restrictions. Reason: " + e.getMessage());
+        }
+
+        return false;
+    }
+
+
+    public static boolean hasCardinalitySPARQL(OntClass ontClass, OntProperty property, int cardinality, String cardinalityType)
+    {
+        OntModel model      = ontClass.getOntModel();
+        String property_URI = property.getURI();
+        String class_URI    = ontClass.getURI();
+
+        Query query = QueryFactory.create
+                (
+                        " SELECT DISTINCT ?d ?value WHERE\n" +
+                                "{ \n" +
+                                "  <"+ class_URI + "> <http://www.w3.org/2000/01/rdf-schema#subClassOf> ?d  . \n" +
+                                "  ?d <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Restriction> .\n" +
+                                "  ?d <http://www.w3.org/2002/07/owl#onProperty> <" + property_URI + "> .  \n" +
+                                "  ?d <http://www.w3.org/2002/07/owl#" + cardinalityType + "> ?value . " +
+                                "  filter(?value = " + cardinality + ") \n" +
+                                "} ORDER BY ASC(?d)" +
+                                ""
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                return true;
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error querying for Cardinality Restrictions. Reason: " + e.getMessage());
+        }
+
+        return false;
+    }
+
 
     public static boolean testSupportReflexivenessSPARQL(Individual individual, String propertyURI)
     {
@@ -138,11 +351,14 @@ public class SPARQLUtils
         return isIrreflexive;
     }
 
-    public static boolean testSupportSymmetrySPARQL(Individual individual, String propertyURI)
+    public static boolean testSupportSymmetrySPARQLBACK(Individual individual, String propertyURI)
     {
         boolean isSymmetric     = false;
         OntModel model          = ModelManager.getManager().getSlidingWindowModel();
         String individualURI    = individual.getURI();
+
+
+
 
         Query query = QueryFactory.create
                 (
@@ -168,6 +384,45 @@ public class SPARQLUtils
     }
 
 
+    public static boolean testSupportSymmetrySPARQL(Individual individual, String propertyURI)
+    {
+        boolean isSymmetric     = false;
+        OntModel model          = ModelManager.getManager().getSlidingWindowModel();
+        String individualURI    = individual.getURI();
+
+        Query query = QueryFactory.create
+                (
+                   "SELECT * WHERE \n" +
+                    "{\n" +
+                    "  {\n" +
+                    "  \tSELECT (COUNT(?obj) as ?B) WHERE {  <"+individualURI+"> <"+propertyURI+"> ?obj . } \n" +
+                    "  }\n" +
+                    "  {\n" +
+                    "  \tSELECT (COUNT(?obj) as ?H) WHERE {  <"+individualURI+"> <"+propertyURI+"> ?obj . " +
+                           "                                 ?obj <"+propertyURI+"> <"+individualURI+"> . }\n" +
+                    "  }\n" +
+                    "  \n" +
+                    "  FILTER (?B = ?H)\n" +
+                    "} "
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results   = qexec.execSelect();
+            isSymmetric  = results.hasNext();
+
+            while (results.hasNext()) {
+                QuerySolution querySolution = results.nextSolution();
+                Resource object2 = querySolution.getResource("?obj2");
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error testing symmetry. Reason: " + e.getMessage());
+        }
+
+        return isSymmetric;
+    }
 
 
     public static boolean testAgainstSymmetrySPARQL(Individual individual, String propertyURI)
@@ -439,6 +694,7 @@ public class SPARQLUtils
 
                if (distinctURIs.size() == 1)
                    currentTest = true;
+
 
            } catch (Exception e) {
                System.out.println("Error testing inverse functionality. Reason: " + e.getMessage());
@@ -1013,8 +1269,58 @@ public class SPARQLUtils
 
 
 
+    public static List<OntClass> getTimeSlicesSPARQL(OntClass ontClass)
+    {
+        List<OntClass> timeSlices = new ArrayList<>();
+        OntModel model = ontClass.getOntModel();
 
+        if(ontClass.getURI()==null)
+            return timeSlices;
 
+        Query query = QueryFactory.create
+                (
+                        "SELECT DISTINCT " +
+                                " ?timeSlice ?b ?d \n" +
+                                " WHERE \n" +
+                                "  { ?timeSlice ?b ?d  .\n" +
+                                "  ?d <http://www.w3.org/2002/07/owl#someValuesFrom> <"+ontClass.getURI()+">.\n" +
+                                "  ?d <http://www.w3.org/2002/07/owl#onProperty> <http://www.w3.org/2006/time#isTimeSliceOf> .\n" +
+                                "  FILTER (!isBlank(?timeSlice)) " +
+                                "  } \n" +
+                                " ORDER BY ASC(?timeSlice)"
+                );
+
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                QuerySolution res = results.nextSolution();
+                Resource theResource = res.getResource("timeSlice");
+
+                if(theResource.isAnon() || theResource == null) continue;
+
+                if(theResource.getURI().contains("TS__"))
+                {
+                    OntClass cls = model.getOntClass(theResource.getURI());
+                    timeSlices.add(cls);
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error obtaining TimeSlices. Reason: " + e.getMessage());
+        }
+
+        return timeSlices;
+    }
+
+    /**
+     * Uses a SPARQL query to obtain an ordered list of URIs of all Individuals in an OntModel.
+     * Ignores individuals in the Ignore List
+     * @param model the OntModel to execute the search
+     * @return List of URIs of Individuals
+     */
     public static List<String> getIndividualsSPARQL(OntModel model)
     {
         //System.out.println("==SPARQL Listing individuals in the Model.==\n");
@@ -1093,8 +1399,52 @@ public class SPARQLUtils
         return individuals_uris;
     }
 
+    /**
+     * Uses SPARQL to retrieve a list of all OntClasses in an OntModel that are not in the Exclusion/Ignore List.
+     * @param model The OntModel to execute the query
+     * @return List of OntClasses
+     */
+    public static List<OntClass> listOntClassesSPARQL(OntModel model)
+    {
+        List<OntClass> clss   = new ArrayList<>();
+        Query query = QueryFactory.create
+                (
+                        "SELECT DISTINCT " +
+                                "?class " +
+                                " WHERE " +
+                                "{" +
+                                "?a a ?class . " +
+                                " FILTER ( ?class != <http://www.w3.org/2002/07/owl#NamedIndividual> ) . " +
+                                "}" +
+                                " ORDER BY ASC(?class) "
+                );
 
+        try (QueryExecution qexec = QueryExecutionFactory.create(query, model))
+        {
+            ResultSet results = qexec.execSelect();
+            while (results.hasNext())
+            {
+                QuerySolution res    = results.nextSolution();
+                Resource theResource = res.getResource("?class");
 
+                if(!theResource.isURIResource()) continue;
+                if(Utilities.isInIgnoreList(theResource.getURI())) continue;
+
+                try
+                {
+                    OntClass cls = model.getOntClass(theResource.getURI());
+                    clss.add(cls);
+                }
+                catch(Exception e)
+                {
+                    System.out.println("Error retrieving class with uri " + theResource.getURI() + " from Model." );
+                }
+
+            }
+        }
+
+        return clss;
+    }
 
     /**
      * Lists the OntClasses of a given Individual
@@ -1238,6 +1588,10 @@ public class SPARQLUtils
     }
 
 
+    public static List<Pair<String, RDFNode>> listPropertiesSPARQL(Individual i)
+    {
+        return listPropertiesSPARQL(i, true);
+    }
 
 
 }
